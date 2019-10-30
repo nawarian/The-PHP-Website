@@ -1,5 +1,5 @@
 ---
-slug: hello-php
+slug: hello-php-I-am-an-engineer
 createdAt: 2019-10-29
 ---
 
@@ -19,7 +19,7 @@ engineer. You probably still have a loooong way to go.
 
 Just read below.
 
-# Hello, PHP
+# Hello, PHP. I am an Engineer.
 
 I write this post little after `CVE-2019-11043` became popular. Yes,
 popular.
@@ -122,7 +122,7 @@ community, know better**.
 
 Whether it is an idea, tool or configuration, community
 knows better. And for php developers this is so clear that I
-even feel uncomfortable repeating this so often.
+even feel uncomfortable repeating it so often.
 
 I mean, look at this website! It is fully backed with
 community's code. I wrote virtually nothing besides textual
@@ -150,7 +150,7 @@ silly to mention how slow it is without understanding your problem.
 
 ## PHP is just another tool. It is _YOUR JOB_ to understand if fits
 
-Really, if you could take one thing away from this text, choose
+Really, if you could take one idea from this text with you, choose
 this: **as an engineer, your job is to spot the problem, identify
 solutions and pick the most suitable one**.
 
@@ -161,21 +161,21 @@ Is that animation transition so important, or does SEO talk
 louder to your business? Do you really need to keep state in
 order to show one pop up alert?
 
-Does a 20 days a software to be rewritten in 12 months sound
+Does a 20 days software to be rewritten in 12 months sound
 better than one made in 4 months to be rewritten in 2 years?
 Sometimes yes, sometimes not. Sometimes constant refactoring is much
 better. Know your problem first!
 
 **This also applies to php engineers making fun of Laravel experts.**
-They're build amazing tools, incredibly fast and delivering huge
+They're building amazing tools, incredibly fast and delivering huge
 value. They are also learning from their mistakes and making their
 toolset every day much greater!
 
 **Find the tool to solve your problem. Not the problem to be
 solved by your tool**.
 
-So far in my career I have a very strong conviction that the
-EASIEST part is coding.
+So far in my career I have a very strong conviction that **the
+EASIEST part is coding**.
 
 I've done this before, but I don't fight about languages anymore.
 And I hope I helped you coming to the same conclusion as I did:
