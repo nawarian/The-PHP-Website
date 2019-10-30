@@ -14,5 +14,13 @@ return [
             },
             'sort' => '-createdAt',
         ],
+        'posts_pt_br' => [
+            'extends' => '_layouts.master',
+            'section' => 'body',
+            'path' => function ($page) {
+                return 'br/edicao/' . Str::slug($page->get('slug'));
+            },
+            'sort' => '-createdAt',
+        ],
     ],
 ];

@@ -8,6 +8,8 @@ createdAt: 2019-10-29
   {{ date('Y-m-d') }}
 </time>
 
+[Leia em Português](/br/edicao/ola-php-eu-sou-um-engenheiro)
+
 I wrote this post so you can share it every time someone asks
 something like:
 > _"Do people even use PHP nowadays?"_
