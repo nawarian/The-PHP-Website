@@ -15,3 +15,6 @@ use TightenCo\Jigsaw\Jigsaw;
  *     // Your code here
  * });
  */
+$events->afterCollections(function (Jigsaw $app) {
+    $app->setConfig('latestIssues', $app->getCollection('posts_en')->take(5));
+});
