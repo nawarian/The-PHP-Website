@@ -9,7 +9,7 @@ createdAt: 2019-10-29
   {{ date('Y-m-d') }}
 </time>
 
-[Read in English](/en/issue/hello-php-I-am-an-engineer)
+[Read in English](/en/issue/hello-php-i-am-an-engineer)
 
 Eu escrevi este post pra você poder compartilhar toda vez que
 alguém lhe perguntar algo como:
