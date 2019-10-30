@@ -7,6 +7,16 @@
   <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
 
   <title>The PHP Website</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ $page->get('gaId') }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ $page->get('gaId') }}');
+  </script>
 </head>
 <body class="yue">
 @yield('body')
