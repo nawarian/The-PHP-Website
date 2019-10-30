@@ -4,9 +4,9 @@ title: Hello, PHP. I am an Engineer.
 createdAt: 2019-10-29
 ---
 
-<date style="display: block" class="align-right">
+<time datetime="{{ date('Y-m-d') }}" style="display: block" class="align-right">
   {{ date('Y-m-d') }}
-</date>
+</time>
 
 I wrote this post so you can share it every time someone asks
 something like:
