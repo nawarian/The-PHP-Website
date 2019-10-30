@@ -1,1 +1,17 @@
 @use 'node_modules/yue.css/yue.css';
+
+body {
+  margin: 1em;
+
+  @media (min-width: 600px) {
+    margin: 1em 10% 1em 10%;
+  }
+
+  @media (min-width: 900px) {
+    margin: 1em 20% 1em 20%;
+  }
+}
+
+.align-right {
+  text-align: right;
+}

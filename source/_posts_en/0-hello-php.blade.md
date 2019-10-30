@@ -3,8 +3,13 @@ slug: hello-php
 createdAt: 2019-10-29
 ---
 
-> I wrote this post so you can share it every time someone asks
-_"Do people even use PHP nowadays?"_
+<date style="display: block" class="align-right">
+  {{ date('Y-m-d') }}
+</date>
+
+I wrote this post so you can share it every time someone asks
+something like:
+> _"Do people even use PHP nowadays?"_
 
 ## TL;DR
 
@@ -192,4 +197,9 @@ We could be an big amazing community that pushes every member
 towards success by talking about their qualities instead of
 individuals struggling to climb higher by pointing to others' defects.
 
--- [@nawarian](https://twitter.com/nawarian)
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div>
