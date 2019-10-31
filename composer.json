@@ -1,5 +1,6 @@
 {
     "require": {
-        "tightenco/jigsaw": "^1.3"
+        "tightenco/jigsaw": "^1.3",
+        "podentender/sitemap-generator": "^0.1.0"
     }
 }
