@@ -8,6 +8,10 @@
 
   <title>{{ $page->title ?? 'The PHP Website' }}</title>
 
+  @if ($page->get('meta') && isset($page->get('meta')['description']))
+    <meta name="description" content="{{ $page->get('meta')['description'] }}">
+  @endif
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ $page->get('gaId') }}"></script>
   <script>

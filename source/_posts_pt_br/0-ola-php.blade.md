@@ -5,6 +5,11 @@ title: Olá, PHP. Eu sou um Engenheiro.
 createdAt: 2019-10-29
 sitemap:
   lastModified: 2019-10-29
+meta:
+  description:
+    As pessoas ainda usam PHP? Neste post eu explico o motivo
+    desta ser a pergunta errada e onde eu prefiro focar minha
+    atenção como engenheiro.
 ---
 
 <time datetime="{{ date('Y-m-d') }}" style="display: block" class="align-right">

@@ -4,6 +4,11 @@ title: Hello, PHP. I am an Engineer.
 createdAt: 2019-10-29
 sitemap:
   lastModified: 2019-10-29
+meta:
+  description:
+    Do people even use PHP? In this post I explain why
+    this is the wrongest question to ask and where I prefer
+    paying attention as an Engineer.
 ---
 
 <time datetime="{{ date('Y-m-d') }}" style="display: block" class="align-right">
