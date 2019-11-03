@@ -23,6 +23,12 @@
   </script>
 </head>
 <body class="yue">
+@if($page->get('createdAt'))
+  <time datetime="{{ date('Y-m-d', $page->get('createdAt')) }}" style="display: block" class="align-right">
+    {{ date('Y-m-d', $page->get('createdAt')) }}
+  </time>
+@endif
+
 @yield('body')
 </body>
 </html>

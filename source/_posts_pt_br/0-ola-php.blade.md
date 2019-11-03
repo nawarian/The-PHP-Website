@@ -12,10 +12,6 @@ meta:
     atenção como engenheiro.
 ---
 
-<time datetime="{{ date('Y-m-d', $page->get('createdAt')) }}" style="display: block" class="align-right">
-  {{ date('Y-m-d', $page->get('createdAt')) }}
-</time>
-
 [Read in English](/en/issue/hello-php-i-am-an-engineer)
 
 Eu escrevi este post pra você poder compartilhar toda vez que
