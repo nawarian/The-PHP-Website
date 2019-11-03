@@ -130,9 +130,9 @@ class ClientTest extends TestCase
 <pre><code class="language-shell">$ ./vendor/bin/phpunit -c phpunit.xml</code></pre>
 <p>Well done! With our test set up in hands, let's move to our
 first step on tdd.</p>
-<h1 id="1-set-up-the-testing-environment">
+<h3 id="1-set-up-the-testing-environment">
     1. Write a high-level test
-</h1>
+</h3>
 <p>Our goal, again: A class to query an item's metadata on Archive.org
 and respond with a custom entity class named
 <code>Nawarian\ArchiveOrg\Item\Metadata</code>. </p>
@@ -162,9 +162,9 @@ that receives an <code>identifier</code> string (nawarian-test in our case). We
 also want this metadata to be an object with <code>identifier()</code>, <code>publicDate()</code>
 and <code>collection()</code> methods, returning the values available on the API.</p>
 <p><strong>Save, run phpunit and see the test failing.</strong></p>
-<h1 id="2-make-this-test-succeed-the-dumbest-way-possible">
+<h3 id="2-make-this-test-succeed-the-dumbest-way-possible">
     2. Make this test succeed the dumbest way possible
-</h1>
+</h3>
 <p>First error we see says <code>Class 'Nawarian\ArchiveOrg\Client' not found</code>.
 Fixing it is simple, create a class matching this FQN. Let's do it under
 <code>src/</code>.</p>
@@ -228,9 +228,9 @@ I can only think of hard-coding the values to match our assertions:</p>
 <p>Awesome! Tests are passing! Time to make the implementation real, so we
 can fetch metadata from the API itself. <strong>From this moment we start
 our feedback loop during development.</strong></p>
-<h1 id="3-refactor-the-dumb-implementation-until-is-no-longer-dumb">
+<h3 id="3-refactor-the-dumb-implementation-until-is-no-longer-dumb">
     3. Refactor the dumb implementation UNTIL is no longer dumb
-</h1>
+</h3>
 <p>The <strong>until</strong> word here is extremely important. This is the last, but
 repeatable step.</p>
 <p>This means that we keep coming back to it until we're happy with the
