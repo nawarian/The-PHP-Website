@@ -29,4 +29,5 @@
 
 @yield('body')
 </body>
+<script src="{{ mix('js/main.js', 'assets/build') }}"></script>
 </html>

@@ -22,6 +22,7 @@
         "yargs": "^4.6.0"
     },
     "dependencies": {
+        "highlight.js": "^9.16.2",
         "yue.css": "^0.4.0"
     }
 }
