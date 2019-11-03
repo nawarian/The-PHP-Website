@@ -147,9 +147,9 @@ $ ./vendor/bin/phpunit -c phpunit.xml
 Well done! With our test set up in hands, let's move to our
 first step on tdd.
 
-<h1 id="1-set-up-the-testing-environment">
+<h3 id="1-set-up-the-testing-environment">
     1. Write a high-level test
-</h1>
+</h3>
 
 Our goal, again: A class to query an item's metadata on Archive.org
 and respond with a custom entity class named
@@ -187,9 +187,9 @@ and `collection()` methods, returning the values available on the API.
 
 **Save, run phpunit and see the test failing.**
 
-<h1 id="2-make-this-test-succeed-the-dumbest-way-possible">
+<h3 id="2-make-this-test-succeed-the-dumbest-way-possible">
     2. Make this test succeed the dumbest way possible
-</h1>
+</h3>
 
 First error we see says `Class 'Nawarian\ArchiveOrg\Client' not found`.
 Fixing it is simple, create a class matching this FQN. Let's do it under
@@ -271,9 +271,9 @@ Awesome! Tests are passing! Time to make the implementation real, so we
 can fetch metadata from the API itself. **From this moment we start
 our feedback loop during development.**
 
-<h1 id="3-refactor-the-dumb-implementation-until-is-no-longer-dumb">
+<h3 id="3-refactor-the-dumb-implementation-until-is-no-longer-dumb">
     3. Refactor the dumb implementation UNTIL is no longer dumb
-</h1>
+</h3>
 
 The **until** word here is extremely important. This is the last, but
 repeatable step.
