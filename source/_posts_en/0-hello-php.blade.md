@@ -11,8 +11,8 @@ meta:
     paying attention as an Engineer.
 ---
 
-<time datetime="{{ date('Y-m-d') }}" style="display: block" class="align-right">
-  {{ date('Y-m-d') }}
+<time datetime="{{ date('Y-m-d', $page->get('createdAt')) }}" style="display: block" class="align-right">
+  {{ date('Y-m-d', $page->get('createdAt')) }}
 </time>
 
 [Leia em Português](/br/edicao/ola-php-eu-sou-um-engenheiro)
