@@ -6,13 +6,15 @@ sitemap:
   lastModified: 2019-11-03
 meta:
   description:
-    Everyone loves talking about Test-Driven development, but
-    very few cases are actually showing how to apply it. This post
-    brings an implementation example with PHP, PHPUnit.
+    In this publication I explain how I approach Test-Driven Development
+    while using PHP. The main focus is on the feedback loop tdd provides
+    and which tools are suitable to bring us there when programming PHP.
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+[Leia em Português](/br/edicao/tdd-com-php-na-vida-real)
 
 **Before you start**
 
@@ -32,8 +34,8 @@ testing first**.
 Tests are not the most important thing, **we write them to have quick
 and constant feedback** during development.
 
-Being that said: our development cycle looks like the following:
-1. [Write a high-level test, run and see it fail](#1-set-up-the-testing-environment)
+Being that said, our development cycle looks like the following:
+1. [Write a high-level test, run and see it fail](#1-write-a-high-level-test)
 1. [Make this test succeed the dumbest way possible](#2-make-this-test-succeed-the-dumbest-way-possible)
 1. [Refactor the dumb implementation until is no longer dumb](#3-refactor-the-dumb-implementation-until-is-no-longer-dumb)
 
@@ -72,8 +74,8 @@ we'll achieve what we want.
 
 ## Set up the testing environment
 
-Very quickly: let's create a new folder for our project and install
-all required packages, get tests up and running. My setup usually
+Very quickly: let's create a new folder for our project, install
+all required packages and get tests up and running. My setup usually
 comes with PHPUnit and Mockery:
 
 ```shell script
@@ -147,8 +149,8 @@ $ ./vendor/bin/phpunit -c phpunit.xml
 Well done! With our test set up in hands, let's move to our
 first step on tdd.
 
-<h3 id="1-set-up-the-testing-environment">
-    1. Write a high-level test
+<h3 id="1-write-a-high-level-test">
+    1. Write a high-level test, run and see it fail
 </h3>
 
 Our goal, again: A class to query an item's metadata on Archive.org
@@ -330,7 +332,7 @@ public function fetchMetadata(string $identifier): Metadata
 
 Save, run phpunit. Tests are still passing. We're doing great!
 
-**3.2  Add requested information to `Metadata`'s constructor**
+**3.2 Add requested information to `Metadata`'s constructor**
 
 Instead of hard coding our result to `Metadata`'s file, let's delegate
 the data passing responsibility to the `Client` class and receive data
