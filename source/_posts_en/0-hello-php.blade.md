@@ -9,6 +9,9 @@ meta:
     Do people even use PHP? In this post I explain why
     this is the wrongest question to ask and where I prefer
     paying attention as an Engineer.
+  twitter:
+    card: summary
+    site: '@nawarian'
 ---
 
 [Leia em Português](/br/edicao/ola-php-eu-sou-um-engenheiro)

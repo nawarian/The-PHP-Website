@@ -10,6 +10,9 @@ meta:
     As pessoas ainda usam PHP? Neste post eu explico o motivo
     desta ser a pergunta errada e onde eu prefiro focar minha
     atenção como engenheiro.
+  twitter:
+    card: summary
+    site: '@nawarian'
 ---
 
 [Read in English](/en/issue/hello-php-i-am-an-engineer)
