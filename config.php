@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 return [
     'production' => false,
     'baseUrl' => '',
+    'github' => 'https://github.com/nawarian/The-PHP-Website',
     'collections' => [
         'posts_en' => [
             'extends' => '_layouts.master',

@@ -1,0 +1,16 @@
+{
+    "require": {
+        "phpunit/phpunit": "^8.4",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nawarian\\ArchiveOrg\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nawarian\\ArchiveOrg\\Test\\": "tests/"
+        }
+    }
+}
