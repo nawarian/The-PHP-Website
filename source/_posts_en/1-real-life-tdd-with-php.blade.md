@@ -8,7 +8,7 @@ meta:
   description:
     Everyone loves talking about Test-Driven development, but
     very few cases are actually showing how to apply it. This post
-    brings an implementation example with PHP, PHPUnit and Mockery.
+    brings an implementation example with PHP, PHPUnit.
   twitter:
     card: summary
     site: '@nawarian'
