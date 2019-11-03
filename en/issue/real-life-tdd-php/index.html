@@ -8,16 +8,16 @@
 
   <title>Real Life Test-Driven Development with PHP | The PHP Website</title>
 
-  <meta name="description" content="Everyone loves talking about Test-Driven development, but very few cases are actually showing how to apply it. This post brings an implementation example with PHP, PHPUnit.">
+  <meta name="description" content="In this publication I explain how I approach Test-Driven Development while using PHP. The main focus is on the feedback loop tdd provides and which tools are suitable to bring us there when programming PHP.">
 
   <meta property="og:title" content="Real Life Test-Driven Development with PHP">
-  <meta property="og:description" content="Everyone loves talking about Test-Driven development, but very few cases are actually showing how to apply it. This post brings an implementation example with PHP, PHPUnit.">
+  <meta property="og:description" content="In this publication I explain how I approach Test-Driven Development while using PHP. The main focus is on the feedback loop tdd provides and which tools are suitable to bring us there when programming PHP.">
   <meta property="og:url" content="https://thephp.website/en/issue/real-life-tdd-php">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@nawarian">
   <meta name="twitter:title" content="Real Life Test-Driven Development with PHP">
-  <meta name="twitter:description" content="Everyone loves talking about Test-Driven development, but very few cases are actually showing how to apply it. This post brings an implementation example with PHP, PHPUnit.">
+  <meta name="twitter:description" content="In this publication I explain how I approach Test-Driven Development while using PHP. The main focus is on the feedback loop tdd provides and which tools are suitable to bring us there when programming PHP.">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
@@ -34,6 +34,7 @@
     2019-11-03
   </time>
 
+<p><a href="/br/edicao/tdd-com-php-na-vida-real">Leia em Português</a></p>
 <p><strong>Before you start</strong></p>
 <p>TDD has many techniques to be used, this post presents a couple of them.
 If you seek deeper knowledge on Test-Driven Development, there's a book
@@ -45,9 +46,9 @@ for you: <strong><em>&quot;Test Driven Development: By Example&quot;</em>, by Ke
 testing first</strong>.</p>
 <p>Tests are not the most important thing, <strong>we write them to have quick
 and constant feedback</strong> during development.</p>
-<p>Being that said: our development cycle looks like the following:</p>
+<p>Being that said, our development cycle looks like the following:</p>
 <ol>
-<li><a href="#1-set-up-the-testing-environment">Write a high-level test, run and see it fail</a></li>
+<li><a href="#1-write-a-high-level-test">Write a high-level test, run and see it fail</a></li>
 <li><a href="#2-make-this-test-succeed-the-dumbest-way-possible">Make this test succeed the dumbest way possible</a></li>
 <li><a href="#3-refactor-the-dumb-implementation-until-is-no-longer-dumb">Refactor the dumb implementation until is no longer dumb</a></li>
 </ol>
@@ -79,8 +80,8 @@ with a custom entity class named <code>Nawarian\ArchiveOrg\Item\Metadata</code>.
 <p>Let's then build our basic setup and write our test to guarantee
 we'll achieve what we want.</p>
 <h2>Set up the testing environment</h2>
-<p>Very quickly: let's create a new folder for our project and install
-all required packages, get tests up and running. My setup usually
+<p>Very quickly: let's create a new folder for our project, install
+all required packages and get tests up and running. My setup usually
 comes with PHPUnit and Mockery:</p>
 <pre><code class="language-shell">$ mkdir archive-org-client/ &amp;&amp; cd archive-org-client
 $ composer require phpunit/phpunit mockery/mockery
@@ -130,8 +131,8 @@ class ClientTest extends TestCase
 <pre><code class="language-shell">$ ./vendor/bin/phpunit -c phpunit.xml</code></pre>
 <p>Well done! With our test set up in hands, let's move to our
 first step on tdd.</p>
-<h3 id="1-set-up-the-testing-environment">
-    1. Write a high-level test
+<h3 id="1-write-a-high-level-test">
+    1. Write a high-level test, run and see it fail
 </h3>
 <p>Our goal, again: A class to query an item's metadata on Archive.org
 and respond with a custom entity class named
@@ -274,7 +275,7 @@ public function fetchMetadata(string $identifier): Metadata
     return new Metadata();
 }</code></pre>
 <p>Save, run phpunit. Tests are still passing. We're doing great!</p>
-<p><strong>3.2  Add requested information to <code>Metadata</code>'s constructor</strong></p>
+<p><strong>3.2 Add requested information to <code>Metadata</code>'s constructor</strong></p>
 <p>Instead of hard coding our result to <code>Metadata</code>'s file, let's delegate
 the data passing responsibility to the <code>Client</code> class and receive data
 from <code>Metadata</code>'s constructor:</p>
