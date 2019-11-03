@@ -421,7 +421,7 @@ You'll face many "aargh" moments, and will want to implement the best way
 possible right in the beginning. **Don't fall into this trap!**
 
 The longer you stay without feedback (without seeing test results), the bigger
-your chances to make a breaking changes without realizing.
+your chances to make a breaking change without realizing.
 
 Whenever you want to do something you feel is very important, note it down
 and keep moving forward! Keep it as the next item in your refactoring loop,
