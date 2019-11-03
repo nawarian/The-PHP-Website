@@ -70,7 +70,7 @@ with a custom entity class named `Nawarian\ArchiveOrg\Item\Metadata`.
 Let's then build our basic setup and write our test to guarantee
 we'll achieve what we want.
 
-## 1. Set up the testing environment
+## Set up the testing environment
 
 Very quickly: let's create a new folder for our project and install
 all required packages, get tests up and running. My setup usually
