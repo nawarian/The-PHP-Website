@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=8600c0192e58a6ba6478">
+
+  <title>Real Life Test-Driven Development with PHP | The PHP Website</title>
+
+  <meta name="description" content="Everyone loves talking about Test-Driven development, but very few cases are actually showing how to apply it. This post brings an implementation example with PHP, PHPUnit.">
+
+  <meta property="og:title" content="Real Life Test-Driven Development with PHP">
+  <meta property="og:description" content="Everyone loves talking about Test-Driven development, but very few cases are actually showing how to apply it. This post brings an implementation example with PHP, PHPUnit.">
+  <meta property="og:url" content="https://thephp.website/en/issue/real-life-tdd-php">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Real Life Test-Driven Development with PHP">
+  <meta name="twitter:description" content="Everyone loves talking about Test-Driven development, but very few cases are actually showing how to apply it. This post brings an implementation example with PHP, PHPUnit.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-1');
+  </script>
+</head>
+<body class="yue">
+  <time datetime="2019-11-03" style="display: block" class="align-right">
+    2019-11-03
+  </time>
+
+<p><strong>Before you start</strong></p>
+<p>TDD has many techniques to be used, this post presents a couple of them.
+If you seek deeper knowledge on Test-Driven Development, there's a book
+for you: <strong><em>&quot;Test Driven Development: By Example&quot;</em>, by Kent Beck</strong>.</p>
+<p>All code written here is available on <a href="https://github.com/nawarian/The-PHP-Website/tree/master/code/1-real-life-tdd-with-php/archive-org-client">thephp.website's github repository</a>.</p>
+<h1>Real Life Test-Driven Development with PHP</h1>
+<p><strong>No BS mode: ON.</strong> (let's move fast!)</p>
+<p>Test Driven Development is not about writing unit tests, <strong>it is about
+testing first</strong>.</p>
+<p>Tests are not the most important thing, <strong>we write them to have quick
+and constant feedback</strong> during development.</p>
+<p>Being that said: our development cycle looks like the following:</p>
+<ol>
+<li><a href="#1-set-up-the-testing-environment">Write a high-level test, run and see it fail</a></li>
+<li><a href="#2-make-this-test-succeed-the-dumbest-way-possible">Make this test succeed the dumbest way possible</a></li>
+<li><a href="#3-refactor-the-dumb-implementation-until-is-no-longer-dumb">Refactor the dumb implementation until is no longer dumb</a></li>
+</ol>
+<h2>Before &quot;how&quot;, comes &quot;why&quot;</h2>
+<p>There are a couple of great reasons to write tests first. Be aware of
+them so you understand why keep such practices.</p>
+<p>Writing test first:</p>
+<ul>
+<li>forces you to know what you want to achieve before you start coding</li>
+<li>keeps you focused on your goal</li>
+<li>engages you into a constant feedback cycle: change, save, run test</li>
+</ul>
+<h1>Building a metadata adapter for Archive.org with TDD</h1>
+<p>To come up with a reasonable coding example, let's build a client
+to fetch metadata from Archive.org's items.</p>
+<p><strong>What we know:</strong></p>
+<ul>
+<li>Archive.org allows uploading files and call them &quot;Item&quot;</li>
+<li><a href="https://archive.org/details/nawarian-test">Here's an example of Item named &quot;nawarian-test&quot;</a></li>
+<li>An item contains multiple files, representing the file in multiple
+forms and its metadata</li>
+<li>Every item contains metadata like creation date, name, files...</li>
+<li>Archive.org provides an API to fetch metadata with the following
+URL pattern: <code>https://archive.org/metadata/&lt;item-name&gt;</code></li>
+</ul>
+<p><strong>What we want:</strong></p>
+<p>A class to query an item's metadata on Archive.org and respond
+with a custom entity class named <code>Nawarian\ArchiveOrg\Item\Metadata</code>.</p>
+<p>Let's then build our basic setup and write our test to guarantee
+we'll achieve what we want.</p>
+<h2>1. Set up the testing environment</h2>
+<p>Very quickly: let's create a new folder for our project and install
+all required packages, get tests up and running. My setup usually
+comes with PHPUnit and Mockery:</p>
+<pre><code class="language-shell">$ mkdir archive-org-client/ &amp;&amp; cd archive-org-client
+$ composer require phpunit/phpunit mockery/mockery
+$ ./vendor/bin/phpunit --generate-configuration</code></pre>
+<p>While generating phpunit config you'll be asked about tests dir and
+other things. Pick the default one for every prompt (simply press enter).</p>
+<p>The default set up expect us to write our tests under a <code>tests</code> folder,
+and our code under <code>src</code>. Let's create them:</p>
+<pre><code class="language-shell">$ mkdir tests src</code></pre>
+<p>We also need to configure composer's <strong>autoloader</strong>. Update <code>composer.json</code>
+so it looks like the following:</p>
+<p>File: <strong>composer.json</strong></p>
+<pre><code class="language-json">{
+    "require": {
+        "phpunit/phpunit": "^8.4",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nawarian\\ArchiveOrg\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nawarian\\ArchiveOrg\\Test\\": "tests/"
+        }
+    }
+}</code></pre>
+<p>With the new <code>composer.json</code> in place, let's generate the autoloader again:</p>
+<pre><code class="language-shell">$ composer dump-autoload</code></pre>
+<p>We can now create our test class and start moving!</p>
+<p>File: <strong>tests/ClientTest.php</strong></p>
+<pre><code class="language-php">&lt;?php
+
+namespace Nawarian\ArchiveOrg\Test;
+
+use PHPUnit\Framework\TestCase;
+
+class ClientTest extends TestCase
+{
+    public function testMyTest(): void
+    {
+        $this-&gt;assertTrue(true);
+    }
+}</code></pre>
+<p>And make sure phpunit can run our test normally:</p>
+<pre><code class="language-shell">$ ./vendor/bin/phpunit -c phpunit.xml</code></pre>
+<p>Well done! With our test set up in hands, let's move to our
+first step on tdd.</p>
+<h1 id="1-set-up-the-testing-environment">
+    1. Write a high-level test
+</h1>
+<p>Our goal, again: A class to query an item's metadata on Archive.org
+and respond with a custom entity class named
+<code>Nawarian\ArchiveOrg\Item\Metadata</code>. </p>
+<p>Our test must look like the following:</p>
+<p>File: <strong>tests/ClientTest.php</strong></p>
+<pre><code class="language-php">&lt;?php
+
+namespace Nawarian\ArchiveOrg\Test;
+
+use PHPUnit\Framework\TestCase;
+
+class ClientTest extends TestCase
+{
+    public function testClientFetchesMetadata(): void
+    {
+        $client = new \Nawarian\ArchiveOrg\Client();
+
+        $metadata = $client-&gt;fetchMetadata('nawarian-test');
+
+        $this-&gt;assertSame('nawarian-test', $metadata-&gt;identifier());
+        $this-&gt;assertSame('2019-02-19 20:00:38', $metadata-&gt;publicDate());
+        $this-&gt;assertSame('opensource', $metadata-&gt;collection());
+    }
+}</code></pre>
+<p>That's it! We need a <code>Client</code> that contains a <code>fetchMetadata()</code> method,
+that receives an <code>identifier</code> string (nawarian-test in our case). We
+also want this metadata to be an object with <code>identifier()</code>, <code>publicDate()</code>
+and <code>collection()</code> methods, returning the values available on the API.</p>
+<p><strong>Save, run phpunit and see the test failing.</strong></p>
+<h1 id="2-make-this-test-succeed-the-dumbest-way-possible">
+    2. Make this test succeed the dumbest way possible
+</h1>
+<p>First error we see says <code>Class 'Nawarian\ArchiveOrg\Client' not found</code>.
+Fixing it is simple, create a class matching this FQN. Let's do it under
+<code>src/</code>.</p>
+<p>File: <strong>src/Client.php</strong></p>
+<pre><code class="language-php">&lt;?php
+
+namespace Nawarian\ArchiveOrg;
+
+class Client
+{
+}</code></pre>
+<p>Save, run phpunit. Next error says <code>Call to undefined method Nawarian\ArchiveOrg\Client::fetchMetadata()</code>.
+Even easier, just add the method to the <code>Client</code> class:</p>
+<pre><code class="language-php">public function fetchMetadata(string $identifier): object
+{
+    return new \stdClass();
+}</code></pre>
+<p>Save, run phpunit. Next error says <code>Call to undefined method stdClass::identifier()</code>.
+Let's then use anonymous classes to quickly remove these errors
+from our screen!</p>
+<pre><code class="language-php">public function fetchMetadata(string $identifier): object
+{
+    return new class {
+        public function identifier(): string
+        {
+            return '';
+        }
+
+        public function publicDate(): string
+        {
+            return '';
+        }
+
+        public function collection(): string
+        {
+            return '';
+        }
+    };
+}</code></pre>
+<p>What's missing now is to make our test pass <strong>the dumbest way possible</strong>.
+I can only think of hard-coding the values to match our assertions:</p>
+<pre><code class="language-php">public function fetchMetadata(string $identifier): object
+{
+    return new class {
+        public function identifier(): string
+        {
+            return 'nawarian-test';
+        }
+
+        public function publicDate(): string
+        {
+            return '2019-02-19 20:00:38';
+        }
+
+        public function collection(): string
+        {
+            return 'opensource';
+        }
+    };
+}</code></pre>
+<p>Awesome! Tests are passing! Time to make the implementation real, so we
+can fetch metadata from the API itself. <strong>From this moment we start
+our feedback loop during development.</strong></p>
+<h1 id="3-refactor-the-dumb-implementation-until-is-no-longer-dumb">
+    3. Refactor the dumb implementation UNTIL is no longer dumb
+</h1>
+<p>The <strong>until</strong> word here is extremely important. This is the last, but
+repeatable step.</p>
+<p>This means that we keep coming back to it until we're happy with the
+implementation.</p>
+<p><strong>3.1 Introducing the <code>Item\Metadata</code> class</strong></p>
+<p>First refactoring I feel like is to come up with our <code>Metadata</code> class,
+this way we can remove that nasty <code>return new class {};</code>. To it:</p>
+<p>File: <strong>src/Item/Metadata.php</strong> (methods copied from Client's anonymous class)</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Nawarian\ArchiveOrg\Item;
+
+class Metadata
+{
+    public function identifier(): string
+    {
+        return 'nawarian-test';
+    }
+
+    public function publicDate(): string
+    {
+        return '2019-02-19 20:00:38';
+    }
+
+    public function collection(): string
+    {
+        return 'opensource';
+    }
+}</code></pre>
+<p>Update <code>Client::fetchMetadata()</code> implementation right away. Notice how
+return type also changed to <code>Metadata</code>.</p>
+<p>File: <strong>src/Client.php</strong></p>
+<pre><code class="language-php">// ...
+
+use Nawarian\ArchiveOrg\Item\Metadata;
+
+// class Client...
+
+public function fetchMetadata(string $identifier): Metadata
+{
+    return new Metadata();
+}</code></pre>
+<p>Save, run phpunit. Tests are still passing. We're doing great!</p>
+<p><strong>3.2  Add requested information to <code>Metadata</code>'s constructor</strong></p>
+<p>Instead of hard coding our result to <code>Metadata</code>'s file, let's delegate
+the data passing responsibility to the <code>Client</code> class and receive data
+from <code>Metadata</code>'s constructor:</p>
+<p>File: <strong>src/Item/Metadata.php</strong></p>
+<pre><code class="language-php">class Metadata
+{
+    private $identifier;
+
+    private $publicDate;
+
+    private $collection;
+
+    public function __construct(string $identifier, string $publicDate, string $collection)
+    {
+        $this-&gt;identifier = $identifier;
+        $this-&gt;publicDate = $publicDate;
+        $this-&gt;collection = $collection;
+    }
+
+    public function identifier(): string
+    {
+        return $this-&gt;identifier;
+    }
+
+    public function publicDate(): string
+    {
+        return $this-&gt;publicDate;
+    }
+
+    public function collection(): string
+    {
+        return $this-&gt;collection;
+    }
+}</code></pre>
+<p>And now we delegate data passing to <code>Client</code>.</p>
+<p>File: <strong>src/Client.php</strong></p>
+<pre><code class="language-php">public function fetchMetadata(string $identifier): Metadata
+{
+    return new Metadata('nawarian-test', '2019-02-19 20:00:38', 'opensource');
+}</code></pre>
+<p>Save, run phpunit. Everything is still green. Move on!</p>
+<p><strong>3.3 Call the API to fetch actual data</strong></p>
+<p><code>Client</code> is still providing fake data, which is not really cool.
+Let's hit the archive.org's API to fetch the data we need.</p>
+<p>Remember the endpoint is <code>https://archive.org/metadata/&lt;identifier&gt;</code>. So by
+calling <code>Client::fetchMetadata()</code> passing <code>nawarian-test</code> as identifier (test
+is already doing this), we should call <code>https://archive.org/metadata/nawarian-test</code>.</p>
+<p>I'll quickly do this by using <code>file_get_contents()</code>:</p>
+<p>File: <strong>src/Client.php</strong></p>
+<pre><code class="language-php">public function fetchMetadata(string $identifier): object
+{
+    $jsonData = file_get_contents("https://archive.org/metadata/{$identifier}");
+    $decoded = json_decode($jsonData, true);
+    $metadata = $decoded['metadata'];
+
+    return new Metadata(
+        $metadata['identifier'],
+        $metadata['publicdate'],
+        $metadata['collection']
+    );
+}</code></pre>
+<p>Save, run phpunit. Tests are passing. We achieved our goal.</p>
+<h2>Keep refactoring or call it a day</h2>
+<p>The main idea of the loop described on step 3.3 is to implement towards
+a very well defined goal.</p>
+<p>You'll face many &quot;aargh&quot; moments, and will want to implement the best way
+possible right in the beginning. <strong>Don't fall into this trap!</strong></p>
+<p>The longer you stay without feedback (without seeing test results), the bigger
+your chances to make a breaking changes without realizing.</p>
+<p>Whenever you want to do something you feel is very important, note it down
+and keep moving forward! Keep it as the next item in your refactoring loop,
+but don't stop your current iteration.</p>
+<p>I can name a few things I'd like to do with the current implementation we have:</p>
+<ul>
+<li>I'd like to have a PSR-18 compatible http client and remove the
+<code>file_get_contents()</code> call</li>
+<li>I'd like to split our test into unit and integration</li>
+<li>I'd like to have a better hydration for <code>Metadata</code> class</li>
+</ul>
+<p>Also important to notice we didn't test any exception case. Those should
+be part of your implementation as well! How should the program behave
+when <code>identifier</code> doesn't exist?</p>
+<p>The more you code, the more you'll want to code. Your job here is to
+understand when you should stop and move on to next topic.</p>
+<p><strong>Just never forget to keep the feedback loop going: refactor, save,
+run phpunit.</strong></p>
+<p>That's it. No need to wait for implementing TDD any longer.</p>
+<p>Keep rocking, read Kent Beck's book and feel free to reach me out
+for questions or complaints.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div></body>
+</html>
