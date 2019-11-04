@@ -21,11 +21,18 @@
   </script>
 </head>
 <body class="yue">
-@if($page->get('createdAt'))
-  <time datetime="{{ date('Y-m-d', $page->get('createdAt')) }}" style="display: block" class="align-right">
-    {{ date('Y-m-d', $page->get('createdAt')) }}
-  </time>
-@endif
+  <header>
+    @if($page->get('createdAt'))
+      <time datetime="{{ date('Y-m-d', $page->get('createdAt')) }}">
+        {{ date('Y-m-d', $page->get('createdAt')) }}
+      </time>
+    @else
+      <div></div>
+    @endif
+    <nav class="align-right">
+      <a href="/br">🇧🇷</a> | <a href="/en">🇬🇧</a>
+    </nav>
+  </header>
 
 @yield('body')
 </body>

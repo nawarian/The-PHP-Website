@@ -1,7 +1,7 @@
 @extends('_layouts.master')
 
 @section('body')
-<h1>Latest issues</h1>
+<h1>Últimas postagens</h1>
 <ul>
   @foreach($page->get('latestIssuesBr') as $post)
     <li>
