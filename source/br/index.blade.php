@@ -1,3 +1,7 @@
+@php
+  $page->lang = 'pt-br';
+@endphp
+
 @extends('_layouts.master')
 
 @section('body')
