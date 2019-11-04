@@ -17,7 +17,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '{{ $page->get('gaId') }}');
+    gtag('config', '{{ $page->get('gaId')[$page->lang ?? 'en'] }}');
   </script>
 </head>
 <body class="yue">
