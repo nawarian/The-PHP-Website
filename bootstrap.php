@@ -19,6 +19,7 @@ use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
 
 $events->afterCollections(function (Jigsaw $app) {
     $app->setConfig('latestIssues', $app->getCollection('posts_en')->take(5));
+    $app->setConfig('latestIssuesBr', $app->getCollection('posts_pt_br')->take(5));
 });
 
 $events->afterBuild(function (Jigsaw $jigsaw) {
