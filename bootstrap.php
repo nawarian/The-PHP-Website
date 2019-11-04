@@ -29,10 +29,10 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
 
     // English posts
     $englishPosts = $jigsaw->getCollection('posts_en');
-    file_put_contents($outputPath . '/sitemap-en.xml', $sitemapGenerator->fromCollection($englishPosts)->saveXML());
+    file_put_contents($outputPath . '/en/sitemap.xml', $sitemapGenerator->fromCollection($englishPosts)->saveXML());
 
     // Portuguese posts
     $portuguesePosts = $jigsaw->getCollection('posts_pt_br');
-    file_put_contents($outputPath . '/sitemap-pt-br.xml', $sitemapGenerator->fromCollection($portuguesePosts)->saveXML());
+    file_put_contents($outputPath . '/br/sitemap.xml', $sitemapGenerator->fromCollection($portuguesePosts)->saveXML());
 });
 
