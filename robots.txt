@@ -1,0 +1,5 @@
+Sitemap: https://thephp.website/en/sitemap.xml
+Sitemap: https://thephp.website/br/sitemap.xml
+
+User-Agent: *
+
