@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=6a0787e84fae8a08c96d">
+
+  <title>How does PHP&#039;s engine actually work | The PHP Website</title>
+
+  <meta name="description" content="Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.">
+
+  <meta property="og:title" content="How does PHP&#039;s engine actually work">
+  <meta property="og:description" content="Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.">
+  <meta property="og:url" content="https://thephp.website/en/issue/how-does-php-engine-actually-work">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="How does PHP&#039;s engine actually work">
+  <meta name="twitter:description" content="Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-1');
+  </script>
+</head>
+<body class="yue">
+  <header>
+          <time datetime="2019-11-09">
+        2019-11-09
+      </time>
+        <nav class="align-right">
+      <a href="/br">🇧🇷</a> | <a href="/en">🇬🇧</a>
+    </nav>
+  </header>
+
+<h2>TL;DR</h2>
+<p>PHP is a scripting language that parses files into opcodes,
+and executes such opcodes to obtain results. Opcache and
+preloading help php removing the overhead on this process.</p>
+<p>On web servers PHP is normally used with PHP-FPM, which brings
+amazing scaling capabilities to it.</p>
+<h1>So... what is PHP?</h1>
+<p>Makes me very happy to see how modern PHP development
+requires less and less knowledge to build great products.
+<strong>This is really incredible</strong>.</p>
+<p>With little research we come to the information that PHP
+first became public about <a href="https://groups.google.com/forum/#!msg/comp.infosystems.www.authoring.cgi/PyJ25gZ6z7A/M9FkTUVDfcwJ">24 years ago</a>.</p>
+<p>The way it began is extremelly important to understand
+why and how it got so popular. It also makes much easier
+to understand most of its architectural traits and decisions.</p>
+<p>PHP was born as a templating engine. It was basically a set
+of CGI programs to enable web pages development with dynamic
+values.</p>
+<p>Yes, it was supposed to mix HTML and PHP code. But in 1995,
+this was a bomb!</p>
+<p>As a scripting language, php runs code sequentially from
+top to bottom and every new execution is 100% fresh. No
+memory or context sharing.</p>
+<p>When it comes to web pages, though, this might change a bit.
+Given PHP can run both as a CGI or module in your http server.
+Let's give it a closer look.</p>
+<h2>How does PHP work with HTTP Servers?</h2>
+<p>In general HTTP servers have a very clear responsibility:
+provide hypermedia content using the <a href="https://tools.ietf.org/html/rfc2616#page-7">HTTP Protocol</a>.
+This means that <strong>http servers would receive a request,
+fetch a string content from somewhere, and respond
+with this string</strong> based on the HTTP Protocol.</p>
+<p>PHP came to make this hypermedia content dynamic, allowing
+developers to provide more than simple, static <code>.html</code> files.</p>
+<p>As a scripting language, on a scripting context, PHP
+isolates every execution. Meaning that it doesn't share
+memory or other resources among executions.</p>
+<p>On the web context we have two different ways to execute
+php code. Both presenting us with their pros and cons.</p>
+<p>One can attach PHP to http servers using a CGI-like connection
+OR as a module to http the server. The main difference between
+both is that <strong>http modules share resources with the HTTP server</strong>
+while  as a <strong>CGI, php has a fresh execution on every request</strong>.</p>
+<p>Using it as a module used to be very popular back in the days,
+as the communication between the http server and code execution
+has less friction. Meanwhile the CGI mode would, for example,
+rely on network communication between http server and code
+execution.</p>
+<p><strong>This used to make CGI a bottleneck for PHP set ups. Nowadays,
+this is exactly how PHP shines!</strong></p>
+<p>With <a href="https://www.php.net/manual/en/install.fpm.php">PHP-FPM</a> a
+web server like nginx or Apache can easily execute php code
+as if it was a CLI script. Where every request is 100% isolated
+from each other.</p>
+<p>This also means that the HTTP Server can scale independently
+from the PHP code executor. With our current techonology, this
+<strong>is amazing to enable vertical scaling</strong>.</p>
+<p>Using PHP with CGI enables you to quickly update your application
+without taking down the whole http server. With current load
+balancers trend this is not that critical, but worth mentioning.</p>
+<p>Another great benefit on using PHP-FPM is that whenever a php
+script crashes, only that request context is doomed. The rest
+of the application keeps running normally, as no resources are
+shared.</p>
+<p>So if we just ignore the idea that we can use php within a
+module connected to http servers, the way php works (with FPM)
+is basically: <strong>HTTP Server ⇨ PHP-FPM (Server) ⇨ PHP</strong>.</p>
+<p>That's why we often state that PHP is extremelly scalable
+by nature.</p>
+<p>But PHP is still a scripting language. And as in the CGI
+context it has a fresh execution every single request, it
+is also clear that PHP's most scalable trait is also one
+of its most relevant performance bottlenecks.</p>
+<h2>How does PHP scripting work?</h2>
+<p>PHP language is written in C and the way it works is actually
+quite cool.</p>
+<p>The php interpreter would read text files containing php code,
+analyse its syntax, transform everything it understands
+as php code into opcodes and later on execute this opcode list.</p>
+<p>In simple terms, php will: <strong>parse, compile and execute</strong>.</p>
+<p>Every single time (we'll come back to this point later).</p>
+<p>So whenever you're attempting to execute a php script, you'll
+face different things in different moments:</p>
+<p><strong>Syntatic errors and language checks happen during the parsing
+and compiling phase. Logical errors (like exceptions) occur
+during execution phase only.</strong></p>
+<p>The way PHP currently does this is by using an <a href="https://wiki.php.net/rfc/abstract_syntax_tree">Abstract Syntatic Tree</a>
+to figure out what the things inside a php file actually mean.</p>
+<p>This syntatic tree maps language constructs to compiling
+instructions, that when compiled turn into Zend VM opcodes.
+Such opcodes are then to be <a href="https://github.com/php/php-src/blob/master/Zend/zend_vm_def.h">interpreted by the Zend VM</a>.</p>
+<p>So, if you really think about, <strong>the most relevant step for PHP
+execution is actually letting Zend VM execute opcodes</strong>. This is
+what really produces our desired result.</p>
+<p>In the end of the day <strong>having a fresh execution on every
+request doesn't seem that smart if we have to compile php
+syntax into opcode every single time</strong>.</p>
+<p>That's why <a href="https://www.php.net/manual/en/intro.opcache.php">OPcache</a>
+exists. There are simply no solutions without problems.</p>
+<p>With OPcache php can benefit from a shared memory space: read/store
+already parsed script opcodes and boost future executions.</p>
+<p>The first time a request hits <code>index.php</code>, for example, php parses,
+compiles and executes it. Second time a request hits <code>index.php</code>, php
+will simply fetch from opcache and execute it right away.</p>
+<p>This is about to change, though. Since PHP 7.4 a <a href="https://wiki.php.net/rfc/preload">opcache preloader got added to php</a>.
+This functionality allows a set of php files to be preloaded
+during a sever start-up process. This way, the first time a request
+hits <code>index.php</code>, php will just fetch it from opcache and execute it.
+<strong>No extra parsing needed</strong>.</p>
+<h2>Is this information even useful?</h2>
+<p>I have this feeling that php engineers (as well as python engineers)
+usually hold great knowledge on how back-end components connect to
+each other, given our languages usually don't provide much magic or
+vendor black boxed packages.</p>
+<p>I also feel like this is changing over time, as Open Source software
+proved to be more than just a Hype, but a great economical model.
+More languages are requiring engineers to understand how things come
+together and becoming more vendor agnostic.</p>
+<p>We are not quite there yet, and mastering PHP's ecosystem is a must
+for properly investing efforts on performance and security. Knowing
+where and when things happen will support you optimizing how they
+should happen.</p>
+<p>I hope this text helped you to better understand how PHP's engine
+actually works behind the scenes, the tooling it uses and important
+keywords you'll probably face at some point.</p>
+<p>If you have questions I didn't answer here or believe I made any
+mistake within this text, please feel free to reach me and, if I feel
+it fits here, I'll keep this post updated so we can all learn
+together.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div></body>
+<script src="/assets/build/js/main.js?id=1be13d93c11559f1b724"></script>
+</html>
