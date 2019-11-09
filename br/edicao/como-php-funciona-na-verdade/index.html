@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=6a0787e84fae8a08c96d">
+
+  <title>Como o PHP funciona na verdade? | The PHP Website</title>
+
+  <meta name="description" content="O desenvolvimento moderno de produtos requer cada vez menos conhecimento em linguagens de programação, arquitetura e ecossistemas. É muito importante entendê-los, porém. Hoje nós falaremos sobre como o PHP funciona por baixo dos panos e como melhor tomar proveito da linguagem.">
+
+  <meta property="og:title" content="Como o PHP funciona na verdade?">
+  <meta property="og:description" content="O desenvolvimento moderno de produtos requer cada vez menos conhecimento em linguagens de programação, arquitetura e ecossistemas. É muito importante entendê-los, porém. Hoje nós falaremos sobre como o PHP funciona por baixo dos panos e como melhor tomar proveito da linguagem.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/como-php-funciona-na-verdade">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Como o PHP funciona na verdade?">
+  <meta name="twitter:description" content="O desenvolvimento moderno de produtos requer cada vez menos conhecimento em linguagens de programação, arquitetura e ecossistemas. É muito importante entendê-los, porém. Hoje nós falaremos sobre como o PHP funciona por baixo dos panos e como melhor tomar proveito da linguagem.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-1');
+  </script>
+</head>
+<body class="yue">
+  <header>
+          <time datetime="2019-11-09">
+        2019-11-09
+      </time>
+        <nav class="align-right">
+      <a href="/br">🇧🇷</a> | <a href="/en">🇬🇧</a>
+    </nav>
+  </header>
+
+<h2>TL;DR</h2>
+<p>PHP é uma linguagem de script que interpreta arquivos e os transforma
+em opcodes, e executa estes opcodes para obter resultados. Opcache e
+preloading ajudam PHP a remover a sobrecarga neste processo.</p>
+<p>Em servidores web, PHP normalmente é utilizado com PHP-FPM, que traz
+consigo uma capacidade incrível de escalabilidade.</p>
+<h1>Então... o que é PHP?</h1>
+<p>Eu fico muito feliz em ver como o desenvolvimento moderno com PHP
+requer cada vez menos conhecimento para construir produtos incríveis.
+<strong>Isso é muito massa!</strong></p>
+<p>Numa pesquisa rapidinha a gente encontra a informação de que PHP
+tornou-se público cerca de <a href="https://groups.google.com/forum/#!msg/comp.infosystems.www.authoring.cgi/PyJ25gZ6z7A/M9FkTUVDfcwJ">24 anos atrás</a>.</p>
+<p>A forma como PHP começou é extremamente importante pra entender como
+e por quê ele se tornou tão popular. Também torna muito mais fácil
+entender a maior parte de suas características e decisões arquiteturais.</p>
+<p>PHP nasceu como uma template engine. Era uma série de programas CGI
+que permitia o desenvolvimento de páginas web como valores dinâmicos.</p>
+<p>Sim, a ideia era justamente misturar HTML e PHP. Só que em 1995 isso
+era revolucionário!</p>
+<p>Como linguagem de script, PHP executa seus códigos sequencialmente
+do início ao fim do arquivo e toda execução é 100% nova. Sem
+compartilhamento de memória ou contexto.</p>
+<p>Quando falamos de desenvolvimento web, isso pode mudar um pouco. Dado
+que o PHP pode rodar como CGI ou módulo no servidor http. Vamos dar
+uma olhada.</p>
+<h2>Como o PHP funciona com servidores HTTP?</h2>
+<p>Em geral, servidores HTTP têm uma responsabilidade bem clara:
+prover conteúdo de hipermídia usando o <a href="https://tools.ietf.org/html/rfc2616#page-7">Protocolo HTTP</a>.
+Isto significa que <strong>servidores http recebem uma request, buscam
+um conteúdo do tipo string de algum lugar, e respondem com esta string</strong>
+baseando-se no Protocolo HTTP.</p>
+<p>PHP veio para tornar este conteúdo de hipermídia dinâmico, permitindo
+que desenvolvedores possam prover mais que arquivos <code>.html</code> simples e
+estáticos.</p>
+<p>Enquanto linguagem de script, num contexto de scripting, o PHP isola
+toda execução. Portanto não compartilha memória ou outros recursos entre
+execuções.</p>
+<p>Já enquanto no contexto web, temos duas formas diferentes de executar
+código PHP e cada uma possui seus prós e contras.</p>
+<p>É possível conectar o PHP a servidores http utilizando uma conexão do
+tipo CGI ou como um módulo. A maior diferença entre os dois modos é que
+<strong>módulos http compartilham recursos com o servidor HTTP</strong> enquanto no
+modelo <strong>CGI, php faz uma execução nova a cada request</strong>.</p>
+<p>Utilizar o PHP como módulo costumava ser bem popular, por sua
+comunicação com o servidor http ter menores barreiras. Ao passo que
+um script CGI dependeria, por exemplo, de comunicação em rede entre
+o servidor http e a execução do código.</p>
+<p><strong>Isso costumava ser o gargalo em set ups PHP. Hoje em dia, é justamente
+onde o PHP brilha!</strong></p>
+<p>Com o <a href="https://www.php.net/manual/en/install.fpm.php">PHP-FPM</a> um servidor
+como nginx ou Apache podem facilmente executar código php como se fosse
+um script CLI. Onde cada request é 100% isolada das outras.</p>
+<p>Isto também significa que o servidor HTTP pode escalar independentemente
+do executor de códigos PHP. Com as nossas tecnologias atuais, isso <strong>é
+incrível para nos permitir escalar verticalmente</strong>.</p>
+<p>Utilizar o PHP com CGI lhe permite atualizar sua aplicação rapidamente
+sem precisar reiniciar o servidor HTTP a cada deployment. Com a moda
+de utilizar load balancers isso não é tão crítico, mas vale mencionar.</p>
+<p>Outro grande benefício de utilizar PHP-FPM é que sempre que um script
+php quebrar, apenas aquela request está comprometida. O restante da
+aplicação pode continuar executando normalmente, já que os recursos
+não são compartilhados.</p>
+<p>Então se a gente ignorar a utilização do PHP como módulo, a forma como
+ele funciona na web é basicamente: <strong>HTTP Server ⇨ PHP-FPM (Server) ⇨ PHP</strong>.</p>
+<p>E é por isso que nós dizemos normalmente que o PHP é extremamente
+escalável por natureza.</p>
+<p>Mas o PHP ainda é uma linguagem de script. E como no contexto CGI ele
+possui uma execução isolada a cada request, isso também significa que
+a sua característica mais escalável também é um dos seus mais relevantes
+gargalos de performance.</p>
+<h2>Como o scripting com PHP funciona?</h2>
+<p>A linguagem PHP é escrita em C e a forma como funciona é na real bem
+massa.</p>
+<p>O interpretador php lê arquivos contendo código php, analiza sua sintaxe,
+transforma tudo que entende como código php em opcodes e mais tarde
+executa esta lista de opcodes.</p>
+<p>Em termos simplificados, o php: <strong>interpreta, compila e executa</strong>.</p>
+<p>Toda as vezes novamente (a gente volta nesse ponto já já).</p>
+<p>Então a cada vez que você tenta executar um script php, você encontrará
+diferentes coisas em diferentes momentos:</p>
+<p><strong>Erros sintáticos e verificações de linguagem acontecem durante a fase
+de interpretação e compilação. Erros lógicos (como exceções) ocorrem apenas
+durante a fase de execução.</strong></p>
+<p>A forma como o PHP faz isso é através de uma <a href="https://wiki.php.net/rfc/abstract_syntax_tree">Árvore Sintática Abstrata (Abstract Syntatic Tree - AST)</a>
+para entender o que as coisas dentro do arquivo php significam.</p>
+<p>Esta árvore sintática mapeia estruturas de linguagem em instruções de
+compilação, que quando compiladas se transformam em opcodes da Zend VM.
+Tais opcodes então podem ser <a href="https://github.com/php/php-src/blob/master/Zend/zend_vm_def.h">interpretados pela Zend VM</a>.</p>
+<p>Então se você parar pra pensar, <strong>a parte mais relevante na execução do código
+PHP ocorre quando a Zend VM executa opcodes</strong>. Isto é o que realmente
+produz o resultado que esperamos.</p>
+<p>Ao fim do dia, <strong>ter uma execução isolada a cada request não parece tão
+inteligente se precisarmos compilar a sintaxe php em opcode a cada nova
+request</strong>.</p>
+<p>Por isso o <a href="https://www.php.net/manual/en/intro.opcache.php">OPcache</a>
+existe. Não existem soluções sem problemas.</p>
+<p>Com OPcache o PHP pode tomar vantagem de um espaço de memória compartilhado:
+ler/gravar scripts já interpretados e otimizar execuções futuras.</p>
+<p>Na primeira vez que uma request toca <code>index.php</code>, por exemplo, o php
+interpreta, compila e executa. Da segunda vez que a request toca <code>index.php</code>,
+o php simplesmente busca o compilado do OPcache e o executa.</p>
+<p>Isto está para mudar, porém. Desde o PHP 7.4 um <a href="https://wiki.php.net/rfc/preload">preloader de opcache foi adicionado ao PHP</a>.
+Esta funcionalidade permite uma série de arquivos php serem pré-carregados
+ao subir o servidor. Desta forma, da primeira vez que uma request tocar
+<code>index.php</code>, o php irá buscar o compilado diretamente no opcache. <strong>Sem
+precisar interpretar o arquivo durante a request</strong>.</p>
+<h2>E pra quê tu tá me dizendo tudo isso?</h2>
+<p>Eu sinto que engenheiros(as) PHP (assim como python) normalmente possuem
+grande conhecimento sobre como os componentes se conectam no back-end,
+dado que nossas linguagens normalmente não provém muita mágica ou
+software caixa preta de terceiros.</p>
+<p>Eu também sinto que isto vem mudando com o tempo, dado que o software
+Open Source se mostrou mais que somente um Hype, mas um ótimo modelo
+econômico. Mais linguagens precisam que seus(uas) engenheiros(as)
+entendam como as coisas se encaixam e estão se tornando cada vez mais
+vendor agnostic.</p>
+<p>Mas ainda não estamos lá, e dominar o ecossistema PHP é necessário
+para investir esforços em performance e segurança corretamente. Saber
+quando e onde as coisas acontecem irá lhe dar suporte em otimizar
+como elas devem acontecer.</p>
+<p>Eu espero que este texto tenha lhe ajudado a entender melhor como a
+engine PHP funciona por baixo dos panos, o ferramentário que utiliza e
+palavras chave importantes que você provavelmente irá encarar em algum
+momento.</p>
+<p>Se você tiver alguma pergunta que eu não tenha respondido aqui ou
+crê que cometi algum erro neste texto, sinta-se livre para entrar
+em contato e, se eu entender que se encaixa aqui, vou manter este post
+atualizado para que possamos aprender juntos.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div></body>
+<script src="/assets/build/js/main.js?id=1be13d93c11559f1b724"></script>
+</html>
