@@ -16,6 +16,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](/br/edicao/como-php-funciona-na-verdade/)
+
 ## TL;DR
 
 PHP is a scripting language that parses files into opcodes,

@@ -15,6 +15,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Read in English](/en/issue/how-does-php-engine-actually-work/)
+
 ## TL;DR
 
 PHP é uma linguagem de script que interpreta arquivos e os transforma
