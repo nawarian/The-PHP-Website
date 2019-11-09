@@ -80,7 +80,7 @@ php code. Both presenting us with their pros and cons.
 One can attach PHP to http servers using a CGI-like connection
 OR as a module to http the server. The main difference between
 both is that **http modules share resources with the HTTP server**
-while  as a **CGI, php has a fresh execution on every request**.
+while as a **CGI, php has a fresh execution on every request**.
 
 Using it as a module used to be very popular back in the days,
 as the communication between the http server and code execution
