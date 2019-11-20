@@ -168,7 +168,7 @@ I'd like to present you **two great applications for php Generators**.
 One is open source and can be used right away, the other one is
 more of a concept and you'd have to develop something by your own.
 
-## Async development: the case for Amp framework
+## Async development: how Amp framework works
 
 I know, you probably already heard about Amp framework
 and how it can help you developing async code with PHP.
@@ -226,7 +226,7 @@ Amp will wait for this promise to resolve or reject. So it either
 pushes the resolved value back OR throws an exception inside
 your generator function.
 
-Really, how cool is that!
+**Really, how cool is that!**
 
 Does it mean you should write your applications like this from now
 on? Maybe, maybe not...
@@ -246,3 +246,14 @@ a certain Promise will resolve a certain type.
 If you're fine with it, go ahead. There's a whole new world to be
 explored! Just check out [the currently available packages on Amp Framework](https://amphp.org/packages)
 so you don't reinvent the wheel.
+
+## Optimized data retrieval with Generators
+
+We're in this kind of web api era, which is really cool. There
+are many patterns to follow as API provider in PHP: SOAP, REST,
+GraphQL... This leaves little space for traditional MVC
+applications as we used to see a couple of years ago.
+
+Things like REST tend to decrease our data dependency tree a
+lot: you specialize in one resource per URL, which eventually
+you can precompute and place in a very fast data storage.
