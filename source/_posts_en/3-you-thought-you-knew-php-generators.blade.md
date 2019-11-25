@@ -16,7 +16,7 @@ meta:
 
 Generators are much more than yielding values to avoid
 using arrays. They provide us with the power of async,
-coroutines and dark magic!
+coroutines and dark magic 🧙‍!
 
 If you seek a more complete and mind blowing explanation,
 please read [this article from 2012 by nikic](https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html).
@@ -257,3 +257,67 @@ applications as we used to see a couple of years ago.
 Things like REST tend to decrease our data dependency tree a
 lot: you specialize in one resource per URL, which eventually
 you can precompute and place in a very fast data storage.
+
+But whenever you think of multiple data sources to compose a
+response Generators can be an incredible tool to optimize
+our timings and resource usage.
+
+For REST APIs maybe not, but thinking of GraphQL it is natural
+that resource fetching management is important. Performance talks
+and we're empowered to make it right.
+
+In [this amazing presentation by Bastian Hoffmann](https://www.youtube.com/watch?v=YYt9u4uUetU)
+we can get some inspiration from the moment he starts talking
+about widgets. The whole idea of having a core request handler
+for a resource type that is composed of other, smaller, resources
+and having this dependency tree organized can yield (see what I did?)
+great benefits.
+
+Imagine the following GraphQL request (syntax simplified):
+
+```gql
+{
+  person {
+    name
+  }
+  team {
+    people {
+      name
+      age
+    }
+  }
+}
+```
+
+The array of `people` might contain the same `person` object
+among its elements so why request `person` twice? Just because
+once only "name" was requested and the later case "name" and
+"age"? We can optimize this to a single call.
+
+So why not having something similar to the following?
+
+```php
+// PersonType.php
+yield DataRequirement::craft(
+  Person::class,
+  ['name'],
+  $whereClause
+);
+
+// PeopleType.php
+yield DataRequirement::craft(
+  Person::class,
+  ['name', 'age'],
+  $whereClause
+);
+```
+
+Looks a tad weird, right? It is indeed, given php engineers usually
+have a very straight forward life cycle on their applications.
+
+Just imagine how cool that would be if the handler calling `PersonType.php`
+would be the same as the one calling `PeopleType.php` and
+by yielding those requirements a `Resolver` would understand
+they need the exact same entity and optimize the REST/SOAP/MongoDB
+request to fetch only necessary fields, only once.
+
