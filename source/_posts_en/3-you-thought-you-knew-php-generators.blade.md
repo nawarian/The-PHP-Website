@@ -53,10 +53,6 @@ function myGeneratorFunction(): string
 }
 ```
 
-Now, besides that confusing bit, generators are an amazing
-tool that can be used to build great libraries. I'll come
-back to this later.
-
 By allowing us to interrupt code execution, it naturally
 provides a way to better manage memory usage in our php
 programs. There's a very famous script that illustrates this:
@@ -83,21 +79,38 @@ The difference? Over simplification alert: `range()`
 allocated memory for 10,000 integers, while `xrange()`
 allocated memory for only one.
 
-Yes, but we all know this since 2012! Be patient...
-Let me quickly summarize this part.
+You probably knew this since 2012, yes. Let's just quickly
+summarize this part and jump to the fun!
 
 ## What PHP Generators do?
 
-They provide us with a **simple way of creating iterators**
+Generators provide us with a **simple way of creating iterators**
 with no need to implement the Iterator interface and allow
 **code interruption** for better memory management or any sort
 of crazy stuff you might want to come up with.
+
+Below I'll show a generator sample and comment out some terms.
+If while readig this text you find a keyword you find weird,
+come back to this sample ;)
+
+```php
+// Generator function
+function xrange(): \Generator {
+  // Generator's context/body/scope
+  while (true) {
+    yield 1;
+  }
+}
+
+$xrange = xrange();
+$xrange->next(); // Pulls next yield
+```
 
 # What you possibly don't know about php Generators, though...
 
 The amazing feature from generators that people often
 miss is the capacity of **pushing values back to the generator
-function** (the function containing the yield statement).
+function**.
 
 Basically when you `yield` inside a generator function,
 code stops executing there and goes back to the upper
@@ -111,11 +124,13 @@ Including **coroutines**, **asynchronous programming** and
 **optimizing data fetching**. You'll love this last one,
 bare with me!
 
-## How to push data back to php Generators?
+## How to push data back to the generator function?
 
-Actually is quite simple. A Generator object (returned by a
-generator function) contains all Iterator methods and a few
-more. One of them is the one: [`Generator::send()`](https://www.php.net/manual/en/generator.send.php).
+Actually is quite simple. A Generator object contains
+all Iterator methods and a few more. One of them is the
+[`Generator::send()`](https://www.php.net/manual/en/generator.send.php)
+method, which is used to push data back to the generator
+function's context.
 
 The way it works is the following:
 1. The caller triggers the generator function execution
@@ -125,20 +140,24 @@ code execution and coming back to the caller
 a value as a result of the previous yield statement
 1. Generator function keeps executing with this value now available.
 
-Less words, more codes:
+Less words, more code:
 
 ```php
 function myGenerator(): Generator
 {
-  $twenty = yield 10; // 2. yield something back to the caller
+  // 2. yield something back to the caller
+  $twenty = yield 10;
 
-  var_dump($twenty); // 4. Keep execution with new value
+  // 4. Keep execution with new value
+  var_dump($twenty);
 }
 
 $gen = myGenerator();
-$ten = $gen->current(); // 1. Trigger execution
+// 1. Trigger execution
+$ten = $gen->current();
 
-$gen->send($ten * 2); // 3. Push back a value to generator
+// 3. Push back a value to generator
+$gen->send($ten * 2);
 
 // Output: int(20)
 ```
@@ -180,7 +199,6 @@ broad view on how it works and heavily depend on Generators.
 Consider the following incomplete example:
 
 ```php
-// Simplified example, extracted from official documentation
 Amp\Loop::run(function () {
   $socket = yield connect(
     'localhost:443'
@@ -201,11 +219,12 @@ In fact, please learn a bit about React PHP and how it enqueues
 tasks to run and how it polls for changes on I/O operations,
 allowing you to perform async programming with PHP.
 
-The thing is that this Event Loop is very special because **it is
-not only an event loop**. It also watches for yielded values and
-**expects your callback function to be a Generator function**!
+The thing is that this Event Loop from Amp is very special
+because **it is not only an event loop**. It also watches for
+yielded values and **expects your callback function to be a
+Generator function**!
 
-So besides doing the whole task queue thing and monitoring I/O
+So besides doing the whole tasks queue and monitoring I/O
 operations to keep you unblocking the main thread, it will also
 handle values you yield.
 
@@ -223,8 +242,8 @@ How come `$socket` contains `EncryptableSocket` instead?
 
 The moment we yield a Promise instance inside the Event Loop,
 Amp will wait for this promise to resolve or reject. So it either
-pushes the resolved value back OR throws an exception inside
-your generator function.
+**pushes the resolved value back** OR **throws an exception inside
+your generator function**.
 
 **Really, how cool is that!**
 
@@ -270,8 +289,7 @@ In [this amazing presentation by Bastian Hoffmann](https://www.youtube.com/watch
 we can get some inspiration from the moment he starts talking
 about widgets. The whole idea of having a core request handler
 for a resource type that is composed of other, smaller, resources
-and having this dependency tree organized can yield (see what I did?)
-great benefits.
+and having this dependency tree organized can yield great benefits.
 
 Imagine the following GraphQL request (syntax simplified):
 
@@ -319,5 +337,5 @@ Just imagine how cool that would be if the handler calling `PersonType.php`
 would be the same as the one calling `PeopleType.php` and
 by yielding those requirements a `Resolver` would understand
 they need the exact same entity and optimize the REST/SOAP/MongoDB
-request to fetch only necessary fields, only once.
+request to fetch only necessary fields once.
 
