@@ -6,7 +6,8 @@ sitemap:
   lastModified: 2019-11-19
 meta:
   description:
-    Hmm.
+    In this post I talk about PHP Generators, how to work with Coroutines and
+    how the language ecosystem could evolve with it.
   twitter:
     card: summary
     site: '@nawarian'
