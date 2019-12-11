@@ -339,3 +339,40 @@ by yielding those requirements a `Resolver` would understand
 they need the exact same entity and optimize the REST/SOAP/MongoDB
 request to fetch only necessary fields once.
 
+I recently started a POC on how to develop such thing. It looks
+like the following snippet (which you can also [find here](https://github.com/nawarian/resolver/blob/master/tests/integration/FetchThePhpWebsiteSitemapsTest.php#L43-L68)).
+
+```php
+public function fetchSitemaps(): Generator
+{
+  // Wrap a service to always return a Promise.
+  // Could be done via Annotations maybe
+  $sitemapProvider = wrap($this->sitemapService);
+
+  list($this->en, $this->br) = yield [
+    $sitemapProvider->getSitemap('en'),
+    $sitemapProvider->getSitemap('br'),
+  ];
+
+  // Here $this->en and $this->br are
+  // populated with getSitemap() results
+}
+```
+
+The more I kept developing this POC, the more it looked
+like Amphp. So I guess [that'd be the way to go.](https://amphp.org/amp/coroutines/)
+
+In general, I see great potential on Coroutines for PHP
+and would love to see this side of the language developing
+more.
+
+Let me know what you think! Just ping me on Twitter
+and develop this idea together 😉
+
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div>
+
