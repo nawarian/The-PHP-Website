@@ -240,7 +240,7 @@ Ao equipar-se com [React Promises](https://github.com/reactphp/promise)
 Mas como?
 
 Se você der uma olhadinha mais de perto na
-[implementação da função connect](https://github.com/amphp/socket/blob/d49dc0d7936f65fd41068482da8017682    66d0c1a/src/functions.php#L63)
+[implementação da função connect](https://github.com/amphp/socket/blob/d49dc0d7936f65fd41068482da801768266d0c1a/src/functions.php#L63)
 notará que ela retorna uma Promise que quando resolvida irá
 retornar um objeto `EncryptableSocket`.
 
@@ -270,7 +270,7 @@ direto e não fica chateada com isso. Mas sem Type Generics é
 difícil forçar os tipos de retorno das Promises.
 
 Se você está ok com essa ideia, vá em frente. Tem todo um mundo
-a ser explorado! Dá uma olhada nos [pacotes disponíveis no Framework Amp](https://amphp.org/p    ackages)
+a ser explorado! Dá uma olhada nos [pacotes disponíveis no Framework Amp](https://amphp.org/packages)
 só pra ter certeza de que você não vá reinventar a roda.
 
 ## Otimização de coleta de dados com Generators
