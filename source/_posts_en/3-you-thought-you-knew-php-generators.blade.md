@@ -13,6 +13,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](/br/edicao/voce-achou-que-sabia-sobre-generators/)
+
 ## TL;DR
 
 Generators are much more than yielding values to avoid

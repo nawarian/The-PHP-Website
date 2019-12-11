@@ -13,6 +13,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Read in English](/en/issue/you-thought-you-knew-php-generators/)
+
 ## TL;DR
 
 Generators são muito mais do que apenas dar yield em
