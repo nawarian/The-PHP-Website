@@ -212,7 +212,7 @@ descoupada, ele também trata valores que você der yield.</p>
 <strong>ele te permite emular a funcionalidade async/await no PHP</strong>.</p>
 <p>Mas como?</p>
 <p>Se você der uma olhadinha mais de perto na
-[implementação da função connect](<a href="https://github.com/amphp/socket/blob/d49dc0d7936f65fd41068482da8017682">https://github.com/amphp/socket/blob/d49dc0d7936f65fd41068482da8017682</a>    66d0c1a/src/functions.php#L63)
+<a href="https://github.com/amphp/socket/blob/d49dc0d7936f65fd41068482da801768266d0c1a/src/functions.php#L63">implementação da função connect</a>
 notará que ela retorna uma Promise que quando resolvida irá
 retornar um objeto <code>EncryptableSocket</code>.</p>
 <p>Então <code>connect('localhost:443');</code> na verdade retorna uma Promise.
@@ -234,7 +234,7 @@ Promise em todo canto</strong> pra tirar proveito dessa biblioteca.</p>
 direto e não fica chateada com isso. Mas sem Type Generics é
 difícil forçar os tipos de retorno das Promises.</p>
 <p>Se você está ok com essa ideia, vá em frente. Tem todo um mundo
-a ser explorado! Dá uma olhada nos [pacotes disponíveis no Framework Amp](<a href="https://amphp.org/p">https://amphp.org/p</a>    ackages)
+a ser explorado! Dá uma olhada nos <a href="https://amphp.org/packages">pacotes disponíveis no Framework Amp</a>
 só pra ter certeza de que você não vá reinventar a roda.</p>
 <h2>Otimização de coleta de dados com Generators</h2>
 <p>A gente tá nessa era de web apis, o que é bem maneiro. Existem
@@ -327,5 +327,5 @@ desenvolver essa ideia juntos 😉</p>
     @nawarian
   </a>
 </div></body>
-<script src="/assets/build/js/main.js?id=1be13d93c11559f1b724"></script>
+<script src="/assets/build/js/main.js?id=ee0fce299adcd2eb366f"></script>
 </html>
