@@ -19,10 +19,10 @@ meta:
 
 Generators são muito mais do que apenas dar yield em
 variáveis pra evitar a utilização de arrays. Eles nos
-proveem com o poder do async, coroutines e magias 🧙!
+proveem com o poder do async, coroutines e várias magias 🧙!
 
 Se você busca uma explicação mais exaustiva, dá uma sacada
-[nesse artigo de 2012 por nikic](https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html).
+[nesse artigo de 2012 do nikic](https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html).
 
 # O que são Generators e o que eles fazem?
 
@@ -39,7 +39,7 @@ de execução do código**, o que é bem massa!
 
 A forma como ele funciona é utilizando a palavra-chave
 `yield` dentro de uma função. Ao fazer isso, o **tipo
-de retorno** da sua funçnao **automaticamente se transformará
+de retorno** da sua função **automaticamente se transformará
 em [`\Generator`](https://www.php.net/manual/en/class.generator.php)**.
 
 **Então se liga!** O código abaixo _quebra_ porque força
@@ -80,7 +80,7 @@ foreach (xrange(1, 10000) as $n) {
 }
 ```
 
-A diferençå? Alerta de super simplificação: `range()`
+A diferença? Alerta de super simplificação: `range()`
 alocou memória para 10.000 integers, enquanto `xrange()`
 alocou memória para apenas um.
 
@@ -93,7 +93,8 @@ do texto!
 Generators nos permitem **criar iterators facilmente** sem
 precisar implementar a interface Iterator e permitem
 **interrupção de código** para melhor gerenciamento de
-memória ou qualquer tipo de maluqice que você queira construir.
+memória ou qualquer tipo de maluquice que você queira
+construir.
 
 Abaixo eu mostro um exemplo simples de generator e comento
 alguns termos. Se você em algum momento ler alguma palavra-chave
@@ -176,8 +177,8 @@ usando o método `Generator::throw()`. Mas isso é meio que tudo mesmo...
 vir aqui com conteúdo que encontraria facilmente noutro canto,
 né?
 
-Lendo o post no nikic (o de 2012 que eu citei acima) você pode
-extrair informações muito mais informações em o que pode ser
+Lendo o post do nikic (o de 2012 que eu citei acima) você pode
+extrair informações muito mais profundas sobre o que pode ser
 feito com Generators no php. Vai lá, leia quantas vezes
 julgar necessário até absorver a ideia.
 
@@ -219,7 +220,7 @@ Sééé loco, tanta coisa rolando aqui...
 
 Comecemos com a ideia de que `Amp\Loop::run()` cria um Event Loop.
 Se você não sabe o que um event loop faz, dá uma paradinha aqui
-e vai buscar let um pouco sobre isso. Tu vai encontrar coisas sobre
+e vai buscar ler um pouco sobre isso. Tu vai encontrar coisas sobre
 React PHP e Node.JS.
 
 Na verdade, tenta aprender um teco como o React PHP funciona e
