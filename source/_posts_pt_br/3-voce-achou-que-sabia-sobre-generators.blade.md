@@ -259,7 +259,7 @@ Significa que você deveria escrever suas aplicações dessa
 maneira de agora em diante? Talvez, talvez não...
 
 Apesar de ser tão massa que não precisemos esperar o
-async/await chegar no core da linguage, esse modelo parece
+async/await chegar no core da linguagem, esse modelo parece
 um tanto invasivo pra quem gosta de tipificar tudo.
 
 Primeiro de tudo, isso te força a sempre retornar um Generator
@@ -345,7 +345,7 @@ Parece um tanto estranho, né? E é mesmo, dado que engenheiros(as)
 php normalmente têm um ciclo de vida bem direto em suas
 aplicações.
 
-Apenas imagine o quão bacana seria se o handler chamadno
+Apenas imagine o quão bacana seria se o handler chamando
 `PersonType.php` fosse o mesmo chamando `PeopleType.php` e
 ao dar yield nesses dois requisitos, um `Resolver` entenderia
 que eles usam exatamente a mesma entidade e otimizaria a
