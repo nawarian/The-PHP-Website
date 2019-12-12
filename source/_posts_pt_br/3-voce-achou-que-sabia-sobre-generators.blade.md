@@ -233,8 +233,8 @@ A coisa é que esse Event Loop do Amp é muito especial porque
 portanto ele **espera que a sua função de callback seja uma
 generator function**!
 
-Daí além fazer o enfileiramento e monitorar E/S pra manter a thread
-descoupada, ele também trata valores que você der yield.
+Daí além de fazer o enfileiramento e monitorar E/S pra manter a thread
+desocupada, ele também trata valores que você der yield.
 
 Ao equipar-se com [React Promises](https://github.com/reactphp/promise)
 **ele te permite emular a funcionalidade async/await no PHP**.
