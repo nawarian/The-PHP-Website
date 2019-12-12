@@ -170,7 +170,7 @@ $gen->send($dez * 2);
 ```
 
 **Isso é meio que tudo o que tu precisaria saber sobre Generators.**
-Quer dizer, você também lançar exceptions de fora da generator function
+Quer dizer, você também pode lançar exceptions de fora da generator function
 usando o método `Generator::throw()`. Mas isso é meio que tudo mesmo...
 
 **Mas é claro que tem mais coisa pra ver!** Você não esperava
