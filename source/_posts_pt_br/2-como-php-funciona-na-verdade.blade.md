@@ -1,5 +1,6 @@
 ---
 slug: como-php-funciona-na-verdade
+lang: pt-br
 title: Como o PHP funciona na verdade?
 createdAt: 2019-11-09
 sitemap:
