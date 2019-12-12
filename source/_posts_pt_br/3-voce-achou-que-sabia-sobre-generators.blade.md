@@ -58,7 +58,7 @@ function myGeneratorFunction(): string
 ```
 
 Por nos permitir interromper a execução do código, isto
-naturalmente nos permite gerenciar melhor a memório em
+naturalmente nos permite gerenciar melhor a memória em
 nossos programas php. Tem um script famoso que ilustra
 este caso:
 
