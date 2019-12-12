@@ -1,5 +1,6 @@
 ---
 slug: voce-achou-que-sabia-sobre-generators
+lang: pt-br
 title: Você achou que sabia sobre Generators no PHP
 createdAt: 2019-11-19
 sitemap:
