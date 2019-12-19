@@ -14,7 +14,7 @@
   @endforeach
 </ul>
 
-<h1>Vagas de Emprego</h1>
+<h1>Vagas de Emprego de programação em PHP</h1>
 <ul>
   @foreach($page->get('latestJobsBr') as $post)
     <li>
