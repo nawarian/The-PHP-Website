@@ -23,5 +23,13 @@ return [
             },
             'sort' => '-createdAt',
         ],
+        'jobs_pt_br' => [
+            'extends' => '_layouts.master',
+            'section' => 'body',
+            'path' => function ($page) {
+                return 'br/vagas/' . Str::slug($page->get('slug'));
+            },
+            'sort' => '-createdAt',
+        ],
     ],
 ];

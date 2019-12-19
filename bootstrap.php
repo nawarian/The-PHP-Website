@@ -1,5 +1,6 @@
 <?php
 
+use Nawarian\ThePHPWebsite\FetchJobOpportunities;
 use TightenCo\Jigsaw\Jigsaw;
 use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
 
@@ -17,9 +18,15 @@ use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
  * });
  */
 
+$events->beforeBuild(function (Jigsaw $app) {
+    // (POC) Generate job opportunities for pt-br pages
+    $app->app->make(FetchJobOpportunities::class)->execute();
+});
+
 $events->afterCollections(function (Jigsaw $app) {
     $app->setConfig('latestIssues', $app->getCollection('posts_en')->take(5));
     $app->setConfig('latestIssuesBr', $app->getCollection('posts_pt_br')->take(5));
+    $app->setConfig('latestJobsBr', $app->getCollection('jobs_pt_br')->take(10));
 });
 
 $events->afterBuild(function (Jigsaw $jigsaw) {
@@ -33,7 +40,8 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
     file_put_contents($outputPath . '/en/sitemap.xml', $sitemapGenerator->fromCollection($englishPosts)->saveXML());
 
     // Portuguese posts
-    $portuguesePosts = $jigsaw->getCollection('posts_pt_br');
-    file_put_contents($outputPath . '/br/sitemap.xml', $sitemapGenerator->fromCollection($portuguesePosts)->saveXML());
+    file_put_contents($outputPath . '/br/sitemap.xml', $sitemapGenerator->fromCollection(
+        $jigsaw->getCollection('posts_pt_br')
+            ->merge($jigsaw->getCollection('jobs_pt_br'))
+    )->saveXML());
 });
-

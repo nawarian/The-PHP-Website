@@ -13,4 +13,13 @@
     </li>
   @endforeach
 </ul>
+
+<h1>Vagas de Emprego</h1>
+<ul>
+  @foreach($page->get('latestJobsBr') as $post)
+    <li>
+      <a href="{{ $post->getUrl() }}">[{{ date('Y-m-d', $post->createdAt) }}] - {{ $post->title }}</a>
+    </li>
+  @endforeach
+</ul>
 @endsection
