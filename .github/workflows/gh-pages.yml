@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@master
 
     - name: Setup The Php Website
-      run: composer install && yarn install
+      run: composer install && yarn install && rm source/*/.gitkeep
 
     - name: Build
       run: ./vendor/bin/jigsaw build production
