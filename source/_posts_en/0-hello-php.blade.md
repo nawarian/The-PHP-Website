@@ -5,7 +5,7 @@ createdAt: 2019-10-29
 sitemap:
   lastModified: 2019-10-29
 image:
-  url: assets/images/0-hello.jpg
+  url: /assets/images/0-hello.jpg
   alt: 'An smartphone with a blank screen and a text saying "Hello"'
 meta:
   description:

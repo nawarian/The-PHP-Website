@@ -6,7 +6,7 @@ createdAt: 2019-11-19
 sitemap:
   lastModified: 2019-11-19
 image:
-  url: assets/images/3-generators.jpg
+  url: /assets/images/3-generators.jpg
   alt: 'Um computador sendo parcialmente amplificado pelas lentes de um óculos'
 meta:
   description:

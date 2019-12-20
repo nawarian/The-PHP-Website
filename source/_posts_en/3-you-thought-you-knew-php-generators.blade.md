@@ -5,7 +5,7 @@ createdAt: 2019-11-19
 sitemap:
   lastModified: 2019-11-19
 image:
-  url: assets/images/3-generators.jpg
+  url: /assets/images/3-generators.jpg
   alt: 'A computer screen being magnified by a pair of glasses'
 meta:
   description:
