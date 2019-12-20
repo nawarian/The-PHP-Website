@@ -33,6 +33,7 @@
       <a href="/br">🇧🇷</a> | <a href="/en">🇬🇧</a>
     </nav>
   </header>
+<h1>{{ $page->get('title') }}</h1>
 
 @yield('body')
 </body>

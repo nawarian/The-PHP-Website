@@ -49,8 +49,6 @@ meta:
     site: '@nawarian'
 ---
 
-# {$opportunity['title']}
-
 {$opportunity['body']}
 STR;
     }
