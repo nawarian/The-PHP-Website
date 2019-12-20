@@ -2,10 +2,14 @@
 
 @section('body')
 <h1>Latest issues</h1>
-<ul>
+<ul class="card-list">
   @foreach($page->get('latestIssues') as $post)
-    <li>
-      <a href="{{ $post->getUrl() }}">[{{ date('Y-m-d', $post->createdAt) }}] - {{ $post->title }}</a>
+    <li class="card">
+      <a href="{{ $post->getUrl() }}">
+        <h3>{{ $post->title }}</h3>
+        <p>{{ $post->meta['description'] }}</p>
+        <small>{{ date('Y-m-d', $post->createdAt) }}</small>
+      </a>
     </li>
   @endforeach
 </ul>
