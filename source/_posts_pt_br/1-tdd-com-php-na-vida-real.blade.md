@@ -5,6 +5,9 @@ title: TDD com PHP na vida real
 createdAt: 2019-11-03
 sitemap:
   lastModified: 2019-11-03
+image:
+  url: assets/images/1-test.jpg
+  alt: 'Dois carros de teste se chocando'
 meta:
   description:
     Neste post eu explico como eu faço Test-Driven Development com PHP.

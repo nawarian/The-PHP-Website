@@ -35,13 +35,31 @@ ul.card-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+
+  @media (min-width: 900px) {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: 1rem;
+  }
 }
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  padding: 15px;
   margin: 1rem 0;
+
+  &__content {
+    padding: 15px;
+  }
+  
+  &__content h3 {
+    margin: 0;
+  }
+
+  &__content time {
+    display: block;
+    text-align: right;
+  }
 }
 
 .card > a {

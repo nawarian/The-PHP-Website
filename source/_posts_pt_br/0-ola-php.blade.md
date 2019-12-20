@@ -5,6 +5,9 @@ title: Olá, PHP. Eu sou um Engenheiro.
 createdAt: 2019-10-29
 sitemap:
   lastModified: 2019-10-29
+image:
+  url: assets/images/0-hello.jpg
+  alt: 'Um smartphone com a tela branca e o texto "Hello"'
 meta:
   description:
     As pessoas ainda usam PHP? Neste post eu explico o motivo

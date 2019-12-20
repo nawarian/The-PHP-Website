@@ -4,6 +4,9 @@ title: Real Life Test-Driven Development with PHP
 createdAt: 2019-11-03
 sitemap:
   lastModified: 2019-11-03
+image:
+  url: assets/images/1-test.jpg
+  alt: 'Two test cars crashing against each other'
 meta:
   description:
     In this publication I explain how I approach Test-Driven Development

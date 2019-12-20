@@ -6,9 +6,15 @@
   @foreach($page->get('latestIssues') as $post)
     <li class="card">
       <a href="{{ $post->getUrl() }}">
-        <h3>{{ $post->title }}</h3>
-        <p>{{ $post->meta['description'] }}</p>
-        <small>{{ date('Y-m-d', $post->createdAt) }}</small>
+        @if ($post->get('image'))
+          <img src="{{ $post->get('image')['url'] }}" alt="{{ $post->get('image')['alt'] }}" />
+        @endif
+
+        <div class="card__content">
+          <h3>{{ $post->title }}</h3>
+          <p>{{ $post->meta['description'] }}</p>
+          <time>{{ date('Y-m-d', $post->createdAt) }}</time>
+        </div>
       </a>
     </li>
   @endforeach

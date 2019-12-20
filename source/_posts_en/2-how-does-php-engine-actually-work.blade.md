@@ -4,6 +4,9 @@ title: How does PHP's engine actually work
 createdAt: 2019-11-09
 sitemap:
   lastModified: 2019-11-09
+image:
+  url: assets/images/2-engine.jpg
+  alt: 'A picture focusing components of a server'
 meta:
   description:
     Modern product development requires every day less deep

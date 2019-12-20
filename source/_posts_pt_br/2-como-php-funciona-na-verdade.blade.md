@@ -5,6 +5,9 @@ title: Como o PHP funciona na verdade?
 createdAt: 2019-11-09
 sitemap:
   lastModified: 2019-11-09
+image:
+  url: assets/images/2-engine.jpg
+  alt: 'Um imagem focando componentes de um servidor'
 meta:
   description:
     O desenvolvimento moderno de produtos requer cada vez menos

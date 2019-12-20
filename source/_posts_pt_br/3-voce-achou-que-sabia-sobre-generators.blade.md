@@ -5,6 +5,9 @@ title: Você achou que sabia sobre Generators no PHP
 createdAt: 2019-11-19
 sitemap:
   lastModified: 2019-11-19
+image:
+  url: assets/images/3-generators.jpg
+  alt: 'Um computador sendo parcialmente amplificado pelas lentes de um óculos'
 meta:
   description:
     Neste post eu falo sobre Generators em PHP, como trabalhar com Coroutines e

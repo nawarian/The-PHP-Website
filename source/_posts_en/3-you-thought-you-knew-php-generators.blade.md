@@ -4,6 +4,9 @@ title: So you thought you knew about php generators
 createdAt: 2019-11-19
 sitemap:
   lastModified: 2019-11-19
+image:
+  url: assets/images/3-generators.jpg
+  alt: 'A computer screen being magnified by a pair of glasses'
 meta:
   description:
     In this post I talk about PHP Generators, how to work with Coroutines and
