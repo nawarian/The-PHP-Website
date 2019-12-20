@@ -48,6 +48,9 @@ meta:
     card: summary
     site: '@nawarian'
 ---
+
+# {$opportunity['title']}
+
 {$opportunity['body']}
 STR;
     }
