@@ -37,7 +37,7 @@
               {{ substr($post->get('meta')['description'], 0, 150) }}...
             </p>
           @endif
-          <u>Ler mais</u>
+          <p><u>Ler mais</u></p>
           <small>Publicado em {{ date('d/m/Y', $post->createdAt) }}</small>
         </div>
       </a>
