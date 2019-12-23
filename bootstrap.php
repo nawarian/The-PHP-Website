@@ -1,6 +1,8 @@
 <?php
 
+use Nawarian\ThePHPWebsite\Domain\Job\JobRepository;
 use Nawarian\ThePHPWebsite\FetchJobOpportunities;
+use Nawarian\ThePHPWebsite\Infrastructure\Domain\Job\GithubIssueJobRepository;
 use TightenCo\Jigsaw\Jigsaw;
 use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
 
@@ -17,6 +19,7 @@ use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
  *     // Your code here
  * });
  */
+$container->bind(JobRepository::class, GithubIssueJobRepository::class);
 
 $events->beforeBuild(function (Jigsaw $app) {
     // (POC) Generate job opportunities for pt-br pages
