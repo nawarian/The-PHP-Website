@@ -16,13 +16,21 @@ class Job
     private $createdAt;
 
     private $rawBody;
+    
+    private $source;
 
-    public function __construct(string $id, string $title, DateTimeInterface $createdAt, string $rawBody)
-    {
+    public function __construct(
+        string $id,
+        string $title,
+        DateTimeInterface $createdAt,
+        string $rawBody,
+        string $source
+    ) {
         $this->id = $id;
         $this->title = $title;
         $this->createdAt = $createdAt;
         $this->rawBody = $rawBody;
+        $this->source = $source;
     }
 
     public function id(): string
@@ -49,4 +57,10 @@ class Job
     {
         return Str::slug($this->id . ' ' . $this->title, '-', $language);
     }
+
+    public function source(): string
+    {
+        return $this->source;
+    }
 }
+

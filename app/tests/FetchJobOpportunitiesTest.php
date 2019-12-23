@@ -36,7 +36,7 @@ class FetchJobOpportunitiesTest extends TestCase
         $this->jobRepository->fetch(30, 0)
             ->willReturn(
                 new JobCollection([
-                    new Job('541152404', '[Remoto] PHP Developer na VLabs', new DateTime(), 'mabody'),
+                    new Job('541152404', '[Remoto] PHP Developer na VLabs', new DateTime(), 'mabody', 'ma-source'),
                 ])
             );
 

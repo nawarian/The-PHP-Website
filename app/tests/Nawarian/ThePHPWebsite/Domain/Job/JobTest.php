@@ -12,7 +12,7 @@ class JobTest extends TestCase
     public function testSlug(): void
     {
         $createdAt = new DateTime();
-        $job = new Job('1', 'my title', $createdAt, 'my body');
+        $job = new Job('1', 'my title', $createdAt, 'my body', 'ma source');
 
         self::assertEquals('1-my-title', $job->slug());
     }

@@ -41,5 +41,7 @@ class GithubIssueJobRepositoryTest extends TestCase
 
         self::assertCount(1, $result);
         self::assertEquals('[Remoto] PHP Developer na VLabs', $result->first()->title());
+        self::assertEquals('https://github.com/phpdevbr/vagas/issues/518', $result->first()->source());
     }
 }
+

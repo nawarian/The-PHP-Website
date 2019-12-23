@@ -46,8 +46,10 @@ class GithubIssueJobRepository implements JobRepository
                     (string) $item['id'],
                     (string) $item['title'],
                     new DateTime($item['created_at']),
-                    (string) $item['body']
+                    (string) $item['body'],
+                    (string) $item['html_url']
                 );
             });
     }
 }
+

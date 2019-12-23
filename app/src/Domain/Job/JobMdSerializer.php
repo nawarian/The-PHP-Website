@@ -26,6 +26,8 @@ meta:
 ---
 
 {$job->rawBody()}
+
+Fonte: {$job->source()}
 STR;
     }
 

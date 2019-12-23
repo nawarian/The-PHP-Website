@@ -12,7 +12,7 @@ class JobMdSerializerTest extends TestCase
     public function testSerialize(): void
     {
         $createdAt = new DateTime();
-        $job = new Job('1', 'my title', $createdAt, 'my body');
+        $job = new Job('1', 'my title', $createdAt, 'my body', 'My Source');
 
         $serializer = new JobMdSerializer();
         $result = $serializer->serialize($job);
@@ -33,6 +33,8 @@ meta:
 ---
 
 my body
+
+Fonte: My Source
 STR;
 
         self::assertEquals($expectedMd, $result);
@@ -51,7 +53,7 @@ Descrição do local...
 STR;
 
         $createdAt = new DateTime();
-        $job = new Job('1', 'my title', $createdAt, $rawBody);
+        $job = new Job('1', 'my title', $createdAt, $rawBody, 'My Source');
 
         $serializer = new JobMdSerializer();
         $result = $serializer->serialize($job);
@@ -78,6 +80,8 @@ Procuramos um(a) desenvolvedor(a) de Back com experiência em PHP, que goste de 
 ## Local
 
 Descrição do local...
+
+Fonte: My Source
 STR;
         self::assertEquals($expectedMd, $result);
     }
