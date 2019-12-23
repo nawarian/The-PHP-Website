@@ -2,28 +2,26 @@
 
 namespace Nawarian\ThePHPWebsite;
 
-use DateTime;
-use GuzzleHttp\Client;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use Nawarian\ThePHPWebsite\Domain\Job\Job;
+use Nawarian\ThePHPWebsite\Domain\Job\JobRepository;
 
 class FetchJobOpportunities
 {
-    private const GITHUB_REPO_URL = 'https://api.github.com/repos/phpdevbr/vagas/issues?state=open&page=1';
-
     private $fs;
 
-    private $http;
+    private $jobRepository;
 
-    public function __construct(Filesystem $fs, Client $http)
+    public function __construct(Filesystem $fs, JobRepository $jobRepository)
     {
         $this->fs = $fs;
-        $this->http = $http;
+        $this->jobRepository = $jobRepository;
     }
 
     public function execute(): void
     {
-        $opportunities = $this->fetchJobOpportunities();
+        $opportunities = $this->jobRepository->fetch(30, 0);
 
         foreach ($opportunities as $opportunity) {
             $content = $this->transformJobOpportunityIntoMdContent($opportunity);
@@ -31,42 +29,32 @@ class FetchJobOpportunities
         }
     }
 
-    private function fetchJobOpportunities()
+    private function transformJobOpportunityIntoMdContent(Job $job): string
     {
-        $result = $this->http->get(self::GITHUB_REPO_URL)
-            ->getBody()
-            ->getContents();
-
-        return json_decode($result, true);
-    }
-
-    private function transformJobOpportunityIntoMdContent($opportunity): string
-    {
-        $slug = Str::slug($opportunity['id'] . ' ' . $opportunity['title'], '-', 'br');
-        $createdAt = new DateTime($opportunity['created_at']);
+        $slug = Str::slug($job->id() . ' ' . $job->title(), '-', 'br');
 
         return <<<STR
 ---
 slug: {$slug}
 lang: pt-br
-createdAt: {$createdAt->format('Y-m-d')}
-title: '{$opportunity['title']}'
+createdAt: {$job->createdAt()->format('Y-m-d')}
+title: '{$job->title()}'
 sitemap:
-  lastModified: {$createdAt->format('Y-m-d')}
+  lastModified: {$job->createdAt()->format('Y-m-d')}
 meta:
-  description: '{$opportunity['title']}'
+  description: '{$job->title()}'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-{$opportunity['body']}
+{$job->rawBody()}
 STR;
     }
 
-    private function storeMdContent($opportunity, $content): void
+    private function storeMdContent(Job $job, $content): void
     {
-        $slug = Str::slug($opportunity['id'] . ' ' . $opportunity['title'], '-', 'br');
+        $slug = Str::slug($job->id() . ' ' . $job->title(), '-', 'br');
         $path = realpath(__DIR__ . '/../../source/_jobs_pt_br/');
 
         $this->fs->put($path . '/' . $slug . '.md', $content);
