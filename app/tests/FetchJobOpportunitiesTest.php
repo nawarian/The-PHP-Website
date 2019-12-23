@@ -6,6 +6,7 @@ use DateTime;
 use Illuminate\Filesystem\Filesystem;
 use Nawarian\ThePHPWebsite\Domain\Job\Job;
 use Nawarian\ThePHPWebsite\Domain\Job\JobCollection;
+use Nawarian\ThePHPWebsite\Domain\Job\JobMdSerializer;
 use Nawarian\ThePHPWebsite\Domain\Job\JobRepository;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
@@ -25,7 +26,8 @@ class FetchJobOpportunitiesTest extends TestCase
 
         $this->fetchJobOpportunities = new FetchJobOpportunities(
             $this->fileStore->reveal(),
-            $this->jobRepository->reveal()
+            $this->jobRepository->reveal(),
+            new JobMdSerializer()
         );
     }
 
