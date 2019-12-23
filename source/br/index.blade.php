@@ -32,6 +32,12 @@
       <a href="{{ $post->getUrl() }}">
         <div class="card__content">
           <h3>{{ $post->title }}</h3>
+          @if ($post->get('meta')['description'] !== $post->get('title'))
+            <p>
+              {{ substr($post->get('meta')['description'], 0, 150) }}...
+            </p>
+          @endif
+          <u>Ler mais</u>
           <small>Publicado em {{ date('d/m/Y', $post->createdAt) }}</small>
         </div>
       </a>
