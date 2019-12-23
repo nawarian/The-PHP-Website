@@ -6,6 +6,7 @@
 /.vscode/
 npm-debug.log
 yarn-error.log
+.phpunit.result.cache
 
 # Optional ignores
 # /build_staging/

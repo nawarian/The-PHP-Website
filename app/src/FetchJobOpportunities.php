@@ -3,15 +3,28 @@
 namespace Nawarian\ThePHPWebsite;
 
 use DateTime;
+use GuzzleHttp\Client;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
 class FetchJobOpportunities
 {
     private const GITHUB_REPO_URL = 'https://api.github.com/repos/phpdevbr/vagas/issues?state=open&page=1';
 
+    private $fs;
+
+    private $http;
+
+    public function __construct(Filesystem $fs, Client $http)
+    {
+        $this->fs = $fs;
+        $this->http = $http;
+    }
+
     public function execute(): void
     {
         $opportunities = $this->fetchJobOpportunities();
+
         foreach ($opportunities as $opportunity) {
             $content = $this->transformJobOpportunityIntoMdContent($opportunity);
             $this->storeMdContent($opportunity, $content);
@@ -20,11 +33,9 @@ class FetchJobOpportunities
 
     private function fetchJobOpportunities()
     {
-        $handler = curl_init();
-        curl_setopt($handler, CURLOPT_URL, self::GITHUB_REPO_URL);
-        curl_setopt($handler, CURLOPT_USERAGENT, 'cURL');
-        curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
-        $result = curl_exec($handler);
+        $result = $this->http->get(self::GITHUB_REPO_URL)
+            ->getBody()
+            ->getContents();
 
         return json_decode($result, true);
     }
@@ -56,8 +67,8 @@ STR;
     private function storeMdContent($opportunity, $content): void
     {
         $slug = Str::slug($opportunity['id'] . ' ' . $opportunity['title'], '-', 'br');
+        $path = realpath(__DIR__ . '/../../source/_jobs_pt_br/');
 
-        $path = __DIR__ . '/../../source/_jobs_pt_br/' . $slug . '.md';
-        file_put_contents($path, $content);
+        $this->fs->put($path . '/' . $slug . '.md', $content);
     }
 }
