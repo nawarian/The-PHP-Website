@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Nawarian\ThePHPWebsite\Domain\Job;
 
 use DateTimeInterface;
+use Illuminate\Support\Str;
 
 class Job
 {
@@ -42,5 +43,10 @@ class Job
     public function rawBody(): string
     {
         return $this->rawBody;
+    }
+
+    public function slug(string $language = 'br'): string
+    {
+        return Str::slug($this->id . ' ' . $this->title, '-', $language);
     }
 }

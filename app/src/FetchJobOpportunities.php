@@ -28,7 +28,7 @@ class FetchJobOpportunities
 
         foreach ($jobs as $job) {
             $content = $this->jobSerializer->serialize($job);
-            $slug = Str::slug($job->id() . ' ' . $job->title(), '-', 'br');
+            $slug = $job->slug();
             $path = realpath(__DIR__ . '/../../source/_jobs_pt_br/');
 
             $this->fs->put($path . '/' . $slug . '.md', $content);
