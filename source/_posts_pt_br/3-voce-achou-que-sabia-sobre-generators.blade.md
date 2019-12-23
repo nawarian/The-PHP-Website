@@ -2,9 +2,9 @@
 slug: voce-achou-que-sabia-sobre-generators
 lang: pt-br
 title: Você achou que sabia sobre Generators no PHP
-createdAt: 2019-11-19
+createdAt: 2019-12-11
 sitemap:
-  lastModified: 2019-11-19
+  lastModified: 2019-12-23
 image:
   url: /assets/images/3-generators.jpg
   alt: 'Um computador sendo parcialmente amplificado pelas lentes de um óculos'
