@@ -27,4 +27,5 @@
 <hr />
 <h2>Vagas de Emprego de programação em PHP</h2>
 @include('_layouts.partials.job-card-list', ['jobs' => $page->get('latestJobsBr')])
+<a href="{{ $page->getBaseUrl() . '/br/vagas/' }}">Ver mais vagas...</a>
 @endsection
