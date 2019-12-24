@@ -70,3 +70,30 @@ ul.card-list {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+ol.pagination, ul.pagination {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+
+  &__prev-next {
+    flex-grow: 1;
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__prev-next > a {
+    text-decoration: none;
+  }
+
+  &__item {
+    flex: auto;
+    text-align: center;
+  }
+}

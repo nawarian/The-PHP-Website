@@ -1,22 +1,23 @@
 ---
 extends: _layouts.master
+title: Vagas de Emprego de Programação em PHP
 pagination:
   collection: jobs_pt_br
-  perPage: 6
+  perPage: 4
 ---
 
 @section('body')
-  <a href="{{ $page->getBaseUrl() . $pagination->previous }}">&lt;</a>
-  @foreach ($pagination->pages as $number => $jobHref)
-    <a href="{{ $page->getBaseUrl() . $jobHref }}">{{ $number }}</a>
-  @endforeach
-  <a href="{{ $page->getBaseUrl() . $pagination->next }}">&gt;</a>
+  @include('_layouts.partials.pagination', [
+    'pagination' => $pagination,
+    'page' => $page,
+  ])
 
   @include('_layouts.partials.job-card-list', ['jobs' => $pagination->items])
 
-  <a href="{{ $page->getBaseUrl() . $pagination->previous }}">&lt;</a>
-  @foreach ($pagination->pages as $number => $jobHref)
-    <a href="{{ $page->getBaseUrl() . $jobHref }}">{{ $number }}</a>
-  @endforeach
-  <a href="{{ $page->getBaseUrl() . $pagination->next }}">&gt;</a>
+  <hr />
+
+  @include('_layouts.partials.pagination', [
+    'pagination' => $pagination,
+    'page' => $page,
+  ])
 @endsection
