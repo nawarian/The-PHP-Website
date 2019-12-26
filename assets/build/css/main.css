@@ -437,3 +437,32 @@ ul.card-list {
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
+ol.pagination, ul.pagination {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+.pagination__prev-next {
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+}
+.pagination__prev-next--right {
+  text-align: right;
+}
+.pagination__prev-next > a {
+  text-decoration: none;
+}
+.pagination__item {
+  -webkit-box-flex: 1;
+          flex: auto;
+  text-align: center;
+}
