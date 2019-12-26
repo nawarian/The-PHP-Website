@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@master
 
     - name: Setup The Php Website
-      run: composer install && yarn install && rm source/*/.gitkeep
+      run: composer install && yarn install
 
     - name: Quality Gate
       run: ./vendor/bin/phpunit -c phpunit.xml
