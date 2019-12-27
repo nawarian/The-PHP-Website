@@ -13,7 +13,7 @@ jobs:
 
     - name: Setup The Php Website
       run: |
-        composer install && yarn install && rm source/*/.gitkeep
+        composer install && yarn install
 
     - name: Build
       run: ./vendor/bin/jigsaw build production && rm -rf ./build_production/
