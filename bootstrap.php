@@ -23,7 +23,9 @@ $container->bind(JobRepository::class, GithubIssueJobRepository::class);
 
 $events->beforeBuild(function (Jigsaw $app) {
     // (POC) Generate job opportunities for pt-br pages
-    $app->app->make(FetchJobOpportunities::class)->execute();
+    if ($app->getConfig('production') === true) {
+        $app->app->make(FetchJobOpportunities::class)->execute();
+    }
 });
 
 $events->afterCollections(function (Jigsaw $app) {
