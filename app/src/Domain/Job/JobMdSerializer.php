@@ -10,25 +10,38 @@ class JobMdSerializer implements JobSerializer
 {
     public function serialize(Job $job): string
     {
-        return <<<STR
----
-slug: {$job->slug()}
-lang: pt-br
-createdAt: {$job->createdAt()->format('Y-m-d')}
-title: '{$job->title()}'
-sitemap:
-  lastModified: {$job->createdAt()->format('Y-m-d')}
+        $properties = [
+            'slug' => $job->slug(),
+            'lang' => 'pt-br',
+            'createdAt' => $job->createdAt()->format('Y-m-d'),
+            'title' => $job->title(),
+        ];
+
+        $serialized = '---';
+        foreach ($properties as $key => $value) {
+            $serialized .= PHP_EOL;
+            $serialized .= "{$key}: '{$value}'";
+        }
+        $serialized .= PHP_EOL;
+        $serialized .= <<<STR
 meta:
   description: '{$this->fetchDescription($job)}'
   twitter:
     card: summary
     site: '@nawarian'
----
-
-{$job->rawBody()}
-
-Fonte: {$job->source()}
 STR;
+        $labels = $this->fetchLabels($job);
+        if ([] !== $labels) {
+          $serialized .= PHP_EOL . 'labels:';
+            foreach ($labels as $label) {
+                $serialized .= PHP_EOL . '  - ' . $label;
+            }
+        }
+        $serialized .= PHP_EOL . '---' . PHP_EOL . PHP_EOL;
+        $serialized .= $job->rawBody() . PHP_EOL . PHP_EOL;
+        $serialized .= 'Fonte: ' . $job->source();
+
+        return $serialized;
     }
 
     private function fetchDescription(Job $job): string
@@ -41,5 +54,21 @@ STR;
         }
 
         return $job->title();
+    }
+    
+    private function fetchLabels(Job $job): array
+    {
+        if (false === Str::contains($job->rawBody(), '## Labels')) {
+            return [];
+        }
+
+        $part = Str::after($job->rawBody(), '## Labels');
+        $part = Str::before($part, '##');
+        $part = trim(str_replace(["\r\n", '-', '  '], ' ', $part));
+        $labels = explode(PHP_EOL, $part);
+
+        return array_map(function (string $label) {
+            return trim($label);
+        }, $labels);
     }
 }

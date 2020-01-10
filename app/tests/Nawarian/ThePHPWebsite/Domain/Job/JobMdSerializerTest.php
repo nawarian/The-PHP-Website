@@ -19,12 +19,10 @@ class JobMdSerializerTest extends TestCase
 
         $expectedMd = <<<STR
 ---
-slug: 1-my-title
-lang: pt-br
-createdAt: {$createdAt->format('Y-m-d')}
+slug: '1-my-title'
+lang: 'pt-br'
+createdAt: '{$createdAt->format('Y-m-d')}'
 title: 'my title'
-sitemap:
-  lastModified: {$createdAt->format('Y-m-d')}
 meta:
   description: 'my title'
   twitter:
@@ -60,12 +58,10 @@ STR;
 
         $expectedMd = <<<STR
 ---
-slug: 1-my-title
-lang: pt-br
-createdAt: {$createdAt->format('Y-m-d')}
+slug: '1-my-title'
+lang: 'pt-br'
+createdAt: '{$createdAt->format('Y-m-d')}'
 title: 'my title'
-sitemap:
-  lastModified: {$createdAt->format('Y-m-d')}
 meta:
   description: 'Procuramos um(a) desenvolvedor(a) de Back com experiência em PHP, que goste de desafios e de resolver problemas.'
   twitter:
@@ -83,6 +79,58 @@ Descrição do local...
 
 Fonte: My Source
 STR;
+        self::assertEquals($expectedMd, $result);
+    }
+
+    public function testSerializePreparesJobLabelsFromMdRawBody(): void
+    {
+        $rawBody = <<<STR
+## Descrição da vaga
+
+Uma descrição coisada de vaga e tal
+
+## Labels
+
+- CLT
+- Pleno
+- PHP
+STR;
+        $createdAt = new DateTime();
+        $job = new Job('1', 'my title', $createdAt, $rawBody, 'My Source');
+
+        $serializer = new JobMdSerializer();
+        $result = $serializer->serialize($job);
+
+        $expectedMd = <<<STR
+---
+slug: '1-my-title'
+lang: 'pt-br'
+createdAt: '{$createdAt->format('Y-m-d')}'
+title: 'my title'
+meta:
+  description: 'Uma descrição coisada de vaga e tal'
+  twitter:
+    card: summary
+    site: '@nawarian'
+labels:
+  - CLT
+  - Pleno
+  - PHP
+---
+
+## Descrição da vaga
+
+Uma descrição coisada de vaga e tal
+
+## Labels
+
+- CLT
+- Pleno
+- PHP
+
+Fonte: My Source
+STR;
+
         self::assertEquals($expectedMd, $result);
     }
 }
