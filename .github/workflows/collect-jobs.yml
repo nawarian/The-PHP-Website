@@ -23,7 +23,7 @@ jobs:
        git config --local user.email "action@github.com"
        git config --local user.name "GitHub Action"
        git add ./source/_jobs_pt_br/
-       git commit -m "Update jobs inventory" || exit 1
+       git commit -m "Update jobs inventory" || exit 0
 
     - name: Store Jobs
       uses: ad-m/github-push-action@v0.5.0
