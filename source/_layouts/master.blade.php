@@ -6,7 +6,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
 
-  <title>{{ $page->title . ' | The PHP Website' ?? 'The PHP Website' }}</title>
+  <title>{{ $page->title ? $page->title . ' | The PHP Website' : 'The PHP Website' }}</title>
 
   @include('_layouts.partials.meta')
 

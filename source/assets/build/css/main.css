@@ -379,7 +379,7 @@ body {
 }
 @media (min-width: 900px) {
   body {
-    margin: 1em 20% 1em 20%;
+    margin: 1em 10% 1em 10%;
   }
 }
 
@@ -408,7 +408,7 @@ ul.card-list {
 @media (min-width: 900px) {
   ul.card-list {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(3, 33%);
     grid-gap: 1rem;
   }
 }
@@ -428,6 +428,13 @@ ul.card-list {
 .card__content time {
   display: block;
   text-align: right;
+}
+.card__image {
+  background-position: 50% 50%;
+  background-origin: border-box;
+  background-size: cover;
+  width: auto;
+  height: 250px;
 }
 
 .card > a {

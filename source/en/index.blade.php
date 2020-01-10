@@ -7,7 +7,11 @@
     <li class="card">
       <a href="{{ $post->getUrl() }}">
         @if ($post->get('image'))
-          <img src="{{ $post->get('image')['url'] }}" alt="{{ $post->get('image')['alt'] }}" />
+          <div
+            class="card__image"
+            style="background-image: url({{ $post->get('image')['url'] }})"
+            alt="{{ $post->get('image')['alt'] }}"
+          ></div>
         @endif
 
         <div class="card__content">
