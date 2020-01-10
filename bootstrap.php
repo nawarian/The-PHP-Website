@@ -47,6 +47,11 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
     // Portuguese posts
     file_put_contents($outputPath . '/br/sitemap.xml', $sitemapGenerator->fromCollection(
         $jigsaw->getCollection('posts_pt_br')
-            ->merge($jigsaw->getCollection('jobs_pt_br'))
+    )->saveXML());
+
+    // Portuguese jobs
+    file_put_contents($outputPath . '/br/sitemap_vagas.xml', $sitemapGenerator->fromCollection(
+        $jigsaw->getCollection('jobs_pt_br')
     )->saveXML());
 });
+
