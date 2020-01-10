@@ -1,5 +1,6 @@
 Sitemap: https://thephp.website/en/sitemap.xml
 Sitemap: https://thephp.website/br/sitemap.xml
+Sitemap: https://thephp.website/br/sitemap_vagas.xml
 
 User-Agent: *
 
