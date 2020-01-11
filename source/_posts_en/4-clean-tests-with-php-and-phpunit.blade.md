@@ -42,10 +42,10 @@ php developers on writing good, readable and useful tests.
 ## Starting with the basics
 
 There's a set of common practices that many people follow without questioning
-themselves "why". I'll list them below without providing much explanation so
-you can always use this as a checklist for your tests.
+themselves "why". I'll list many of them while trying to explain at least
+a bit the reasoning behind each.
 
-### Tests should have no I/O operations
+### 1. Tests should have no I/O operations
 
 **Main reasoning**: I/O is slow and unreliable.
 
@@ -88,7 +88,7 @@ public function getPeople(): array
 ```
 
 The moment we start testing this method, we'll be forced to create
-a local file for testing, and from time to time, keep a snapshot
+a local file for testing and, from time to time, keep a snapshot
 of this file. Like the following:
 
 ```php
@@ -101,14 +101,14 @@ public function testGetPeopleReturnsPeopleList(): void
 }
 ```
 
-For such test, we'd need to set up preconditions for the test to run.
-While this might make sense on a first sight, it is actually terrible.
+For such test, we'd need to **set up preconditions** for the test to run.
+While this might make sense on a first sight, it is actually **terrible**.
 
 **Skipping a test because a precondition is not met won't assure
-quality on our software. It just hides possible bugs!**
+quality on our software. It will only hide bugs!**
 
-**Fixing it:** isoalte the I/O operations by segregating this
-responsibility to an interface.
+**Fixing it:** isolate I/O operations by moving this responsibility to an
+interface.
 
 ```php
 // extract the fetching
@@ -159,9 +159,10 @@ like the [Flysystem's Filesystem](https://flysystem.thephpleague.com/docs/adapte
 which can be easily mocked.
 
 And what's the point of having `PeopleService` then? Good question.
-That's what tests are for: question your design, kill useless code.
+That's also **what tests are for: question your design, kill useless
+code.**
 
-### Tests should be concise and meaningful
+### 2. Tests should be concise and meaningful
 
 **Main reasoning:** tests are a form of documentation. Keep them clean,
 short and readable.
@@ -177,13 +178,14 @@ Here are some characteristics of a nice and readable test:
 one)
 - It tells you very clearly what should happen given a condition
 - It tests only one path of execution of a method
+- It won't mock the whole universe to assert something
 
 **It is important to notice** that if your implementation contains
 if conditions, switch statements or loops, **they should all be
 explicitly covered with tests.** So early returns will always contain
 a test, for example.
 
-Again: is not about coverage, is about documenting.
+Again: **this is not about coverage, is about documenting.**
 
 Let me show you an example of confusing test:
 
@@ -237,6 +239,13 @@ to private methods as well. Whatever makes your test more readable.
 Now, that assertEquals is full of clutter with little meaning. A human
 reading this has to parse the assertion to understand what it should mean.
 
+**Using specific assertions will make your test much more readable.**
+`assertTrue()` should receive a variable containing a boolean, never
+an expression like `canFly() !== true`.
+
+So from previous example, we replace the `assertEquals` between `false`
+and `$person->canFly()` with a simple `assertFalse`:
+
 ```php
 // ...
 $person = $this->givenAPersonHasNoWings();
@@ -248,9 +257,12 @@ $this->assertFalse(
 // Further cases...
 ```
 
+Crystal clear! Given a person has no wings, it shouldn't be able to fly!
+Reads like a poem 😍
+
 Now, this "Further cases" appearing twice on our text is already a great
-clue this test is doing too many assertions. Meanwhile "testCanFly()" doesn't
-mean anything useful at all.
+clue this test is doing too many assertions. Meanwhile the method name
+`testCanFly()` doesn't mean something useful at all.
 
 Let's make this test case great again:
 
@@ -277,7 +289,7 @@ public function testCanFlyIsTruthyWhenPersonHasTwoWings(): void
 We could even rename the test method to match a real-life scenario like
 `testPersonCantFlyWithoutWings`, but that's for me good enough.
 
-### A test should not depend on another
+### 3. A test should not depend on another
 
 **Main reasoning:** a test should be able to run and succeed in any order.
 
@@ -327,7 +339,10 @@ explains the feature itsef.
 ```php
 public function testAmazingFeatureChangesState(): void
 {
+  // Given
   $token = $this->givenImAuthenticated();
+  
+  // When
   $this->whenIExecuteMyAmazingFeature(
     $token
   );
@@ -335,6 +350,7 @@ public function testAmazingFeatureChangesState(): void
     $token
   );
 
+  // Then
   $this->assertEquals(
     'my-state',
     $newState
@@ -346,12 +362,14 @@ We would also need to add tests for authenticating and so on.
 This is structure is so good that
 [Behat enforces it by default](https://behat.org/en/latest/quick_start.html).
 
-### Always inject dependencies
+### 4. Always inject dependencies
 
-**Main reasoning:** mocking global state is bad, so please don't.
+**Main reasoning:** mocking global state is terrible, not being able
+to mock dependencies at all makes it impossible to test a feature.
 
-This is a lesson for life. Forget about static classes (that keep state) and
-singleton instances. If your class depends on something, make it injectable.
+Here is a lesson for life: **Forget about stateful static classes and
+singleton instances.** If your class depends on something, make it
+injectable.
 
 Here's a particularly sad example:
 ```php
@@ -381,14 +399,14 @@ Now. How can you test this early return?
 
 That's right. You can't.
 
-In order to test this, we would need to understand the behaviour of
+To test this we would need to understand the behaviour of
 this `Cookies` class and make sure we can reproduce the whole environment
 behind it so we can force some returns there.
 
 Please don't.
 
-We can fix this by injecting `Cookies` as dependency. Our test would look
-like the following:
+We can fix this by injecting an instance of `Cookies` as dependency.
+Our test would look like the following:
 
 ```php
 // Test class...
@@ -410,11 +428,15 @@ public function setUp(): void
 
 public function testIsActiveIsOverriddenByCookies(): void
 {
+  // Given
   $feature = $this->givenFeatureXExists();
-  $this->givenCookieOverridesFeatureWithTrue(
+
+  // When
+  $this->whenCookieOverridesFeatureWithTrue(
     $feature
   );
 
+  // Then
   $this->assertTrue(
     $this->service->isActive($feature)
   );
@@ -422,7 +444,13 @@ public function testIsActiveIsOverriddenByCookies(): void
   // no other methods were called
 }
 
-private function givenCookieOverridesFeatureWithTrue(
+private function givenFeatureXExists(): Id
+{
+  // ...
+  return $feature;
+}
+
+private function whenCookieOverridesFeatureWithTrue(
   Id $feature
 ): void {
   $cookieName = $feature->getCookieName();
@@ -436,10 +464,12 @@ private function givenCookieOverridesFeatureWithTrue(
 }
 ```
 
-Same happens with singletons. If you want to make an object a singleton,
-make sure you configure your dependency injector properly instead of
+**Same occurs with singletons.** So if you want **to make an object unique**,
+make sure you **configure your dependency injector properly** instead of
 using the Singleton (anti) pattern.
 
 Otherwise you will end up writing methods that are only useful for test
-cases like `reset()` or `setInstance()` which is completely insane.
+cases like `reset()` or `setInstance()`. Sounds insane to me.
 
+Changing your design to make testing easier is fine! **Creating methods
+to make testing easier is not fine.**
