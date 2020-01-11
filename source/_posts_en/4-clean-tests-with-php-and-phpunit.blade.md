@@ -19,6 +19,26 @@ meta:
 
 [Leia em Português](/br/edicao/voce-achou-que-sabia-sobre-generators/)
 
+This post is quite lengthy. So here goes a short anchor list you can use
+to quickly navigate through the most important topics I'd like to tell
+you about:
+
+- [Starting with the basics](#starting-with-the-basics)
+ - [Tests should have no I/O operations](#tests-should-have-no-io-operations)
+ - [Tests should be concise and meaningful](#tests-should-be-concise-and-meaningful)
+ - [A test should not depend on another](#a-test-should-not-depend-on-another)
+ - [Always inject dependencies](#always-inject-dependencies)
+ - [Never test protected/private methods](#never-test-protected-private-methods)
+- [Beyond the basics: the interesting stuff](#beyond-the-basics-the-interesting-stuff)
+ - [Tests come first, not after](#tests-come-first-not-after)
+ - [Test first, categorize later](#test-first-categorize-later)
+ - [No tests is better than bad tests](#no-tests-is-better-than-bad-tests)
+ - [Run your tests compulsively](#run-your-tests-compulsively)
+ - [Don't focus on useless metrics](#dont-focus-on-useless-metrics)
+ - [Big tests, big responsibilities](#big-tests-big-responsibilities)
+ - [Keep a regression suite](#keep-a-regression-suite)
+ - [Object Calisthenics as a way to reduce mocks](#object-calisthenics-as-a-way-to-reduce-mocks)
+
 There are many tools available in the PHP ecosystem that are ready to provide
 great testing experience with php. [PHPUnit is by far the most famous one](https://github.com/sebastianbergmann/phpunit)
 , being almost a synonym of testing this language.
@@ -45,7 +65,7 @@ There's a set of common practices that many people follow without questioning
 themselves "why". I'll list many of them while trying to explain at least
 a bit the reasoning behind each.
 
-### 1. Tests should have no I/O operations
+### Tests should have no I/O operations
 
 **Main reasoning**: I/O is slow and unreliable.
 
@@ -162,7 +182,8 @@ And what's the point of having `PeopleService` then? Good question.
 That's also **what tests are for: question your design, kill useless
 code.**
 
-### 2. Tests should be concise and meaningful
+---
+### Tests should be concise and meaningful
 
 **Main reasoning:** tests are a form of documentation. Keep them clean,
 short and readable.
@@ -289,7 +310,8 @@ public function testCanFlyIsTruthyWhenPersonHasTwoWings(): void
 We could even rename the test method to match a real-life scenario like
 `testPersonCantFlyWithoutWings`, but that's for me good enough.
 
-### 3. A test should not depend on another
+---
+### A test should not depend on another
 
 **Main reasoning:** a test should be able to run and succeed in any order.
 
@@ -362,7 +384,8 @@ We would also need to add tests for authenticating and so on.
 This is structure is so good that
 [Behat enforces it by default](https://behat.org/en/latest/quick_start.html).
 
-### 4. Always inject dependencies
+---
+### Always inject dependencies
 
 **Main reasoning:** mocking global state is terrible, not being able
 to mock dependencies at all makes it impossible to test a feature.
@@ -473,3 +496,47 @@ cases like `reset()` or `setInstance()`. Sounds insane to me.
 
 Changing your design to make testing easier is fine! **Creating methods
 to make testing easier is not fine.**
+
+---
+### Never test protected/private methods
+
+**Main reasoning:** They way we test features is by asserting how their
+signature behave: given this conditions, when I input X, I expect Y to occur.
+**Private/Protected methods are not part of the feature's signature.**
+
+I even refuse to show you a way to "test" private methods, but here goes a
+hint: you can only do this by using [the reflection API](https://www.php.net/manual/en/book.reflection.php).
+
+Always punish yourself somehow whenever you think of using reflection to
+test a private method! Bad baad dev!
+
+By definition, private methods will only be called from inside. So they
+are not publicly accessible. This means, only `public` methods in this
+same class can invoke such methods.
+
+**If you tested all your public methods, you also tested all your
+protected/private ones.** If not, feel free to delete your protected/private
+methods, nobody is using them anyways.
+
+---
+## Beyond the basics: the interesting stuff
+
+### Tests come first, not after
+
+---
+### Test first, categorize later
+
+---
+### No tests is better than bad tests
+
+---
+### Run your tests compulsively
+
+---
+### Big tests, big responsibilities
+
+---
+### Keep a regression suite
+
+---
+### Object Calisthenics as a way to reduce mocks
