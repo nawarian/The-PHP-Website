@@ -521,7 +521,58 @@ methods, nobody is using them anyways.
 ---
 ## Beyond the basics: the interesting stuff
 
+I hope you didn't get bored so far. Basics are basics, but they need to be
+stated.
+
+Now, within the next lines I'll share with you some opinions I
+carry about writing clean tests and each decision impacts on my development
+workflow.
+
+**I'd say the most important values I keep in mind while writing tests are:**
+- Learning
+- Receiving quick feedback
+- Documenting
+- Refactoring
+- Design while testing
+
+Such opinions share at least one of such values and each of them support
+the others.
+
 ### Tests come first, not after
+
+**Values**: learning, receiving quick feedback, documenting, refactoring,
+design while testing.
+
+This one is the basis of everything. It is so important, it carries all
+values at once.
+
+Writing test first, forces you to first understand how your "given,
+when, then" should be structured. **You document first by doing so** and,
+most importantly, **learn and state your requirements** as the most
+important things.
+
+**Sounds weird to write a test before implementing anything?** Imagine how
+awkward it is to implement something and while testing, discover that
+all the "given, when, then" statements don't make any sense at all.
+
+It also allows you to run your expectations every 2 seconds or so. **You'll
+receive feedback the quickest way possible. No matter how big or small a
+feature might look like.**
+
+**Green tests are the perfect field for refactoring.** At some point I'll
+probably write about refactoring, but main thing is: no tests, no refactoring.
+Because refactoring with no tests is simply too dangerous.
+
+And last but not least, by setting your "given, when, then" it becomes clear
+what interface your methods should have and how they should behave. **Keeping
+this test clean will also force you to constantly take different design
+decisions.**
+
+It will force you to create factories, interfaces, break inheritances and so
+on. And yes, to make testing easier!
+
+If your tests are this live document explain how your software works, **it is
+extremely important that they explain this clearly.**
 
 ---
 ### Test first, categorize later
