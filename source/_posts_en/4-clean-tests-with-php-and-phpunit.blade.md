@@ -31,10 +31,8 @@ you about:
  - [Never test protected/private methods](#never-test-protected-private-methods)
 - [Beyond the basics: the interesting stuff](#beyond-the-basics-the-interesting-stuff)
  - [Tests come first, not after](#tests-come-first-not-after)
- - [Test first, categorize later](#test-first-categorize-later)
  - [No tests is better than bad tests](#no-tests-is-better-than-bad-tests)
  - [Run your tests compulsively](#run-your-tests-compulsively)
- - [Don't focus on useless metrics](#dont-focus-on-useless-metrics)
  - [Big tests, big responsibilities](#big-tests-big-responsibilities)
  - [Keep a regression suite](#keep-a-regression-suite)
  - [Object Calisthenics as a way to reduce mocks](#object-calisthenics-as-a-way-to-reduce-mocks)
@@ -571,23 +569,147 @@ decisions.**
 It will force you to create factories, interfaces, break inheritances and so
 on. And yes, to make testing easier!
 
-If your tests are this live document explain how your software works, **it is
-extremely important that they explain this clearly.**
-
----
-### Test first, categorize later
+If your tests are a live document aiming to explain how your software works,
+**it is extremely important they explain it clearly.**
 
 ---
 ### No tests is better than bad tests
 
+**Values**: learning, documenting, refactoring.
+
+Many developers think of tests the following way: they write a feature,
+punch their testing framework until tests cover a certain amount
+of new lines and push to production.
+
+What I wish we'd take more into consideration, though, is when the next
+developer comes to this feature. **What tests are really telling this person...**
+
+Often tests are messy when names don't tell much. What is clearer when it comes
+to test names: `testCanFly` or `testCanFlyReturnsFalseWhenPersonHasNoWings`?
+
+Whenever your tests represent nothing more than clutter and code forcing
+the framework to cover more lines with examples that don't seem to make sense
+at all, it is time to stop and think whether it make sense to even write this test.
+
+Even very silly things like naming variables with `$a` and `$b`, or giving names
+that don't relate to the use case at all.
+
+**Remember:** your tests are a live document, attempting to explain how your
+software should behave. `assertFalse($a->canFly())` is not documenting much.
+`assertFalse($personWithNoWings->canFly())` is.
+
 ---
 ### Run your tests compulsively
+
+**Values**: learning, receiving quick feedback, refactoring.
+
+**Before you start any feature: run tests.** If tests are broken before you touched
+anything, you'll know _before_ you wrote any code and you won't spend precious
+minutes debugging broken tests you weren't even aware of.
+
+**After saving a file: run tests.** The sooner you know you broke something, the
+sooner you'll fix the issue and move forward. If interrupting your flow to fix
+an issue before moving forward sounds unproductive, imagine coming many steps
+back to fix an issue you didn't even know you caused.
+
+**After chatting with your colleague for five minutes or checking github
+notifications: run tests.** If tests are red, you know where you stopped. If tests
+are green, you know you can move forward.
+
+**After refactoring something, even variable names: run tests.**
+
+Just really, run the freaking tests. As often as you'd hit the "Save" hotkey.
+
+In fact, [PHPUnit Watcher](https://github.com/spatie/phpunit-watcher)
+does exactly this for you and even sends desktop notifications!
 
 ---
 ### Big tests, big responsibilities
 
+**Values**: learning, refactoring, design while testing.
+
+Ideally each class would have one test counterpart for itself. Also
+each public method in this class, should be covered with tests. And every
+if condition or switch statement...
+
+Counts are more or less like this:
+
+- 1 class = 1 test case
+- 1 method = 1 or more tests
+- 1 alternative path (if/switch/try-catch/exception) = 1 test
+
+So a simple code like this would generate 4 different tests:
+
+```php
+// class Person
+public function eatSlice(Pizza $pizza): void
+{
+  // test exception
+  if ([] === $pizza->slices()) {
+    throw new LogicException('...');
+  }
+  
+  // test exception
+  if (true === $this->isFull()) {
+    throw new LogicException('...');
+  }
+
+  // test default path (slices = 1)
+  $slices = 1;
+  // test alternative path (slices = 2)
+  if (true === $this->isVeryHungry()) {
+    $slices = 2;
+  }
+
+  $pizza->removeSlices($slices);
+}
+```
+
+**As you grow in public methods count, your tests will also grow in number.**
+
+And nobody likes reading large documents. As your test case is also a document,
+leaving it small and concise will only increase its quality and usefulness.
+
+This is also a big sign that your class is accumulating responsibilities and
+might be time to put on your refactoring hat to remove features, move to
+different classes or rethink part of your design.
+
 ---
 ### Keep a regression suite
 
----
-### Object Calisthenics as a way to reduce mocks
+**Values**: learning, documenting, receiving quick feedback.
+
+Take the following function:
+
+```php
+function findById(string $id): object
+{
+  return fromDb((int) $id);
+}
+```
+
+You expected someone to pass `"10"` but instead, passed `"10 bananas"`. Both
+retrieve the value, one should not. You have a bug.
+
+First thing you do? Write a test to state this behaviour is wrong!!
+
+```php
+public function testFindByIdAcceptsOnlyNumericIds(): void
+{
+  $this->expectException(InvalidArgumentException::class);
+  $this->expectExceptionMessage(
+    'Only numeric IDs are allowed.'
+  );
+
+  findById("10 bananas");
+}
+```
+
+Tests are not passing, of course. But now you know what to do to make them pass.
+Remove the bug, make tests green, push, deploy and be happy.
+
+Keep this test there, forever. If possible, to a test suite specialized on
+regression and link it to an issue.
+
+There you go! Quick feedback bug fixing, documentation, regression proof
+code and happiness.
