@@ -17,25 +17,7 @@ meta:
     site: '@nawarian'
 ---
 
-[Leia em Português](/br/edicao/voce-achou-que-sabia-sobre-generators/)
-
-This post is quite lengthy. So here goes a short anchor list you can use
-to quickly navigate through the most important topics I'd like to tell
-you about:
-
-- [Starting with the basics](#starting-with-the-basics)
- - [Tests should have no I/O operations](#tests-should-have-no-io-operations)
- - [Tests should be concise and meaningful](#tests-should-be-concise-and-meaningful)
- - [A test should not depend on another](#a-test-should-not-depend-on-another)
- - [Always inject dependencies](#always-inject-dependencies)
- - [Never test protected/private methods](#never-test-protected-private-methods)
-- [Beyond the basics: the interesting stuff](#beyond-the-basics-the-interesting-stuff)
- - [Tests come first, not after](#tests-come-first-not-after)
- - [No tests is better than bad tests](#no-tests-is-better-than-bad-tests)
- - [Run your tests compulsively](#run-your-tests-compulsively)
- - [Big tests, big responsibilities](#big-tests-big-responsibilities)
- - [Keep a regression suite](#keep-a-regression-suite)
- - [Object Calisthenics as a way to reduce mocks](#object-calisthenics-as-a-way-to-reduce-mocks)
+[Leia em Português](/br/edicao/testes-legiveis-com-php-e-phpunit/)
 
 There are many tools available in the PHP ecosystem that are ready to provide
 great testing experience with php. [PHPUnit is by far the most famous one](https://github.com/sebastianbergmann/phpunit)
@@ -68,7 +50,7 @@ a bit the reasoning behind each.
 **Main reasoning**: I/O is slow and unreliable.
 
 **Slow:** Even with the best equipment on earth, I/O is still slower
-than memory access. **Tests should alwyas run fast**, otherwise people
+than memory access. **Tests should always run fast**, otherwise people
 won't run them often enough.
 
 **Unreliable:** a certain file, binary, socket, folder, dns record might not be
@@ -544,7 +526,7 @@ design while testing.
 This one is the basis of everything. It is so important, it carries all
 values at once.
 
-Writing test first, forces you to first understand how your "given,
+Writing test first forces you to first understand how your "given,
 when, then" should be structured. **You document first by doing so** and,
 most importantly, **learn and state your requirements** as the most
 important things.
