@@ -695,3 +695,22 @@ regression and link it to an issue.
 
 There you go! Quick feedback bug fixing, documentation, regression proof
 code and happiness.
+---
+
+## Final notes and let's chat
+
+Poah, I wrote quite a bit... And of course most things here are mere
+opinions of mine, which I developed over time during my career. Doesn't
+mean they are right or wrong, they are just opinions.
+
+This post shall keep growing as I find some important topics are missing.
+
+Always feel free to comment and send question directly on my twitter profile
+or in this project's Github Repository.
+
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div>

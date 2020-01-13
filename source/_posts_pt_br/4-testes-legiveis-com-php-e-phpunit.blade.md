@@ -18,7 +18,7 @@ meta:
     site: '@nawarian'
 ---
 
-[Read in english](/en/issue/clean-tests-with-php-and-phpunit/)
+[Read in English](/en/issue/clean-tests-with-php-and-phpunit/)
 
 Existem várias ferramentas disponíveis no ecossistema PHP que estão preparadas
 para oferecer uma ótima experiência com testes.
@@ -715,3 +715,24 @@ especializada em regressão e conecte este teste com uma issue.
 
 E prontinho! Feedback rápido enquanto corrige bugs, documentação feita,
 código a prova de regressões e felicidade.
+
+---
+
+## Notas finais e bora trocar ideia
+
+Ufa, falei um monte ein... E é claro que a maioria das coisas aqui são
+opiniões minhas que desenvolvi conforme fui evoluindo na carreira. Não
+estão certas ou erradas, são apenas opiniões.
+
+Este post continuará crescendo conforme eu veja que alguns tópicos
+importantes ficaram de fora.
+
+Sinta-se sempre livre pra comentar e enviar dúvidas direto no meu twitter
+ou pelo repositório do projeto no Github. 
+
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div>
