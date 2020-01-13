@@ -3,7 +3,7 @@ extends: _layouts.master
 title: Vagas de Emprego de Programação em PHP
 pagination:
   collection: jobs_pt_br
-  perPage: 4
+  perPage: 12
 ---
 
 @section('body')
