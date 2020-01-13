@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=b52dcad739c79d106690">
+
+  <title>Testes legíveis com PHP e PHPUnit | The PHP Website</title>
+
+  <meta name="description" content="Este post tem a intenção de lhe ajudar a reduzir o número de &quot;Diabéiss&quot; por segundo enquanto escreve, lê e muda código de teste em sua aplicação PHP usando o framework de testes PHPUnit.">
+
+  <meta property="og:title" content="Testes legíveis com PHP e PHPUnit">
+  <meta property="og:description" content="Este post tem a intenção de lhe ajudar a reduzir o número de &quot;Diabéiss&quot; por segundo enquanto escreve, lê e muda código de teste em sua aplicação PHP usando o framework de testes PHPUnit.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/testes-legiveis-com-php-e-phpunit">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Testes legíveis com PHP e PHPUnit">
+  <meta name="twitter:description" content="Este post tem a intenção de lhe ajudar a reduzir o número de &quot;Diabéiss&quot; por segundo enquanto escreve, lê e muda código de teste em sua aplicação PHP usando o framework de testes PHPUnit.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-2');
+  </script>
+</head>
+<body class="yue">
+  <header>
+          <time datetime="2020-01-07">
+        2020-01-07
+      </time>
+        <nav class="align-right">
+      <a href="/br">🇧🇷</a> | <a href="/en">🇬🇧</a>
+    </nav>
+  </header>
+<h1>Testes legíveis com PHP e PHPUnit</h1>
+
+<p><a href="/en/issue/clean-tests-with-php-and-phpunit/">Read in English</a></p>
+<p>Existem várias ferramentas disponíveis no ecossistema PHP que estão preparadas
+para oferecer uma ótima experiência com testes.
+<a href="https://github.com/sebastianbergmann/phpunit">PHPUnit é de longe a mais famosa de todas</a>
+. É quase um sinônimo de teste nessa linguagem.</p>
+<p>As boas práticas não são bem compartilhadas na comunidade. Existem tantas
+opções de quando e por quê escrever testes, quais tipos de testes e por
+aí vai. Mas na verdade <strong>não faz sentido algum escrever qualquer teste
+se você não for capaz de lê-los mais tarde</strong>.</p>
+<h2>Testes são uma forma muito especial de documentação</h2>
+<p>Como eu já mencionei no <a href="/br/edicao/tdd-com-php-na-vida-real/">post sobre TDD com PHP</a>,
+um teste sempre vai (ou pelo menos deveria) tornar claro o que um certo
+pedaço de código deve atingir como objetivo.</p>
+<p><strong>Se um teste não consegue expressar uma ideia, é um teste ruim.</strong></p>
+<p>Com isso em mente, eu preparei uma lista com boas práticas que podem
+auxiliar desenvolvedores(as) php a escrever testes bons, legíveis e
+úteis.</p>
+<h2>Começando pelo básico</h2>
+<p>Existem algumas práticas que muitas pessoas seguem sem sequer questionar o
+motivo. Eu vou listar algumas delas e tentar explicar pelo menos por cima
+qual a razão de tais práticas.</p>
+<h3>Testes não deveriam fazer operações E/S</h3>
+<p><strong>Motivo</strong>: E/S é lento e instável.</p>
+<p><strong>Lento:</strong> mesmo com o melhor equipamento na face da terra, E/S ainda será
+mais lento que acesso a memória. <strong>Testes devem sempre rodar rápido</strong>, do
+contrário ninguém irá rodá-los suficientemente.</p>
+<p><strong>Instável:</strong> um certo arquivo, binário, socket, pasta ou entrada DNS pode
+não estar disponível em todas as máquinas em que seu código será executado.
+<strong>Quanto mais você depende de E/S em seus testes, mais seus testes ficam
+amarrados e dependentes de infraestrutura</strong>. </p>
+<p>Operações consideradas E/S:</p>
+<ul>
+<li>Ler/escrever arquivos</li>
+<li>Chamadas de rede</li>
+<li>Chamadas a processos externos (usando exec, proc_open...)</li>
+</ul>
+<p>Existem casos onde ter E/S fará com que o teste seja escrito mais rapidamente.
+<strong>Mas se liga</strong>: fazer com que essas operações funcionem da mesma forma nos
+ambientes de desenvolvimento, build e deployment pode se tornar uma imensa
+dor de cabeça.</p>
+<p><strong>Isolando testes para que não precisam de E/S:</strong> abaixo eu mostro
+uma decisão de design que pode ser tomada para evitar que seus testes
+realizem operações de E/S <strong>segregando responsabilidades para interfaces</strong>.</p>
+<p>Segue o exemplo:</p>
+<pre><code class="language-php">public function getPeople(): array
+{
+  $rawPeople = file_get_contents(
+    'people.json'
+  ) ?? '[]';
+
+  return json_decode(
+    $rawPeople,
+    true
+  );
+}</code></pre>
+<p>No momento em que começarmos a testar este método, seremos forçados a
+criar um arquivo local pra teste e, de tempos em tempos, manter uma
+snapshot desse arquivo. Como no seguinte:</p>
+<pre><code class="language-php">public function testGetPeopleReturnsPeopleList(): void
+{
+  $people = $this-&gt;peopleService
+    -&gt;getPeople();
+
+  // assert it contains people
+}</code></pre>
+<p>Pra esse tipo, é necessário <strong>definir pré condições</strong> para que ele possa passar.
+Mesmo que pareça fazer sentido a primeira vista, isto é na realidade <strong>terrível</strong>.</p>
+<p><strong>Pular um teste por conta de uma pré condição faltante não garante qualidade de
+software. Apenas esconde bugs!</strong></p>
+<p><strong>Corrigindo:</strong> basta isolar as operações de E/S ao mover a responsabilidade para
+uma interface.</p>
+<pre><code class="language-php">// extrai a lógica
+// de buscar algo
+// p/ uma interface
+// especializada
+interface PeopleProvider
+{
+  public function getPeople(): array;
+}
+
+// implementação concreta
+class JsonFilePeopleProvider
+  implements PeopleProvider
+{
+  private const PEOPLE_JSON =
+    'people.json';
+
+  public function getPeople(): array
+  {
+    $rawPeople = file_get_contents(
+      self::PEOPLE_JSON
+    ) ?? '[]';
+
+    return json_decode(
+      $rawPeople,
+      true
+    );
+  }
+}
+
+class PeopleService
+{
+  // injetar via __construct()
+  private PeopleProvider $peopleProvider;
+
+  public function getPeople(): array
+  {
+    return $this-&gt;peopleProvider
+      -&gt;getPeople();
+  }
+}</code></pre>
+<p>Tô sabendo, agora <code>JsonFilePeopleProvider</code> usa E/S de toda forma. Verdade.</p>
+<p>Em vez de <code>file_get_contents()</code> a gente pode usar um layer de abstração
+como o <a href="https://flysystem.thephpleague.com/docs/adapter/local/">Filesystem do Flysystem</a>
+que pode ser facilmente mockado.</p>
+<p>E pra quê serve o <code>PeopleService</code> então? Boa pergunta... Isto é uma das coisas
+que <strong>testes nos traz: questionar o nosso design, remover código inutil.</strong></p>
+<hr />
+<h3>Testes devem ser concisos e ter significado</h3>
+<p><strong>Motivo:</strong> testes são uma forma de documentação. Mantenha-os limpos,
+curtos e legíveis.</p>
+<p><strong>Limpos e curtos</strong>: sem bagunça, sem escrever mil linhas de mock,
+sem escrever trocentos asserts no mesmo teste.</p>
+<p><strong>Legíveis:</strong> cada teste deve contar uma história. A estrutura &quot;Given, When, Then&quot;
+é perfeita pra isso.</p>
+<p>Aqui vão algumas características de um teste bem escrito:</p>
+<ul>
+<li>Contém apenas asserts necessários (preferivelmente apenas um)</li>
+<li>Lhe conta exatamente o que deveria acontecer dada certa condição</li>
+<li>Testa apenas um caminho de execução do método por vez</li>
+<li>Não mocka o universo inteiro para fazer algum assert</li>
+</ul>
+<p><strong>Importante notar</strong> que se a sua implementação possui alguns IFs, switch ou
+iterações, <strong>todos estes caminhos alternativos devem ser explicitamente testados.</strong>
+Então early returns, por exemplo, devem sempre conter testes.</p>
+<p>Novamente: <strong>não importa o coverage, o que importa é documentar.</strong></p>
+<p>Deixa eu te mostrar como um teste confuso se parece:</p>
+<pre><code class="language-php">public function testCanFly(): void
+{
+  $semAsas = new Person(0);
+  $this-&gt;assertEquals(
+    false,
+    $semAsas-&gt;canFly()
+  );
+
+  $umaAsa = new Person(1);
+  $this-&gt;assertTrue(
+    !$$umaAsa-&gt;canFly()
+  );
+
+  $duasAsas = new Person(2);
+  $this-&gt;assertTrue(
+    $$duasAsas-&gt;canFly()
+  );
+}</code></pre>
+<p>Vamos então adotar o &quot;Given, When, Then&quot; e ver como esse teste muda:</p>
+<pre><code class="language-php">public function testCanFly(): void
+{
+  // Given
+  $person = $this-&gt;givenAPersonHasNoWings();
+
+  // Then
+  $this-&gt;assertEquals(
+    false,
+    $person-&gt;canFly()
+  );
+
+  // Outros casos...
+}
+
+private function givenAPersonHasNoWings(): Person
+{
+  return new Person(0);
+}</code></pre>
+<p>Assim como as cláusulas &quot;Given&quot;, os &quot;When&quot;s e &quot;Then&quot;s também podem
+ser extraídos para métodos privados. Qualquer coisa que faça seu
+teste ficar mais legível.</p>
+<p>Agora, aquele assertEquals tá bem bagunçado e com pouquíssimo significado.
+Um humano lendo isso precisa interpretar a assertion pra entender o que
+deveria significar.</p>
+<p><strong>Usar assertions específicas tornam seus testes muito mais legíveis.</strong>
+<code>assertTrue()</code> deveria receber uma variável contendo um booleano, nunca
+uma expressão como <code>canFly() !== true</code>.</p>
+<p>Então do exemplo anterior, vamos substituir o <code>assertEquals</code> entre <code>false</code>
+e <code>$person-&gt;canFly()</code> com um simples <code>assertFalse</code>:</p>
+<pre><code class="language-php">// ...
+$person = $this-&gt;givenAPersonHasNoWings();
+
+$this-&gt;assertFalse(
+  $person-&gt;canFly()
+);
+
+// Outros casos...</code></pre>
+<p>Limpinho! Dado que uma pessoa não tem asas, ela não deveria poder voar!
+Dá pra ler como se fosse um poema 😍</p>
+<p>Agora, esse &quot;Outros casos&quot; aparecendo duas vezes no nosso texto já é uma
+boa pista de que este teste está fazendo muitas assertions. Ao mesmo tempo
+o nome do método <code>testCanFly()</code> não significa nada muito útil.</p>
+<p>Vamos tornar o nosso test case um tequinho melhor:</p>
+<pre><code class="language-php">public function testCanFlyIsFalsyWhenPersonHasNoWings(): void
+{
+  $person = $this-&gt;givenAPersonHasNoWings();
+  $this-&gt;assertFalse(
+    $person-&gt;canFly()
+  );
+}
+
+public function testCanFlyIsTruthyWhenPersonHasTwoWings(): void
+{
+  $person = $this-&gt;givenAPersonHasTwoWings();
+  $this-&gt;assertTrue(
+    $person-&gt;canFly()
+  );
+}
+
+// ...</code></pre>
+<p>A gente poderia inclusive renomear o teste pra bater com um cenário da
+vida real como <code>testPersonCantFlyWithoutWings</code>, mas pra mim o nome já
+parece bom o suficiente.</p>
+<hr />
+<h3>Um teste não deve depender de outro</h3>
+<p><strong>Motivo:</strong> um teste deveria ser capaz de rodar e passar em qualquer ordem.</p>
+<p>Até o presente momento, eu não consigo encontrar um bom motivo para acoplar
+testes.</p>
+<p>Recentemente eu fui perguntado sobre como testar uma feature para usuários
+logados e eu gostaria de utilizar isto como exemplo aqui.</p>
+<p>O teste faria o seguinte:</p>
+<ul>
+<li>Gerar um token JWT</li>
+<li>Executar uma certa tarefa logado</li>
+<li>Fazer os asserts</li>
+</ul>
+<p>A forma como o teste foi feito era a seguinte:</p>
+<pre><code class="language-php">public function testGenerateJWTToken(): void
+{
+  // ... $token
+  $this-&gt;token = $token;
+}
+
+// @depends  testGenerateJWTToken
+public function testExecuteAnAmazingFeature(): void
+{
+  // Execute using $this-&gt;token
+}
+
+// @depends  testExecuteAnAmazingFeature
+public function testStateIsBlah(): void
+{
+  // Busca os resultados
+  // interface logada
+}</code></pre>
+<p>Este teste é ruim por alguns motivos:</p>
+<ul>
+<li>PHPUnit não garantirá a ordem de execução dos testes</li>
+<li>Os testes não podem ser executados de forma independente</li>
+<li>Testes rodando em paralelo irão falhar aleatoriamente</li>
+</ul>
+<p>A forma mais simples de resolver este problema que eu consigo pensar,
+novamente, é com &quot;Given, When, Then&quot;. Desta forma a gente torna os
+testes mais concisos e conta uma história ao mostrar suas dependências
+de forma clara que explica a feature em si.</p>
+<pre><code class="language-php">public function testAmazingFeatureChangesState(): void
+{
+  // Given
+  $token = $this-&gt;givenImAuthenticated();
+
+  // When
+  $this-&gt;whenIExecuteMyAmazingFeature(
+    $token
+  );
+  $newState = $this-&gt;pollStateFromInterface(
+    $token
+  );
+
+  // Then
+  $this-&gt;assertEquals(
+    'my-state',
+    $newState
+  );
+}</code></pre>
+<p>A gente precisaria também escrever testes para autenticar e por aí vai.
+Esta estrutura é tão massa que o
+<a href="https://behat.org/en/latest/quick_start.html">Behat a utiliza por padrão</a>.</p>
+<hr />
+<h3>Sempre injete as dependências</h3>
+<p><strong>Motivo:</strong> mockar estado global é terrível, não ser capaz de mockar as
+dependências torna impossível testar uma funcionalidade.</p>
+<p>Aqui vai uma lição para a vida: <strong>Esqueça sobre classes estáticas que mantém
+estado e também instâncias singleton.</strong> Se a sua classe depende de algo,
+torne-o injetável.</p>
+<p>Aqui vai um exemplo particularmente triste:</p>
+<pre><code class="language-php">class FeatureToggle
+{
+  public function isActive(
+    Id $feature
+  ): bool {
+    $cookieName = $feature-&gt;getCookieName();
+
+    // Early return se o
+    // cookie está presente
+    if (Cookies::exists(
+      $cookieName
+    )) {
+      return Cookies::get(
+        $cookieName
+      );
+    }
+
+    // Calcular feature toggle...
+  }
+}</code></pre>
+<p>Agora. Como você poderia testar este early return?</p>
+<p>Não consegue né, Moisés?</p>
+<p>Pra testar este método, nós precisaríamos entender o comportamento
+desta classe <code>Cookies</code> e tomar certeza de que conseguiríamos reproduzir
+todo o ambiente por trás desta classe para forçar alguns retornos.</p>
+<p>Faz isso não.</p>
+<p>A gente pode consertar essa situação injetando uma instância de <code>Cookies</code>
+como dependência. O teste ficaria parecido com o seguinte:</p>
+<pre><code class="language-php">// Test class...
+private Cookies $cookieMock;
+
+private FeatureToggle $service;
+
+// Preparing our service and dependencies
+public function setUp(): void
+{
+  $this-&gt;cookieMock = $this-&gt;prophesize(
+    Cookies::class
+  );
+
+  $this-&gt;service = new FeatureToggle(
+    $this-&gt;cookieMock-&gt;reveal()
+  );
+}
+
+public function testIsActiveIsOverriddenByCookies(): void
+{
+  // Given
+  $feature = $this-&gt;givenFeatureXExists();
+
+  // When
+  $this-&gt;whenCookieOverridesFeatureWithTrue(
+    $feature
+  );
+
+  // Then
+  $this-&gt;assertTrue(
+    $this-&gt;service-&gt;isActive($feature)
+  );
+  // poderíamos também testar que
+  // nenhum outro método foi chamado
+}
+
+private function givenFeatureXExists(): Id
+{
+  // ...
+  return $feature;
+}
+
+private function whenCookieOverridesFeatureWithTrue(
+  Id $feature
+): void {
+  $cookieName = $feature-&gt;getCookieName();
+  $this-&gt;cookieMock-&gt;exists($cookieName)
+    -&gt;shouldBeCalledOnce()
+    -&gt;willReturn(true);
+
+  $this-&gt;cookieMock-&gt;get($cookieName)
+    -&gt;shouldBeCalledOnce()
+    -&gt;willReturn(true);
+}</code></pre>
+<p><strong>O mesmo acontece com singletons.</strong> Então se você quer <strong>tornar um objeto
+único</strong>, é só <strong>configurar o seu injetor de dependências direito</strong> em vez
+de utilizar o Singleton (anti) pattern.</p>
+<p>Do contrário você vai acabar escrevendo métodos como <code>reset()</code> ou
+<code>setInstance()</code>, que só são úteis para classes de teste. Me soa no
+mínimo estranho. </p>
+<p>Mudar o seu desgin para tornar testes mais simples está tudo bem. <strong>Criar
+métodos para tornar testes mais simples não está ok.</strong></p>
+<hr />
+<h3>Nunca teste métodos protected/private</h3>
+<p><strong>Motivo:</strong> a forma como testamos uma funcionalidade é fazendo assertions
+em como a sua assinatura se comporta: dada uma condição, quando eu faço X,
+espero que Y aconteça.
+<strong>Métodos protected/private não são parte da assinatura de uma funcionalidade.</strong></p>
+<p>Eu vou inclusive me recusar a te mostrar uma forma de &quot;testar&quot; métodos privados,
+mas aqui vai uma dica: você fazer isso com a <a href="https://www.php.net/manual/en/book.reflection.php">reflection API</a>.</p>
+<p>Por favor, castigue-se de alguma forma sempre que pensar em utilizar reflections
+pra testar um método privado!</p>
+<p>Por definição, métodos privados vão somente ser chamados de dentro da classe.
+Então não são publicamente acessíveis. Isto significa que apenas métodos
+públicos nesta mesma classe consegue invocar tais métodos privados.</p>
+<p><strong>Se você testou todos os métodos públicos, você também deve ter testado os
+protegidos/privados de uma vez só.</strong> Se não, pode apagar cada um deles, que
+ninguém tá usando eles mesmo.</p>
+<hr />
+<h2>Além do básico: as coisas interessantes</h2>
+<p>Espero que você não tenha ficado entediado(a) até aqui. Básico é básico, mas
+precisa ser escrito.</p>
+<p>Agora, durante as próximas linhas, vou compartilhar contigo algumas opiniões
+que carrego sobre testes limpos e cada decisão que impacta meu fluxo de
+desenvolvimento.</p>
+<p><strong>Eu diria que os valores mais importantes que levo em consideração enquanto
+escrevo testes são os seguintes:</strong></p>
+<ul>
+<li>Aprendizado</li>
+<li>Receber feedback rápido</li>
+<li>Documentação</li>
+<li>Refatoração</li>
+<li>Design enquanto testo</li>
+</ul>
+<p>Cada opinião que exponho abaixo segue ao menos um destes valores e cada
+uma dá suporte à outra.</p>
+<h3>Teste vem primeiro, não depois</h3>
+<p><strong>Valores</strong>: aprendizado, receber feedback rápido, documentação, refatoração,
+design enquanto testo.</p>
+<p>Esta é a base de tudo. É tão importante que carrega todos os valores de uma
+vez só.</p>
+<p>Escrever teste primeiro lhe força entender como o seu &quot;given, when, then&quot;
+deve ser estruturado. <strong>Você documenta primeiro ao escrever assim</strong> e,
+mais importante ainda, <strong>aprende e torna explícito seus requisitos</strong> como
+coisas mais relevantes no software.</p>
+<p><strong>Te parece estranho escrever um teste antes de escrever algo?</strong> Imagine
+o quão embaraçoso é implementar algo e, enquanto testa, descobrir que todos
+os &quot;given, when, then&quot; não têm sentido algum.</p>
+<p>Testar primeiro também te permite rodar os testes contra as expectativas a
+cada 2 segundos. <strong>Você recebe feedback de suas mudanças da forma mais rápida
+possível. Não importa o quão grande ou pequena a feature possa parecer.</strong></p>
+<p><strong>Testes que estão passando indicam as melhores áreas para refatorar no sistema.</strong>
+Em algum momento eu provavelmente escreverei sobre refatoração, mas a coisa é:
+sem teste, sem refatoração. Porque refatorar sem testes é simplesmente arriscado
+demais.</p>
+<p>E por último, mas não menos importante, ao definir o seu &quot;given, when, then&quot;
+fica claro quais interfaces seus métodos devem ter e como elas devem se
+comportar. <strong>Manter este teste limpo também irá lhe forçar a tomar diferentes
+decisões de design.</strong></p>
+<p>Irá lhe forçar a criar factories, interfaces, quebrar heranças e por aí vai.
+E, sim, para tornar o teste mais simples!</p>
+<p>Se seus testes são um documento vivo que pretende explicar como o software
+funciona, <strong>é extremamente importante que eles expliquem de forma clara.</strong></p>
+<hr />
+<h3>Não ter testes é melhor que ter testes mal feitos</h3>
+<p><strong>Valores</strong>: aprendizado, documentação, refatoração.</p>
+<p>Muitos(as) desenvolvedores(as) escrevem teste da seguinte forma: escreve
+a funcionalidade, soca o framework de teste até cobrir um certo tanto de
+linhas e enviam pra produção.</p>
+<p>O que eu gostaria que fosse levado em consideração com mais frequência, porém,
+é quando o(a) próximo(a) desenvolvedor(a) visita esta funcionalidade. <strong>O que
+os testes estão realmente contando a esta pessoa...</strong></p>
+<p>Normalmente testes cujo nome não dizem muita coisa, são testes mal escritos.
+O que é mais claro pra ti: <code>testCanFly</code> ou
+<code>testCanFlyReturnsFalseWhenPersonHasNoWings</code>?</p>
+<p>Sempre que seu teste não representar nada além de bagunça e códigos forçando
+ao framework aumentar o coverage com exemplos que não parecem fazer qualquer
+sentido, é hora de parar e pensar se vale a pena escrever este teste.</p>
+<p>Até mesmo coisas bestas como nomear uma variável como <code>$a</code> e <code>$b</code>, ou dar nomes
+que não se relacionam com o caso de uso.</p>
+<p><strong>Lembre-se:</strong> testes são um documento vivo, tentando explicar como o software
+deveria se comportar. <code>assertFalse($a-&gt;canFly())</code> não documenta muita coisa.
+Já <code>assertFalse($personWithNoWingos-&gt;canFly())</code> documenta.</p>
+<hr />
+<h3>Rode seus testes compulsivamente</h3>
+<p><strong>Valores</strong>: aprendizado, receber feedback rápido, refatoração.</p>
+<p><strong>Antes de iniciar qualquer funcionalidade: rode os testes.</strong> Se os testes
+estiverem quebrados antes de você tocar qualquer coisa, você saberá <em>antes</em>
+de escrever qualquer código e não irá gastar preciosos minutos depurando
+testes quebrados que você nem tinha conhecimento sobre.</p>
+<p><strong>Após salvar um arquivo: rode os testes.</strong> O quanto antes você souber que
+quebrou algo, mais cedo saberá como corrigir o problema e continuar. Se
+interromper seu fluxo de trabalho para corrigir um problema te parece
+improdutivo, imagina só voltar vários passos atrás pra corrigir um problema
+que você não fazia ideia ter causado.</p>
+<p><strong>Depois de trocar uma ideia com o(a) colega ou verificar suas notificações
+do github: rode os testes.</strong> Se o teste estiver vermelho, você sabe onde
+parou. Se estiverem verdes, você sabe que pode continuar.</p>
+<p><strong>Antes de refatorar algo, até mesmo nomes de variáveis: rode os testes.</strong></p>
+<p>Sério mesmo, rode os testes. É de graça. Rode os testes com a mesma
+frequência em que salva seus arquivos.</p>
+<p>Na real, o <a href="https://github.com/spatie/phpunit-watcher">PHPUnit Watcher</a>
+resolve exatamente esse problema pra gente e até envia notificação
+quando os testes rodam.</p>
+<hr />
+<h3>Grandes testes, grandes responsabilidades</h3>
+<p><strong>Valores</strong>: aprendizado, refatoração, design enquanto testo.</p>
+<p>Seria ideal que cada classe teria ao menos um caso de teste pra si.
+E também que cada método público fosse coberto com testes. E cada
+fluxo alternativo (if/switch/try-catch/exception)...</p>
+<p>Contemos mais ou menos assim:</p>
+<ul>
+<li>1 classe = 1 caso de teste</li>
+<li>1 método = 1 ou mais testes</li>
+<li>1 fluxo alternativo (if/switch/try-catch/exception) = 1 teste</li>
+</ul>
+<p>Então um código simples como o abaixo deveria ter 4 testes diferentes:</p>
+<pre><code class="language-php">// class Person
+public function eatSlice(Pizza $pizza): void
+{
+  // testar exception
+  if ([] === $pizza-&gt;slices()) {
+    throw new LogicException('...');
+  }
+
+  // testar exception
+  if (true === $this-&gt;isFull()) {
+    throw new LogicException('...');
+  }
+
+  // testar caminho padrão (slices = 1)
+  $slices = 1;
+  // testar caminho alternativo (slices = 2)
+  if (true === $this-&gt;isVeryHungry()) {
+    $slices = 2;
+  }
+
+  $pizza-&gt;removeSlices($slices);
+}</code></pre>
+<p><strong>Quanto mais métodos públicos, mais testes.</strong></p>
+<p>E ninguém gosta de ler documentos longos. Como seu caso de teste também é
+um documento, deixá-lo pequeno e conciso irá aumentar a sua qualidade e
+utilidade.</p>
+<p>Isto também é um grande sinal de que sua classe está acumulando
+responsabilidades e pode ser hora de botar o chapéu de refatoração pra
+remover funcionalidades, mover para classes diferentes ou repensar parte
+do seu design.</p>
+<hr />
+<h3>Mantenha uma suite de regressão</h3>
+<p><strong>Valores</strong>: aprendizado, documentação, receber feedback rápido. </p>
+<p>Se liga nessa função:</p>
+<pre><code class="language-php">function findById(string $id): object
+{
+  return fromDb((int) $id);
+}</code></pre>
+<p>Você esperou alguém passar <code>"10"</code> mas, em vez disso, foi passado <code>"10 bananas"</code>.
+Ambas formas acham o valor, mas uma não deveria. Você tem um bug.</p>
+<p>A primeira coisa a fazer? Escrever um teste que descreva que este comportamento
+está errado!!</p>
+<pre><code class="language-php">public function testFindByIdAcceptsOnlyNumericIds(): void
+{
+  $this-&gt;expectException(InvalidArgumentException::class);
+  $this-&gt;expectExceptionMessage(
+    'Only numeric IDs are allowed.'
+  );
+
+  findById("10 bananas");
+}</code></pre>
+<p>Testes não estão passando, é claro. Mas agora você sabe o que fazer para
+fazê-los passar. Remova o bug, faça o teste passar, joga no master,
+dá aquele deploy e vai ser feliz!</p>
+<p>Mantenha este teste ali, pra sempre. Se possível, numa suite de testes
+especializada em regressão e conecte este teste com uma issue.</p>
+<p>E prontinho! Feedback rápido enquanto corrige bugs, documentação feita,
+código a prova de regressões e felicidade.</p>
+<hr />
+<h2>Notas finais e bora trocar ideia</h2>
+<p>Ufa, falei um monte ein... E é claro que a maioria das coisas aqui são
+opiniões minhas que desenvolvi conforme fui evoluindo na carreira. Não
+estão certas ou erradas, são apenas opiniões.</p>
+<p>Este post continuará crescendo conforme eu veja que alguns tópicos
+importantes ficaram de fora.</p>
+<p>Sinta-se sempre livre pra comentar e enviar dúvidas direto no meu twitter
+ou pelo repositório do projeto no Github. </p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian">
+    @nawarian
+  </a>
+</div></body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>
