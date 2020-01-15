@@ -209,3 +209,28 @@ atualizado para que possamos aprender juntos.
   </a>
 </div>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Como o PHP funciona na verdade?",
+  "description": "O desenvolvimento moderno de produtos requer cada vez menos conhecimento em linguagens de programação, arquitetura e ecossistemas. É muito importante entendê-los, porém. Hoje nós falaremos sobre como o PHP funciona por baixo dos panos e como melhor tomar proveito da linguagem.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/2-engine.jpg"
+   ],
+  "datePublished": "2019-11-09T00:00:00+08:00",
+  "dateModified": "2019-11-09T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

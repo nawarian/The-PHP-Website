@@ -382,3 +382,28 @@ and develop this idea together 😉
   </a>
 </div>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "So you thought you knew about php generators",
+  "description": "In this post I talk about PHP Generators, how to work with Coroutines and how the language ecosystem could evolve with it.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/3-generators.jpg"
+   ],
+  "datePublished": "2019-12-11T00:00:00+08:00",
+  "dateModified": "2019-12-11T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

@@ -233,3 +233,29 @@ outros.
     @nawarian
   </a>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Olá, PHP. Eu sou um Engenheiro.",
+  "description": "As pessoas ainda usam PHP? Neste post eu explico o motivo desta ser a pergunta errada e onde eu prefiro focar minha atenção como engenheiro.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/0-hello.jpg"
+   ],
+  "datePublished": "2019-10-29T00:00:00+08:00",
+  "dateModified": "2019-10-29T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

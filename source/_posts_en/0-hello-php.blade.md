@@ -215,3 +215,29 @@ individuals struggling to climb higher by pointing to others' defects.
     @nawarian
   </a>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Hello, PHP. I am an Engineer.",
+  "description": "Do people even use PHP? In this post I explain why this is the wrongest question to ask and where I prefer paying attention as an Engineer.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/0-hello.jpg"
+   ],
+  "datePublished": "2019-10-29T00:00:00+08:00",
+  "dateModified": "2019-10-29T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

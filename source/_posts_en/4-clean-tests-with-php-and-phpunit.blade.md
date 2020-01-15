@@ -714,3 +714,29 @@ or in this project's Github Repository.
     @nawarian
   </a>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Clean tests with PHP and PHPUnit",
+  "description": "This post aims to help you reducing the number of WTF per second when writing, reading and changing test code on your PHP application using the test framework PHPUnit.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/4-writing-great-tests.jpg"
+   ],
+  "datePublished": "2020-01-07T00:00:00+08:00",
+  "dateModified": "2020-01-07T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

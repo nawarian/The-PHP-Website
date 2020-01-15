@@ -394,3 +394,28 @@ desenvolver essa ideia juntos 😉
   </a>
 </div>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Você achou que sabia sobre Generators no PHP",
+  "description": "Neste post eu falo sobre Generators em PHP, como trabalhar com Coroutines e como o ecossistema da linguagem poderia evoluir com isso.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/3-generators.jpg"
+   ],
+  "datePublished": "2019-12-23T00:00:00+08:00",
+  "dateModified": "2019-12-23T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

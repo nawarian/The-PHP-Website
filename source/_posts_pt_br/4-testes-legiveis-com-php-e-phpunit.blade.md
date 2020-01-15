@@ -736,3 +736,29 @@ ou pelo repositório do projeto no Github.
     @nawarian
   </a>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Testes legíveis com PHP e PHPUnit",
+  "description": "Este post tem a intenção de lhe ajudar a reduzir o número de \"Diabéiss\" por segundo enquanto escreve, lê e muda código de teste em sua aplicação PHP usando o framework de testes PHPUnit.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/4-writing-great-tests.jpg"
+   ],
+  "datePublished": "2020-01-07T00:00:00+08:00",
+  "dateModified": "2020-01-07T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

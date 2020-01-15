@@ -468,3 +468,29 @@ toque pra discutir ou perguntar coisas.
     @nawarian
   </a>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "TDD com PHP na vida real",
+  "description": "Neste post eu explico como eu faço Test-Driven Development com PHP. O foco é no ciclo de feedback que o TDD provê, e quais ferramentas são adequadas para alcançar este ciclo enquanto programo em PHP.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/1-test.jpg"
+   ],
+  "datePublished": "2019-11-03T00:00:00+08:00",
+  "dateModified": "2019-11-03T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>

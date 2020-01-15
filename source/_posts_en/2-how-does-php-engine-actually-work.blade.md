@@ -209,3 +209,29 @@ together.
     @nawarian
   </a>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How does PHP's engine actually work",
+  "description": "Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.",
+  "image": [
+    "{{ $page->getBaseUrl() }}/assets/images/2-engine.jpg"
+   ],
+  "datePublished": "2019-11-09T00:00:00+08:00",
+  "dateModified": "2019-11-09T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>
