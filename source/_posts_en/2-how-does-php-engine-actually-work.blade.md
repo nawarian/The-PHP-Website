@@ -30,7 +30,7 @@ preloading help php removing the overhead on this process.
 On web servers PHP is normally used with PHP-FPM, which brings
 amazing scaling capabilities to it.
 
-# So... what is PHP?
+## So... what is PHP?
 
 @php
   $today = date_create('today');
@@ -64,7 +64,7 @@ When it comes to web pages, though, this might change a bit.
 Given PHP can run both as a CGI or module in your http server.
 Let's give it a closer look.
 
-## How does PHP work with HTTP Servers?
+### How does PHP work with HTTP Servers?
 
 In general HTTP servers have a very clear responsibility:
 provide hypermedia content using the [HTTP Protocol](https://tools.ietf.org/html/rfc2616#page-7).
@@ -126,7 +126,7 @@ context it has a fresh execution every single request, it
 is also clear that PHP's most scalable trait is also one
 of its most relevant performance bottlenecks.
 
-## How does PHP scripting work?
+### How does PHP scripting work?
 
 PHP language is written in C and the way it works is actually
 quite cool.
@@ -177,7 +177,7 @@ during a sever start-up process. This way, the first time a request
 hits `index.php`, php will just fetch it from opcache and execute it.
 **No extra parsing needed**.
 
-## Is this information even useful?
+### Is this information even useful?
 
 I have this feeling that php engineers (as well as python engineers)
 usually hold great knowledge on how back-end components connect to

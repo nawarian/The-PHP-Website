@@ -30,7 +30,7 @@ preloading ajudam PHP a remover a sobrecarga neste processo.
 Em servidores web, PHP normalmente é utilizado com PHP-FPM, que traz
 consigo uma capacidade incrível de escalabilidade.
 
-# Então... o que é PHP?
+## Então... o que é PHP?
 
 @php
   $hoje = date_create('today');
@@ -63,7 +63,7 @@ Quando falamos de desenvolvimento web, isso pode mudar um pouco. Dado
 que o PHP pode rodar como CGI ou módulo no servidor http. Vamos dar
 uma olhada.
 
-## Como o PHP funciona com servidores HTTP?
+### Como o PHP funciona com servidores HTTP?
 
 Em geral, servidores HTTP têm uma responsabilidade bem clara:
 prover conteúdo de hipermídia usando o [Protocolo HTTP](https://tools.ietf.org/html/rfc2616#page-7).
@@ -123,7 +123,7 @@ possui uma execução isolada a cada request, isso também significa que
 a sua característica mais escalável também é um dos seus mais relevantes
 gargalos de performance.
 
-## Como o scripting com PHP funciona?
+### Como o scripting com PHP funciona?
 
 A linguagem PHP é escrita em C e a forma como funciona é na real bem
 massa.
@@ -174,7 +174,7 @@ ao subir o servidor. Desta forma, da primeira vez que uma request tocar
 `index.php`, o php irá buscar o compilado diretamente no opcache. **Sem
 precisar interpretar o arquivo durante a request**.
 
-## E pra quê tu tá me dizendo tudo isso?
+### E pra quê tu tá me dizendo tudo isso?
 
 Eu sinto que engenheiros(as) PHP (assim como python) normalmente possuem
 grande conhecimento sobre como os componentes se conectam no back-end,

@@ -31,7 +31,7 @@ engineer. You probably still have a loooong way to go.
 
 Just read below.
 
-# Hello, PHP. I am an Engineer.
+---
 
 I write this post little after `CVE-2019-11043` became popular. Yes,
 popular.
@@ -70,7 +70,7 @@ Instead of just learning how to write bad code in different
 languages (which we also do), we've been shaping PHP and its
 ecosystem to look a bit better every day.
 
-## PHP is, in fact, a pirate language
+### PHP is, in fact, a pirate language
 
 I once heard PHP is a pirate language. I really like this
 metaphor.
@@ -160,7 +160,7 @@ silly to mention how slow it is without understanding your problem.
 
 \* sighs *
 
-## PHP is just another tool. It is _YOUR JOB_ to understand if fits
+### PHP is just another tool. It is _YOUR JOB_ to understand if fits
 
 Really, if you could take one idea from this text with you, choose
 this: **as an engineer, your job is to spot the problem, identify

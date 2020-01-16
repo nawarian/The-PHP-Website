@@ -27,7 +27,7 @@ coroutines and dark magic 🧙‍!
 If you seek a more complete and mind blowing explanation,
 please read [this article from 2012 by nikic](https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html).
 
-# What are Generators and what do they do?
+## What are Generators and what do they do?
 
 Let's start from [the official documentation](https://www.php.net/manual/en/language.generators.overview.php). We'll find many clues
 from there!
@@ -88,7 +88,7 @@ allocated memory for only one.
 You probably knew this since 2012, yes. Let's just quickly
 summarize this part and jump to the fun!
 
-## What PHP Generators do?
+### What PHP Generators do?
 
 Generators provide us with a **simple way of creating iterators**
 with no need to implement the Iterator interface and allow
@@ -112,7 +112,7 @@ $xrange = xrange();
 $xrange->next(); // Pulls next yield
 ```
 
-# What you possibly don't know about php Generators, though...
+## What you possibly don't know about php Generators, though...
 
 The amazing feature from generators that people often
 miss is the capacity of **pushing values back to the generator
@@ -130,7 +130,7 @@ Including **coroutines**, **asynchronous programming** and
 **optimizing data fetching**. You'll love this last one,
 bare with me!
 
-## How to push data back to the generator function?
+### How to push data back to the generator function?
 
 Actually is quite simple. A Generator object contains
 all Iterator methods and a few more. One of them is the
@@ -187,13 +187,13 @@ amazing **concrete applications of Generators that can change
 your life** or at least bring you to consider a different
 paradigm.
 
-# What are PHP Generators used for?
+## What are PHP Generators used for?
 
 I'd like to present you **two great applications for php Generators**.
 One is open source and can be used right away, the other one is
 more of a concept and you'd have to develop something by your own.
 
-## Async development: how Amp framework works
+### Async development: how Amp framework works
 
 I know, you probably already heard about Amp framework
 and how it can help you developing async code with PHP.
@@ -272,7 +272,7 @@ If you're fine with it, go ahead. There's a whole new world to be
 explored! Just check out [the currently available packages on Amp Framework](https://amphp.org/packages)
 so you don't reinvent the wheel.
 
-## Optimized data retrieval with Generators
+### Optimized data retrieval with Generators
 
 We're in this kind of web api era, which is really cool. There
 are many patterns to follow as API provider in PHP: SOAP, REST,

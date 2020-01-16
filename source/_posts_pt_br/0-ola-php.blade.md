@@ -34,7 +34,7 @@ a ser percorrido.
 
 Leia abaixo.
 
-# Olá, PHP. Eu sou um Engenheiro.
+---
 
 Eu escrevo este post um pouco depois da `CVE-2019-11043` ter se
 tornado popular. Sim, popular.
@@ -77,7 +77,7 @@ Em vez de somente aprender como escrever código ruim em diversas
 linguagens (que a gente também faz), optamos por formar o PHP e
 todo seu ecossistema a ficar um pouquinho melhor todos os dias.  
 
-## PHP é, de fato, uma linguagem pirata
+### PHP é, de fato, uma linguagem pirata
 
 Uma vez eu ouvi que PHP é uma linguagem pirata. E eu gosto demais
 dessa metáfora.
@@ -172,7 +172,7 @@ tu precisa resolver.
 
 \* suspiro *
 
-## PHP é só mais uma ferramenta. É o _SEU TRABALHO_ entender se é a adequada
+### PHP é só mais uma ferramenta. É o _SEU TRABALHO_ entender se é a adequada
 
 Sério, se tu puder tomar pelo menos uma ideia desse texto contigo,
 escolhe essa daqui: **como engenheiro(a), seu trabalho é encontrar

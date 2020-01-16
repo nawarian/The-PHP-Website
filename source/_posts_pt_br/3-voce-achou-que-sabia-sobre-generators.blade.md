@@ -28,7 +28,7 @@ proveem com o poder do async, coroutines e várias magias 🧙!
 Se você busca uma explicação mais exaustiva, dá uma sacada
 [nesse artigo de 2012 do nikic](https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html).
 
-# O que são Generators e o que eles fazem?
+## O que são Generators e o que eles fazem?
 
 Comecemos pela [documentação oficial](https://www.php.net/manual/en/language.generators.overview.php).
 Encontraremos várias pistas a partir dela!
@@ -92,7 +92,7 @@ Você provavelmente já sabia isso desde 2012, claro. Mas
 vamos resumir aqui rapidex e partir pra parte divertida
 do texto!
 
-## O que PHP Generators fazem?
+### O que PHP Generators fazem?
 
 Generators nos permitem **criar iterators facilmente** sem
 precisar implementar a interface Iterator e permitem
@@ -117,7 +117,7 @@ $xrange = xrange();
 $xrange->next(); // Puxa o próximo yield
 ```
 
-# O que você possivelmente não sabe sobre Generators...
+## O que você possivelmente não sabe sobre Generators...
 
 Uma feature maravilhosa dos Generators que normalmente
 deixam passar batido é a capacidade de **enviar valores
@@ -134,7 +134,7 @@ Incluindo **coroutines**, **programação assíncrona** e
 **otimização de coleta de dados**. Tu vai curtir essa ultima,
 segue a linha!
 
-## Como enviar valores de volta para a generator function?
+### Como enviar valores de volta para a generator function?
 
 Na verdade é bem simples. Um objeto do tipo Generator implementa
 todos os métodos de Iterator e alguns a mais. Um deles é
@@ -190,14 +190,14 @@ Isso tudo é teoria e é bem massa. Mas tem algumas **implementações
 reais de Generators que podem mudar a sua vida** ou pelo menos
 te fazer considerar um paradigma diferente.
 
-# Para que são utilizados Generators?
+## Para que são utilizados Generators?
 
 Eu gostaria de lhe apresentar **duas aplicações maneiras de
 Generators com PHP**. Uma é open source e tu pode começar a
 utilizar desde já. A outra é mais um conceito e tu precisaria
 desenvolver algo pra si.
 
-## Desenvolvimento assíncrono: como o framework Amp funciona
+### Desenvolvimento assíncrono: como o framework Amp funciona
 
 Eu sei, você provavelmente já ouviu falar do framework Amp e
 como ele pode te ajudar a desenvolver código assíncrono no PHP.
@@ -278,7 +278,7 @@ Se você está ok com essa ideia, vá em frente. Tem todo um mundo
 a ser explorado! Dá uma olhada nos [pacotes disponíveis no Framework Amp](https://amphp.org/packages)
 só pra ter certeza de que você não vá reinventar a roda.
 
-## Otimização de coleta de dados com Generators
+### Otimização de coleta de dados com Generators
 
 A gente tá nessa era de web apis, o que é bem maneiro. Existem
 vários padrões a se seguir enquando provedor de API: SOAP, REST,

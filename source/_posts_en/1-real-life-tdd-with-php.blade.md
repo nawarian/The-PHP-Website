@@ -27,8 +27,6 @@ for you: **_"Test Driven Development: By Example"_, by Kent Beck**.
 
 All code written here is available on [thephp.website's github repository]({{ $page->get('github') . '/tree/master/code/1-real-life-tdd-with-php/archive-org-client' }}).
 
-# Real Life Test-Driven Development with PHP
-
 **No BS mode: ON.** (let's move fast!)
 
 Test Driven Development is not about writing unit tests, **it is about
@@ -52,7 +50,7 @@ Writing test first:
 - keeps you focused on your goal
 - engages you into a constant feedback cycle: change, save, run test
 
-# Building a metadata adapter for Archive.org with TDD
+## Building a metadata adapter for Archive.org with TDD
 
 To come up with a reasonable coding example, let's build a client
 to fetch metadata from Archive.org's items.
