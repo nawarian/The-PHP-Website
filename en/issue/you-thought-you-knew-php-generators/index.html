@@ -47,7 +47,7 @@ using arrays. They provide us with the power of async,
 coroutines and dark magic 🧙‍!</p>
 <p>If you seek a more complete and mind blowing explanation,
 please read <a href="https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html">this article from 2012 by nikic</a>.</p>
-<h1>What are Generators and what do they do?</h1>
+<h2>What are Generators and what do they do?</h2>
 <p>Let's start from <a href="https://www.php.net/manual/en/language.generators.overview.php">the official documentation</a>. We'll find many clues
 from there!</p>
 <p>Generators are a php feature since version 5.5, as you
@@ -93,7 +93,7 @@ allocated memory for 10,000 integers, while <code>xrange()</code>
 allocated memory for only one.</p>
 <p>You probably knew this since 2012, yes. Let's just quickly
 summarize this part and jump to the fun!</p>
-<h2>What PHP Generators do?</h2>
+<h3>What PHP Generators do?</h3>
 <p>Generators provide us with a <strong>simple way of creating iterators</strong>
 with no need to implement the Iterator interface and allow
 <strong>code interruption</strong> for better memory management or any sort
@@ -111,7 +111,7 @@ function xrange(): \Generator {
 
 $xrange = xrange();
 $xrange-&gt;next(); // Pulls next yield</code></pre>
-<h1>What you possibly don't know about php Generators, though...</h1>
+<h2>What you possibly don't know about php Generators, though...</h2>
 <p>The amazing feature from generators that people often
 miss is the capacity of <strong>pushing values back to the generator
 function</strong>.</p>
@@ -125,7 +125,7 @@ amazing tools that negotiate processing flow for you.
 Including <strong>coroutines</strong>, <strong>asynchronous programming</strong> and
 <strong>optimizing data fetching</strong>. You'll love this last one,
 bare with me!</p>
-<h2>How to push data back to the generator function?</h2>
+<h3>How to push data back to the generator function?</h3>
 <p>Actually is quite simple. A Generator object contains
 all Iterator methods and a few more. One of them is the
 <a href="https://www.php.net/manual/en/generator.send.php"><code>Generator::send()</code></a>
@@ -173,11 +173,11 @@ you feel like is necessary to absorb the idea.</p>
 amazing <strong>concrete applications of Generators that can change
 your life</strong> or at least bring you to consider a different
 paradigm.</p>
-<h1>What are PHP Generators used for?</h1>
+<h2>What are PHP Generators used for?</h2>
 <p>I'd like to present you <strong>two great applications for php Generators</strong>.
 One is open source and can be used right away, the other one is
 more of a concept and you'd have to develop something by your own.</p>
-<h2>Async development: how Amp framework works</h2>
+<h3>Async development: how Amp framework works</h3>
 <p>I know, you probably already heard about Amp framework
 and how it can help you developing async code with PHP.</p>
 <p><strong>But I'm here to take you out from the user land.</strong> I want you
@@ -233,7 +233,7 @@ a certain Promise will resolve a certain type.</p>
 <p>If you're fine with it, go ahead. There's a whole new world to be
 explored! Just check out <a href="https://amphp.org/packages">the currently available packages on Amp Framework</a>
 so you don't reinvent the wheel.</p>
-<h2>Optimized data retrieval with Generators</h2>
+<h3>Optimized data retrieval with Generators</h3>
 <p>We're in this kind of web api era, which is really cool. There
 are many patterns to follow as API provider in PHP: SOAP, REST,
 GraphQL... This leaves little space for traditional MVC

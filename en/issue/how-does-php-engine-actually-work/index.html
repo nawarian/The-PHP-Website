@@ -47,7 +47,7 @@ and executes such opcodes to obtain results. Opcache and
 preloading help php removing the overhead on this process.</p>
 <p>On web servers PHP is normally used with PHP-FPM, which brings
 amazing scaling capabilities to it.</p>
-<h1>So... what is PHP?</h1>
+<h2>So... what is PHP?</h2>
 <p>Makes me very happy to see how modern PHP development
 requires less and less knowledge to build great products.
 <strong>This is really incredible</strong>.</p>
@@ -67,7 +67,7 @@ memory or context sharing.</p>
 <p>When it comes to web pages, though, this might change a bit.
 Given PHP can run both as a CGI or module in your http server.
 Let's give it a closer look.</p>
-<h2>How does PHP work with HTTP Servers?</h2>
+<h3>How does PHP work with HTTP Servers?</h3>
 <p>In general HTTP servers have a very clear responsibility:
 provide hypermedia content using the <a href="https://tools.ietf.org/html/rfc2616#page-7">HTTP Protocol</a>.
 This means that <strong>http servers would receive a request,
@@ -114,7 +114,7 @@ by nature.</p>
 context it has a fresh execution every single request, it
 is also clear that PHP's most scalable trait is also one
 of its most relevant performance bottlenecks.</p>
-<h2>How does PHP scripting work?</h2>
+<h3>How does PHP scripting work?</h3>
 <p>PHP language is written in C and the way it works is actually
 quite cool.</p>
 <p>The php interpreter would read text files containing php code,
@@ -150,7 +150,7 @@ This functionality allows a set of php files to be preloaded
 during a sever start-up process. This way, the first time a request
 hits <code>index.php</code>, php will just fetch it from opcache and execute it.
 <strong>No extra parsing needed</strong>.</p>
-<h2>Is this information even useful?</h2>
+<h3>Is this information even useful?</h3>
 <p>I have this feeling that php engineers (as well as python engineers)
 usually hold great knowledge on how back-end components connect to
 each other, given our languages usually don't provide much magic or
