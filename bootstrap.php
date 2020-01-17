@@ -3,6 +3,7 @@
 use Nawarian\ThePHPWebsite\Domain\Job\JobRepository;
 use Nawarian\ThePHPWebsite\FetchJobOpportunities;
 use Nawarian\ThePHPWebsite\Infrastructure\Domain\Job\GithubIssueJobRepository;
+use Nawarian\ThePHPWebsite\JsonRssGenerator;
 use TightenCo\Jigsaw\Jigsaw;
 use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
 
@@ -34,6 +35,7 @@ $events->afterCollections(function (Jigsaw $app) {
     $app->setConfig('latestJobsBr', $app->getCollection('jobs_pt_br')->take(10));
 });
 
+// Sitemap
 $events->afterBuild(function (Jigsaw $jigsaw) {
     $outputPath = $jigsaw->getDestinationPath();
 
@@ -55,3 +57,24 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
     )->saveXML());
 });
 
+// RSS JSON feed
+$events->afterBuild(function (Jigsaw $jigsaw) {
+    $outputPath = $jigsaw->getDestinationPath();
+
+    $jsonRssGenerator = $jigsaw->app->get(JsonRssGenerator::class);
+
+    // English posts
+    $englishPosts = $jigsaw->getCollection('posts_en');
+    file_put_contents(
+        $outputPath . '/en/feed.json',
+        (string) $jsonRssGenerator->fromCollection($englishPosts, 'en')
+    );
+
+    // Portuguese posts + jobs
+    $portuguesePosts = $jigsaw->getCollection('posts_pt_br')
+        ->merge($jigsaw->getCollection('jobs_pt_br'));
+    file_put_contents(
+        $outputPath . '/br/feed.json',
+        (string) $jsonRssGenerator->fromCollection($portuguesePosts, 'pt-br')
+    );
+});
