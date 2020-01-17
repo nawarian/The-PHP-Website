@@ -27,7 +27,12 @@
         {{ date('Y-m-d', $page->get('createdAt')) }}
       </time>
     @else
-      <div></div>
+      <a
+        href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.json' : $page->getBaseUrl(). '/br/feed.json' }}"
+        class="feed"
+      >
+        JSON Feed
+      </a>
     @endif
     <nav class="align-right">
       <a href="/br">🇧🇷</a> | <a href="/en">🇬🇧</a>
