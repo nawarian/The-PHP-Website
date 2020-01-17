@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="JSON Feed"
+    href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.json' : $page->getBaseUrl(). '/br/feed.json' }}"
+  />
 
   <title>{{ $page->title ? $page->title . ' | The PHP Website' : 'The PHP Website' }}</title>
 
