@@ -124,7 +124,6 @@ ol.pagination, ul.pagination {
   }
 
   &__header {
-    cursor: pointer;
     text-align: center;
     display: block;
     background-color: rgba(255, 255, 255, .95);
@@ -137,6 +136,7 @@ ol.pagination, ul.pagination {
     position: fixed;
     top: 0;
     left: 0;
+    cursor: pointer;
 
     &--active {
       display: none;
