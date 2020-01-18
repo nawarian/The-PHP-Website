@@ -45,7 +45,7 @@
       </em>
       <ul class="menu-list">
         <li class="menu__list-item">
-          <a href="#">Home</a>
+          <a href="{{ ($page->lang ?? 'en') === 'en' ? '/en/' : '/br/' }}">Home</a>
         </li>
         <li class="menu__list-item">
           <a href="https://github.com/nawarian/The-PHP-Website/issues/new" rel="nofollow">
