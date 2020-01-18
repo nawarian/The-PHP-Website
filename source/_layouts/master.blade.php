@@ -27,26 +27,72 @@
   </script>
 </head>
 <body class="yue">
-  <header>
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="{{ ($page->lang ?? 'en') === 'en' ? '/en/' : '/br/' }}">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="#">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://github.com/nawarian/The-PHP-Website/issues/new" rel="nofollow">
+            {{ ($page->lang ?? 'en') === 'en' ? 'Suggest a Topic!' : 'Peça um Post!' }}
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="#">JSON Rss</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="#">Atom Rss (xml)</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <article class="article">
     @if($page->get('createdAt'))
       <time datetime="{{ date('Y-m-d', $page->get('createdAt')) }}">
         {{ date('Y-m-d', $page->get('createdAt')) }}
       </time>
-    @else
-      <a
-        href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.json' : $page->getBaseUrl(). '/br/feed.json' }}"
-        class="feed"
-      >
-        JSON Feed
-      </a>
     @endif
-    <nav class="align-right">
-      <a href="/br">🇧🇷</a> | <a href="/en">🇬🇧</a>
-    </nav>
-  </header>
-<h1>{{ $page->get('title') }}</h1>
 
-@yield('body')
+    <h1>{{ $page->get('title') }}</h1>
+
+    @yield('body')
+  </article>
 </body>
 <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
 </html>
