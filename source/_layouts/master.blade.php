@@ -8,11 +8,17 @@
   <link
     rel="alternate"
     type="application/json"
-    title="JSON Feed"
+    title="{{ ($page->lang ?? 'en') === 'en' ? '[EN]' : '[BR]' }} thePHP Website"
     href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.json' : $page->getBaseUrl(). '/br/feed.json' }}"
   />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="{{ ($page->lang ?? 'en') === 'en' ? '[EN]' : '[BR]' }} thePHP Website"
+    href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.xml' : $page->getBaseUrl(). '/br/feed.xml' }}"
+  />
 
-  <title>{{ $page->title ? $page->title . ' | The PHP Website' : 'The PHP Website' }}</title>
+  <title>{{ $page->title ? $page->title . ' | thePHP Website' : 'thePHP Website' }}</title>
 
   @include('_layouts.partials.meta')
 
