@@ -492,7 +492,6 @@ ol.pagination, ul.pagination {
   box-sizing: border-box;
 }
 .menu__header {
-  cursor: pointer;
   text-align: center;
   display: block;
   background-color: rgba(255, 255, 255, 0.95);
@@ -504,6 +503,7 @@ ol.pagination, ul.pagination {
   position: fixed;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 .menu__toggle-button--active {
   display: none;
