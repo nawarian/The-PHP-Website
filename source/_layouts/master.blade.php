@@ -76,7 +76,14 @@
       </em>
       <ul class="menu-list">
         <li class="menu__list-item">
-          <a href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.json' : $page->getBaseUrl(). '/br/feed.json' }}">JSON Rss</a>
+          <a href="{{ $page->getBaseUrl() }}{{ ($page->lang ?? 'en') === 'en' ? '/en/feed.json' : '/br/feed.json' }}">
+            {{ ($page->lang ?? 'en') === 'en' ? '[EN]' : '[BR]' }} JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="{{ $page->getBaseUrl() }}{{ ($page->lang ?? 'en') === 'en' ? '/br/feed.xml' : '/br/feed.xml' }}">
+            {{ ($page->lang ?? 'en') === 'en' ? '[EN]' : '[BR]' }} Atom Feed (RSS)
+          </a>
         </li>
       </ul>
     </div>
