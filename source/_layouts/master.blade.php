@@ -76,7 +76,7 @@
       </em>
       <ul class="menu-list">
         <li class="menu__list-item">
-          <a href="#">JSON Rss</a>
+          <a href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.json' : $page->getBaseUrl(). '/br/feed.json' }}">JSON Rss</a>
         </li>
       </ul>
     </div>
