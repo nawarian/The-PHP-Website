@@ -204,7 +204,7 @@ atualizado para que possamos aprender juntos.
 
 <div class="align-right">
   --
-  <a href="https://twitter.com/nawarian">
+  <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>

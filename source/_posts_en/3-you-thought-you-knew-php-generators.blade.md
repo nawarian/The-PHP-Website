@@ -377,7 +377,7 @@ and develop this idea together 😉
 
 <div class="align-right">
   --
-  <a href="https://twitter.com/nawarian">
+  <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>

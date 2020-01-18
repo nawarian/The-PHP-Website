@@ -211,7 +211,7 @@ individuals struggling to climb higher by pointing to others' defects.
 
 <div class="align-right">
   --
-  <a href="https://twitter.com/nawarian">
+  <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
