@@ -87,7 +87,7 @@
           </a>
         </li>
         <li class="menu__list-item">
-          <a href="{{ $page->getBaseUrl() }}{{ ($page->lang ?? 'en') === 'en' ? '/br/feed.xml' : '/br/feed.xml' }}">
+          <a href="{{ $page->getBaseUrl() }}{{ ($page->lang ?? 'en') === 'en' ? '/en/feed.xml' : '/br/feed.xml' }}">
             {{ ($page->lang ?? 'en') === 'en' ? '[EN]' : '[BR]' }} Atom Feed (RSS)
           </a>
         </li>
