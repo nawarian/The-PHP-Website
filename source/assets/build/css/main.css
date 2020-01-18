@@ -495,10 +495,10 @@ ol.pagination, ul.pagination {
   cursor: pointer;
   text-align: center;
   display: block;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
   font-weight: 700;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 .menu__toggle-button {
   position: fixed;
@@ -509,12 +509,12 @@ ol.pagination, ul.pagination {
   display: none;
 }
 .menu__toggle-button img {
-  max-height: 30px;
+  max-height: 40px;
 }
 .menu__container {
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.9);
   -webkit-transition: -webkit-transform 100ms ease-in-out;
   transition: -webkit-transform 100ms ease-in-out;
   transition: transform 100ms ease-in-out;
