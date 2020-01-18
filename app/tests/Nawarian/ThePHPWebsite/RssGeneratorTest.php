@@ -4,25 +4,26 @@ declare(strict_types=1);
 
 namespace Nawarian\ThePHPWebsite;
 
+use Nawarian\ThePHPWebsite\Domain\Rss\Feed;
 use PHPUnit\Framework\TestCase;
 use TightenCo\Jigsaw\Collection\Collection;
 use TightenCo\Jigsaw\IterableObject;
 use TightenCo\Jigsaw\PageVariable;
 
-class JsonRssGeneratorTest extends TestCase
+class RssGeneratorTest extends TestCase
 {
     private $jsonRssGenerator;
 
     protected function setUp(): void
     {
-        $this->jsonRssGenerator = new JsonRssGenerator();
+        $this->jsonRssGenerator = new RssGenerator();
     }
 
     public function testFromCollection(): void
     {
         $pages = $this->givenIHaveTwoPagesCollection();
         $json = $this->jsonRssGenerator->fromCollection($pages, 'pt-br');
-        $jsonArray = json_decode((string) $json, true);
+        $jsonArray = json_decode($json->toJsonFeedFormat(Feed::JSON_FEED_V1), true);
 
         self::assertEquals('https://jsonfeed.org/version/1', $jsonArray['version']);
         self::assertEquals('thePHP Website', $jsonArray['title']);
@@ -40,13 +41,13 @@ class JsonRssGeneratorTest extends TestCase
     {
         $pages = $this->givenIHaveTwoPagesCollection();
         $json = $this->jsonRssGenerator->fromCollection($pages, 'pt-br');
-        $jsonArray = json_decode((string) $json, true);
+        $jsonArray = json_decode($json->toJsonFeedFormat(Feed::JSON_FEED_V1), true);
 
         self::assertEquals('https://thephp.website/br/', $jsonArray['home_page_url']);
         self::assertEquals('https://thephp.website/br/feed.json', $jsonArray['feed_url']);
 
         $json = $this->jsonRssGenerator->fromCollection($pages, 'en');
-        $jsonArray = json_decode((string) $json, true);
+        $jsonArray = json_decode($json->toJsonFeedFormat(Feed::JSON_FEED_V1), true);
 
         self::assertEquals('https://thephp.website/', $jsonArray['home_page_url']);
         self::assertEquals('https://thephp.website/en/feed.json', $jsonArray['feed_url']);

@@ -9,12 +9,12 @@ use Illuminate\Support\Collection;
 use Nawarian\ThePHPWebsite\Domain\Rss\Author;
 use Nawarian\ThePHPWebsite\Domain\Rss\Item;
 use Nawarian\ThePHPWebsite\Domain\Rss\ItemCollection;
-use Nawarian\ThePHPWebsite\Domain\Rss\JsonRss;
+use Nawarian\ThePHPWebsite\Domain\Rss\Feed;
 use TightenCo\Jigsaw\PageVariable;
 
-class JsonRssGenerator
+class RssGenerator
 {
-    public function fromCollection(Collection $collection, string $language): JsonRss
+    public function fromCollection(Collection $collection, string $language): Feed
     {
         $isPtBr = $language === 'pt-br';
         $author = new Author('Níckolas Da Silva', 'https://thephp.website/');
@@ -31,8 +31,7 @@ class JsonRssGenerator
             );
         })->toArray();
 
-        return new JsonRss(
-            'https://jsonfeed.org/version/1',
+        return new Feed(
             '',
             'thePHP Website',
             '',
