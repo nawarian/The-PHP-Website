@@ -383,15 +383,6 @@ body {
   }
 }
 
-header {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-header nav a {
-  text-decoration: none;
-}
-
 header nav time {
   display: inline-block;
 }
@@ -481,6 +472,7 @@ ol.pagination, ul.pagination {
 }
 
 .menu {
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -551,5 +543,11 @@ ul.menu-list {
 }
 
 .article {
+  z-index: 0;
   margin-top: 60px;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  max-width: 900px;
 }
