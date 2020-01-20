@@ -11,7 +11,8 @@
         "ext-dom": "*",
         "tightenco/jigsaw": "^1.3",
         "podentender/sitemap-generator": "^0.1.0",
-        "guzzlehttp/guzzle": "^6.5"
+        "guzzlehttp/guzzle": "^6.5",
+        "intervention/image": "^2.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5",

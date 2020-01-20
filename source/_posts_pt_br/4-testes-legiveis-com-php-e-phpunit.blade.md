@@ -6,7 +6,7 @@ createdAt: 2020-01-07
 sitemap:
   lastModified: 2020-01-07
 image:
-  url: /assets/images/4-writing-great-tests.jpg
+  url: /assets/images/posts/4-writing-great-tests-640.webp
   alt: 'Vários(as) desenvolvedores(as) olhando para a mesma tela de computador tentando entender o que se passa'
 meta:
   description:

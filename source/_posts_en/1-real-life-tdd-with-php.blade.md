@@ -5,7 +5,7 @@ createdAt: 2019-11-03
 sitemap:
   lastModified: 2019-11-03
 image:
-  url: /assets/images/1-test.jpg
+  url: /assets/images/posts/1-test-640.webp
   alt: 'Two test cars crashing against each other'
 meta:
   description:

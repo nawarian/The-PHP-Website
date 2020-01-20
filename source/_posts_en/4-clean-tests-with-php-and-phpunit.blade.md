@@ -5,7 +5,7 @@ createdAt: 2020-01-07
 sitemap:
   lastModified: 2020-01-07
 image:
-  url: /assets/images/4-writing-great-tests.jpg
+  url: /assets/images/posts/4-writing-great-tests-640.webp
   alt: 'Many developers looking at the same computer screen trying to understand what is going on'
 meta:
   description:

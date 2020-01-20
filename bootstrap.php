@@ -23,6 +23,19 @@ use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
  */
 $container->bind(JobRepository::class, GithubIssueJobRepository::class);
 
+//$events->beforeBuild(function (Jigsaw $app) {
+//    $manager = $app->app->make(Intervention\Image\ImageManager::class);
+//    $files = $app->getFilesystem()->files('source/assets/images/posts');
+//
+//    /** @var SplFileInfo $file */
+//    foreach ($files as $file) {
+//        $outputPath = dirname($file->getRealPath());
+//        $manager->make($file->getRealPath())
+//            ->widen(640)
+//            ->save("{$outputPath}/{$file->getBasename('.' . $file->getExtension())}-640.webp");
+//    }
+//});
+
 $events->beforeBuild(function (Jigsaw $app) {
     // (POC) Generate job opportunities for pt-br pages
     if ($app->getConfig('production') === true) {

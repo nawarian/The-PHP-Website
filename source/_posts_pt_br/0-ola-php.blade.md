@@ -6,7 +6,7 @@ createdAt: 2019-10-29
 sitemap:
   lastModified: 2019-10-29
 image:
-  url: /assets/images/0-hello.jpg
+  url: /assets/images/posts/0-hello-640.webp
   alt: 'Um smartphone com a tela branca e o texto "Hello"'
 meta:
   description:
