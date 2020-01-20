@@ -1,5 +1,6 @@
 ---
 slug: andamento-php-8
+lang: pt-br
 title: O Andamento do PHP 8
 createdAt: 2020-01-20
 sitemap:
