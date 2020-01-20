@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=78c24f1afac6e0c515c0">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.xml"
+  />
+
+  <title>O Andamento do PHP 8 | thePHP Website</title>
+
+  <meta name="description" content="O PHP 8.0 ainda está sob discussão e muitas coisas estão sendo votadas neste momento. Eu coletei todas as mudanças a serem introduzidas no PHP 8.0 e vou mantê-lo(a) atualizado(a) sobre elas neste post.">
+
+  <meta property="og:title" content="O Andamento do PHP 8">
+  <meta property="og:description" content="O PHP 8.0 ainda está sob discussão e muitas coisas estão sendo votadas neste momento. Eu coletei todas as mudanças a serem introduzidas no PHP 8.0 e vou mantê-lo(a) atualizado(a) sobre elas neste post.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/andamento-php-8">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/5-php-8-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="O Andamento do PHP 8">
+  <meta name="twitter:description" content="O PHP 8.0 ainda está sob discussão e muitas coisas estão sendo votadas neste momento. Eu coletei todas as mudanças a serem introduzidas no PHP 8.0 e vou mantê-lo(a) atualizado(a) sobre elas neste post.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-1');
+  </script>
+</head>
+<body class="yue">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/en/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Suggest a Topic!
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.json">
+            [EN] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.xml">
+            [EN] Atom Feed (RSS)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <article class="article">
+          <time datetime="2020-01-20">
+        2020-01-20
+      </time>
+    
+    <h1>O Andamento do PHP 8</h1>
+
+    <p><a href="/en/issue/state-of-php-8/">Read in English</a></p>
+<p>O PHP 8.0 está <a href="https://wiki.php.net/rfc#php_80">sob discussão e desenvolvimento neste momento</a>.
+Isso significa que muitas coisas neste post ainda vão mudar muito com o tempo. Para cada
+área de interesse eu vou deixar um subtítulo e, conforme as conversas vão para frente na
+comunidade php, eu vou atualizar cada um de acordo.</p>
+<h2>Quando o PHP 8.0 será lançado?</h2>
+<p>Como <a href="https://www.php.net/releases/7_4_0.php">o PHP 7.4 foi lançado há pouco tempo</a> os
+esforços para o PHP 8.0 ainda estão em fase inicial.</p>
+<p><strong>Neste momento, dia 20 de Janeiro de 2020: ainda não há data de lançamento prevista.</strong>
+A <a href="https://wiki.php.net/todo">lista oficial de afazeres para lançamentos do PHP</a> ainda não
+mencionou a versão 8.0.</p>
+<p><a href="https://twitter.com/Crell/status/931427244760846336">Alguns dizem que será lançado em Setembro de 2021</a>
+mas me parece mais uma piada de twitter do que algo sério.</p>
+<hr />
+<h2>Funcionalidades aceitas para a versão 8.0</h2>
+<p>As funcionalidades listadas abaixo <strong>serão entregues com a versão 8.0</strong>. Elas já
+foram votadas, aceitas E implementadas.</p>
+<p>Então se você quer ter um gostinho do que vem nesta versão, dá uma ligada nisso:</p>
+<!-- https://wiki.php.net/rfc/jit -->
+<h3>JIT: Just in Time Compiler</h3>
+<ul>
+<li><strong>Status</strong>: Confirmado.</li>
+<li><strong>Categoria</strong>: Performance.</li>
+<li><strong>Votos</strong>: 50 sim. 2 não.</li>
+</ul>
+<p>Claro que esta funcionalidade precisa de maior explicação e merece um post para
+si, escreverei em breve. Enquanto isso posso citar que esta funcionalidade diz
+ganhar performance até <strong>4 vezes mais rápida</strong> no benchmark Mandelbrot.</p>
+<p>Você pode ver a especificação e discussão <a href="https://wiki.php.net/rfc/jit">visitando a RFC</a>. </p>
+<!-- https://wiki.php.net/rfc/union_types_v2 -->
+<h3>Union Types V2</h3>
+<ul>
+<li><strong>Status</strong>: Confirmado.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+<li><strong>Votos</strong>: 61 sim. 5 não.</li>
+</ul>
+<p>A <a href="https://wiki.php.net/rfc/union_types_v2">RFC Union Types V2</a> permitirá
+explicitar todos os possíveis tipos aceitos em vez do bom e velho <em>mixed</em>.</p>
+<p>A nova sintaxe ficará como a seguinte:</p>
+<pre><code class="language-php">function myFunction(int|float $number): int
+{
+  return round($number);
+}</code></pre>
+<!-- https://wiki.php.net/rfc/weak_maps -->
+<h3>A classe WeakMap</h3>
+<ul>
+<li><strong>Status</strong>: Confirmado.</li>
+<li><strong>Categoria</strong>: Biblioteca Padrão.</li>
+<li><strong>Votos</strong>: 25 sim. 0 não.</li>
+</ul>
+<p>A <a href="https://wiki.php.net/rfc/weak_maps">RFC da classe WeakMap</a> cria uma nova classe
+chamada <code>WeakMap</code> que parece um pouco com a <code>SplObjectStorage</code>.</p>
+<p>A ideia é que você poderá criar um map <code>objeto -&gt; valor</code> com ela, sem impeding
+que o objeto seja apagado pelo garbage collector. Por isso o nome <code>Weak</code>, justamente
+porque existe uma <strong>referência fraca (weak reference) entre o objeto chave e o map</strong>.</p>
+<p>Removendo um objeto mapeado da memória causará a remoção do valor dentro do map.
+Como no seguinte trecho de código:</p>
+<pre><code class="language-php">$map = new WeakMap();
+$obj = new DateTime('today');
+
+$map[$obj] = 100;
+
+// Mostra uma chave
+var_dump($map);
+
+// Remove $obj da memória
+unset($obj);
+
+// WeakMap está vazio
+var_dump($map);</code></pre>
+<!-- https://wiki.php.net/rfc/consistent_type_errors -->
+<h3>Exceções do tipo TypeError serão lançadas em erros de parâmetros</h3>
+<ul>
+<li><strong>Status</strong>: Confirmado.</li>
+<li><strong>Categoria</strong>: Biblioteca Padrão.</li>
+<li><strong>Votos</strong>: 50 sim. 2 no.</li>
+</ul>
+<p>Sempre que você causa um type error numa função de usuário, uma exceção
+é lançada. Para funções internas o PHP apenas mostra um warning e retorna
+<code>null</code> por padrão.</p>
+<p><a href="https://wiki.php.net/rfc/consistent_type_errors">A RFC de TypeError consistentes</a>
+torna os dois comportamentos consistentes, lançando uma exceção de TypeError
+nos dois casos.</p>
+<!-- https://wiki.php.net/rfc/negative_array_index -->
+<h3>Chaves de array implícitas serão mais consistentes</h3>
+<ul>
+<li><strong>Status</strong>: Confirmado.</li>
+<li><strong>Categoria</strong>: Biblioteca Padrão.</li>
+<li><strong>Votos</strong>: 17 sim. 2 não.</li>
+</ul>
+<p>Sempre que você utiliza índices negativos na função <code>array_fill</code>, ela irá
+gerar o primeiro índice negativo e depois pular para 0 (🤦‍♀️). Tipo assim:</p>
+<pre><code class="language-php">$a = array_fill(-2, 3, true);
+var_dump($a);
+
+// Saída
+array(3) {
+  [-2] =&gt;
+  bool(true)
+  [0] =&gt;
+  bool(true)
+  [1] =&gt;
+  bool(true)
+}</code></pre>
+<p>A <a href="https://wiki.php.net/rfc/negative_array_index">RFC Negative Array Index</a>
+visa corrigir esse comportamento fazendo com que o <code>array_fill</code> ande corretamente
+pelos índices negativos:</p>
+<pre><code class="language-php">$a = array_fill(-2, 3, true);
+var_dump($a);
+
+// Saída
+array(3) {
+  [-2] =&gt;
+  bool(true)
+  [-1] =&gt;
+  bool(true)
+  [0] =&gt;
+    bool(true)
+  }</code></pre>
+<!-- https://wiki.php.net/rfc/lsp_errors -->
+<h3>Fatal Error em sobrecarga de métodos</h3>
+<ul>
+<li><strong>Status</strong>: Confirmado.</li>
+<li><strong>Categoria</strong>: Biblioteca Padrão.</li>
+<li><strong>Votos</strong>: 39 sim. 3 não.</li>
+</ul>
+<p>Sempre que uma classe define uma assinatura de método e uma herança tenta
+sobrecarregar este método (mudando sua assinatura) um warning é lançado.</p>
+<p><a href="https://wiki.php.net/rfc/lsp_errors">Esta RFC do Nikita Popov</a> transforma
+este comportamento para lançar um Fatal Error sempre que uma sobrecarga ocorre.</p>
+<p>Aqui vai um exemplo de código que quebrará no PHP 8:</p>
+<pre><code class="language-php">class A
+{
+  function x(int $a): int
+  {
+    // ...
+  }
+}
+
+class B extends A
+{
+  // A assinatura mudou
+  // Fatal Error aqui.
+  function x(float $a): float
+  {
+    // ...
+  }
+}</code></pre>
+<!-- https://wiki.php.net/rfc/dom_living_standard_api -->
+<h3>Atualização da DOM API para bater com o padrão DOM</h3>
+<ul>
+<li><strong>Status</strong>: Confirmado.</li>
+<li><strong>Categoria</strong>: Biblioteca Padrão.</li>
+<li><strong>Votos</strong>: 37 sim. 0 não.</li>
+</ul>
+<p><a href="https://wiki.php.net/rfc/dom_living_standard_api">Esta RFC</a> também pede um post
+para si.</p>
+<p>Mas basicamente ela adiciona algumas interfaces e classes para tornar a API
+da <code>ext/dom</code> compatível com o <a href="https://dom.spec.whatwg.org/">atual padrão DOM</a>
+que está constantemente sendo atualizado.</p>
+<hr />
+<h2>O que TALVEZ entre na versão 8.0 do PHP?</h2>
+<p>Existem algumas RFCs que ainda estão sendo discutiads. Elas podem ser aceitas
+ou negadas a qualquer momento. Existem muitas coisas relacionadas ao core da
+linguagem e sua sintaxe.</p>
+<p>Aqui vai a lista:</p>
+<!-- https://wiki.php.net/rfc/engine_warnings -->
+<h3>Severidade de erros</h3>
+<ul>
+<li><strong>Status</strong>: Aceita. Implementação pendente.</li>
+<li><strong>Categoria</strong>: Biblioteca Padrão.</li>
+</ul>
+<p>A <a href="https://wiki.php.net/rfc/engine_warnings">RFC da severidade de erros</a>
+pretende revisar a forma como algumas funcionalidades tratam erros na
+linguagem.</p>
+<p>Por exemplo, o tão famoso <code>Invalid argument supplied for foreach()</code>
+poderá pular de <code>Warning</code> para <code>TypeError Exception</code>.</p>
+<!-- https://wiki.php.net/rfc/class_name_literal_on_object -->
+<h3>Permitir o uso de ::class em objetos</h3>
+<ul>
+<li><strong>Status</strong>: Implementada. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p>Basicamente nomes de classe dinâmicos não são permitidos em tempo de compilação.
+Então um código como o seguinte gera um erro fatal:</p>
+<pre><code class="language-php">$a = new DateTime();
+var_dump($a::class);
+// PHP Fatal error:  Dynamic
+// class names are not allowed
+// in compile-time
+// ::class fetch in...</code></pre>
+<p><a href="https://wiki.php.net/rfc/engine_warnings">Nesta RFC</a> o código acima será aceitável.</p>
+<!-- https://wiki.php.net/rfc/static_return_type -->
+<h3>Tornar <em>static</em> um tipo de retorno válido, como <em>self</em></h3>
+<ul>
+<li><strong>Status</strong>: Implementada. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p>Da mesma forma como podemos usar <code>self</code> como tipo de retorno para funções,
+<a href="https://wiki.php.net/rfc/static_return_type">a RFC de static return</a> torna disponível
+<code>static</code> como outro tipo válido de retorno.</p>
+<p>Desta forma <strong>funções como a seguinte serão consideradas válidas:</strong></p>
+<pre><code class="language-php">class A
+{
+  public function b(): static
+  {
+    return new static();
+  }
+}</code></pre>
+<!-- https://wiki.php.net/rfc/variable_syntax_tweaks -->
+<h3>Sintaxe de variáveis consistentes</h3>
+<ul>
+<li><strong>Status</strong>: Implementada. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p>Esta aqui é sobre mudanças sintáticas e mudará algumas funcionalidades.</p>
+<p>Eu recomendo dar uma olhada <a href="https://wiki.php.net/rfc/variable_syntax_tweaks">na RFC</a>
+para obter mais detalhes. As funcionalidades afetadas incluem:</p>
+<ul>
+<li>Strings interpoladas e não interpoladas</li>
+<li>Constantes and constantes mágicas</li>
+<li>&quot;Dereferenciabilidade&quot; de constantes</li>
+<li>&quot;Dereferenciabilidade&quot; de constantes de classes</li>
+<li>Suporte arbitrário a expressões para <code>new</code> e <code>instanceof</code></li>
+</ul>
+<!-- https://wiki.php.net/rfc/use_global_elements -->
+<h3>Otimizar o lookup de funções e constantes</h3>
+<ul>
+<li><strong>Status</strong>: Prova de Conceito Implementada. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe. Performance.</li>
+</ul>
+<p>A <a href="https://wiki.php.net/rfc/use_global_elements">RFC sobre lookup de funções e constantes</a>
+adiciona um novo <code>declare()</code> que impede o PHP de fazer alguns lookups em tempo
+de execução.</p>
+<p>Sempre que você estiver num código dentro de namespace e tenta utilizar
+uma função ou constante de escopo global sem prefixar com uma barra invertida (<code>\</code>),
+o PHP primeiro tentará buscá-la no namespace atual e só então procurar no namespace
+global.</p>
+<p>Adicionando a diretiva <code>disable_ambiguous_element_lookup=1</code>, o PHP tentará buscar
+diretamente no escopo global. Aqui vai um exemplo (da RFC):</p>
+<pre><code class="language-php">namespace MyNS;
+declare(
+    strict_types=1,
+    disable_ambiguous_element_lookup=1
+);
+use function OtherNS\my_function;
+use const OtherNS\OTHER_CONST;
+
+if (
+  // lookup de função!!
+  version_compare(
+    // lookup de constante!!
+    PHP_VERSION,
+    '8.0.5'
+  ) &gt;= 0
+) {
+    // ...
+}</code></pre>
+<p>Caso <code>disable_ambiguous_element_lookup</code> fosse <code>zero</code> no exemplo acima,
+o PHP tentaria encontrar <code>MyNS\PHP_VERSION</code> e <code>MyNS\version_compare</code> primeiro,
+entenderia que não existem e só então buscaria no escopo global as referências
+para <code>\PHP_VERSION</code> e <code>\version_compare</code>.</p>
+<p>Quando <code>disable_ambiguous_element_lookup</code> for <code>um</code>, este lookup extra
+não é mais necessário e o PHP irá diretamente ao escopo global, trazendo
+<code>\PHP_VERSION</code> e <code>\version_compare</code>.</p>
+<!-- https://wiki.php.net/rfc/strict_operators -->
+<h3>A diretiva Strict Operators</h3>
+<ul>
+<li><strong>Status</strong>: Prova de Conceito Implementada. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p><a href="https://wiki.php.net/rfc/strict_operators">A RFC de operadores estritos</a> traria
+uma nova diretiva chamada <code>strict_operators</code>. Quando ligada, algumas comparações
+se comportariam de forma diferente.</p>
+<p>Aqui alguns exemplos (da RFC):</p>
+<pre><code class="language-php">10 &gt; 42;        // false
+3.14 &lt; 42;      // true
+
+"foo" &gt; "bar";  // TypeError("Unsupported type string for comparison")
+"foo" &gt; 10;     // TypeError("Operator type mismatch string and int for comparison")
+
+"foo" == "bar"; // false
+"foo" == 10;    // TypeError("Operator type mismatch string and int for comparison")
+"foo" == null;  // TypeError("Operator type mismatch string and null for comparison")
+
+true &gt; false;   // true
+true != 0;      // TypeError("Operator type mismatch bool and int for comparison")
+
+[10] &gt; [];      // TypeError("Unsupported type array for comparison")
+[10] == [];     // false
+
+"120" &gt; "99.9";               // TypeError("Unsupported type string for comparison")
+(float)"120" &gt; (float)"99.9"; // true
+
+"100" == "1e1";               // false
+(int)"100" == (int)"1e2";     // true
+
+"120" &lt;=&gt; "99.9";             // TypeError("Unsupported type string for comparison")</code></pre>
+<p>As mudanças são bem mais amples que este pequeno exemplo e estão fora do escopo
+deste post. Verifique a RFC para mais ou me dá um ping no twitter caso queira que
+eu escreva um pouco mais sobre esta! 😉</p>
+<hr />
+<p>As RFCs abaixo ainda estão sob discussão e a maioria têm algo relacionado a versões
+passadas do PHP, não tendo sido lançadas a tempo ou algo parecido. Eu não irei as
+descrever em detalhe por agora, por não sentir que trarão grandes mudanças à linguagem.</p>
+<p>Eu irei, é claro, manter esta lista atualizada para tomar certeza de que estou errado.</p>
+<p>Aqui vão elas:</p>
+<!-- https://wiki.php.net/rfc/normalize-array-auto-increment-on-copy-on-write -->
+<h3>Auto Increment na cópia na gravação</h3>
+<ul>
+<li><strong>Status</strong>: Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p><a href="https://wiki.php.net/rfc/normalize-array-auto-increment-on-copy-on-write">Link para a RFC.</a></p>
+<p>Esta RFC foi originalmente pensada para o PHP 7.4 e ainda está sob discussão. Eu
+esperaria que fosse apontada para a versão 8.0 desta vez, mas não há certezas.</p>
+<!-- https://wiki.php.net/rfc/alternative-closure-use-syntax -->
+<h3>Sintaxe alternativa do &quot;use&quot; em Closures</h3>
+<ul>
+<li><strong>Status</strong>: Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p><a href="https://wiki.php.net/rfc/alternative-closure-use-syntax">Link para a RFC.</a></p>
+<p>Esta RFC originalmente buscava ser integrada na &quot;próxima minor verson&quot;, que naquele
+tempo seria a versão 7.4.</p>
+<!-- https://wiki.php.net/rfc/namespace_scoped_declares -->
+<h3>Aplicar um declare() em todo o Namespace 🔥</h3>
+<ul>
+<li><strong>Status</strong>: Implementada. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p><a href="https://wiki.php.net/rfc/namespace_scoped_declares">Link para a RFC.</a></p>
+<!-- https://wiki.php.net/rfc/trailing_whitespace_numerics -->
+<h3>Permitir espaços no fim de strings numéricas</h3>
+<ul>
+<li><strong>Status</strong>: Implementada. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p><a href="https://wiki.php.net/rfc/trailing_whitespace_numerics">Link para a RFC.</a></p>
+<p>Esta RFC também visava a versão 7.4 mas não conseguiu ser votada a tempo.</p>
+<!-- https://wiki.php.net/rfc/nullable-casting -->
+<h3>Permitir type casting de valores nullable</h3>
+<ul>
+<li><strong>Status</strong>: Perdida. Sob Discussão.</li>
+<li><strong>Categoria</strong>: Sintaxe.</li>
+</ul>
+<p><a href="https://wiki.php.net/rfc/nullable-casting">Link para a RFC.</a></p>
+<p>Aparentemente o fork que continha as mudanças foi apagado e o Pull Request fechado.
+Não parece crível que será integrado ao PHP a menos que alguém resolva tomar conta. </p>
+<hr />
+<p>Por enquanto é só. Eu adicionarei algumas <strong>Atualizações</strong> nos tópicos acima com o
+tempo, sempre que a comunidade andar com alguma RFC e eu tiver a oportunidade de ver
+algum status mudando.</p>
+<p>Se você encontrou algo errado ou gostaria de adicionar alguma coisa que eu deixei
+passar aqui, sinta-se convidado(a) a me dar um ping no twitter ou abrir uma issue
+no <a href="https://github.com/nawarian/The-PHP-Website">repositório público</a>.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "O Andamento do PHP 8",
+  "description": "O PHP 8.0 ainda est&aacute; sob discuss&atilde;o e muitas coisas est&atilde;o sendo votadas neste momento. Eu coletei todas as mudan&ccedil;as a serem introduzidas no PHP 8.0 e vou mant&ecirc;-lo(a) atualizado(a) sobre elas neste post.",
+  "image": [
+    "https://thephp.website/assets/images/5-php-8.jpg"
+   ],
+  "datePublished": "2020-01-20T00:00:00+08:00",
+  "dateModified": "2020-01-20T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </article>
+</body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>
