@@ -55,7 +55,7 @@ Então se você quer ter um gostinho do que vem nesta versão, dá uma ligada ni
 
 Claro que esta funcionalidade precisa de maior explicação e merece um post para
 si, escreverei em breve. Enquanto isso posso citar que esta funcionalidade diz
-ganhar performance até **4 vezes mais rápida** no benchmark Mandelbrot.
+ganhar performance até **quatro vezes mais rápida** no benchmark Mandelbrot.
 
 Você pode ver a especificação e discussão [visitando a RFC](https://wiki.php.net/rfc/jit). 
 

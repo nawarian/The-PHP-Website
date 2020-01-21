@@ -53,7 +53,7 @@ So if you want to have a taste of this version, check this section out:
 
 This feature of course needs a great explanation by itself and I will write about
 this one very soon. Meanwhile I'd like to state that this change claims to be
-**more than times faster** on Mandelbrot benchmark.
+**more than four times faster** on Mandelbrot benchmark.
 
 You can check the full spec by [visiting the RFC page](https://wiki.php.net/rfc/jit).
 
