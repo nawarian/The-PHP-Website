@@ -116,7 +116,7 @@ disponível para o PHP 7.4; Chama-se [BenMorel/weakmap-polyfill](https://github.
 ### Exceções do tipo TypeError serão lançadas em erros de parâmetros
 - **Status**: Confirmado.
 - **Categoria**: Biblioteca Padrão.
-- **Votos**: 50 sim. 2 no.
+- **Votos**: 50 sim. 2 não.
 
 Sempre que você causa um type error numa função de usuário, uma exceção
 é lançada. Para funções internas o PHP apenas mostra um warning e retorna
