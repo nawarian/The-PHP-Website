@@ -1,5 +1,5 @@
 <li class="card">
-  <a href="{{ $job->getUrl() }}">
+  <a href="{{ $job->getUrl() . '/' }}">
     <div class="card__content">
       <h3>{{ $job->title }}</h3>
       @if ($job->get('meta')['description'] !== $job->get('title'))

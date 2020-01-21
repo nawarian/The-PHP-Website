@@ -5,7 +5,7 @@
 <ul class="card-list">
   @foreach($page->get('latestIssues') as $post)
     <li class="card">
-      <a href="{{ $post->getUrl() }}">
+      <a href="{{ $post->getUrl() . '/' }}">
         @if ($post->get('image'))
           <div
             class="card__image"
