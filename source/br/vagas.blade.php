@@ -1,6 +1,7 @@
 ---
 extends: _layouts.master
 title: Vagas de Emprego de Programação em PHP
+lang: pt-br
 pagination:
   collection: jobs_pt_br
   perPage: 12
