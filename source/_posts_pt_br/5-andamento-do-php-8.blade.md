@@ -109,6 +109,9 @@ unset($obj);
 var_dump($map);
 ```
 
+**Atualização (20/01/2020)**: se você quiser experimentar, tem um polyfill
+disponível para o PHP 7.4; Chama-se [BenMorel/weakmap-polyfill](https://github.com/BenMorel/weakmap-polyfill).
+
 <!-- https://wiki.php.net/rfc/consistent_type_errors -->
 ### Exceções do tipo TypeError serão lançadas em erros de parâmetros
 - **Status**: Confirmado.
