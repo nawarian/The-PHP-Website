@@ -35,6 +35,13 @@ esforços para o PHP 8.0 ainda estão em fase inicial.
 A [lista oficial de afazeres para lançamentos do PHP](https://wiki.php.net/todo) ainda não
 mencionou a versão 8.0.
 
+**Atualização (21/01/2020):** A lista oficial de RFCs adicionou há pouco uma
+[seção para o PHP 8.0](https://wiki.php.net/rfc#php_80). Então, diferente do que alguns(umas)
+desenvolvedores(as) PHP temiam, **o PHP 8 será desenvolvido durante este ano**.
+
+Além disso [neste comentário da Sara Golemon](https://externals.io/message/105001#105010)
+mostrou-se a intenção de lançar algumas snapshots para teste antes mesmo das versões alpha.
+
 [Alguns dizem que será lançado em Setembro de 2021](https://twitter.com/Crell/status/931427244760846336)
 mas me parece mais uma piada de twitter do que algo sério.
 

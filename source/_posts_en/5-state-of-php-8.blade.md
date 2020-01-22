@@ -24,7 +24,7 @@ This means that many things in this post will still change a lot over time. For 
 of interest I'll leave a subheading and as discussions move further inside php community
 they'll be properly updated.
 
-## When will PHP 8.0 get released?
+## When will PHP 8.0 be released?
 
 As [PHP 7.4 got released not long ago](https://www.php.net/releases/7_4_0.php) the efforts
 to get PHP 8.0 up and running are still in early stages.
@@ -32,6 +32,12 @@ to get PHP 8.0 up and running are still in early stages.
 **As from 20th of January 2020: There's no release date yet.**
 The [official list of TO-DOs for PHP releases](https://wiki.php.net/todo) doesn't mention
 version 8.0 yet.
+
+**Edit (2020-01-21):** The official RFC list added a [PHP 8.0 section already](https://wiki.php.net/rfc#php_80).
+So unlike some php developers feared, **PHP 8 will be developed during this year**.
+
+Also [this comment from Sara Golemon](https://externals.io/message/105001#105010)
+shows an intention of creating a few snapshots before alpha versions are sent.
 
 [Some say it will be released in September 2021](https://twitter.com/Crell/status/931427244760846336)
 but sounds to me like a twitter joke instead of somethings serious.
