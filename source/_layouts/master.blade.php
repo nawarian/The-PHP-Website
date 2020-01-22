@@ -61,6 +61,11 @@
             {{ ($page->lang ?? 'en') === 'en' ? 'Suggest a Topic!' : 'Peça um Post!' }}
           </a>
         </li>
+        <li class="menu__list-item">
+          <a href="{{ ($page->lang ?? 'en') === 'en' ? '/en/about/' : '/br/sobre/' }}">
+            {{ ($page->lang ?? 'en') === 'en' ? 'about.php' : 'sobre.php' }}
+          </a>
+        </li>
       </ul>
 
       <hr>
