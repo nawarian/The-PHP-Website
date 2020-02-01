@@ -1,9 +1,9 @@
 ---
-slug: tdl-framework
+slug: tdl-test-driven-learning-framework
 title: TDL, a (programming language) learning framework
-createdAt: 2020-01-31
+createdAt: 2020-02-01
 sitemap:
-  lastModified: 2020-01-31
+  lastModified: 2020-02-01
 image:
   url: /assets/images/posts/6-tdl-framework-640.webp
   alt: 'A half opened chest'
@@ -18,7 +18,7 @@ meta:
     site: '@nawarian'
 ---
 
-[Leia em Português](/br/edicao/framework-tdl/)
+[Leia em Português](/br/edicao/tdl-aprendizado-guiado-por-testes/)
 
 ## TL;DR
 
@@ -205,12 +205,11 @@ is just a tool for teaching. What I'm presenting here is my use of
 such tool in a framework I've built and adopted.
 
 I base my learning with TDL on three repeatable steps:
-**discover, assert and learn**. And all these tools I've mentioned
-follow the same formula: show someting new (discover), give feedback
-on your failures (assert) and reward you on completion (learn).
+**discover, assert and learn**.
 
 Tools like Khan Academy, Vim Adventures and other MOOCs use approaches
-that somehow fit in these steps.
+that somehow fit in these steps: show someting new (discover), give feedback
+on your failures (assert) and reward you on completion (learn).
 
 The main idea is to first **discover** something you want or need
 to learn, perform **assertions** in order to understand when you're
@@ -436,8 +435,8 @@ As always, feel free to send  me any sort of feedback by pinging me on twitter.
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/6-tdl-framework-640.webp"
    ],
-  "datePublished": "2020-01-31T00:00:00+08:00",
-  "dateModified": "2020-01-31T00:00:00+08:00",
+  "datePublished": "2020-02-01T00:00:00+08:00",
+  "dateModified": "2020-02-01T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"
