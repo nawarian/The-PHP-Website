@@ -191,6 +191,14 @@ learning!
 
 ## How does Test-Driven Learning (TDL) work?
 
+Topics in this section:
+
+- Introduction with code examples
+- Discover
+- Assert
+- Learn
+- Repeat
+
 Could be that you're thinking I'm trying to create a new fake
 trend here or something. But [Test-Driven Learning is really a thing](https://digitalcommons.calpoly.edu/csse_fac/88/).
 
@@ -328,7 +336,7 @@ Read the errors presented to you, understand your problem and once you're
 done with understand which problem you need to solve: read the language
 manual, search in different engines, ask friends or people who know more,
 
-### Restart
+### Repeat
 
 Go back to discovery step and find something new to assert and learn.
 
@@ -340,6 +348,13 @@ into I/O operations, structs usage, FFI calls, threads...
 ---
 
 ## Praxis: The hardest part is discovering
+
+Topics in this section:
+
+- Introduction about community and tools
+- Get involved with the language
+- Connect with the community
+- Explain something you don't know
 
 Theory sounds great, right? (maybe not even...)
 
