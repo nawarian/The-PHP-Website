@@ -167,8 +167,6 @@ built-in `assert_*` macros and integrated tests tool.
 Learn what is available for testing: is there a way to write unit tests?
 Integration tests? Can I use a testing language like Gherkin with it?
 
-**Spoiler alert:** Gherkin will be a great teacher during our next steps.
-
 I'll take a rust program as example here on how to write an essential
 assertion so we can start our TDL loop:
 
