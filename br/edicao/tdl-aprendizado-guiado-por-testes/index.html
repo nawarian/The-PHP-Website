@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=78c24f1afac6e0c515c0">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+
+  <title>TDL, um framework de aprendizado (de linguagens de programção) | thePHP Website</title>
+
+  <meta name="description" content="Aprender uma nova linguagem (de programação) é uma habilidade extremamente necessária para qualquer engenheiro(a) fullstack. Sendo eu mesmo um fullstack, como a maioria dos(as) programadores(as) PHP, eu desenvolvi meu próprio framework para racionalizar este aprendizado.">
+
+  <meta property="og:title" content="TDL, um framework de aprendizado (de linguagens de programção)">
+  <meta property="og:description" content="Aprender uma nova linguagem (de programação) é uma habilidade extremamente necessária para qualquer engenheiro(a) fullstack. Sendo eu mesmo um fullstack, como a maioria dos(as) programadores(as) PHP, eu desenvolvi meu próprio framework para racionalizar este aprendizado.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/tdl-aprendizado-guiado-por-testes">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/6-tdl-framework-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="TDL, um framework de aprendizado (de linguagens de programção)">
+  <meta name="twitter:description" content="Aprender uma nova linguagem (de programação) é uma habilidade extremamente necessária para qualquer engenheiro(a) fullstack. Sendo eu mesmo um fullstack, como a maioria dos(as) programadores(as) PHP, eu desenvolvi meu próprio framework para racionalizar este aprendizado.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-2');
+  </script>
+</head>
+<body class="yue">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/br/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <article class="article">
+          <time datetime="2020-02-01">
+        2020-02-01
+      </time>
+    
+    <h1>TDL, um framework de aprendizado (de linguagens de programção)</h1>
+
+    <p><a href="/en/issue/tdl-test-driven-learning-framework/">Read in English</a></p>
+<h2>TL;DR</h2>
+<p>TDL = Test-Driven Learning OU Aprendizado Guiado por Testes.</p>
+<p>Se você pudesse levar uma única coisa deste texto contigo, leva
+isso aqui: <strong>Desenvolvimento guiado por testes pode ser utilizado
+para aprender também.</strong> <a href="/br/edicao/tdd-com-php-na-vida-real/">Aprenda como fazer TDD de forma eficiente</a>
+e você entenderá rapidinho o conceito deste texto inteiro.</p>
+<hr />
+<p>Recentemente eu inciei (novamente) a missão mais divertida que
+nós programadores(as) enfrentamos de tempos em tempos:
+<strong>✨ aprender uma nova linguagem de programação ✨.</strong></p>
+<p>Desta vez eu decidi aprender <a href="https://www.rust-lang.org/">Rust</a>,
+que pra mim (ainda) é insanamente interessante, já que sou um
+desenvolvedor web e nunca precisei encostar em nada relacionado
+a baixo nível que não fosse o código fonte do PHP.</p>
+<p>Depois de passar por este processo várias vezes, eu comecei a ver
+alguns padrões no meu processo de aprendizado. Foi preciso uma boa
+mistura de auto conhecimento, habilidades de gerenciamento de projetos (sim)
+e pesquisa pra compilar estes padrões num modelo que eu poderia facilmente
+integrar no meu dia a dia.</p>
+<p>Eu acredito que desta vez, aprendendo Rust, eu alcancei uma versão
+mais ou menos estável deste framework de aprendizado baseado no TDL.
+Mesmo que otimizar este framework tenha de ser um processo em constante
+evolução.</p>
+<p>Pra ser muito claro, <strong>eu não quero dizer que esta é a melhor
+forma de aprender uma nova linguagem de programação ou coisa do tipo.</strong>
+Você vai precisar aprender por si mesmo qual formato funciona melhor
+pra ti.</p>
+<p>Como sempre, vamos parar com a enrolação e começar!</p>
+<hr />
+<p>Cada seção aqui começa com uma lista de tópicos para que você
+possa saber as principais ideias antes de ler algo. Sinta-se
+livre pra pular para o próximo subtítulo se os tópicos não
+chamarem sua atenção.</p>
+<p>Este texto está dividido em três partes e, honestamente, daria pra
+escrever um livro se eu fosse desenvolver meus pensamentos em cada
+uma delas. (<a href="https://twitter.com/intent/tweet?text=Escreve+o+livro,+@nawarian,+macho,+v%C3%A9i!+-+https://thephp.website">Me dá um alô no twitter se você quiser ver este livro virar realidade xD</a>)</p>
+<ol>
+<li>
+<p>&quot;<strong>Iniciando com uma nova linguagem de programação</strong>&quot; apresenta um modelo
+mental sobre como descobrir uma nova linguagem de programação e como adquirir
+a mais fundamental ferramenta de aprendizado com TDL: testes.</p>
+</li>
+<li>
+<p>&quot;<strong>Como funciona o Aprendizado Guiado por Testes?</strong>&quot; tenta explicar como
+esse arcabouço funciona, como manter o feedback loop e por aí vai.</p>
+</li>
+<li>
+<p>Por último, mas não menos importante, vem &quot;<strong>Praxis: a parte mais difícil
+é a descoberta</strong>&quot;, que traz algumas dicas de como alimentar o primeiro passo
+do loop do TDL.</p>
+</li>
+</ol>
+<h2>Iniciando com uma nova linguagem de programação</h2>
+<p>Tópicos nesta seção:</p>
+<ul>
+<li>As linguagens de programação são semelhantes</li>
+<li>Toda linguagem tem um propósito</li>
+<li>Encontrando os pontos altos da linguagem</li>
+<li>Como testar nesta linguagem</li>
+</ul>
+<p>Se você já sabe qual linguagem de programação quer aprender, o
+processo de inicialização é razoavelmente simples. Mas eu tenho um
+conselho bem estranho pra você:</p>
+<p><strong>Não escreva código algum até você ter um modelo mental claro sobre
+o que esta linguagem é capaz de fazer.</strong></p>
+<p>Para construir este modelo mental é sempre bom lembrar que linguagens
+de programação são muito semelhantes entre si e normalmente conseguem
+fazer alguma(s) coisa(s) muito bem (são especializadas).</p>
+<h3>As linguagens de programação são semelhantes</h3>
+<p><strong>A maioria das linguagens de programação são semelhantes entre si.</strong>
+Elas podem até ter diferentes estruturas, sintaxe, convenções mas no
+fim das contas a maioria delas vai te prover uma execução baseada em
+pilha, onde você <strong>guarda variáveis, carrega valores nelas, executa
+expressões, chama funções e por aí vai.</strong></p>
+<p>Imperativa ou declarativa, compilada ou interpretada, <strong>todas elas
+compartilham características comuns.</strong> Quanto mais cedo você entender
+estas características, mais próximo de ser apenas uma questão de sintaxe
+elas vão te parecer.</p>
+<p>Além da sintaxe você encontrará modelos que são profundamente ligados
+à linguagem. Normalmente eles começam a aparecer quando você começa a
+aprender o problema que determinada linguagem reosolve.</p>
+<p>Então <strong>não comece a codar ainda!</strong> Antes de escrever qualquer linha
+de código, tenha certeza de que você olhou bem para a linguagem, sabe
+que cara tem e quais coisas tornam esta linguagem única e útil.</p>
+<p>Normalmente <strong>uma linguagem se destaca das outras por ter um propósito.</strong></p>
+<h3>Toda linguagem tem um propósito</h3>
+<p><a href="/br/edicao/como-php-funciona-na-verdade/">PHP era um monte de scripts CGI pra fazer templates</a>,
+o JavaScript nasceu para tornar páginas web interativas, ActionScript
+foi para fazer o mesmo com Flash, C para abstrair com alta performance
+em desenvolvimento de sistemas, Rust para fazer o mesmo que C com segurança
+em mente, Ruby para escrever código como escrevemos livros, e a IR da LLVM
+para tornar mais fácil criar novas linguagens de programação...</p>
+<p>Toda linguagem de programação tem (ou teve) um propósito quando foi
+escrita pela primeira vez.</p>
+<p><strong>Saber o propósito de uma linguagem lhe ajuda a entender como ela
+funciona.</strong></p>
+<p>Quando você entende o propósito da linguagem, as melhores funcionalidades
+desta linguagem começam a aparecer pra ti naturalmente.</p>
+<h3>Encontrando os pontos altos da linguagem</h3>
+<p>Vamos tomar Rust como exemplo aqui, já que é minha memória mais
+recente.</p>
+<p>Eu entendi que Rust é uma linguagem de desenvolvimento de sistemas,
+com alto foco em segurança no gerenciamento de memória sem perder
+em performance. Mas como isso tudo se traduz na linguagem?</p>
+<p>Aarre! O compilador reclama de tudo, as variáveis têm ciclo de vida e
+ownership, tem uma parada de emprestar variáveis, tipos de dado que
+nunca ficam nulos, eu já falei do compilador?</p>
+<p>Saber tais coisas vai te ensinar do que tu pode se orgulhar em saber
+quando souber, mas também vai te dar uma clara visão de onde você
+precisa chegar.</p>
+<p>Isso também vai fazer com que outras pessoas acreditem que você está
+realmente aprendendo esta linguagem. Não tem nada mais frustrante que
+receber um &quot;por que?&quot; sem conseguir responder de maneira satisfatória.</p>
+<h3>Como testar nesta linguagem</h3>
+<p>Ainda <strong>antes de codar qualquer coisa</strong> nessa linguagem, o último
+passo para construir este modelo mental é aprender como escrever
+testes.</p>
+<p>Sim! Mesmo antes de aprender como declarar uma variável, aprenda como
+testar. Ou melhor dizendo, <strong>aprenda como fazer asserções</strong>.</p>
+<p>PHP e C, por exemplo, possuem a função <code>assert()</code>. Rust tem as macros
+<code>assert_*</code> e uma ferramenta integrada de testes.</p>
+<p>Aprenda o que está disponível para fazer testes: tem alguma forma de
+escrever testes unitários? De integração? Consigo usar uma linguagem
+de testes como o Gherkin com ela?</p>
+<p>Eu vou usar um programa em rust como exemplo aqui em como escrever
+uma asserção essencial para que a gente possa iniciar nosso loop com TDL:</p>
+<pre><code class="language-rust">// src/main.rs
+
+#[test]
+fn test_basics() {
+  assert_eq!(1, 1); // 1 = 1
+  assert!(true); // sucesso
+  assert!(false); // falha
+}</code></pre>
+<p>Depois eu só executo <code>$ cargo test</code> e PRONTINHO! Eu sei o básico em
+como escrever asserções nessa linguagem nova. Hora de começar a aprender!</p>
+<hr />
+<h2>Como funciona o Aprendizado Guiado por Testes?</h2>
+<p>Tópicos nessa seção:</p>
+<ul>
+<li>Introdução com exemplos de código</li>
+<li>Descoberta</li>
+<li>Asserção</li>
+<li>Aprendizado</li>
+<li>Repetição</li>
+</ul>
+<p>Pode ser que você pense que eu tô tentando criar moda ou
+algo do gênero. Mas <a href="https://digitalcommons.calpoly.edu/csse_fac/88/">Aprendizado Guiado por Testes é real total de verdadinha</a>.</p>
+<p>É importante notar que TDL nesta pesquisa acima é apenas uma ferramenta
+de ensino. O que eu estou apresentando aqui é como eu uso esta ferramenta
+num framework que eu construí e adoto.</p>
+<p>Eu baseio meu aprendizado com TDL em três passos repetíveis:
+<strong>descoberta, asserção e aprendizado</strong>.</p>
+<p>Ferramentas como Khan Academy, Vim Adventures e outros MOOCs também
+usam métodos semelhantes a este: apresentar algo novo (descoberta),
+dar feedback em suas falhas (asserção) e premiar seus acertos (aprendizado).</p>
+<p>A ideia é primeiro <strong>descobrir</strong> algo que você quer ou precisa aprender,
+realizar <strong>asserções</strong> para entender quando você terá aprendido. Fazer
+as asserções funcionarem com o que você <strong>aprendeu</strong> ou precisa aprender.</p>
+<p>Vamos tomar um exemplo bem tosquinho com rust. Eu descobri que posso
+definir variáveis. Como isto funciona? Vamos fazer uma asserção de que
+a variável <code>nawarian</code> deveria conter o valor 10.</p>
+<pre><code class="language-rust">// src/main.rs
+
+#[test]
+fn test_variables() {
+  assert_eq!(10, nawarian);
+}</code></pre>
+<p>Eu sei agora que eu só vou tentar descobrir novas coisas quando esta
+asserção passar. Eu vou continuar brigando com meu teclado até que
+<code>cargo test</code> fique verde!!</p>
+<p>Um pouco de pesquisa aqui e acolá, e o seguinte parece funcionar:</p>
+<pre><code class="language-rust">// src/main.rs
+
+#[test]
+fn test_variables() {
+  let nawarian = 10;
+
+  assert_eq!(10, nawarian);
+} </code></pre>
+<p>Os testes estão verdes. Eu poderia continuar com coisas novas ou
+brincar mais um pouco com este aqui. Em vez de definir <code>nawarian = 10</code>
+eu poderia fazer isso com um loop e contador, não?</p>
+<p>Então como será que eu posso fazer um loop de 0 a 10 e incrementar
+<strong>nawarian</strong> a cada iteração?</p>
+<pre><code class="language-rust">// src/main.rs
+
+#[test]
+fn test_variables() {
+  let nawarian = 0;
+  for i in 0..10 {
+    nawarian += 1;
+  }
+
+  assert_eq!(10, nawarian);
+}</code></pre>
+<p>Agora o <code>cargo test</code> ficou loucão e começou a reclamar de uma par
+de coisas:</p>
+<blockquote>
+<p><strong>warning:</strong> unused variable: <code>i</code></p>
+<p><strong>help:</strong> consider prefixing with an underscore: <code>_i</code></p>
+<p><strong>error[E0384]:</strong> cannot assign twice to immutable variable <code>nawarian</code></p>
+<p><strong>help:</strong> make this binding mutable: <code>mut nawarian</code></p>
+</blockquote>
+<p>Não tá funcionando... o compilador diz que <code>nawarian</code> não é mutável e
+tá implicando até que <code>i</code> nunca é utilizada, que eu deveria prefixar
+essa variável com <code>_</code> pra que ninguém ligue pra ela.</p>
+<blockquote>
+<p><strong>Eu:</strong> Diabé!? Aparentemente variáveis são imutáveis por padrão em Rust.
+Interessante... Dá pra fazer ela ficar mutável usando a palavra chave <code>mut</code>...</p>
+</blockquote>
+<p>Escreve, roda. FUNCIONOU!</p>
+<p><strong>Essa estrutura é difudê porque você entende exatamente onde está
+pisando.</strong> E quando não entender, é mais fácil pesquisar um problema
+pequenino e específico que você esteja enfrentando no momento.</p>
+<p>Este feedback loop vai te forçar a <strong>aprender ativamente</strong> em vez de
+passivamente: encontre uma funcionalidade, teste, encontre a resposta
+até ficar satisfeito(a). Descubra, afrime, aprenda.</p>
+<p>Outra coisa maravilhosa é que testes passando deixam as pessoas felizes.
+Ver o quanto você consegue refatorar um código sem quebrar traz um
+sentimento muuuito bom!</p>
+<p>Eu não quero dizer que você deveria, mas com essa asserção simples,
+você pode aprender desde variáveis até threading. Um passo de cada vez,
+mantenha os testes passando e alimente seu feedback loop!</p>
+<p>Eu vou tentar te dar um pouco mais de informação em como lidar com cada
+passo enquanto utiliza o TDL:</p>
+<h3>Descoberta</h3>
+<p>O passo da descoberta é muito bom para aprender sobre sintaxe, funcionalidades
+da linguagem, frameworks... Basicamente tudo o que possa captar seu
+interesse se encaixa aqui.</p>
+<p>Msa sempre mantenha suas asserções simples. <strong>É extremamente importante que
+você entenda seus testes</strong> muito mais que a implementação em si. Os testes
+precisam ser claros, o código você pode sempre refatorar.</p>
+<h3>Asserção</h3>
+<p>O passo da asserção pode ser um tanto diferente dependendo do nível
+que você já tenha alcançado na linguagem.</p>
+<p>Novatos (como eu em Rust) devem escrever teste unitários o máximo possível,
+usando ferramentas nativas da linguagem como <code>assert</code>, <code>echo</code> ou mesmo <code>exit</code>.</p>
+<p>Quanto mais você avança, testes grandes e complexos usando &quot;Given, When, Then&quot;
+podem funcionar melhor. Você precisará aprender como utilizar ferramentas
+como Gherkin ou algo tão amplo e descritivo quanto em sua linguagem.</p>
+<h3>Aprendizado</h3>
+<p>Faça com que seus testes passem!</p>
+<p>Leia os erros que aparecem pra ti, entenda o problema e assim que o
+fizer: leia o manual da linguagem, procure em mecanismos diferentes,
+pergunte a amigos ou quem puder saber mais.</p>
+<h3>Repetição</h3>
+<p>Volte ao passo da descoberta e encontre algo novo para fazer novas
+asserções e aprender.</p>
+<p>Ou apenas seja criativo(a). Aquele simples <code>nawarian = 10</code> pode ser
+transformado em operações de E/S, utilização de structs, chamadas
+FFI, threads...</p>
+<p><strong>Não existe código que você não possa tornar mais complicado! 😉</strong></p>
+<hr />
+<h2>Praxis: a parte mais difícil é a descoberta</h2>
+<p>Tópicos nesta seção:</p>
+<ul>
+<li>Introdução sobre comunidade e ferramentas</li>
+<li>Se envolva com a linguagem</li>
+<li>Conecte-se com a comunidade</li>
+<li>Explique algo que você ainda não sabe</li>
+</ul>
+<p>A teoria parece ótima, né? (talvez nem mesmo pareça...)</p>
+<p>Mas eu sei o quão difícil é no começo entender e tomar proveito
+deste framework. Pra mim a parte mais difícil é alimentar este
+feedback loop com mais descobertas.</p>
+<p>Felizmente a melhor resposta que eu encontrei até o momento para a
+maioria das linguagens/frameworks é: Comunidade!</p>
+<p>Rust, por exemplo, tem este projeto maravilhoso chamado &quot;<a href="https://github.com/rust-lang/rustlings">rustlings</a>&quot;.
+Ele te guia através de testes escritos pela comunidade e te ajuda
+a faer com que compilem, que os testes passem...</p>
+<p><a href="https://www.phpschool.io/">No php tem o PHP School</a>
+que é bem semelhante ao rustlings, mas é altamente extensível e
+tem muitos cursos feitos pela comunidade sobre modulos/funcionalidades
+específicas.</p>
+<p>Mas depois de aprender a sintaxe você precisará de muito mais. Você
+precisará ver em quê e como a linguagem está evoluindo.</p>
+<h3>Se envolva com a linguagem</h3>
+<p>Aqui é o momento de assistir palestras, ir a conferências e
+assistir pessoas codando por horas na frente das câmeras...</p>
+<p>Comece a contribuir com projetos de código aberto também! Esta é
+uma forma bem simples de ganhar proficiência na linguagem: contribua,
+falhe nos code reviews e conserte seus erros baseado no feedback de
+outras pessoas...</p>
+<h3>Conecte-se com a comunidade</h3>
+<p>Escute também podcasts, leia blogs (ou comece um!), entre em reddits.
+Você aprenderá mais e mais sobre o que pessoas estão fazendo
+com esta linguagem, o que é considerado normalm e o que não é.</p>
+<p>Encontre grupos de encontro locais, ou crie um você mesmo.
+Converse com pessoas de verdade, sobre problemas de verdade.</p>
+<h3>Explique algo que você ainda não sabe</h3>
+<p>Navegue pelo stackoverflow, github issues ou forums do reddit para
+encontrar perguntas que você realmente não sabe responder. Encontre-as,
+pesquise e responda (ou ao menos tente).</p>
+<p>As vezes você será capaz de explica somente com assertions, as vezes
+você precisará de uma visão mais ampla das coisas. Tente os dois!</p>
+<p>Em determinado momento você estará navegando por oportunidades de emprego
+nesta linguagem e os requisitos estão quase todos preenchidos. Os que
+não estiverem, você pode utilizar para alimentar seu feedback loop e
+continuar evoluindo.</p>
+<hr />
+<p>Fico feliz que tenha cehgado até aqui, porque não tô tentando te
+enrolar. Meu processo de aprendizado até o momento é bem doloroso
+mas extremamente útil pra mim.</p>
+<p>Também me salva um bom tempo por me guiar através de perguntas pequenas
+e respostas que eu precise dar, já eu não tenho tempo para investir em
+aprendizado de novas linguagens como eu costumava ter há alguns anos
+atrás ~ suspiros.</p>
+<p>Eu espero que este texto tenha sido útil pra ti.</p>
+<p>Como sempre, sinta-se livre pra me mandar qualquer feedback através
+do twitter.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "tdl-aprendizado-guiado-por-testes",
+  "description": "Aprender uma nova linguagem (de programa&ccedil;&atilde;o) &eacute; uma habilidade extremamente necess&aacute;ria para qualquer engenheiro(a) fullstack. Sendo eu mesmo um fullstack, como a maioria dos(as) programadores(as) PHP, eu desenvolvi meu pr&oacute;prio framework para racionalizar este aprendizado.",
+  "image": [
+    "https://thephp.website/assets/images/6-tdl-framework-640.webp"
+   ],
+  "datePublished": "2020-02-01T00:00:00+08:00",
+  "dateModified": "2020-02-01T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </article>
+</body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>
