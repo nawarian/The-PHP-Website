@@ -1,7 +1,7 @@
 ---
 slug: tdl-aprendizado-guiado-por-testes
 lang: pt-br
-title: TDL, um framework de aprendizado (de linguagens de programção)
+title: TDL, um framework de aprendizado (de linguagens de programação)
 createdAt: 2020-02-01
 sitemap:
   lastModified: 2020-02-01
@@ -117,7 +117,7 @@ elas vão te parecer.
 
 Além da sintaxe você encontrará modelos que são profundamente ligados
 à linguagem. Normalmente eles começam a aparecer quando você começa a
-aprender o problema que determinada linguagem reosolve.
+aprender o problema que determinada linguagem resolve.
 
 Então **não comece a codar ainda!** Antes de escrever qualquer linha
 de código, tenha certeza de que você olhou bem para a linguagem, sabe
@@ -305,7 +305,7 @@ pequenino e específico que você esteja enfrentando no momento.
 
 Este feedback loop vai te forçar a **aprender ativamente** em vez de
 passivamente: encontre uma funcionalidade, teste, encontre a resposta
-até ficar satisfeito(a). Descubra, afrime, aprenda.
+até ficar satisfeito(a). Descubra, afirme, aprenda.
 
 Outra coisa maravilhosa é que testes passando deixam as pessoas felizes.
 Ver o quanto você consegue refatorar um código sem quebrar traz um
@@ -324,7 +324,7 @@ O passo da descoberta é muito bom para aprender sobre sintaxe, funcionalidades
 da linguagem, frameworks... Basicamente tudo o que possa captar seu
 interesse se encaixa aqui.
 
-Msa sempre mantenha suas asserções simples. **É extremamente importante que
+Mas sempre mantenha suas asserções simples. **É extremamente importante que
 você entenda seus testes** muito mais que a implementação em si. Os testes
 precisam ser claros, o código você pode sempre refatorar.
 
@@ -381,7 +381,7 @@ maioria das linguagens/frameworks é: Comunidade!
 
 Rust, por exemplo, tem este projeto maravilhoso chamado "[rustlings](https://github.com/rust-lang/rustlings)".
 Ele te guia através de testes escritos pela comunidade e te ajuda
-a faer com que compilem, que os testes passem...
+a fazer com que compilem, que os testes passem...
 
 
 [No php tem o PHP School](https://www.phpschool.io/)
@@ -406,7 +406,7 @@ outras pessoas...
 
 Escute também podcasts, leia blogs (ou comece um!), entre em reddits.
 Você aprenderá mais e mais sobre o que pessoas estão fazendo
-com esta linguagem, o que é considerado normalm e o que não é.
+com esta linguagem, o que é considerado normal e o que não é.
 
 Encontre grupos de encontro locais, ou crie um você mesmo.
 Converse com pessoas de verdade, sobre problemas de verdade.
@@ -427,7 +427,7 @@ continuar evoluindo.
 
 ---
 
-Fico feliz que tenha cehgado até aqui, porque não tô tentando te
+Fico feliz que tenha chegado até aqui, porque não tô tentando te
 enrolar. Meu processo de aprendizado até o momento é bem doloroso
 mas extremamente útil pra mim.
 
