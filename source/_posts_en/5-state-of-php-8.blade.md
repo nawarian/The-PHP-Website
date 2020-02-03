@@ -24,6 +24,10 @@ This means that many things in this post will still change a lot over time. For 
 of interest I'll leave a subheading and as discussions move further inside php community
 they'll be properly updated.
 
+It should be clear that I won't be able to post every single update in real time as there
+are many things happening every day. If you're looking for a fresh up-to-date list, please
+refer to the [UPGRADING file in the official repo](https://github.com/php/php-src/blob/master/UPGRADING).
+
 ## When will PHP 8.0 be released?
 
 As [PHP 7.4 got released not long ago](https://www.php.net/releases/7_4_0.php) the efforts
