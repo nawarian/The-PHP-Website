@@ -507,12 +507,12 @@ ol.pagination, ul.pagination {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.2);
-  -webkit-transition: -webkit-transform 100ms ease-in-out;
-  transition: -webkit-transform 100ms ease-in-out;
-  transition: transform 100ms ease-in-out;
-  transition: transform 100ms ease-in-out, -webkit-transform 100ms ease-in-out;
-  -webkit-transform: translateY(-100vh);
-          transform: translateY(-100vh);
+  -webkit-transition: -webkit-transform 50ms ease-in-out;
+  transition: -webkit-transform 50ms ease-in-out;
+  transition: transform 50ms ease-in-out;
+  transition: transform 50ms ease-in-out, -webkit-transform 50ms ease-in-out;
+  -webkit-transform: translateY(calc(100vh * -1 * 100));
+          transform: translateY(calc(100vh * -1 * 100));
   padding: 0 0 5px 0;
 }
 .menu__section-heading {

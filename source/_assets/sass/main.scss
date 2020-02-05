@@ -143,8 +143,8 @@ ol.pagination, ul.pagination {
     text-align: center;
     background-color: rgba(255, 255, 255, .95);
     box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.2);
-    transition: transform 100ms ease-in-out;
-    transform: translateY(-100vh);
+    transition: transform 50ms ease-in-out;
+    transform: translateY(calc(100vh * -1 * 100));
     padding: 0 0 5px 0;
   }
 
