@@ -100,15 +100,7 @@
     </div>
   </nav>
 
-  <article class="article">
-    @if($page->get('createdAt'))
-      <time datetime="{{ date('Y-m-d', $page->get('createdAt')) }}">
-        {{ date('Y-m-d', $page->get('createdAt')) }}
-      </time>
-    @endif
-
-    <h1>{{ $page->get('title') }}</h1>
-
+  <article class="container">
     @yield('body')
   </article>
 </body>

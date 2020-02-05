@@ -370,17 +370,8 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 }
 
 body {
-  margin: 1em;
-}
-@media (min-width: 600px) {
-  body {
-    margin: 1em 10% 1em 10%;
-  }
-}
-@media (min-width: 900px) {
-  body {
-    margin: 1em 15% 1em 15%;
-  }
+  width: 90vw;
+  margin: auto;
 }
 
 header nav time {
@@ -542,12 +533,13 @@ ul.menu-list {
   list-style-type: none;
 }
 
-.article {
+.container {
   z-index: 0;
-  margin-top: 60px;
-  position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  margin: 60px auto 40px auto;
   max-width: 900px;
+}
+
+.article {
+  max-width: 750px;
+  margin: auto;
 }
