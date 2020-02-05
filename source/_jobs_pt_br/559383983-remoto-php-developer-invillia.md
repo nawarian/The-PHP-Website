@@ -2,7 +2,7 @@
 slug: 559383983-remoto-php-developer-invillia
 lang: pt-br
 createdAt: 2020-02-03
-title: '[REMOTO] PHP Developer Invillia'
+title: '[Remoto] PHP Developer Invillia'
 sitemap:
   lastModified: 2020-02-03
 meta:
