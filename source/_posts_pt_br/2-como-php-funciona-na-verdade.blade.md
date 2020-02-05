@@ -8,6 +8,9 @@ sitemap:
 image:
   url: /assets/images/posts/2-engine-640.webp
   alt: 'Um imagem focando componentes de um servidor'
+tags:
+  - core
+  - linguagens
 meta:
   description:
     O desenvolvimento moderno de produtos requer cada vez menos

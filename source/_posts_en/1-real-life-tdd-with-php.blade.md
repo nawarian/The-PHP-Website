@@ -7,6 +7,10 @@ sitemap:
 image:
   url: /assets/images/posts/1-test-640.webp
   alt: 'Two test cars crashing against each other'
+tags:
+  - tests
+  - learning
+  - languages
 meta:
   description:
     In this publication I explain how I approach Test-Driven Development

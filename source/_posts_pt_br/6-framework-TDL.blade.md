@@ -8,6 +8,11 @@ sitemap:
 image:
   url: /assets/images/posts/6-tdl-framework-640.webp
   alt: 'Uma caixa entreaberta'
+tags:
+  - testes
+  - aprendizado
+  - linguagens
+  - rust
 meta:
   description:
     Aprender uma nova linguagem (de programação) é uma habilidade

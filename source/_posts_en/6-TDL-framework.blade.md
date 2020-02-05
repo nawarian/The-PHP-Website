@@ -7,6 +7,11 @@ sitemap:
 image:
   url: /assets/images/posts/6-tdl-framework-640.webp
   alt: 'A half opened chest'
+tags:
+  - tests
+  - learning
+  - languages
+  - rust
 meta:
   description:
     Learning a new (programming) language is an extremely necessary

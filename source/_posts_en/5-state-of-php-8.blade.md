@@ -7,6 +7,10 @@ sitemap:
 image:
   url: /assets/images/posts/5-php-8-640.webp
   alt: 'An open blank notebook with a pen over it'
+tags:
+  - php8
+  - core
+  - news
 meta:
   description:
     PHP 8.0 is still under discussion and many things are being

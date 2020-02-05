@@ -8,6 +8,10 @@ sitemap:
 image:
   url: /assets/images/posts/4-writing-great-tests-640.webp
   alt: 'Vários(as) desenvolvedores(as) olhando para a mesma tela de computador tentando entender o que se passa'
+tags:
+  - testes
+  - refactoring
+  - documentacao
 meta:
   description:
     Este post tem a intenção de lhe ajudar a reduzir o número de "Diabéiss"

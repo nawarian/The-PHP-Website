@@ -7,6 +7,10 @@ sitemap:
 image:
   url: /assets/images/posts/3-generators-640.webp
   alt: 'A computer screen being magnified by a pair of glasses'
+tags:
+  - generators
+  - guide
+  - curiosity
 meta:
   description:
     In this post I talk about PHP Generators, how to work with Coroutines and

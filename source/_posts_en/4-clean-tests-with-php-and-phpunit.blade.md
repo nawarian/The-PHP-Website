@@ -7,6 +7,10 @@ sitemap:
 image:
   url: /assets/images/posts/4-writing-great-tests-640.webp
   alt: 'Many developers looking at the same computer screen trying to understand what is going on'
+tags:
+  - tests
+  - refactoring
+  - documentation
 meta:
   description:
     This post aims to help you reducing the number of WTF per second when

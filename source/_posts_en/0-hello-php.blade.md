@@ -7,6 +7,9 @@ sitemap:
 image:
   url: /assets/images/posts/0-hello-640.webp
   alt: 'An smartphone with a blank screen and a text saying "Hello"'
+tags:
+  - core
+  - languages
 meta:
   description:
     Do people even use PHP? In this post I explain why

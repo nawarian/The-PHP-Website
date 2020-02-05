@@ -8,6 +8,10 @@ sitemap:
 image:
   url: /assets/images/posts/3-generators-640.webp
   alt: 'Um computador sendo parcialmente amplificado pelas lentes de um óculos'
+tags:
+  - generators
+  - guia
+  - curiosidade
 meta:
   description:
     Neste post eu falo sobre Generators em PHP, como trabalhar com Coroutines e

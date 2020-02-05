@@ -8,6 +8,9 @@ sitemap:
 image:
   url: /assets/images/posts/0-hello-640.webp
   alt: 'Um smartphone com a tela branca e o texto "Hello"'
+tags:
+  - core
+  - linguagens
 meta:
   description:
     As pessoas ainda usam PHP? Neste post eu explico o motivo

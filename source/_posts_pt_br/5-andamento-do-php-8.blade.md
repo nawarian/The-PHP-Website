@@ -8,6 +8,10 @@ sitemap:
 image:
   url: /assets/images/posts/5-php-8-640.webp
   alt: 'Um bloco de notas aberto, com páginas em branco e uma caneta sobre si.'
+tags:
+  - php8
+  - core
+  - noticias
 meta:
   description:
     O PHP 8.0 ainda está sob discussão e muitas coisas estão sendo

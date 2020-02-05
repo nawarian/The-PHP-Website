@@ -7,6 +7,9 @@ sitemap:
 image:
   url: /assets/images/posts/2-engine-640.webp
   alt: 'A picture focusing components of a server'
+tags:
+  - core
+  - languages
 meta:
   description:
     Modern product development requires every day less deep

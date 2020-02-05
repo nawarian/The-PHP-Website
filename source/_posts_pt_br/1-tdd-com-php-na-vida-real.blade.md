@@ -8,6 +8,10 @@ sitemap:
 image:
   url: /assets/images/posts/1-test-640.webp
   alt: 'Dois carros de teste se chocando'
+tags:
+  - testes
+  - aprendizado
+  - linguagens
 meta:
   description:
     Neste post eu explico como eu faço Test-Driven Development com PHP.
