@@ -178,3 +178,58 @@ ul.menu-list {
   max-width: 750px;
   margin: auto;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222;
+    color: #aaa!important; // I know
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ff8237dd!important; // I know
+  }
+
+  a {
+    text-decoration-color: #ff8237cc!important; // I know
+    color: #ff8237aa!important;; // I know
+  }
+
+  strong, p {
+    color: #aaa!important; // I know
+  }
+
+  p code {
+    background-color: #333!important; // I know
+    border-color: #888!important; // I know
+  }
+
+  .menu {
+    &__header, &__container {
+      background-color: #ff8237dd;
+      box-shadow: none;
+
+      a {
+        color: #222!important; // I know
+        text-decoration-color: #222222cc!important; // I know
+      }
+
+      hr {
+        border-top: 3px solid #444;
+      }
+    }
+
+    &__header a {
+      color: #ff823788;
+      text-decoration: none;
+    }
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ff823788;
+
+    &__image {
+      border-bottom: 1px solid #ff823755;
+    }
+  }
+}
