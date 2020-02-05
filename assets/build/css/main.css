@@ -494,7 +494,7 @@ ol.pagination, ul.pagination {
 .menu__toggle-button {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 10px;
   cursor: pointer;
 }
 .menu__toggle-button--active {
