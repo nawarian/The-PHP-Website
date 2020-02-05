@@ -380,9 +380,9 @@ Felizmente a melhor resposta que eu encontrei até o momento para a
 maioria das linguagens/frameworks é: Comunidade!
 
 Rust, por exemplo, tem este projeto maravilhoso chamado "[rustlings](https://github.com/rust-lang/rustlings)".
-Ele te guia através de testes escritos pela comunidade e te ajuda
-a fazer com que compilem, que os testes passem...
-
+Ele te guia através de testes escritos pela comunidade e te desafia
+a fazer com que os códigos compilem (o compilador é realmente chato),
+que os testes passem...
 
 [No php tem o PHP School](https://www.phpschool.io/)
 que é bem semelhante ao rustlings, mas é altamente extensível e
@@ -417,7 +417,7 @@ Navegue pelo stackoverflow, github issues ou forums do reddit para
 encontrar perguntas que você realmente não sabe responder. Encontre-as,
 pesquise e responda (ou ao menos tente).
 
-As vezes você será capaz de explica somente com assertions, as vezes
+As vezes você será capaz de explicar somente com assertions, as vezes
 você precisará de uma visão mais ampla das coisas. Tente os dois!
 
 Em determinado momento você estará navegando por oportunidades de emprego
@@ -432,7 +432,7 @@ enrolar. Meu processo de aprendizado até o momento é bem doloroso
 mas extremamente útil pra mim.
 
 Também me salva um bom tempo por me guiar através de perguntas pequenas
-e respostas que eu precise dar, já eu não tenho tempo para investir em
+e respostas que eu precise dar, já que eu não tenho tempo para investir em
 aprendizado de novas linguagens como eu costumava ter há alguns anos
 atrás ~ suspiros.
 
