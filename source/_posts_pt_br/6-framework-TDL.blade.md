@@ -1,7 +1,7 @@
 ---
 slug: tdl-aprendizado-guiado-por-testes
 lang: pt-br
-title: TDL, um framework de aprendizado (de linguagens de programação)
+title: TDL, um framework de aprendizado (de linguagens de programção)
 createdAt: 2020-02-01
 sitemap:
   lastModified: 2020-02-01
@@ -324,7 +324,7 @@ O passo da descoberta é muito bom para aprender sobre sintaxe, funcionalidades
 da linguagem, frameworks... Basicamente tudo o que possa captar seu
 interesse se encaixa aqui.
 
-Mas sempre mantenha suas asserções simples. **É extremamente importante que
+Msa sempre mantenha suas asserções simples. **É extremamente importante que
 você entenda seus testes** muito mais que a implementação em si. Os testes
 precisam ser claros, o código você pode sempre refatorar.
 
@@ -380,9 +380,8 @@ Felizmente a melhor resposta que eu encontrei até o momento para a
 maioria das linguagens/frameworks é: Comunidade!
 
 Rust, por exemplo, tem este projeto maravilhoso chamado "[rustlings](https://github.com/rust-lang/rustlings)".
-Ele te guia através de testes escritos pela comunidade e te desafia
-a fazer com que os códigos compilem (o compilador é realmente chato),
-que os testes passem...
+Ele te guia através de testes escritos pela comunidade e te ajuda
+a faer com que compilem, que os testes passem...
 
 
 [No php tem o PHP School](https://www.phpschool.io/)
@@ -407,7 +406,7 @@ outras pessoas...
 
 Escute também podcasts, leia blogs (ou comece um!), entre em reddits.
 Você aprenderá mais e mais sobre o que pessoas estão fazendo
-com esta linguagem, o que é considerado normal e o que não é.
+com esta linguagem, o que é considerado normalm e o que não é.
 
 Encontre grupos de encontro locais, ou crie um você mesmo.
 Converse com pessoas de verdade, sobre problemas de verdade.
@@ -418,7 +417,7 @@ Navegue pelo stackoverflow, github issues ou forums do reddit para
 encontrar perguntas que você realmente não sabe responder. Encontre-as,
 pesquise e responda (ou ao menos tente).
 
-As vezes você será capaz de explicar somente com assertions, as vezes
+As vezes você será capaz de explica somente com assertions, as vezes
 você precisará de uma visão mais ampla das coisas. Tente os dois!
 
 Em determinado momento você estará navegando por oportunidades de emprego
@@ -428,12 +427,12 @@ continuar evoluindo.
 
 ---
 
-Fico feliz que tenha chegado até aqui, porque não tô tentando te
+Fico feliz que tenha cehgado até aqui, porque não tô tentando te
 enrolar. Meu processo de aprendizado até o momento é bem doloroso
 mas extremamente útil pra mim.
 
 Também me salva um bom tempo por me guiar através de perguntas pequenas
-e respostas que eu precise dar, já que eu não tenho tempo para investir em
+e respostas que eu precise dar, já eu não tenho tempo para investir em
 aprendizado de novas linguagens como eu costumava ter há alguns anos
 atrás ~ suspiros.
 
