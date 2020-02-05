@@ -41,7 +41,7 @@ ul.card-list {
   &__content {
     padding: 15px;
   }
-  
+
   &__content h3 {
     margin: 0;
   }
@@ -127,7 +127,7 @@ ol.pagination, ul.pagination {
   &__toggle-button {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 10px;
     cursor: pointer;
 
     &--active {
