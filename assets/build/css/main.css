@@ -560,7 +560,7 @@ ul.menu-list {
     color: #ff8237aa !important;
   }
 
-  strong, p {
+  strong, p, em {
     color: #aaa !important;
   }
 
