@@ -23,6 +23,25 @@ meta:
 
 [Leia em Português](/br/edicao/integrando-php-grafana/)
 
+Hey, this is a tutorial. There's no TL;DR, sorry about that.
+
+Within this little piece of content, I'll show you:
+
+- What is Grafana
+- A basic docker-compose set up for Grafana + PHP
+- How to send metrics from PHP to Grafana
+- Closing thoughts on what we should measure
+
+Move on! Move on! Move on!
+
+## What is Grafana?
+
+## Playground: Grafana and PHP with docker-compose
+
+## Pushing metrics from PHP to Grafana
+
+## Measure ... everything!
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
