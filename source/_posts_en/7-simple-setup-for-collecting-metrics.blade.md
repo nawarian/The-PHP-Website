@@ -135,7 +135,7 @@ CloudWatch or even Elasticsearch. But honestly...
 let's code!
 
 Add the following to your `docker-compose.yml` file.
-Also notice I've added `networks` to grafana service:
+Also notice I've added `links` to grafana service:
 
 ```yaml
 version: '3'
@@ -144,17 +144,128 @@ services:
     image: grafana/grafana:5.4.3
     ports:
       - 3333:3000
-    networks:
-      - grafana-net
+    links: # new !!
+      - graphite
+  graphite: # new !!!
+    image: graphiteapp/graphite-statsd
+    restart: always
+```
+
+Open your Grafana dashboard again, and this
+time let's connect our new Graphite data source.
+
+There should be a button saying `Add data source`,
+click it and choose `Graphite` from the list. And
+just fill in the `url` field under `HTTP` section.
+In this input field just type in `http://graphite:8080`
+and click `Save & Test`.
+
+Things are green, time to move on and set our
+PHP app!
+
+### Adding PHP and Nginx to docker-compose
+
+Let's just add the services `app` and `http`
+to hold our php-fpm and nginx servers:
+
+```yaml
+app:
+  image: php:7.4-fpm-alpine
+  volumes:
+    - .:/app
+  links:
+    - graphite
+http:
+  image: nginx:1.17.8-alpine
+  ports:
+    - 8080:80
+  volumes:
+    - .:/app
+    - .docker/conf/nginx/:/etc/nginx/conf.d/
+  links:
+    - app
+```
+
+And right away lets create the folders mentioned
+and files mentioned.
+
+```bash
+$ mkdir -p .docker/conf/nginx/ public/
+$ touch .docker/conf/nginx/app.conf public/index.php
+```
+
+Inside `.docker/conf/nginx/app.conf` let's add a very
+simple config:
+
+```conf
+server {
+    listen 80;
+    index index.php;
+    error_log  /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+    root /app/public;
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass app:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+    }
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+        gzip_static on;
+    }
+}
+```
+
+And inside your `public/index.php` add a simple
+echo so we can test things:
+
+```php
+<?php
+
+echo 'Hello';
+```
+
+Good! Our final `docker-compose.yml` file should look
+like the following:
+
+```yaml
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana:5.4.3
+    ports:
+      - 3333:3000
+    links:
+      - graphite
   graphite:
     image: graphiteapp/graphite-statsd
     restart: always
-    networks:
-      - grafana-net
-networks:
-  grafana-net:
+  app:
+    image: php:7.4-fpm-alpine
+    volumes:
+      - .:/app
+    links:
+      - graphite
+  http:
+    image: nginx:1.17.8-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - .:/app
+      - .docker/conf/nginx/:/etc/nginx/conf.d/
+    links:
+      - app
 
 ```
+
+Oof, congrats if you made it so far! With PHP
+and Grafana in hands we can finally start seeing
+how to push metrics using graphite image's StatsD
+API.
 
 ## Pushing metrics from PHP to Grafana
 

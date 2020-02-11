@@ -4,14 +4,23 @@ services:
     image: grafana/grafana:5.4.3
     ports:
       - 3333:3000
-    networks:
-      - grafana-net
+    links:
+      - graphite
   graphite:
     image: graphiteapp/graphite-statsd
     restart: always
-    networks:
-      - grafana-net
-
-networks:
-  grafana-net:
-
+  app:
+    image: php:7.4-fpm-alpine
+    volumes:
+      - .:/app
+    links:
+      - graphite
+  http:
+    image: nginx:1.17.8-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - .:/app
+      - .docker/conf/nginx/:/etc/nginx/conf.d/
+    links:
+      - app
