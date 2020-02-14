@@ -485,7 +485,7 @@ ol.pagination, ul.pagination {
 .menu__toggle-button {
   position: fixed;
   top: 0;
-  left: 10px;
+  right: 10px;
   cursor: pointer;
 }
 .menu__toggle-button--active {
@@ -570,7 +570,7 @@ ul.menu-list {
   }
 
   .menu__header, .menu__container {
-    background-color: #ff8237dd;
+    background-color: #ff8237f9;
     box-shadow: none;
   }
   .menu__header a, .menu__container a {
@@ -584,6 +584,9 @@ ul.menu-list {
   .menu__header a {
     color: #ff823788;
     text-decoration: none;
+  }
+  .menu__section-heading {
+    color: #222 !important;
   }
 
   .card {

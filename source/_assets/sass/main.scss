@@ -120,7 +120,7 @@ ol.pagination, ul.pagination {
   &__toggle-button {
     position: fixed;
     top: 0;
-    left: 10px;
+    right: 10px;
     cursor: pointer;
 
     &--active {
@@ -205,7 +205,7 @@ ul.menu-list {
 
   .menu {
     &__header, &__container {
-      background-color: #ff8237dd;
+      background-color: #ff8237f9;
       box-shadow: none;
 
       a {
@@ -221,6 +221,10 @@ ul.menu-list {
     &__header a {
       color: #ff823788;
       text-decoration: none;
+    }
+
+    &__section-heading {
+      color: #222!important; // I know
     }
   }
 
