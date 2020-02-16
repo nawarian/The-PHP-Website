@@ -5,10 +5,9 @@ createdAt: 2020-02-14
 sitemap:
   lastModified: 2020-02-14
 image:
-  url: /assets/images/posts/6-tdl-framework-640.webp
-  alt: ''
+  url: /assets/images/posts/7-container-640.webp
+  alt: 'A man jumping over a container'
 tags:
-  - tests
   - learning
   - phpunit
   - docker
@@ -104,7 +103,7 @@ a folder for tests and a folder for binaries.
 Just run this:
 
 ```bash
-$ mkdir src/ tests/ bin/
+$ mkdir -p src/ tests/ bin/ .conf/nginx/
 ```
 
 Now we can start working with our `docker-compose.yml`
@@ -339,10 +338,162 @@ Let's then create something with nginx and PHP-FPM!!
 
 ## Web Server Set Up
 
-- Add FPM
-- Add nginx
-- Add nginx configs
-- Add a phpinfo.php file
+For setting up php fpm, we will need actually
+two different services. One HTTP server and the
+FPM instance itself.
+
+Let's first add PHP-FPM to the game:
+
+```yaml
+# docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:1.9.3
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
+    restart: never
+  php:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+  phpunit:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpunit
+  # NEW IN THIS SECTION!!!
+  fpm:
+    image: php:7.4-fpm
+    restart: always
+    volumes:
+      - .:/var/www/
+    
+```
+
+Very simple! By running `docker-compose up -d fpm`
+it should already start running in background.
+
+Now let's set up the NGINX part that will
+expose a port `8080` and handle php requests
+by forwarding them to fpm's port `9000`.
+
+The docker-compose.yml file should be like this:
+
+```yaml
+# docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:1.9.3
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
+    restart: never
+  php:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+  phpunit:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpunit
+  fpm:
+    image: php:7.4-fpm
+    restart: always
+    volumes:
+      - .:/app
+  # NEW IN THIS SECTION!!!
+  nginx:
+    image: nginx:1.17.8-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - .:/app
+      - .conf/nginx/site.conf:/etc/nginx/conf.d/default.conf
+
+```
+
+With this we expose the port `8080` to
+be the container's `80` (default http port).
+
+We also linked our current directory to `/app`.
+Normally people do `/var/www` but I'd like to keep
+it consistent with our previous services.
+
+Last but not least, the `site.conf` file got introduced
+to the container with the name `default.conf`. This is
+just a quick way for nginx to pick it up.
+
+We need to create our config file now. Let's do it!
+
+```bash
+$ touch .conf/nginx/site.conf
+```
+
+Write the following config to your local
+`.conf/nginx/site.conf` file:
+
+```conf
+# .conf/nginx/site.conf
+server {
+  listen 80;
+  listen [::]:80;
+
+  root /app/public;
+  index index.php;
+
+  location / {
+      try_files $uri $uri/ /index.php$is_args$args;
+  }
+
+  location ~ .php$ {
+      try_files $uri =404;
+      fastcgi_split_path_info ^(.+.php)(/.+)$;
+      fastcgi_pass fpm:9000;
+      fastcgi_index index.php;
+      include fastcgi_params;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      fastcgi_param PATH_INFO $fastcgi_path_info;
+  }
+}
+```
+
+Notice that `root` is set to `/app/public`.
+This will be the entry path to every request
+nginx handles.
+
+Also look at the `fastcgi_pass` and see that
+it points to `fpm:9000`. **This is our fpm image.
+If you named it differently, adjust this line
+as well!**
+
+To test this out, let's create a simple
+`index.php` inside our `/public` folder.
+This file will serve as our application's
+entry point.
+
+Just add a simple phpinfo call to this file:
+
+```php
+# public/index.php
+<?php
+
+phpinfo();
+
+```
 
 ## Add MariaDB or MySQL
 
@@ -403,7 +554,7 @@ for PHP.
   "headline": "Setting up PHP, Docker and PHPUnit",
   "description": "In this post I quickly show my custom setup for php applications using PHPUnit and Docker and quick configs almost every application needs.",
   "image": [
-    "{{ $page->getBaseUrl() }}/assets/images/6-tdl-framework-640.webp"
+    "{{ $page->getBaseUrl() }}/assets/images/posts/7-container-640.webp"
    ],
   "datePublished": "2020-02-01T00:00:00+08:00",
   "dateModified": "2020-02-01T00:00:00+08:00",
