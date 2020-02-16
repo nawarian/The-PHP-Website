@@ -1,27 +1,29 @@
 ---
-slug: php-docker-quick-setup
-title: Setting up PHP, Docker and PHPUnit
+slug: php-docker-setup-rapido
+lang: pt-br
+title: Set up rápido do PHP, PHPUnit e Docker
 createdAt: 2020-02-17
 sitemap:
   lastModified: 2020-02-17
 image:
   url: /assets/images/posts/7-container-640.webp
-  alt: 'A man jumping over a container'
+  alt: 'Um pulando sobre um conteiner'
 tags:
-  - learning
+  - aprendizado
   - phpunit
   - docker
 meta:
   description:
-    In this post I quickly show my custom setup
-    for php applications using PHPUnit and Docker and
-    quick configs almost every application needs.
+    Nest post eu mostro rapidinho meu setup
+    para aplicações php usando PHPUnit e Docker
+    e algumas configs rápidas que quase todo app
+    precisa.
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-[Leia em Português](/br/edicao/php-docker-setup-rapido/)
+[Read in English](/en/issue/php-docker-quick-setup/)
 
 Here I'll show you some gists on my basic
 set up for bootstraping php applications.
@@ -634,13 +636,13 @@ Cheers!
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Setting up PHP, Docker and PHPUnit",
-  "description": "In this post I quickly show my custom setup for php applications using PHPUnit and Docker and quick configs almost every application needs.",
+  "headline": "Set up rápido do PHP, PHPUnit e Docker",
+  "description": "Nest post eu mostro rapidinho meu setup para aplicações php usando PHPUnit e Docker e algumas configs rápidas que quase todo app precisa.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/posts/7-container-640.webp"
    ],
-  "datePublished": "2020-02-01T00:00:00+08:00",
-  "dateModified": "2020-02-01T00:00:00+08:00",
+  "datePublished": "2020-02-17T00:00:00+08:00",
+  "dateModified": "2020-02-17T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"
