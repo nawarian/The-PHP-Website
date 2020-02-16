@@ -103,7 +103,8 @@ a folder for tests and a folder for binaries.
 Just run this:
 
 ```bash
-$ mkdir -p src/ tests/ bin/ .conf/nginx/
+$ mkdir -p src/ tests/ bin/ \
+  .conf/nginx/ var/
 ```
 
 Now we can start working with our `docker-compose.yml`
@@ -160,6 +161,7 @@ commiting composer files:
 ```bash
 $ echo '.cache/' >> .gitignore
 $ echo 'vendor/' >> .gitignore
+$ echo 'var/' >> .gitignore
 ```
 
 Great! With composer in hands we are already prepared
@@ -373,7 +375,7 @@ services:
     image: php:7.4-fpm
     restart: always
     volumes:
-      - .:/var/www/
+      - .:/app
     
 ```
 
