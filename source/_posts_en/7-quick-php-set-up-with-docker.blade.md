@@ -26,11 +26,6 @@ meta:
 Here I'll show you some gists on my basic
 set up for bootstraping php applications.
 
-As you probably saw from [my previous post about TDD](/en/issue/real-life-tdd-php),
-I care a lot about testing and I hope this
-set up will also support you with removing
-possible barriers you might have for testing too.
-
 **My biggest goal here, is that you'll bookmark
 this post** so you can come back, copy and paste
 stuff from here and start your new applications
@@ -58,7 +53,7 @@ a command. And the pattern would be the following:
 $ docker-compose run <command> [--args]
 ```
 
-Running a test suite, for example, will look like
+Running a test suite, for example, could look like
 this:
 
 ```bash
@@ -70,7 +65,7 @@ the `docker-compose run` command. I'll call it `dcr` here:
 
 ```bash
 $ alias dcr='docker-compose run'
-$ dcr run lol
+$ dcr lol
 ERROR: Can't find a suitable
 configuration file in this
 directory or any parent.
@@ -138,7 +133,7 @@ services:
   composer:
     image: composer:1.9.3
     environment:
-      - COMPOSER_CACHE_DIR=/app/.cache/composer
+      - COMPOSER_CACHE_DIR=/app/var/cache/composer
     volumes:
       - .:/app
     restart: never
@@ -148,10 +143,10 @@ The above snippet will create a `composer` service,
 that maps the current path to `/app` inside the container.
 
 Setting the environment variable COMPOSER_CACHE_DIR to
-`/app/.cache/composer` will make sure that composer will have
+`/app/var/cache/composer` will make sure that composer will have
 a local cache instead of downloading everything again all the time.
 
-So make sure that you don't push to git your `.cache` local folder,
+So make sure that you don't push to git your `var/` local folder,
 huh!
 
 Just so you don't forget, let's ignore composer related
@@ -159,7 +154,6 @@ files right away. Run the following commands to avoid
 commiting composer files:
 
 ```bash
-$ echo '.cache/' >> .gitignore
 $ echo 'vendor/' >> .gitignore
 $ echo 'var/' >> .gitignore
 ```
@@ -344,6 +338,16 @@ For setting up php fpm, we will need actually
 two different services. One HTTP server and the
 FPM instance itself.
 
+As they are long-running processes, we won't use
+the `docker-compose run` form with them. Instead,
+let's lift both using the `up -d` version.
+
+Final command will look like the following:
+
+```bash
+$ docker-compose up -d fpm nginx
+```
+
 Let's first add PHP-FPM to the game:
 
 ```yaml
@@ -424,6 +428,7 @@ services:
       - 8080:80
     volumes:
       - .:/app
+      - ./var/log/nginx:/var/log/nginx
       - .conf/nginx/site.conf:/etc/nginx/conf.d/default.conf
 
 ```
@@ -434,6 +439,10 @@ be the container's `80` (default http port).
 We also linked our current directory to `/app`.
 Normally people do `/var/www` but I'd like to keep
 it consistent with our previous services.
+
+The `var/log/nginx` local path got linked to
+`/var/log/nginx`. This way we don't get blind when
+in need to check access or error logs.
 
 Last but not least, the `site.conf` file got introduced
 to the container with the name `default.conf`. This is
@@ -470,6 +479,9 @@ server {
       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
       fastcgi_param PATH_INFO $fastcgi_path_info;
   }
+
+  access_log /var/log/nginx/myapp_access.log;
+  error_log /var/log/nginx/myapp_error.log;
 }
 ```
 
@@ -497,33 +509,93 @@ phpinfo();
 
 ```
 
-## Add MariaDB or MySQL
+Now just lift the nginx server:
 
-- Add mariadb image
-- Set credentials via env vars
-- Show simple a connection with PDO
+```bash
+$ docker-compose up -d nginx
+```
 
-## Or maybe you'd like to use MongoDB
+From this moment on you should be able to
+enter http://localhost:8080/ from your
+browser normally.
 
-- Add a mongodb driver dependency
-- Add a mongodb image
-- Set credentials via env vars
-- Show a simple connection with the driver
+## Don't forget the autoloader
 
-## In-Memory Store!
+We installed composer properly, but
+using our own classes is still not
+optimal.
 
-- Add redis image
-- Connect with redis
+Let's adjust our composer.json file
+so composer knows from where to
+autoload stuff:
 
-## Tweak autoloader
+```json
+# composer.json
+{
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ThePHPWebsite\\": "src/"
+    }
+  }
+}
 
-- Modify `composer.json` file
-- Play around with the web app
-  - Test first!
-  - Slim + Redis
-- Play around with the cli app
-  - Test first!
-  - Raw app + Redis
+```
+
+Now just run a composer dump:
+
+```bash
+$ dcr composer -- dump
+Generated autoload files
+containing 646 classes
+```
+
+This `--` before the actual command just
+makes sure that `docker-compose` won't
+think `dump` is a service instead of a
+parameter to our command.
+
+To test this, let's create a file named
+`App.php` inside `src/`:
+
+```php
+# src/App.php
+<?php
+
+declare(strict_types=1);
+
+namespace ThePHPWebsite;
+
+class App
+{
+  public function sayHello(): void
+  {
+    echo 'Hello!';
+  }
+}
+```
+
+And now just modify the `public/index.php`
+in order to use our new App class:
+
+```php
+<?php
+
+require_once __DIR__
+  . '/../vendor/autoload.php';
+
+use ThePHPWebsite\App;
+
+$app = new App();
+
+$app->sayHello();
+
+```
+
+Refresh your browser tab and we shall
+see a "Hello!" message on the screen!
 
 ---
 
@@ -533,14 +605,23 @@ PHP very quickly using docker compose and enabled
 to run tests with phpunit.
 
 You might want to add some other things as well,
-like the phpunit watcher, behat or maybe Rector.
+like databases, queues or maybe a Solr server...
 
 You're free to evolve without messing up your whole
 computer/server/repository.
 
+If at some point you find that you'll need
+specific things like a certain php extension or
+something fancy about your containers, just
+create your custom Docker and replace in your
+docker-compose.yml file.
+
 Don't forget to share with your lazy friends
 whenever they start crying about a skeleton set up
-for PHP.
+for PHP and let me know if you faced any trouble
+during this tutorial.
+
+Cheers!
 
 <div class="align-right">
   --

@@ -3,7 +3,7 @@ services:
   composer:
     image: composer:1.9.3
     environment:
-      - COMPOSER_CACHE_DIR=/app/.cache/composer
+      - COMPOSER_CACHE_DIR=/app/var/cache/composer
     volumes:
       - .:/app
     restart: "no"
@@ -31,4 +31,5 @@ services:
       - 8080:80
     volumes:
       - .:/app
+      - ./var/log/nginx:/var/log/nginx
       - .conf/nginx/site.conf:/etc/nginx/conf.d/default.conf
