@@ -46,6 +46,9 @@ If you follow this tutorial through, you'll be able
 to execute different services by using `docker-compose`
 commands.
 
+You can find the final results in
+[the public repository](https://github.com/nawarian/The-PHP-Website/tree/master/code/7-phpunit-docker-compose).
+
 The main idea is that every service may or not become
 a command. And the pattern would be the following:
 
@@ -618,7 +621,9 @@ docker-compose.yml file.
 
 Don't forget to share with your lazy friends
 whenever they start crying about a skeleton set up
-for PHP and let me know if you faced any trouble
+for PHP.
+
+And, of course, let me know if you faced any trouble
 during this tutorial.
 
 Cheers!

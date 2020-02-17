@@ -48,6 +48,9 @@ possui `docker` e `docker-compose` instalados.
 Se você seguir este tutorial, será capaz de executar
 diferentes serviços através do comando `docker-compose`.
 
+Você encontra o resultado final
+[no repositório público](https://github.com/nawarian/The-PHP-Website/tree/master/code/7-phpunit-docker-compose).
+
 A maior ideia é que cada serviço pode ou não se tornar
 um comando. E o formato se parece com o seguinte:
 
@@ -475,9 +478,7 @@ $ touch .conf/nginx/site.conf
 ```
 
 Escreva o seguinte arquivo de configuração
-no caminho `.conf/nginx/site.conf` file:
-
-### @TODO
+no caminho `.conf/nginx/site.conf`:
 
 ```conf
 # .conf/nginx/site.conf
@@ -507,21 +508,23 @@ server {
 }
 ```
 
-Notice that `root` is set to `/app/public`.
-This will be the entry path to every request
-nginx handles.
+Repare como `root` está apontando para
+`/app/public`. Isto fará com que a pasta
+`public/` seja o ponto de início para toda
+requisição que o nginx gerenciar.
 
-Also look at the `fastcgi_pass` and see that
-it points to `fpm:9000`. **This is our fpm image.
-If you named it differently, adjust this line
-as well!**
+Repare também no `fastcgi_pass` e veja que
+está apontando para `fpm:9000`. **Esta é a
+nossa imagem fpm. Se você a deu um nome diferente,
+ajuste essa linha aqui também!**
 
-To test this out, let's create a simple
-`index.php` inside our `/public` folder.
-This file will serve as our application's
-entry point.
+Pra testar isso tudo, vamos criar um simples
+`index.php` dentro da pasta `/public`.
+Este arquivo vai servir como o ponto de
+partida da nossa aplicação.
 
-Just add a simple phpinfo call to this file:
+Apenas adicione uma chamada ao phpinfo neste
+arquivo:
 
 ```php
 # public/index.php
@@ -531,25 +534,25 @@ phpinfo();
 
 ```
 
-Now just lift the nginx server:
+Agora vamos levantar o servidor nginx:
 
 ```bash
 $ docker-compose up -d nginx
 ```
 
-From this moment on you should be able to
-enter http://localhost:8080/ from your
-browser normally.
+A partir deste momento você poderá acessar
+http://localhost:8080/ a partir do seu
+navegador normalmente.
 
-## Don't forget the autoloader
+## Não esqueça o autoloader
 
-We installed composer properly, but
-using our own classes is still not
-optimal.
+Nós instalamos o composer corretamente,
+mas usar as nossas classes ainda não está
+perfeito.
 
-Let's adjust our composer.json file
-so composer knows from where to
-autoload stuff:
+Vamos ajustar o nosso composer.json para
+que o composer possa saber de onde carregar
+nossas classes:
 
 ```json
 # composer.json
@@ -566,7 +569,7 @@ autoload stuff:
 
 ```
 
-Now just run a composer dump:
+Agora rode um composer dump:
 
 ```bash
 $ dcr composer -- dump
@@ -574,13 +577,13 @@ Generated autoload files
 containing 646 classes
 ```
 
-This `--` before the actual command just
-makes sure that `docker-compose` won't
-think `dump` is a service instead of a
-parameter to our command.
+Este `--` antes do comando apenas faz com
+que o `docker-compose` não pense que `dump`
+é um serviço em vez de parâmetro ao nosso
+comando do composer.
 
-To test this, let's create a file named
-`App.php` inside `src/`:
+Pra testar este pedacinho, criemos um arquivo
+chamado `App.php` dentro de `src/`:
 
 ```php
 # src/App.php
@@ -599,8 +602,9 @@ class App
 }
 ```
 
-And now just modify the `public/index.php`
-in order to use our new App class:
+E agora apenas modifique o arquivo
+`public/index.php` para usar a nossa
+classe:
 
 ```php
 <?php
@@ -616,34 +620,37 @@ $app->sayHello();
 
 ```
 
-Refresh your browser tab and we shall
-see a "Hello!" message on the screen!
+Recarregue a página no navegador e
+XABLAU! "Hello!" tá lá, chapa!
 
 ---
 
-Yeah, that's it! An awesome guide on setting
-up a local development environment for
-PHP very quickly using docker compose and enabled
-to run tests with phpunit.
+Buum! Isso é tudo! Um guia massa de como montar
+um ambiente local de desenvolvimento pra aplicações
+php usando docker compose e podendo rodar testes
+com o phpunit. 
 
-You might want to add some other things as well,
-like databases, queues or maybe a Solr server...
+Você provavelmente gostará também de adicionar
+outros serviços como bancos de dados, servidores
+de filas, um servidor Solr...
 
-You're free to evolve without messing up your whole
-computer/server/repository.
+Vai na fé e adiciona eles aí, agora tu não precisa
+mais bagunçar seu ambiente todo pra mexer com
+diferentes serviços.
 
-If at some point you find that you'll need
-specific things like a certain php extension or
-something fancy about your containers, just
-create your custom Docker and replace in your
-docker-compose.yml file.
+Se em algum momento você entender que precisa de
+alguma coisa MUITO específica, como uma extensão
+do php ou coisa do gênero, basta criar um Dockerfile
+customizado e referenciá-lo no docker-compose.yml.
 
-Don't forget to share with your lazy friends
-whenever they start crying about a skeleton set up
-for PHP and let me know if you faced any trouble
-during this tutorial.
+Não se esqueça de compartilhar com seus(uas) amigos(as)
+preguiçosos(as) sempre que começarem a reclamar
+do processo de criar um projeto base com PHP.
 
-Cheers!
+E também sinta-se livre pra me dar um alô se
+você teve algum problema durante este tutorial.
+
+Valeus!
 
 <div class="align-right">
   --
