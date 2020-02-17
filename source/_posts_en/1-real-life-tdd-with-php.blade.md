@@ -1,9 +1,9 @@
 ---
 slug: real-life-tdd-php
-title: Real Life Test-Driven Development with PHP
+title: Test-Driven Development with PHP by example
 createdAt: 2019-11-03
 sitemap:
-  lastModified: 2019-11-03
+  lastModified: 2020-02-17
 image:
   url: /assets/images/posts/1-test-640.webp
   alt: 'Two test cars crashing against each other'
@@ -13,9 +13,9 @@ tags:
   - languages
 meta:
   description:
-    In this publication I explain how I approach Test-Driven Development
-    while using PHP. The main focus is on the feedback loop tdd provides
-    and which tools are suitable to bring us there when programming PHP.
+    This is how I approach Test-Driven Development (TDD) with PHP.
+    The main focus is on the feedback loop tdd provides and which
+    tools are suitable to bring us there when programming PHP.
   twitter:
     card: summary
     site: '@nawarian'
@@ -467,13 +467,13 @@ for questions or complaints.
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Real Life Test-Driven Development with PHP",
-  "description": "In this publication I explain how I approach Test-Driven Development while using PHP. The main focus is on the feedback loop tdd provides and which tools are suitable to bring us there when programming PHP.",
+  "headline": "Test-Driven Development with PHP by example",
+  "description": "This is how I approach Test-Driven Development (TDD) with PHP. The main focus is on the feedback loop tdd provides and which tools are suitable to bring us there when programming PHP.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/1-test.jpg"
    ],
   "datePublished": "2019-11-03T00:00:00+08:00",
-  "dateModified": "2019-11-03T00:00:00+08:00",
+  "dateModified": "2020-02-17T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"

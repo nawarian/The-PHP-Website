@@ -1,10 +1,10 @@
 ---
 slug: tdd-com-php-na-vida-real
 lang: pt-br
-title: TDD com PHP na vida real
+title: Desenvolvimento Guiado a Testes no PHP com exemplos
 createdAt: 2019-11-03
 sitemap:
-  lastModified: 2019-11-03
+  lastModified: 2020-02-17
 image:
   url: /assets/images/posts/1-test-640.webp
   alt: 'Dois carros de teste se chocando'
@@ -14,8 +14,8 @@ tags:
   - linguagens
 meta:
   description:
-    Neste post eu explico como eu faço Test-Driven Development com PHP.
-    O foco é no ciclo de feedback que o TDD provê, e quais ferramentas
+    Esta é a maneira como faço Test-Driven Development no PHP.
+    O foco é no ciclo de feedback que o TDD traz, e quais ferramentas
     são adequadas para alcançar este ciclo enquanto programo em PHP.
   twitter:
     card: summary
@@ -475,13 +475,13 @@ toque pra discutir ou perguntar coisas.
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "TDD com PHP na vida real",
-  "description": "Neste post eu explico como eu faço Test-Driven Development com PHP. O foco é no ciclo de feedback que o TDD provê, e quais ferramentas são adequadas para alcançar este ciclo enquanto programo em PHP.",
+  "headline": "Desenvolvimento Guiado a Testes no PHP com exemplos",
+  "description": "Esta é a maneira como faço Test-Driven Development no PHP. O foco é no ciclo de feedback que o TDD traz, e quais ferramentas são adequadas para alcançar este ciclo enquanto programo em PHP.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/1-test.jpg"
    ],
   "datePublished": "2019-11-03T00:00:00+08:00",
-  "dateModified": "2019-11-03T00:00:00+08:00",
+  "dateModified": "2020-02-17T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"
