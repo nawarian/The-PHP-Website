@@ -36,11 +36,7 @@ acompanhe o [arquivo UPGRADE no repositório oficial](https://github.com/php/php
 
 ## Quando o PHP 8.0 será lançado?
 
-**O PHP 8.0 será lançado neste Dezembro de 2020.** Ao menos esta é a data oficial até o momento.
-
-[PHP 7.4 got released not long ago](https://www.php.net/releases/7_4_0.php) and there
-won't be another minor version (PHP 7.5) for this major 7. So the next version will
-definitely be PHP 8.
+**A data de lançamento do PHP 8.0 é Dezembro de 2020.** Ao menos esta é a data oficial até o momento.
 
 [O PHP 7.4 foi lançado há pouco tempo](https://www.php.net/releases/7_4_0.php) e não haverá
 nenhuma outra minor version (PHP 7.5) para esta major 7. Portanto a próxima versão será, com
