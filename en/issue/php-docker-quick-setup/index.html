@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=4bf4cc8f94223aba404a">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.xml"
+  />
+
+  <title>Setting up PHP, Docker and PHPUnit | thePHP Website</title>
+
+  <meta name="description" content="In this post I quickly show my custom setup for php applications using PHPUnit and Docker and quick configs almost every application needs.">
+
+  <meta property="og:title" content="Setting up PHP, Docker and PHPUnit">
+  <meta property="og:description" content="In this post I quickly show my custom setup for php applications using PHPUnit and Docker and quick configs almost every application needs.">
+  <meta property="og:url" content="https://thephp.website/en/issue/php-docker-quick-setup">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/7-container-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Setting up PHP, Docker and PHPUnit">
+  <meta name="twitter:description" content="In this post I quickly show my custom setup for php applications using PHPUnit and Docker and quick configs almost every application needs.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-1');
+  </script>
+</head>
+<body class="yue">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/en/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Suggest a Topic!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/en/about/">
+            about.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.json">
+            [EN] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.xml">
+            [EN] Atom Feed (RSS)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-02-17">
+      2020-02-17
+    </time>
+
+    <h1>Setting up PHP, Docker and PHPUnit</h1>
+    <p><a href="/br/edicao/php-docker-setup-rapido/">Leia em Português</a></p>
+<p>Here I'll show you some gists on my basic
+set up for bootstraping php applications.</p>
+<p><strong>My biggest goal here, is that you'll bookmark
+this post</strong> so you can come back, copy and paste
+stuff from here and start your new applications
+whenever you need specific bits with low effort. 😉</p>
+<p>The good thing about following this approach
+is that you can easily switch between image versions
+without bootstraping thousands of things at once.</p>
+<p>So...</p>
+<p><strong>Before we start:</strong> Make sure you have <code>docker</code> and
+<code>docker-compose</code> installed.</p>
+<h2>The final result</h2>
+<p>If you follow this tutorial through, you'll be able
+to execute different services by using <code>docker-compose</code>
+commands.</p>
+<p>You can find the final results in
+<a href="https://github.com/nawarian/The-PHP-Website/tree/master/code/7-phpunit-docker-compose">the public repository</a>.</p>
+<p>The main idea is that every service may or not become
+a command. And the pattern would be the following:</p>
+<pre><code class="language-bash">$ docker-compose run &lt;command&gt; [--args]</code></pre>
+<p>Running a test suite, for example, could look like
+this:</p>
+<pre><code class="language-bash">$ docker-compose run tests</code></pre>
+<p>To make typing easier, we can also add and alias to
+the <code>docker-compose run</code> command. I'll call it <code>dcr</code> here:</p>
+<pre><code class="language-bash">$ alias dcr='docker-compose run'
+$ dcr lol
+ERROR: Can't find a suitable
+configuration file in this
+directory or any parent.
+Are you in the right directory?
+
+Supported filenames:
+docker-compose.yml,
+docker-compose.yaml</code></pre>
+<p>Alias created! It will complain though because there's no
+compose file there yet. Let's create it then!</p>
+<h2>A basic compose file</h2>
+<p>So we're creating a brand-new project, huh? Let's
+do it! Start by <strong>creating the project folder</strong> and
+later on <strong>creating our docker-compose.yml</strong> file:</p>
+<pre><code class="language-bash">$ mkdir my-project
+$ cd my-project
+$ touch docker-compose.yml</code></pre>
+<p>I'll create then the common folders my skeleton
+usually has. This will include a source folder,
+a folder for tests and a folder for binaries.</p>
+<p>Just run this:</p>
+<pre><code class="language-bash">$ mkdir -p src/ tests/ bin/ \
+  .conf/nginx/ var/</code></pre>
+<p>Now we can start working with our <code>docker-compose.yml</code>
+file. It will contain all dependencies this project
+might have.</p>
+<p>The initial content in our docker-compose file should
+be quite simple. Just type in the following:</p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3'
+services:</code></pre>
+<p>We will fill in the services right now! The most basic
+one we need is, of course, composer.</p>
+<h2>Adding composer to docker-compose</h2>
+<p>Probably we're going to use php from inside the container.
+So <strong>it doesn't make much sense to run composer from the
+local machine</strong>, as php version might differ.</p>
+<p>Let's then add a <code>composer</code> service to our file:</p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:1.9.3
+    environment:
+      - COMPOSER_CACHE_DIR=/app/var/cache/composer
+    volumes:
+      - .:/app
+    restart: never</code></pre>
+<p>The above snippet will create a <code>composer</code> service,
+that maps the current path to <code>/app</code> inside the container.</p>
+<p>Setting the environment variable COMPOSER_CACHE_DIR to
+<code>/app/var/cache/composer</code> will make sure that composer will have
+a local cache instead of downloading everything again all the time.</p>
+<p>So make sure that you don't push to git your <code>var/</code> local folder,
+huh!</p>
+<p>Just so you don't forget, let's ignore composer related
+files right away. Run the following commands to avoid
+commiting composer files:</p>
+<pre><code class="language-bash">$ echo 'vendor/' &gt;&gt; .gitignore
+$ echo 'var/' &gt;&gt; .gitignore</code></pre>
+<p>Great! With composer in hands we are already prepared
+to install our most important dependency!</p>
+<h2>Prepare PHPUnit</h2>
+<p>The most important dependency from this skeleton
+app is the test engine, of course!</p>
+<p>Let's install it by request it from composer:</p>
+<pre><code class="language-bash">$ dcr composer require --dev \
+  phpunit/phpunit</code></pre>
+<p>You don't need this backslash by the way, I'll leave
+it there so mobile readers can also benefit from this
+text 😬</p>
+<p>Should be installing deps right now, and a <code>composer.json</code>
+and <code>composer.lock</code> files might have appeared in your
+directory. Oh, there's a <code>vendor/</code>.</p>
+<p>Things seem to work...</p>
+<p>Let's then create a simple php service for handling
+cli stuff. We will use the official php cli image for
+such. And as fancy as we can get, let's do it with
+php 7.4! 🔥</p>
+<h2>Prepare a PHP Cli</h2>
+<p>We're gonna use the <code>php:7.4-cli</code> image for this.</p>
+<p>Let's also map volumes the same way we did with
+composer. Might be handy in the future.</p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:1.9.3
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
+    restart: never
+  # NEW IN THIS SECTION!!!
+  php:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app</code></pre>
+<p>Here we also set the working dir to <code>/app</code>.
+So whenever we run <code>dcr php</code> it will act as
+if it was in our local root path.</p>
+<p>Wondering how we're gonna run unit tests,
+right?</p>
+<p>Lemme show ya!</p>
+<h2>Run PHPUnit inside container</h2>
+<p>Running PHPUnit should be as simple as running
+a cli command. Given it is a cli command...</p>
+<p>The following then works fine:</p>
+<pre><code class="language-bash">$ dcr php vendor/bin/phpunit</code></pre>
+<p>You can use &lt;TAB> for auto-completion normally 😉</p>
+<p>Sounds really boring to type all this stuff over
+and over again, though. Can we make it simpler?</p>
+<p>Yes!</p>
+<p>Let's add a <code>phpunit</code> service to our <code>docker-compose.yml</code>:</p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:1.9.3
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
+    restart: never
+  php:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+  # NEW IN THIS SECTION!!!
+  phpunit:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpunit</code></pre>
+<p>The <code>entrypoint</code> field here is the catch!
+Now in your terminal just run the following:</p>
+<pre><code>$ dcr phpunit --version
+PHPUnit 9.0.1 by Sebastian
+Bergmann and contributors.</code></pre>
+<p>Ohaa! That's beautiful!</p>
+<p>We can, by the way, generate our <code>phpunit.xml</code>
+configuration before moving to the next step.</p>
+<p>Let's do it:</p>
+<pre><code class="language-bash">$ dcr phpunit \
+  --generate-configuration</code></pre>
+<p>It will ask you a couple of questions. Just press
+enter for everything, who cares...</p>
+<h2>Create a simple test</h2>
+<p>Just to make sure things are working, right?</p>
+<p>Let's do it!</p>
+<pre><code class="language-bash">$ touch tests/MyTest.php</code></pre>
+<p>And inside <code>tests/MyTest.php</code> add the following:</p>
+<pre><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+use PHPUnit\Framework\TestCase;
+
+class MyTest extends TestCase
+{
+  public function testMyTest(): void
+  {
+    self::assertTrue(false);
+  }
+}</code></pre>
+<p>This works perfectly! And the test also fails...
+You can fix it later, no worries!</p>
+<p>Now that we managed to run our tests we can think
+of building the application.</p>
+<p>Probably you want to build a web application, right?
+Let's then create something with nginx and PHP-FPM!!</p>
+<h2>Web Server Set Up</h2>
+<p>For setting up php fpm, we will need actually
+two different services. One HTTP server and the
+FPM instance itself.</p>
+<p>As they are long-running processes, we won't use
+the <code>docker-compose run</code> form with them. Instead,
+let's lift both using the <code>up -d</code> version.</p>
+<p>Final command will look like the following:</p>
+<pre><code class="language-bash">$ docker-compose up -d fpm nginx</code></pre>
+<p>Let's first add PHP-FPM to the game:</p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:1.9.3
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
+    restart: never
+  php:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+  phpunit:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpunit
+  # NEW IN THIS SECTION!!!
+  fpm:
+    image: php:7.4-fpm
+    restart: always
+    volumes:
+      - .:/app
+</code></pre>
+<p>Very simple! By running <code>docker-compose up -d fpm</code>
+it should already start running in background.</p>
+<p>Now let's set up the NGINX part that will
+expose a port <code>8080</code> and handle php requests
+by forwarding them to fpm's port <code>9000</code>.</p>
+<p>The docker-compose.yml file should be like this:</p>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:1.9.3
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    volumes:
+      - .:/app
+    restart: never
+  php:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+  phpunit:
+    image: php:7.4-cli
+    restart: never
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpunit
+  fpm:
+    image: php:7.4-fpm
+    restart: always
+    volumes:
+      - .:/app
+  # NEW IN THIS SECTION!!!
+  nginx:
+    image: nginx:1.17.8-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - .:/app
+      - ./var/log/nginx:/var/log/nginx
+      - .conf/nginx/site.conf:/etc/nginx/conf.d/default.conf
+</code></pre>
+<p>With this we expose the port <code>8080</code> to
+be the container's <code>80</code> (default http port).</p>
+<p>We also linked our current directory to <code>/app</code>.
+Normally people do <code>/var/www</code> but I'd like to keep
+it consistent with our previous services.</p>
+<p>The <code>var/log/nginx</code> local path got linked to
+<code>/var/log/nginx</code>. This way we don't get blind when
+in need to check access or error logs.</p>
+<p>Last but not least, the <code>site.conf</code> file got introduced
+to the container with the name <code>default.conf</code>. This is
+just a quick way for nginx to pick it up.</p>
+<p>We need to create our config file now. Let's do it!</p>
+<pre><code class="language-bash">$ touch .conf/nginx/site.conf</code></pre>
+<p>Write the following config to your local
+<code>.conf/nginx/site.conf</code> file:</p>
+<pre><code class="language-conf"># .conf/nginx/site.conf
+server {
+  listen 80;
+  listen [::]:80;
+
+  root /app/public;
+  index index.php;
+
+  location / {
+      try_files $uri $uri/ /index.php$is_args$args;
+  }
+
+  location ~ .php$ {
+      try_files $uri =404;
+      fastcgi_split_path_info ^(.+.php)(/.+)$;
+      fastcgi_pass fpm:9000;
+      fastcgi_index index.php;
+      include fastcgi_params;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      fastcgi_param PATH_INFO $fastcgi_path_info;
+  }
+
+  access_log /var/log/nginx/myapp_access.log;
+  error_log /var/log/nginx/myapp_error.log;
+}</code></pre>
+<p>Notice that <code>root</code> is set to <code>/app/public</code>.
+This will be the entry path to every request
+nginx handles.</p>
+<p>Also look at the <code>fastcgi_pass</code> and see that
+it points to <code>fpm:9000</code>. <strong>This is our fpm image.
+If you named it differently, adjust this line
+as well!</strong></p>
+<p>To test this out, let's create a simple
+<code>index.php</code> inside our <code>/public</code> folder.
+This file will serve as our application's
+entry point.</p>
+<p>Just add a simple phpinfo call to this file:</p>
+<pre><code class="language-php"># public/index.php
+&lt;?php
+
+phpinfo();
+</code></pre>
+<p>Now just lift the nginx server:</p>
+<pre><code class="language-bash">$ docker-compose up -d nginx</code></pre>
+<p>From this moment on you should be able to
+enter <a href="http://localhost:8080/">http://localhost:8080/</a> from your
+browser normally.</p>
+<h2>Don't forget the autoloader</h2>
+<p>We installed composer properly, but
+using our own classes is still not
+optimal.</p>
+<p>Let's adjust our composer.json file
+so composer knows from where to
+autoload stuff:</p>
+<pre><code class="language-json"># composer.json
+{
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ThePHPWebsite\\": "src/"
+    }
+  }
+}
+</code></pre>
+<p>Now just run a composer dump:</p>
+<pre><code class="language-bash">$ dcr composer -- dump
+Generated autoload files
+containing 646 classes</code></pre>
+<p>This <code>--</code> before the actual command just
+makes sure that <code>docker-compose</code> won't
+think <code>dump</code> is a service instead of a
+parameter to our command.</p>
+<p>To test this, let's create a file named
+<code>App.php</code> inside <code>src/</code>:</p>
+<pre><code class="language-php"># src/App.php
+&lt;?php
+
+declare(strict_types=1);
+
+namespace ThePHPWebsite;
+
+class App
+{
+  public function sayHello(): void
+  {
+    echo 'Hello!';
+  }
+}</code></pre>
+<p>And now just modify the <code>public/index.php</code>
+in order to use our new App class:</p>
+<pre><code class="language-php">&lt;?php
+
+require_once __DIR__
+  . '/../vendor/autoload.php';
+
+use ThePHPWebsite\App;
+
+$app = new App();
+
+$app-&gt;sayHello();
+</code></pre>
+<p>Refresh your browser tab and we shall
+see a &quot;Hello!&quot; message on the screen!</p>
+<hr />
+<p>Yeah, that's it! An awesome guide on setting
+up a local development environment for
+PHP very quickly using docker compose and enabled
+to run tests with phpunit.</p>
+<p>You might want to add some other things as well,
+like databases, queues or maybe a Solr server...</p>
+<p>You're free to evolve without messing up your whole
+computer/server/repository.</p>
+<p>If at some point you find that you'll need
+specific things like a certain php extension or
+something fancy about your containers, just
+create your custom Docker and replace in your
+docker-compose.yml file.</p>
+<p>Don't forget to share with your lazy friends
+whenever they start crying about a skeleton set up
+for PHP.</p>
+<p>And, of course, let me know if you faced any trouble
+during this tutorial.</p>
+<p>Cheers!</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Setting up PHP, Docker and PHPUnit",
+  "description": "In this post I quickly show my custom setup for php applications using PHPUnit and Docker and quick configs almost every application needs.",
+  "image": [
+    "https://thephp.website/assets/images/posts/7-container-640.webp"
+   ],
+  "datePublished": "2020-02-01T00:00:00+08:00",
+  "dateModified": "2020-02-01T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+</body>
+<script src="/assets/build/js/main.js?id=ee0fce299adcd2eb366f"></script>
+</html>
