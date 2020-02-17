@@ -14,7 +14,7 @@ tags:
   - docker
 meta:
   description:
-    Nest post eu mostro rapidinho meu setup
+    Neste post eu mostro rapidinho meu setup
     para aplicações php usando PHPUnit e Docker
     e algumas configs rápidas que quase todo app
     precisa.
@@ -25,45 +25,46 @@ meta:
 
 [Read in English](/en/issue/php-docker-quick-setup/)
 
-Here I'll show you some gists on my basic
-set up for bootstraping php applications.
+Neste texto eu vou lhe mostrar alguns snippets
+do meu setup básico pra iniciar aplicações PHP.
 
-**My biggest goal here, is that you'll bookmark
-this post** so you can come back, copy and paste
-stuff from here and start your new applications
-whenever you need specific bits with low effort. 😉
+**Meu maior objetivo aqui é que você marque este
+post nos seus favoritos** para que possa voltar,
+copiar e colar as coisas daqui sempre que precisar
+criar ou alterar suas aplicações php. 😉
 
-The good thing about following this approach
-is that you can easily switch between image versions
-without bootstraping thousands of things at once.
+A coisa legal de usar este setup é que você
+pode facilmente trocar as versões das imagens
+sem precisar configurar um montante de coisas
+de uma vez.
 
-So...
+Então...
 
-**Before we start:** Make sure you have `docker` and
-`docker-compose` installed.
+**Antes de começar:** tenha certeza de que você
+possui `docker` e `docker-compose` instalados.
 
-## The final result
+## O resultado final
 
-If you follow this tutorial through, you'll be able
-to execute different services by using `docker-compose`
-commands.
+Se você seguir este tutorial, será capaz de executar
+diferentes serviços através do comando `docker-compose`.
 
-The main idea is that every service may or not become
-a command. And the pattern would be the following:
+A maior ideia é que cada serviço pode ou não se tornar
+um comando. E o formato se parece com o seguinte:
 
 ```bash
-$ docker-compose run <command> [--args]
+$ docker-compose run <comando> [--args]
 ```
 
-Running a test suite, for example, could look like
-this:
+Rodar uma suíte de testes, por exemplo, poderia se
+parecer com isso:
 
 ```bash
 $ docker-compose run tests
 ```
 
-To make typing easier, we can also add and alias to
-the `docker-compose run` command. I'll call it `dcr` here:
+Pra tornar a digitação mais simples, podemos
+também adicionar um alias para o comando
+`docker-compose run`. Vou chamar de `dcr` aqui:
 
 ```bash
 $ alias dcr='docker-compose run'
@@ -78,38 +79,39 @@ docker-compose.yml,
 docker-compose.yaml
 ```
 
-Alias created! It will complain though because there's no
-compose file there yet. Let's create it then!
+Alias criado! O programa ainda vai reclamar porque
+não existe um arquivo docker-compose ainda. Bora
+criar então!
 
-## A basic compose file
+## Um docker-compose básico
 
-So we're creating a brand-new project, huh? Let's
-do it! Start by **creating the project folder** and
-later on **creating our docker-compose.yml** file:
+Então a gente vai criar um projeto do zero, huh?
+Bora lá! Comece **criando a pastsa do projeto** e
+mais tarde **criando o arquivo docker-compose.yml**:
 
 ```bash
-$ mkdir my-project
-$ cd my-project
+$ mkdir meu-projeto
+$ cd meu-projeto
 $ touch docker-compose.yml
 ```
 
-I'll create then the common folders my skeleton
-usually has. This will include a source folder,
-a folder for tests and a folder for binaries.
+Eu vou criar as pastas comuns que normalmente
+minhas aplicações têm. Vai incluir pastas como
+source, testes e binários.
 
-Just run this:
+Apenas execute o seguinte:
 
 ```bash
 $ mkdir -p src/ tests/ bin/ \
   .conf/nginx/ var/
 ```
 
-Now we can start working with our `docker-compose.yml`
-file. It will contain all dependencies this project
-might have.
+Agora podemos começar a trabalhar com o nosso
+`docker-compose.yml`. Ele deverá conter todas
+dependências que o nosso projeto teria.
 
-The initial content in our docker-compose file should
-be quite simple. Just type in the following:
+O conteúdo inicial no nosso docker-compose será
+bem simples. Apenas escreva o seguinte:
 
 ```yaml
 # docker-compose.yml
@@ -117,16 +119,17 @@ version: '3'
 services:
 ```
 
-We will fill in the services right now! The most basic
-one we need is, of course, composer.
+A gente vai escrever os serviços já agora! O mais
+essencial de todos, como deveria ser, é o composer.
 
-## Adding composer to docker-compose
+## Adicionando composer no docker-compose
 
-Probably we're going to use php from inside the container.
-So **it doesn't make much sense to run composer from the
-local machine**, as php version might differ.
+Provavelmente usaremos o php de dentro do container.
+Então **não faz sentido rodar o composer fora de um
+container**, já que as versões do php podem divergir.
 
-Let's then add a `composer` service to our file:
+Vamos então adicionar um serviço `composer` ao nosso
+arquivo:
 
 ```yaml
 # docker-compose.yml
@@ -141,61 +144,67 @@ services:
     restart: never
 ```
 
-The above snippet will create a `composer` service,
-that maps the current path to `/app` inside the container.
+O snippet acima vai criar um serviço `composer`,
+que mapeia o diretório atual para `/app` dentro do container.
 
-Setting the environment variable COMPOSER_CACHE_DIR to
-`/app/var/cache/composer` will make sure that composer will have
-a local cache instead of downloading everything again all the time.
+Definir a variável de ambiente COMPOSER_CACHE_DIR com
+o valor `/app/var/cache/composer` fará com que o
+composer escreva o cache na máquina local em vez de
+somente dentro do container. Isto irá previnir que
+o composer baixe todas dependências a cada execução.
 
-So make sure that you don't push to git your `var/` local folder,
-huh!
+Então é bom tomar conta de que a pasta `var/` nunca
+vá parar no seu GIT, hein!
 
-Just so you don't forget, let's ignore composer related
-files right away. Run the following commands to avoid
-commiting composer files:
+Só pra não esquecermos, vamos ignorar os arquivos
+relacionados ao composer já agora. Apenas rode os
+seguintes comandos pra evitar commitar esses caras:
 
 ```bash
 $ echo 'vendor/' >> .gitignore
 $ echo 'var/' >> .gitignore
 ```
 
-Great! With composer in hands we are already prepared
-to install our most important dependency!
+Perfeito! Agora com o composer em mãos nós
+estamos preparados para instalar a dependência
+mais importante de todo proejto!
 
-## Prepare PHPUnit
+## Preparando o PHPUnit
 
-The most important dependency from this skeleton
-app is the test engine, of course!
+A dependência mais importante deste skeleton app
+é o motor de testes, é claro!
 
-Let's install it by request it from composer:
+Vamos instalar o phpunit a partir do nosso
+serviço `composer`:
 
 ```bash
 $ dcr composer require --dev \
   phpunit/phpunit
 ```
 
-You don't need this backslash by the way, I'll leave
-it there so mobile readers can also benefit from this
-text 😬
+Não precisa adicionar a barra invertida. Eu só
+coloquei alí para que fique legível em telas
+pequenas 😬
 
-Should be installing deps right now, and a `composer.json`
-and `composer.lock` files might have appeared in your
-directory. Oh, there's a `vendor/`.
+As dependência devem estar sendo baixadas, e
+os arquivos `composer.json` e `composer.lock`
+devem ter aparecido no seu diretório local.
+Ah, e tem uma pasta `vendor/` também.
 
-Things seem to work...
+Parece que rolou...
 
-Let's then create a simple php service for handling
-cli stuff. We will use the official php cli image for
-such. And as fancy as we can get, let's do it with
-php 7.4! 🔥
+Bora então cirar um serviço php simplão pra rodar
+coisa de cli. A gente vai usar a imagem oficial
+do php para cli pra isso. E quanto mais chique
+melhor, vamo fazer com o php 7.4! 🔥
 
-## Prepare a PHP Cli
+## Preparando uma cli PHP
 
-We're gonna use the `php:7.4-cli` image for this.
+Vamos usar a imagem `php:7.4-cli` pra isso.
 
-Let's also map volumes the same way we did with
-composer. Might be handy in the future.
+Vamos também mapear os volumes da mesma forma
+que fizemos com o composer. Pode ser útil no
+futuro.
 
 ```yaml
 # docker-compose.yml
@@ -208,7 +217,7 @@ services:
     volumes:
       - .:/app
     restart: never
-  # NEW IN THIS SECTION!!!
+  # NOVO AQUI
   php:
     image: php:7.4-cli
     restart: never
@@ -217,34 +226,37 @@ services:
     working_dir: /app
 ```
 
-Here we also set the working dir to `/app`.
-So whenever we run `dcr php` it will act as
-if it was in our local root path.
+Aqui a gente também colocou o working dir
+com o valor `/app`. Então sempre que rodarmos
+`dcr php` ele irá executar como se `/app` fosse
+o caminho inicial de execução.
 
-Wondering how we're gonna run unit tests,
-right?
+Tá pensando como vamos rodar os testes, certo?
 
-Lemme show ya!
+Siligaaqui!
 
-## Run PHPUnit inside container
+## Rodando PHPUnit dentro do container
 
-Running PHPUnit should be as simple as running
-a cli command. Given it is a cli command...
+Rodar PHPUnit deveria ser tão simples quanto
+rodar um comando de cli. Já que ele é um comando
+de cli...
 
-The following then works fine:
+O seguinte, portanto, funciona bem:
 
 ```bash
 $ dcr php vendor/bin/phpunit
 ```
 
-You can use <TAB\> for auto-completion normally 😉
+Você pode usar <TAB\> para auto completar
+normalmente 😉
 
-Sounds really boring to type all this stuff over
-and over again, though. Can we make it simpler?
+Parece bem chatão escrever tudo isso aí cada
+vez mais. Dá pra simplificar?
 
-Yes!
+Sim!
 
-Let's add a `phpunit` service to our `docker-compose.yml`:
+Vamos adicionar um serviço `phpunit` para o
+nosso `docker-compose.yml`:
 
 ```yaml
 # docker-compose.yml
@@ -263,7 +275,7 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-  # NEW IN THIS SECTION!!!
+  # NOVO AQUI
   phpunit:
     image: php:7.4-cli
     restart: never
@@ -273,8 +285,9 @@ services:
     entrypoint: vendor/bin/phpunit
 ```
 
-The `entrypoint` field here is the catch!
-Now in your terminal just run the following:
+O truque aqui tá no `entrypoint`!
+Agora em seu terminal você pode executar
+o seguinte:
 
 ```
 $ dcr phpunit --version
@@ -282,34 +295,35 @@ PHPUnit 9.0.1 by Sebastian
 Bergmann and contributors.
 ```
 
-Ohaa! That's beautiful!
+Aooo! Que lindeza!
 
-We can, by the way, generate our `phpunit.xml`
-configuration before moving to the next step.
+A gente, aliás, gerar o nosso `phpunit.xml`
+antes de pular pro próximo passo.
 
-Let's do it:
+Assim ó:
 
 ```bash
 $ dcr phpunit \
   --generate-configuration
 ```
 
-It will ask you a couple of questions. Just press
-enter for everything, who cares...
+Esse comando vai te perguntar algumas coisas.
+Apenas pressione enter pra tudo e tá de boa...
 
-## Create a simple test
+## Criando um teste simples
 
-Just to make sure things are working, right?
-
-Let's do it!
+Só pra ter certeza de que as coisas tão
+rodando né.
 
 ```bash
 $ touch tests/MyTest.php
 ```
 
-And inside `tests/MyTest.php` add the following:
+E dentro de `tests/MyTest.php` adicione o
+seguinte:
 
 ```php
+# tests/MyTest.php
 <?php
 
 declare(strict_types=1);
@@ -325,32 +339,32 @@ class MyTest extends TestCase
 }
 ```
 
-This works perfectly! And the test also fails...
-You can fix it later, no worries!
+Funciona perfeitamente! E o teste também está
+falhando... Tu pode consertar depois, relaxe!
 
-Now that we managed to run our tests we can think
-of building the application.
+Agora que conseguimos rodar os nossos testes,
+podemos pensar em construir a aplicação em si.
 
-Probably you want to build a web application, right?
-Let's then create something with nginx and PHP-FPM!!
+Provavelmente você quer criar uma aplicação web,
+sim? Então vamos fazer algo com o nginx e php-fpm!!
 
-## Web Server Set Up
+## Configurando o Web Server
 
-For setting up php fpm, we will need actually
-two different services. One HTTP server and the
-FPM instance itself.
+Para configurar o php fpm, precisaremos de dois
+serviços diferentes. Um será o servidor HTTP e
+o outro será a instância FPM.
 
-As they are long-running processes, we won't use
-the `docker-compose run` form with them. Instead,
-let's lift both using the `up -d` version.
+Como estes são processos de longa execução, a
+gente não vai usar o `docker-compose run` com eles.
+Em vez disso, usemos o `up -d`.
 
-Final command will look like the following:
+O comando final vai parecer com o seguinte:
 
 ```bash
 $ docker-compose up -d fpm nginx
 ```
 
-Let's first add PHP-FPM to the game:
+Vamos adicionar o PHP-FPM na bagaça:
 
 ```yaml
 # docker-compose.yml
@@ -376,7 +390,7 @@ services:
       - .:/app
     working_dir: /app
     entrypoint: vendor/bin/phpunit
-  # NEW IN THIS SECTION!!!
+  # NOVO AQUI
   fpm:
     image: php:7.4-fpm
     restart: always
@@ -385,14 +399,14 @@ services:
     
 ```
 
-Very simple! By running `docker-compose up -d fpm`
-it should already start running in background.
+Simplasso! Ao rodar `docker-compose up -d fpm` ele
+deveria rodar e ficar no background já.
 
-Now let's set up the NGINX part that will
-expose a port `8080` and handle php requests
-by forwarding them to fpm's port `9000`.
+Agora vamos configurar a parte do nginx que vai
+expor a porta `8080` e tratar as requests ao
+php envinando para a porta `9000` do fpm.
 
-The docker-compose.yml file should be like this:
+O arquivo docker-compose.yml vai ficar assim:
 
 ```yaml
 # docker-compose.yml
@@ -423,7 +437,7 @@ services:
     restart: always
     volumes:
       - .:/app
-  # NEW IN THIS SECTION!!!
+  # NOVO AQUI
   nginx:
     image: nginx:1.17.8-alpine
     ports:
@@ -435,29 +449,35 @@ services:
 
 ```
 
-With this we expose the port `8080` to
-be the container's `80` (default http port).
+Com isto nós expomos a porta `8080` como sendo
+a porta `80` do container (porta padrão do http).
 
-We also linked our current directory to `/app`.
-Normally people do `/var/www` but I'd like to keep
-it consistent with our previous services.
+Também ligamos o nosso diretório atual para `/app`.
+Normalmente as pessoas fazem `/var/www`, mas eu
+gosto de deixar as coisas consistentes em comparação
+com os outros serviços.
 
-The `var/log/nginx` local path got linked to
-`/var/log/nginx`. This way we don't get blind when
-in need to check access or error logs.
+O diretório local `var/log/nginx` foi conectado ao
+`/var/log/nginx` do container. Desta forma a gente
+não fica cego quando precisar checar os logs de
+acesso ou erros.
 
-Last but not least, the `site.conf` file got introduced
-to the container with the name `default.conf`. This is
-just a quick way for nginx to pick it up.
+Por último, mas não menos importante, o `site.conf`
+foi introduzido ao container com o nome `default.conf`.
+Esta é só uma maneira rápida de fazer com que o nginx
+aceite a nossa configuração.
 
-We need to create our config file now. Let's do it!
+A gente precisa criar o nosso arquivo de configuração.
+Façamos então!
 
 ```bash
 $ touch .conf/nginx/site.conf
 ```
 
-Write the following config to your local
-`.conf/nginx/site.conf` file:
+Escreva o seguinte arquivo de configuração
+no caminho `.conf/nginx/site.conf` file:
+
+### @TODO
 
 ```conf
 # .conf/nginx/site.conf
