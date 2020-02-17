@@ -1,9 +1,9 @@
 ---
 slug: you-thought-you-knew-php-generators
-title: So you thought you knew about php generators
+title: Generators beyond xrange
 createdAt: 2019-12-11
 sitemap:
-  lastModified: 2019-12-23
+  lastModified: 2020-02-17
 image:
   url: /assets/images/posts/3-generators-640.webp
   alt: 'A computer screen being magnified by a pair of glasses'
@@ -24,9 +24,9 @@ meta:
 
 ## TL;DR
 
-Generators are much more than yielding values to avoid
-using arrays. They provide us with the power of async,
-coroutines and dark magic 🧙‍!
+Generators are much more than using the yield keyword to
+avoid using arrays (like the xrange function). They provide
+us with the power of async, coroutines and dark magic 🧙‍!
 
 If you seek a more complete and mind blowing explanation,
 please read [this article from 2012 by nikic](https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html).
@@ -390,13 +390,13 @@ and develop this idea together 😉
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "So you thought you knew about php generators",
+  "headline": "Generators beyond xrange",
   "description": "In this post I talk about PHP Generators, how to work with Coroutines and how the language ecosystem could evolve with it.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/3-generators.jpg"
    ],
   "datePublished": "2019-12-11T00:00:00+08:00",
-  "dateModified": "2019-12-11T00:00:00+08:00",
+  "dateModified": "2020-02-17T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"

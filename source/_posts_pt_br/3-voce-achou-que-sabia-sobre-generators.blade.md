@@ -1,10 +1,10 @@
 ---
 slug: voce-achou-que-sabia-sobre-generators
 lang: pt-br
-title: Você achou que sabia sobre Generators no PHP
+title: Generators além do xrange
 createdAt: 2019-12-11
 sitemap:
-  lastModified: 2019-12-23
+  lastModified: 2020-02-17
 image:
   url: /assets/images/posts/3-generators-640.webp
   alt: 'Um computador sendo parcialmente amplificado pelas lentes de um óculos'
@@ -25,9 +25,10 @@ meta:
 
 ## TL;DR
 
-Generators são muito mais do que apenas dar yield em
-variáveis pra evitar a utilização de arrays. Eles nos
-proveem com o poder do async, coroutines e várias magias 🧙!
+Generators são muito mais do que apenas usar yield em
+variáveis pra evitar a utilização de arrays (como na
+função xrange). Eles nos proveem com o poder do async,
+coroutines e várias magias 🧙!
 
 Se você busca uma explicação mais exaustiva, dá uma sacada
 [nesse artigo de 2012 do nikic](https://nikic.github.io/2012/12/22/Cooperative-multitasking-using-coroutines-in-PHP.html).
@@ -402,13 +403,13 @@ desenvolver essa ideia juntos 😉
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Você achou que sabia sobre Generators no PHP",
+  "headline": "Generators além do xrange",
   "description": "Neste post eu falo sobre Generators em PHP, como trabalhar com Coroutines e como o ecossistema da linguagem poderia evoluir com isso.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/3-generators.jpg"
    ],
   "datePublished": "2019-12-23T00:00:00+08:00",
-  "dateModified": "2019-12-23T00:00:00+08:00",
+  "dateModified": "2020-02-17T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"
