@@ -46,10 +46,10 @@ Estamos constante adicionando novas features e aperfeiçoando as já existentes.
 - Inglês (leitura, escrita e conversação)
 
 ## Local
-No escritorio em Alphaville, Barueri - Sao Paulo
+No escritorio em Alphaville, Barueri - Sao Paulo. Home Office disponível.
 
 ## Contratação
-CLT / PJ
+CLT
 
 ## Como se candidatar
 https://talentifyhr.revelo.com.br/openings/desenvolvedor-php-sr-005d5e12-ffc3-4362-9ff2-cf73bc765f63?application_source=shared
@@ -59,7 +59,7 @@ https://talentifyhr.revelo.com.br/openings/desenvolvedor-php-sr-005d5e12-ffc3-43
 - Presencial
 ### Contratação:
 - CLT
-- PJ
+
 ### Experiência
 - Sênior
 - Especialista
