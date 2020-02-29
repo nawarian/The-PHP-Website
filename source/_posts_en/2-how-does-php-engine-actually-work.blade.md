@@ -1,9 +1,9 @@
 ---
 slug: how-does-php-engine-actually-work
-title: How does PHP's engine actually work
+title: How the php engine works internally
 createdAt: 2019-11-09
 sitemap:
-  lastModified: 2019-11-09
+  lastModified: 2020-02-29
 image:
   url: /assets/images/posts/2-engine-640.webp
   alt: 'A picture focusing components of a server'
@@ -12,11 +12,9 @@ tags:
   - languages
 meta:
   description:
-    Modern product development requires every day less deep
-    knowledge on programming languages, architecture and ecosystem.
-    It is very valuable, though, to understand them. Today we talk
-    about how PHP engine actually works under the hood and how to
-    take best advantage of it.
+    Let's do a quick overview on how php engine works
+    both as a web engine and how the language
+    behaves internally within the Zend VM.
   twitter:
     card: summary
     site: '@nawarian'
@@ -26,12 +24,14 @@ meta:
 
 ## TL;DR
 
-PHP is a scripting language that parses files into opcodes,
-and executes such opcodes to obtain results. Opcache and
-preloading help php removing the overhead on this process.
+PHP as an engine parses files into tokens, builds an Abstract
+Syntax Tree (AST) and later on transform this tree into Opcodes.
+Such Opcodes can be cached for performance.
 
 On web servers PHP is normally used with PHP-FPM, which brings
-amazing scaling capabilities to it.
+amazing scaling capabilities to it. PHP 7.4 also brought a
+preloading feature, that is capable of parsing php files into
+Opcodes while FPM service is being lifted.
 
 ## So... what is PHP?
 
@@ -217,13 +217,13 @@ together.
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "How does PHP's engine actually work",
-  "description": "Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.",
+  "headline": "How the php engine works internally",
+  "description": "Let's do a quick overview on how php engine works both as a web engine and how the language behaves internally within the Zend VM.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/2-engine.jpg"
    ],
   "datePublished": "2019-11-09T00:00:00+08:00",
-  "dateModified": "2019-11-09T00:00:00+08:00",
+  "dateModified": "2020-02-29T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"

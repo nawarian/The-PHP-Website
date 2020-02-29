@@ -1,10 +1,10 @@
 ---
 slug: como-php-funciona-na-verdade
 lang: pt-br
-title: Como o PHP funciona na verdade?
+title: Como o PHP funciona internamente
 createdAt: 2019-11-09
 sitemap:
-  lastModified: 2019-11-09
+  lastModified: 2020-02-29
 image:
   url: /assets/images/posts/2-engine-640.webp
   alt: 'Um imagem focando componentes de um servidor'
@@ -13,10 +13,9 @@ tags:
   - linguagens
 meta:
   description:
-    O desenvolvimento moderno de produtos requer cada vez menos
-    conhecimento em linguagens de programação, arquitetura e ecossistemas.
-    É muito importante entendê-los, porém. Hoje nós falaremos sobre como
-    o PHP funciona por baixo dos panos e como melhor tomar proveito da linguagem.
+    Vamos dar uma olhada rápida no funcionamento do php
+    enquanto linguagem para web e como a linguagem se
+    comportamente dentro da Zend VM.
   twitter:
     card: summary
     site: '@nawarian'
@@ -26,12 +25,16 @@ meta:
 
 ## TL;DR
 
-PHP é uma linguagem de script que interpreta arquivos e os transforma
-em opcodes, e executa estes opcodes para obter resultados. Opcache e
-preloading ajudam PHP a remover a sobrecarga neste processo.
+A linguagem PHP traduz arquivos em tokens, cria uma Árvore
+Sintática Abstrata (Abstract Syntax Tree, AST) e transforma
+esta em Opcodes. Estes Opcodes podem ser postos no cache para
+ganho de performance.
 
 Em servidores web, PHP normalmente é utilizado com PHP-FPM, que traz
-consigo uma capacidade incrível de escalabilidade.
+consigo uma capacidade incrível de escalabilidade. Além disso o
+PHP 7.4 trouxe a funcionalidade de pré carregamento dos Opcodes
+(preloading), que é capaz de traduzir os arquivos php em Opcodes
+no momento em que o serviço FPM está sendo levantado.
 
 ## Então... o que é PHP?
 
@@ -216,13 +219,13 @@ atualizado para que possamos aprender juntos.
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Como o PHP funciona na verdade?",
-  "description": "O desenvolvimento moderno de produtos requer cada vez menos conhecimento em linguagens de programação, arquitetura e ecossistemas. É muito importante entendê-los, porém. Hoje nós falaremos sobre como o PHP funciona por baixo dos panos e como melhor tomar proveito da linguagem.",
+  "headline": "Como o PHP funciona internamente",
+  "description": "Vamos dar uma olhada rápida no funcionamento do php enquanto linguagem para web e como a linguagem se comportamente dentro da Zend VM.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/2-engine.jpg"
    ],
   "datePublished": "2019-11-09T00:00:00+08:00",
-  "dateModified": "2019-11-09T00:00:00+08:00",
+  "dateModified": "2020-02-29T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian Níckolas Da Silva"
