@@ -18,19 +18,19 @@
     href="https://thephp.website/en/feed.xml"
   />
 
-  <title>How does PHP&#039;s engine actually work | thePHP Website</title>
+  <title>How the php engine works internally | thePHP Website</title>
 
-  <meta name="description" content="Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.">
+  <meta name="description" content="Let&#039;s do a quick overview on how php engine works both as a web engine and how the language behaves internally within the Zend VM.">
 
-  <meta property="og:title" content="How does PHP&#039;s engine actually work">
-  <meta property="og:description" content="Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.">
+  <meta property="og:title" content="How the php engine works internally">
+  <meta property="og:description" content="Let&#039;s do a quick overview on how php engine works both as a web engine and how the language behaves internally within the Zend VM.">
   <meta property="og:url" content="https://thephp.website/en/issue/how-does-php-engine-actually-work">
   <meta property="og:image" content="https://thephp.website/assets/images/posts/2-engine-640.webp">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@nawarian">
-  <meta name="twitter:title" content="How does PHP&#039;s engine actually work">
-  <meta name="twitter:description" content="Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.">
+  <meta name="twitter:title" content="How the php engine works internally">
+  <meta name="twitter:description" content="Let&#039;s do a quick overview on how php engine works both as a web engine and how the language behaves internally within the Zend VM.">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
@@ -116,14 +116,16 @@
       2019-11-09
     </time>
 
-    <h1>How does PHP&#039;s engine actually work</h1>
+    <h1>How the php engine works internally</h1>
     <p><a href="/br/edicao/como-php-funciona-na-verdade/">Leia em Português</a></p>
 <h2>TL;DR</h2>
-<p>PHP is a scripting language that parses files into opcodes,
-and executes such opcodes to obtain results. Opcache and
-preloading help php removing the overhead on this process.</p>
+<p>PHP as an engine parses files into tokens, builds an Abstract
+Syntax Tree (AST) and later on transform this tree into Opcodes.
+Such Opcodes can be cached for performance.</p>
 <p>On web servers PHP is normally used with PHP-FPM, which brings
-amazing scaling capabilities to it.</p>
+amazing scaling capabilities to it. PHP 7.4 also brought a
+preloading feature, that is capable of parsing php files into
+Opcodes while FPM service is being lifted.</p>
 <h2>So... what is PHP?</h2>
 <p>Makes me very happy to see how modern PHP development
 requires less and less knowledge to build great products.
@@ -257,13 +259,13 @@ together.</p>
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "How does PHP's engine actually work",
-  "description": "Modern product development requires every day less deep knowledge on programming languages, architecture and ecosystem. It is very valuable, though, to understand them. Today we talk about how PHP engine actually works under the hood and how to take best advantage of it.",
+  "headline": "How the php engine works internally",
+  "description": "Let's do a quick overview on how php engine works both as a web engine and how the language behaves internally within the Zend VM.",
   "image": [
     "https://thephp.website/assets/images/2-engine.jpg"
    ],
   "datePublished": "2019-11-09T00:00:00+08:00",
-  "dateModified": "2019-11-09T00:00:00+08:00",
+  "dateModified": "2020-02-29T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian N&iacute;ckolas Da Silva"
@@ -280,5 +282,5 @@ together.</p>
 </script>  </div>
   </article>
 </body>
-<script src="/assets/build/js/main.js?id=ee0fce299adcd2eb366f"></script>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
 </html>
