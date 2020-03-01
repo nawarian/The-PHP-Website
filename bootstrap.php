@@ -45,8 +45,22 @@ $events->beforeBuild(function (Jigsaw $app) {
 });
 
 $events->afterCollections(function (Jigsaw $app) {
-    $app->setConfig('latestIssues', $app->getCollection('posts_en')->take(12));
-    $app->setConfig('latestIssuesBr', $app->getCollection('posts_pt_br')->take(12));
+    $app->setConfig(
+        'latestIssues',
+        $app->getCollection('posts_en')
+            ->filter(function (PageVariable $page) {
+                return $page->get('category') !== 'faq';
+            })
+            ->take(12)
+    );
+    $app->setConfig(
+        'latestIssuesBr',
+        $app->getCollection('posts_pt_br')
+            ->filter(function (PageVariable $page) {
+                return $page->get('category') !== 'faq';
+            })
+            ->take(12)
+    );
     $app->setConfig('latestJobsBr', $app->getCollection('jobs_pt_br')->take(12));
 
     $app->getCollection('posts_en')
