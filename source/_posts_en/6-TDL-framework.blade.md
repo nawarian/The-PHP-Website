@@ -1,6 +1,7 @@
 ---
 slug: tdl-test-driven-learning-framework
 title: TDL, a (programming language) learning framework
+category: guides
 createdAt: 2020-02-01
 sitemap:
   lastModified: 2020-02-01

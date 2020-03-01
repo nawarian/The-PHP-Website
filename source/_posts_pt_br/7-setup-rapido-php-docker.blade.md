@@ -2,6 +2,7 @@
 slug: php-docker-setup-rapido
 lang: pt-br
 title: Set up rápido do PHP, PHPUnit e Docker
+category: guides
 createdAt: 2020-02-17
 sitemap:
   lastModified: 2020-02-17

@@ -7,6 +7,7 @@ use Nawarian\ThePHPWebsite\Infrastructure\Domain\Job\GithubIssueJobRepository;
 use Nawarian\ThePHPWebsite\RssGenerator;
 use TightenCo\Jigsaw\Jigsaw;
 use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
+use TightenCo\Jigsaw\PageVariable;
 
 /** @var $container \Illuminate\Container\Container */
 /** @var $events \TightenCo\Jigsaw\Events\EventBus */
@@ -47,6 +48,18 @@ $events->afterCollections(function (Jigsaw $app) {
     $app->setConfig('latestIssues', $app->getCollection('posts_en')->take(12));
     $app->setConfig('latestIssuesBr', $app->getCollection('posts_pt_br')->take(12));
     $app->setConfig('latestJobsBr', $app->getCollection('jobs_pt_br')->take(12));
+
+    $app->getCollection('posts_en')
+        ->groupBy('category')
+        ->each(function (PageVariable $episodes, string $category) use ($app) {
+            $app->getSiteData()->put($category . '_en', $episodes);
+        });
+
+    $app->getCollection('posts_pt_br')
+        ->groupBy('category')
+        ->each(function (PageVariable $episodes, string $category) use ($app) {
+            $app->getSiteData()->put($category . '_pt_br', $episodes);
+        });
 });
 
 // Sitemap

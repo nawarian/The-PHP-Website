@@ -1,6 +1,7 @@
 ---
 slug: how-does-php-engine-actually-work
 title: How the php engine works internally
+category: walkthrough
 createdAt: 2019-11-09
 sitemap:
   lastModified: 2020-02-29

@@ -1,6 +1,7 @@
 ---
 slug: real-life-tdd-php
 title: Test-Driven Development with PHP by example
+category: guides
 createdAt: 2019-11-03
 sitemap:
   lastModified: 2020-02-17

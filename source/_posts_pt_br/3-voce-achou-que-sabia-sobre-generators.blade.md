@@ -2,6 +2,7 @@
 slug: voce-achou-que-sabia-sobre-generators
 lang: pt-br
 title: Generators além do xrange
+category: walkthrough
 createdAt: 2019-12-11
 sitemap:
   lastModified: 2020-02-17
@@ -10,7 +11,6 @@ image:
   alt: 'Um computador sendo parcialmente amplificado pelas lentes de um óculos'
 tags:
   - generators
-  - guia
   - curiosidade
 meta:
   description:

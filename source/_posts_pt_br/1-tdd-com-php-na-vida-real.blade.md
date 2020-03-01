@@ -2,6 +2,7 @@
 slug: tdd-com-php-na-vida-real
 lang: pt-br
 title: Desenvolvimento Guiado a Testes no PHP com exemplos
+category: guides
 createdAt: 2019-11-03
 sitemap:
   lastModified: 2020-02-17

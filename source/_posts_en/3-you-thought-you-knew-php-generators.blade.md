@@ -1,6 +1,7 @@
 ---
 slug: you-thought-you-knew-php-generators
 title: Generators beyond xrange
+category: walkthrough
 createdAt: 2019-12-11
 sitemap:
   lastModified: 2020-02-17
@@ -9,7 +10,6 @@ image:
   alt: 'A computer screen being magnified by a pair of glasses'
 tags:
   - generators
-  - guide
   - curiosity
 meta:
   description:

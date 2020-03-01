@@ -2,6 +2,7 @@
 slug: tdl-aprendizado-guiado-por-testes
 lang: pt-br
 title: TDL, um framework de aprendizado (de linguagens de programação)
+category: guides
 createdAt: 2020-02-01
 sitemap:
   lastModified: 2020-02-01

@@ -2,6 +2,7 @@
 slug: testes-legiveis-com-php-e-phpunit
 lang: pt-br
 title: Testes legíveis com PHP e PHPUnit
+category: guides
 createdAt: 2020-01-07
 sitemap:
   lastModified: 2020-01-07

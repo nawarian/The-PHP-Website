@@ -1,6 +1,7 @@
 ---
 slug: hello-php-I-am-an-engineer
 title: Hello, PHP. I am an Engineer.
+category: thoughts
 createdAt: 2019-10-29
 sitemap:
   lastModified: 2019-10-29

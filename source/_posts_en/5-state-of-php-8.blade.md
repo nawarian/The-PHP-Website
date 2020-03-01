@@ -1,6 +1,7 @@
 ---
 slug: state-of-php-8
 title: The State of PHP 8
+category: walkthrough
 createdAt: 2020-01-20
 sitemap:
   lastModified: 2020-01-20

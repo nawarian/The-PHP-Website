@@ -1,6 +1,7 @@
 ---
 slug: php-docker-quick-setup
 title: Setting up PHP, Docker and PHPUnit
+category: guides
 createdAt: 2020-02-17
 sitemap:
   lastModified: 2020-02-17

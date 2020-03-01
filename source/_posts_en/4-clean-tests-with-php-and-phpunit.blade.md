@@ -1,6 +1,7 @@
 ---
 slug: clean-tests-with-php-and-phpunit
 title: Clean tests with PHP and PHPUnit
+category: guides
 createdAt: 2020-01-07
 sitemap:
   lastModified: 2020-01-07

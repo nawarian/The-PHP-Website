@@ -2,6 +2,7 @@
 slug: ola-php-eu-sou-um-engenheiro
 lang: pt-br
 title: Olá, PHP. Eu sou um Engenheiro.
+category: thoughts
 createdAt: 2019-10-29
 sitemap:
   lastModified: 2019-10-29

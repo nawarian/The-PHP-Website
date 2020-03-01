@@ -2,6 +2,7 @@
 slug: como-php-funciona-na-verdade
 lang: pt-br
 title: Como o PHP funciona internamente
+category: walkthrough
 createdAt: 2019-11-09
 sitemap:
   lastModified: 2020-02-29
