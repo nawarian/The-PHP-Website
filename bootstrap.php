@@ -72,7 +72,8 @@ $events->afterCollections(function (Jigsaw $app) {
 
     $app->setConfig(
         'latestFaq',
-        $app->getCollection('faq_en')->last()
+        $app->getCollection('faq_en')
+            ->first()
     );
 
     $app->getCollection('posts_pt_br')
