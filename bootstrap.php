@@ -53,6 +53,7 @@ $events->afterCollections(function (Jigsaw $app) {
             })
             ->take(12)
     );
+
     $app->setConfig(
         'latestIssuesBr',
         $app->getCollection('posts_pt_br')
@@ -69,11 +70,20 @@ $events->afterCollections(function (Jigsaw $app) {
             $app->getSiteData()->put($category . '_en', $episodes);
         });
 
+    $app->setConfig(
+        'latestFaq',
+        $app->getCollection('faq_en')->last()
+    );
+
     $app->getCollection('posts_pt_br')
         ->groupBy('category')
         ->each(function (PageVariable $episodes, string $category) use ($app) {
             $app->getSiteData()->put($category . '_pt_br', $episodes);
         });
+    $app->setConfig(
+        'latestFaqBr',
+        $app->getCollection('faq_pt_br')->last()
+    );
 });
 
 // Sitemap

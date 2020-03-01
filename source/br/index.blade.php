@@ -5,7 +5,18 @@
 @extends('_layouts.master')
 
 @section('body')
-<h1>Últimas postagens</h1>
+<h2>Última pergunta respondida</h2>
+<div class="card">
+  <a href="{{ $latestFaqBr->getUrl() . '/' }}">
+    <div class="card__content">
+      <h3>{{ $latestFaqBr->title }}</h3>
+      <p>{{ $latestFaqBr->meta['description'] }}</p>
+      <time>{{ date('d/m/Y', $latestFaqBr->createdAt) }}</time>
+    </div>
+  </a>
+</div>
+
+<h2>Últimas postagens</h2>
 <ul class="card-list">
   @foreach($page->get('latestIssuesBr') as $post)
     <li class="card">
