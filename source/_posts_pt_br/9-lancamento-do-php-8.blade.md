@@ -34,6 +34,12 @@ Existem algumas fontes indicando a data de Setembro de 2021.
 Está errado! O php 8 está programado para ser lançado em
 Dezembro de 2020.
 
+## Funcionalidades do PHP 8.0
+
+Eu escrevi uma lista com as features confirmadas
+para o PHP 8 e também possíveis RFCs que serão
+incluídas. [Você encontra essa lista neste post sobre o andamento do PHP 8](/br/edicao/andamento-php-8/).
+
 [Compartilhar no Twitter.](https://twitter.com/intent/tweet?text=O+PHP+8.0+será+lançado+em+Dezembro+de+2020!+-+Veja+https://thephp.website/br/edicao/php-8-data-de-lancamento/)
 
 <script type="application/ld+json">

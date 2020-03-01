@@ -32,6 +32,12 @@ According to [Nikita's post in February 2020](https://twitter.com/nikita_ppv/sta
 There are some sources indicating the date of September 2021.
 They are wrong! PHP 8 is scheduled for December 2020.
 
+## PHP 8's features
+
+I wrote a list with PHP 8's confirmed features and
+other plausible RFCs that might get included.
+[You find such list in this post about the state of PHP 8](/en/issue/state-of-php-8/).
+
 [Share on Twitter.](https://twitter.com/intent/tweet?text=PHP+8.0+will+be+released+this+December+2020!+-+See+https://thephp.website/br/edicao/php-8-release-date/)
 
 <script type="application/ld+json">
