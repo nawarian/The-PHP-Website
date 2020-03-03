@@ -38,7 +38,7 @@ PHP 7.4 trouxe a funcionalidade de pré carregamento dos Opcodes
 no momento em que o serviço FPM está sendo levantado.
 
 Se você quiser uma explicação aprofundada sobre como a Zend VM
-se comporta, leia [este post sobre o JIT compiler  do PHP 8](/en/issue/php-8-jit/).
+se comporta, leia [este post sobre o JIT compiler  do PHP 8](/br/edicao/php-8-jit/).
 Este post mostra em detalhes como o PHP funciona internamente
 com e sem o Just In Time compiler.
 

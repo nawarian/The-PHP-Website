@@ -58,7 +58,7 @@ Então se você quer ter um gostinho do que vem nesta versão, dá uma ligada ni
 - **Categoria**: Performance.
 - **Votos**: 50 sim. 2 não.
 
-Eu escrevi [uma explicação detalhada sobre que diabos é o Just In Time compiler](/en/issue/php-8-jit/).
+Eu escrevi [uma explicação detalhada sobre que diabos é o Just In Time compiler](/br/edicao/php-8-jit/).
 
 Essa feature pode ser **até quatro vezes mais rápida** no benchmark Mandelbrot
 e deve causar grande impacto em operações a nível de CPU.
