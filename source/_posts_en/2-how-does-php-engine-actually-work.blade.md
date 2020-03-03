@@ -34,6 +34,11 @@ amazing scaling capabilities to it. PHP 7.4 also brought a
 preloading feature, that is capable of parsing php files into
 Opcodes while FPM service is being lifted.
 
+If you want an in-depth explanation about how the Zend VM
+behaves, read [this post about PHP 8's JIT](/en/issue/php-8-jit/).
+It has an in-depth explanation on how the PHP works internally
+with and without the Just In Time compiler.
+
 ## So... what is PHP?
 
 @php
