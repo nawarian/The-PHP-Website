@@ -30,10 +30,10 @@ meta:
 
 ## TL;DR
 
-PHP 8’s Just In Time compiler is implemented as part
-of the [Opcache extension](https://www.php.net/manual/en/book.opcache.php)
-and aims to compile some Opcodes into CPU instructions
-in runtime.
+O Just In Time compiler do PHP 8 foi implementado
+como parte da [extensão Opcache](https://www.php.net/manual/en/book.opcache.php)
+e tem como objetivo compilar Opcodes em instruções
+de máquina em tempo de execução.
 
 Significa que **com o JIT alguns Opcodes não precisarão
 ser interpretados pela Zend VM e estas instruções serão
@@ -183,7 +183,7 @@ seja mais rápida para que possam ir direto para
 a Zend VM, o JIT faz com que eles executem sem
 Zend VM nenhuma.
 
-A Zend VM é um programa escrito em C que haje
+A Zend VM é um programa escrito em C que age
 como uma camada entre Opcodes e a CPU. **O que
 o JIT faz é gerar código compilado em tempo de
 execução para que o php possa pular a Zend VM e
@@ -304,7 +304,7 @@ PHP FPM, mas isto ainda não é grande coisa.
 
 O motivo é que o JIT otimiza operações de CPU, e
 a maior parte das aplicações PHP hoje em dia são
-mais forcadas em operações de E/S (I/O) do que
+mais focadas em operações de E/S (I/O) do que
 qualquer coisa. Não importa se o processamento
 das operações for compilado se você precisar
 acessar disco ou rede de qualquer forma. Os
