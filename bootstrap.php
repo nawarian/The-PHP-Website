@@ -30,6 +30,10 @@ $container->bind(JobRepository::class, GithubIssueJobRepository::class);
 //
 //    /** @var SplFileInfo $file */
 //    foreach ($files as $file) {
+//        if ($file->getBasename() !== 'filename.extension') {
+//            continue;
+//        }
+//
 //        $outputPath = dirname($file->getRealPath());
 //        $manager->make($file->getRealPath())
 //            ->widen(640)
