@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=4bf4cc8f94223aba404a">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+
+  <title>Just In Time Compiler e o PHP 8 | thePHP Website</title>
+
+  <meta name="description" content="O Just In Time compiler do PHP 8 foi implementado como parte da extensão Opcache e pretende compilar alguns Opcodes em instruções de CPU em tempo de execução. Bora entender como isso funciona por baixo dos panos.">
+
+  <meta property="og:title" content="Just In Time Compiler e o PHP 8">
+  <meta property="og:description" content="O Just In Time compiler do PHP 8 foi implementado como parte da extensão Opcache e pretende compilar alguns Opcodes em instruções de CPU em tempo de execução. Bora entender como isso funciona por baixo dos panos.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/php-8-jit">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/10-php-8-jit-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Just In Time Compiler e o PHP 8">
+  <meta name="twitter:description" content="O Just In Time compiler do PHP 8 foi implementado como parte da extensão Opcache e pretende compilar alguns Opcodes em instruções de CPU em tempo de execução. Bora entender como isso funciona por baixo dos panos.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-2');
+  </script>
+</head>
+<body class="yue">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/br/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-03-03">
+      2020-03-03
+    </time>
+
+    <h1>Just In Time Compiler e o PHP 8</h1>
+    <p><a href="/en/issue/php-8-jit/">Read in English</a></p>
+<h2>TL;DR</h2>
+<p>PHP 8’s Just In Time compiler is implemented as part
+of the <a href="https://www.php.net/manual/en/book.opcache.php">Opcache extension</a>
+and aims to compile some Opcodes into CPU instructions
+in runtime.</p>
+<p>Significa que <strong>com o JIT alguns Opcodes não precisarão
+ser interpretados pela Zend VM e estas instruções serão
+executadas diretamente a nível de CPU.</strong></p>
+<h2>JIT e PHP</h2>
+<p>Uma das novidades mais comentadas sobre o PHP 8 é
+o Just In Time (JIT) compiler. Vários blogs e pessoas
+da comunidade estão falando sobre isso e com certeza
+é um dos tópicos mais relevantes desta versão. Porém
+até o momento eu não consegui achar muitos detalhes
+sobre o que o JIT realmente faz.</p>
+<p>Depois de pesquisar e desistir várias vezes, eu decidi
+verificar o código fonte do PHP por conta. Alinhando
+meu pouco conhecimento na linguagem C e toda informação
+espalhada que encontrei até o momento, eu compilei esta
+publicação e espero que lhe ajude a entender o JIT melhor
+também.</p>
+<p><strong>Ultra simplificando: quando o JIT funciona como esperado,
+seu código não será executado através da Zend VM e sim
+diretamente a nível de instruções de CPU.</strong></p>
+<p>Essa é a ideia.</p>
+<p>Mas pra entender melhor a gente precisa pensar sobre como
+o PHP funciona internamente. Não é muito complicado, mas
+precisa de uma certa introdução ao assunto.</p>
+<p>Eu escrevi um post com uma <a href="/br/edicao/como-php-funciona-na-verdade">visão ampla sobre como o php funciona</a>
+. Se você perceber que este post aqui está ficando denso
+demais, verifique este outro e volta aqui mais tarde. As
+coisas farão sentido mais facilmente.</p>
+<h2>Como um código PHP é executado?</h2>
+<p>Sabemos que o php é uma linguagem interpretada. Mas o
+que isso realmente quer dizer?</p>
+<p>Sempre que você quiser executar um código PHP, sendo este
+um snippet ou uma aplicação web inteira, você precisará
+passar por um interpretador php. Os mais comumente utilizados
+são o PHP FPM e o interpretador de linha de comando.</p>
+<p>O trabalho destes interpretadores é bem direto: receber um
+código php, interpretar este código e cuspir o resultado.</p>
+<p>Isto normalmente acontece em toda linguagem interpretada.
+Algumas podem remover alguns passos, mas a ideia geral é
+a mesma. No PHP funciona assim:</p>
+<ol>
+<li>
+<p>O código PHP é lido e transformado em uma série de
+palavras chave conhecidas como Tokens. Este processo
+permite que o interpretador possa entender que parte de
+código está escrito em qual parte do programa. <strong>Este
+primeiro passo é chamado de Lexing ou Tokenizing.</strong></p>
+</li>
+<li>
+<p>Com os tokens em mãos, o interpretador PHP analisa
+esta coleção de tokens e tenta tomar algum sentido deles.
+Como resultado uma Árvore de Sintaxe Abstrata (Abstract
+Syntax Tree, ou AST) é gerada através de um processo
+chamado <strong>parsing</strong>.
+Esta AST é uma série de nós (ou nodos) indicando quais
+operações deverão ser executadas. Por exemplo, &quot;echo  1 + 1&quot;
+deveria de fato significar &quot;apresente o resultado de 1 + 1&quot;
+ou de forma mais realista &quot;apresente uma operação, a operação
+é 1 + 1&quot;.</p>
+</li>
+<li>
+<p>Em posse do AST fica muito mais fácil entender as
+operações e suas precedências. Transformar esta árvore
+em algo que possa ser executado requer uma representação
+intermediária (Intermediate Representation, IR) que em PHP
+chamamos de Opcode. O processo de transformar a AST
+em Opcodes é chamada de <strong>compilação</strong>.</p>
+</li>
+<li>
+<p>Agora, com os Opcodes em mãos vem a parte massa:
+<strong>execução</strong> do código! O PHP tem um motor chamado
+Zend VM, que é capaz de receber uma lista de Opcodes
+e executá-la. Após executar todos os Opcodes, a Zend VM
+encerra a execução e o programa é terminado.</p>
+</li>
+</ol>
+<p>Eu montei um diagrama de fluxo pra tentar deixar
+um pouco mais claro pra ti:</p>
+<figure style="text-align: center">
+  <a href="/assets/images/posts/10-php-8-jit/zendvm-no-opcache.png" target="_blank">
+    <img src="/assets/images/posts/10-php-8-jit/zendvm-no-opcache.png" alt="Fluxo de interpretação do PHP.">
+  </a>
+  <figcaption>Uma visão simplificada sobre como o PHP é interpretado.</figcaption>
+</figure>
+<p>Diretão, como tu pode reparar. Mas tem um gargalo aqui:
+pra quê fazer o lexing e parsing do código a cada vez
+que formos executar um script se o próprio código PHP
+não muda com frequência?</p>
+<p>No fim das contas a gente só se importa com os Opcodes,
+certo? Certo! E é por isso que a <strong>extensão Opcache</strong>
+existe.</p>
+<h2>A extensão Opcache</h2>
+<p>A extensão Opcache é compilada com o PHP e normalmente
+não há motivos pra desativá-la. Se você usa PHP, você
+provavelmente deveria mantê-la ativa.</p>
+<p>O que essa extensão faz é adicionar uma camada de cache
+em memória para os Opcodes. Sua função é pegar os Opcodes
+recém gerados através da AST e jogá-los num cache para que
+as próximas execuções possam facilmente pular as fases
+de Lexing e Parsing.</p>
+<p>Aqui vai outro diagrama, desta vez considerando a
+extensão Opcache:</p>
+<figure style="text-align: center">
+  <a href="/assets/images/posts/10-php-8-jit/zendvm-opcache.png" target="_blank">
+    <img src="/assets/images/posts/10-php-8-jit/zendvm-opcache.png" alt="Fluxo de interpretação do PHP com Opcache.">
+  </a>
+  <figcaption>Fluxo de interpretação do PHP com Opcache. Se um arquivo já foi interpretado, o php busca o Opcode em cache em vez de realizar o parsing novamente.</figcaption>
+</figure>
+<p>Lindo ver como ele pula os passos de Lexing, Parsing e Compiling 😍.</p>
+<p><strong>Nota:</strong> aqui é justamente onde
+<a href="https://wiki.php.net/rfc/preload">a função de preloading do PHP 7.4</a>
+brilha! Ela permite que você diga ao PHP FPM pra
+fazer o parsing do seu código fonte, transformá-lo
+em Opcodes e jogar no cache antes mesmo de executar
+qualquer código seu.</p>
+<p>Você deve estar se perguntando onde o JIT entra
+nessa história, né?! Bom, espero que sim, é o motivo
+de eu ter gastado tanto tempo nesse texto no fim
+das contas...</p>
+<h2>O que o Just In Time compiler faz efetivamente?</h2>
+<p>Após escutar a explicação do Zeev no <a href="https://phpinternals.news/7">episódio PHP and JIT do PHP Internals News</a>
+eu consegui ter alguma ideia sobre o que o JIT
+deveria fazer...</p>
+<p>Se o Opcache faz com que a obtenção de Opcodes
+seja mais rápida para que possam ir direto para
+a Zend VM, o JIT faz com que eles executem sem
+Zend VM nenhuma.</p>
+<p>A Zend VM é um programa escrito em C que haje
+como uma camada entre Opcodes e a CPU. <strong>O que
+o JIT faz é gerar código compilado em tempo de
+execução para que o php possa pular a Zend VM e
+executar diretamente na CPU.</strong>
+Teóricamente a gente deveria ganhar em performance
+com isso.</p>
+<p>Isto me soou estranho num primeiro momento, porque
+pra compilar código de máquina é preciso escrever
+uma implementação beeem específica para cada tipo
+de arquitetura. Mas na realidade é bem plausível.</p>
+<p>A implementação do JIT em PHP usa uma biblioteca
+chamada <a href="https://luajit.org/dynasm.html">DynASM (Dynamic Assembler)</a>,
+que mapeia uma série de instruções de CPU de um
+formato específico em código assembly para vários
+tipos diferentes de CPU. Então o Just In Time compiler
+transforma Opcodes em código de máquina específico
+da arquitetura da CPU usando DynASM.</p>
+<p>Mas tem uma coisa me deixou encafifado por um tempão...</p>
+<p><strong>Se o preloading é capaz de transformar PHP em Opcode
+antes de executar qualquer coisa e o DynASM pode compilar
+Opcodes em código de máquina (compilação Just In Time),
+por quê raios a gente não compila PHP em código de máquina
+usando a clássica Ahead of Time compilation?!</strong></p>
+<p>Uma das pistas que eu tive ao escutar o episódio
+do Zeev é que o PHP é fracamente tipado e, portanto,
+o PHP com frequência não sabe qual o tipo de uma
+certa variável até que a Zend VM tente executar
+um Opcode nela.</p>
+<p>Isto pode ser percebido ao olhar para o <a href="https://github.com/php/php-src/blob/43443857b74503246ee4ca25859b302ed0ebc078/Zend/zend_types.h#L282-L300">union type zend_value</a>
+, que possui vários ponteiros de diferentes
+representações para uma variável. Sempre que a Zend
+VM tenta obter um valor de um zend_value, ela utiliza
+macros como a <a href="https://github.com/php/php-src/blob/43443857b74503246ee4ca25859b302ed0ebc078/Zend/zend_types.h#L794">ZSTR_VAL</a>
+que tenta acessar o ponteiro de string através do
+union zend_value.</p>
+<p>Por exemplo, <a href="https://github.com/php/php-src/blob/43443857b74503246ee4ca25859b302ed0ebc078/Zend/zend_vm_def.h#L722-L767">este handler da Zend VM</a>
+deveria tratar uma expressão de &quot;Menor ou Igual&quot; (&lt;=).
+Repare bem em como existe uma porrada de if conditions
+pra tentar adivinhar os tipos dos operandos.</p>
+<p><strong>Duplicar esta lógica de inferência de tipos com
+código de máquina não é uma tarefa trivial e
+potencialmente tornaria a execução mais lenta.</strong></p>
+<p>Compilar tudo depois de entender os tipos também
+não é a melhor opção, porque compilar algo para
+código de máquina requer muita CPU. Então compilar
+TUDO em tempo de execução também é ruim.</p>
+<h2>Como o Just In Time compiler se comporta?</h2>
+<p>Agora sabemos que não podemos inferir tipos
+para gerar uma compilação Ahead of Time boa o
+suficiente. Também sabemos que compilar em
+tempo de execução é custoso. Como pode então o
+JIT ser benéfico para o PHP?</p>
+<p>Para balancear esta equação, o JIT tenta compilar
+apenas alguns Opcodes que ele considera que o
+esforço valerá a pena. Para tal, <strong>o JIT faz um
+profiling dos Opcodes executados pela Zend VM e
+verifica quais fazem sentido ou não compilar.
+(baseado em suas configurações)</strong></p>
+<p>Quando determinado Opcode é compilado, ele então
+delega a execução a este código compilado em
+vez de delegar para a Zend VM. Se parece com o
+seguinte:</p>
+<figure style="text-align: center">
+  <a href="/assets/images/posts/10-php-8-jit/zendvm-opcache-jit.png" target="_blank">
+    <img src="/assets/images/posts/10-php-8-jit/zendvm-opcache-jit.png" alt="Fluxo de interpretação do PHP com JIT.">
+  </a>
+  <figcaption>Fluxo de interpretação do PHP com JIT. Se compilado, Opcodes não executam através da Zend VM.</figcaption>
+</figure>
+<p>Então na extensão Opcache existem algumas
+instruções tentando detectar se determinados
+Opcodes deveriam ser compilados ou não. Caso sim,
+o compilador então transforma este Opcode em
+código de máquina utilizando DynASM e executa
+este código de máquina recém gerado.</p>
+<p>A coisa interessante nisso tudo é que existe
+um limite em megabytes para o código compilado
+nesta implementação (também configurável), e
+a execução de código deve ser capaz de alternar
+entre JIT e código interpretado sem diferença
+alguma.</p>
+<p>A propósito, <a href="https://afup.org/talks/3015-php-8-et-just-in-time-compilation">esta palestra do Benoit Jacquemont sobre JIT no PHP</a>
+me ajudous demaaais a entender essa coisa toda.</p>
+<p>Eu ainda não tenho muita certeza sobre quando
+a compilação efetivamente acontece, mas penso
+que por agora eu não quero saber, não.</p>
+<h2>Então provavelmente os ganhos em performance não serão enormes</h2>
+<p>Eu espero que agora esteja um tanto mais claro
+o motivo de todo mundo dizer que a maioria das
+aplicações PHP não receberem grandes melhorias em
+performance usando o Just In Time compiler. E o
+o motivo de o Zeev ter recomendado fazer
+experimentações com diferentes configurações de
+JIT em suas aplicações PHP.</p>
+<p>Os Opcodes compilados serão normalmente compartilhados
+entre várias requests se você estiver utilizando o
+PHP FPM, mas isto ainda não é grande coisa.</p>
+<p>O motivo é que o JIT otimiza operações de CPU, e
+a maior parte das aplicações PHP hoje em dia são
+mais forcadas em operações de E/S (I/O) do que
+qualquer coisa. Não importa se o processamento
+das operações for compilado se você precisar
+acessar disco ou rede de qualquer forma. Os
+tempos de execução serão bem similares.</p>
+<p><strong>A não ser que...</strong></p>
+<p>Você esteja fazendo algo que não envolve E/S,
+como processamento de imagens ou machine learning.
+Qualquer coisa que não toque I/O irá se beneficiar
+do Just In Time compiler.</p>
+<p>Esta também é a razão de algumas pessoas citarem
+que agora estamos mais próximos de poder escrever
+funções PHP nativas, escritas em PHP em vez de C.
+O peso adicional não será custoso se estas funções
+forem compiladas.</p>
+<p>Tempos interessantes para ser um(a) programador(a) PHP...</p>
+<hr />
+<p>Eu espero que este artigo lhe tenha sido útil e
+que você tenha conseguido entender melhor o que
+o JIT do PHP 8 faz.</p>
+<p>Sinta-se convidado(a) a me escrever no twitter se
+você gostaria de adicionar alguma coisa que eu possa
+ter esquecido e não se esqueça de compartilhar com
+seus(uas) coleguinhas programadores(as), isto com
+total certeza irá adicionar muito valor à conversa
+de vocês!</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Just In Time Compiler e o PHP 8",
+  "description": "O Just In Time compiler do PHP 8 foi implementado como parte da extens&atilde;o Opcache e pretende compilar alguns Opcodes em instru&ccedil;&otilde;es de CPU em tempo de execu&ccedil;&atilde;o. Bora entender como isso funciona por baixo dos panos.",
+  "image": [
+    "https://thephp.website/assets/images/posts/10-php-8-jit-640.webp"
+   ],
+  "datePublished": "2020-03-03T00:00:00+08:00",
+  "dateModified": "2020-03-03T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+</body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>
