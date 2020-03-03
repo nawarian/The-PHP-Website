@@ -57,9 +57,10 @@ So if you want to have a taste of this version, check this section out:
 - **Category**: Performance.
 - **Votes**: 50 yes. 2 no.
 
-This feature of course needs a great explanation by itself and I will write about
-this one very soon. Meanwhile I'd like to state that this change claims to be
-**more than four times faster** on Mandelbrot benchmark.
+I wrote an [in-depth explanation about what the heck the Just In Time compiler is](/en/issue/php-8-jit/).
+ 
+This feature claims to be **more than four times faster** on Mandelbrot benchmark
+and should cause big impacts on CPU-bound operations.
 
 You can check the full spec by [visiting the RFC page](https://wiki.php.net/rfc/jit).
 
