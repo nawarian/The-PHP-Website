@@ -23,7 +23,7 @@ meta:
     site: '@nawarian'
 ---
 
-[Versão em português em andamento...](#)
+[Leia em Português](/br/edicao/php-8-jit)
 
 ## TL;DR
 PHP 8’s Just In Time compiler is implemented as part of the [Opcache extension](https://www.php.net/manual/en/book.opcache.php) and aims to compile some Opcodes into CPU instructions in runtime.
