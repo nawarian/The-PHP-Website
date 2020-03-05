@@ -15,11 +15,11 @@ class JobMdSerializer implements JobSerializer
 slug: {$job->slug()}
 lang: pt-br
 createdAt: {$job->createdAt()->format('Y-m-d')}
-title: '{$job->title()}'
+title: '{$job->title()} - Vaga de Emprego'
 sitemap:
   lastModified: {$job->createdAt()->format('Y-m-d')}
 meta:
-  description: '{$this->fetchDescription($job)}'
+  description: 'Detalhes sobre a vaga de emprego: {$this->fetchDescription($job)}'
   twitter:
     card: summary
     site: '@nawarian'

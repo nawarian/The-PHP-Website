@@ -22,11 +22,11 @@ class JobMdSerializerTest extends TestCase
 slug: 1-my-title
 lang: pt-br
 createdAt: {$createdAt->format('Y-m-d')}
-title: 'my title'
+title: 'my title - Vaga de Emprego'
 sitemap:
   lastModified: {$createdAt->format('Y-m-d')}
 meta:
-  description: 'my title'
+  description: 'Detalhes sobre a vaga de emprego: my title'
   twitter:
     card: summary
     site: '@nawarian'
@@ -65,11 +65,11 @@ STR;
 slug: 1-my-title
 lang: pt-br
 createdAt: {$createdAt->format('Y-m-d')}
-title: 'my title'
+title: 'my title - Vaga de Emprego'
 sitemap:
   lastModified: {$createdAt->format('Y-m-d')}
 meta:
-  description: 'Procuramos um(a) desenvolvedor(a) de Back com experiência em PHP, que goste de desafios e de resolver problemas.'
+  description: 'Detalhes sobre a vaga de emprego: Procuramos um(a) desenvolvedor(a) de Back com experiência em PHP, que goste de desafios e de resolver problemas.'
   twitter:
     card: summary
     site: '@nawarian'
