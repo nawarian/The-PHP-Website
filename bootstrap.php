@@ -132,9 +132,11 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
     );
 
     // Portuguese posts + jobs
-    $portuguesePosts = $jigsaw->getCollection('posts_pt_br')
-        ->merge($jigsaw->getCollection('jobs_pt_br'));
+    $portuguesePosts = $jigsaw->getCollection('posts_pt_br');
     $portugueseFeed = $feedGenerator->fromCollection($portuguesePosts, 'pt-br');
+    $portugueseJobs = $jigsaw->getCollection('jobs_pt_br');
+    $portugueseJobsFeed = $feedGenerator->fromCollection($portugueseJobs, 'pt-br');
+
     file_put_contents(
         $outputPath . '/br/feed.json',
         $portugueseFeed->toJsonFeedFormat(Feed::RSS_FEED_V2)
@@ -142,5 +144,9 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
     file_put_contents(
         $outputPath . '/br/feed.xml',
         $portugueseFeed->toAtomFeedFormat(Feed::RSS_FEED_V2)
+    );
+    file_put_contents(
+        $outputPath . '/br/feed-vagas.xml',
+        $portugueseJobsFeed->toAtomFeedFormat(Feed::RSS_FEED_V2)
     );
 });

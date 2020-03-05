@@ -96,6 +96,13 @@
             {{ ($page->lang ?? 'en') === 'en' ? '[EN]' : '[BR]' }} Atom Feed (RSS)
           </a>
         </li>
+        @if ($page->lang ?? 'en' === 'pt-br')
+        <li class="menu__list-item">
+          <a href="{{ $page->getBaseUrl() }}/br/feed-vagas.xml">
+            Feed de Vagas (RSS)
+          </a>
+        </li>
+        @endif
       </ul>
     </div>
   </nav>
