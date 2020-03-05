@@ -25,6 +25,8 @@ meta:
     site: '@nawarian'
 ---
 
+# {$job->title()}
+
 {$job->rawBody()}
 
 Fonte: {$job->source()}

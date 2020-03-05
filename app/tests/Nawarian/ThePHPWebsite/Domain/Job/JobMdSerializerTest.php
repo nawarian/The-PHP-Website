@@ -32,6 +32,8 @@ meta:
     site: '@nawarian'
 ---
 
+# my title
+
 my body
 
 Fonte: My Source
@@ -72,6 +74,8 @@ meta:
     card: summary
     site: '@nawarian'
 ---
+
+# my title
 
 ## Descrição da vaga
 

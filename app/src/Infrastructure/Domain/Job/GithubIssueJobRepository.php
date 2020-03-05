@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Nawarian\ThePHPWebsite\Infrastructure\Domain\Job;
 
-
 use DateTime;
 use GuzzleHttp\Client;
 use Nawarian\ThePHPWebsite\Domain\Job\Job;
@@ -15,7 +14,11 @@ class GithubIssueJobRepository implements JobRepository
 {
     private const GITHUB_REPO_URL = 'https://api.github.com/repos/%s/issues?state=%s&page=%d';
 
-    private const DEFAULT_REPOS = ['phpdevbr/vagas'];
+    private const DEFAULT_REPOS = [
+        'phpdevbr/vagas',
+        'backend-br/vagas',
+        'frontendbr/vagas',
+    ];
 
     private $http;
 
