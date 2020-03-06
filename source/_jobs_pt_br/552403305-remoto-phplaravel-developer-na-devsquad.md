@@ -2,15 +2,17 @@
 slug: 552403305-remoto-phplaravel-developer-na-devsquad
 lang: pt-br
 createdAt: 2020-01-20
-title: '[Remoto] PHP/Laravel Developer na Devsquad'
+title: '[Remoto] PHP/Laravel Developer na Devsquad - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-20
 meta:
-  description: '[Remoto] PHP/Laravel Developer na Devsquad'
+  description: 'Detalhes sobre a vaga de emprego: [Remoto] PHP/Laravel Developer na Devsquad'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Remoto] PHP/Laravel Developer na Devsquad
 
 ## Aqui você irá:
 

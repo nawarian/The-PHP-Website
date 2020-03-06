@@ -2,15 +2,17 @@
 slug: 550316359-curitibapr-php-web-developer-na-cinq-technologies
 lang: pt-br
 createdAt: 2020-01-15
-title: '[Curitiba/PR] PHP Web Developer na CINQ Technologies'
+title: '[Curitiba/PR] PHP Web Developer na CINQ Technologies - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-15
 meta:
-  description: '-Content Management; -Create and publish engaging content; -Optimize content according to SEO; -Responsible for helping formulate an effective, responsive design and turning it into a workingtheme. * Work closely with back-end developers and customers to ensure an effective, visually appealing, and intuitive implementation.'
+  description: 'Detalhes sobre a vaga de emprego: -Content Management; -Create and publish engaging content; -Optimize content according to SEO; -Responsible for helping formulate an effective, responsive design and turning it into a workingtheme. * Work closely with back-end developers and customers to ensure an effective, visually appealing, and intuitive implementation.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Curitiba/PR] PHP Web Developer na CINQ Technologies
 
 
 

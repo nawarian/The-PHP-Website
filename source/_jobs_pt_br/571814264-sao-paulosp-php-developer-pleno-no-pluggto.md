@@ -2,15 +2,17 @@
 slug: 571814264-sao-paulosp-php-developer-pleno-no-pluggto
 lang: pt-br
 createdAt: 2020-02-27
-title: '[São Paulo/SP] PHP Developer Pleno no Pluggto'
+title: '[São Paulo/SP] PHP Developer Pleno no Pluggto - Vaga de Emprego'
 sitemap:
   lastModified: 2020-02-27
 meta:
-  description: 'Estamos contratando PHP Developer para trabalhar com Laravel, Vue.js e Integrações entre APIs. Que goste de desafios e queira aprender sempre.'
+  description: 'Detalhes sobre a vaga de emprego: Estamos contratando PHP Developer para trabalhar com Laravel, Vue.js e Integrações entre APIs. Que goste de desafios e queira aprender sempre.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP] PHP Developer Pleno no Pluggto
 
 ## Descrição da vaga
 

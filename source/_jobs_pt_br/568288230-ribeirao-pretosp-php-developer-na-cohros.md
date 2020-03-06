@@ -2,15 +2,17 @@
 slug: 568288230-ribeirao-pretosp-php-developer-na-cohros
 lang: pt-br
 createdAt: 2020-02-20
-title: '[Ribeirão Preto/SP] PHP Developer na Cohros'
+title: '[Ribeirão Preto/SP] PHP Developer na Cohros - Vaga de Emprego'
 sitemap:
   lastModified: 2020-02-20
 meta:
-  description: 'A Cohros está em busca de um desenvolvedor PHP pleno presencial.'
+  description: 'Detalhes sobre a vaga de emprego: A Cohros está em busca de um desenvolvedor PHP pleno presencial.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Ribeirão Preto/SP] PHP Developer na Cohros
 
 ## Descrição da vaga
 

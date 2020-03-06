@@ -2,15 +2,17 @@
 slug: 562044312-sao-paulosp-programadora-php-pela-misina-grecco
 lang: pt-br
 createdAt: 2020-02-08
-title: '[São Paulo/SP] - Programador(a) PHP pela Misina & Grecco'
+title: '[São Paulo/SP] - Programador(a) PHP pela Misina & Grecco - Vaga de Emprego'
 sitemap:
   lastModified: 2020-02-08
 meta:
-  description: '[São Paulo/SP] - Programador(a) PHP pela Misina & Grecco'
+  description: 'Detalhes sobre a vaga de emprego: [São Paulo/SP] - Programador(a) PHP pela Misina & Grecco'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP] - Programador(a) PHP pela Misina & Grecco
 
 Descrição da vaga
 

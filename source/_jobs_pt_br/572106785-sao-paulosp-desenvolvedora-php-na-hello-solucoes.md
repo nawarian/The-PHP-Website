@@ -2,15 +2,17 @@
 slug: 572106785-sao-paulosp-desenvolvedora-php-na-hello-solucoes
 lang: pt-br
 createdAt: 2020-02-27
-title: '[São Paulo/SP] Desenvolvedor(a) PHP na Hello Soluções'
+title: '[São Paulo/SP] Desenvolvedor(a) PHP na Hello Soluções - Vaga de Emprego'
 sitemap:
   lastModified: 2020-02-27
 meta:
-  description: 'Estamos contratando PHP Developer para trabalhar com Laravel'
+  description: 'Detalhes sobre a vaga de emprego: Estamos contratando PHP Developer para trabalhar com Laravel'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP] Desenvolvedor(a) PHP na Hello Soluções
 
 ## Descrição da vaga
 Estamos contratando PHP Developer para trabalhar com Laravel

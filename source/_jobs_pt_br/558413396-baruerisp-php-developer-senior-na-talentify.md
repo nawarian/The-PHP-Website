@@ -2,15 +2,17 @@
 slug: 558413396-baruerisp-php-developer-senior-na-talentify
 lang: pt-br
 createdAt: 2020-01-31
-title: '[Barueri/SP] PHP Developer Sênior na Talentify'
+title: '[Barueri/SP] PHP Developer Sênior na Talentify - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-31
 meta:
-  description: '[Barueri/SP] PHP Developer Sênior na Talentify'
+  description: 'Detalhes sobre a vaga de emprego: [Barueri/SP] PHP Developer Sênior na Talentify'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Barueri/SP] PHP Developer Sênior na Talentify
 
 ## A empresa
 A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media & Advertising, Mobile Technology e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.

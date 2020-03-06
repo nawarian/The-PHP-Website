@@ -2,15 +2,17 @@
 slug: 535747970-campinassp-php-developer-na-starcorp
 lang: pt-br
 createdAt: 2019-12-10
-title: '[Campinas/SP] PHP Developer na StarCorp'
+title: '[Campinas/SP] PHP Developer na StarCorp - Vaga de Emprego'
 sitemap:
   lastModified: 2019-12-10
 meta:
-  description: 'Procuramos um novo desenvolvedor PHP para o time da StarCorp! em um projeto de e-commerce internacional. Buscamos alguém que goste de trabalhar em equipe, seja curioso, disposto, e proponha melhorias em diferentes tipos de micro serviços. Nossas stacks são basicamente `PHP 7+` com `Symfony` e `Docker`.'
+  description: 'Detalhes sobre a vaga de emprego: Procuramos um novo desenvolvedor PHP para o time da StarCorp! em um projeto de e-commerce internacional. Buscamos alguém que goste de trabalhar em equipe, seja curioso, disposto, e proponha melhorias em diferentes tipos de micro serviços. Nossas stacks são basicamente `PHP 7+` com `Symfony` e `Docker`.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Campinas/SP] PHP Developer na StarCorp
 
 ## Descrição da vaga
 

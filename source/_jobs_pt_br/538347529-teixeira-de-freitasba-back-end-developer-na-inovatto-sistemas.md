@@ -2,15 +2,17 @@
 slug: 538347529-teixeira-de-freitasba-back-end-developer-na-inovatto-sistemas
 lang: pt-br
 createdAt: 2019-12-16
-title: '[Teixeira de Freitas/BA] Back-End Developer na Inovatto Sistemas'
+title: '[Teixeira de Freitas/BA] Back-End Developer na Inovatto Sistemas - Vaga de Emprego'
 sitemap:
   lastModified: 2019-12-16
 meta:
-  description: 'Estamos com vagas abertas no time de Desenvolvimento! Buscamos pessoas que tem grandes ideias e vontade de construir algo incrível. Se você é um desenvolvedor Back-end acima da média ou conhece alguém, essa é a oportunidade!'
+  description: 'Detalhes sobre a vaga de emprego: Estamos com vagas abertas no time de Desenvolvimento! Buscamos pessoas que tem grandes ideias e vontade de construir algo incrível. Se você é um desenvolvedor Back-end acima da média ou conhece alguém, essa é a oportunidade!'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Teixeira de Freitas/BA] Back-End Developer na Inovatto Sistemas
 
 ## Descrição da vaga
 Estamos com vagas abertas no time de Desenvolvimento! Buscamos pessoas que tem grandes ideias e vontade de construir algo incrível.

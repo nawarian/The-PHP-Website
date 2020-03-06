@@ -2,15 +2,17 @@
 slug: 574258948-sao-caetano-do-sulsp-php-developer-na-kymo
 lang: pt-br
 createdAt: 2020-03-02
-title: '[São Caetano do Sul/SP] PHP Developer na Kymo'
+title: '[São Caetano do Sul/SP] PHP Developer na Kymo - Vaga de Emprego'
 sitemap:
   lastModified: 2020-03-02
 meta:
-  description: 'Desenvolvimento e manutenção de sistemas em PHP.'
+  description: 'Detalhes sobre a vaga de emprego: Desenvolvimento e manutenção de sistemas em PHP.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Caetano do Sul/SP] PHP Developer na Kymo
 
 ## Descrição da vaga
 

@@ -2,15 +2,17 @@
 slug: 535391097-sao-paulosp-php-fullstack-no-promobit
 lang: pt-br
 createdAt: 2019-12-09
-title: '[São Paulo/SP] PHP FullStack no Promobit'
+title: '[São Paulo/SP] PHP FullStack no Promobit - Vaga de Emprego'
 sitemap:
   lastModified: 2019-12-09
 meta:
-  description: 'Temos uma vaga para desenvolvedor PHP FullStack. Como um desenvolvedor em nossa equipe você vai contribuir com a arquitetura da aplicação, novas tecnologias, automatização de tarefas, implementar melhorias de layout (sim, precisa lidar um pouco com Front) e correções de bugs. Aqui você vai encontrar um time que trabalha com metodologia ágil Scrum, juntos atendemos demandas de novas funcionalidades do produto, e apoiamos as áreas com melhorias nos processos existentes com desenvolvimento de ferramentas internas.'
+  description: 'Detalhes sobre a vaga de emprego: Temos uma vaga para desenvolvedor PHP FullStack. Como um desenvolvedor em nossa equipe você vai contribuir com a arquitetura da aplicação, novas tecnologias, automatização de tarefas, implementar melhorias de layout (sim, precisa lidar um pouco com Front) e correções de bugs. Aqui você vai encontrar um time que trabalha com metodologia ágil Scrum, juntos atendemos demandas de novas funcionalidades do produto, e apoiamos as áreas com melhorias nos processos existentes com desenvolvimento de ferramentas internas.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP] PHP FullStack no Promobit
 
 ## Descrição da vaga
 Temos uma vaga para desenvolvedor PHP FullStack.

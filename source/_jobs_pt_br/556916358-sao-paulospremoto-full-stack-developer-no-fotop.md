@@ -2,15 +2,17 @@
 slug: 556916358-sao-paulospremoto-full-stack-developer-no-fotop
 lang: pt-br
 createdAt: 2020-01-29
-title: '[São Paulo/SP][Remoto] Full Stack Developer no Fotop'
+title: '[São Paulo/SP][Remoto] Full Stack Developer no Fotop - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-29
 meta:
-  description: 'Desenvolvedor Full Stack para atuar diretamente no desenvolvimento e manutenção de nossa plataforma.'
+  description: 'Detalhes sobre a vaga de emprego: Desenvolvedor Full Stack para atuar diretamente no desenvolvimento e manutenção de nossa plataforma.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP][Remoto] Full Stack Developer no Fotop
 
 ## Nossa empresa
 

@@ -2,15 +2,17 @@
 slug: 554727290-rio-de-janeirorj-desenvolvedora-php-full-stack-na-benfeitoria
 lang: pt-br
 createdAt: 2020-01-24
-title: '[Rio de Janeiro/RJ] Desenvolvedor(a) PHP Full Stack na Benfeitoria'
+title: '[Rio de Janeiro/RJ] Desenvolvedor(a) PHP Full Stack na Benfeitoria - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-24
 meta:
-  description: '[Rio de Janeiro/RJ] Desenvolvedor(a) PHP Full Stack na Benfeitoria'
+  description: 'Detalhes sobre a vaga de emprego: [Rio de Janeiro/RJ] Desenvolvedor(a) PHP Full Stack na Benfeitoria'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Rio de Janeiro/RJ] Desenvolvedor(a) PHP Full Stack na Benfeitoria
 
 **A empresa**
 

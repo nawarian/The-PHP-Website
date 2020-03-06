@@ -2,15 +2,17 @@
 slug: 552458823-sao-paulosp-php-developer-na-deliver-it
 lang: pt-br
 createdAt: 2020-01-20
-title: '[São Paulo/SP] PHP Developer na Deliver IT'
+title: '[São Paulo/SP] PHP Developer na Deliver IT - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-20
 meta:
-  description: 'Estamos em busca de um (a) Desenvolvedor (a) PHP para atuar junto com um time ágil e criativo, propondo novas ideias e técnicas de desenvolvimento enquanto impacta e auxilia o crescimento de um Banco Digital apaixonado por inovação! s2'
+  description: 'Detalhes sobre a vaga de emprego: Estamos em busca de um (a) Desenvolvedor (a) PHP para atuar junto com um time ágil e criativo, propondo novas ideias e técnicas de desenvolvimento enquanto impacta e auxilia o crescimento de um Banco Digital apaixonado por inovação! s2'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP] PHP Developer na Deliver IT
 
 <!--
 ==================================================

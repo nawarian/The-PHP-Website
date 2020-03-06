@@ -2,15 +2,17 @@
 slug: 554837385-campinassp-php-developer-junior-tester-na-origo-energia
 lang: pt-br
 createdAt: 2020-01-24
-title: '[Campinas/SP] PHP Developer JUNIOR / Tester na Órigo Energia'
+title: '[Campinas/SP] PHP Developer JUNIOR / Tester na Órigo Energia - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-24
 meta:
-  description: '**Buscamos por um profissional perfil Tester/Desenvolvedor, no início de carreira, que irá nos ajudar na:** -Modelagem e Especificação de casos de testes -Execução de casos de testes -Automatização de Testes -Desenvolvimento de software utilizando a linguagem PHP'
+  description: 'Detalhes sobre a vaga de emprego: **Buscamos por um profissional perfil Tester/Desenvolvedor, no início de carreira, que irá nos ajudar na:** -Modelagem e Especificação de casos de testes -Execução de casos de testes -Automatização de Testes -Desenvolvimento de software utilizando a linguagem PHP'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Campinas/SP] PHP Developer JUNIOR / Tester na Órigo Energia
 
 ## Descrição da vaga
 

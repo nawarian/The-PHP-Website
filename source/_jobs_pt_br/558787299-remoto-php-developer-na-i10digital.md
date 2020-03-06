@@ -2,15 +2,17 @@
 slug: 558787299-remoto-php-developer-na-i10digital
 lang: pt-br
 createdAt: 2020-02-03
-title: '[Remoto] PHP Developer na i10digital'
+title: '[Remoto] PHP Developer na i10digital - Vaga de Emprego'
 sitemap:
   lastModified: 2020-02-03
 meta:
-  description: 'Procuramos um(a) desenvolvedor(a) de Back com experiência em PHP, que goste de desafios e de resolver problemas. O candidato vai compor o time de desenvolvimento da nossa plataforma de WebBanking para empresas.'
+  description: 'Detalhes sobre a vaga de emprego: Procuramos um(a) desenvolvedor(a) de Back com experiência em PHP, que goste de desafios e de resolver problemas. O candidato vai compor o time de desenvolvimento da nossa plataforma de WebBanking para empresas.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Remoto] PHP Developer na i10digital
 
 <!--
 ==================================================

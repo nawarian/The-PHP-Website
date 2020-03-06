@@ -2,15 +2,17 @@
 slug: 550314501-curitibapr-desenvolvedora-php-pl-na-cinq-technologies
 lang: pt-br
 createdAt: 2020-01-15
-title: '[Curitiba/PR] Desenvolvedor(a) PHP PL na CINQ Technologies'
+title: '[Curitiba/PR] Desenvolvedor(a) PHP PL na CINQ Technologies - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-15
 meta:
-  description: 'Ei, Dev., temos uma oportunidade para você entrar no #TimeCINQ e trabalhar em um projeto nacional cheio de desafios!  O que você irá fazer por aqui: Startup norte americana que possui solução para atender o mercado de manutenção de dispositivos móveis, possuindo integração com assistências técnicas autorizadas, operadoras de telefonia, seguradoras, escolas e outras entidades. Atividades a serem executadas: Desenvolvimento de software utilizando PHP e Framework Yii; Auxiliar em definições de design e arquitetura; Auxiliar na tradução da aplicação de inglês para português; Implementar APIs Rest; Correção de defeitos; Testes unitários; Atuar em time SCRUM com interface diária com clientes nos EUA;'
+  description: 'Detalhes sobre a vaga de emprego: Ei, Dev., temos uma oportunidade para você entrar no #TimeCINQ e trabalhar em um projeto nacional cheio de desafios!  O que você irá fazer por aqui: Startup norte americana que possui solução para atender o mercado de manutenção de dispositivos móveis, possuindo integração com assistências técnicas autorizadas, operadoras de telefonia, seguradoras, escolas e outras entidades. Atividades a serem executadas: Desenvolvimento de software utilizando PHP e Framework Yii; Auxiliar em definições de design e arquitetura; Auxiliar na tradução da aplicação de inglês para português; Implementar APIs Rest; Correção de defeitos; Testes unitários; Atuar em time SCRUM com interface diária com clientes nos EUA;'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Curitiba/PR] Desenvolvedor(a) PHP PL na CINQ Technologies
 
 
 ## Descrição da vaga

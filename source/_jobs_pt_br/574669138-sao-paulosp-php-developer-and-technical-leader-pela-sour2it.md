@@ -2,15 +2,17 @@
 slug: 574669138-sao-paulosp-php-developer-and-technical-leader-pela-sour2it
 lang: pt-br
 createdAt: 2020-03-03
-title: '[São Paulo/SP] PHP Developer and Technical Leader pela Sour2it'
+title: '[São Paulo/SP] PHP Developer and Technical Leader pela Sour2it - Vaga de Emprego'
 sitemap:
   lastModified: 2020-03-03
 meta:
-  description: 'O profissional terá como responsabilidade, liderança, foco no resultado e cumprimento de prazos (Soft Skill); Requisitos técnicos: PHP, Ionic, Azure, metodologia ágil.'
+  description: 'Detalhes sobre a vaga de emprego: O profissional terá como responsabilidade, liderança, foco no resultado e cumprimento de prazos (Soft Skill); Requisitos técnicos: PHP, Ionic, Azure, metodologia ágil.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP] PHP Developer and Technical Leader pela Sour2it
 
 <!--
 ==================================================

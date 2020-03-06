@@ -2,15 +2,17 @@
 slug: 554258262-remotoflorianopolissc-drupal-developer-na-arctouch
 lang: pt-br
 createdAt: 2020-01-23
-title: '[Remoto|Florianópolis/SC] Drupal Developer na  ArcTouch'
+title: '[Remoto|Florianópolis/SC] Drupal Developer na  ArcTouch - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-23
 meta:
-  description: 'Como **Drupal Developer**, você projetará e desenvolverá componentes personalizados, configurará novos modelos e criará módulos personalizados para o Drupal quando necessário. Você colaborará com outros membros da equipe em um ambiente ágil para obter sempre a melhor solução. Você deve se preocupar com desempenho e usabilidade, principalmente emdispositivos móveis (Mobile first)'
+  description: 'Detalhes sobre a vaga de emprego: Como **Drupal Developer**, você projetará e desenvolverá componentes personalizados, configurará novos modelos e criará módulos personalizados para o Drupal quando necessário. Você colaborará com outros membros da equipe em um ambiente ágil para obter sempre a melhor solução. Você deve se preocupar com desempenho e usabilidade, principalmente emdispositivos móveis (Mobile first)'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Remoto|Florianópolis/SC] Drupal Developer na  ArcTouch
 
 <!--
 ==================================================

@@ -2,15 +2,17 @@
 slug: 568931334-sao-paulosp-php-developer-senior-na-deloitte
 lang: pt-br
 createdAt: 2020-02-21
-title: '[São Paulo/SP] PHP Developer Sênior na Deloitte'
+title: '[São Paulo/SP] PHP Developer Sênior na Deloitte - Vaga de Emprego'
 sitemap:
   lastModified: 2020-02-21
 meta:
-  description: 'O profissional irá atuar no desenvolvimento de sites e CMS (Content Management System), em PHP juntamente com WordPress, sendo executadas on cloud, consumindo backlog de melhorias, bem como a implementação de novas funcionalidades na aplicação atual. É esperado que o profissional possua maturidade, comprometimento, capacidade de gestão autônoma de tempo, muita vontade de aprender e entregar resultado.'
+  description: 'Detalhes sobre a vaga de emprego: O profissional irá atuar no desenvolvimento de sites e CMS (Content Management System), em PHP juntamente com WordPress, sendo executadas on cloud, consumindo backlog de melhorias, bem como a implementação de novas funcionalidades na aplicação atual. É esperado que o profissional possua maturidade, comprometimento, capacidade de gestão autônoma de tempo, muita vontade de aprender e entregar resultado.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [São Paulo/SP] PHP Developer Sênior na Deloitte
 
 <!--
 ==================================================

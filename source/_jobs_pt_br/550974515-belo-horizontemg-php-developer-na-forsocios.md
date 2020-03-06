@@ -2,15 +2,17 @@
 slug: 550974515-belo-horizontemg-php-developer-na-forsocios
 lang: pt-br
 createdAt: 2020-01-16
-title: '[Belo Horizonte/MG] PHP Developer na ForSócios'
+title: '[Belo Horizonte/MG] PHP Developer na ForSócios - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-16
 meta:
-  description: 'Como Desenvolvedor Back-end na ForSócios, você terá a missão de implementar recursos e desenvolver novas soluções para os nossos produtos digitais com autonomia e mudanças constantes. É uma oportunidade de colocar em prática toda a sua experiência, trabalhando com uma equipe comprometida e eficiente, que coloca as necessidades do cliente em primeiro lugar. Nossa expectativa é que você contribua nas discussões sobre os desafios encontrados, participando da formação técnica do time e compartilhando seus conhecimentos.  Você será responsável por: - Implementar as melhores práticas de código e design patterns, orientação a objetos e otimização de performance; - Arquitetar, desenvolver e deployar usando a nossa infra-estrutura; - Desenvolver código limpo, testável e de fácil manutenção; - Implementar features novas e investigar problemas em produção; - Participar do processo de code review, garantindo qualidade e consistência do código;  Procuramos por pessoas que: - Sejam detalhistas e analíticas; - Gostem de lidar com projetos grandes e desafiadores; - Consigam trabalhar em equipe de forma colaborativa e em função de um objetivo comum; - Possam gerenciar bem a carga de trabalho atendendo as datas de entrega e com atenção aos detalhes; - Busquem aprendizado constante; - Querem trabalhar com autonomia para encarar desafios e propor soluções; - Tenham capacidade para difundir ensinamentos teóricos e práticos para o time;'
+  description: 'Detalhes sobre a vaga de emprego: Como Desenvolvedor Back-end na ForSócios, você terá a missão de implementar recursos e desenvolver novas soluções para os nossos produtos digitais com autonomia e mudanças constantes. É uma oportunidade de colocar em prática toda a sua experiência, trabalhando com uma equipe comprometida e eficiente, que coloca as necessidades do cliente em primeiro lugar. Nossa expectativa é que você contribua nas discussões sobre os desafios encontrados, participando da formação técnica do time e compartilhando seus conhecimentos.  Você será responsável por: - Implementar as melhores práticas de código e design patterns, orientação a objetos e otimização de performance; - Arquitetar, desenvolver e deployar usando a nossa infra-estrutura; - Desenvolver código limpo, testável e de fácil manutenção; - Implementar features novas e investigar problemas em produção; - Participar do processo de code review, garantindo qualidade e consistência do código;  Procuramos por pessoas que: - Sejam detalhistas e analíticas; - Gostem de lidar com projetos grandes e desafiadores; - Consigam trabalhar em equipe de forma colaborativa e em função de um objetivo comum; - Possam gerenciar bem a carga de trabalho atendendo as datas de entrega e com atenção aos detalhes; - Busquem aprendizado constante; - Querem trabalhar com autonomia para encarar desafios e propor soluções; - Tenham capacidade para difundir ensinamentos teóricos e práticos para o time;'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Belo Horizonte/MG] PHP Developer na ForSócios
 
 <!--
 ==================================================

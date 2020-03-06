@@ -2,15 +2,17 @@
 slug: 559383983-remoto-php-developer-invillia
 lang: pt-br
 createdAt: 2020-02-03
-title: '[Remoto] PHP Developer Invillia'
+title: '[Remoto] PHP Developer Invillia - Vaga de Emprego'
 sitemap:
   lastModified: 2020-02-03
 meta:
-  description: 'Inglês AVANÇADO; Conhecimentos e experiência em PHP 7.0; Laravel e Phalcon (obrigatório); Desenvolvimento Ágil - Scrum e Kanban; Soluções e definições de arquitetura; Desejável conhecimento – Git, Symfony2 e Doctrine ; Experiência com banco de dados; Experiência com webservices REST/SOAP; Desenvolvimento de testes automatizados.'
+  description: 'Detalhes sobre a vaga de emprego: Inglês AVANÇADO; Conhecimentos e experiência em PHP 7.0; Laravel e Phalcon (obrigatório); Desenvolvimento Ágil - Scrum e Kanban; Soluções e definições de arquitetura; Desejável conhecimento – Git, Symfony2 e Doctrine ; Experiência com banco de dados; Experiência com webservices REST/SOAP; Desenvolvimento de testes automatizados.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Remoto] PHP Developer Invillia
 
 ## Descrição da vaga
 

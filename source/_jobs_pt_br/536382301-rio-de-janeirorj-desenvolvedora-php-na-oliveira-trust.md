@@ -2,15 +2,17 @@
 slug: 536382301-rio-de-janeirorj-desenvolvedora-php-na-oliveira-trust
 lang: pt-br
 createdAt: 2019-12-11
-title: '[Rio de Janeiro/RJ] Desenvolvedor(a) PHP na Oliveira Trust'
+title: '[Rio de Janeiro/RJ] Desenvolvedor(a) PHP na Oliveira Trust - Vaga de Emprego'
 sitemap:
   lastModified: 2019-12-11
 meta:
-  description: '<strong>Desenvolvedor PHP (Jr/Pleno/Sênior)</strong> Buscamos profissional que deseja despertar o seu lado criativo e de revolucionar o mercado financeiro por meio do desenvolvimento de software com tecnologias de ponta.'
+  description: 'Detalhes sobre a vaga de emprego: <strong>Desenvolvedor PHP (Jr/Pleno/Sênior)</strong> Buscamos profissional que deseja despertar o seu lado criativo e de revolucionar o mercado financeiro por meio do desenvolvimento de software com tecnologias de ponta.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Rio de Janeiro/RJ] Desenvolvedor(a) PHP na Oliveira Trust
 
 <p>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQIAOtqQ5is5vwbcEn0ZahZfMxz1QIeAYtFfnLdkCXu1sqAGbnX" width="300">

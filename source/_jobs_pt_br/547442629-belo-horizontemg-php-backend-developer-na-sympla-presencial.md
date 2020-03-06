@@ -2,15 +2,17 @@
 slug: 547442629-belo-horizontemg-php-backend-developer-na-sympla-presencial
 lang: pt-br
 createdAt: 2020-01-09
-title: '[Belo Horizonte/MG] PHP Backend Developer na Sympla - Presencial'
+title: '[Belo Horizonte/MG] PHP Backend Developer na Sympla - Presencial - Vaga de Emprego'
 sitemap:
   lastModified: 2020-01-09
 meta:
-  description: '[Belo Horizonte/MG] PHP Backend Developer na Sympla - Presencial'
+  description: 'Detalhes sobre a vaga de emprego: [Belo Horizonte/MG] PHP Backend Developer na Sympla - Presencial'
   twitter:
     card: summary
     site: '@nawarian'
 ---
+
+# [Belo Horizonte/MG] PHP Backend Developer na Sympla - Presencial
 
 ## Quem somos?
 
