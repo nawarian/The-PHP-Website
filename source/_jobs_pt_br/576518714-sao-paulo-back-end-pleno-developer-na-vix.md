@@ -30,7 +30,7 @@ Escritório, São Paulo - Vila Olímpia
 
 #### Diferenciais
 
-- monte a sua máquina como desejar
+- use softwares/ferramentas que desejar
 - sala com bilhar
 - ...
 
