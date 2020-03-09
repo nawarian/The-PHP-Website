@@ -477,7 +477,12 @@ ol.pagination, ul.pagination {
 .menu__header {
   text-align: center;
   display: block;
-  background-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.95) url("/assets/images/elephpant-idle.png") no-repeat 5% 50%;
+  background-size: 65px;
+  height: 40px;
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
   font-weight: 700;
   padding: 10px 0;
