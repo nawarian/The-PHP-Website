@@ -31,6 +31,9 @@ A Vesti está no mercado há 4 anos, oferecendo soluções para aumentar a produ
 **Processo**
 Enviar currículo para andressa@vesti.mobi, com o assunto "[REMOTO] Front-end Developer iOS + seu nome" e o currículo em anexo. Envie também o valor/hora e disponibilidade para trabalhar conosco.
 
-
+## Labels
+- Remoto
+- PJ
+- Sênior
 
 Fonte: https://github.com/frontendbr/vagas/issues/3008
