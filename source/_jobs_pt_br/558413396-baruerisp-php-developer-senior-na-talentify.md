@@ -54,7 +54,7 @@ No escritorio em Alphaville, Barueri - Sao Paulo. Home Office disponível.
 CLT
 
 ## Como se candidatar
-https://talentifyhr.revelo.com.br/openings/desenvolvedor-php-sr-005d5e12-ffc3-4362-9ff2-cf73bc765f63?application_source=shared
+https://talentify-brasil.talentify.io/job/desenvolvedor-php-sr-barueri-sp-talentify--1
 
 ## Labels
 ### Alocação:
