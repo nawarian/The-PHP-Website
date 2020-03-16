@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=c54d886773075325aa67">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+
+  <title>Comparando JSON e MessagePack | thePHP Website</title>
+
+  <meta name="description" content="MessagePack ganha em praticamente todos os testes. Mas a diferença é tão pequena que eu quase não consigo ver benefícios em migrar do JSON para msgpack. Mas resultados mais interessantes podem brotar com a chegada do JIT no PHP 8...">
+
+  <meta property="og:title" content="Comparando JSON e MessagePack">
+  <meta property="og:description" content="MessagePack ganha em praticamente todos os testes. Mas a diferença é tão pequena que eu quase não consigo ver benefícios em migrar do JSON para msgpack. Mas resultados mais interessantes podem brotar com a chegada do JIT no PHP 8...">
+  <meta property="og:url" content="https://thephp.website/br/edicao/messagepack-vs-json-benchmark">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/11-messagepack-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Comparando JSON e MessagePack">
+  <meta name="twitter:description" content="MessagePack ganha em praticamente todos os testes. Mas a diferença é tão pequena que eu quase não consigo ver benefícios em migrar do JSON para msgpack. Mas resultados mais interessantes podem brotar com a chegada do JIT no PHP 8...">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-2');
+  </script>
+</head>
+<body class="yue">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/br/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+                <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed-vagas.xml">
+            Feed de Vagas (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </nav>
+
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-03-15">
+      2020-03-15
+    </time>
+
+    <h1>Comparando JSON e MessagePack</h1>
+    <p><a href="/en/issue/messagepack-vs-json-benchmark/">Read in English</a></p>
+<h2>TL;DR</h2>
+<p>Sim, tecnicamente o MessagePack ganha em todos testes.
+Mas a diferença é tão marginal que <strong>eu não consigo ver
+muitas vantagens em migrar do JSON para o MessagePack.</strong></p>
+<p>Mas talvez faça sentido utilizar MessagePack desde o
+início. <strong>MessagePack é um tiquinho mais rápido e leve
+se comparado ao JSON.</strong></p>
+<p><strong>Utilizar MessagePack para trocar dados entre o navegador
+e servidor não parece parece fazer muito sentido na minha
+opinião.</strong> O tamanho da resposta não faz muita diferença
+quando se aplica o filtro gzip (alguns poucos bytes), mas
+depurar as mensagens de rede passa a ser mais difícil.
+Por outro lado, isto pode lhe ajudar a evitar que sua API
+seja consumida por bots com tanta frequência.</p>
+<p><a href="https://github.com/nawarian/msgpack-bm">Você pode encontrar o código do benchmark e os números neste repositório que eu criei.</a></p>
+<p><strong>Nota rápida:</strong> Este artigo está HORRÍVEL em telas
+pequenas. Desculpem-me por isso, mas eu preciso apresentar
+tabelas para mostrar meus dados.</p>
+<p><a href="https://twitter.com/nawarian">Me dá um alô no twitter se você tiver uma forma melhor de representar esses dados em vez de tabular tudo.</a></p>
+<h2>O que é MessagePack?</h2>
+<p>Como descrito no <a href="https://msgpack.org/">site oficial do MessagePack</a>
+ele é como JSON, mas rápido e leve.</p>
+<p>Em outras palavras, <strong>o MessagePack é um formato de
+serialização que transforma estruturas de dados em
+strings binárias.</strong></p>
+<p>O motivo de ele ser tão eficiente é que as estruturas
+de dados são mapeadas utilizando uma notação pequenininha
+de binários em stream. O tamanho final é quase metade
+do tamanho de algo serializado em JSON.</p>
+<p>O exemplo do site oficial compara a mesma estrutura de
+dados sendo representada nos formatos JSON e MessagePack.
+O exemplo usado na home page mostra um map contendo duas
+chaves: <code>compact = true</code> e <code>schema = 0</code>.</p>
+<p>A versão <strong>em JSON</strong> deste map tem <code>27 bytes</code> enquanto
+o <strong>MessagePack</strong> o faz em apenas <code>18 bytes</code>.</p>
+<pre><code class="language-php">// Map utilizado no
+// exemplo oficial
+$json = [
+  "compact" =&gt; true,
+  "schema" =&gt; 0,
+];
+
+// 27 bytes
+json_encode($json);
+
+// 18 bytes
+msgpack_pack($json);</code></pre>
+<p>Eu aprendi sobre este formato muito recentemente e
+por um completo acidente, enquanto lia este <a href="https://twitter.com/eminetto/status/1237510796948758535">tweet do @eminetto</a>
+, mas aparentemente isso existe desde 2012.</p>
+<p>Me deixou encucado isso, já que eu trabalho com aplicações
+de muito tráfego que constante mente troca mensagens em
+JSON com diferentes serviços no back-end. Me cheira como
+se fosse algo simples de implementar e ganhar rios de
+performance.</p>
+<p><strong>Eu então decidi fazer um benchmark do MessagePack no
+PHP como extensão em C contra a extensão JSON nativa
+do PHP (também escrita em C).</strong></p>
+<h2>O ambiente de benchmark</h2>
+<p>Pra testar isso tudo, eu montei um
+<a href="https://github.com/nawarian/msgpack-bm">repositório simplão com três benchmarks diferentes</a>.
+Um arquivo testa a serialização msgpack, e
+os outros dois testam a serialização JSON
+sendo que o último desserializa utilizando
+a opção &quot;assoc&quot; com valor true.</p>
+<p>Pra executar estes benchmarks, eu escolhi utilizar
+o Travis CI, já que qualquer pessoa pode reproduzir
+estes testes de forma simplificada. Os dados que
+consegui coletar do ambiente de execução são:</p>
+<ul>
+<li>CPU: Intel(R) Xeon(R); 1 @ 2,8 GHz; Cache 33 MB</li>
+<li>RAM: 7,79 GB</li>
+<li>OS: linux/amd64 (Ubuntu 16.04.6 LTS - Xenial)</li>
+<li>Versão do PHP: 7.4.3</li>
+<li>Versão do MsgPack: 2.1.0</li>
+</ul>
+<p>Num futuro próximo eu vou atualizar o benchmark pra
+rodar contra o PHP 8 e o Just In Time compiler dele.
+<a href="/br/edicao/php-8-jit/">Como eu escrevi num outro post sobre como o JIT funciona</a>,
+o JIT pode melhorar bastante a performance em oeprações
+de CPU.</p>
+<p>A entidade que eu utilizei pra serializar/desserializar
+é uma resposta real da API de issues do github. Ela tem
+2321 linhas e 147 KB de tamanho. Me parece um exemplo bem
+decente pra representar dados reais de uma resposta de API.</p>
+<p><strong>Você pode verificar a entidade aqui:</strong>
+<a href="https://github.com/nawarian/msgpack-bm/blob/master/github-issues.json">https://github.com/nawarian/msgpack-bm/blob/master/github-issues.json</a>.</p>
+<h2>MessagePack é mais rápido e mais leve que o JSON</h2>
+<p>Como você pode notar, eu odeio esconder informação.
+Te digo logo de cara: <strong>O MessagePack ganha do JSON
+em cada teste.</strong></p>
+<p>Mas a diferença é bem pequetuxa, na real. Se liga:</p>
+<h3>Tamanho das saídas:</h3>
+<p>Ao falar sobre APIs, uma das coisas mais importantes
+é o tamanho do corpo da mensagem que está sendo
+transportada na rede. Os valores crus são bem
+impressionantes, but todo bom programador(a) sabe que
+na maioria dos casos <strong>devemos comprimir nossas APIs
+usando filtros como gzip ou brotli.</strong></p>
+<p>Então para esta comparação eu decidi mostrar o tamanho
+do conteúdo serializado nos dois formatos e adicionei
+também a versão comprimida com gzip.</p>
+<p>A comparação ficou assim:</p>
+<table>
+<thead>
+<tr>
+<th>Formato</th>
+<th>Serializado (bytes)</th>
+<th>Serializado + Gzip (bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON</td>
+<td>143025</td>
+<td>26214</td>
+</tr>
+<tr>
+<td>MessagePack</td>
+<td>120799 (-22226)</td>
+<td>26074 (-140)</td>
+</tr>
+</tbody>
+</table>
+<p>Como pode-se notar, quando não há filtros de compressão
+o MessagePack é cerca de 22 KB mais leve que o JSON. Mas
+quando aplicamos o gzip nos dois valores, MessagePack
+passa a ganhar por míseros 140 bytes. <strong>Nada expressivo.</strong></p>
+<h3>Tempos de Serialização/Desserialização:</h3>
+<p>A outra parte importante no processo de serialização
+é quanto tempo leva pra transformar aquele formato.
+Para tal eu decidi <strong>serializar e desserializar a
+mesma entidade várias vezes</strong> e tomar notas sobre
+o consumo de memória e <strong>tempos de processamento.</strong></p>
+<p>O consumo de memória não parece mudar muito neste
+teste a não ser que você passe a desserializar a
+mesma entidade um milhão de vezes, o que eu espero
+não ser tão comum para a maioria das aplicações PHP.
+Portanto <strong>eu não vou apresentar os números sobre
+utilização de memória já que a variação foi de 0 bytes.</strong></p>
+<p>Enquanto eu coletava os números sobre JSON, <strong>eu
+descobri que desserializar uma entidade com assoc = true
+é um pouquinho mais rápido em comparação com assoc = false.</strong>
+O que é um tanto interessante e até faz um certo
+sentido.</p>
+<p>Já que os resultados com assoc = true são melhores
+para o JSON, eu vou utilizar estes dados somente na
+comparação.</p>
+<p>O resultado:</p>
+<table>
+<thead>
+<tr>
+<th>Iterações</th>
+<th>Serialização JSON (s)</th>
+<th>Serialização MessagePack (s)</th>
+<th>Desserialização JSON (s)</th>
+<th>Desserialização MessagePack (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.00064</td>
+<td>0.00019 (-0,00045)</td>
+<td>0.00164</td>
+<td>0.00051 (-0,00113)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.00340</td>
+<td>0.00082 (-0,00258)</td>
+<td>0.00866</td>
+<td>0.00194 (-0,00672)</td>
+</tr>
+<tr>
+<td>100</td>
+<td>0.03135</td>
+<td>0.00732 (-0,02403)</td>
+<td>0.07905</td>
+<td>0.01700 (-0,06205)</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>0.30385</td>
+<td>0.07250 (-0,23135)</td>
+<td>0.77422</td>
+<td>0.16785 (-0,60637)</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>3.02723</td>
+<td>0.72503 (-2,95472)</td>
+<td>7.74523</td>
+<td>1.65804 (-6,08719)</td>
+</tr>
+<tr>
+<td>100000</td>
+<td>30.29353</td>
+<td>7.25324 (-23,04029)</td>
+<td>77.48423</td>
+<td>16.71792 (-60,76631)</td>
+</tr>
+</tbody>
+</table>
+<p>As <strong>iterações</strong> aqui significam quantas vezes nós
+executamos a mesma operação. Sendo a operação um
+<code>json_encode</code>, <code>msgpack_pack</code>, <code>json_decode</code> ou
+<code>msgpack_unpack</code>.</p>
+<p>Pessoalmente eu prestaria atenção nos números de 1 a 100
+iterações. Acima deste número, começa a ficar menos realista
+para mim. Eu os deixei alí de toda forma, os resultados
+começam a ficar bem interessantes a partir de 10 mil
+iterações.</p>
+<p>Como você pode perceber, as diferenças são bem pequenas
+nas primeiras iterações.</p>
+<p>Quando uma única operação de serialização é chamada,
+<strong>MessagePack</strong> é 0,45 ms mais rápido. <strong>Nada expressivo.</strong>
+Quando o número de serializações passa a 100, a diferença
+começa a se tornar evidente e o <strong>MessagePack é 24 ms
+mais rápido que o JSON.</strong></p>
+<p>Desserializações são normalmente mais lentas para
+os dois formatos, mas o MessagePack ganha aqui
+novamente. Quando uma única desserialização ocorre,
+<strong>MessagePack é 1 ms mais rápido.</strong> Enquanto 100
+desserializações são <strong>62 ms mais rápidas com
+MessagePack em comparação com JSON.</strong></p>
+<p>Mesmo que a diferença seja grande o suficiente
+quando 100 items precisam ser desserializados,
+eu acredito que na maioria das aplicações PHP seja
+bem improvável de acontecer. Um número de operações
+entre 1 e 10 é bem plausível pra mim e <strong>o MessagePack
+é 2 ms mais rápido em serializações e 6 ms em
+desserializações quando executado 10 vezes.</strong></p>
+<p>Bons números, mas nada muito expressivo.</p>
+<h2>Devo migrar do JSON para o MessagePack?</h2>
+<p>Quando se trata de engenharia de software, a única
+resposta que podemos dar com certeza é: <strong>depende.</strong>
+Toda aplicação tem diferentes desafios e situações.</p>
+<p>Por exemplo, se você estiver trocando arquivos
+entre diferentes sistemas e comprimir o seu conteúdo
+não é uma opção, então o MessagePack pode ser ótimo
+pra economizar espaçø em disco e reduzir a carga
+numa operação de stream.</p>
+<p>Uma aplicação comunicando com microsserviços no
+back-end pode se beneficiar da velocidade que o
+MessagePack traz se o número de interações for
+maior que 10 por requisição.</p>
+<p>Eu suspeito (apesar de não ter testado) que
+serializar/desserializar o MessagePack no
+JavaScript seja um tanto mais lento se comparado
+ao json, já que o MessagePack não roda como parte
+do motor JavaScript (Node, V8). Então possívelmente
+aplicações Front-End não se beneficiariam tanto
+do MessagePack ainda.</p>
+<p>Além disso, depurar respostas na aba Network do navegador
+se tornaria insuportável. Por outro lado, isto pode lhe
+ajudar a obfuscar sua API e evitar crawlers espertinhos
+já que o MessagePack ainda não é tão conhecido.</p>
+<p>Assim como qualquer outro benchmark, este aqui é
+bem inútil se você estiver buscando uma resposta
+de fácil utilização. Você precisará adaptar isso aqui
+para o seu cenário e ver como o MessagePack se comporta.</p>
+<p>Felizmente migrar de um formato para o outro deveria
+ser tão simples quanto trocar uma chamada de <code>json_encode</code>
+para <code>msgpack_pack</code> e de <code>json_decode</code> para <code>msgpack_unpack</code>.
+No caso de comunicar-se com microsserviços, um simples
+cabeçalho <code>Accept</code> já deve lhe resolver a vida.</p>
+<p>Claro que quanto mais for necessário refatorar, maior
+o custo de implementar e testar essas mudanças. Portanto
+tenha certeza de que você analisou os possíveis ganhos
+antes de tentar mudar todos seus serviços e consumidores
+para este novo formato.</p>
+<p>Pra mim um trabalho de 30 minutos para 2 ms de performance
+parece ser justo. Mas gastar 3 semanas para os mesmos
+2 ms não parece fazer muito sentido. Ao menos não na
+escala em que estou acostumado a trabalhar.</p>
+<p><strong>Utilizar o MessagePack desde o começo parece fazer
+muito sentido.</strong> Já que ele ganha do JSON em todos os
+testes. Então se você for escrever algo novo, considere o
+MessagePack.</p>
+<hr />
+<p>Não se esqueça de compartilhar isso com seus(uas) amigos(as)
+e colegas nerdões(onas). Eu tenho certeza de que o MessagePack
+será uma boa opção para muitos(as) deles(as).</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Comparando JSON e MessagePack",
+  "description": "MessagePack ganha em praticamente todos os testes. Mas a diferen&ccedil;a &eacute; t&atilde;o pequena que eu quase n&atilde;o consigo ver benef&iacute;cios em migrar do JSON para msgpack. Mas resultados mais interessantes podem brotar com a chegada do JIT no PHP 8...",
+  "image": [
+    "https://thephp.website/assets/images/posts/11-messagepack-640.webp"
+   ],
+  "datePublished": "2020-03-15T00:00:00+08:00",
+  "dateModified": "2020-03-15T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+</body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>
