@@ -239,7 +239,7 @@ an entity 10 times.**
 
 Good numbers but not very expressive.
 
-### Should I migrate from Json to MessagePack?
+## Should I migrate from Json to MessagePack?
 
 When it comes to software engineering, the only proper
 answer is: **depends.** Every application comes with
