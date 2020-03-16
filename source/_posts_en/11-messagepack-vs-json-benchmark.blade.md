@@ -24,7 +24,7 @@ meta:
     site: '@nawarian'
 ---
 
-<!-- [Leia em Português](/br/edicao/messagepack-vs-json-benchmark/) -->
+[Leia em Português](/br/edicao/messagepack-vs-json-benchmark/)
 
 ## TL;DR
 
