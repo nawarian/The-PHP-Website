@@ -23,7 +23,7 @@ sem arrogância, sem egos inflados.
 <p>
 O primeiro autor do site, <a href="https://twitter.com/nawarian" rel="nofollow">@nawarian</a>,
 é um brasileiro nascido em Mogi das Cruzes, SP. Que muito cedo em
-sua carreira esteve participou da comunidade
+sua carreira participou da comunidade
 <a href="https://phpsp.org.br/" rel="nofollow">PHPSP</a>
 onde teve a oportunidade de entender como a comunidade PHP funciona.
 </p>
@@ -32,7 +32,7 @@ onde teve a oportunidade de entender como a comunidade PHP funciona.
 <strong>Este site é para a comunidade</strong>,
 <a href="https://github.com/nawarian/The-PHP-Website" rel="nofollow">é aberto</a>
 e é simples na aparência. Com a maior intenção de oferecer o mais
-rico conteúdo possível com o máximo respeito por seus(as) usuários(as).
+rico conteúdo possível com o máximo respeito por todos(as) usuários(as).
 </p>
 
 <h2>Os Valores do thePHP Website</h2>
@@ -57,7 +57,7 @@ conteúdo até o design e layout.
 
 <p>
 O respeito pela leitura, pelos recursos consumidos pelos(as)
-leitores(as) como dados, bateria, esforço ocular.
+leitores(as) como dados, bateria e esforço ocular.
 </p>
 
 <p>
