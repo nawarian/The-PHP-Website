@@ -72,7 +72,7 @@ Buscamos alguém que, além de qualificado tecnicamente, se identifique com a no
 - Happy Hours;
 - Licença Maternidade/Paternidade estendida
 - Auxílio Creche
-
+- Teletrabalho
 
 
 
