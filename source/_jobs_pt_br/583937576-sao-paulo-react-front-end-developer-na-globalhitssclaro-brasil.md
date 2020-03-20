@@ -59,6 +59,9 @@ Escritório, São Paulo - Chácara Santo Antonio
 
 ## Benefícios
 
+- Vale refeição
+- Vale alimentação
+- Vale transporte / Vale combustível
 - Plano de saúde
 - Plano odontológico
 - Seguro de vida
