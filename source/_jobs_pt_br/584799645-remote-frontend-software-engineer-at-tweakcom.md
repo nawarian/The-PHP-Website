@@ -46,7 +46,7 @@ Tweak is an Irish tech-company founded in 2008. We are a B2B company that focus 
 We have pioneered the future of highly efficient workflows for online design, brand management and the curation, sharing and storage of digital assets critical to organizations.
 
 ## How to apply
-Send you CV to gustavo@tweak.com
+Send your CV (in english) to stephen@tweak.com
 
 ## Labels
 - Pleno
