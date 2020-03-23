@@ -239,7 +239,7 @@ como o <a href="https://flysystem.thephpleague.com/docs/adapter/local/">Filesyst
 que pode ser facilmente mockado.</p>
 <p>E pra quê serve o <code>PeopleService</code> então? Boa pergunta... Isto é uma das coisas
 que <strong>testes nos traz: questionar o nosso design, remover código inutil.</strong></p>
-<hr />
+<hr>
 <h3>Testes devem ser concisos e ter significado</h3>
 <p><strong>Motivo:</strong> testes são uma forma de documentação. Mantenha-os limpos,
 curtos e legíveis.</p>
@@ -341,7 +341,7 @@ public function testCanFlyIsTruthyWhenPersonHasTwoWings(): void
 <p>A gente poderia inclusive renomear o teste pra bater com um cenário da
 vida real como <code>testPersonCantFlyWithoutWings</code>, mas pra mim o nome já
 parece bom o suficiente.</p>
-<hr />
+<hr>
 <h3>Um teste não deve depender de outro</h3>
 <p><strong>Motivo:</strong> um teste deveria ser capaz de rodar e passar em qualquer ordem.</p>
 <p>Até o presente momento, eu não consigo encontrar um bom motivo para acoplar
@@ -405,7 +405,7 @@ de forma clara que explica a feature em si.</p>
 <p>A gente precisaria também escrever testes para autenticar e por aí vai.
 Esta estrutura é tão massa que o
 <a href="https://behat.org/en/latest/quick_start.html">Behat a utiliza por padrão</a>.</p>
-<hr />
+<hr>
 <h3>Sempre injete as dependências</h3>
 <p><strong>Motivo:</strong> mockar estado global é terrível, não ser capaz de mockar as
 dependências torna impossível testar uma funcionalidade.</p>
@@ -502,7 +502,7 @@ de utilizar o Singleton (anti) pattern.</p>
 mínimo estranho. </p>
 <p>Mudar o seu desgin para tornar testes mais simples está tudo bem. <strong>Criar
 métodos para tornar testes mais simples não está ok.</strong></p>
-<hr />
+<hr>
 <h3>Nunca teste métodos protected/private</h3>
 <p><strong>Motivo:</strong> a forma como testamos uma funcionalidade é fazendo assertions
 em como a sua assinatura se comporta: dada uma condição, quando eu faço X,
@@ -518,7 +518,7 @@ públicos nesta mesma classe consegue invocar tais métodos privados.</p>
 <p><strong>Se você testou todos os métodos públicos, você também deve ter testado os
 protegidos/privados de uma vez só.</strong> Se não, pode apagar cada um deles, que
 ninguém tá usando eles mesmo.</p>
-<hr />
+<hr>
 <h2>Além do básico: as coisas interessantes</h2>
 <p>Espero que você não tenha ficado entediado(a) até aqui. Básico é básico, mas
 precisa ser escrito.</p>
@@ -563,7 +563,7 @@ decisões de design.</strong></p>
 E, sim, para tornar o teste mais simples!</p>
 <p>Se seus testes são um documento vivo que pretende explicar como o software
 funciona, <strong>é extremamente importante que eles expliquem de forma clara.</strong></p>
-<hr />
+<hr>
 <h3>Não ter testes é melhor que ter testes mal feitos</h3>
 <p><strong>Valores</strong>: aprendizado, documentação, refatoração.</p>
 <p>Muitos(as) desenvolvedores(as) escrevem teste da seguinte forma: escreve
@@ -583,7 +583,7 @@ que não se relacionam com o caso de uso.</p>
 <p><strong>Lembre-se:</strong> testes são um documento vivo, tentando explicar como o software
 deveria se comportar. <code>assertFalse($a-&gt;canFly())</code> não documenta muita coisa.
 Já <code>assertFalse($personWithNoWingos-&gt;canFly())</code> documenta.</p>
-<hr />
+<hr>
 <h3>Rode seus testes compulsivamente</h3>
 <p><strong>Valores</strong>: aprendizado, receber feedback rápido, refatoração.</p>
 <p><strong>Antes de iniciar qualquer funcionalidade: rode os testes.</strong> Se os testes
@@ -604,7 +604,7 @@ frequência em que salva seus arquivos.</p>
 <p>Na real, o <a href="https://github.com/spatie/phpunit-watcher">PHPUnit Watcher</a>
 resolve exatamente esse problema pra gente e até envia notificação
 quando os testes rodam.</p>
-<hr />
+<hr>
 <h3>Grandes testes, grandes responsabilidades</h3>
 <p><strong>Valores</strong>: aprendizado, refatoração, design enquanto testo.</p>
 <p>Seria ideal que cada classe teria ao menos um caso de teste pra si.
@@ -647,7 +647,7 @@ utilidade.</p>
 responsabilidades e pode ser hora de botar o chapéu de refatoração pra
 remover funcionalidades, mover para classes diferentes ou repensar parte
 do seu design.</p>
-<hr />
+<hr>
 <h3>Mantenha uma suite de regressão</h3>
 <p><strong>Valores</strong>: aprendizado, documentação, receber feedback rápido. </p>
 <p>Se liga nessa função:</p>
@@ -675,7 +675,7 @@ dá aquele deploy e vai ser feliz!</p>
 especializada em regressão e conecte este teste com uma issue.</p>
 <p>E prontinho! Feedback rápido enquanto corrige bugs, documentação feita,
 código a prova de regressões e felicidade.</p>
-<hr />
+<hr>
 <h2>Notas finais e bora trocar ideia</h2>
 <p>Ufa, falei um monte ein... E é claro que a maioria das coisas aqui são
 opiniões minhas que desenvolvi conforme fui evoluindo na carreira. Não

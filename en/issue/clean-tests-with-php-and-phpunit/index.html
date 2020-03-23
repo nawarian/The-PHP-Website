@@ -231,7 +231,7 @@ which can be easily mocked.</p>
 <p>And what's the point of having <code>PeopleService</code> then? Good question.
 That's also <strong>what tests are for: question your design, kill useless
 code.</strong></p>
-<hr />
+<hr>
 <h3>Tests should be concise and meaningful</h3>
 <p><strong>Main reasoning:</strong> tests are a form of documentation. Keep them clean,
 short and readable.</p>
@@ -332,7 +332,7 @@ public function testCanFlyIsTruthyWhenPersonHasTwoWings(): void
 // ...</code></pre>
 <p>We could even rename the test method to match a real-life scenario like
 <code>testPersonCantFlyWithoutWings</code>, but that's for me good enough.</p>
-<hr />
+<hr>
 <h3>A test should not depend on another</h3>
 <p><strong>Main reasoning:</strong> a test should be able to run and succeed in any order.</p>
 <p>So far I can't find a good reason for coupling tests.</p>
@@ -395,7 +395,7 @@ explains the feature itsef.</p>
 <p>We would also need to add tests for authenticating and so on.
 This is structure is so good that
 <a href="https://behat.org/en/latest/quick_start.html">Behat enforces it by default</a>.</p>
-<hr />
+<hr>
 <h3>Always inject dependencies</h3>
 <p><strong>Main reasoning:</strong> mocking global state is terrible, not being able
 to mock dependencies at all makes it impossible to test a feature.</p>
@@ -491,7 +491,7 @@ using the Singleton (anti) pattern.</p>
 cases like <code>reset()</code> or <code>setInstance()</code>. Sounds insane to me.</p>
 <p>Changing your design to make testing easier is fine! <strong>Creating methods
 to make testing easier is not fine.</strong></p>
-<hr />
+<hr>
 <h3>Never test protected/private methods</h3>
 <p><strong>Main reasoning:</strong> They way we test features is by asserting how their
 signature behave: given this conditions, when I input X, I expect Y to occur.
@@ -506,7 +506,7 @@ same class can invoke such methods.</p>
 <p><strong>If you tested all your public methods, you also tested all your
 protected/private ones.</strong> If not, feel free to delete your protected/private
 methods, nobody is using them anyways.</p>
-<hr />
+<hr>
 <h2>Beyond the basics: the interesting stuff</h2>
 <p>I hope you didn't get bored so far. Basics are basics, but they need to be
 stated.</p>
@@ -549,7 +549,7 @@ decisions.</strong></p>
 on. And yes, to make testing easier!</p>
 <p>If your tests are a live document aiming to explain how your software works,
 <strong>it is extremely important they explain it clearly.</strong></p>
-<hr />
+<hr>
 <h3>No tests is better than bad tests</h3>
 <p><strong>Values</strong>: learning, documenting, refactoring.</p>
 <p>Many developers think of tests the following way: they write a feature,
@@ -567,7 +567,7 @@ that don't relate to the use case at all.</p>
 <p><strong>Remember:</strong> your tests are a live document, attempting to explain how your
 software should behave. <code>assertFalse($a-&gt;canFly())</code> is not documenting much.
 <code>assertFalse($personWithNoWings-&gt;canFly())</code> is.</p>
-<hr />
+<hr>
 <h3>Run your tests compulsively</h3>
 <p><strong>Values</strong>: learning, receiving quick feedback, refactoring.</p>
 <p><strong>Before you start any feature: run tests.</strong> If tests are broken before you touched
@@ -584,7 +584,7 @@ are green, you know you can move forward.</p>
 <p>Just really, run the freaking tests. As often as you'd hit the &quot;Save&quot; hotkey.</p>
 <p>In fact, <a href="https://github.com/spatie/phpunit-watcher">PHPUnit Watcher</a>
 does exactly this for you and even sends desktop notifications!</p>
-<hr />
+<hr>
 <h3>Big tests, big responsibilities</h3>
 <p><strong>Values</strong>: learning, refactoring, design while testing.</p>
 <p>Ideally each class would have one test counterpart for itself. Also
@@ -625,7 +625,7 @@ leaving it small and concise will only increase its quality and usefulness.</p>
 <p>This is also a big sign that your class is accumulating responsibilities and
 might be time to put on your refactoring hat to remove features, move to
 different classes or rethink part of your design.</p>
-<hr />
+<hr>
 <h3>Keep a regression suite</h3>
 <p><strong>Values</strong>: learning, documenting, receiving quick feedback.</p>
 <p>Take the following function:</p>
@@ -649,8 +649,9 @@ retrieve the value, one should not. You have a bug.</p>
 Remove the bug, make tests green, push, deploy and be happy.</p>
 <p>Keep this test there, forever. If possible, to a test suite specialized on
 regression and link it to an issue.</p>
-<h2>There you go! Quick feedback bug fixing, documentation, regression proof
-code and happiness.</h2>
+<p>There you go! Quick feedback bug fixing, documentation, regression proof
+code and happiness.</p>
+<hr>
 <h2>Final notes and let's chat</h2>
 <p>Poah, I wrote quite a bit... And of course most things here are mere
 opinions of mine, which I developed over time during my career. Doesn't
