@@ -112,11 +112,11 @@ pretty much anyone can check the numbers and reproduce the
 tests. In short, these are the environment details I
 collected from my travis executions:
 
-- CPU: Intel(R) Xeon(R); 1 @ 2,8 GHz; Cache 33 MB
-- RAM: 7,79 GB
-- OS: linux/amd64 (Ubuntu 16.04.6 LTS - Xenial)
-- PHP Version: 7.4.3
-- MsgPack Version: 2.1.0
+* CPU: Intel(R) Xeon(R); 1 @ 2,8 GHz; Cache 33 MB
+* RAM: 7,79 GB
+* OS: linux/amd64 (Ubuntu 16.04.6 LTS - Xenial)
+* PHP Version: 7.4.3
+* MsgPack Version: 2.1.0
 
 In a near future I will upgrade such benchmarks to use
 PHP 8’s JIT.
@@ -154,10 +154,10 @@ length encoded in both formats and gzipped as well.
 
 Here you find the comparison table:
 
-Format | Encoded (bytes) | Encoded + Gzipped (bytes)
------- | --------------- | -------------------------
-JSON | 143025 | 26214
-MessagePack | 120799 (-22226) | 26074 (-140)
+| Format | Encoded (bytes) | Encoded + Gzipped (bytes) |
+| ------ | --------------- | ------------------------- |
+| JSON | 143025 | 26214 |
+| MessagePack | 120799 (-22226) | 26074 (-140) |
 
 As you can see when no compression filter is applied,
 MessagePack is about 22 KB lighter than JSON. But
@@ -192,14 +192,14 @@ use them in our next comparison table.
 
 Here it goes:
 
-Loops | JSON Encoding (s) | MessagePack Encoding (s) | JSON Decoding (s) |  MessagePack Decoding (s)
------ | ----------------- | ------------------------ | ----------------- | ------------------------
-1 | 0.00064 | 0.00019 (-0,00045) | 0.00164 | 0.00051 (-0,00113)
-10 | 0.00340 | 0.00082 (-0,00258) | 0.00866 | 0.00194 (-0,00672)
-100 | 0.03135 | 0.00732 (-0,02403) | 0.07905 | 0.01700 (-0,06205)
-1000 | 0.30385 | 0.07250 (-0,23135) | 0.77422 | 0.16785 (-0,60637)
-10000 | 3.02723 | 0.72503 (-2,95472) | 7.74523 | 1.65804 (-6,08719)
-100000 | 30.29353 | 7.25324 (-23,04029) | 77.48423 | 16.71792 (-60,76631)
+| Loops | JSON Encoding (s) | MessagePack Encoding (s) | JSON Decoding (s) |  MessagePack Decoding (s) |
+| ----- | ----------------- | ------------------------ | ----------------- | ------------------------ |
+| 1 | 0.00064 | 0.00019 (-0,00045) | 0.00164 | 0.00051 (-0,00113) |
+| 10 | 0.00340 | 0.00082 (-0,00258) | 0.00866 | 0.00194 (-0,00672) |
+| 100 | 0.03135 | 0.00732 (-0,02403) | 0.07905 | 0.01700 (-0,06205) |
+| 1000 | 0.30385 | 0.07250 (-0,23135) | 0.77422 | 0.16785 (-0,60637) |
+| 10000 | 3.02723 | 0.72503 (-2,95472) | 7.74523 | 1.65804 (-6,08719) |
+| 100000 | 30.29353 | 7.25324 (-23,04029) | 77.48423 | 16.71792 (-60,76631) |
 
 The **loops** number here means how many times we
 executed the same operation. Being the operation a
@@ -295,7 +295,7 @@ sense, though.** As it overperforms json in every
 single test. So if you’re developing something
 brand-new, consider MessagePack.
 
----
+<hr>
 
 Don’t forget sharing this with your geeky friends and
 colleagues. I’m certain MessagePack will be a good

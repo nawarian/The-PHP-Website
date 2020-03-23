@@ -43,7 +43,7 @@ acompanhe o [arquivo UPGRADE no repositório oficial](https://github.com/php/php
 nenhuma outra minor version (PHP 7.5) para esta major 7. Portanto a próxima versão será, com
 certeza, o PHP 8.
 
----
+<hr>
 
 ## Funcionalidades aceitas para a versão 8.0
 
@@ -54,9 +54,9 @@ Então se você quer ter um gostinho do que vem nesta versão, dá uma ligada ni
 
 <!-- https://wiki.php.net/rfc/jit -->
 ### JIT: Just in Time Compiler
-- **Status**: Confirmado.
-- **Categoria**: Performance.
-- **Votos**: 50 sim. 2 não.
+* **Status**: Confirmado.
+* **Categoria**: Performance.
+* **Votos**: 50 sim. 2 não.
 
 Eu escrevi [uma explicação detalhada sobre que diabos é o Just In Time compiler](/br/edicao/php-8-jit/).
 
@@ -67,9 +67,9 @@ Você pode ver a especificação e discussão [visitando a RFC](https://wiki.php
 
 <!-- https://wiki.php.net/rfc/union_types_v2 -->
 ### Union Types V2
-- **Status**: Confirmado.
-- **Categoria**: Sintaxe.
-- **Votos**: 61 sim. 5 não.
+* **Status**: Confirmado.
+* **Categoria**: Sintaxe.
+* **Votos**: 61 sim. 5 não.
 
 A [RFC Union Types V2](https://wiki.php.net/rfc/union_types_v2) permitirá
 explicitar todos os possíveis tipos aceitos em vez do bom e velho _mixed_.
@@ -85,9 +85,9 @@ function myFunction(int|float $number): int
 
 <!-- https://wiki.php.net/rfc/weak_maps -->
 ### A classe WeakMap
-- **Status**: Confirmado.
-- **Categoria**: Biblioteca Padrão.
-- **Votos**: 25 sim. 0 não.
+* **Status**: Confirmado.
+* **Categoria**: Biblioteca Padrão.
+* **Votos**: 25 sim. 0 não.
 
 A [RFC da classe WeakMap](https://wiki.php.net/rfc/weak_maps) cria uma nova classe
 chamada `WeakMap` que parece um pouco com a `SplObjectStorage`.
@@ -120,9 +120,9 @@ disponível para o PHP 7.4; Chama-se [BenMorel/weakmap-polyfill](https://github.
 
 <!-- https://wiki.php.net/rfc/consistent_type_errors -->
 ### Exceções do tipo TypeError serão lançadas em erros de parâmetros
-- **Status**: Confirmado.
-- **Categoria**: Biblioteca Padrão.
-- **Votos**: 50 sim. 2 não.
+* **Status**: Confirmado.
+* **Categoria**: Biblioteca Padrão.
+* **Votos**: 50 sim. 2 não.
 
 Sempre que você causa um type error numa função de usuário, uma exceção
 é lançada. Para funções internas o PHP apenas mostra um warning e retorna
@@ -134,9 +134,9 @@ nos dois casos.
 
 <!-- https://wiki.php.net/rfc/negative_array_index -->
 ### Chaves de array implícitas serão mais consistentes
-- **Status**: Confirmado.
-- **Categoria**: Biblioteca Padrão.
-- **Votos**: 17 sim. 2 não.
+* **Status**: Confirmado.
+* **Categoria**: Biblioteca Padrão.
+* **Votos**: 17 sim. 2 não.
 
 Sempre que você utiliza índices negativos na função `array_fill`, ela irá
 gerar o primeiro índice negativo e depois pular para 0 (🤦‍♀️). Tipo assim:
@@ -177,9 +177,9 @@ array(3) {
 
 <!-- https://wiki.php.net/rfc/lsp_errors -->
 ### Fatal Error em sobrecarga de métodos
-- **Status**: Confirmado.
-- **Categoria**: Biblioteca Padrão.
-- **Votos**: 39 sim. 3 não.
+* **Status**: Confirmado.
+* **Categoria**: Biblioteca Padrão.
+* **Votos**: 39 sim. 3 não.
 
 Sempre que uma classe define uma assinatura de método e uma herança tenta
 sobrecarregar este método (mudando sua assinatura) um warning é lançado.
@@ -211,9 +211,9 @@ class B extends A
 
 <!-- https://wiki.php.net/rfc/dom_living_standard_api -->
 ### Atualização da DOM API para bater com o padrão DOM
-- **Status**: Confirmado.
-- **Categoria**: Biblioteca Padrão.
-- **Votos**: 37 sim. 0 não.
+* **Status**: Confirmado.
+* **Categoria**: Biblioteca Padrão.
+* **Votos**: 37 sim. 0 não.
 
 [Esta RFC](https://wiki.php.net/rfc/dom_living_standard_api) também pede um post
 para si.
@@ -222,7 +222,7 @@ Mas basicamente ela adiciona algumas interfaces e classes para tornar a API
 da `ext/dom` compatível com o [atual padrão DOM](https://dom.spec.whatwg.org/)
 que está constantemente sendo atualizado.
 
----
+<hr>
 
 ## O que TALVEZ entre na versão 8.0 do PHP?
 
@@ -234,8 +234,8 @@ Aqui vai a lista:
 
 <!-- https://wiki.php.net/rfc/engine_warnings -->
 ### Severidade de erros
-- **Status**: Aceita. Implementação pendente.
-- **Categoria**: Biblioteca Padrão.
+* **Status**: Aceita. Implementação pendente.
+* **Categoria**: Biblioteca Padrão.
 
 A [RFC da severidade de erros](https://wiki.php.net/rfc/engine_warnings)
 pretende revisar a forma como algumas funcionalidades tratam erros na
@@ -246,8 +246,8 @@ poderá pular de `Warning` para `TypeError Exception`.
 
 <!-- https://wiki.php.net/rfc/class_name_literal_on_object -->
 ### Permitir o uso de ::class em objetos
-- **Status**: Implementada. Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Implementada. Sob Discussão.
+* **Categoria**: Sintaxe.
 
 Basicamente nomes de classe dinâmicos não são permitidos em tempo de compilação.
 Então um código como o seguinte gera um erro fatal:
@@ -265,8 +265,8 @@ var_dump($a::class);
 
 <!-- https://wiki.php.net/rfc/static_return_type -->
 ### Tornar _static_ um tipo de retorno válido, como _self_
-- **Status**: Implementada. Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Implementada. Sob Discussão.
+* **Categoria**: Sintaxe.
 
 Da mesma forma como podemos usar `self` como tipo de retorno para funções,
 [a RFC de static return](https://wiki.php.net/rfc/static_return_type) torna disponível
@@ -286,24 +286,24 @@ class A
 
 <!-- https://wiki.php.net/rfc/variable_syntax_tweaks -->
 ### Sintaxe de variáveis consistentes
-- **Status**: Implementada. Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Implementada. Sob Discussão.
+* **Categoria**: Sintaxe.
 
 Esta aqui é sobre mudanças sintáticas e mudará algumas funcionalidades.
 
 Eu recomendo dar uma olhada [na RFC](https://wiki.php.net/rfc/variable_syntax_tweaks)
 para obter mais detalhes. As funcionalidades afetadas incluem:
 
-- Strings interpoladas e não interpoladas
-- Constantes and constantes mágicas
-- "Dereferenciabilidade" de constantes
-- "Dereferenciabilidade" de constantes de classes
-- Suporte arbitrário a expressões para `new` e `instanceof`
+* Strings interpoladas e não interpoladas
+* Constantes and constantes mágicas
+* "Dereferenciabilidade" de constantes
+* "Dereferenciabilidade" de constantes de classes
+* Suporte arbitrário a expressões para `new` e `instanceof`
 
 <!-- https://wiki.php.net/rfc/use_global_elements -->
 ### Otimizar o lookup de funções e constantes
-- **Status**: Prova de Conceito Implementada. Sob Discussão.
-- **Categoria**: Sintaxe. Performance.
+* **Status**: Prova de Conceito Implementada. Sob Discussão.
+* **Categoria**: Sintaxe. Performance.
 
 A [RFC sobre lookup de funções e constantes](https://wiki.php.net/rfc/use_global_elements)
 adiciona um novo `declare()` que impede o PHP de fazer alguns lookups em tempo
@@ -349,8 +349,8 @@ não é mais necessário e o PHP irá diretamente ao escopo global, trazendo
 
 <!-- https://wiki.php.net/rfc/strict_operators -->
 ### A diretiva Strict Operators
-- **Status**: Prova de Conceito Implementada. Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Prova de Conceito Implementada. Sob Discussão.
+* **Categoria**: Sintaxe.
 
 [A RFC de operadores estritos](https://wiki.php.net/rfc/strict_operators) traria
 uma nova diretiva chamada `strict_operators`. Quando ligada, algumas comparações
@@ -388,7 +388,7 @@ As mudanças são bem mais amples que este pequeno exemplo e estão fora do esco
 deste post. Verifique a RFC para mais ou me dá um ping no twitter caso queira que
 eu escreva um pouco mais sobre esta! 😉
 
----
+<hr>
 
 As RFCs abaixo ainda estão sob discussão e a maioria têm algo relacionado a versões
 passadas do PHP, não tendo sido lançadas a tempo ou algo parecido. Eu não irei as
@@ -400,8 +400,8 @@ Aqui vão elas:
 
 <!-- https://wiki.php.net/rfc/normalize-array-auto-increment-on-copy-on-write -->
 ### Auto Increment na cópia na gravação 
-- **Status**: Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Sob Discussão.
+* **Categoria**: Sintaxe.
 
 [Link para a RFC.](https://wiki.php.net/rfc/normalize-array-auto-increment-on-copy-on-write)
 
@@ -410,8 +410,8 @@ esperaria que fosse apontada para a versão 8.0 desta vez, mas não há certezas
 
 <!-- https://wiki.php.net/rfc/alternative-closure-use-syntax -->
 ### Sintaxe alternativa do "use" em Closures
-- **Status**: Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Sob Discussão.
+* **Categoria**: Sintaxe.
 
 [Link para a RFC.](https://wiki.php.net/rfc/alternative-closure-use-syntax)
 
@@ -420,15 +420,15 @@ tempo seria a versão 7.4.
 
 <!-- https://wiki.php.net/rfc/namespace_scoped_declares -->
 ### Aplicar um declare() em todo o Namespace 🔥
-- **Status**: Implementada. Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Implementada. Sob Discussão.
+* **Categoria**: Sintaxe.
 
 [Link para a RFC.](https://wiki.php.net/rfc/namespace_scoped_declares)
 
 <!-- https://wiki.php.net/rfc/trailing_whitespace_numerics -->
 ### Permitir espaços no fim de strings numéricas
-- **Status**: Implementada. Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Implementada. Sob Discussão.
+* **Categoria**: Sintaxe.
 
 [Link para a RFC.](https://wiki.php.net/rfc/trailing_whitespace_numerics)
 
@@ -436,15 +436,15 @@ Esta RFC também visava a versão 7.4 mas não conseguiu ser votada a tempo.
 
 <!-- https://wiki.php.net/rfc/nullable-casting -->
 ### Permitir type casting de valores nullable
-- **Status**: Perdida. Sob Discussão.
-- **Categoria**: Sintaxe.
+* **Status**: Perdida. Sob Discussão.
+* **Categoria**: Sintaxe.
 
 [Link para a RFC.](https://wiki.php.net/rfc/nullable-casting)
 
 Aparentemente o fork que continha as mudanças foi apagado e o Pull Request fechado.
 Não parece crível que será integrado ao PHP a menos que alguém resolva tomar conta. 
 
----
+<hr>
 
 Por enquanto é só. Eu adicionarei algumas **Atualizações** nos tópicos acima com o
 tempo, sempre que a comunidade andar com alguma RFC e eu tiver a oportunidade de ver

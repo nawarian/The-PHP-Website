@@ -35,7 +35,7 @@ If you could take one thing with you from this text, take this:
 [Learn how to TDD efficiently](/en/issue/real-life-tdd-php/) and you'll
 grasp the main concept of this whole text.
 
----
+<hr>
 
 Recently I started (again) the most exciting and recurring quest
 we programmers face from time to time:
@@ -61,7 +61,7 @@ You'll have to figure out your best way of learning by yourself.
 
 As usual, let's switch on the "no bs mode" and get started!
 
----
+<hr>
 
 Each section here starts with a list of topics so you can know the main
 thoughts in beforehand. Feel free to jump to the next heading if the
@@ -85,10 +85,10 @@ which brings some tips on how to feed the first step of TDL's loop.
 
 Topics in this section:
 
-- All programming languages are similar
-- Every language has a purpose
-- Finding the language's highlights
-- How to test in this language
+* All programming languages are similar
+* Every language has a purpose
+* Finding the language's highlights
+* How to test in this language
 
 If you already know which programming language you want to learn
 the bootstraping process is fairly simple. I have a weird advice
@@ -191,17 +191,17 @@ Then I just run `$ cargo test` and DONE! I know the basics on
 how to perform assertions on my new language. Time to start
 learning!
 
----
+<hr>
 
 ## How does Test-Driven Learning (TDL) work?
 
 Topics in this section:
 
-- Introduction with code examples
-- Discover
-- Assert
-- Learn
-- Repeat
+* Introduction with code examples
+* Discover
+* Assert
+* Learn
+* Repeat
 
 Could be that you're thinking I'm trying to create a new fake
 trend here or something. But [Test-Driven Learning is really a thing](https://digitalcommons.calpoly.edu/csse_fac/88/).
@@ -277,7 +277,7 @@ Things like the following will pop on my screen:
 >
 > **help:** consider prefixing with an underscore: `_i`
 >
-> **error[E0384]:** cannot assign twice to immutable variable `nawarian`
+> **error\[E0384]:** cannot assign twice to immutable variable `nawarian`
 >
 > **help:** make this binding mutable: `mut nawarian`
 
@@ -348,16 +348,16 @@ into I/O operations, structs usage, FFI calls, threads...
 
 **There's no code you can't make more complicated! 😉**
 
----
+<hr>
 
 ## Praxis: The hardest part is discovering
 
 Topics in this section:
 
-- Introduction about community and tools
-- Get involved with the language
-- Connect with the community
-- Explain something you don't know
+* Introduction about community and tools
+* Get involved with the language
+* Connect with the community
+* Explain something you don't know
 
 Theory sounds great, right? (maybe not even...)
 
@@ -411,7 +411,7 @@ At some point you'll be browsing job opportunities for such language
 and requirements will simply be matching. The ones that aren't, you'll
 feed to your discovery and keep moving forward.
 
----
+<hr>
 
 I'm glad you made until here, because I'm not trying to BS you. My
 learning process so far feels quite painful but extremely useful to
@@ -457,4 +457,3 @@ As always, feel free to send  me any sort of feedback by pinging me on twitter.
   }
 }
 </script>
-

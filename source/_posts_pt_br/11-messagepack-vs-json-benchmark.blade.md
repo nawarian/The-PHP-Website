@@ -119,11 +119,11 @@ o Travis CI, já que qualquer pessoa pode reproduzir
 estes testes de forma simplificada. Os dados que
 consegui coletar do ambiente de execução são:
 
-- CPU: Intel(R) Xeon(R); 1 @ 2,8 GHz; Cache 33 MB
-- RAM: 7,79 GB
-- OS: linux/amd64 (Ubuntu 16.04.6 LTS - Xenial)
-- Versão do PHP: 7.4.3
-- Versão do MsgPack: 2.1.0
+* CPU: Intel(R) Xeon(R); 1 @ 2,8 GHz; Cache 33 MB
+* RAM: 7,79 GB
+* OS: linux/amd64 (Ubuntu 16.04.6 LTS - Xenial)
+* Versão do PHP: 7.4.3
+* Versão do MsgPack: 2.1.0
 
 Num futuro próximo eu vou atualizar o benchmark pra
 rodar contra o PHP 8 e o Just In Time compiler dele.
@@ -162,10 +162,10 @@ também a versão comprimida com gzip.
 
 A comparação ficou assim:
 
-Formato | Serializado (bytes) | Serializado + Gzip (bytes)
------- | --------------- | -------------------------
-JSON | 143025 | 26214
-MessagePack | 120799 (-22226) | 26074 (-140)
+| Formato | Serializado (bytes) | Serializado + Gzip (bytes) |
+| ------ | --------------- | ------------------------- |
+| JSON | 143025 | 26214 |
+| MessagePack | 120799 (-22226) | 26074 (-140) |
 
 Como pode-se notar, quando não há filtros de compressão
 o MessagePack é cerca de 22 KB mais leve que o JSON. Mas
@@ -199,14 +199,14 @@ comparação.
 
 O resultado:
 
-Iterações | Serialização JSON (s) | Serialização MessagePack (s) | Desserialização JSON (s) |  Desserialização MessagePack (s)
------ | ----------------- | ------------------------ | ----------------- | ------------------------
-1 | 0.00064 | 0.00019 (-0,00045) | 0.00164 | 0.00051 (-0,00113)
-10 | 0.00340 | 0.00082 (-0,00258) | 0.00866 | 0.00194 (-0,00672)
-100 | 0.03135 | 0.00732 (-0,02403) | 0.07905 | 0.01700 (-0,06205)
-1000 | 0.30385 | 0.07250 (-0,23135) | 0.77422 | 0.16785 (-0,60637)
-10000 | 3.02723 | 0.72503 (-2,95472) | 7.74523 | 1.65804 (-6,08719)
-100000 | 30.29353 | 7.25324 (-23,04029) | 77.48423 | 16.71792 (-60,76631)
+| Iterações | Serialização JSON (s) | Serialização MessagePack (s) | Desserialização JSON (s) |  Desserialização MessagePack (s) |
+| ----- | ----------------- | ------------------------ | ----------------- | ------------------------ |
+| 1 | 0.00064 | 0.00019 (-0,00045) | 0.00164 | 0.00051 (-0,00113) |
+| 10 | 0.00340 | 0.00082 (-0,00258) | 0.00866 | 0.00194 (-0,00672) |
+| 100 | 0.03135 | 0.00732 (-0,02403) | 0.07905 | 0.01700 (-0,06205) |
+| 1000 | 0.30385 | 0.07250 (-0,23135) | 0.77422 | 0.16785 (-0,60637) |
+| 10000 | 3.02723 | 0.72503 (-2,95472) | 7.74523 | 1.65804 (-6,08719) |
+| 100000 | 30.29353 | 7.25324 (-23,04029) | 77.48423 | 16.71792 (-60,76631) |
 
 As **iterações** aqui significam quantas vezes nós
 executamos a mesma operação. Sendo a operação um
@@ -302,7 +302,7 @@ muito sentido.** Já que ele ganha do JSON em todos os
 testes. Então se você for escrever algo novo, considere o
 MessagePack.
 
----
+<hr>
 
 Não se esqueça de compartilhar isso com seus(uas) amigos(as)
 e colegas nerdões(onas). Eu tenho certeza de que o MessagePack

@@ -42,7 +42,7 @@ pointing to.
 won't be another minor version (PHP 7.5) for this major 7. So the next version will
 definitely be PHP 8.
 
----
+<hr>
 
 ## Accepted features for PHP 8.0
 
@@ -53,9 +53,9 @@ So if you want to have a taste of this version, check this section out:
 
 <!-- https://wiki.php.net/rfc/jit -->
 ### JIT: Just in Time Compiler
-- **Status**: Confirmed.
-- **Category**: Performance.
-- **Votes**: 50 yes. 2 no.
+* **Status**: Confirmed.
+* **Category**: Performance.
+* **Votes**: 50 yes. 2 no.
 
 I wrote an [in-depth explanation about what the heck the Just In Time compiler is](/en/issue/php-8-jit/).
  
@@ -66,9 +66,9 @@ You can check the full spec by [visiting the RFC page](https://wiki.php.net/rfc/
 
 <!-- https://wiki.php.net/rfc/union_types_v2 -->
 ### Union Types V2
-- **Status**: Confirmed.
-- **Category**: Syntax.
-- **Votes**: 61 yes. 5 no.
+* **Status**: Confirmed.
+* **Category**: Syntax.
+* **Votes**: 61 yes. 5 no.
 
 The [Union Types V2 RFC](https://wiki.php.net/rfc/union_types_v2) will allow
 every type definition to explicitly tell what possibilities are accepted, instead
@@ -85,9 +85,9 @@ function myFunction(int|float $number): int
 
 <!-- https://wiki.php.net/rfc/weak_maps -->
 ### The WeakMap class
-- **Status**: Confirmed.
-- **Category**: Standard Library.
-- **Votes**: 25 yes. 0 no.
+* **Status**: Confirmed.
+* **Category**: Standard Library.
+* **Votes**: 25 yes. 0 no.
 
 The [WeakMap class RFC](https://wiki.php.net/rfc/weak_maps) creates a new class
 called `WeakMap` which looks a bit like `SplObjectStorage`.
@@ -120,9 +120,9 @@ implementation that works with PHP 7.4; It is called [BenMorel/weakmap-polyfill]
 
 <!-- https://wiki.php.net/rfc/consistent_type_errors -->
 ### TypeError exceptions will be thrown on parameter parsing failures
-- **Status**: Confirmed.
-- **Category**: Standard Library.
-- **Votes**: 50 yes. 2 no.
+* **Status**: Confirmed.
+* **Category**: Standard Library.
+* **Votes**: 50 yes. 2 no.
 
 Whenever you cause a type error on user-defined functions, it will throw
 an exception. For internal functions, though, PHP shows a warning and
@@ -134,9 +134,9 @@ both cases.
 
 <!-- https://wiki.php.net/rfc/negative_array_index -->
 ### Implicit array keys will be more consistent
-- **Status**: Confirmed.
-- **Category**: Standard Library.
-- **Votes**: 17 yes. 2 no.
+* **Status**: Confirmed.
+* **Category**: Standard Library.
+* **Votes**: 17 yes. 2 no.
 
 Whenever you use negative indexes on the `array_fill` function, it will
 generate the first negative index and then jump to 0 (🤦‍♀️). Like this:
@@ -177,9 +177,9 @@ array(3) {
 
 <!-- https://wiki.php.net/rfc/lsp_errors -->
 ### Fatal Error on wrongly typed inherited methods
-- **Status**: Confirmed.
-- **Category**: Standard Library.
-- **Votes**: 39 yes. 3 no.
+* **Status**: Confirmed.
+* **Category**: Standard Library.
+* **Votes**: 39 yes. 3 no.
 
 Whenever a class defines a method signature and its children attempt to
 overload such method (by changing its signature) a warning is thrown.
@@ -211,9 +211,9 @@ class B extends A
 
 <!-- https://wiki.php.net/rfc/dom_living_standard_api -->
 ### DOM API upgrade to match latest standard version
-- **Status**: Confirmed.
-- **Category**: Standard Library.
-- **Votes**: 37 yes. 0 no.
+* **Status**: Confirmed.
+* **Category**: Standard Library.
+* **Votes**: 37 yes. 0 no.
 
 [This RFC](https://wiki.php.net/rfc/dom_living_standard_api) also requires a
 post by itself.
@@ -222,7 +222,7 @@ But basically it adds a couple of interfaces and classes to make `ext/dom` API
 to match the [current DOM standard](https://dom.spec.whatwg.org/) which is
 constantly changing.
 
----
+<hr>
 
 ## What MIGHT enter PHP 8.0 version?
 
@@ -234,8 +234,8 @@ Here goes the list:
 
 <!-- https://wiki.php.net/rfc/engine_warnings -->
 ### Severity levels for errors messages fixed
-- **Status**: Accepted. Pending Implementation.
-- **Category**: Standard Library.
+* **Status**: Accepted. Pending Implementation.
+* **Category**: Standard Library.
 
 The [severity error messages' levels RFC](https://wiki.php.net/rfc/engine_warnings)
 aims to make a revision on many core error handling features.
@@ -245,8 +245,8 @@ might jump from `Warning` to `TypeError Exception`.
 
 <!-- https://wiki.php.net/rfc/class_name_literal_on_object -->
 ### Allow ::class access on objects
-- **Status**: Implemented. Under Discussion.
-- **Category**: Syntax.
+* **Status**: Implemented. Under Discussion.
+* **Category**: Syntax.
 
 Basically Dynamic class names aren't allowed in compile time. So a code
 like the following raises a fatal error:
@@ -264,8 +264,8 @@ With [this RFC](https://wiki.php.net/rfc/engine_warnings) it will be now possibl
 
 <!-- https://wiki.php.net/rfc/static_return_type -->
 ### Make _static_ a valid return type, like _self_
-- **Status**: Implemented. Under Discussion.
-- **Category**: Syntax.
+* **Status**: Implemented. Under Discussion.
+* **Category**: Syntax.
 
 Just the way we can make `self` a return type for functions,
 [the static return RFC](https://wiki.php.net/rfc/static_return_type) aims to make
@@ -285,24 +285,24 @@ class A
 
 <!-- https://wiki.php.net/rfc/variable_syntax_tweaks -->
 ### Consistent variables syntax
-- **Status**: Implemented. Under Discussion.
-- **Category**: Syntax.
+* **Status**: Implemented. Under Discussion.
+* **Category**: Syntax.
 
 This one is also about syntax and will change a couple of features.
 
 I recommend you checking out [the RFC](https://wiki.php.net/rfc/variable_syntax_tweaks)
 for more details. Affected language features include:
 
-- Interpolated and non-interpolated strings
-- Constants and magic constants
-- Constant dereferencability
-- Class constant dereferencability
-- Arbitrary expression support for new and instanceof
+* Interpolated and non-interpolated strings
+* Constants and magic constants
+* Constant dereferencability
+* Class constant dereferencability
+* Arbitrary expression support for new and instanceof
 
 <!-- https://wiki.php.net/rfc/use_global_elements -->
 ### Optimize function/constants lookup
-- **Status**: POC implemented. Under Discussion.
-- **Category**: Syntax. Performance.
+* **Status**: POC implemented. Under Discussion.
+* **Category**: Syntax. Performance.
 
 The [RFC about function and constants lookup](https://wiki.php.net/rfc/use_global_elements)
 adds a new `declare()` statement that prevents PHP from performing lookups
@@ -348,8 +348,8 @@ is no longer necessary and PHP will go directly to the global scope, fetching
 
 <!-- https://wiki.php.net/rfc/strict_operators -->
 ### Strict Operators directive
-- **Status**: POC implemented. Under Discussion.
-- **Category**: Syntax.
+* **Status**: POC implemented. Under Discussion.
+* **Category**: Syntax.
 
 [The strict operators RFC](https://wiki.php.net/rfc/strict_operators) would
 add a new directive called `strict_operators`. When switched on a couple of
@@ -387,7 +387,7 @@ Changes are much wider than this example and are out of the scope of this single
 post. Check the RFC for more, or ping me on twitter if you'd like to see a blog
 post about this one! 😉
 
----
+<hr>
 
 The RFCs below are still under discussion and most of them have something related
 to past versions of PHP, not being able to get released in time or something
@@ -400,8 +400,8 @@ Here they are:
 
 <!-- https://wiki.php.net/rfc/normalize-array-auto-increment-on-copy-on-write -->
 ### Auto Increment value on copy on write
-- **Status**: Under Discussion.
-- **Category**: Syntax.
+* **Status**: Under Discussion.
+* **Category**: Syntax.
 
 [RFC link.](https://wiki.php.net/rfc/normalize-array-auto-increment-on-copy-on-write)
 
@@ -410,8 +410,8 @@ So I'd expect it to retarget PHP 8.0 this time.
 
 <!-- https://wiki.php.net/rfc/alternative-closure-use-syntax -->
 ### Alternative "use" syntax on Closures
-- **Status**: Under Discussion.
-- **Category**: Syntax.
+* **Status**: Under Discussion.
+* **Category**: Syntax.
 
 [RFC link.](https://wiki.php.net/rfc/alternative-closure-use-syntax)
 
@@ -420,15 +420,15 @@ be php version 7.4.
 
 <!-- https://wiki.php.net/rfc/namespace_scoped_declares -->
 ### Apply a declare() to an entire Namespace 🔥
-- **Status**: Implemented. Under Discussion.
-- **Category**: Syntax.
+* **Status**: Implemented. Under Discussion.
+* **Category**: Syntax.
 
 [RFC link.](https://wiki.php.net/rfc/namespace_scoped_declares)
 
 <!-- https://wiki.php.net/rfc/trailing_whitespace_numerics -->
 ### Permit trailing spaces on numeric strings
-- **Status**: Implemented. Under Discussion.
-- **Category**: Syntax.
+* **Status**: Implemented. Under Discussion.
+* **Category**: Syntax.
 
 [RFC link.](https://wiki.php.net/rfc/trailing_whitespace_numerics)
 
@@ -436,8 +436,8 @@ This RFC also targeted version 7.4 and didn't make it in time.
 
 <!-- https://wiki.php.net/rfc/nullable-casting -->
 ### Allow nullable type casting
-- **Status**: Lost. Under Discussion.
-- **Category**: Syntax.
+* **Status**: Lost. Under Discussion.
+* **Category**: Syntax.
 
 [RFC link.](https://wiki.php.net/rfc/nullable-casting)
 
@@ -445,7 +445,7 @@ Apparently the fork containing the Work In Progress for such change got deleted.
 Pull Request closed. Doesn't seem like it will ever be integrated unless someone
 take over this one.
 
----
+<hr>
 
 So far, that's it. I'll add some **Edit** on topics over time, as the community
 moves forward and I get the opportunity to see statuses changing.

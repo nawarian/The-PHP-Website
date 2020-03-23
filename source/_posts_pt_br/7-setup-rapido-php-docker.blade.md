@@ -624,7 +624,7 @@ $app->sayHello();
 Recarregue a página no navegador e
 XABLAU! "Hello!" tá lá, chapa!
 
----
+<hr>
 
 Buum! Isso é tudo! Um guia massa de como montar
 um ambiente local de desenvolvimento pra aplicações

@@ -51,9 +51,9 @@ There are a couple of great reasons to write tests first. Be aware of
 them so you understand why keep such practices.
 
 Writing test first:
-- forces you to know what you want to achieve before you start coding
-- keeps you focused on your goal
-- engages you into a constant feedback cycle: change, save, run test
+* forces you to know what you want to achieve before you start coding
+* keeps you focused on your goal
+* engages you into a constant feedback cycle: change, save, run test
 
 ## Building a metadata adapter for Archive.org with TDD
 
@@ -62,12 +62,12 @@ to fetch metadata from Archive.org's items.
 
 **What we know:**
 
-- Archive.org allows uploading files and call them "Item"
-- [Here's an example of Item named "nawarian-test"](https://archive.org/details/nawarian-test)
-- An item contains multiple files, representing the file in multiple
+* Archive.org allows uploading files and call them "Item"
+* [Here's an example of Item named "nawarian-test"](https://archive.org/details/nawarian-test)
+* An item contains multiple files, representing the file in multiple
 forms and its metadata
-- Every item contains metadata like creation date, name, files...
-- Archive.org provides an API to fetch metadata with the following
+* Every item contains metadata like creation date, name, files...
+* Archive.org provides an API to fetch metadata with the following
 URL pattern: `https://archive.org/metadata/<item-name>`
 
 **What we want:**
@@ -437,10 +437,10 @@ but don't stop your current iteration.
 
 I can name a few things I'd like to do with the current implementation we have:
 
-- I'd like to have a PSR-18 compatible http client and remove the
+* I'd like to have a PSR-18 compatible http client and remove the
 `file_get_contents()` call
-- I'd like to split our test into unit and integration
-- I'd like to have a better hydration for `Metadata` class
+* I'd like to split our test into unit and integration
+* I'd like to have a better hydration for `Metadata` class
 
 Also important to notice we didn't test any exception case. Those should
 be part of your implementation as well! How should the program behave

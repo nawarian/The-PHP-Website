@@ -38,7 +38,7 @@ a ser percorrido.
 
 Leia abaixo.
 
----
+<hr>
 
 Eu escrevo este post um pouco depois da `CVE-2019-11043` ter se
 tornado popular. Sim, popular.

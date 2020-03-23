@@ -325,7 +325,7 @@ forem compiladas.
 
 Tempos interessantes para ser um(a) programador(a) PHP...
 
----
+<hr>
 
 Eu espero que este artigo lhe tenha sido útil e
 que você tenha conseguido entender melhor o que

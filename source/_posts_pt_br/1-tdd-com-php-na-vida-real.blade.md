@@ -52,9 +52,9 @@ Existem algumas ótimas razões pra escrever testes primeiro. Vamos alinhar
 em algumas pra que tu possa ter uma ideia de por quê manter essa prática.
 
 Escrever testes primeiro:
-- te força a saber o que você quer alcançar antes de começar a escrever código
-- te mantém focado(a) em seu objetivo
-- te provê uma estrutura com ciclo de feedback constante: alterar, salvar, verificar
+* te força a saber o que você quer alcançar antes de começar a escrever código
+* te mantém focado(a) em seu objetivo
+* te provê uma estrutura com ciclo de feedback constante: alterar, salvar, verificar
 
 ## Construindo um adapter para buscar metadados no Archive.org com TDD
 
@@ -63,12 +63,12 @@ itens disponívels no site Archive.org.
 
 **O que sabemos:**
 
-- Archive.org nos permite fazer o upload de arquivos e os chama de "Item"
-- [Aqui há um exemplo de item identificado por "nawarian-test"](https://archive.org/details/nawarian-test)
-- Um item contém multiplos arquivos, representando o arquivo em várias
+* Archive.org nos permite fazer o upload de arquivos e os chama de "Item"
+* [Aqui há um exemplo de item identificado por "nawarian-test"](https://archive.org/details/nawarian-test)
+* Um item contém multiplos arquivos, representando o arquivo em várias
 formas e seus metadados
-- Todo item contém metadados como data de criação, nome, arquivos...
-- Archive.org provê uma API para buscar metadados usando o seguinte URL:
+* Todo item contém metadados como data de criação, nome, arquivos...
+* Archive.org provê uma API para buscar metadados usando o seguinte URL:
 `https://archive.org/metadata/<nome-do-item>`
 
 **O que a gente quer:**
@@ -445,10 +445,10 @@ mas não interrompa a iteração atual.
 
 Eu posso exemplificar algumas coisas que eu gostaria de ter feito nessa implementação:
 
-- usar um client http compatível com a PSR-18 e remover a chamada
+* usar um client http compatível com a PSR-18 e remover a chamada
 à função `file_get_contents()`
-- quebrar este teste em unitário e de integração
-- um mecanismo de hydration melhor para a classe `Metadata` 
+* quebrar este teste em unitário e de integração
+* um mecanismo de hydration melhor para a classe `Metadata` 
 
 Também importante notar que nós não testamos nenhum caso de exceção. Estes testes
 devem ser criados também! Como deveria a nossa classe se comportar quando

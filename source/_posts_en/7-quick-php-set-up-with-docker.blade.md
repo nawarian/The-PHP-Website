@@ -601,7 +601,7 @@ $app->sayHello();
 Refresh your browser tab and we shall
 see a "Hello!" message on the screen!
 
----
+<hr>
 
 Yeah, that's it! An awesome guide on setting
 up a local development environment for

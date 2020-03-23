@@ -37,7 +37,7 @@ isso aqui: **Desenvolvimento guiado por testes pode ser utilizado
 para aprender também.** [Aprenda como fazer TDD de forma eficiente](/br/edicao/tdd-com-php-na-vida-real/)
 e você entenderá rapidinho o conceito deste texto inteiro.
 
----
+<hr>
 
 Recentemente eu inciei (novamente) a missão mais divertida que
 nós programadores(as) enfrentamos de tempos em tempos:
@@ -66,7 +66,7 @@ pra ti.
 
 Como sempre, vamos parar com a enrolação e começar!
 
----
+<hr>
 
 Cada seção aqui começa com uma lista de tópicos para que você
 possa saber as principais ideias antes de ler algo. Sinta-se
@@ -92,10 +92,10 @@ do loop do TDL.
 
 Tópicos nesta seção:
 
-- As linguagens de programação são semelhantes
-- Toda linguagem tem um propósito
-- Encontrando os pontos altos da linguagem
-- Como testar nesta linguagem
+* As linguagens de programação são semelhantes
+* Toda linguagem tem um propósito
+* Encontrando os pontos altos da linguagem
+* Como testar nesta linguagem
 
 Se você já sabe qual linguagem de programação quer aprender, o
 processo de inicialização é razoavelmente simples. Mas eu tenho um
@@ -204,17 +204,17 @@ fn test_basics() {
 Depois eu só executo `$ cargo test` e PRONTINHO! Eu sei o básico em
 como escrever asserções nessa linguagem nova. Hora de começar a aprender!
 
----
+<hr>
 
 ## Como funciona o Aprendizado Guiado por Testes?
 
 Tópicos nessa seção:
 
-- Introdução com exemplos de código
-- Descoberta
-- Asserção
-- Aprendizado
-- Repetição
+* Introdução com exemplos de código
+* Descoberta
+* Asserção
+* Aprendizado
+* Repetição
 
 Pode ser que você pense que eu tô tentando criar moda ou
 algo do gênero. Mas [Aprendizado Guiado por Testes é real total de verdadinha](https://digitalcommons.calpoly.edu/csse_fac/88/).
@@ -292,7 +292,7 @@ de coisas:
 >
 > **help:** consider prefixing with an underscore: `_i`
 >
-> **error[E0384]:** cannot assign twice to immutable variable `nawarian`
+> **error\[E0384]:** cannot assign twice to immutable variable `nawarian`
 >
 > **help:** make this binding mutable: `mut nawarian`
 
@@ -365,16 +365,16 @@ FFI, threads...
 
 **Não existe código que você não possa tornar mais complicado! 😉**
 
----
+<hr>
 
 ## Praxis: a parte mais difícil é a descoberta
 
 Tópicos nesta seção:
 
-- Introdução sobre comunidade e ferramentas
-- Se envolva com a linguagem
-- Conecte-se com a comunidade
-- Explique algo que você ainda não sabe
+* Introdução sobre comunidade e ferramentas
+* Se envolva com a linguagem
+* Conecte-se com a comunidade
+* Explique algo que você ainda não sabe
 
 A teoria parece ótima, né? (talvez nem mesmo pareça...)
 
@@ -431,7 +431,7 @@ nesta linguagem e os requisitos estão quase todos preenchidos. Os que
 não estiverem, você pode utilizar para alimentar seu feedback loop e
 continuar evoluindo.
 
----
+<hr>
 
 Fico feliz que tenha chegado até aqui, porque não tô tentando te
 enrolar. Meu processo de aprendizado até o momento é bem doloroso

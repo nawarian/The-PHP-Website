@@ -35,7 +35,7 @@ engineer. You probably still have a loooong way to go.
 
 Just read below.
 
----
+<hr>
 
 I write this post little after `CVE-2019-11043` became popular. Yes,
 popular.

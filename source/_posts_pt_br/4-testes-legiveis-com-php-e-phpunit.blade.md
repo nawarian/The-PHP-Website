@@ -67,9 +67,9 @@ não estar disponível em todas as máquinas em que seu código será executado.
 amarrados e dependentes de infraestrutura**. 
 
 Operações consideradas E/S:
-- Ler/escrever arquivos
-- Chamadas de rede
-- Chamadas a processos externos (usando exec, proc_open...)
+* Ler/escrever arquivos
+* Chamadas de rede
+* Chamadas a processos externos (usando exec, proc_open...)
 
 Existem casos onde ter E/S fará com que o teste seja escrito mais rapidamente.
 **Mas se liga**: fazer com que essas operações funcionem da mesma forma nos
@@ -171,7 +171,7 @@ que pode ser facilmente mockado.
 E pra quê serve o `PeopleService` então? Boa pergunta... Isto é uma das coisas
 que **testes nos traz: questionar o nosso design, remover código inutil.**
 
----
+<hr>
 ### Testes devem ser concisos e ter significado
 
 **Motivo:** testes são uma forma de documentação. Mantenha-os limpos,
@@ -184,10 +184,10 @@ sem escrever trocentos asserts no mesmo teste.
 é perfeita pra isso.
 
 Aqui vão algumas características de um teste bem escrito:
-- Contém apenas asserts necessários (preferivelmente apenas um)
-- Lhe conta exatamente o que deveria acontecer dada certa condição
-- Testa apenas um caminho de execução do método por vez
-- Não mocka o universo inteiro para fazer algum assert
+* Contém apenas asserts necessários (preferivelmente apenas um)
+* Lhe conta exatamente o que deveria acontecer dada certa condição
+* Testa apenas um caminho de execução do método por vez
+* Não mocka o universo inteiro para fazer algum assert
 
 **Importante notar** que se a sua implementação possui alguns IFs, switch ou
 iterações, **todos estes caminhos alternativos devem ser explicitamente testados.**
@@ -300,7 +300,7 @@ A gente poderia inclusive renomear o teste pra bater com um cenário da
 vida real como `testPersonCantFlyWithoutWings`, mas pra mim o nome já
 parece bom o suficiente.
 
----
+<hr>
 ### Um teste não deve depender de outro
 
 **Motivo:** um teste deveria ser capaz de rodar e passar em qualquer ordem.
@@ -312,9 +312,9 @@ Recentemente eu fui perguntado sobre como testar uma feature para usuários
 logados e eu gostaria de utilizar isto como exemplo aqui.
 
 O teste faria o seguinte:
-- Gerar um token JWT
-- Executar uma certa tarefa logado
-- Fazer os asserts
+* Gerar um token JWT
+* Executar uma certa tarefa logado
+* Fazer os asserts
 
 A forma como o teste foi feito era a seguinte:
 
@@ -340,9 +340,9 @@ public function testStateIsBlah(): void
 ```
 
 Este teste é ruim por alguns motivos:
-- PHPUnit não garantirá a ordem de execução dos testes
-- Os testes não podem ser executados de forma independente
-- Testes rodando em paralelo irão falhar aleatoriamente
+* PHPUnit não garantirá a ordem de execução dos testes
+* Os testes não podem ser executados de forma independente
+* Testes rodando em paralelo irão falhar aleatoriamente
 
 A forma mais simples de resolver este problema que eu consigo pensar,
 novamente, é com "Given, When, Then". Desta forma a gente torna os
@@ -375,7 +375,7 @@ A gente precisaria também escrever testes para autenticar e por aí vai.
 Esta estrutura é tão massa que o
 [Behat a utiliza por padrão](https://behat.org/en/latest/quick_start.html).
 
----
+<hr>
 ### Sempre injete as dependências
 
 **Motivo:** mockar estado global é terrível, não ser capaz de mockar as
@@ -489,7 +489,7 @@ mínimo estranho.
 Mudar o seu desgin para tornar testes mais simples está tudo bem. **Criar
 métodos para tornar testes mais simples não está ok.**
 
----
+<hr>
 ### Nunca teste métodos protected/private
 
 **Motivo:** a forma como testamos uma funcionalidade é fazendo assertions
@@ -511,7 +511,7 @@ públicos nesta mesma classe consegue invocar tais métodos privados.
 protegidos/privados de uma vez só.** Se não, pode apagar cada um deles, que
 ninguém tá usando eles mesmo.
 
----
+<hr>
 ## Além do básico: as coisas interessantes
 
 Espero que você não tenha ficado entediado(a) até aqui. Básico é básico, mas
@@ -523,11 +523,11 @@ desenvolvimento.
 
 **Eu diria que os valores mais importantes que levo em consideração enquanto
 escrevo testes são os seguintes:**
-- Aprendizado
-- Receber feedback rápido
-- Documentação
-- Refatoração
-- Design enquanto testo
+* Aprendizado
+* Receber feedback rápido
+* Documentação
+* Refatoração
+* Design enquanto testo
 
 Cada opinião que exponho abaixo segue ao menos um destes valores e cada
 uma dá suporte à outra.
@@ -569,7 +569,7 @@ E, sim, para tornar o teste mais simples!
 Se seus testes são um documento vivo que pretende explicar como o software
 funciona, **é extremamente importante que eles expliquem de forma clara.**
 
----
+<hr>
 ### Não ter testes é melhor que ter testes mal feitos
 
 **Valores**: aprendizado, documentação, refatoração.
@@ -597,7 +597,7 @@ que não se relacionam com o caso de uso.
 deveria se comportar. `assertFalse($a->canFly())` não documenta muita coisa.
 Já `assertFalse($personWithNoWingos->canFly())` documenta.
 
----
+<hr>
 ### Rode seus testes compulsivamente
 
 **Valores**: aprendizado, receber feedback rápido, refatoração.
@@ -626,7 +626,7 @@ Na real, o [PHPUnit Watcher](https://github.com/spatie/phpunit-watcher)
 resolve exatamente esse problema pra gente e até envia notificação
 quando os testes rodam.
 
----
+<hr>
 ### Grandes testes, grandes responsabilidades
 
 **Valores**: aprendizado, refatoração, design enquanto testo.
@@ -637,9 +637,9 @@ fluxo alternativo (if/switch/try-catch/exception)...
 
 Contemos mais ou menos assim:
 
-- 1 classe = 1 caso de teste
-- 1 método = 1 ou mais testes
-- 1 fluxo alternativo (if/switch/try-catch/exception) = 1 teste
+* 1 classe = 1 caso de teste
+* 1 método = 1 ou mais testes
+* 1 fluxo alternativo (if/switch/try-catch/exception) = 1 teste
 
 Então um código simples como o abaixo deveria ter 4 testes diferentes:
 
@@ -679,7 +679,7 @@ responsabilidades e pode ser hora de botar o chapéu de refatoração pra
 remover funcionalidades, mover para classes diferentes ou repensar parte
 do seu design.
 
----
+<hr>
 ### Mantenha uma suite de regressão
 
 **Valores**: aprendizado, documentação, receber feedback rápido. 
@@ -721,7 +721,7 @@ especializada em regressão e conecte este teste com uma issue.
 E prontinho! Feedback rápido enquanto corrige bugs, documentação feita,
 código a prova de regressões e felicidade.
 
----
+<hr>
 
 ## Notas finais e bora trocar ideia
 

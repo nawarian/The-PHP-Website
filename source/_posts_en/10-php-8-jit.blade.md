@@ -159,7 +159,7 @@ That’s also the reason why people are now saying we’re closer to write nativ
 
 Interesting times to be a PHP programmer…
 
----
+<hr>
 
 I hope this article was useful for you and that you managed to grasp better what the PHP 8’s JIT is about.
 

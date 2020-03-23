@@ -64,9 +64,9 @@ you depend on I/O while testing, the more you test is bound to the
 infrastructure**.
 
 Operations considered I/O:
-- File reading/writing
-- Network calls
-- External process calls (using exec, proc_open...)
+* File reading/writing
+* Network calls
+* External process calls (using exec, proc_open...)
 
 There are cases where having I/O will make it faster to write a test.
 **But be aware**: making sure such operations work the same in your
@@ -167,7 +167,7 @@ And what's the point of having `PeopleService` then? Good question.
 That's also **what tests are for: question your design, kill useless
 code.**
 
----
+<hr>
 ### Tests should be concise and meaningful
 
 **Main reasoning:** tests are a form of documentation. Keep them clean,
@@ -180,11 +180,11 @@ sequence of assertions.
 structure is amazing for this.
 
 Here are some characteristics of a nice and readable test:
-- It contains only necessary "assert" method calls (preferably only
+* It contains only necessary "assert" method calls (preferably only
 one)
-- It tells you very clearly what should happen given a condition
-- It tests only one path of execution of a method
-- It won't mock the whole universe to assert something
+* It tells you very clearly what should happen given a condition
+* It tests only one path of execution of a method
+* It won't mock the whole universe to assert something
 
 **It is important to notice** that if your implementation contains
 if conditions, switch statements or loops, **they should all be
@@ -295,7 +295,7 @@ public function testCanFlyIsTruthyWhenPersonHasTwoWings(): void
 We could even rename the test method to match a real-life scenario like
 `testPersonCantFlyWithoutWings`, but that's for me good enough.
 
----
+<hr>
 ### A test should not depend on another
 
 **Main reasoning:** a test should be able to run and succeed in any order.
@@ -306,9 +306,9 @@ Recently I got asked about a Logged-in feature test and I'll take it as a
 good example here.
 
 The test would perform the following:
-- Generate a logged-in JWT token
-- Execute a logged-in feature
-- Assert state changes
+* Generate a logged-in JWT token
+* Execute a logged-in feature
+* Assert state changes
 
 The way it was set up was the following:
 
@@ -334,9 +334,9 @@ public function testStateIsBlah(): void
 ```
 
 This is bad for a couple of reasons:
-- PHPUnit won't guarantee order of execution like this
-- A test should be able to run independently
-- Parallel tests might break randomly
+* PHPUnit won't guarantee order of execution like this
+* A test should be able to run independently
+* Parallel tests might break randomly
 
 The simplest way to overcome this I can think of is, again,
 the "Given, When, Then". This way we make the test more concise
@@ -369,7 +369,7 @@ We would also need to add tests for authenticating and so on.
 This is structure is so good that
 [Behat enforces it by default](https://behat.org/en/latest/quick_start.html).
 
----
+<hr>
 ### Always inject dependencies
 
 **Main reasoning:** mocking global state is terrible, not being able
@@ -482,7 +482,7 @@ cases like `reset()` or `setInstance()`. Sounds insane to me.
 Changing your design to make testing easier is fine! **Creating methods
 to make testing easier is not fine.**
 
----
+<hr>
 ### Never test protected/private methods
 
 **Main reasoning:** They way we test features is by asserting how their
@@ -503,7 +503,7 @@ same class can invoke such methods.
 protected/private ones.** If not, feel free to delete your protected/private
 methods, nobody is using them anyways.
 
----
+<hr>
 ## Beyond the basics: the interesting stuff
 
 I hope you didn't get bored so far. Basics are basics, but they need to be
@@ -514,11 +514,11 @@ carry about writing clean tests and each decision impacts on my development
 workflow.
 
 **I'd say the most important values I keep in mind while writing tests are:**
-- Learning
-- Receiving quick feedback
-- Documenting
-- Refactoring
-- Design while testing
+* Learning
+* Receiving quick feedback
+* Documenting
+* Refactoring
+* Design while testing
 
 Such opinions share at least one of such values and each of them support
 the others.
@@ -559,7 +559,7 @@ on. And yes, to make testing easier!
 If your tests are a live document aiming to explain how your software works,
 **it is extremely important they explain it clearly.**
 
----
+<hr>
 ### No tests is better than bad tests
 
 **Values**: learning, documenting, refactoring.
@@ -585,7 +585,7 @@ that don't relate to the use case at all.
 software should behave. `assertFalse($a->canFly())` is not documenting much.
 `assertFalse($personWithNoWings->canFly())` is.
 
----
+<hr>
 ### Run your tests compulsively
 
 **Values**: learning, receiving quick feedback, refactoring.
@@ -610,7 +610,7 @@ Just really, run the freaking tests. As often as you'd hit the "Save" hotkey.
 In fact, [PHPUnit Watcher](https://github.com/spatie/phpunit-watcher)
 does exactly this for you and even sends desktop notifications!
 
----
+<hr>
 ### Big tests, big responsibilities
 
 **Values**: learning, refactoring, design while testing.
@@ -621,9 +621,9 @@ if condition or switch statement...
 
 Counts are more or less like this:
 
-- 1 class = 1 test case
-- 1 method = 1 or more tests
-- 1 alternative path (if/switch/try-catch/exception) = 1 test
+* 1 class = 1 test case
+* 1 method = 1 or more tests
+* 1 alternative path (if/switch/try-catch/exception) = 1 test
 
 So a simple code like this would generate 4 different tests:
 
@@ -661,7 +661,7 @@ This is also a big sign that your class is accumulating responsibilities and
 might be time to put on your refactoring hat to remove features, move to
 different classes or rethink part of your design.
 
----
+<hr>
 ### Keep a regression suite
 
 **Values**: learning, documenting, receiving quick feedback.
@@ -700,7 +700,7 @@ regression and link it to an issue.
 
 There you go! Quick feedback bug fixing, documentation, regression proof
 code and happiness.
----
+<hr>
 
 ## Final notes and let's chat
 
