@@ -4,6 +4,7 @@ use Nawarian\ThePHPWebsite\Domain\Job\JobRepository;
 use Nawarian\ThePHPWebsite\Domain\Rss\Feed;
 use Nawarian\ThePHPWebsite\FetchJobOpportunities;
 use Nawarian\ThePHPWebsite\Infrastructure\Domain\Job\GithubIssueJobRepository;
+use Nawarian\ThePHPWebsite\PostQualityVerifier;
 use Nawarian\ThePHPWebsite\RssGenerator;
 use TightenCo\Jigsaw\Jigsaw;
 use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
@@ -149,4 +150,34 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
         $outputPath . '/br/feed-vagas.xml',
         $portugueseJobsFeed->toAtomFeedFormat(Feed::RSS_FEED_V2)
     );
+});
+
+// SEO Quality Gate
+$events->afterBuild(function (Jigsaw $jigsaw) {
+    $destination = $jigsaw->getDestinationPath();
+    $verifier = $jigsaw->app->make(PostQualityVerifier::class);
+
+    $validateDirectory = function (string $directory) use ($verifier) {
+        $directoryIterator = new DirectoryIterator($directory);
+
+        try {
+            foreach ($directoryIterator as $postDirectory) {
+                $path = realpath($postDirectory->getRealPath() . '/index.html');
+                if ($directoryIterator->isDot() === true || $path === false) {
+                    continue;
+                }
+
+                $verifier->verify(file_get_contents($path));
+            }
+        } catch (Exception $e) {
+            throw new Exception(
+                "[SEO Quality Gate] Panicked on file '{$path}'.",
+                $e->getCode(),
+                $e
+            );
+        }
+    };
+
+    $validateDirectory($destination . DIRECTORY_SEPARATOR . '/br/edicao/');
+    $validateDirectory($destination . DIRECTORY_SEPARATOR . '/en/issue/');
 });
