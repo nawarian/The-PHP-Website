@@ -54,11 +54,40 @@ $events->beforeBuild(function (Jigsaw $app) {
 });
 
 $events->afterCollections(function (Jigsaw $app) {
+    $app->getCollection('posts_en')
+        ->groupBy('category')
+        ->each(function (PageVariable $episodes, string $category) use ($app) {
+            $app->getSiteData()->put($category . '_en', $episodes);
+        });
+
+    $app->getCollection('posts_pt_br')
+        ->groupBy('category')
+        ->each(function (PageVariable $episodes, string $category) use ($app) {
+            $app->getSiteData()->put($category . '_pt_br', $episodes);
+        });
+
+    $app->setConfig(
+        'latestHighlight',
+        $app->getCollection('faq_en')
+            ->merge($app->getCollection('thoughts_en'))
+            ->sortByDesc('createdAt')
+            ->first()
+    );
+
+    $app->setConfig(
+        'latestHighlightBr',
+        $app->getCollection('faq_pt_br')
+            ->merge($app->getCollection('thoughts_pt_br'))
+            ->sortByDesc('createdAt')
+            ->first()
+    );
+
     $app->setConfig(
         'latestIssues',
         $app->getCollection('posts_en')
-            ->filter(function (PageVariable $page) {
-                return $page->get('category') !== 'faq';
+            ->filter(function (PageVariable $page) use ($app) {
+                return $page !== $app->getConfig('latestHighlight')
+                    && $page->get('category') !== 'faq';
             })
             ->take(12)
     );
@@ -66,34 +95,13 @@ $events->afterCollections(function (Jigsaw $app) {
     $app->setConfig(
         'latestIssuesBr',
         $app->getCollection('posts_pt_br')
-            ->filter(function (PageVariable $page) {
-                return $page->get('category') !== 'faq';
+            ->filter(function (PageVariable $page) use ($app) {
+                return $page !== $app->getConfig('latestHighlightBr')
+                    && $page->get('category') !== 'faq';
             })
             ->take(12)
     );
     $app->setConfig('latestJobsBr', $app->getCollection('jobs_pt_br')->take(12));
-
-    $app->getCollection('posts_en')
-        ->groupBy('category')
-        ->each(function (PageVariable $episodes, string $category) use ($app) {
-            $app->getSiteData()->put($category . '_en', $episodes);
-        });
-
-    $app->setConfig(
-        'latestFaq',
-        $app->getCollection('faq_en')
-            ->first()
-    );
-
-    $app->getCollection('posts_pt_br')
-        ->groupBy('category')
-        ->each(function (PageVariable $episodes, string $category) use ($app) {
-            $app->getSiteData()->put($category . '_pt_br', $episodes);
-        });
-    $app->setConfig(
-        'latestFaqBr',
-        $app->getCollection('faq_pt_br')->last()
-    );
 });
 
 // Sitemap

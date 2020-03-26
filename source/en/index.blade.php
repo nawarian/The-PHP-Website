@@ -1,13 +1,13 @@
 @extends('_layouts.master')
 
 @section('body')
-<h2>Latest Question answered</h2>
+<h2>Highlighted</h2>
 <div class="card">
-  <a href="{{ $latestFaq->getUrl() . '/' }}">
+  <a href="{{ $latestHighlight->getUrl() . '/' }}">
     <div class="card__content">
-      <h3>{{ $latestFaq->title }}</h3>
-      <p>{{ $latestFaq->meta['description'] }}</p>
-      <time>{{ date('Y-m-d', $latestFaq->createdAt) }}</time>
+      <h3>{{ $latestHighlight->title }}</h3>
+      <p>{{ $latestHighlight->meta['description'] }}</p>
+      <time>{{ date('Y-m-d', $latestHighlight->createdAt) }}</time>
     </div>
   </a>
 </div>
