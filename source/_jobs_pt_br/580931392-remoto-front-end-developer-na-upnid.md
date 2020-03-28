@@ -53,7 +53,6 @@ Remoto
 CLT
 
 **Nível**
-Júnior
 Pleno
 Sênior
 Especialista

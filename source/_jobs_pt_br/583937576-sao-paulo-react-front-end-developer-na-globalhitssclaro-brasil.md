@@ -136,12 +136,12 @@ Apoiamos boas práticas e a sustentabilidade.
 
 ## Como se candidatar
 
-Por favor, envie um email para mauricio.pilao@globalhitss.com.br com seu CV anexado - enviar no assunto: Vaga React Front-end Developer
+Por favor, envie um email para mauricio.pilao#globalhitss.com.br com seu CV anexado - enviar no assunto: Vaga React Front-end Developer
 
 ## Tempo médio de feedbacks
 
 Costumamos enviar feedbacks em até 30 dias após cada processo.
-E-mail para contato em caso de não haver resposta: mauricio.pilao@globalhitss.com.br
+E-mail para contato em caso de não haver resposta: mauricio.pilao#globalhitss.com.br
 
 ## Labels
 <!-- retire os labels que não fazem sentido à vaga -->
