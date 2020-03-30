@@ -14,7 +14,12 @@ module.exports = {
     jigsaw: {
         apply(compiler) {
             compiler.hooks.done.tap('DonePlugin', (compilation) => {
-                command.get(bin.path() + ' build -q ' + env, (error, stdout, stderr) => {
+                let cmd = bin.path() + ' build -q ' + env;
+                if (env === 'local') {
+                    cmd = 'php -d error_reporting=0 ' + cmd;
+                }
+
+                command.get(cmd, (error, stdout, stderr) => {
                     console.log(error ? stderr : stdout);
 
                     if (browserSyncInstance) {

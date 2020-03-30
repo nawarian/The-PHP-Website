@@ -1,0 +1,8 @@
+@use 'node_modules/yue.css/yue.css';
+@use 'node_modules/highlight.js/scss/solarized-light.scss';
+
+.is-article {
+  .menu {
+    display: none;
+  }
+}

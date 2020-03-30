@@ -17,6 +17,7 @@
     title="{{ ($page->lang ?? 'en') === 'en' ? '[EN]' : '[BR]' }} thePHP Website"
     href="{{ ($page->lang ?? 'en') === 'en' ? $page->getBaseUrl() . '/en/feed.xml' : $page->getBaseUrl(). '/br/feed.xml' }}"
   />
+  @yield('head.link')
 
   <title>{{ $page->title ? $page->title . ' | thePHP Website' : 'thePHP Website' }}</title>
 
@@ -32,7 +33,7 @@
     gtag('config', '{{ $page->get('gaId')[$page->lang ?? 'en'] }}');
   </script>
 </head>
-<body class="yue">
+<body class="yue {{ ($page->get('isArticle') ?? false) ? 'non-article' : 'non-article' }}">
   <nav class="menu">
     <input type="checkbox" id="menu-toggle" class="menu__toggle" />
     <label for="menu-toggle" class="menu__toggle-button">

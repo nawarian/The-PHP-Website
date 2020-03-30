@@ -9,6 +9,7 @@ return [
     'collections' => [
         'posts_en' => [
             'extends' => '_layouts.article',
+            'isArticle' => true,
             'section' => 'content',
             'path' => function ($page) {
                 return 'en/issue/' . Str::slug($page->get('slug'));
@@ -17,6 +18,7 @@ return [
         ],
         'posts_pt_br' => [
             'extends' => '_layouts.article',
+            'isArticle' => true,
             'section' => 'content',
             'path' => function ($page) {
                 return 'br/edicao/' . Str::slug($page->get('slug'));

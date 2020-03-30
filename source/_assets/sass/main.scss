@@ -1,242 +1,241 @@
 @use 'node_modules/yue.css/yue.css';
 @use 'node_modules/highlight.js/scss/solarized-light.scss';
+@import 'article/main.scss';
 
-body {
+.non-article {
   width: 90vw;
   margin: auto;
-}
 
-header nav time {
-  display: inline-block;
-}
-
-.align-right {
-  text-align: right;
-}
-
-ul.card-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-
-  @media (min-width: 900px) {
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
-    grid-gap: 1rem;
-  }
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  margin: 1rem 0;
-
-  &__content {
-    padding: 15px;
+  header nav time {
+    display: inline-block;
   }
 
-  &__content h3 {
-    margin: 0;
-  }
-
-  &__content time {
-    display: block;
+  .align-right {
     text-align: right;
   }
 
-  &__image {
-    background-position: 50% 50%;
-    background-origin: border-box;
-    background-size: cover;
-    width: auto;
-    height: 250px;
-  }
-}
+  ul.card-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 
-.card > a {
-  text-decoration: none;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-ol.pagination, ul.pagination {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.pagination {
-  display: flex;
-  flex-direction: row;
-
-  &__prev-next {
-    flex-grow: 1;
-
-    &--right {
-      text-align: right;
-    }
-  }
-
-  &__prev-next > a {
-    text-decoration: none;
-  }
-
-  &__item {
-    flex: auto;
-    text-align: center;
-  }
-}
-
-.feed {
-  padding: 0 0 0 28px;
-  background: url("/assets/images/feed-icon-28x28.png") no-repeat 0 50%;
-  background-size: 25px;
-}
-
-.menu {
-  z-index: 1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-
-  &__toggle {
-    display: none;
-    box-sizing: border-box;
-  }
-
-  &__header {
-    text-align: center;
-    display: block;
-    background: rgba(255, 255, 255, .95) url('/assets/images/elephpant-idle.png') no-repeat 5% 50%;
-    background-size: 65px;
-    height: 40px;
-    image-rendering: pixelated;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
-    font-weight: 700;
-    padding: 10px 0;
-  }
-
-  &__toggle-button {
-    position: fixed;
-    top: 0;
-    right: 10px;
-    cursor: pointer;
-
-    &--active {
-      display: none;
-    }
-  }
-
-  &__toggle-button img {
-    max-height: 40px;
-  }
-
-  &__container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, .95);
-    box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.2);
-    transition: transform 50ms ease-in-out;
-    transform: translateY(calc(100vh * -1 * 100));
-    padding: 0 0 5px 0;
-  }
-
-  &__section-heading {
-    font-weight: 700;
-  }
-}
-
-#menu-toggle:checked ~ .menu__container {
-  transform: translateY(0);
-}
-
-#menu-toggle:checked ~ .menu__header {
-  box-shadow: none;
-}
-
-#menu-toggle:checked ~ .menu__toggle-button .menu__toggle-button--inactive {
-  display: none;
-}
-
-#menu-toggle:checked ~ .menu__toggle-button .menu__toggle-button--active {
-  display: block;
-}
-
-ul.menu-list {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.container {
-  z-index: 0;
-  margin: 60px auto 40px auto;
-  max-width: 900px;
-}
-
-.article {
-  max-width: 750px;
-  margin: auto;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #222;
-    color: #aaa!important; // I know
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: #ff8237dd!important; // I know
-  }
-
-  a {
-    text-decoration-color: #ff8237cc!important; // I know
-    color: #ff8237aa!important;; // I know
-  }
-
-  strong, p, em {
-    color: #aaa!important; // I know
-  }
-
-  p code {
-    background-color: #333!important; // I know
-    border-color: #888!important; // I know
-  }
-
-  .menu {
-    &__header, &__container {
-      background-color: #ff8237f9;
-      box-shadow: none;
-
-      a {
-        color: #222!important; // I know
-        text-decoration-color: #222222cc!important; // I know
-      }
-
-      hr {
-        border-top: 3px solid #444;
-      }
-    }
-
-    &__header a {
-      color: #ff823788;
-      text-decoration: none;
-    }
-
-    &__section-heading {
-      color: #222!important; // I know
+    @media (min-width: 900px) {
+      display: grid;
+      grid-template-columns: repeat(3, 33%);
+      grid-gap: 1rem;
     }
   }
 
   .card {
-    box-shadow: none;
-    border: 1px solid #ff823788;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin: 1rem 0;
+
+    &__content {
+      padding: 15px;
+    }
+
+    &__content h3 {
+      margin: 0;
+    }
+
+    &__content time {
+      display: block;
+      text-align: right;
+    }
 
     &__image {
-      border-bottom: 1px solid #ff823755;
+      background-position: 50% 50%;
+      background-origin: border-box;
+      background-size: cover;
+      width: auto;
+      height: 250px;
+    }
+  }
+
+  .card > a {
+    text-decoration: none;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  ol.pagination, ul.pagination {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pagination {
+    display: flex;
+    flex-direction: row;
+
+    &__prev-next {
+      flex-grow: 1;
+
+      &--right {
+        text-align: right;
+      }
+    }
+
+    &__prev-next > a {
+      text-decoration: none;
+    }
+
+    &__item {
+      flex: auto;
+      text-align: center;
+    }
+  }
+
+  .feed {
+    padding: 0 0 0 28px;
+    background: url("/assets/images/feed-icon-28x28.png") no-repeat 0 50%;
+    background-size: 25px;
+  }
+
+  .menu {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+
+    &__toggle {
+      display: none;
+      box-sizing: border-box;
+    }
+
+    &__header {
+      text-align: center;
+      display: block;
+      background: rgba(255, 255, 255, .95) url('/assets/images/elephpant-idle.png') no-repeat 5% 50%;
+      background-size: 65px;
+      height: 40px;
+      image-rendering: pixelated;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+      padding: 10px 0;
+    }
+
+    &__toggle-button {
+      position: fixed;
+      top: 0;
+      right: 10px;
+      cursor: pointer;
+
+      &--active {
+        display: none;
+      }
+    }
+
+    &__toggle-button img {
+      max-height: 40px;
+    }
+
+    &__container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, .95);
+      box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.2);
+      transition: transform 50ms ease-in-out;
+      transform: translateY(calc(100vh * -1 * 100));
+      padding: 0 0 5px 0;
+    }
+
+    &__section-heading {
+      font-weight: 700;
+    }
+  }
+
+  #menu-toggle:checked ~ .menu__container {
+    transform: translateY(0);
+  }
+
+  #menu-toggle:checked ~ .menu__header {
+    box-shadow: none;
+  }
+
+  #menu-toggle:checked ~ .menu__toggle-button .menu__toggle-button--inactive {
+    display: none;
+  }
+
+  #menu-toggle:checked ~ .menu__toggle-button .menu__toggle-button--active {
+    display: block;
+  }
+
+  ul.menu-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  .container {
+    z-index: 0;
+    margin: 60px auto 40px auto;
+    max-width: 900px;
+  }
+
+  .article {
+    max-width: 750px;
+    margin: auto;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: #222;
+    color: #aaa!important; // I know
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #ff8237dd!important; // I know
+    }
+
+    a {
+      text-decoration-color: #ff8237cc!important; // I know
+      color: #ff8237aa!important;; // I know
+    }
+
+    strong, p, em {
+      color: #aaa!important; // I know
+    }
+
+    p code {
+      background-color: #333!important; // I know
+      border-color: #888!important; // I know
+    }
+
+    .menu {
+      &__header, &__container {
+        background-color: #ff8237f9;
+        box-shadow: none;
+
+        a {
+          color: #222!important; // I know
+          text-decoration-color: #222222cc!important; // I know
+        }
+
+        hr {
+          border-top: 3px solid #444;
+        }
+      }
+
+      &__header a {
+        color: #ff823788;
+        text-decoration: none;
+      }
+
+      &__section-heading {
+        color: #222!important; // I know
+      }
+    }
+
+    .card {
+      box-shadow: none;
+      border: 1px solid #ff823788;
+
+      &__image {
+        border-bottom: 1px solid #ff823755;
+      }
     }
   }
 }
