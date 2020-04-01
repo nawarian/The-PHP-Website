@@ -24,7 +24,11 @@ If you know also React Js it´s good as we also have mobile projects going on.
 
 Big part of the team speaks Portuguese but we all communicate in English via messages. Only the calls with the team are in Portuguese. 
 
-If you are interested please do this test and send us the repo URL so we can check: https://bitbucket.org/lixao/tech-interview/src/master/ios
+If you are interested please do this test and send us the repo URL so we can check:
+
+iOS: https://bitbucket.org/lixao/tech-interview/src/master/ios
+or 
+Android: https://bitbucket.org/lixao/tech-interview/src/master/android/
 
 ## Local
 
@@ -61,7 +65,11 @@ Por favor envie um email para jobs@joyjet.com com seu CV anexado - enviar no ass
 
 Costumamos enviar feedbacks em até 5 dias após cada processo.
 
-Test asked to all new members: https://bitbucket.org/lixao/tech-interview/src/master/ios
+Test asked to all new members:
+
+iOS: https://bitbucket.org/lixao/tech-interview/src/master/ios
+or 
+Android: https://bitbucket.org/lixao/tech-interview/src/master/android/
 
 ## Labels
 
