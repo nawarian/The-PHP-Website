@@ -30,6 +30,12 @@ for discussion the [election who's gonna be PHP 8's release manager](https://ext
 Alongside, a rough schedule got published. And even though
 it is not yet public, anyone can access it.
 
+**One of the most expected features is the Just in Time
+Compiler.** If you'd like to know exactly how it works
+and which benefits it brings, I wrote
+[this very detailed post about the JIT itself](/en/issue/php-8-jit/).
+Hope you find it useful :)
+
 ## Release Schedule for PHP 8.0
 
 The first schedule points to **3rd of December 2020**, as
