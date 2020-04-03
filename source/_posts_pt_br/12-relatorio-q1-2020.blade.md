@@ -1,5 +1,6 @@
 ---
 slug: relatorio-q1-2020
+lang: pt-br
 title: Relatório e Pensamentos sobre o Q1/2020
 category: thoughts
 createdAt: 2020-03-26
