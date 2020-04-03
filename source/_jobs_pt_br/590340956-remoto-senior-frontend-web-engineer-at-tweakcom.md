@@ -25,7 +25,7 @@ meta:
 - +7 years experience as a front-end engineer
 - JavaScript
 - CSS and HTML semantic
-- +5 years Commercial experience with ReactJS/Redux
+- +3 years Commercial experience with ReactJS / Redux
 - Fluent English
 
 ## Nice to have
