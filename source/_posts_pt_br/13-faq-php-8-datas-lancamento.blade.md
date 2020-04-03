@@ -33,6 +33,12 @@ Junto desta discussão, uma programação provisória foi publicada.
 E mesmo que não esteja publicamente anunciada, qualquer pessoa
 pode acessá-la.
 
+**Uma das novidades mais esperadas é o Just In Time Compiler.**
+Se você quiser saber exatamente como ele funciona e quais
+os benefícios traz, eu escrevi
+[um post bem detalhadinho sobre o próprio JIT](/br/edicao/php-8-jit/).
+Espero que seja útil :)
+
 ## Lançamento do PHP 8.0
 
 A programação atual aponta para o dia **03 de Dezembro
