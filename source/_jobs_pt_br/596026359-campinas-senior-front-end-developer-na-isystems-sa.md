@@ -61,7 +61,7 @@ Escritório, Campinas - Taquaral
 
 **Obrigatórios:**
 - Domínio de HTML, CSS, JavaScript e JQuery
-- Domínio em pelo menos um framework de interfaces (React, Angular, Vue ou similar)
+- Bom domínio de React e Angular
 - Experiência com práticas de build, deploy, bundlers e monitoramentos
 - Experiência em TypeScript
 - Domínio e boas práticas em pelo menos uma ferramenta de testes unitários (Jest, Karma, Jasmine ou similar)
