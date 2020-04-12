@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=fe8dc2a406fe72bf88aa">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.xml"
+  />
+  
+  <title>A Snake Game Written in PHP (with Raylib) | thePHP Website</title>
+
+  <meta name="description" content="I&#039;m gonna show you how the code looks like and which tools I used! Hopefully it will catch your attention enough to see this extension getting traction.">
+
+  <meta property="og:title" content="A Snake Game Written in PHP (with Raylib)">
+  <meta property="og:description" content="I&#039;m gonna show you how the code looks like and which tools I used! Hopefully it will catch your attention enough to see this extension getting traction.">
+  <meta property="og:url" content="https://thephp.website/en/issue/games-with-php">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/14-snake-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="A Snake Game Written in PHP (with Raylib)">
+  <meta name="twitter:description" content="I&#039;m gonna show you how the code looks like and which tools I used! Hopefully it will catch your attention enough to see this extension getting traction.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-1');
+  </script>
+</head>
+<body class="yue non-article">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/en/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Suggest a Topic!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/en/about/">
+            about.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.json">
+            [EN] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.xml">
+            [EN] Atom Feed (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </nav>
+
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-04-12">
+      2020-04-12
+    </time>
+
+    <h1>A Snake Game Written in PHP (with Raylib)</h1>
+    <p>Yes, you read it right!</p>
+<p>A game. Written in PHP language.</p>
+<p>Before I show you how, I'd like to to show you the results! Is not
+polished, so lower your expectations for now. I just wanted a POC
+good enough to be shown here 😬</p>
+<p>You can see the gameplay on the video below.</p>
+<iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen><iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></iframe>
+<p>Cool, right!? And this is just a POC, but with the current state of
+the extension you can already play around with different textures,
+audios and so on.</p>
+<p>I'm gonna show you how the code looks like and which tools I used!
+Hopefully it will catch your attention enough to see this extension
+getting traction.</p>
+<p>Before anything, let me tell you a bit about raylib itself.</p>
+<h2>Raylib</h2>
+<p>Written in C language, Raylib is defined as &quot;raylib is a simple and
+easy-to-use library to enjoy videogames programming&quot;.</p>
+<p>It offers very straight forward functions to manipulate video, audio,
+read inputs like keyboard, mouse or gamepads. It also supports 2d and
+3d rendering. Is a pretty complete library.</p>
+<p>Here's an overview of Raylib's architecture. It expects that you'll
+write your game, engine or tools on top of Raylib's modules. Modules
+offer features to handle things like camera, textures, text, shapes,
+models, audio, math…</p>
+<figure style="text-align: center">
+  <a href="/assets/images/posts/14-games-php/raylib-architecture.png" target="_blank">
+    <img src="/assets/images/posts/14-games-php/raylib-architecture.png" alt="Raylib's architecture overview.">
+  </a>
+  <figcaption>Raylib's architecture overview. Source: https://www.raylib.com/index.html</figcaption>
+</figure>
+<p>It doesn't come with engine stuff, like complicated collision detection
+or physics. If you need such thing, you need to build it yourself. Or
+find something already written by someone else that is ready to work
+with Raylib.</p>
+<h2>Raylib PHP Extension</h2>
+<p>Recently a PHP extension caught my attention. Developed by
+<a href="https://github.com/joseph-montanez">@joseph-montanez</a> quite a while
+ago, the <a href="https://github.com/joseph-montanez/raylib-php"><strong>raylib-php</strong></a>
+extension got its first alpha release less than a month ago.</p>
+<p><strong>If you need to learn how to compile and run it</strong> please head to the
+repository's README.md file. On MacOS the following steps worked fine
+for me:</p>
+<pre><code class="language-bash">$ git clone git@github.com:joseph-montanez/raylib-php.git
+$ cd raylib-php/
+$ phpize
+$ ./configure
+$ make</code></pre>
+<p><strong>It only compiled fine with PHP 7.4 for me. So make sure you have the
+appropriate php version.</strong></p>
+<p>This extension aims to provide bindings to the C library so we can
+write same games in PHP.</p>
+<p>Of course as the C library won't provide game-specific features like
+physics and others. So such things would have to be developed on PHP side.</p>
+<p>This extension is not complete yet. If you check the MAPPING.md file
+from the official repository to understand what was already accomplished.</p>
+<p>Even though it is not complete, I decided to play a bit with it and, as
+far as I can see, it is already pretty functional.</p>
+<h2>A Simple Snake Game</h2>
+<p>Even though &quot;Snake&quot; is a simple game I decided not to implement it
+completely. My main goal here was to have a good enough running engine
+that would test some basic features from the extension.</p>
+<p>I picked then a couple of requirements to implement:</p>
+<ul>
+<li>The snake must be constantly moving, but may change direction</li>
+<li>There shall be one fruit placed in a random spot on the screen</li>
+<li>When the head of the snake hits a fruit five things must happen: the fruit must be destroyed, the snake's body must grow, another fruit must be created, the score counter must increase by one and Snake's speed also increases.</li>
+<li>When Snake hits a window edge it should warp to the opposite edge</li>
+</ul>
+<p>Should be clear, but is also required that the player would change Snake's
+direction using an input device, like a keyboard.</p>
+<p>Two extremely important requirements I chose not to implement were 1)
+that the Snake should not bite itself. Meaning that if by any reason
+Snake hits its own body, the game should be over. And 2) that Snake
+cannot change immediately to its opposite direction. So when you're heading
+right, switching to left direction would require to first go up or down.</p>
+<p>Those two requirements were not implemented as they as purely algorithmic
+and wouldn't add much to the experimentation of the extension itself.</p>
+<h3>Implementation</h3>
+<p>The implementation of this game has two components: a Game Loop and a
+Game State.</p>
+<p>The game loop is responsible for updating the game state based on user
+inputs and calculations and later on painting this state on the screen.
+For this I've created a class named &quot;<em>GameLoop</em>&quot;.</p>
+<p>The game state holds a snapshot of the game. It holds things like the
+player's score, the fruit's x,y coordinates, the x,y coordinates from
+Snake and all squares composing its body. For this one a “<em>GameState</em>”
+class was created.</p>
+<p>Here's how they look like.</p>
+<h3>Game Loop</h3>
+<p>The GameLoop class initializes the system, and creates a loop that
+executes two steps on each iteration: update state and draw state.</p>
+<p>So in the constructor I just initialize the canvas width and height
+and instantiate the GameState</p>
+<p>As parameters to the GameState I passed width and height divided by
+a desired cell size (30 pixels in my case). Such values represent
+the max X and Y coordinates the GameState can work with. We'll
+check them later.</p>
+<pre><code class="language-php">// GameLoop.php
+final class GameLoop
+{
+  // ...
+  public function __construct(
+    int $width,
+    int $height
+  ) {
+    $this-&gt;width = $width;
+    $this-&gt;height = $height;
+
+    // 30
+    $s = self::CELL_SIZE;
+    $this-&gt;state = new GameState(
+      (int) ($this-&gt;width / $s),
+      (int) ($this-&gt;height / $s)
+    );
+  }
+  // ...
+}</code></pre>
+<p>Later on, a public method named <em>start()</em> will then spawn a Window,
+set the frame rate and create an infinite loop - yes, a sort of
+<code>while (true)</code> - that will first trigger a private method <em>update()</em>
+and later on a method <em>draw()</em>.</p>
+<pre><code class="language-php">// ...
+public function start(): void
+{
+  Window::init(
+    $this-&gt;width,
+    $this-&gt;height,
+    'PHP Snake'
+  );
+  Timming::setTargetFPS(60);
+
+  while (
+    $this-&gt;shouldStop ||
+    !Window::shouldClose()
+  ) {
+    $this-&gt;update();
+    $this-&gt;draw();
+  }
+}
+// ...</code></pre>
+<p>The <em>update()</em> method will be responsible for updating the game state
+instance. It does this by reading user's input (key presses) and doing
+things like checking collision and so on.</p>
+<p>Based on calculations done in <em>update()</em> method, it triggers state
+changes on <em>GameState</em> instance.</p>
+<pre><code class="language-php">private function update(): void
+{
+  $head = $this-&gt;state-&gt;snake[0];
+  $recSnake = new Rectangle(
+    (float) $head['x'],
+    (float) $head['y'],
+    1,
+    1,
+  );
+
+  $fruit = $this-&gt;state-&gt;fruit;
+  $recFruit = new Rectangle(
+    (float) $fruit['x'],
+    (float) $fruit['y'],
+    1,
+    1,
+  );
+
+  // Snake bites fruit
+  if (
+    Collision::checkRecs(
+      $recSnake,
+      $recFruit
+    )
+  ) {
+    $this-&gt;state-&gt;score();
+  }
+
+  // Controls step speed
+  $now = microtime(true);
+  if (
+    $now - $this-&gt;lastStep
+      &gt; (1 / $this-&gt;state-&gt;score)
+  ) {
+    $this-&gt;state-&gt;step();
+    $this-&gt;lastStep = $now;
+  }
+
+  // Update direction if necessary
+  if (Key::isPressed(Key::W)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_UP;
+  } else if (Key::isPressed(Key::D)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_RIGHT;
+  } else if (Key::isPressed(Key::S)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_DOWN;
+  } else if (Key::isPressed(Key::A)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_LEFT;
+  }
+}</code></pre>
+<p>Last comes the <em>draw()</em> method. It will read properties on
+<em>GameState</em> and just print them. Applying all proportions and scales.</p>
+<p>The way I've built this, it expects that X coordinates will range
+from 0 to (width divided by cell size) and Y coordinates will range
+from 0 to (height divided by cell size). By multiplying each coordinate
+by &quot;cell size&quot; we get a good enough scaled drawing without mixing up
+our state manipulation and drawing.</p>
+<p>Quite simple. Looks like the following:</p>
+<pre><code class="language-php">private function draw(): void
+{
+  Draw::begin();
+
+  // Clear screen
+  Draw::clearBackground(
+    new Color(255, 255, 255, 255)
+  );
+
+  // Draw fruit
+  $x = $this-&gt;state-&gt;fruit['x'];
+  $y = $this-&gt;state-&gt;fruit['y'];
+  Draw::rectangle(
+    $x * self::CELL_SIZE,
+    $y * self::CELL_SIZE,
+    self::CELL_SIZE,
+    self::CELL_SIZE,
+    new Color(200, 110, 0, 255)
+  );
+
+  // Draw snake's body
+  foreach (
+    $this-&gt;state-&gt;snake as $coords
+  ) {
+    $x = $coords['x'];
+    $y = $coords['y'];
+    Draw::rectangle(
+      $x * self::CELL_SIZE,
+      $y * self::CELL_SIZE,
+      self::CELL_SIZE,
+      self::CELL_SIZE,
+      new Color(0,255, 0, 255)
+    );
+  }
+
+  // Draw score
+  $score = "Score: {$this-&gt;state-&gt;score}";
+  Text::draw(
+    $score,
+    $this-&gt;width - Text::measure($score, 12) - 10,
+    10,
+    12,
+    new Color(0, 255, 0, 255)
+  );
+
+  Draw::end();
+}</code></pre>
+<p>There are some other things I've added for debugging but I'd rather
+leave them out from this article.</p>
+<p>After this, comes the state management. This is GameState's
+responsibility. Check it out!</p>
+<h3>Game State</h3>
+<p>The <em>GameState</em> represents everything that exists in the game.
+Scores, objects like the player and the fruits.</p>
+<p>This means that whenever the player must move or a fruit must be
+eaten, this will happen inside <em>GameState</em>.</p>
+<p>For the Snake's body I decided to have an array with (x, y)
+coordinates inside. And I consider the first element of the
+array (index zero) to be the Snake's head. Adding more (x, y)
+elements to this array would then increase the Snake's body size.</p>
+<p>The fruit, though, is a single (x, y) coordinates pair. As I
+expect to have only one fruit on screen each time.</p>
+<p>The constructor of the <em>GameState</em> class will initialize such
+objects with random coordinates. It looks like this:</p>
+<pre><code class="language-php">// GameState.php
+final class GameState
+{
+  public function __construct(
+    int $maxX,
+    int $maxY
+  ) {
+    $this-&gt;maxX = $maxX;
+    $this-&gt;maxY = $maxY;
+
+    $this-&gt;snake = [
+        $this-&gt;craftRandomCoords(),
+    ];
+
+    $this-&gt;fruit = $this-&gt;craftRandomCoords();
+  }
+}</code></pre>
+<p>To increase the Snake's body size, I created a private method
+named <em>incrementBody()</em> which should add a new head to the
+Snake's body. This new head shall consider the current direction
+the Snake is heading to. (left, right, up or down)</p>
+<p>To add a new head, I just create copy the current Head, update
+its coordinates based on current direction and merge it to
+Snake's body occupying the zero index.</p>
+<pre><code class="language-php">private function incrementBody(): void
+{
+  $newHead = $this-&gt;snake[0];
+
+  // Adjusts head direction
+  switch ($this-&gt;direction) {
+    case self::DIRECTION_UP:
+      $newHead['y']--;
+      break;
+    case self::DIRECTION_DOWN:
+      $newHead['y']++;
+      break;
+    case self::DIRECTION_RIGHT:
+      $newHead['x']++;
+      break;
+    case self::DIRECTION_LEFT:
+      $newHead['x']--;
+      break;
+  }
+
+  // Adds new head, in front
+  // of the whole the body
+  $this-&gt;snake = array_merge(
+    [$newHead],
+    $this-&gt;snake
+  );
+}</code></pre>
+<p>Having the <em>incrementBody()</em> method in place makes it very
+simple to implement the <em>score()</em> method, which just increments
+the score counter and the snake's body. Also <em>score()</em> will
+place a new fruit in a random coordinate.</p>
+<pre><code class="language-php">public function score(): void
+{
+  $this-&gt;score++;
+  $this-&gt;incrementBody();
+  $this-&gt;fruit = $this-&gt;craftRandomCoords();
+}</code></pre>
+<p>The interesting one is the <em>step()</em> method, which is responsible
+for moving the snake.</p>
+<p>If you remember well, the way Snake moves is that its head will
+constantly step towards one direction and the body will then
+follow it in a delayed fashion. So if the snake has 3 blocks
+as body size and is moving downwards, it takes three steps to
+make it face left completely.</p>
+<p>The way I've done this was to basically increment the Snake's
+body again (which adds a new head in the new direction) and
+remove the last element from the snake's body. This way the
+size remains the same, the head has the new direction and on
+each step the old coordinates will be deleted.</p>
+<p>I've also added some logic for warping from one edge of the
+screen to another, you can read it (I hope).</p>
+<pre><code class="language-php">public function step(): void
+{
+  $this-&gt;incrementBody();
+
+  // Remove last element
+  array_pop($this-&gt;snake);
+
+  // Warp body if necessary
+  foreach ($this-&gt;snake as &amp;$coords) {
+    if ($coords['x'] &gt; $this-&gt;maxX - 1) {
+        $coords['x'] = 0;
+    } else if ($coords['x'] &lt; 0) {
+        $coords['x'] = $this-&gt;maxX - 1;
+    }
+
+    if ($coords['y'] &gt; $this-&gt;maxY - 1) {
+        $coords['y'] = 0;
+    } else if ($coords['y'] &lt; 0) {
+        $coords['y'] = $this-&gt;maxY - 1;
+    }
+  }
+}</code></pre>
+<p>Glue everything together and instantiate stuff. We're ready to play!</p>
+<h2>Is it feasible to develop games in PHP?</h2>
+<p>Certainly it is more feasible than before. Hopefully less than tomorrow.</p>
+<p>The extension provide really cool binding but is still not complete.
+If you know a tiny bit of C code, you could make the future a better
+place for game development in PHP by contributing to it.
+<a href="https://github.com/joseph-montanez/raylib-php/blob/master/MAPPING.md">Here's a list where you can find the functions that still need implementation</a>.</p>
+<p>PHP is still blocking by default, so heavy I/O should be smartly
+handled. It is possible to use this library alongside an Event Loop
+or using threads from the Parallel extension. Probably you'll have
+to develop something yourself to achieve this.</p>
+<p>What bugs me the most so far is how portable games written in php
+can be. There's no simple way to package such games into binaries.
+So players would have to install PHP and compile the Raylib extension
+in order to play.</p>
+<p>But as I mentioned, the first steps were already taken. So technically
+speaking, it is already easier to achieve this than it was before.</p>
+<p>Big thanks to Joseph Montanez. Your extension really inspired me and
+I hope this post reaches and triggers more developers to support its
+development.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "A Snake Game Written in PHP (with Raylib)",
+  "description": "I'm gonna show you how the code looks like and which tools I used! Hopefully it will catch your attention enough to see this extension getting traction.",
+  "image": [
+    "https://thephp.website/assets/images/posts/14-snake-640.webp"
+   ],
+  "datePublished": "2020-04-12T00:00:00+08:00",
+  "dateModified": "2020-04-12T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+</body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>
