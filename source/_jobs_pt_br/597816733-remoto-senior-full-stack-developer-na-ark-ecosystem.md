@@ -49,7 +49,6 @@ Remoto
 
 **Desejáveis:**
 - TailwindCSS
-- Angular
 - Electron.js
 - Ionic
 
@@ -69,7 +68,6 @@ Por favor envie um email para jobs@ark.io com seu CV anexado (**em inglês**) - 
 
 - Remoto
 - Senior
-- Full-stack
 - Exterior
 
 
