@@ -40,6 +40,8 @@ Estamos considerando pretensão salarial e de benefícios, temos Plano de Saúde
 
 Se identificou? Aguardamos ansiosos a sua candidatura!
 
+https://upnid.breezy.hr/p/d8f139537bca-devops
+
 #VemProNinho
 
 _Pleno ou Sênior_ 
