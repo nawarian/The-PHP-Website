@@ -32,7 +32,7 @@ good enough to be shown here 😬
 
 You can see the gameplay on the video below.
 
-<iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<iframe data-hj-allow-iframe="" src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 Cool, right!? And this is just a POC, but with the current state of
 the extension you can already play around with different textures,
