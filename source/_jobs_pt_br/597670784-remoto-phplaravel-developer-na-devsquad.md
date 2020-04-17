@@ -50,7 +50,7 @@ Aqui você vai trabalhar remoto de qualquer lugar do Brasil, terá um ambiente f
 
 ## Como se candidatar
 
-Por favor use a seguinte URL: [https://hire.withgoogle.com/public/jobs/devsquadcom/view/P_AAAAAACAAL4IiJw_SJYIyD](https://hire.withgoogle.com/public/jobs/devsquadcom/view/P_AAAAAACAAL4IiJw_SJYIyD)
+Por favor use a seguinte URL: [https://hire.withgoogle.com/public/jobs/devsquadcom/view/P_AAAAAACAAL4B9NHWs7C6Ll](https://hire.withgoogle.com/public/jobs/devsquadcom/view/P_AAAAAACAAL4B9NHWs7C6Ll)
 
 ### Contratação:
 - PJ

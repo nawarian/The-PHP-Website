@@ -66,9 +66,7 @@ Costumamos enviar feedbacks em até 5 dias após cada processo.
 
 Test asked to all new members:
 
-iOS: https://bitbucket.org/lixao/tech-interview/src/master/ios
-or 
-Android: https://bitbucket.org/lixao/tech-interview/src/master/android/
+https://bitbucket.org/lixao/tech-interview/src/master/frontend/
 
 ## Labels
 
