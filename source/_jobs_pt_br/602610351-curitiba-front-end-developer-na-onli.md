@@ -1,0 +1,70 @@
+---
+slug: 602610351-curitiba-front-end-developer-na-onli
+lang: pt-br
+createdAt: 2020-04-19
+title: '[Curitiba] Front-end Developer na ONLi - Vaga de Emprego'
+sitemap:
+  lastModified: 2020-04-19
+meta:
+  description: 'Detalhes sobre a vaga de emprego: A atuação será bem variada, temos varias frentes. Ferramentas manager, aplicativos para gerenciamento do negócio e front-ends de compra. Seguimos o padrão event-driven em nossa arquitetura de microserviços, então em basicamente todas as nossas implementações utilizamos o pattern BFF para os fronts com desenvolvimento back em node e o front em si.'
+  twitter:
+    card: summary
+    site: '@nawarian'
+---
+
+# [Curitiba] Front-end Developer na ONLi
+
+## Nossa empresa
+A ONLi é uma Aceleradora Tecnologica do Mercado de Seguros. Somos especializados em resolver os maiores e mais desafiadores problemas do mercado, trazendo novas visões tecnológicas para o mercado de seguros.
+
+## Descrição da vaga
+A atuação será bem variada, temos varias frentes. Ferramentas manager, aplicativos para gerenciamento do negócio e front-ends de compra. Seguimos o padrão event-driven em nossa arquitetura de microserviços, então em basicamente todas as nossas implementações utilizamos o pattern BFF para os fronts com desenvolvimento back em node e o front em si.
+
+## Local
+Curitiba - Pr, Local ou Remoto
+
+## Requisitos
+
+**Obrigatórios:**
+- Vue.js avançado
+- Responsividade Web
+- Node.js
+
+**Desejáveis:**
+- Vue.js
+- HTML e CSS
+- Node.js
+
+**Diferenciais:**
+- Ser Auto gerenciável
+- Possuir projetos opensource
+
+## Contratação
+horário flexível
+PJ 4k
+
+## Como se candidatar
+
+Por favor envie um email para brendon@onli.com.br com seu CV anexado - enviar no assunto: Vaga ONLi
+
+## Tempo médio de feedbacks
+
+Costumamos enviar feedbacks em até 2 dias após cada processo.
+E-mail para contato em caso de não haver resposta: brendon@onli.com.br
+
+## Labels
+
+#### Alocação
+- Alocado
+- Remoto
+
+#### Regime
+- PJ
+
+#### Nível
+- Pleno
+
+
+
+
+Fonte: https://github.com/frontendbr/vagas/issues/3100
