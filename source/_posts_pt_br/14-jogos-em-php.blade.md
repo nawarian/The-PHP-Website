@@ -242,7 +242,7 @@ private function update(): void
     1,
   );
 
-  // Snake bites fruit
+  // Snake morde a fruta
   if (
     Collision::checkRecs(
       $recSnake,
@@ -252,7 +252,7 @@ private function update(): void
     $this->state->score();
   }
 
-  // Controls step speed
+  // Controla velocidade do passo
   $now = microtime(true);
   if (
     $now - $this->lastStep
@@ -262,7 +262,7 @@ private function update(): void
     $this->lastStep = $now;
   }
 
-  // Update direction if necessary
+  // Atualiza a direção se necessário
   if (Key::isPressed(Key::W)) {
     $this->state->direction = GameState::DIRECTION_UP;
   } else if (Key::isPressed(Key::D)) {
@@ -292,12 +292,12 @@ private function draw(): void
 {
   Draw::begin();
 
-  // Clear screen
+  // Limpa a tela
   Draw::clearBackground(
     new Color(255, 255, 255, 255)
   );
 
-  // Draw fruit
+  // Desenha a fruta
   $x = $this->state->fruit['x'];
   $y = $this->state->fruit['y'];
   Draw::rectangle(
@@ -308,7 +308,7 @@ private function draw(): void
     new Color(200, 110, 0, 255)
   );
 
-  // Draw snake's body
+  // Desenha o corpo da cobrinha
   foreach (
     $this->state->snake as $coords
   ) {
@@ -323,7 +323,7 @@ private function draw(): void
     );
   }
 
-  // Draw score
+  // Desenha a pontuação
   $score = "Score: {$this->state->score}";
   Text::draw(
     $score,
@@ -459,10 +459,12 @@ public function step(): void
 {
   $this->incrementBody();
 
-  // Remove last element
+  // Remove o último elemento
   array_pop($this->snake);
 
-  // Warp body if necessary
+  // Move o corpo para o
+  // outro lado da tela
+  // se necessário
   foreach ($this->snake as &$coords) {
     if ($coords['x'] > $this->maxX - 1) {
       $coords['x'] = 0;
