@@ -32,7 +32,7 @@ good enough to be shown here 😬
 
 You can see the gameplay on the video below.
 
-<iframe data-hj-allow-iframe="" src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
 Cool, right!? And this is just a POC, but with the current state of
 the extension you can already play around with different textures,
@@ -46,7 +46,7 @@ Before anything, let me tell you a bit about raylib itself.
 
 ## Raylib
 
-Written in C language, Raylib is defined as "raylib is a simple and
+Written in C language, Raylib is defined as "a simple and
 easy-to-use library to enjoy videogames programming".
 
 It offers very straight forward functions to manipulate video, audio,
@@ -98,7 +98,7 @@ write same games in PHP.
 Of course as the C library won't provide game-specific features like
 physics and others. So such things would have to be developed on PHP side.
 
-This extension is not complete yet. If you check the MAPPING.md file
+This extension is not complete yet. You can check the MAPPING.md file
 from the official repository to understand what was already accomplished.
 
 Even though it is not complete, I decided to play a bit with it and, as
@@ -151,7 +151,7 @@ The GameLoop class initializes the system, and creates a loop that
 executes two steps on each iteration: update state and draw state.
 
 So in the constructor I just initialize the canvas width and height
-and instantiate the GameState
+and instantiate the GameState.
 
 As parameters to the GameState I passed width and height divided by
 a desired cell size (30 pixels in my case). Such values represent
