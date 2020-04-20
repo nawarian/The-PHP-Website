@@ -22,6 +22,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](/br/edicao/jogos-em-php/)
+
 Yes, you read it right!
 
 A game. Written in PHP language.

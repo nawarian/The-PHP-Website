@@ -1,5 +1,5 @@
 ---
-slug: games-with-php
+slug: jogos-em-php
 lang: pt-br
 title: O jogo da cobrinha feito em PHP (com Raylib)
 category: guides
@@ -22,6 +22,8 @@ twitter:
   card: summary
   site: '@nawarian'
 ---
+
+[Read in English](/en/issue/games-with-php/)
 
 Sim, você leu certo!
 
