@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=fe8dc2a406fe72bf88aa">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+  
+  <title>O jogo da cobrinha feito em PHP (com Raylib) | thePHP Website</title>
+
+  <meta name="description" content="Eu vou te mostrar como é o código e as ferramentas que usei! Espero que isso tome sua atenção suficientemente para vermos esta extensão ganhar tração.">
+
+  <meta property="og:title" content="O jogo da cobrinha feito em PHP (com Raylib)">
+  <meta property="og:description" content="Eu vou te mostrar como é o código e as ferramentas que usei! Espero que isso tome sua atenção suficientemente para vermos esta extensão ganhar tração.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/games-with-php">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/14-snake-640.webp">
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-2');
+  </script>
+  <!-- Hotjar Tracking Code for thephp.website -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1770868,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</head>
+<body class="yue non-article">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/br/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+                <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed-vagas.xml">
+            Feed de Vagas (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </nav>
+
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-04-20">
+      2020-04-20
+    </time>
+
+    <h1>O jogo da cobrinha feito em PHP (com Raylib)</h1>
+    <p>Sim, você leu certo!</p>
+<p>Um jogo. Escrito na linguagem PHP.</p>
+<p>Antes de eu te mostrar o código em si, gostaria de mostrar o
+resultado! Não está bem acabado, então abaixemos as expectativas
+por agora. Eu só queria montar uma POC boa o suficiente pra mostrar
+aqui 😬</p>
+<p>Você pode ver o gameplay no vídeo abaixo.</p>
+<iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen><iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></iframe>
+<p>Massa, né!? E isso é só uma POC, mas com o que já existe nesta
+extensão você já pode brincar com diferentes texturas, audios e
+etc..</p>
+<p>Eu vou te mostrar como ficou o código e quais ferramentas eu utilizei!
+Espero que isso tome sua atenção suficientemente para vermos
+esta extensão ganhar tração.</p>
+<p>Antes de qualquer coisa, deixa eu te falar um pouco sobre a raylib.</p>
+<h2>Raylib</h2>
+<p>Escrita na linguagem C, Raylib é definida como &quot;uma biblioteca
+simples e de fácil utilização para curtir a programação de jogos&quot;.</p>
+<p>Ela oferece funções muito simplistas para manipular vídeo, áudio,
+ler entradas de teclado, mouse ou joysticks. Ela também suporta
+renderização 2d e 3d. É uma biblioteca bem completinha.</p>
+<p>Aqui vai uma visão geral da arquitetura da Raylib. Ela espera que
+você vá escrever seu jogo, engine ou ferramentas em cima dos módulos
+da Raylib. Os módulos oferecem funcionalidades para controlar coisas
+como câmera, texturas, texto, formas, modelos, áudio, matemática...</p>
+<figure style="text-align: center">
+  <a href="/assets/images/posts/14-games-php/raylib-architecture.png" target="_blank">
+    <img src="/assets/images/posts/14-games-php/raylib-architecture.png" alt="Visão geral da arquitetura da Raylib.">
+  </a>
+  <figcaption>Visão geral da arquitetura da Raylib. Fonte: https://www.raylib.com/index.html</figcaption>
+</figure>
+<p>Ela não vem com coisas de engine, como detecção complexa de colisão ou
+física. Se você precisar de algo desse tipo, precisará escrever por si.
+Or encontrar algo já escrito por outra pessoa e que esteja preparado
+para rodar com a Raylib.</p>
+<h2>Extensão Raylib PHP</h2>
+<p>Recentemente uma extensão PHP chamou a minha atenção. Desenvolvida
+por <a href="https://github.com/joseph-montanez">@joseph-montanez</a> há um certo
+tempo atrás, a extensão <a href="https://github.com/joseph-montanez/raylib-php"><strong>raylib-php</strong></a>
+teve seu primeiro lançamento alpha pouco menos de um mês atrás.</p>
+<p><strong>Se você precisa saber como compilar e rodar</strong> por favor acesse o
+arquivo README.md do repositório oficial. No MacOS os seguintes passos
+funcionaram de boa pra mim:</p>
+<pre><code class="language-bash">$ git clone git@github.com:joseph-montanez/raylib-php.git
+$ cd raylib-php/
+$ phpize
+$ ./configure
+$ make</code></pre>
+<p><strong>Somente compilou tranquilo com o PHP 7.4 na minha máquina. Então
+bota aí a versão correta do PHP.</strong></p>
+<p>Essa extensão quer oferecer a mesma interface que a biblioteca em
+C, então a gente poderá desenvolver os jogos mais ou menos da mesma
+forma.</p>
+<p>Claro que já que a biblioteca em C não traz coisas específicas de jogos
+como física e outras paradinhas, você precisará implementar essas coisas
+em PHP.</p>
+<p>Esta extensão ainda não está completa. Você pode dar uma olhada no MAPPING.md
+do repositório oficial pra entender o que já foi feito e o que falta.</p>
+<p>Mesmo não estando completa, eu decidi brincar um pouco com a extensão e,
+até onde consegui ver, já está bem funcional.</p>
+<h2>Um jogo da cobrinha simplão</h2>
+<p>Mesmo sendo &quot;Snake&quot; (ou &quot;jogo da cobrinha&quot;) um jogo bem simples eu
+decidi não implementá-lo completamente. Meu principal objetivo aqui
+era ter um jogo bom o suficiente pra eu poder testar algumas coisas
+básicas da extensão.</p>
+<p>Então eu resolvi pegar alguns requisitos pra implementar:</p>
+<ul>
+<li>A cobrinha precisa mover-se constantemente, mas pode mudar de direção</li>
+<li>Deverá existir apenas uma frutinha na tela, posicionada aleatóriamente</li>
+<li>Quando a cabeça da cobrinha toca numa fruta, cinco coisas devem acontecer: a fruta tem de ser destruída, o corpo da cobrinha deve crescer, outra fruta deve ser criada, o contador de pontos deve aumentar em 1 e a velocidade da cobrinha também deverá aumentar</li>
+<li>Quando a cobrinha toca na borda da tela, ela deverá aparecer do outro lado</li>
+</ul>
+<p>Deveria ser claro, mas também é requisito que o jogador possa mudar a
+direção em que a cobrinha anda usando alguma ferramenta de entrada como
+o teclado.</p>
+<p>Tem também dois requisitos bem importantes que eu decidi não implementar
+aqui: 1) a cobrinha não pode morder a si mesma. Ou seja, se a cobrinha bater
+em seu próprio corpo, o jogo deve acabar. 2) a cobrinha não pode mudar de
+direção para um sentido diretamente oposto ao atual. Então quando se está
+andando para a direita, mudar para a esquerda requer que primeiro se vá
+para cima ou para baixo.</p>
+<p>Estes dois requisitos não foram implementados pois se tratam de algorítmo
+e não adicionariam muito para o experimento em si.</p>
+<h3>Implementação</h3>
+<p>Essa implementação tem dois componentes: o Game Loop e o Game State.</p>
+<p>O game loop é responsável por atualizar o estado do jogo baseado nas
+entradas do(a) jogador(a) e cálculos e mais tarde por pintar este estado
+na tela. Para isto eu criei uma classe chamada &quot;<em>GameLoop</em>&quot;.</p>
+<p>O game state mantém o estado atual do jogo (snapshot). Ele guarda
+coisas como a pontuação do(a) jogador(a), as coordenadas x,y da
+fruta, as coordenadas x,y da cobrinha e todos os quadradinhos que
+formam o corpo da cobrinha. Para esta eu criei uma classe “<em>GameState</em>”.</p>
+<p>Veja a seguir como estas classes são.</p>
+<h3>Game Loop</h3>
+<p>A classe GameLoop inicializa o sistema, e cria um loop que executa
+dois passos em cada iteração: atualizar o estado (update) e desenhar
+o estado na tela (draw).</p>
+<p>Então no construtor eu inicializei o canvas com largura e altura e
+instanciei o GameState.</p>
+<p>Como parâmetros ao GameState eu passei largura e altura divididos
+por um tamanho de célula (30 pixels no meu caso). Estes valores
+representam os valores máximos de coordenadas X e Y que o GameState
+poderá trabalhar. A gente vai ver isso depois.</p>
+<pre><code class="language-php">// GameLoop.php
+final class GameLoop
+{
+  // ...
+  public function __construct(
+    int $width,
+    int $height
+  ) {
+    $this-&gt;width = $width;
+    $this-&gt;height = $height;
+
+  // 30
+  $s = self::CELL_SIZE;
+  $this-&gt;state = new GameState(
+      (int) ($this-&gt;width / $s),
+      (int) ($this-&gt;height / $s)
+    );
+  }
+  // ...
+}</code></pre>
+<p>Mais tarde, um método público chamado <em>start()</em> vai criar uma Janela,
+definir a taxa de frames e criar um loop infinito - sim, meio que um
+<code>while (true)</code> - que vai primeiro chamar um método privado <em>update()</em>
+e mais tarde um método <em>draw()</em>.</p>
+<pre><code class="language-php">// ...
+public function start(): void
+{
+  Window::init(
+    $this-&gt;width,
+    $this-&gt;height,
+    'PHP Snake'
+  );
+  Timming::setTargetFPS(60);
+
+  while (
+    $this-&gt;shouldStop ||
+    !Window::shouldClose()
+  ) {
+    $this-&gt;update();
+    $this-&gt;draw();
+  }
+}
+// ...</code></pre>
+<p>O método <em>update()</em> será responsável por atualizar a instância de
+game state. Ele faz isso ao ler as entradas do(a) jogador(a)
+(ao pressionar teclas) e fazendo coisas como verificar colisão e
+por aí vai.</p>
+<p>Baseado nos cálculos realizados no método <em>update()</em>, mudanças de
+estado são enviadas à instância de <em>GameState</em>.</p>
+<pre><code class="language-php">private function update(): void
+{
+  $head = $this-&gt;state-&gt;snake[0];
+  $recSnake = new Rectangle(
+    (float) $head['x'],
+    (float) $head['y'],
+    1,
+    1,
+  );
+
+  $fruit = $this-&gt;state-&gt;fruit;
+  $recFruit = new Rectangle(
+    (float) $fruit['x'],
+    (float) $fruit['y'],
+    1,
+    1,
+  );
+
+  // Snake bites fruit
+  if (
+    Collision::checkRecs(
+      $recSnake,
+      $recFruit
+    )
+  ) {
+    $this-&gt;state-&gt;score();
+  }
+
+  // Controls step speed
+  $now = microtime(true);
+  if (
+    $now - $this-&gt;lastStep
+    &gt; (1 / $this-&gt;state-&gt;score)
+  ) {
+    $this-&gt;state-&gt;step();
+    $this-&gt;lastStep = $now;
+  }
+
+  // Update direction if necessary
+  if (Key::isPressed(Key::W)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_UP;
+  } else if (Key::isPressed(Key::D)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_RIGHT;
+  } else if (Key::isPressed(Key::S)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_DOWN;
+  } else if (Key::isPressed(Key::A)) {
+    $this-&gt;state-&gt;direction = GameState::DIRECTION_LEFT;
+  }
+}</code></pre>
+<p>Por último vem o método <em>draw()</em>. Ele vai ler as propriedades
+do <em>GameState</em> e pintá-las. Aplicando proporções e escalas.</p>
+<p>Da forma como eu construí, este método espera que coordenadas X
+variem de 0 até (largura dividida pelo tamanho da célula) e
+coordenadas Y veriem de 0 até (altura dividida pelo tamanho da célula).
+Ao multiplicar cada coordenada por &quot;tamanho da célula&quot; a gente consegue
+desenhar com boas proporções sem precisar misturar o gerenciamento
+de estado e desenho.</p>
+<p>Bem simples. Fica assim:</p>
+<pre><code class="language-php">private function draw(): void
+{
+  Draw::begin();
+
+  // Clear screen
+  Draw::clearBackground(
+    new Color(255, 255, 255, 255)
+  );
+
+  // Draw fruit
+  $x = $this-&gt;state-&gt;fruit['x'];
+  $y = $this-&gt;state-&gt;fruit['y'];
+  Draw::rectangle(
+    $x * self::CELL_SIZE,
+    $y * self::CELL_SIZE,
+    self::CELL_SIZE,
+    self::CELL_SIZE,
+    new Color(200, 110, 0, 255)
+  );
+
+  // Draw snake's body
+  foreach (
+    $this-&gt;state-&gt;snake as $coords
+  ) {
+    $x = $coords['x'];
+    $y = $coords['y'];
+    Draw::rectangle(
+      $x * self::CELL_SIZE,
+      $y * self::CELL_SIZE,
+      self::CELL_SIZE,
+      self::CELL_SIZE,
+      new Color(0,255, 0, 255)
+    );
+  }
+
+  // Draw score
+  $score = "Score: {$this-&gt;state-&gt;score}";
+  Text::draw(
+    $score,
+    $this-&gt;width - Text::measure($score, 12) - 10,
+    10,
+    12,
+    new Color(0, 255, 0, 255)
+  );
+
+  Draw::end();
+}</code></pre>
+<p>Tem algumas outras coisas que eu adicionei para depurar mas
+eu prefiro deixá-las de fora deste artigo.</p>
+<p>Depois disso, vem o gerenciamento de estado. Esta é a responsabilidade
+de GameState. Vamo vê!</p>
+<h3>Game State</h3>
+<p>O <em>GameState</em> representa tudo que existe no game. Pontuação,
+objetos como o(a) jogador(a) e as frutas.</p>
+<p>Isto significa que sempre que o(a) jogador(a) precisar mover-se
+ou uma fruta for comida, isto ocorrerá dentro de <em>GameState</em>.</p>
+<p>Para o corpo da cobrinha eu decidi criar um array com coordenadas
+(x,y) dentro. E eu considerei o primeiro elemento (índice zero)
+como sendo a cabeça da cobrinha. Adicionar mais elementos (x,y)
+neste array então deveria aumentar o tamanho do corpo da cobrinha.</p>
+<p>Já a fruta é um simples par de coordenadas (x,y), pois eu espero
+ter apenas uma fruta na tela por vez.</p>
+<p>O construtor da classe <em>GameState</em> inicializa estes objetos
+com coordenadas aleatórias. Ficou assim: </p>
+<pre><code class="language-php">// GameState.php
+final class GameState
+{
+  public function __construct(
+    int $maxX,
+    int $maxY
+  ) {
+    $this-&gt;maxX = $maxX;
+    $this-&gt;maxY = $maxY;
+
+    $this-&gt;snake = [
+      $this-&gt;craftRandomCoords(),
+    ];
+
+    $this-&gt;fruit = $this-&gt;craftRandomCoords();
+  }
+}</code></pre>
+<p>Para aumentar o tamanho do corpo da cobrinha, eu criei
+um método privado chamado <em>incrementBody()</em> que vai adicionar
+uma nova cabeça ao corpo da cobrinha. Esta cabeça deverá
+considerar a direção em que a cobrinha estava andando.
+(esquerda, direita, acima ou abaixo)</p>
+<p>Para criar uma nova cabeça, eu só copio a cabeça atual,
+atualizo as coordenadas baseado na direção atual e mesclo
+esta cópia com o corpo ocupando o índice zero.</p>
+<pre><code class="language-php">private function incrementBody(): void
+{
+  $newHead = $this-&gt;snake[0];
+
+  // Ajusta a direção da cabeça
+  switch ($this-&gt;direction) {
+    case self::DIRECTION_UP:
+      $newHead['y']--;
+    break;
+    case self::DIRECTION_DOWN:
+      $newHead['y']++;
+    break;
+    case self::DIRECTION_RIGHT:
+      $newHead['x']++;
+    break;
+    case self::DIRECTION_LEFT:
+      $newHead['x']--;
+    break;
+  }
+
+  // Adiciona nova cabeça,
+  // na frente do corpo todo
+  $this-&gt;snake = array_merge(
+    [$newHead],
+    $this-&gt;snake
+  );
+}</code></pre>
+<p>Tendo o método <em>incrementBody()</em> fica bem fácil implementar
+o método <em>score()</em>, que apenas aumenta a pontuação e o tamanho
+do corpo da cobrinha. O <em>score()</em> também vai criar uma nova
+fruta numa coordenada aleatória da tela.</p>
+<pre><code class="language-php">public function score(): void
+{
+  $this-&gt;score++;
+  $this-&gt;incrementBody();
+  $this-&gt;fruit = $this-&gt;craftRandomCoords();
+}</code></pre>
+<p>O mais interessante é o método <em>step()</em>, que é responsável
+por mover a cobrinha.</p>
+<p>Se você bem se lembrar, a forma como Snake se mexe é que a
+cabeça vai constantemente andar em uma direção e o corpo a
+segue. Então se Snake tem tamanho 3 e seu corpo está andando
+para baixo, são necessários três passos para que ela ande
+para a esquerda completamente.</p>
+<p>A forma como eu fiz, foi basicamente aumentar o tamanho do
+corpo novamente (que adiciona uma nova cabeça na nova direção)
+e remover o último elemento do corpo da cobrinha. Desta forma
+o tamanho corpo continua o mesmo e as coordenadas antigas
+serão apagadas.</p>
+<p>Eu também adicionei uma lógica para aparecer do outro lado
+da tela quando a cabeça da cobrinha bater na borda da tela.</p>
+<pre><code class="language-php">public function step(): void
+{
+  $this-&gt;incrementBody();
+
+  // Remove last element
+  array_pop($this-&gt;snake);
+
+  // Warp body if necessary
+  foreach ($this-&gt;snake as &amp;$coords) {
+    if ($coords['x'] &gt; $this-&gt;maxX - 1) {
+      $coords['x'] = 0;
+    } else if ($coords['x'] &lt; 0) {
+      $coords['x'] = $this-&gt;maxX - 1;
+    }
+
+    if ($coords['y'] &gt; $this-&gt;maxY - 1) {
+      $coords['y'] = 0;
+    } else if ($coords['y'] &lt; 0) {
+      $coords['y'] = $this-&gt;maxY - 1;
+    }
+  }
+}</code></pre>
+<p>Agora é só grudar tudo, instanciar as coisa e tamo pronto pra jogar!</p>
+<h2>Faz sentido desenvolver jogos em PHP?</h2>
+<p>Certamente faz mais sentido que antes. Espero que menos que amanhã.</p>
+<p>A extensão oferece interfaces bem bacanudas, mas ainda não está
+completa. Se você sabe um pouco de C, você também pode tornar
+o futuro um lugar melhor para desenvolvimento de jogos em PHP
+ao contribuir com esta extensão.</p>
+<p><a href="https://github.com/joseph-montanez/raylib-php/blob/master/MAPPING.md">Aqui tem uma lista onde você pode encontrar funções que ainda precisam de implementação</a>.</p>
+<p>O PHP ainda é bloqueante por padrão, então operações de E/S precisam
+ser tratadas com cuidado. É possível utilizar esta biblioteca junto
+de um Event Loop our usando threads da extensão Parallel. Provavelmente
+você precisará escrever algo customizado pra isto.</p>
+<p>O que mais me deixa encucado até o momento é sobre o quão portáveis
+os jogos em PHP podem ser. Não tem uma forma simples de empacotar
+estes jogos em binários. Então jogadores precisariam instalar o PHP
+e compilar a extensão Raylib pra poder jogar algo.</p>
+<p>Mas como eu mencionei, os primeiros passos foram dados. Então tecnicamente
+já é mais fácil desenvolver jogos do que era antes.</p>
+<p>Agradeço muito ao Joseph Montanez. Sua extensão me inspirou muito e
+eu espero que esta publicação alcance e instigue mais desenvolvedores(as)
+para ajudar no desenvolvimento dela. </p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "O jogo da cobrinha feito em PHP (com Raylib)",
+  "description": "Eu vou te mostrar como &eacute; o c&oacute;digo e as ferramentas que usei! Espero que isso tome sua aten&ccedil;&atilde;o suficientemente para vermos esta extens&atilde;o ganhar tra&ccedil;&atilde;o.",
+  "image": [
+    "https://thephp.website/assets/images/posts/14-snake-640.webp"
+   ],
+  "datePublished": "2020-04-20T00:00:00+08:00",
+  "dateModified": "2020-04-20T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+</body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>

@@ -134,7 +134,7 @@
 polished, so lower your expectations for now. I just wanted a POC
 good enough to be shown here 😬</p>
 <p>You can see the gameplay on the video below.</p>
-<iframe data-hj-allow-iframe="" src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen><iframe data-hj-allow-iframe="" src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></iframe>
+<iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen><iframe src="https://player.vimeo.com/video/406784115" width="100%" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></iframe>
 <p>Cool, right!? And this is just a POC, but with the current state of
 the extension you can already play around with different textures,
 audios and so on.</p>
@@ -143,7 +143,7 @@ Hopefully it will catch your attention enough to see this extension
 getting traction.</p>
 <p>Before anything, let me tell you a bit about raylib itself.</p>
 <h2>Raylib</h2>
-<p>Written in C language, Raylib is defined as &quot;raylib is a simple and
+<p>Written in C language, Raylib is defined as &quot;a simple and
 easy-to-use library to enjoy videogames programming&quot;.</p>
 <p>It offers very straight forward functions to manipulate video, audio,
 read inputs like keyboard, mouse or gamepads. It also supports 2d and
@@ -181,7 +181,7 @@ appropriate php version.</strong></p>
 write same games in PHP.</p>
 <p>Of course as the C library won't provide game-specific features like
 physics and others. So such things would have to be developed on PHP side.</p>
-<p>This extension is not complete yet. If you check the MAPPING.md file
+<p>This extension is not complete yet. You can check the MAPPING.md file
 from the official repository to understand what was already accomplished.</p>
 <p>Even though it is not complete, I decided to play a bit with it and, as
 far as I can see, it is already pretty functional.</p>
@@ -220,7 +220,7 @@ class was created.</p>
 <p>The GameLoop class initializes the system, and creates a loop that
 executes two steps on each iteration: update state and draw state.</p>
 <p>So in the constructor I just initialize the canvas width and height
-and instantiate the GameState</p>
+and instantiate the GameState.</p>
 <p>As parameters to the GameState I passed width and height divided by
 a desired cell size (30 pixels in my case). Such values represent
 the max X and Y coordinates the GameState can work with. We'll
