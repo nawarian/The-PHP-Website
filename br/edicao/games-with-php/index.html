@@ -299,7 +299,7 @@ estado são enviadas à instância de <em>GameState</em>.</p>
     1,
   );
 
-  // Snake bites fruit
+  // Snake morde a fruta
   if (
     Collision::checkRecs(
       $recSnake,
@@ -309,7 +309,7 @@ estado são enviadas à instância de <em>GameState</em>.</p>
     $this-&gt;state-&gt;score();
   }
 
-  // Controls step speed
+  // Controla velocidade do passo
   $now = microtime(true);
   if (
     $now - $this-&gt;lastStep
@@ -319,7 +319,7 @@ estado são enviadas à instância de <em>GameState</em>.</p>
     $this-&gt;lastStep = $now;
   }
 
-  // Update direction if necessary
+  // Atualiza a direção se necessário
   if (Key::isPressed(Key::W)) {
     $this-&gt;state-&gt;direction = GameState::DIRECTION_UP;
   } else if (Key::isPressed(Key::D)) {
@@ -343,12 +343,12 @@ de estado e desenho.</p>
 {
   Draw::begin();
 
-  // Clear screen
+  // Limpa a tela
   Draw::clearBackground(
     new Color(255, 255, 255, 255)
   );
 
-  // Draw fruit
+  // Desenha a fruta
   $x = $this-&gt;state-&gt;fruit['x'];
   $y = $this-&gt;state-&gt;fruit['y'];
   Draw::rectangle(
@@ -359,7 +359,7 @@ de estado e desenho.</p>
     new Color(200, 110, 0, 255)
   );
 
-  // Draw snake's body
+  // Desenha o corpo da cobrinha
   foreach (
     $this-&gt;state-&gt;snake as $coords
   ) {
@@ -374,7 +374,7 @@ de estado e desenho.</p>
     );
   }
 
-  // Draw score
+  // Desenha a pontuação
   $score = "Score: {$this-&gt;state-&gt;score}";
   Text::draw(
     $score,
@@ -483,10 +483,12 @@ da tela quando a cabeça da cobrinha bater na borda da tela.</p>
 {
   $this-&gt;incrementBody();
 
-  // Remove last element
+  // Remove o último elemento
   array_pop($this-&gt;snake);
 
-  // Warp body if necessary
+  // Move o corpo para o
+  // outro lado da tela
+  // se necessário
   foreach ($this-&gt;snake as &amp;$coords) {
     if ($coords['x'] &gt; $this-&gt;maxX - 1) {
       $coords['x'] = 0;
