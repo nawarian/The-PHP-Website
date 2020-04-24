@@ -71,7 +71,7 @@ como câmera, texturas, texto, formas, modelos, áudio, matemática...
 
 Ela não vem com coisas de engine, como detecção complexa de colisão ou
 física. Se você precisar de algo desse tipo, precisará escrever por si.
-Or encontrar algo já escrito por outra pessoa e que esteja preparado
+Ou encontrar algo já escrito por outra pessoa e que esteja preparado
 para rodar com a Raylib.
 
 ## Extensão Raylib PHP
