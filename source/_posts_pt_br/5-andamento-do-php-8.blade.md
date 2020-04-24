@@ -8,7 +8,7 @@ sitemap:
   lastModified: 2020-01-20
 image:
   url: /assets/images/posts/5-php-8-640.webp
-  alt: 'Um bloco de notas aberto, com páginas em branco e uma caneta sobre si.'
+  alt: 'Um número oito escrito com correntes de um motor.'
 tags:
   - php8
   - core
@@ -26,7 +26,7 @@ meta:
 
 [Read in English](/en/issue/state-of-php-8/)
 
-O PHP 8.0 está [sob discussão e desenvolvimento neste momento](https://wiki.php.net/rfc#php_80).
+O PHP 8.0 está [sob discussão e desenvolvimento neste momento](/br/edicao/php8-data-lancamento/).
 Isso significa que muitas coisas neste post ainda vão mudar muito com o tempo. Para cada
 área de interesse eu vou deixar um subtítulo e, conforme as conversas vão para frente na
 comunidade php, eu vou atualizar cada um de acordo.
@@ -39,7 +39,7 @@ acompanhe o [arquivo UPGRADE no repositório oficial](https://github.com/php/php
 
 **A data de lançamento do PHP 8.0 é Dezembro de 2020.** Ao menos esta é a data oficial até o momento.
 
-[O PHP 7.4 foi lançado há pouco tempo](https://www.php.net/releases/7_4_0.php) e não haverá
+[O PHP 7.4 foi lançado há pouco tempo](/br/edicao/php-75-nao-sera-lancado/) e não haverá
 nenhuma outra minor version (PHP 7.5) para esta major 7. Portanto a próxima versão será, com
 certeza, o PHP 8.
 
