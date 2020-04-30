@@ -51,7 +51,7 @@ Remoto
 
 ## Contratação
 
-PJ a combinar. Iniciando em 2.5k, negociável conforme seu nível de experiência 
+PJ a combinar.  Range conforme nível de experiência. 2.5k~4.5k + bônus de resultados. 
 
 ## Como se candidatar
 
