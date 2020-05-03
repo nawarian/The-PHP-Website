@@ -43,6 +43,6 @@ A Sciensa construiu um novo formato de trabalho, trazendo o time do cliente para
 - Home Office
 
 ### Para se candidatar: 
-[https://jobs.lever.co/sciensa/13a994b2-3f4f-47ab-b19e-a39b49bcb25f](url)
+https://jobs.lever.co/sciensa/13a994b2-3f4f-47ab-b19e-a39b49bcb25f
 
 Fonte: https://github.com/backend-br/vagas/issues/2380
