@@ -79,7 +79,7 @@ CLT
 
 ## Como se candidatar
 
-Se inscreva em: https://bit.ly/seletivocubos
+Se inscreva em: https://bit.ly/vempracubos
 
 ## Tempo médio de feedbacks
 
