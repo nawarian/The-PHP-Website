@@ -57,7 +57,7 @@ PJ a combinar
 
 ## Como se candidatar
 
-Envie um email para marcello@aeroscan.com.br com o assunto: Vaga Front-end [NOME]
+Envie um email para m.moreira@aeroscan.com.br com o assunto: Vaga Front-end [NOME]
 
 ## Tempo médio de respostas
 

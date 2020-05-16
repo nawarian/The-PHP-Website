@@ -44,6 +44,7 @@ Precisamos de alguém com domínio sobre linguagens Front-end para trabalhar na 
 
 São Paulo - Próximo ao Shop. Morumbi
 Maior atuação é home-office, mas precisará ir ao escritório de vez em quando. 
+* Só aceitaremos currículos de São Paulo!!!
 
 ## Requisitos
 
@@ -74,6 +75,7 @@ CLT
 ## Como se candidatar
 
 Para se candidatar, é necessário cadastrar o currículo em nosso site através do link: https://organizeprod.service-now.com/organize?id=organize_careers
+*Só serão aceitos currículos de São Paulo!!! 
 
 Se antes de se candidatar, você quiser mais sobre mais sobre ServiceNow e sobre a nossa empresa, deixo uns links abaixo que podem te auxiliar!
 
@@ -96,6 +98,7 @@ Após cadastro no nosso site, o seu currículo será analisado por nossa equipe.
 
 #### Alocação
 - Remoto
+- Escritório
 
 #### Regime
 - CLT
