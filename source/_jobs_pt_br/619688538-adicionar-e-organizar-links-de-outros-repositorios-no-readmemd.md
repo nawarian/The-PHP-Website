@@ -14,7 +14,7 @@ meta:
 
 # Adicionar e organizar links de outros repositórios no readme.md
 
-Separar os repositórios "irmãos" por área de atuação, tecnologia, localidade e empresas.
+Separar os repositórios "irmãos" por área de atuação, tecnologia, localidade.
 Adicionar links dos repositórios de .NET e Rust. 
 Adicionar link do próprio repositório para padronizar o readme.md
 
