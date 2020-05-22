@@ -14,6 +14,7 @@ meta:
 
 # [São Paulo] Back-end Developer na Aeroscan
 
+#### Informo que o envio de currículos está temporariamente pausado até analise dos candidatos atuais.
 ## Aeroscan
 
 A Aeroscan é uma startup de tecnologia especializada em aeronaves remotamente pilotadas (drones). A 2 anos a empresa iniciou o processo de expansão para o mercado de segurança e está desenvolvendo uma plataforma de operação de aeronaves automatizada para este mercado.
