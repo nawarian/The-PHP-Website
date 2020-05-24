@@ -1,10 +1,10 @@
 ---
-slug: 623396981-remoto-back-end-php-com-dominio-em-wordpress-na-volts-digital
+slug: 623688695-remoto-back-end-php-com-dominio-em-wordpress-na-volts-digital
 lang: pt-br
-createdAt: 2020-05-22
+createdAt: 2020-05-23
 title: '[Remoto] Back-end PHP com domínio em WordPress na VOLTS DIGITAL - Vaga de Emprego'
 sitemap:
-  lastModified: 2020-05-22
+  lastModified: 2020-05-23
 meta:
   description: 'Detalhes sobre a vaga de emprego: [Remoto] Back-end PHP com domínio em WordPress na VOLTS DIGITAL'
   twitter:
@@ -52,8 +52,8 @@ Você pode mandar um e-mail para **vagas@voltsdigital.com.br** com seu GIT ou al
 ## Labels
 
 - PJ
+- Pleno
 - Sênior
 - Remoto
 
-
-Fonte: https://github.com/backend-br/vagas/issues/2446
+Fonte: https://github.com/phpdevbr/vagas/issues/572
