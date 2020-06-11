@@ -16,7 +16,7 @@ meta:
 
 # Desenvolvedor Backend na Onyo
 
-A experiência de refeição fora do lar nunca mais será a mesma. É por isso que estamos à procura de um Desenvolvedor Backend para uma missão que ajudará a colocar nas mãos de nossos clientes o poder absoluto de escolher, o quê e quando comer independe. Você desenvolverá produtos incríveis, que irão transformar a vida dos nossos clientes e parceiros.
+A experiência de refeição fora do lar nunca mais será a mesma. É por isso que estamos à procura de um Desenvolvedor Backend para uma missão que ajudará a colocar nas mãos de nossos clientes o poder absoluto de escolher, o quê e quando comer. Você desenvolverá produtos incríveis, que irão transformar a vida dos nossos clientes e parceiros.
 
 ## Sobre nós:
 

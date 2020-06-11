@@ -16,7 +16,7 @@ meta:
 
 # Desenvolvedor Frontend na Onyo
 
-A experiência dos clientes nas praças de alimentação nunca mais será a mesma. É por isso que estamos à procura de um Desenvolvedor Front End para uma missão temporária que ajudará a colocar nas mãos de nossos clientes o poder absoluto de escolher, o que e quando comer independe de uma praça de alimentação lotada. Você desenvolverá produtos incríveis, que irão transformar a vida dos nossos clientes e parceiros.
+A experiência de refeição fora do lar nunca mais será a mesma. É por isso que estamos à procura de um Desenvolvedor Frontend para uma missão que ajudará a colocar nas mãos de nossos clientes o poder absoluto de escolher, o quê e quando comer. Você desenvolverá produtos incríveis, que irão transformar a vida dos nossos clientes e parceiros.
 
 ## Sobre nós:
 
@@ -47,13 +47,18 @@ Damos um alto valor ao poder de escolha em todos os assuntos, desde o design do 
 - Escrever código limpo, com testes automatizados e com deploy contínuo
 - Resolver débitos técnicos
 
-## O que estamos procurando nas suas habilidades:
+## O que estamos procurando:
 
-- Experiência com Javascript, Typescript, Angular 2+, React, HTML 5, JQuery e SASS.
-- Forte entendimento de frameworks e user experience.
-- Desejável experiência com Python, SQL e GraphQL.
-- Desejo de desenvolver produtos bonitos, funcionais e bem construídos.
-- Experiência com trabalho remoto é um diferencial.
+- Experiência com Javascript, Typescript, HTML e CSS.
+- Experiência com Frameworks de SPA como Angular e React.
+- Experiência com frameworks de gestão de estado como Redux.
+
+## São diferenciais:
+
+- Experência com Apollo Graphql.
+- Experiência com Python, SQL e GraphQL.
+- Experiência com design e UX.
+- Experiência com trabalho remoto.
 
 ## Candidatura
 
