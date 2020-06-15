@@ -45,11 +45,13 @@ Se você quer atuar em um ambiente de trabalho descontraído, porém desafiador,
 CLT.
 ## Benefícios
 
-- VR (R$35,00/dia);
+- VR (R$770,00/mês);
 - VT (após pandemia);
 - Plano de saúde (Porto Seguro);
 - Plano odontológico (Porto seguro);
-- Seguro de vida
+- Seguro de vida;
+- Auxílio creche para filhos até 36 meses de vida, no valor de R$474,00, mediante reembolso;
+
 
 ## Local de trabalho
 
