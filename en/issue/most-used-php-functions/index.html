@@ -141,6 +141,46 @@ but didn't give up on this project 😉.</p>
 today's state. (2020-06-16)</p>
 <p>Feel free to <a href="https://twitter.com/nawarian">ping me on twitter</a>
 if you'd like to add another framework here! 😊</p>
+<h2>Feature request: Top of of the pops!</h2>
+<p>Since many of you requested, here goes a list of the top 5
+functions from the whole list.</p>
+<p>I'll skip <code>sprintf()</code> because symfony alone pushes
+this up to <code>2_743</code> and it is kind of unfair.</p>
+<p>So the compiled list follows:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Usages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_array</td>
+<td>1414</td>
+</tr>
+<tr>
+<td>count</td>
+<td>1102</td>
+</tr>
+<tr>
+<td>strpos</td>
+<td>1001</td>
+</tr>
+<tr>
+<td>substr</td>
+<td>974</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>845</td>
+</tr>
+</tbody>
+</table>
+<p>I must say I'm very impressed about how often we use <code>is_array()</code>
+and <code>count()</code>. I tested in some repositories I work with and in
+some the number of calls to <code>count()</code> is around 3k.</p>
+<p>Cool stuff 🤣</p>
 <h2>Top 20 php functions used by Symfony</h2>
 <table>
 <thead>
