@@ -35,7 +35,7 @@ Remoto
 - Experiência com testes unitários;
 - Bancos de dados MySql ou PostgreSQL;
 - Conhecimento em GIT;
-- Inglês
+- Inglês Avançado
 
 **Diferenciais:**
 - Frameworks: Symfony;
