@@ -2,17 +2,17 @@
 slug: 623688695-remoto-back-end-php-com-dominio-em-wordpress-na-volts-digital
 lang: pt-br
 createdAt: 2020-05-23
-title: '[Remoto] Back-end PHP com domínio em WordPress na VOLTS DIGITAL - Vaga de Emprego'
+title: '[Remoto] Back-end PHP com domínio em WordPress na Volts Digital - Vaga de Emprego'
 sitemap:
   lastModified: 2020-05-23
 meta:
-  description: 'Detalhes sobre a vaga de emprego: [Remoto] Back-end PHP com domínio em WordPress na VOLTS DIGITAL'
+  description: 'Detalhes sobre a vaga de emprego: [Remoto] Back-end PHP com domínio em WordPress na Volts Digital'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-# [Remoto] Back-end PHP com domínio em WordPress na VOLTS DIGITAL
+# [Remoto] Back-end PHP com domínio em WordPress na Volts Digital
 
 ## DESCRIÇÃO DO JOB
 
