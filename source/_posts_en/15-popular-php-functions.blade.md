@@ -42,6 +42,30 @@ today's state. (2020-06-16)
 Feel free to [ping me on twitter](https://twitter.com/nawarian)
 if you'd like to add another framework here! 😊
 
+## Feature request: Top of of the pops!
+
+Since many of you requested, here goes a list of the top 5
+functions from the whole list.
+
+I'll skip `sprintf()` because symfony alone pushes
+this up to `2_743` and it is kind of unfair.
+
+So the compiled list follows:
+
+Function | Usages
+-------- | ------
+is_array | 1414
+count | 1102
+strpos | 1001
+substr | 974
+implode | 845
+
+I must say I'm very impressed about how often we use `is_array()`
+and `count()`. I tested in some repositories I work with and in
+some the number of calls to `count()` is around 3k.
+
+Cool stuff 🤣
+
 ## Top 20 php functions used by Symfony
 
 Function | Usages
