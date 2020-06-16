@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=fe8dc2a406fe72bf88aa">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+  
+  <title>Quais são as top 20 funções do php mais usadas pelos frameworks? | thePHP Website</title>
+
+  <meta name="description" content="Por curiosidade eu decidir rankear a utilização das funções nativas do php nos frameworks mais populares.">
+
+  <meta property="og:title" content="Quais são as top 20 funções do php mais usadas pelos frameworks?">
+  <meta property="og:description" content="Por curiosidade eu decidir rankear a utilização das funções nativas do php nos frameworks mais populares.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/funcoes-mais-usadas-php">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/15-question-mark-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Quais são as top 20 funções do php mais usadas pelos frameworks?">
+  <meta name="twitter:description" content="Por curiosidade eu decidir rankear a utilização das funções nativas do php nos frameworks mais populares.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-2');
+  </script>
+  <!-- Hotjar Tracking Code for thephp.website -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1770868,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</head>
+<body class="yue non-article">
+  <nav class="menu">
+    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
+    <label for="menu-toggle" class="menu__toggle-button">
+      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
+      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
+    </label>
+    <div class="menu__header">
+      <a href="/br/">
+        thePHP Website
+      </a>
+    </div>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+                <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed-vagas.xml">
+            Feed de Vagas (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </nav>
+
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-06-16">
+      2020-06-16
+    </time>
+
+    <h1>Quais são as top 20 funções do php mais usadas pelos frameworks?</h1>
+    <p><a href="/en/issue/most-used-php-functions/">Read in English</a></p>
+<p>Eu me questiono muito sobre o quão útil este post é. Mas
+eu acho que faz sentido compartilhá-lo e também o código
+que me ajudou a alcançar estes números.</p>
+<p>Este post também é pra sinalizar que eu só estive ocupado,
+mas não desisti do projeto do site 😉. </p>
+<p>Abaixo eu mostro as top 20 funções mais utilizadas por
+frameworks php.</p>
+<p>Você pode encontrar o código que usei pra obter estes
+dados neste
+<a href="https://github.com/nawarian/The-PHP-Website/tree/master/code/15-framework-functions/">repositório do github</a>.</p>
+<p>Eu coletei estes dados baseado nos seus branches principais
+na data de hoje. (16/06/2020)</p>
+<p>Sinta-se livre pra me <a href="https://twitter.com/nawarian">pingar no twitter</a>
+se você quiser ver outro framework nesta lista aqui! 😊</p>
+<h2>Top 20 funções php utilizadas no Symfony</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sprintf</td>
+<td>2743</td>
+</tr>
+<tr>
+<td>substr</td>
+<td>708</td>
+</tr>
+<tr>
+<td>strpos</td>
+<td>594</td>
+</tr>
+<tr>
+<td>count</td>
+<td>588</td>
+</tr>
+<tr>
+<td>is_array</td>
+<td>572</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>445</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>436</td>
+</tr>
+<tr>
+<td>class_exists</td>
+<td>415</td>
+</tr>
+<tr>
+<td>is_string</td>
+<td>338</td>
+</tr>
+<tr>
+<td>preg_match</td>
+<td>336</td>
+</tr>
+<tr>
+<td>in_array</td>
+<td>333</td>
+</tr>
+<tr>
+<td>str_replace</td>
+<td>310</td>
+</tr>
+<tr>
+<td>array_merge</td>
+<td>271</td>
+</tr>
+<tr>
+<td>array_keys</td>
+<td>234</td>
+</tr>
+<tr>
+<td>get_class</td>
+<td>224</td>
+</tr>
+<tr>
+<td>array_key_exists</td>
+<td>193</td>
+</tr>
+<tr>
+<td>explode</td>
+<td>189</td>
+</tr>
+<tr>
+<td>is_object</td>
+<td>164</td>
+</tr>
+<tr>
+<td>preg_replace</td>
+<td>157</td>
+</tr>
+<tr>
+<td>strtolower</td>
+<td>154</td>
+</tr>
+</tbody>
+</table>
+<p>Interessante notar que o <code>sprintf</code> é a função mais utilizada.
+Provavelmente por conta da forma como o
+<a href="https://symfony.com/doc/current/contributing/code/standards.html">coding standard do Symfony</a>
+lida com o lançamento de exceções. </p>
+<blockquote>
+<p>Exceções e mensagens de erro dever ser concatenadas utilizando sprintf;</p>
+</blockquote>
+<h2>Top 20 funções php utilizadas pelo Laravel</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_null</td>
+<td>440</td>
+</tr>
+<tr>
+<td>is_array</td>
+<td>243</td>
+</tr>
+<tr>
+<td>array_merge</td>
+<td>196</td>
+</tr>
+<tr>
+<td>func_get_args</td>
+<td>155</td>
+</tr>
+<tr>
+<td>str_replace</td>
+<td>146</td>
+</tr>
+<tr>
+<td>count</td>
+<td>143</td>
+</tr>
+<tr>
+<td>is_string</td>
+<td>129</td>
+</tr>
+<tr>
+<td>in_array</td>
+<td>120</td>
+</tr>
+<tr>
+<td>explode</td>
+<td>119</td>
+</tr>
+<tr>
+<td>trim</td>
+<td>111</td>
+</tr>
+<tr>
+<td>method_exists</td>
+<td>97</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>91</td>
+</tr>
+<tr>
+<td>get_class</td>
+<td>84</td>
+</tr>
+<tr>
+<td>function_exists</td>
+<td>81</td>
+</tr>
+<tr>
+<td>compact</td>
+<td>75</td>
+</tr>
+<tr>
+<td>array_map</td>
+<td>72</td>
+</tr>
+<tr>
+<td>is_numeric</td>
+<td>69</td>
+</tr>
+<tr>
+<td>sprintf</td>
+<td>68</td>
+</tr>
+<tr>
+<td>call_user_func</td>
+<td>61</td>
+</tr>
+<tr>
+<td>array_values</td>
+<td>58</td>
+</tr>
+</tbody>
+</table>
+<h2>Top 20 funções php utilizadas pelo Amp</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_int</td>
+<td>11</td>
+</tr>
+<tr>
+<td>assert</td>
+<td>27</td>
+</tr>
+<tr>
+<td>range</td>
+<td>26</td>
+</tr>
+<tr>
+<td>microtime</td>
+<td>17</td>
+</tr>
+<tr>
+<td>array_shift</td>
+<td>14</td>
+</tr>
+<tr>
+<td>get_class</td>
+<td>11</td>
+</tr>
+<tr>
+<td>debug_backtrace</td>
+<td>11</td>
+</tr>
+<tr>
+<td>call_user_func_array</td>
+<td>11</td>
+</tr>
+<tr>
+<td>sprintf</td>
+<td>10</td>
+</tr>
+<tr>
+<td>getmypid</td>
+<td>9</td>
+</tr>
+<tr>
+<td>posix_kill</td>
+<td>9</td>
+</tr>
+<tr>
+<td>is_resource</td>
+<td>9</td>
+</tr>
+<tr>
+<td>printf</td>
+<td>6</td>
+</tr>
+<tr>
+<td>fwrite</td>
+<td>6</td>
+</tr>
+<tr>
+<td>usleep</td>
+<td>6</td>
+</tr>
+<tr>
+<td>count</td>
+<td>8</td>
+</tr>
+<tr>
+<td>stream_socket_pair</td>
+<td>5</td>
+</tr>
+<tr>
+<td>gc_collect_cycles</td>
+<td>5</td>
+</tr>
+<tr>
+<td>substr</td>
+<td>5</td>
+</tr>
+<tr>
+<td>defined</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Eu acho meio injusto rodar esse programa no Amp ou Laminas
+porque eles são compostos por vários pacotes diferentes de uma vez.
+Então o repositório raiz não tá realmente pegando todas as dependências.</p>
+<p>Mas eu ainda acho bacana a diferença na natureza dessas chamadas
+em comparação com os outros frameworks ^^.</p>
+<h2>Top 20 funções php utilizadas pelo Cake PHP</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sprintf</td>
+<td>480</td>
+</tr>
+<tr>
+<td>is_array</td>
+<td>367</td>
+</tr>
+<tr>
+<td>strpos</td>
+<td>235</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>233</td>
+</tr>
+<tr>
+<td>count</td>
+<td>216</td>
+</tr>
+<tr>
+<td>is_string</td>
+<td>206</td>
+</tr>
+<tr>
+<td>in_array</td>
+<td>198</td>
+</tr>
+<tr>
+<td>substr</td>
+<td>172</td>
+</tr>
+<tr>
+<td>explode</td>
+<td>159</td>
+</tr>
+<tr>
+<td>array_merge</td>
+<td>139</td>
+</tr>
+<tr>
+<td>str_replace</td>
+<td>133</td>
+</tr>
+<tr>
+<td>preg_match</td>
+<td>108</td>
+</tr>
+<tr>
+<td>strtolower</td>
+<td>98</td>
+</tr>
+<tr>
+<td>array_keys</td>
+<td>97</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>95</td>
+</tr>
+<tr>
+<td>array_filter</td>
+<td>91</td>
+</tr>
+<tr>
+<td>is_numeric</td>
+<td>80</td>
+</tr>
+<tr>
+<td>array_map</td>
+<td>71</td>
+</tr>
+<tr>
+<td>is_int</td>
+<td>68</td>
+</tr>
+<tr>
+<td>array_key_exists</td>
+<td>67</td>
+</tr>
+</tbody>
+</table>
+<h2>Top 20 funções php utilizadas pelo Code Igniter 4</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_array</td>
+<td>232</td>
+</tr>
+<tr>
+<td>function_exists</td>
+<td>182</td>
+</tr>
+<tr>
+<td>strpos</td>
+<td>172</td>
+</tr>
+<tr>
+<td>str_replace</td>
+<td>151</td>
+</tr>
+<tr>
+<td>count</td>
+<td>147</td>
+</tr>
+<tr>
+<td>in_array</td>
+<td>141</td>
+</tr>
+<tr>
+<td>is_null</td>
+<td>127</td>
+</tr>
+<tr>
+<td>trim</td>
+<td>125</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>110</td>
+</tr>
+<tr>
+<td>explode</td>
+<td>105</td>
+</tr>
+<tr>
+<td>is_string</td>
+<td>105</td>
+</tr>
+<tr>
+<td>strtolower</td>
+<td>104</td>
+</tr>
+<tr>
+<td>preg_match</td>
+<td>97</td>
+</tr>
+<tr>
+<td>array_key_exists</td>
+<td>91</td>
+</tr>
+<tr>
+<td>substr</td>
+<td>89</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>86</td>
+</tr>
+<tr>
+<td>rtrim</td>
+<td>64</td>
+</tr>
+<tr>
+<td>preg_replace</td>
+<td>64</td>
+</tr>
+<tr>
+<td>defined</td>
+<td>60</td>
+</tr>
+<tr>
+<td>define</td>
+<td>57</td>
+</tr>
+</tbody>
+</table>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Quais s&atilde;o as top 20 fun&ccedil;&otilde;es do php mais usadas pelos frameworks?",
+  "description": "Por curiosidade eu decidir rankear a utiliza&ccedil;&atilde;o das fun&ccedil;&otilde;es nativas do php nos frameworks mais populares.",
+  "image": [
+    "https://thephp.website/assets/images/posts/15-question-mark-640.webp"
+   ],
+  "datePublished": "2020-06-16T00:00:00+08:00",
+  "dateModified": "2020-04-16T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+</body>
+<script src="/assets/build/js/main.js?id=859740b518dcddb1fe42"></script>
+</html>
