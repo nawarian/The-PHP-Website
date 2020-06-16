@@ -1,0 +1,13 @@
+{
+  "require": {
+    "grpc/grpc": "1.25.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ThePHPWebsite\\": "src/"
+    }
+  }
+}
