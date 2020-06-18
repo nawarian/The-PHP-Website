@@ -14,6 +14,12 @@ meta:
 
 # [Remoto ou São Paulo] Back-End Developer [VerifyMyAge]
 
+### Our Business
+
+VMA was founded in 2019 to serve businesses that sell age-restricted products and services, with a significantly better alternative. We’re a small team and self-funded, but in less than 12 months we’ve verified 1m+ consumers, gained over 400 merchants, and achieved 6 figure MRR.
+
+However, our journey has only just begun. VMA is the first of a series of consumer authentication products we plan to build, which by early 2021 will be housed under one brand - Nucleus. We have a global vision to empower consumers and businesses to frictionlessly, efficiently, and securely transact on the web.
+
 ### The Role
 
 We’re looking for a Back-end Developer to help maintain and develop our age verification, passwordless, payments and portable identity solutions. You will be creating microservices to run on serverless environments and integrating them with artificial intelligence APIs and SDKs for scanning user documents and biometrics. You will be integrating our solution with third party e-commerce websites, CMSs, payment gateways and the Open Banking API. 
