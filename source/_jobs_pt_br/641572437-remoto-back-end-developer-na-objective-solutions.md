@@ -84,6 +84,6 @@ CLT
 
 ## Como se candidatar
 
-Você pode se candidatar a vaga clicando [aqui](https://objective.gupy.io/jobs/231123), ou se preferir pode enviar um e-mail para gabriela.hoffmann@objective.com.br com o seu CV ou link do perfil no Linkedin.
+Você pode se candidatar a vaga clicando [aqui](https://objective.gupy.io/jobs/231724), ou se preferir pode enviar um e-mail para gabriela.hoffmann@objective.com.br com o seu CV ou link do perfil no Linkedin.
 
 Fonte: https://github.com/backend-br/vagas/issues/2565
