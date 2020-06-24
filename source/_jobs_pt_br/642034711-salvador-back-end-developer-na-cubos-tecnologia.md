@@ -54,7 +54,7 @@ A Cubos uma desenvolvedora de softwares e, nos nossos projetos, utilizamos metod
 
 ## Local
 
-Escritório, Salvador - Caminho das Árvores. Por conta do Coronavírus, o trabalho será remoto até que a situação seja normalizada.
+Escritório, Salvador - Caminho das Árvores.
 
 ## Requisitos
 
