@@ -78,7 +78,7 @@ PJ a combinar
 
 ## Como se candidatar
 
-Por favor envie um email para jobs@croct.com com sua conta do LinkedIn e do GitHub.
+A primeira etapa do processo consiste em um teste de raciocínio lógico, disponível [neste link](https://forms.gle/DUjj27r6h6iPkvX29).
 
 ## Tempo médio de feedbacks
 
