@@ -45,7 +45,7 @@ Estamos interessados na contribuição para o projeto, independente do seu níve
 ## Benefícios
 
 - ajudar a salvar vidas;
-- possibilidade de participação societária;
+- possibilidade de options;
 
 **Diferenciais:**
 
