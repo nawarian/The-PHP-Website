@@ -134,9 +134,12 @@
 
     <h1>Quais são as top 20 funções do php mais usadas pelos frameworks?</h1>
     <p><a href="/en/issue/most-used-php-functions/">Read in English</a></p>
-<p>Eu me questiono muito sobre o quão útil este post é. Mas
+<p><s>Eu me questiono muito sobre o quão útil este post é. Mas
 eu acho que faz sentido compartilhá-lo e também o código
-que me ajudou a alcançar estes números.</p>
+que me ajudou a alcançar estes números.</s> Muitíssimo obrigado
+pelo seu feedback, esta lista ficou muito mais massa do
+que eu poderia ter imaginado e eu estou muito contente de
+como ela foi recebida pela comunidade.</p>
 <p>Este post também é pra sinalizar que eu só estive ocupado,
 mas não desisti do projeto do site 😉. </p>
 <p>Abaixo eu mostro as top 20 funções mais utilizadas por
@@ -144,15 +147,20 @@ frameworks php.</p>
 <p>Você pode encontrar o código que usei pra obter estes
 dados neste
 <a href="https://github.com/nawarian/The-PHP-Website/tree/master/code/15-framework-functions/">repositório do github</a>.</p>
-<p>Eu coletei estes dados baseado nos seus branches principais
-na data de hoje. (16/06/2020)</p>
+<p><s>Eu coletei estes dados baseado nos seus branches principais
+na data de hoje. (16/06/2020)</s></p>
+<p><strong>Edit (2020-06-27):</strong> como solicitado, o framework Yii2 foi adicionado
+hoje e a lista toda foi atualizada. Então todo código analizado aqui se refere
+ao branch principal na data de hoje. Ao mesmo tempo, eu decidi também
+adicionar o PHPUnit e o WordPress na lista já que muitos de vocês
+apresentaram curiosidade sobre eles. </p>
 <p>Sinta-se livre pra me <a href="https://twitter.com/nawarian">pingar no twitter</a>
 se você quiser ver outro framework nesta lista aqui! 😊</p>
 <h2>Pedido atentido: Top dos top!</h2>
 <p>Já que uma galera pediu, aqui vai uma lista das top 5
 funções entre todas as listas aqui.</p>
 <p>Eu vou pular o <code>sprintf()</code> porque o symfony sozinho
-joga o número pra <code>2_743</code> e ficaria meio injusto.</p>
+joga o número pra <code>2_746</code> e ficaria meio injusto.</p>
 <p>A lista compiladinha é a seguinte:</p>
 <table>
 <thead>
@@ -163,24 +171,24 @@ joga o número pra <code>2_743</code> e ficaria meio injusto.</p>
 </thead>
 <tbody>
 <tr>
-<td>is_array</td>
-<td>1414</td>
+<td>substr</td>
+<td>3417</td>
 </tr>
 <tr>
-<td>count</td>
-<td>1102</td>
+<td>is_array</td>
+<td>2523</td>
 </tr>
 <tr>
 <td>strpos</td>
-<td>1001</td>
+<td>1940</td>
 </tr>
 <tr>
-<td>substr</td>
-<td>974</td>
+<td>count</td>
+<td>1903</td>
 </tr>
 <tr>
-<td>implode</td>
-<td>845</td>
+<td>in_array</td>
+<td>1828</td>
 </tr>
 </tbody>
 </table>
@@ -189,6 +197,188 @@ o <code>is_array()</code> e <code>count()</code>. Eu testei em alguns repositór
 que eu trabalho e em alguns o número de chamadas ao <code>count()</code>
 fica em torno de 3 mil.</p>
 <p>Só coisa boa 🤣</p>
+<h2>Top 20 funções php utilizadas no WordPress</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>substr</td>
+<td>2200</td>
+</tr>
+<tr>
+<td>sprintf</td>
+<td>1939</td>
+</tr>
+<tr>
+<td>in_array</td>
+<td>912</td>
+</tr>
+<tr>
+<td>is_array</td>
+<td>769</td>
+</tr>
+<tr>
+<td>strpos</td>
+<td>667</td>
+</tr>
+<tr>
+<td>printf</td>
+<td>633</td>
+</tr>
+<tr>
+<td>define</td>
+<td>584</td>
+</tr>
+<tr>
+<td>str_replace</td>
+<td>572</td>
+</tr>
+<tr>
+<td>trim</td>
+<td>566</td>
+</tr>
+<tr>
+<td>count</td>
+<td>556</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>541</td>
+</tr>
+<tr>
+<td>preg_match</td>
+<td>501</td>
+</tr>
+<tr>
+<td>defined</td>
+<td>432</td>
+</tr>
+<tr>
+<td>function_exists</td>
+<td>430</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>417</td>
+</tr>
+<tr>
+<td>preg_replace</td>
+<td>412</td>
+</tr>
+<tr>
+<td>explode</td>
+<td>385</td>
+</tr>
+<tr>
+<td>array_merge</td>
+<td>372</td>
+</tr>
+<tr>
+<td>array_keys</td>
+<td>275</td>
+</tr>
+<tr>
+<td>is_string</td>
+<td>275</td>
+</tr>
+</tbody>
+</table>
+<h2>Top 20 funções php utilizadas no PHPUnit</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sprintf</td>
+<td>188</td>
+</tr>
+<tr>
+<td>func_get_args</td>
+<td>183</td>
+</tr>
+<tr>
+<td>count</td>
+<td>90</td>
+</tr>
+<tr>
+<td>strpos</td>
+<td>49</td>
+</tr>
+<tr>
+<td>explode</td>
+<td>43</td>
+</tr>
+<tr>
+<td>trim</td>
+<td>39</td>
+</tr>
+<tr>
+<td>class_exists</td>
+<td>39</td>
+</tr>
+<tr>
+<td>get_class</td>
+<td>39</td>
+</tr>
+<tr>
+<td>assert</td>
+<td>38</td>
+</tr>
+<tr>
+<td>file_get_contents</td>
+<td>34</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>32</td>
+</tr>
+<tr>
+<td>preg_match</td>
+<td>32</td>
+</tr>
+<tr>
+<td>substr</td>
+<td>32</td>
+</tr>
+<tr>
+<td>is_string</td>
+<td>31</td>
+</tr>
+<tr>
+<td>is_array</td>
+<td>29</td>
+</tr>
+<tr>
+<td>array_merge</td>
+<td>26</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>26</td>
+</tr>
+<tr>
+<td>in_array</td>
+<td>23</td>
+</tr>
+<tr>
+<td>str_replace</td>
+<td>21</td>
+</tr>
+<tr>
+<td>is_object</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
 <h2>Top 20 funções php utilizadas no Symfony</h2>
 <table>
 <thead>
@@ -200,31 +390,31 @@ fica em torno de 3 mil.</p>
 <tbody>
 <tr>
 <td>sprintf</td>
-<td>2743</td>
+<td>2746</td>
 </tr>
 <tr>
 <td>substr</td>
-<td>708</td>
+<td>715</td>
 </tr>
 <tr>
 <td>strpos</td>
-<td>594</td>
+<td>602</td>
 </tr>
 <tr>
 <td>count</td>
-<td>588</td>
+<td>590</td>
 </tr>
 <tr>
 <td>is_array</td>
-<td>572</td>
+<td>573</td>
 </tr>
 <tr>
 <td>strlen</td>
-<td>445</td>
+<td>446</td>
 </tr>
 <tr>
 <td>implode</td>
-<td>436</td>
+<td>438</td>
 </tr>
 <tr>
 <td>class_exists</td>
@@ -236,11 +426,11 @@ fica em torno de 3 mil.</p>
 </tr>
 <tr>
 <td>preg_match</td>
-<td>336</td>
+<td>338</td>
 </tr>
 <tr>
 <td>in_array</td>
-<td>333</td>
+<td>336</td>
 </tr>
 <tr>
 <td>str_replace</td>
@@ -252,11 +442,11 @@ fica em torno de 3 mil.</p>
 </tr>
 <tr>
 <td>array_keys</td>
-<td>234</td>
+<td>235</td>
 </tr>
 <tr>
 <td>get_class</td>
-<td>224</td>
+<td>226</td>
 </tr>
 <tr>
 <td>array_key_exists</td>
@@ -264,7 +454,7 @@ fica em torno de 3 mil.</p>
 </tr>
 <tr>
 <td>explode</td>
-<td>189</td>
+<td>192</td>
 </tr>
 <tr>
 <td>is_object</td>
@@ -287,6 +477,97 @@ lida com o lançamento de exceções. </p>
 <blockquote>
 <p>Exceções e mensagens de erro dever ser concatenadas utilizando sprintf;</p>
 </blockquote>
+<h2>Top 20 functions used by Yii2</h2>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Utilizações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_array</td>
+<td>300</td>
+</tr>
+<tr>
+<td>implode</td>
+<td>210</td>
+</tr>
+<tr>
+<td>strpos</td>
+<td>182</td>
+</tr>
+<tr>
+<td>substr</td>
+<td>172</td>
+</tr>
+<tr>
+<td>array_merge</td>
+<td>150</td>
+</tr>
+<tr>
+<td>count</td>
+<td>147</td>
+</tr>
+<tr>
+<td>is_string</td>
+<td>140</td>
+</tr>
+<tr>
+<td>trim</td>
+<td>118</td>
+</tr>
+<tr>
+<td>preg_match</td>
+<td>107</td>
+</tr>
+<tr>
+<td>str_replace</td>
+<td>104</td>
+</tr>
+<tr>
+<td>get_class</td>
+<td>104</td>
+</tr>
+<tr>
+<td>call_user_func</td>
+<td>103</td>
+</tr>
+<tr>
+<td>in_array</td>
+<td>91</td>
+</tr>
+<tr>
+<td>array_keys</td>
+<td>90</td>
+</tr>
+<tr>
+<td>strncmp</td>
+<td>77</td>
+</tr>
+<tr>
+<td>explode</td>
+<td>73</td>
+</tr>
+<tr>
+<td>preg_replace</td>
+<td>66</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>62</td>
+</tr>
+<tr>
+<td>array_key_exists</td>
+<td>62</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>56</td>
+</tr>
+</tbody>
+</table>
 <h2>Top 20 funções php utilizadas pelo Laravel</h2>
 <table>
 <thead>
@@ -298,59 +579,59 @@ lida com o lançamento de exceções. </p>
 <tbody>
 <tr>
 <td>is_null</td>
-<td>440</td>
+<td>450</td>
 </tr>
 <tr>
 <td>is_array</td>
-<td>243</td>
+<td>250</td>
 </tr>
 <tr>
 <td>array_merge</td>
-<td>196</td>
+<td>203</td>
 </tr>
 <tr>
 <td>func_get_args</td>
 <td>155</td>
 </tr>
 <tr>
-<td>str_replace</td>
-<td>146</td>
+<td>count</td>
+<td>149</td>
 </tr>
 <tr>
-<td>count</td>
-<td>143</td>
+<td>str_replace</td>
+<td>148</td>
 </tr>
 <tr>
 <td>is_string</td>
-<td>129</td>
+<td>132</td>
 </tr>
 <tr>
 <td>in_array</td>
-<td>120</td>
+<td>126</td>
 </tr>
 <tr>
 <td>explode</td>
-<td>119</td>
+<td>120</td>
 </tr>
 <tr>
 <td>trim</td>
-<td>111</td>
+<td>110</td>
 </tr>
 <tr>
 <td>method_exists</td>
-<td>97</td>
+<td>102</td>
 </tr>
 <tr>
 <td>implode</td>
-<td>91</td>
+<td>93</td>
 </tr>
 <tr>
 <td>get_class</td>
-<td>84</td>
+<td>86</td>
 </tr>
 <tr>
 <td>function_exists</td>
-<td>81</td>
+<td>79</td>
 </tr>
 <tr>
 <td>compact</td>
@@ -362,7 +643,7 @@ lida com o lançamento de exceções. </p>
 </tr>
 <tr>
 <td>is_numeric</td>
-<td>69</td>
+<td>71</td>
 </tr>
 <tr>
 <td>sprintf</td>
@@ -370,11 +651,11 @@ lida com o lançamento de exceções. </p>
 </tr>
 <tr>
 <td>call_user_func</td>
-<td>61</td>
+<td>63</td>
 </tr>
 <tr>
 <td>array_values</td>
-<td>58</td>
+<td>61</td>
 </tr>
 </tbody>
 </table>
@@ -387,10 +668,6 @@ lida com o lançamento de exceções. </p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>is_int</td>
-<td>11</td>
-</tr>
 <tr>
 <td>assert</td>
 <td>27</td>
@@ -408,11 +685,15 @@ lida com o lançamento de exceções. </p>
 <td>14</td>
 </tr>
 <tr>
+<td>debug_backtrace</td>
+<td>11</td>
+</tr>
+<tr>
 <td>get_class</td>
 <td>11</td>
 </tr>
 <tr>
-<td>debug_backtrace</td>
+<td>is_int</td>
 <td>11</td>
 </tr>
 <tr>
@@ -424,7 +705,7 @@ lida com o lançamento de exceções. </p>
 <td>10</td>
 </tr>
 <tr>
-<td>getmypid</td>
+<td>is_resource</td>
 <td>9</td>
 </tr>
 <tr>
@@ -432,11 +713,15 @@ lida com o lançamento de exceções. </p>
 <td>9</td>
 </tr>
 <tr>
-<td>is_resource</td>
+<td>getmypid</td>
 <td>9</td>
 </tr>
 <tr>
-<td>printf</td>
+<td>count</td>
+<td>8</td>
+</tr>
+<tr>
+<td>usleep</td>
 <td>6</td>
 </tr>
 <tr>
@@ -444,12 +729,8 @@ lida com o lançamento de exceções. </p>
 <td>6</td>
 </tr>
 <tr>
-<td>usleep</td>
+<td>printf</td>
 <td>6</td>
-</tr>
-<tr>
-<td>count</td>
-<td>8</td>
 </tr>
 <tr>
 <td>stream_socket_pair</td>
@@ -460,11 +741,11 @@ lida com o lançamento de exceções. </p>
 <td>5</td>
 </tr>
 <tr>
-<td>substr</td>
+<td>defined</td>
 <td>5</td>
 </tr>
 <tr>
-<td>defined</td>
+<td>substr</td>
 <td>5</td>
 </tr>
 </tbody>
@@ -611,11 +892,11 @@ em comparação com os outros frameworks ^^.</p>
 <td>110</td>
 </tr>
 <tr>
-<td>explode</td>
+<td>is_string</td>
 <td>105</td>
 </tr>
 <tr>
-<td>is_string</td>
+<td>explode</td>
 <td>105</td>
 </tr>
 <tr>
@@ -672,7 +953,7 @@ em comparação com os outros frameworks ^^.</p>
     "https://thephp.website/assets/images/posts/15-question-mark-640.webp"
    ],
   "datePublished": "2020-06-16T00:00:00+08:00",
-  "dateModified": "2020-04-16T00:00:00+08:00",
+  "dateModified": "2020-06-27T00:00:00+08:00",
   "author": {
     "@type": "Person",
     "name": "Nawarian N&iacute;ckolas Da Silva"
