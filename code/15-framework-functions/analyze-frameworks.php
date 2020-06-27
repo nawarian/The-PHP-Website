@@ -14,6 +14,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 $parser = (new ParserFactory())->create(ParserFactory::ONLY_PHP7);
 
 $frameworks = new DirectoryIterator(__DIR__ . '/frameworks');
+
+// Used for calculating the top of the pops
+$mostUsedFunctions = [];
 foreach ($frameworks as $framework) {
     if ($framework->isFile() || $framework->isDot()) {
         continue;
@@ -67,7 +70,7 @@ foreach ($frameworks as $framework) {
         }
     }
 
-    asort($internalFunctions);
+    arsort($internalFunctions);
 
     echo 'Framework: ' . $framework->getBasename() . PHP_EOL;
     foreach ($internalFunctions as $function => $callCount) {
@@ -75,8 +78,24 @@ foreach ($frameworks as $framework) {
             continue;
         }
 
+        $mostUsedFunctions[$function] = ($mostUsedFunctions[$function] ?? 0) + $callCount;
         echo "{$function} | {$callCount}" . PHP_EOL;
     }
 
     echo PHP_EOL;
 }
+
+arsort($mostUsedFunctions);
+if (key($mostUsedFunctions) === 'sprintf') {
+    // Remove sprintf from the top because Symfony abuses it
+    array_shift($mostUsedFunctions);
+}
+
+$topOfThePops = array_slice($mostUsedFunctions, 0, 5);
+
+echo 'Top 5' . PHP_EOL;
+foreach ($topOfThePops as $function => $callCount) {
+    echo "{$function} | {$callCount}" . PHP_EOL;
+}
+
+echo PHP_EOL;
