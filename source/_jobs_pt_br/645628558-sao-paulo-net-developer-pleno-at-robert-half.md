@@ -43,7 +43,7 @@ Assistência Odontológica
 Assistência médica
 
 **Contratação**
-CLT (até R$ 8k)
+CLT (até R$ 9k)
 
 **Como se candidatar**
 Por favor envie um email para livia.mello@roberthalf.com.br com seu CV anexado.
