@@ -14,10 +14,6 @@ meta:
 
 # [REMOTO] Back-end Developer na Gerencianet Pagamentos
 
-# Atualização
-
-- **26/06/2020** - Processo seletivo em aberto e iniciado há 15 dias;
-
 ## Atividades principais
 
 - Desenvolvimento de soluções no ramo de pagamentos;
@@ -86,25 +82,12 @@ Home Office
 - Vale Transporte;
 - Ambiente de trabalho descontraído e propício para o aprendizado.
 
+## Formação
+
+Superior Completa em Sistemas de Informações, Ciência da Computação ou áreas similares;
+
 ## Como se candidatar
 
 https://gerencianet.com.br/trabalheconosco
-
-### Labels
-
-- AWS
-- CLT
-- Full Time
-- Git
-- Imediato
-- MySQL
-- NodeJS
-- NoSQL
-- Pleno
-- Remoto
-- Rest
-- Senior
-- Swagger
-- Testes automatizados
 
 Fonte: https://github.com/backend-br/vagas/issues/2610
