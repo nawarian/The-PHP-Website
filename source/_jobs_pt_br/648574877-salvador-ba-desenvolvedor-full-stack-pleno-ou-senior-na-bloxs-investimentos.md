@@ -48,7 +48,7 @@ Salvador - BA
 
 ## Contratação
 
-PJ a combinar
+CLT/PJ a combinar
 
 ## Como se candidatar
 
@@ -57,6 +57,7 @@ Envie seu currículo e portfólio para o e-mail lucas@bloxs.com.br - enviar no a
 ## Labels
 
 #### Regime
+- CLT
 - PJ
 
 #### Nível
