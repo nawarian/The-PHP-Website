@@ -44,7 +44,7 @@ Conhecimento de design de API e integração de back-end é uma vantagem
 
 ## Benefícios
 
-- Salário de 2.500,00 R$
+- Bolsa CNPQ de 2.500,00 R$
 
 ## Contratação
 
@@ -65,7 +65,7 @@ E-mail para contato em caso de não haver resposta: andre@amachains.com
 - Remoto
 
 #### Regime
-- CLT
+- Bolsa CNPQ
 
 #### Nível
 - Júnior

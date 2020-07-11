@@ -43,9 +43,9 @@ The person in this role will be involved in the rebuild of our client's whole pl
 - Experience working with  and NodeJS
 - Experience working in Cloud environments
 
-**Apply by filling this form: https://bit.ly/2BKTZEd** 
+**You can apply by filling this form: https://bit.ly/2BKTZEd** 
 Please include my name, Maria Bonel, when applying and I'll get back to you as soon as possible!
 
-**#PHP #Laravel #MySQL #SQL #BackendDeveloper** 
+**# # #MySQL #SQL #BackendDeveloper** 
 
 Fonte: https://github.com/backend-br/vagas/issues/2681

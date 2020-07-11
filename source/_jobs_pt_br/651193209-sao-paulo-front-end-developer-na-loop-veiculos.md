@@ -91,5 +91,6 @@ E-mail para contato em caso de não haver resposta: t.william.espindola@loopbras
 #### Nível
 - Pleno
 - Sênior
+- Junior
 
 Fonte: https://github.com/frontendbr/vagas/issues/3278
