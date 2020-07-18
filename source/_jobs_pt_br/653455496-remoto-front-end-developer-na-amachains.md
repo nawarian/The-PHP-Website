@@ -16,7 +16,7 @@ meta:
 
 ## Nossa empresa
 
-A Amachains é uma startup que tem como missão levar transparência e confiança para as pessoas através do desenvolvimento de redes de negócios sustentáveis com blockchain. Estamos contratando um profissional na área de desenvolvimento Frontend júnior remoto de forma temporária (3 meses), com possibilidade de permanência. 
+A Amachains (https://www.amachains.com) é uma startup que tem como missão levar transparência e confiança para as pessoas através do desenvolvimento de redes de negócios sustentáveis com blockchain. Estamos contratando um profissional na área de desenvolvimento Frontend júnior remoto de forma temporária (3 meses), com possibilidade de permanência. 
 
 ## Descrição da vaga
 

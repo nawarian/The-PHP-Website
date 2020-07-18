@@ -23,7 +23,7 @@ Imagine it as a mix of Instagram and Linkedin, but only for F&B professionals. A
 ## Descrição da vaga
 
 ### Your mission
-You will be part of our product eXperience team, focusing on building the best possible product for our global user community. By this, you help them to build their skills and careers in the hospitality industry. Your focus will be to work in both FE (60-70%) and BE (30-40%) to have full autonomy to bring product from idea to production. As part of our engineering team you will spec, build, test and deploy new features and grow as an engineer as well as a person.
+You will be part of our product eXperience team, focusing on building the best possible product for our global user community. By this, you help them to build their skills and careers in the hospitality industry. Your focus will be to work in both BE (60-70%) and FE (30-40%) to have full autonomy to bring product from idea to production. As part of our engineering team you will spec, build, test and deploy new features and grow as an engineer as well as a person.
 
 ### Your responsibility
 During the first 12 months this will be your major tasks.
