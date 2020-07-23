@@ -22,7 +22,10 @@
         "yargs": "^4.6.0"
     },
     "dependencies": {
+        "fuse.js": "^6.4.0",
         "highlight.js": "^9.16.2",
+        "moment": "^2.27.0",
+        "whatwg-fetch": "^3.2.0",
         "yue.css": "^0.4.0"
     }
 }

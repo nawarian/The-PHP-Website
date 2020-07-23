@@ -19,7 +19,9 @@ final class SearchIndexGenerator
                 'category' => $publication->get('category'),
                 'createdAt' => $publication->get('createdAt'),
                 'description' => $publication->get('meta', [])['description'] ?? '',
-                'tags' => implode(', ', $publication->get('tags')),
+                'tags' => $publication->get('tags'),
+                'imageUrl' => $publication->get('image', [])['url'] ?? '',
+                'imageAlt' => $publication->get('image', [])['alt'] ?? '',
             ];
         })->values()->toArray();
 

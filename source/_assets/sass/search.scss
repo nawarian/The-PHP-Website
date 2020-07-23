@@ -1,0 +1,35 @@
+@use 'node_modules/yue.css/yue.css';
+@use 'node_modules/highlight.js/scss/solarized-light.scss';
+
+.container {
+  padding-top: 1em;
+}
+
+.search-form {
+  padding: 0 2vw;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__input {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.search-results {
+  @media (min-width: 900px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+}

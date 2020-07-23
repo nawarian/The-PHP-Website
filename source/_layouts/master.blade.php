@@ -66,6 +66,11 @@
           <a href="{{ ($page->lang ?? 'en') === 'en' ? '/en/' : '/br/' }}">Home</a>
         </li>
         <li class="menu__list-item">
+          <a href="{{ ($page->lang ?? 'en') === 'en' ? '/en/search' : '/br/busca' }}">
+            {{ ($page->lang ?? 'en') === 'en' ? 'search.php' : 'busca.php' }}
+          </a>
+        </li>
+        <li class="menu__list-item">
           <a
             href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
             rel="nofollow"

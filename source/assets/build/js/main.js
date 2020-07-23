@@ -25149,15 +25149,27 @@ highlight_js__WEBPACK_IMPORTED_MODULE_0___default.a.initHighlightingOnLoad();
 
 /***/ }),
 
+/***/ "./source/_assets/sass/search.scss":
+/*!*****************************************!*\
+  !*** ./source/_assets/sass/search.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*************************************************************************!*\
-  !*** multi ./source/_assets/js/main.js ./source/_assets/sass/main.scss ***!
-  \*************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** multi ./source/_assets/js/main.js ./source/_assets/sass/main.scss ./source/_assets/sass/search.scss ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/js/main.js */"./source/_assets/js/main.js");
-module.exports = __webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/sass/main.scss */"./source/_assets/sass/main.scss");
+__webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/sass/main.scss */"./source/_assets/sass/main.scss");
+module.exports = __webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/sass/search.scss */"./source/_assets/sass/search.scss");
 
 
 /***/ })
