@@ -51,6 +51,10 @@ ao branch principal na data de hoje. Ao mesmo tempo, eu decidi também
 adicionar o PHPUnit e o WordPress na lista já que muitos de vocês
 apresentaram curiosidade sobre eles. 
 
+**Edit (2020-07-23):** atendendo a pedidos, Mangento 2 agora também
+faz parte da lista! Os resultados são bem interessantes na miha opinião.
+Ele jogou fora o `strpos()` do top 5 e trouxe o `implode()` em seu lugar ^^
+
 Sinta-se livre pra me [pingar no twitter](https://twitter.com/nawarian)
 se você quiser ver outro framework nesta lista aqui! 😊
 
@@ -66,11 +70,11 @@ A lista compiladinha é a seguinte:
 
 Função | Utilizações
 -------- | ------
-substr | 3417
-is_array | 2523
-strpos | 1940
-count | 1903
-in_array | 1828
+is_array | 3943
+substr | 3784
+count | 2948
+in_array | 2729
+implode | 2334
 
 Eu devo dizer que tô bem impressionado sobre o quanto usamos
 o `is_array()` e `count()`. Eu testei em alguns repositórios
@@ -103,6 +107,31 @@ explode | 385
 array_merge | 372
 array_keys | 275
 is_string | 275
+
+## Top 20 funções php utilizadas no Magento 2
+
+Função | Utilizações
+------ | -----------
+is_array | 1420
+sprintf | 1141
+count | 1045
+array_merge | 976
+in_array | 901
+implode | 822
+array_keys | 697
+explode | 674
+trim | 491
+str_replace | 475
+array_key_exists | 441
+substr | 367
+strlen | 358
+strpos | 358
+is_string | 330
+preg_match | 296
+strtolower | 293
+json_encode | 269
+get_class | 267
+is_numeric | 262
 
 ## Top 20 funções php utilizadas no PHPUnit
 
