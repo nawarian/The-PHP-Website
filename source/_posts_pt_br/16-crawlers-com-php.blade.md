@@ -25,11 +25,12 @@ meta:
 [Read in English](/en/issue/how-to-write-crawlers-with-php)
 
 Você provavelmente já viu vários posts sobre como escrever crawlers com php.
-O que difere este post dos outros? Eu garanto que você não precisa se malucar
-com expressões regulares, variáveis globais e todo esse tipo de coisa irritante.
+O que difere este post dos outros? É que eu garanto que você não precisa se
+malucar com expressões regulares, variáveis globais e todo esse tipo de coisa
+irritante.
 
 Nós vamos usar uma ferramenta maravilhosa chamada `spatie/crawler` que vai nos
-forcnecer uma ótima interface para escrever crawlers sem ir à loucura!
+fornecer uma ótima interface para escrever crawlers sem ir a loucura!
 
 **Abaixo tem um vídeo meu codificando este crawler. É só rolar a página até o
 vídeo se tu quiser pular direto pra ação. 😉**
@@ -42,9 +43,9 @@ alguma forma.
 
 Você pode olhar o repositório nesta url aqui: [https://people.php.net](https://people.php.net).
 
-## Configurando o ambiente
+## Configurando o ambiente de desenvolvimento
 
-Montar o ambiente vai ser bem rápido, eu vou só copiar as sessões _composer_
+Montar o ambiente vai ser bem rápido, eu vou só copiar as secções _composer_
 e _php_ desse outro post que eu escrevi sobre [como montar um ambiente com docker rapidex](/br/edicao/php-docker-setup-rapido).
 
 Meu arquivo _docker-compose.yml_ ficou assim:
@@ -78,7 +79,7 @@ $ docker-compose run \
 ```
 
 Tudo o que a gente precisa agora é um arquivo pra executar, vamos criar
-um arquivo bin/crawler.php:
+um arquivo `bin/crawler.php`:
 
 ```bash
 $ mkdir bin
@@ -107,7 +108,7 @@ $ docker-compose run php \
 Normalmente a gente deveria navegar pelo website e entender como ele funciona:
 padrões de url, chamadas ajax, tokens csrf, se feeds ou APIs estão disponíveis.
 
-Neste caso nenhuma das opções está disponível. A gente precisa criar um crawler
+Neste caso nem feeds e nem APIs estão disponíveis. A gente precisa criar um crawler
 cruzão mesmo que vai buscar páginas em HTML e interpretá-las.
 
 Eu vejo alguns padrões de URL:
@@ -134,10 +135,10 @@ nesse aqui que eu fiz pra ti:
 
 <iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/HaMoYhTV1hI?start=21" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Mão na massa!
+## Mãos à massa!
 
 O pacote `spatie/crawler` traz duas classes abstratas muito importantes - que
-eu adoraria que fossem interfaces.
+eu adoraria que fossem interfaces 👀.
 
 Uma delas é a classe `CrawlObserver`, onde a gente pode se conectar aos passos
 de obter uma página e manipular respostas http. A nossa lógica entra aqui.
