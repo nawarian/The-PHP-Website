@@ -6,6 +6,7 @@ use Nawarian\ThePHPWebsite\FetchJobOpportunities;
 use Nawarian\ThePHPWebsite\Infrastructure\Domain\Job\GithubIssueJobRepository;
 use Nawarian\ThePHPWebsite\PostQualityVerifier;
 use Nawarian\ThePHPWebsite\RssGenerator;
+use Nawarian\ThePHPWebsite\SearchIndexGenerator;
 use TightenCo\Jigsaw\Jigsaw;
 use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
 use TightenCo\Jigsaw\PageVariable;
@@ -161,6 +162,24 @@ $events->afterBuild(function (Jigsaw $jigsaw) {
     file_put_contents(
         $outputPath . '/br/feed-vagas.xml',
         $portugueseJobsFeed->toAtomFeedFormat(Feed::RSS_FEED_V2)
+    );
+});
+
+// Search Index
+$events->afterBuild(function (Jigsaw $jigsaw) {
+    $destination = $jigsaw->getDestinationPath();
+    /** @var SearchIndexGenerator $generator */
+    $generator = $jigsaw->app->make(SearchIndexGenerator::class);
+
+    $output = $generator->generateIndex(
+        $jigsaw->getCollection('posts_en')
+            ->values()
+            ->merge($jigsaw->getCollection('posts_pt_br')->values())
+    );
+
+    file_put_contents(
+        $destination . '/search-index.json',
+        $output
     );
 });
 
