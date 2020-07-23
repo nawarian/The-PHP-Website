@@ -135,10 +135,11 @@
     <h1>Como escrever crawlers decentes com PHP</h1>
     <p><a href="/en/issue/how-to-write-crawlers-with-php">Read in English</a></p>
 <p>Você provavelmente já viu vários posts sobre como escrever crawlers com php.
-O que difere este post dos outros? Eu garanto que você não precisa se malucar
-com expressões regulares, variáveis globais e todo esse tipo de coisa irritante.</p>
+O que difere este post dos outros? É que eu garanto que você não precisa se
+malucar com expressões regulares, variáveis globais e todo esse tipo de coisa
+irritante.</p>
 <p>Nós vamos usar uma ferramenta maravilhosa chamada <code>spatie/crawler</code> que vai nos
-forcnecer uma ótima interface para escrever crawlers sem ir à loucura!</p>
+fornecer uma ótima interface para escrever crawlers sem ir a loucura!</p>
 <p><strong>Abaixo tem um vídeo meu codificando este crawler. É só rolar a página até o
 vídeo se tu quiser pular direto pra ação. 😉</strong></p>
 <h2>Nosso caso de uso</h2>
@@ -146,8 +147,8 @@ vídeo se tu quiser pular direto pra ação. 😉</strong></p>
 do diretório oficial do PHP sobre pessoas que contribuíram com a linguagem de
 alguma forma.</p>
 <p>Você pode olhar o repositório nesta url aqui: <a href="https://people.php.net">https://people.php.net</a>.</p>
-<h2>Configurando o ambiente</h2>
-<p>Montar o ambiente vai ser bem rápido, eu vou só copiar as sessões <em>composer</em>
+<h2>Configurando o ambiente de desenvolvimento</h2>
+<p>Montar o ambiente vai ser bem rápido, eu vou só copiar as secções <em>composer</em>
 e <em>php</em> desse outro post que eu escrevi sobre <a href="/br/edicao/php-docker-setup-rapido">como montar um ambiente com docker rapidex</a>.</p>
 <p>Meu arquivo <em>docker-compose.yml</em> ficou assim:</p>
 <pre><code class="language-yaml">version: '3'
@@ -172,7 +173,7 @@ services:
     spatie/crawler \
     symfony/css-selector</code></pre>
 <p>Tudo o que a gente precisa agora é um arquivo pra executar, vamos criar
-um arquivo bin/crawler.php:</p>
+um arquivo <code>bin/crawler.php</code>:</p>
 <pre><code class="language-bash">$ mkdir bin
 $ touch bin/crawler.php</code></pre>
 <p>Massa! Agora vamos adicionar o autoload nesse arquivo e estamos prontos pra começar:</p>
@@ -187,7 +188,7 @@ require_once __DIR__ .
 <h2>Vamos analizar o site alvo</h2>
 <p>Normalmente a gente deveria navegar pelo website e entender como ele funciona:
 padrões de url, chamadas ajax, tokens csrf, se feeds ou APIs estão disponíveis.</p>
-<p>Neste caso nenhuma das opções está disponível. A gente precisa criar um crawler
+<p>Neste caso nem feeds e nem APIs estão disponíveis. A gente precisa criar um crawler
 cruzão mesmo que vai buscar páginas em HTML e interpretá-las.</p>
 <p>Eu vejo alguns padrões de URL:</p>
 <ul>
@@ -209,9 +210,9 @@ importantes pra gente são:</p>
 <p>Abaixo você encontra o código, mas se você prefere mais vídeos, dá uma ligadinha
 nesse aqui que eu fiz pra ti:</p>
 <iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/HaMoYhTV1hI?start=21" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen><iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/HaMoYhTV1hI?start=21" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
-<h2>Mão na massa!</h2>
+<h2>Mãos à massa!</h2>
 <p>O pacote <code>spatie/crawler</code> traz duas classes abstratas muito importantes - que
-eu adoraria que fossem interfaces.</p>
+eu adoraria que fossem interfaces 👀.</p>
 <p>Uma delas é a classe <code>CrawlObserver</code>, onde a gente pode se conectar aos passos
 de obter uma página e manipular respostas http. A nossa lógica entra aqui.</p>
 <p>Eu vou escrever um observer rapidinho com uma classe anônima abaixo:</p>
