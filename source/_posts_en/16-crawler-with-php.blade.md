@@ -40,7 +40,7 @@ from the official PHP directory of people who support(ed) the language somehow.
 
 You can check out the entire directory in this url: [https://people.php.net](https://people.php.net).
 
-## Set up the environment
+## Set up the development environment
 
 The environment set up will be very quick and dirty, I’ll just copy over the _composer_
 and _php_ sections from this other post I wrote on
@@ -106,7 +106,8 @@ $ docker-compose run php \
 Normally we should navigate around and figure out how the website works: url patterns,
 ajax calls, csrf tokens, if feeds or APIs are available.
 
-In this case, none are available. We need a raw crawling to fetch html data and parse it.
+In this case, neither feeds nor APIs are available. We need a raw crawling to fetch
+html data and parse it.
 
 I see some url patterns:
 - Person profile page: people.php.net/{nickname}
