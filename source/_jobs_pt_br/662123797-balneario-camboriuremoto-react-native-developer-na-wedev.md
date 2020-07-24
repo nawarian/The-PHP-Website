@@ -14,6 +14,9 @@ meta:
 
 # [Balneário Camboriú/Remoto] React Native Developer na WeDev
 
+----
+# VAGA PAUSADA POR ENQUANTO!
+----
 # Nossa empresa
 
 A [WeDev](http://wedev.software) nasceu como braço da [Capital Digital Aberto](https://capitaldigitalaberto.com.br/) como uma necessidade de ter um núcleo de desenvolvimento para a plataforma da empresa e daí cresceu para uma empresa prestadora de serviços de software e inovação, atuando principalmente no setor financeiro e de blockchain fornece desenvolvimento de aplicativos mobile, web e back-end.
