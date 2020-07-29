@@ -27,7 +27,7 @@ class Job
         string $source
     ) {
         $this->id = $id;
-        $this->title = $title;
+        $this->title = str_replace('\'', '', $title);
         $this->createdAt = $createdAt;
         $this->rawBody = $rawBody;
         $this->source = $source;
