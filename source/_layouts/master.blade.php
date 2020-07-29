@@ -24,15 +24,15 @@
   @include('_layouts.partials.meta')
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ $page->get('gaId')[$page->lang ?? 'en'] }}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ $page->get('gtag') }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '{{ $page->get('gaId')[$page->lang ?? 'en'] }}');
+    gtag('config', '{{ $page->get('gtag') }}');
   </script>
-  <script data-ad-client="ca-pub-3681134868307419" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script data-ad-client="{{ $page->get('adsenseTag') }}" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- Hotjar Tracking Code for thephp.website -->
   <script>
     (function(h,o,t,j,a,r){
