@@ -110,16 +110,16 @@ In this case, neither feeds nor APIs are available. We need a raw crawling to fe
 html data and parse it.
 
 I see some url patterns:
-- Person profile page: people.php.net/{nickname}
-- Directory page: people.php.net/?page={number}
-- External links
+* Person profile page: people.php.net/{nickname}
+* Directory page: people.php.net/?page={number}
+* External links
 
 Seems nice and simple! We should only care about parsing the HTML inside person
 profile pages and ignore the other ones.
 
 By checking the profile page we can quickly fetch the selectors that are important to us:
-- Name: `h1[property=foaf:name]`
-- Nickname: `h1[property=foaf:nick]`
+* Name: `h1[property=foaf:name]`
+* Nickname: `h1[property=foaf:nick]`
 
 We can also trust that people’s e-mail there are basically “{nick}@php.net”.
 With this info in hands, let’s code!

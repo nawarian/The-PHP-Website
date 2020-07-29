@@ -68,8 +68,8 @@ joga o número pra `2_746` e ficaria meio injusto.
 
 A lista compiladinha é a seguinte:
 
-Função | Utilizações
--------- | ------
+| Função | Utilizações |
+| -------- | ------ |
 is_array | 3943
 substr | 3784
 count | 2948
@@ -85,8 +85,8 @@ Só coisa boa 🤣
 
 ## Top 20 funções php utilizadas no WordPress
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 substr | 2200
 sprintf | 1939
 in_array | 912
@@ -110,8 +110,8 @@ is_string | 275
 
 ## Top 20 funções php utilizadas no Magento 2
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 is_array | 1420
 sprintf | 1141
 count | 1045
@@ -135,8 +135,8 @@ is_numeric | 262
 
 ## Top 20 funções php utilizadas no PHPUnit
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 sprintf | 188
 func_get_args | 183
 count | 90
@@ -160,8 +160,8 @@ is_object | 17
 
 ## Top 20 funções php utilizadas no Symfony
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 sprintf | 2746
 substr | 715
 strpos | 602
@@ -192,8 +192,8 @@ lida com o lançamento de exceções.
 
 ## Top 20 functions used by Yii2
 
-Função | Utilizações
--------- | ------
+| Função | Utilizações |
+| -------- | ------ |
 is_array | 300
 implode | 210
 strpos | 182
@@ -217,8 +217,8 @@ reset | 56
 
 ## Top 20 funções php utilizadas pelo Laravel
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 is_null | 450
 is_array | 250
 array_merge | 203
@@ -242,8 +242,8 @@ array_values | 61
 
 ## Top 20 funções php utilizadas pelo Amp
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 assert | 27
 range | 26
 microtime | 17
@@ -274,8 +274,8 @@ em comparação com os outros frameworks ^^.
 
 ## Top 20 funções php utilizadas pelo Cake PHP
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 sprintf | 480
 is_array | 367
 strpos | 235
@@ -299,8 +299,8 @@ array_key_exists | 67
 
 ## Top 20 funções php utilizadas pelo Code Igniter 4
 
-Função | Utilizações
------- | -----------
+| Função | Utilizações |
+| -------- | ------ |
 is_array | 232
 function_exists | 182
 strpos | 172

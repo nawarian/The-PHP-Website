@@ -114,10 +114,10 @@ that would test some basic features from the extension.
 
 I picked then a couple of requirements to implement:
 
-- The snake must be constantly moving, but may change direction
-- There shall be one fruit placed in a random spot on the screen
-- When the head of the snake hits a fruit five things must happen: the fruit must be destroyed, the snake's body must grow, another fruit must be created, the score counter must increase by one and Snake's speed also increases.
-- When Snake hits a window edge it should warp to the opposite edge
+* The snake must be constantly moving, but may change direction
+* There shall be one fruit placed in a random spot on the screen
+* When the head of the snake hits a fruit five things must happen: the fruit must be destroyed, the snake's body must grow, another fruit must be created, the score counter must increase by one and Snake's speed also increases.
+* When Snake hits a window edge it should warp to the opposite edge
 
 Should be clear, but is also required that the player would change Snake's
 direction using an input device, like a keyboard.

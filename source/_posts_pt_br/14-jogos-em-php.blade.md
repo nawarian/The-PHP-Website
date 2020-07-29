@@ -119,10 +119,10 @@ básicas da extensão.
 
 Então eu resolvi pegar alguns requisitos pra implementar:
 
-- A cobrinha precisa mover-se constantemente, mas pode mudar de direção
-- Deverá existir apenas uma frutinha na tela, posicionada aleatóriamente
-- Quando a cabeça da cobrinha toca numa fruta, cinco coisas devem acontecer: a fruta tem de ser destruída, o corpo da cobrinha deve crescer, outra fruta deve ser criada, o contador de pontos deve aumentar em 1 e a velocidade da cobrinha também deverá aumentar
-- Quando a cobrinha toca na borda da tela, ela deverá aparecer do outro lado
+* A cobrinha precisa mover-se constantemente, mas pode mudar de direção
+* Deverá existir apenas uma frutinha na tela, posicionada aleatóriamente
+* Quando a cabeça da cobrinha toca numa fruta, cinco coisas devem acontecer: a fruta tem de ser destruída, o corpo da cobrinha deve crescer, outra fruta deve ser criada, o contador de pontos deve aumentar em 1 e a velocidade da cobrinha também deverá aumentar
+* Quando a cobrinha toca na borda da tela, ela deverá aparecer do outro lado
 
 Deveria ser claro, mas também é requisito que o jogador possa mudar a
 direção em que a cobrinha anda usando alguma ferramenta de entrada como

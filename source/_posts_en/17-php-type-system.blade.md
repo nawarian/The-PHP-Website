@@ -52,11 +52,11 @@ cost-free in many cases.
 To better clarify how the language deals with types I'll split this article
 into the following sections:
 
-- [Kinds of types in php](#kinds-of-types-in-php)
-- [Type "operations" in php](#type-operations-in-php)
-- [Union Types](#union-types)
-- [PHP's type juggling](#php-type-juggling)
-- [PHP type modes](#php-type-modes)
+* [Kinds of types in php](#kinds-of-types-in-php)
+* [Type "operations" in php](#type-operations-in-php)
+* [Union Types](#union-types)
+* [PHP's type juggling](#php-type-juggling)
+* [PHP type modes](#php-type-modes)
 
 If you have suggestions on what to add here, feel free to
 [reach out to me on twitter](https://twitter.com/nawarian) or opening an issue on
@@ -90,10 +90,10 @@ and **special types**.
 
 Scalar types are the bare bones of the language and they are four:
 
-- Boolean (`bool` | `boolean`)
-- Integer (`int` | `integer`)
-- Float (`float` | `double`)
-- String (`string`)
+* Boolean (`bool` | `boolean`)
+* Integer (`int` | `integer`)
+* Float (`float` | `double`)
+* String (`string`)
 
 By definition scalar types do not carry behaviour or state with themselves.
 Expressions like `100->toString()` or `'thephp.website'::length()` are invalid.
@@ -109,10 +109,10 @@ capabilities.**
 
 The four compound types are:
 
-- [array](#compound-type-array)
-- [object](#compound-type-object)
-- [callable](#compound-type-callable)
-- [iterable](#compound-type-iterable)
+* [array](#compound-type-array)
+* [object](#compound-type-object)
+* [callable](#compound-type-callable)
+* [iterable](#compound-type-iterable)
 
 <h4 id="compound-type-array">The array compound type</h4>
 
@@ -625,9 +625,9 @@ This also means that type coercion (implicit casts) will also happen automatical
 they aren't supposed to be a surprise! There are very specific moments where a type coercion may occur.
 
 Type coercions (and therefore juggling) may occur:
-- when resolving an expression
-- when passing arguments to a function or method
-- when returning from a function or method
+* when resolving an expression
+* when passing arguments to a function or method
+* when returning from a function or method
 
 You might be thinking: well, if coercions are everywhere then how does php handle
 incompatible types? Converting an integer to a boolean seems ok, but an array to
@@ -663,13 +663,13 @@ hood for you.
 To illustrate, here goes the decision tree for converting a type to boolean.
 **Boolean conversion will return false when the original value is**:
 
-- a bool(FALSE)
-- an `int(0)` or `int(-0)`
-- a `float(0)` or `float(-0)`
-- an empty `string("")` or the zero `string("0")`
-- an empty `array()`
-- a NULL
-- a SimpleXML instance created from empty tags
+* a bool(FALSE)
+* an `int(0)` or `int(-0)`
+* a `float(0)` or `float(-0)`
+* an empty `string("")` or the zero `string("0")`
+* an empty `array()`
+* a NULL
+* a SimpleXML instance created from empty tags
 
 **And it will return true for everything else.**
 

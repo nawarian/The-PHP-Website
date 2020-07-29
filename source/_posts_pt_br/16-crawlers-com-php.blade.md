@@ -112,17 +112,17 @@ Neste caso nem feeds e nem APIs estão disponíveis. A gente precisa criar um cr
 cruzão mesmo que vai buscar páginas em HTML e interpretá-las.
 
 Eu vejo alguns padrões de URL:
-- Página de perfil: people.php.net/{nickname}
-- Página de diretório: people.php.net/?page={number}
-- Links externos
+* Página de perfil: people.php.net/{nickname}
+* Página de diretório: people.php.net/?page={number}
+* Links externos
 
 Parece simples! A gente só precisa se preocupar em interpretar o HTML dentro
 de páginas de perfil e ignorar o restante.
 
 Ao verificar a página de perfil podemos perceber rapidamente que os seletores
 importantes pra gente são:
-- Nome: `h1[property=foaf:name]`
-- Apelido: `h1[property=foaf:nick]`
+* Nome: `h1[property=foaf:name]`
+* Apelido: `h1[property=foaf:nick]`
 
 A gente também pode confiar que o e-mail das pessoas segue o padrão "{apelido}@php.net".
 
