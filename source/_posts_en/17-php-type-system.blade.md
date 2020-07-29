@@ -62,6 +62,12 @@ If you have suggestions on what to add here, feel free to
 [reach out to me on twitter](https://twitter.com/nawarian) or opening an issue on
 github.
 
+**Aahh!! If you like this kind of content, you'll certainly enjoy my post about
+[How the Just In Time compiler works](/en/issue/php-8-jit/). Just open in another
+tab and check it out later, you won't regret 😉**
+
+<hr />
+
 <h2 id="kinds-of-types-in-php">Kinds of types in php</h2>
 
 PHP's type system is very simplified when it comes to language features.
