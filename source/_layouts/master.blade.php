@@ -32,6 +32,7 @@
 
     gtag('config', '{{ $page->get('gaId')[$page->lang ?? 'en'] }}');
   </script>
+  <script data-ad-client="ca-pub-3681134868307419" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <!-- Hotjar Tracking Code for thephp.website -->
   <script>
     (function(h,o,t,j,a,r){
