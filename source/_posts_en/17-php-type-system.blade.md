@@ -204,8 +204,7 @@ $obj->0; // Illegal
 ```
 
 **Main takeaway: objects normally have lower memory profiles than arrays, they carry
-state and behaviour, they all inherit from stdClass and can be created by casting an
-array.**
+state and behaviour and can be created by casting an array.**
 
 <h4 id="compound-type-callable">The callable compound type</h4>
 
