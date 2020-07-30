@@ -61,6 +61,6 @@ Meal voucher
 Transportation voucher or parking space
 Contract: CLT 
 
-If this seems a challenge that you would like to be a part of, we’d love to hear from you. [Please send your resume for us. ](http://maxihost.homerun.co/software-engineer-frontend/en/apply)
+If this seems a challenge that you would like to be a part of, we’d love to hear from you. [Please send your resume for us. ](https://www.maxihost.com/careers?jobId=gBjnJWe8Hil8&utm_source=Github_4000128629&utm_medium=Free%20Advertisement_4000121128)
 
 Fonte: https://github.com/frontendbr/vagas/issues/3338
