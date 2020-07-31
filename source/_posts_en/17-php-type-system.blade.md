@@ -21,6 +21,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](/br/edicao/tipos-em-php/)
+
 **PHP is a dynamically typed scripting language** and until the year
 of 2015 php had no support for statically declared types at all. One
 could cast to scalar types explicitly in the code, but declaring scalar
@@ -204,8 +206,7 @@ $obj->0; // Illegal
 ```
 
 **Main takeaway: objects normally have lower memory profiles than arrays, they carry
-state and behaviour, they all inherit from stdClass and can be created by casting an
-array.**
+state and behaviour and can be created by casting an array.**
 
 <h4 id="compound-type-callable">The callable compound type</h4>
 
