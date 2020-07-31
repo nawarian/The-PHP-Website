@@ -134,7 +134,8 @@
     </time>
 
     <h1>Everything you need (and don&#039;t need) to know about PHP&#039;s type system</h1>
-    <p><strong>PHP is a dynamically typed scripting language</strong> and until the year
+    <p><a href="/br/edicao/tipos-em-php/">Leia em Português</a></p>
+<p><strong>PHP is a dynamically typed scripting language</strong> and until the year
 of 2015 php had no support for statically declared types at all. One
 could cast to scalar types explicitly in the code, but declaring scalar
 types in methods and functions signatures wasn't a thing until PHP 7.0
@@ -273,8 +274,7 @@ but one can't dereference its value because property names may not start with nu
 $obj = (object) [0, 1]; // Legal
 $obj-&gt;0; // Illegal</code></pre>
 <p><strong>Main takeaway: objects normally have lower memory profiles than arrays, they carry
-state and behaviour, they all inherit from stdClass and can be created by casting an
-array.</strong></p>
+state and behaviour and can be created by casting an array.</strong></p>
 <h4 id="compound-type-callable">The callable compound type</h4>
 <p>A callable in php is anything that can be called (oh don't you say!!) with parenthesis
 or with the <a href="https://www.php.net/manual/en/function.call-user-func.php">call_user_func()</a>
