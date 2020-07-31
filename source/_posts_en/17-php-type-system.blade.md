@@ -21,6 +21,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](/br/edicao/tipos-em-php/)
+
 **PHP is a dynamically typed scripting language** and until the year
 of 2015 php had no support for statically declared types at all. One
 could cast to scalar types explicitly in the code, but declaring scalar

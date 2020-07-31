@@ -22,6 +22,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Read in English](/en/issue/php-type-system)
+
 **PHP é uma linguagem dinamicamente tipada** e até o ano de 2015 quase
 não tinha suporte para declarar tipos de forma estática. Já era possível
 realizar um cast para tipos escalares de forma explícita no código,
@@ -468,7 +470,394 @@ implícita e você deve sempre prestar atenção nisso!**
 
 ### Type hints
 
-@TODO FINISH TRANSLATING! THIS TEXT IS GIGANTIC! 😭
+O type hinting é um mecanismo de, ao mesmo tempo, reforçar a coerção de tipos e de import tipagem
+estrita. Isto foi introduzido ao php na versão 7.0 e transforma assinaturas de métodos e funções.
+[Desde o php 7.4 também é possível fazer type hint com propriedades de classes](https://wiki.php.net/rfc/typed_properties_v2).
+
+Abaixo vai um exemplo de type hint:
+
+```php
+<?php
+
+function somar(
+  int $a,
+  int $b
+): int {
+  return $a + $b;
+}
+```
+
+As dicas (hints) aqui dizem que a variável `$a` é do tipo _int_ naturalmente ou transformada
+pela linguagem, a variável `$b` também é do tipo _int_ e o resultado desta função será do tipo
+_int_, de forma natural ou transformada automaticamente pela linguagem (coerção).
+
+Reparou que eu disse que elas são de certo tipo "de forma natural ou transformada automaticamente
+pela linguagem (coerção)"? Isso porque o PHP não vai reclamar se você chamar esta função
+com valores que não são do tipo int. O que vai acontecer, aliás, é que o php vai tentar converter
+implicitamente (coerção) os parâmetros em inteiros se o tipo não for o esperado.
+
+**No corpo da função a seguir você pode sempre ter certeza de que `$a` e `$b` são inteiros. Mas
+de que os inteiros estão corretos somente quem chama função pode garantir.**
+
+```php
+<?php
+
+function somar(
+  int $a,
+  int $b
+): int {
+  // $a é int(10)
+  // $b é int(10)
+  return $a + $b;
+}
+
+somar('10 maçãs', '10 bananas');
+```
+
+Também é possível ativar uma diretiva chamada `strict_types` para evitar coerções e
+simplesmente gerar erros quando tipos invalidos são utilizados. Como à seguir:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+function somar(
+  int $a,
+  int $b
+): int {
+  return $a + $b;
+}
+
+somar('10 bananas', '10 maçãs');
+// PHP Fatal error: Uncaught
+// TypeError: Argument 1 passed
+// to somar() must be of the type
+// int, string given
+```
+
+**Isso não significa que o php é estaticamente tipado quando strict_types está
+ligado!** Na realidade, o type hinting apenas adiciona um processamento extra.
+Internamente ele sempre fará o malabarismo de tipos (type juggling) e nunca
+irá confiar nos type hints da sua variável.
+
+Type hints servem a dois propósitos: definir em quais tipos um valor deveria ser
+coagido OU gerar erros fatais quando os strict types estiver ligado.
+
+**Resumão do ENEM: type hints apenas dão dicas sobre os tipos para o php, não ordens!
+Usar strict types é uma escolha que você pode tomar e trará um pequeno processamento
+extra consigo.**
+
+<h2 id="union-types">Union Types</h2>
+
+Antes de a gente falar de malabarismo de tipos (type juggling) eu gostaria de falar
+rapidinho sobre os Union Types porque parece fazer mais sentido aqui.
+
+Além dos três tipos que o php tem (escalares, compostos e especiais) o manual do php
+também menciona um
+[pseudo-tipo que só existe para facilitar a leitura do manual](https://www.php.net/manual/en/language.pseudo-types.php).
+Este tipo não existe de verdade, é apenas uma convenção.
+
+Eu gostaria que você prestasse atenção num pseudo-tipo muito específico: o `array|object`
+normalmente é utilizado na documentaçnao para especificar parâmetros ou tipos de retorno.
+
+O tipo `iterable` também é um tipo de Union Type. E pode ser definido como `array|Traversable`.
+
+Desde o php 7.1 a linguagem traz um meio-que suporte a Union Types ao ter introduzido
+o [nullable type](https://wiki.php.net/rfc/nullable_types). Se você parar pra pensar,
+um tipo nullable é apenas um Union de `T|null`. Por exemplo, `?int` significa `int|null`.
+
+Aposto que tu não pensou sobre isso antes! 😝
+
+Então depois de tantos Union Types desconhecidos,
+[o php 8.0 formalmente implementou os Union Types](https://wiki.php.net/rfc/union_types_v2).
+Onde você pode definir qualquer Union Type que precisar sem depender de pseudo-types ou
+convenções. Funciona mais ou menos assim: 
+
+```php
+<?php
+
+declare(strict_types=1);
+
+function dividir(
+  int $a,
+  int $b
+): int|float {
+  return $a / $b;
+}
+```
+
+A função acima pode retornar integer ou float. Mas nunca outro tipo.
+
+<h2 id="malabarismo-de-tipos">Malabarismo de tipos, ou type juggling</h2>
+
+Provavelmente não é a primeira vez que você ouviu falar no termo Type Juggling,
+certo? Esta é uma das funcionalidades mais importantes do php e, ainda assim, é
+uma das menos compreendidas.
+
+Eu não posso culpar ninguém por não entendê-la bem. A gente chama isso de "malabarismo"
+por um bom motivo. Uma variável pode assumir tanto tipo diferente em cada contexto
+que pode ser um tanto complicado entender com qual tipo você está lidando.
+
+Vamos começar com o seguinte: **o php não permite definir tipos explicitamente
+na declaração de variáveis**. E isso é muito poderoso!
+
+Sempre que você declara uma variável, o php vai inferir o tipo que ela possui
+baseado no valor que você a deu. Enquanto `$var;` cria uma variável com valor NULL,
+`$one = 1` cria um inteiro e `$obj = new stdClass()` cria um `object(stdClass)`.
+
+Aí não tem definição de tipo em canto algum! O php vai tomar conta de adivinhar
+qual o tipo melhor se adequa a sua variável.
+
+As variáveis do php são muito dinâmicas, de forma que elas podem mudar de tipo
+em tempo de execução sem problema algum! O código abaixo é válido:
+
+```php
+<?php
+
+$var;
+// $var é NULL
+
+$var = 1;
+// $var é int(1)
+
+$var = 'thephp.website';
+// $var é string("thephp.website")
+
+$var = new stdClass();
+// $var é object(stdClass)
+```
+
+E por as variáveis serem tão dinâmicas, várias operações no php exigem que os
+valores sejam verificados baseado no contexto da operação. Uma expressão como a
+soma (a + b) internamente irá verificar o tipo do primeiro operando e depois tentar
+adivinhar o tipo do segundo operando. 
+
+Dê uma sacada [nesse snippet do código fonte do php](https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L47-L84).
+Se `op1` for long (a é um inteiro) então verifique se `op2` também é long (b é inteiro).
+Se sim, faça uma soma de longs. Se não, verifique se `op2` é um double e faça uma
+soma de doubles se sim. E esta expressão
+[pode retornar um inteiro](https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L61)
+ou [um float](https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L74).
+
+**E é por isso que eu te garanto que o malabarismo de tipos (type juggling) vai acontecer
+automaticamente.**
+
+Isso também significa que coerção de tipos (conversões implicitas) vão acontecer automaticamente.
+Mas elas não deveriam ser uma surpresa! Há momentos muito específicos onde uma coerção
+de tipos deve acontecer.
+
+Coerção de tipos (e, portanto, malabarismo de dados) ocorrem quando:
+
+* resolvem-se expressões
+* passam-se argumentos para uma função ou método
+* retorna-se de uma função ou método
+
+Você pode estar se perguntando: ué, se coerção acontece em todo canto então como
+o php lida com tipos incompatíveis? Converter um inteiro para boolean parece normal,
+mas um array para inteiro já começa a ficar estranho.
+
+Bem, o php tem regras muito bem definidas para fazer conversão de tipos. Primeiro
+entende-se qual o tipo que o resultado deveria ter e só então é feita a conversão.
+
+Por exemplo, se uma expressão ocorrer dentro de um `if()` a gente pode perceber
+rapidinho que aquela expressão deve resultar em um tipo boolean.
+
+```php
+<?php
+
+$var = 100;
+// $var é int(100)
+
+// $var é tratado como
+// boolean e resulta
+// em TRUE
+if ($var) {
+  // $var ainda é int(100)
+}
+
+// $var ainda é int(100)
+```
+
+Repare como $var era `int(100)` durante todo seu ciclo de vida, mas foi tratada como
+`bool(TRUE)` dentro daquele _if()_. Isto ocorre porque o _if()_ espera uma expressão
+que retorna um boolean. O malabarismo de tipos (type juggling) é justamente o que o
+php fez por debaixo dos panos para você. 
+
+Para ilustrar, aqui vai a lista de verificações ao converter um tipo em boolean.
+**Uma conversão para boolean retornará false quando o valor original for**:
+
+* um bool(FALSE)
+* um `int(0)` ou `int(-0)`
+* um `float(0)` ou `float(-0)`
+* uma string vazia `string("")` ou a string zero `string("0")`
+* um array vazio `array()`
+* um NULL
+* uma instância de SimpleXML criada a partir de tags vazias
+
+**E irá retornar true para qualquer outro valor.**
+
+A tabela acima pode ser encontrada na
+[seção "Converting to boolean" do manual](https://www.php.net/manual/en/language.types.boolean.php#language.types.boolean.casting).
+
+A documentação completa sobre as comparações de tipos e tabelas de conversões
+[também podem ser encontradas no manual da linguagem](https://www.php.net/manual/en/types.comparisons.php).
+Eu não tomei coragem de ler, mas faz parte do meu trabalho dizer que elas existem e
+te mostrar onde 🤷🏻‍♀️
+
+**Nota importante aqui**: no php 8.0 os union types foram introduzidos e trouxeram consigo
+uma camada extra de complexidade. O malabarismo de dados (type juggling) quando lida com
+Union Types precisa seguir uma regra de precedência. E esta precedência é pré-definida em
+vez de depender da ordem dos tipos declarados.
+
+[Então se você não estiver usando strict_types os seus Union Types vão seguir esta regra](https://wiki.php.net/rfc/union_types_v2#coercive_typing_mode).
+Se o Union Type não contém o tipo do resultado, ele poderá fazer a coerção deste valor na
+seguinte ordem de precedência: `int`, `float`, `string` e `bool`.
+
+Por exemplo:
+
+```php
+<?php
+
+function f(
+  int|string $v
+): void {
+  var_dump($v);
+}
+
+f(""); // string ESTÁ no union type
+// string("")
+
+f(0); // int ESTÁ no union type
+
+f(0.0); // float NÃO ESTÁ no union type
+// int(0)
+
+f([]); // array NÃO ESTÁ no union type
+// Uncaught TypeError:
+// f(): Argument #1 ($v)
+// must be of type string|int
+```
+
+No exemplo acima algo interessantíssimo acontece! O tipo array não será convertido
+para um `bool(FALSE)`. Ele gera um TypeError em vez disso!
+
+<h2 id="modos-de-tipagem">Os modos de tipagem</h2>
+
+**Você já deve ter percebido que existem duas formas de o php lidar com tipos**. Uma
+delas é chamada **"Coercive Type Mode"** onde acontece todo aquele malabarismo e
+adivinhações de tipos. A outra é o **"Strict Type Mode"** onde **o malabarismo e
+a adivinhação ainda acontecem**, mas **quando os tipos são definidos explicitamente**
+alguns **TypeErrors serão lançados quando os tipos não forem compatíveis**.
+
+Agora, eu vejo como algo normal que pessoas programadoras de php possam esperar que a
+linguagem respeite a Lei da Troca Equivalente (等価交換法) e lhe pague com ganho de
+performance o esforço de usar strict types porque ela será então capaz de pular todas
+as verificações de tipos e executar as operações diretamente.
+
+Ao passo que eu entendo o motivo de alguém pensar desta forma, eu preciso lhe dizer:
+está completamente errado! O código a seguir contém
+[a lógica da função strlen() no código fonte do php](https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L8056-L8105).
+
+Toda vez que é necessário verificar se o php está operando no modo "Strict Type", pode-se
+buscar o boolean a partir da chamada `EX_USES_STRICT_TYPES()`. Se true, o strict types
+está ligado. Se não, o modo coercivo está.
+
+Agora, veja o snippet novamente! Ele começa assim:
+
+```c
+// ...
+zval *value;
+
+value = GET_OP1_ZVAL_PTR_UNDEF(BP_VAR_R);
+// value é o parâmetro
+// de strlen()
+
+if (EXPECTED(
+  Z_TYPE_P(value) == IS_STRING
+)) {
+  ZVAL_LONG(
+    EX_VAR(
+      opline->result.var
+    ),
+    Z_STRLEN_P(value)
+  );
+  FREE_OP1();
+  ZEND_VM_NEXT_OPCODE();
+} else {
+  // ...
+}
+```
+
+Reparou naquele primeiro _if()_ alí? Adivinha o que ele tá fazendo... EXATO! Ele
+verifica pra ti o tipo do parâmetro!!
+
+Sabe o que esse mesmo trecho de código está fazendo com o seu type hint? NADINHA! 🤣
+
+A cláusula _else_ possui o código TALVEZ vá usar strict types ou não.
+
+```c
+// ...
+} else {
+  // Ok, estamos progredindo
+  zend_bool strict;
+
+  // 😭
+  if (
+    (OP1_TYPE & (IS_VAR|IS_CV)) &&
+    Z_TYPE_P(value) == IS_REFERENCE
+  ) {
+      // ...
+  }
+
+  // ...
+
+  // OPA! 👀
+  strict = EX_USES_STRICT_TYPES();
+  do {
+    if (EXPECTED(!strict)) {
+      // ...
+    }
+    zend_internal_type_error(
+      strict,
+      /*...*/
+    );
+    ZVAL_NULL(
+      EX_VAR(opline->result.var)
+    );
+  } while (0);
+}
+```
+
+No trecho acima podemos ver um exemplo de como o modo strict type não corta nenhum
+processamento. Na verdade, acabou criando algumas verificações a mais com um único
+propósito: gerar erros fatais. 
+
+Eu não quero dizer que esta é uma implementação ruim. Eu pessoalmente estou bem
+contente com a forma que o php funciona. Mas eu acho que é importante deixar claro
+que isto não irá afetar a performance de forma positiva.
+
+**Resumão do ENEM: strict types não tornarão seu código mais rápido!**
+
+## Conclusão
+
+Esse artigo deu trabalho ein! Me fez considerar um bom tanto a ideia de escrever um livro.
+Só este artigo já daria uns 15% de um livro bacana 😂
+
+Eu espero que a informação que eu coletei aqui foi útil pra ti. E se não foi, que tenha
+sido ao menos interessante.
+
+Eu acredito que o sistema de tipos do PHP é incrivelmente rico e carrega várias funcionalidades
+legadas e também inovadoras e todas elas fazem muito sentido quando você olha para a
+história do desenvolvimento da linguagem.
+
+Como sempre, sinta-se livre para me dar um alô no twitter se você tiver algo a dizer. Você
+também pode abrir uma issue ou pull request no github e ser feliz.
+
+**Resumão do ENEM: deu um trabalhão da penga escrever E TRADUZIR este artigo. Se você quiser
+dar aquela força, por favor compartilhe em seus círculos e mídias sociais 🙏**
+
+Até a próxima! Valeu!
 
 <div class="align-right">
   --
