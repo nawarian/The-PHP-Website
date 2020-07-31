@@ -33,7 +33,7 @@ não era possível até a chegada do PHP 7.0 com as RFCs
 e [Return Type Declarations](https://wiki.php.net/rfc/return_types).
 
 Mas isso não significa que a partir da versão 7.0 o PHP passou a ser
-estaticamente tipado. **O PHP possui type hints que podem ser analizados
+estaticamente tipado. **O PHP possui type hints que podem ser analisados
 de forma estática** mas **ainda oferece suporte a tipos dinâmicos** e,
 inclusive, nos permite misturar os dois formatos.
 
@@ -288,7 +288,7 @@ escopo da classe.** Caso contrário, você pode somente chamar métodos público
 
 E também as classes que implementam
 [o método mágico __invoke()](https://www.php.net/manual/en/language.oop5.magic.php#object.invoke),
-automaticamente tranformas suas instâncias em callables. Como a seguir:
+automaticamente transforma suas instâncias em callables. Como a seguir:
 
 ```php
 <?php
@@ -356,7 +356,7 @@ foi inicializada, foi atribuída com o valor NULL ou apagada em tempo de execuç
 Instâncias possuem o tipo `object` e serão sempre representadas desta forma. Chamar a função
 [gettype()](https://www.php.net/manual/en/function.gettype) num objeto sempre irá retornar
 o valor `string("object")` e chamar a função [var_dump()](https://www.php.net/manual/en/function.var-dump)
-no mesmo objeto sempre irá imprimir seu valor usando a notação `object(NomeDaClass)`. Se você
+no mesmo objeto sempre irá imprimir seu valor usando a notação `object(NomeDaClasse)`. Se você
 precisar pegar a classe de um objeto no formato string, utilize a função
 [get_class()](https://www.php.net/manual/en/function.get-class).
 
@@ -391,7 +391,7 @@ Antes de a gente se aprofundar, aqui vão três definições importantíssimas:
 1. **Coerção de tipo** significa converter **implicitamente** um tipo de A para B. Como em `$vinte = 10 + '10 bananas';`. (`string("10 bananas")` virou `int(10)`)
 
 Tendo isto em mente, as próximos secções vão explicar como isso funciona no php. E mais
-pra frente você encontrára mais informações sobre o malabarismo de tipos (type juggling).
+pra frente você encontrará mais informações sobre o malabarismo de tipos (type juggling).
 
 #### Cast de tipos
 
@@ -399,7 +399,7 @@ De forma semelhante ao Java, o PHP nos permite fazer cast de tipos. Isto signifi
 uma variável aponta para um valor que pode ser transformado num tipo diferente, a linguagem
 nos permite uma conversão manual (explícita) de tipos.
 
-Pera, pera... É OQUE!? 🤨
+Pera, pera... É O QUE!? 🤨
 
 Ó: uma variável `$cem` segurando `string("100")` pode ser convertida manualmente (cast) para
 tornar-se `int(100)` ou `float(100.0)` - ou qualquer outro tipo escalar ou um dos tipos
@@ -452,7 +452,7 @@ Fazer o cast para classes não é permitido.**
 #### Coerção de tipos
 
 **A coerção de um tipo acontece como um efeito colateral de trabalhar com tipos incompatíveis
-ou não declarados.** Eu explico melhor mais pra frente enste artigo. Por agora apenas confia que
+ou não declarados.** Eu explico melhor mais pra frente neste artigo. Por agora apenas confia que
 o PHP vai automaticamente fazer o cast dos tipos o seu código em tempo de execução quando necessário.
 
 Um exemplo de coerção de tipos pode ser multiplicar um integer por um float. Na expressão `int(100)`
@@ -515,7 +515,7 @@ somar('10 maçãs', '10 bananas');
 ```
 
 Também é possível ativar uma diretiva chamada `strict_types` para evitar coerções e
-simplesmente gerar erros quando tipos invalidos são utilizados. Como à seguir:
+simplesmente gerar erros quando tipos inválidos são utilizados. Como à seguir:
 
 ```php
 <?php
@@ -559,7 +559,7 @@ também menciona um
 Este tipo não existe de verdade, é apenas uma convenção.
 
 Eu gostaria que você prestasse atenção num pseudo-tipo muito específico: o `array|object`
-normalmente é utilizado na documentaçnao para especificar parâmetros ou tipos de retorno.
+normalmente é utilizado na documentação para especificar parâmetros ou tipos de retorno.
 
 O tipo `iterable` também é um tipo de Union Type. E pode ser definido como `array|Traversable`.
 
@@ -643,7 +643,7 @@ ou [um float](https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L74
 **E é por isso que eu te garanto que o malabarismo de tipos (type juggling) vai acontecer
 automaticamente.**
 
-Isso também significa que coerção de tipos (conversões implicitas) vão acontecer automaticamente.
+Isso também significa que coerção de tipos (conversões implícitas) vão acontecer automaticamente.
 Mas elas não deveriam ser uma surpresa! Há momentos muito específicos onde uma coerção
 de tipos deve acontecer.
 
@@ -685,7 +685,7 @@ que retorna um boolean. O malabarismo de tipos (type juggling) é justamente o q
 php fez por debaixo dos panos para você. 
 
 Para ilustrar, aqui vai a lista de verificações ao converter um tipo em boolean.
-**Uma conversão para boolean retornará false quando o valor original for**:
+**Uma conversão para boolean retorna false quando o valor original for**:
 
 * um bool(FALSE)
 * um `int(0)` ou `int(-0)`
@@ -707,7 +707,7 @@ te mostrar onde 🤷🏻‍♀️
 
 **Nota importante aqui**: no php 8.0 os union types foram introduzidos e trouxeram consigo
 uma camada extra de complexidade. O malabarismo de dados (type juggling) quando lida com
-Union Types precisa seguir uma regra de precedência. E esta precedência é pré-definida em
+Union Types precisa seguir uma regra de precedência. E essa precedência é pré-definida em
 vez de depender da ordem dos tipos declarados.
 
 [Então se você não estiver usando strict_types os seus Union Types vão seguir esta regra](https://wiki.php.net/rfc/union_types_v2#coercive_typing_mode).
