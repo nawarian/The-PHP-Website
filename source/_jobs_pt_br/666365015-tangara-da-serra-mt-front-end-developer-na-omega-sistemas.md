@@ -18,7 +18,7 @@ meta:
 
 Fundada e mantida por pessoas apaixonadas por tecnologia e educação, a OMEGA é especialista em soluções para gestão educacional. 
 
-Nascida em uma época de carência de soluções no setor, a OMEGA desde sua criação vem cultivando um histórico positivo com seus casos de sucesso. Saiba mais em: [shorturl.at/BFK13l](http://shorturl.at/BFK13)
+Nascida em uma época de carência de soluções no setor, a OMEGA desde sua criação vem cultivando um histórico positivo com seus casos de sucesso. Saiba mais em: [https://omegasistemas.net.br/quemsomos.html](https://omegasistemas.net.br/quemsomos.html)
 
 ## Descrição da vaga
 
