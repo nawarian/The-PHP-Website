@@ -16,7 +16,7 @@ meta:
 
 ## Nossa empresa
 
-A DOUBLELEFT é uma produtora de tecnologia e integrante da holding FLAGCX, atualmente o maior grupo de comunicação independente da América Latina, com escritórios em São Paulo e NY. Estamos contratando profissional Front-end Pleno para início imediato. A contratação é PJ e todas as atividades podem ser exercidas remotamente. O nosso escritório é em São Paulo, mas estamos aceitando candidatos de todo o Brasil.
+A DOUBLELEFT é uma produtora de tecnologia e integrante da holding FLAGCX, atualmente o maior grupo de comunicação independente da América Latina, com escritórios em São Paulo e NY. Estamos contratando profissional Front-end Pleno para início imediato. Todas as atividades podem ser exercidas remotamente. O nosso escritório é em São Paulo, mas estamos aceitando candidatos de todo o Brasil.
 
 ## Requisitos técnicos
 
@@ -40,7 +40,7 @@ A DOUBLELEFT é uma produtora de tecnologia e integrante da holding FLAGCX, atua
 
 ## Contratação
 
-PJ a combinar
+A combinar
 
 ## Como se candidatar
 Por favor preencha o seguinte form e entraremos em contato: https://forms.gle/DBMN1ctyTPHGHehq9

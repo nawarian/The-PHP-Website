@@ -44,7 +44,7 @@ Conhecimentos de Messaging Architecture;
 A combinar.
 
 ## Como se candidatar
-Por favor envie um email para taiane@mazzatech com seu CV anexado - enviar no assunto: Vaga GraphQL
+Por favor envie um email para taiane@mazza.tech com seu CV anexado - enviar no assunto: Vaga GraphQL
 
 ## Tempo médio de feedbacks
 Costumamos enviar feedbacks em até 5 dias após cada processo.
