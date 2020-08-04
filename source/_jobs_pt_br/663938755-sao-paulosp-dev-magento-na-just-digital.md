@@ -2,17 +2,17 @@
 slug: 663938755-sao-paulosp-dev-magento-na-just-digital
 lang: pt-br
 createdAt: 2020-07-22
-title: '[são paulo/sp] Dev Magento na JUST DIGITAL - Vaga de Emprego'
+title: '[São Paulo/SP] Dev Magento na Just Digital - Vaga de Emprego'
 sitemap:
   lastModified: 2020-07-22
 meta:
-  description: 'Detalhes sobre a vaga de emprego: [são paulo/sp] Dev Magento na JUST DIGITAL'
+  description: 'Detalhes sobre a vaga de emprego: [São Paulo/SP] Dev Magento na Just Digital'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-# [são paulo/sp] Dev Magento na JUST DIGITAL
+# [São Paulo/SP] Dev Magento na Just Digital
 
 **Nossa empresa**
 Acreditamos no Design para criar experiências memoráveis em tudo o que fazemos e na engenharia de software para tornar isso possível.

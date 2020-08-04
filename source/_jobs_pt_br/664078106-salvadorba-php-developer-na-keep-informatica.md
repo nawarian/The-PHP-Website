@@ -2,7 +2,7 @@
 slug: 664078106-salvadorba-php-developer-na-keep-informatica
 lang: pt-br
 createdAt: 2020-07-22
-title: '[Salvador/BA] PHP Developer na KEEP Informática - Vaga de Emprego'
+title: '[Salvador/BA] PHP Developer na Keep Informática - Vaga de Emprego'
 sitemap:
   lastModified: 2020-07-22
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [Salvador/BA] PHP Developer na KEEP Informática
+# [Salvador/BA] PHP Developer na Keep Informática
 
 <!--
 ==================================================

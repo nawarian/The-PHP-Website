@@ -29,17 +29,25 @@ Criação de Templates e peças gráficas para web.
 Desenvolver e manter as criações na Plataforma Magento JN2.
 Executar as tarefas de acordo com o prazo estipulado e dentro dos índices de qualidade.
 
+_Nível:_ 
+Pleno/Sênior
+
 _Necessário:_
 Conhecimento **consolidado** em:
 Adode XD
-SketchUp
-Photoshop Illustrator
+Photoshop 
+
 Inglês técnico
+
+_Benefícios_:
+Vale Alimentação e refeição - cartão Mastercard, que pode ser usado em apps de comida além de restaurante e supermercado. 
+Desconto nas Academias Smart Fit, Plano de Saúde com  Coparticipação, Day Off no aniversário, desconto em mais de 400 estabelecimentos, incluindo faculdades de graduação e pós graduação, escolas de idiomas... Vale transporte.
 
 _Local_
 Belo Horizonte/MG
 Tipo de contratação
 CLT
+
 Como se candidatar
 Caso tenha se interessado em fazer parte do nosso time, envie seu CV **ou contato** para cristianne.furbino@jn2.com.br
 

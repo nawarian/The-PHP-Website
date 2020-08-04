@@ -2,17 +2,17 @@
 slug: 658247064-remoto-php-developer-na-apiki
 lang: pt-br
 createdAt: 2020-07-16
-title: '[REMOTO] PHP Developer na APIKI - Vaga de Emprego'
+title: '[Remoto] PHP Developer na Apiki - Vaga de Emprego'
 sitemap:
   lastModified: 2020-07-16
 meta:
-  description: 'Detalhes sobre a vaga de emprego: [REMOTO] PHP Developer na APIKI'
+  description: 'Detalhes sobre a vaga de emprego: [Remoto] PHP Developer na Apiki'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-# [REMOTO] PHP Developer na APIKI
+# [Remoto] PHP Developer na Apiki
 
 ## Sobre o nosso cliente:
 
