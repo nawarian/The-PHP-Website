@@ -55,7 +55,7 @@ Vagas presenciais em Recife/PE e full Remoto.
 ## Requisitos
 
 **Obrigatórios:**
-- 1+ anos de experiência com desenvolvimento web/mobile frontend
+- 2+ anos de experiência com desenvolvimento web/mobile frontend
 - Conhecimento intermediário em React Native/ReactJS, NodeJS e JavaScript
 - Experiência com APIs REST
 - Experiência com times de desenvolvimento
