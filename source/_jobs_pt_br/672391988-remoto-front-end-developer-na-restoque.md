@@ -42,11 +42,12 @@ Remoto
 ## Requisitos
 
 **Obrigatórios:**
-- 5 anos de experiência com javascript puro. 
-- 5 anos de experiência com componentização de HTML, CSS com bibliotecas como SCSS, SASS e metodologia de escrita de código - BEMCSS
+- 3 anos de experiência com javascript puro. 
+- 4 anos de experiência com componentização de HTML, CSS com bibliotecas como SCSS, SASS e metodologia de escrita de código - BEMCSS
 
 **Desejáveis:**
-- Domínio de JQuery
+- Conhecimento avançado de Javascript
+- Prática e conhecimento em VUE.JS ou outros frameworks atuais
 
 **Diferenciais:**
 - conhecimentos em plataforma Core / Linx
@@ -72,7 +73,7 @@ Costumamos enviar feedbacks em até 2 dias após cada processo.
 - PJ
 
 #### Nível
-
+- Pleno
 - Sênior
 - Especialista
 
