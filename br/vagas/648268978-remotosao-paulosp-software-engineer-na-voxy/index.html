@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="stylesheet" href="/assets/build/css/main.css?id=fe8dc2a406fe72bf88aa">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
   <link
     rel="alternate"
     type="application/json"
@@ -51,20 +51,26 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+  </script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu__container').classList.toggle('menu__container--active');
+    }
+  </script>
 </head>
 <body class="yue non-article">
-  <nav class="menu">
-    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
-    <label for="menu-toggle" class="menu__toggle-button">
-      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
-      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
-    </label>
-    <div class="menu__header">
-      <a href="/br/">
-        thePHP Website
-      </a>
+  <header class="menu">
+    <a class="menu__logo" href="/br/">
+      <img src="/assets/images/elephpant-idle.png" alt="" />
+    </a>
+    <div class="menu__title">
+      <a href="/br/">thePHP Website</a>
     </div>
+    <section class="menu__cta">
+      <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
+        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+      </button>
+    </section>
 
     <div class="menu__container">
       <em class="menu__section-heading">
@@ -129,8 +135,7 @@
         </li>
               </ul>
     </div>
-  </nav>
-
+  </header>
   <article class="container">
     <h1>[Remoto/São Paulo/SP] Software Engineer na [Voxy]</h1>
 <p>If you are a software engineer looking use your talent in teaching the world english take a look at Voxy.  Voxy software engineers will change the way millions of people around the world learn English by using sound science combined with innovative (and patented!) technology. We are implementing research-driven learning activities coupled with live streaming for topic-based live tutoring sessions using advanced algorithms to build a customized experience using authentic content sources from names you know (Bloomberg, AP, Financial Times and more.). Voxy’s goal is to become THE vendor of first choice in the $80 billion dollar English language education market and our development team will be instrumental in reaching this goal.</p>
@@ -178,5 +183,5 @@
 </ul>
 <p>Fonte: <a href="https://github.com/backend-br/vagas/issues/2626">https://github.com/backend-br/vagas/issues/2626</a></p>  </article>
 </body>
-<script src="/assets/build/js/main.js?id=d8d97153f6ef3455152f"></script>
+<script src="/assets/build/js/main.js?id=fd09420d5a6aa331aa18"></script>
 </html>

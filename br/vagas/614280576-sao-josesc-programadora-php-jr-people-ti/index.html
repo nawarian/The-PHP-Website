@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="stylesheet" href="/assets/build/css/main.css?id=fe8dc2a406fe72bf88aa">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
   <link
     rel="alternate"
     type="application/json"
@@ -51,20 +51,26 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+  </script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu__container').classList.toggle('menu__container--active');
+    }
+  </script>
 </head>
 <body class="yue non-article">
-  <nav class="menu">
-    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
-    <label for="menu-toggle" class="menu__toggle-button">
-      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
-      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
-    </label>
-    <div class="menu__header">
-      <a href="/br/">
-        thePHP Website
-      </a>
+  <header class="menu">
+    <a class="menu__logo" href="/br/">
+      <img src="/assets/images/elephpant-idle.png" alt="" />
+    </a>
+    <div class="menu__title">
+      <a href="/br/">thePHP Website</a>
     </div>
+    <section class="menu__cta">
+      <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
+        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+      </button>
+    </section>
 
     <div class="menu__container">
       <em class="menu__section-heading">
@@ -129,8 +135,7 @@
         </li>
               </ul>
     </div>
-  </nav>
-
+  </header>
   <article class="container">
     <h1>[SÃO JOSÉ/SC] Programador(a) PHP JR - People TI</h1>
 <p><strong>A People TI busca profissional para atuar como Programador(a) Full Stack PHP (nível júnior) na empresa Canal Telecom Tecnologia em Campinas, São José - SC.</strong></p>
@@ -163,5 +168,5 @@
 <p><strong>Envie seu currículo para cvbanco@peopleti.com.br ou inscreva-se em <a href="https://abler.in/v10449">https://abler.in/v10449</a></strong></p>
 <p>Fonte: <a href="https://github.com/backend-br/vagas/issues/2399">https://github.com/backend-br/vagas/issues/2399</a></p>  </article>
 </body>
-<script src="/assets/build/js/main.js?id=d8d97153f6ef3455152f"></script>
+<script src="/assets/build/js/main.js?id=fd09420d5a6aa331aa18"></script>
 </html>
