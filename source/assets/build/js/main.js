@@ -25167,9 +25167,9 @@ highlight_js__WEBPACK_IMPORTED_MODULE_0___default.a.initHighlightingOnLoad();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/js/main.js */"./source/_assets/js/main.js");
-__webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/sass/main.scss */"./source/_assets/sass/main.scss");
-module.exports = __webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/sass/search.scss */"./source/_assets/sass/search.scss");
+__webpack_require__(/*! /Users/nsilva/RG/personal/thephp.website/source/_assets/js/main.js */"./source/_assets/js/main.js");
+__webpack_require__(/*! /Users/nsilva/RG/personal/thephp.website/source/_assets/sass/main.scss */"./source/_assets/sass/main.scss");
+module.exports = __webpack_require__(/*! /Users/nsilva/RG/personal/thephp.website/source/_assets/sass/search.scss */"./source/_assets/sass/search.scss");
 
 
 /***/ })

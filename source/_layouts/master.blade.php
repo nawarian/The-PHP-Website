@@ -43,20 +43,26 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+  </script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu__container').classList.toggle('menu__container--active');
+    }
+  </script>
 </head>
 <body class="yue {{ ($page->get('isArticle') ?? false) ? 'non-article' : 'non-article' }}">
-  <nav class="menu">
-    <input type="checkbox" id="menu-toggle" class="menu__toggle" />
-    <label for="menu-toggle" class="menu__toggle-button">
-      <img class="menu__toggle-button--inactive" src="/assets/images/burger-menu-icon.png" alt="Open Menu">
-      <img class="menu__toggle-button--active" src="/assets/images/x-icon.png" alt="Close Menu">
-    </label>
-    <div class="menu__header">
-      <a href="{{ ($page->lang ?? 'en') === 'en' ? '/en/' : '/br/' }}">
-        thePHP Website
-      </a>
+  <header class="menu">
+    <a class="menu__logo" href="{{ ($page->lang ?? 'en') === 'en' ? '/en/' : '/br/' }}">
+      <img src="/assets/images/elephpant-idle.png" alt="" />
+    </a>
+    <div class="menu__title">
+      <a href="{{ ($page->lang ?? 'en') === 'en' ? '/en/' : '/br/' }}">thePHP Website</a>
     </div>
+    <section class="menu__cta">
+      <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
+        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+      </button>
+    </section>
 
     <div class="menu__container">
       <em class="menu__section-heading">
@@ -123,8 +129,7 @@
         @endif
       </ul>
     </div>
-  </nav>
-
+  </header>
   <article class="container">
     @yield('body')
   </article>

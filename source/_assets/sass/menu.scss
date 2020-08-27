@@ -1,0 +1,86 @@
+.menu {
+  display: flex;
+  background: #fff;
+  box-shadow: 0 0 2px #ccc;
+  z-index: 2;
+  position: sticky;
+  top: 0;
+  padding: 0 20px;
+
+  a.menu__logo {
+    display: inline-block;
+    flex-shrink: 1;
+    margin: auto;
+
+    img {
+      display: inherit;
+      width: auto;
+      height: 50px;
+      max-width: 180px;
+      image-rendering: pixelated;
+      margin: inherit;
+    }
+  }
+
+  &__title {
+    flex-grow: 1;
+    text-align: center;
+    margin: auto;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__cta {
+    flex-shrink: 1;
+    text-align: right;
+
+    &__icon {
+      flex: 1;
+      background: none;
+      border: none;
+      text-align: center;
+      height: 50px;
+    }
+  }
+
+  &__container {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    background: #fff;
+    width: 80vw;
+    height: 100%;
+    text-align: center;
+
+    &--active {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      width: 40vw;
+    }
+
+    &::before {
+      content: ' ';
+      position: fixed;
+      top: 50px;
+      left: 0;
+      background: rgba(0, 0, 0, .4);
+      width: 20vw;
+      height: 100%;
+
+      @media (min-width: 768px) {
+        width: 60vw;
+      }
+    }
+
+    .menu-list {
+      list-style: none;
+      padding: 0;
+      margin: auto;
+    }
+  }
+}
