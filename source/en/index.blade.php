@@ -3,11 +3,17 @@
 @section('body')
 <h2>Highlighted</h2>
 <div class="card">
-  <a href="{{ $latestHighlight->getUrl() . '/' }}">
+  <a href="{{ $featuredPublication->getUrl() . '/' }}">
     <div class="card__content">
-      <h3>{{ $latestHighlight->title }}</h3>
-      <p>{{ $latestHighlight->meta['description'] }}</p>
-      <time>{{ date('Y-m-d', $latestHighlight->createdAt) }}</time>
+      @if ($featuredPublication->get('image'))
+        <div
+          class="card__image"
+          style="background-image: url({{ $featuredPublication->get('image')['url'] }})"
+          alt="{{ $featuredPublication->get('image')['alt'] }}"
+        ></div>
+      @endif
+      <h3>{{ $featuredPublication->title }}</h3>
+      <p>{{ $featuredPublication->meta['description'] }}</p>
     </div>
   </a>
 </div>

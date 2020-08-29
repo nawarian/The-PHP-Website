@@ -1,4 +1,5 @@
 ---
+isFeatured: true
 lang: pt-br
 slug: php-8-jit
 title: Just In Time Compiler e o PHP 8

@@ -1,4 +1,5 @@
 ---
+isFeatured: true
 slug: php-8-jit
 title: Understanding PHP 8's JIT
 category: walkthrough

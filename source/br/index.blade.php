@@ -7,11 +7,17 @@
 @section('body')
 <h2>Em Destaque</h2>
 <div class="card">
-  <a href="{{ $latestHighlightBr->getUrl() . '/' }}">
+  <a href="{{ $featuredPublicationBr->getUrl() . '/' }}">
     <div class="card__content">
-      <h3>{{ $latestHighlightBr->title }}</h3>
-      <p>{{ $latestHighlightBr->meta['description'] }}</p>
-      <time>{{ date('d/m/Y', $latestHighlightBr->createdAt) }}</time>
+      @if ($featuredPublicationBr->get('image'))
+        <div
+          class="card__image"
+          style="background-image: url({{ $featuredPublicationBr->get('image')['url'] }})"
+          alt="{{ $featuredPublicationBr->get('image')['alt'] }}"
+        ></div>
+      @endif
+      <h3>{{ $featuredPublicationBr->title }}</h3>
+      <p>{{ $featuredPublicationBr->meta['description'] }}</p>
     </div>
   </a>
 </div>

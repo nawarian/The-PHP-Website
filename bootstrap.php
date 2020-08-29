@@ -68,17 +68,21 @@ $events->afterCollections(function (Jigsaw $app) {
         });
 
     $app->setConfig(
-        'latestHighlight',
-        $app->getCollection('faq_en')
-            ->merge($app->getCollection('thoughts_en'))
+        'featuredPublication',
+        $app->getCollection('posts_en')
+            ->filter(function (PageVariable $page) use ($app) {
+                return $page->get('isFeatured') ?? false;
+            })
             ->sortByDesc('createdAt')
             ->first()
     );
 
     $app->setConfig(
-        'latestHighlightBr',
-        $app->getCollection('faq_pt_br')
-            ->merge($app->getCollection('thoughts_pt_br'))
+        'featuredPublicationBr',
+        $app->getCollection('posts_pt_br')
+            ->filter(function (PageVariable $page) use ($app) {
+                return $page->get('isFeatured') ?? false;
+            })
             ->sortByDesc('createdAt')
             ->first()
     );
