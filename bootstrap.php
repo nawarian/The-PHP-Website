@@ -91,20 +91,16 @@ $events->afterCollections(function (Jigsaw $app) {
         'latestIssues',
         $app->getCollection('posts_en')
             ->filter(function (PageVariable $page) use ($app) {
-                return $page !== $app->getConfig('latestHighlight')
-                    && $page->get('category') !== 'faq';
+                return $page !== $app->getConfig('featuredPublication');
             })
-            ->take(12)
     );
 
     $app->setConfig(
         'latestIssuesBr',
         $app->getCollection('posts_pt_br')
             ->filter(function (PageVariable $page) use ($app) {
-                return $page !== $app->getConfig('latestHighlightBr')
-                    && $page->get('category') !== 'faq';
+                return $page !== $app->getConfig('featuredPublicationBr');
             })
-            ->take(12)
     );
     $app->setConfig('latestJobsBr', $app->getCollection('jobs_pt_br')->take(12));
 });
