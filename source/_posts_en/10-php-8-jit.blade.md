@@ -372,6 +372,10 @@ the VM-Machine Code exchange.
 I hope this article was useful for you and that you managed to grasp better what PHP 8's
 JIT is about.
 
+If you spotted any misconception or mistake, please don't refrain contacting me or just
+incrementing [this Github issue](https://github.com/nawarian/The-PHP-Website/issues/41).
+I'll be more than glad to receive your feedback and correct issues with this text asap 😉
+
 Feel free to reach me out on twitter if you'd like to add something I might have forgotten
 here and don't forget sharing this with your fellow developers, it surely will add much
 value to your conversations!
