@@ -76,6 +76,7 @@ Contratação CLT ou PJ
 Se identificou? Bora revolucionar o e-commerce com a gente!
 
 Ps: temos mais de uma vaga, indica pros amigos também!
-entrar em contato em rh@after.sale
+
+VAGA FECHADA!
 
 Fonte: https://github.com/frontendbr/vagas/issues/3495
