@@ -1,0 +1,33 @@
+---
+slug: 690388427-sao-paulo-software-engineer-nodejs-at-kovi
+lang: pt-br
+createdAt: 2020-09-01
+title: '[São Paulo] Software Engineer Node.Js @ Kovi - Vaga de Emprego'
+sitemap:
+  lastModified: 2020-09-01
+meta:
+  description: 'Detalhes sobre a vaga de emprego: [São Paulo] Software Engineer Node.Js @ Kovi'
+  twitter:
+    card: summary
+    site: '@nawarian'
+---
+
+# [São Paulo] Software Engineer Node.Js @ Kovi
+
+Descrição: A Kovi é uma startup de mobilidade movida pela paixão de mudar vidas. Diariamente, quebramos barreiras por meio da tecnologia para melhorar a vida dos motoristas de aplicativo oferecendo a melhor experiência de aluguel de carros. Aqui queremos construir um ambiente onde os funcionários se sentem donos do negócio. Assim como o significado da nossa cor, rosa, nosso ambiente é acolhedor e de muita colaboração.
+
+Local: São Paulo, após pandemia.
+
+Contratação: CLT full pela Kovi.
+
+Senioridade: Sênior (Mais de 4 anos de experiência com NodeJs
+
+Requisitos principais: Bons conhecimentos para desenvolver software em NodeJS, Typescript, Elixir, ou outras linguagens selecionadas, Sólido conhecimento da AWS, Conhecimento de bancos de dados relacionais, tecnologias SQL e NOSQL.
+
+Diferencial: Conhecimento em arquitetura serverless, Conhecimento em mensageria e arquitetura orientada a eventos.
+Fazer o cadastro no seguinte site: **https://byintera.in/kovi5**
+
+Dúvidas: https://www.linkedin.com/in/jessica-santana-96b5141a8/
+
+
+Fonte: https://github.com/backend-br/vagas/issues/2995

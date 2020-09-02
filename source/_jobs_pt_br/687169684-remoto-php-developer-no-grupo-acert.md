@@ -17,7 +17,7 @@ meta:
 # Descrição da vaga
 
 **Requisitos necessários:**
-- PHP
+- Experiência de ao menos dois anos desenvolvendo PHP
 - Orientação a objetos
 - Framework Laravel
 - Javascript (codificação e uso de bibliotecas)
