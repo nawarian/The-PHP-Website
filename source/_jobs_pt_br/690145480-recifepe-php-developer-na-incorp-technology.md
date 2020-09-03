@@ -2,7 +2,7 @@
 slug: 690145480-recifepe-php-developer-na-incorp-technology
 lang: pt-br
 createdAt: 2020-09-01
-title: '[Recife/PE PHP Developer na Incorp Technology - Vaga de Emprego'
+title: '[Recife/PE] PHP Developer na Incorp Technology - Vaga de Emprego'
 sitemap:
   lastModified: 2020-09-01
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [Recife/PE PHP Developer na Incorp Technology
+# [Recife/PE] PHP Developer na Incorp Technology
 
 ## Descrição da vaga
 
