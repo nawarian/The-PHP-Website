@@ -1,18 +1,18 @@
 ---
-slug: 685890195-remoto-pessoa-engenheira-de-software-senior-na-kenoby
+slug: 698468859-remoto-pessoa-engenheira-de-software-na-kenoby
 lang: pt-br
-createdAt: 2020-08-25
-title: '[Remoto] Pessoa Engenheira de Software Senior na Kenoby - Vaga de Emprego'
+createdAt: 2020-09-10
+title: '[REMOTO] Pessoa Engenheira de Software na Kenoby - Vaga de Emprego'
 sitemap:
-  lastModified: 2020-08-25
+  lastModified: 2020-09-10
 meta:
-  description: 'Detalhes sobre a vaga de emprego: [Remoto] Pessoa Engenheira de Software Senior na Kenoby'
+  description: 'Detalhes sobre a vaga de emprego: [REMOTO] Pessoa Engenheira de Software na Kenoby'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-# [Remoto] Pessoa Engenheira de Software Senior na Kenoby
+# [REMOTO] Pessoa Engenheira de Software na Kenoby
 
 A Kenoby, empresa que vem revolucionando o mercado de recrutamento, foi escolhida pela Endeavor como uma das melhores 16 scale up SAAS! Atualmente, a empresa recebeu um investimento de 20 milhões do fundo Astela e é uma das startups que mais vem crescendo no Brasil.
 
@@ -35,7 +35,7 @@ Não estamos em busca de nenhuma stack especifica, buscamos pessoas com propósi
 
 ## Contratação
 
-PJ
+CLT
 
 ## Como se candidatar
 
@@ -48,11 +48,11 @@ https://byintera.in/z9
 - Remoto
 
 #### Regime
-- PJ
+- CLT
 
 #### Nível
 - Sênior
 - Especialista
 - Líder
 
-Fonte: https://github.com/phpdevbr/vagas/issues/629
+Fonte: https://github.com/phpdevbr/vagas/issues/646
