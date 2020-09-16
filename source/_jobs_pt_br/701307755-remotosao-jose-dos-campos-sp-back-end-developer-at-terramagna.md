@@ -64,7 +64,7 @@ Híbrido (Presencial em São José dos Campos + Remoto)
 
 ## Benefícios
 
-Remuneração: R$ 6.000,00 a R$ 8.000,00
+Remuneração: abertos a negociação
 O que ofereceremos:
 - Stock options (de acordo com desenvolvimento na empresa)
 - Acesso a cursos e participação em eventos da área
