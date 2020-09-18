@@ -105,7 +105,7 @@ person anytime.
 
 <p>
 <strong>But don't be fooled!</strong> thePHP Website is proprietary and
-commerical. Even though its intention is to return profits to the
+commercial. Even though its intention is to return profits to the
 community in the form of services and content, there's still a team
 made of people receiving money for it.
 </p>
@@ -137,8 +137,7 @@ explicit will to deliver service and content of great quality.
 
 <p>
 Your content here will always be received and accepted. Code changes
-as well. Everything that enable us to grow together, as a community.
-como uma comunidade.
+as well. Everything that enables us to grow together, as a community.
 </p>
 
 <hr />
