@@ -17,7 +17,7 @@ class GithubIssueJobRepository implements JobRepository
     private const DEFAULT_REPOS = [
         'phpdevbr/vagas',
         'backend-br/vagas',
-        'frontendbr/vagas',
+        // 'frontendbr/vagas',
     ];
 
     private $http;
