@@ -48,7 +48,7 @@ Estamos criando do zero um novo produto que irá impactar centenas de milhares d
 
 ## Local
 
-Remoto ou Escritório, Florianópolis - Santa Catarina
+Escritório, Florianópolis - Santa Catarina
 
 ## Requisitos
 
@@ -82,7 +82,7 @@ Por favor se candidate no link: https://bit.ly/2ZIign5
 <!-- retire os labels que não fazem sentido à vaga -->
 
 #### Alocação
-- Alocado ou Remoto
+- Alocado
 
 #### Regime
 - CLT
