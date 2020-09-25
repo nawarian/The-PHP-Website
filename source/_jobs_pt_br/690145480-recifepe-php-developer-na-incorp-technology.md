@@ -33,10 +33,10 @@ Procuramos pessoas que:
 
 ## Local
 
-Escritório*, Torreão - Recife-PE
-*No momento estamos 100% home office
+- Escritório, Torreão - Recife-PE
+- Remoto
 
-## Benefícios
+## Benefícios CLT
 
 - Plano de saúde segundo sindicato
 - Seguro de vida
@@ -46,22 +46,23 @@ Escritório*, Torreão - Recife-PE
 ## Requisitos
 
 **Obrigatórios:**
-- Experiência desenvolvendo em PHP 7 e Laravel;
+- Experiência desenvolvendo em Laravel 7+ ou framworks Symfony like;
 - Experiência com Scrum
 - Git
 - Inglês técnico
 
 ## Contratação
 
-CLT
+- CLT
+- PJ
 
 ## Nossa empresa
 
-Desenvolvemos sistemas voltados para o mercado de conselhos regionais, possuindo clientes em todo o Brasil.
+- Desenvolvemos sistemas voltados para o mercado de conselhos regionais, possuindo clientes em todo o Brasil.
 
 ## Como se candidatar
 
-Por favor envie um email para flavio@incorptech.com.br com seu CV anexado e pretensão salarial - enviar no assunto: Vaga PHP Developer
+- Por favor envie um e-mail para flavio@incorptech.com.br com seu CV anexado e pretensão salarial - enviar no assunto: Vaga PHP Developer
 
 ## Labels
 
@@ -71,6 +72,7 @@ Por favor envie um email para flavio@incorptech.com.br com seu CV anexado e pret
 
 ### Contratação:
 - CLT
+- PJ
 
 ### Experiência
 - Júnior
