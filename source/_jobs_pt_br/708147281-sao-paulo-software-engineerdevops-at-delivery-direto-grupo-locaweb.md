@@ -6,7 +6,7 @@ title: '[São Paulo] Software Engineer/Devops @ Delivery Direto (Grupo Locaweb) 
 sitemap:
   lastModified: 2020-09-24
 meta:
-  description: 'Detalhes sobre a vaga de emprego: - Evoluir nossa arquitetura atual, mais monolítica, para uma nova utilizando microsserviços - Ajudar a criar pipelines e automatizar processos, como deploy, testing, etc.; - Evoluir um produto à frente do mercado, incorporando tecnologias modernas que nos ajudam a escalar; - Melhorar a nossa segurança constantemente; - Contribuir na criação de uma cultura de DevOps; - Evoluir os scripts atuais para um processo mais padronizado, seguindo GitOps; - Buscar otimizar a performance da nossa plataforma; - Ter autonomia para resolver problemas;'
+  description: 'Detalhes sobre a vaga de emprego: - Evoluir nossa arquitetura atual, mais monolítica, para uma nova utilizando microsserviços - Ajudar a criar pipelines e automatizar processos, como deploy, testing, etc.; - Evoluir um produto à frente do mercado, incorporando tecnologias modernas que nos ajudam a escalar; - Melhorar a nossa segurança constantemente; - Contribuir na evolução de uma cultura de DevOps; - Evoluir os scripts atuais para um processo mais padronizado, seguindo GitOps; - Buscar otimizar a performance da nossa plataforma; - Ter autonomia para resolver problemas;'
   twitter:
     card: summary
     site: '@nawarian'
@@ -48,7 +48,7 @@ A Delivery Direto é líder como plataforma de white label de delivery do Brasil
 - Ajudar a criar pipelines e automatizar processos, como deploy, testing, etc.;
 - Evoluir um produto à frente do mercado, incorporando tecnologias modernas que nos ajudam a escalar;
 - Melhorar a nossa segurança constantemente;
-- Contribuir na criação de uma cultura de DevOps;
+- Contribuir na evolução de uma cultura de DevOps;
 - Evoluir os scripts atuais para um processo mais padronizado, seguindo GitOps;
 - Buscar otimizar a performance da nossa plataforma;
 - Ter autonomia para resolver problemas;
