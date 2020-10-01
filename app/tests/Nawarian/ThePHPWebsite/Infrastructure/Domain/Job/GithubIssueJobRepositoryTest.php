@@ -38,12 +38,13 @@ class GithubIssueJobRepositoryTest extends TestCase
             ->willReturn($httpResponse);
         $this->http->get('https://api.github.com/repos/backend-br/vagas/issues?state=open&page=1')
             ->willReturn($httpResponse);
-        $this->http->get('https://api.github.com/repos/frontendbr/vagas/issues?state=open&page=1')
-            ->willReturn($httpResponse);
+        // $this->http->get('https://api.github.com/repos/frontendbr/vagas/issues?state=open&page=1')
+        //     ->willReturn($httpResponse);
 
         $result = $this->githubIssueJobRepository->fetch(30, 0);
 
-        self::assertCount(3, $result);
+        // self::assertCount(3, $result);
+        self::assertCount(2, $result);
         self::assertEquals('[Remoto] PHP Developer na VLabs', $result->first()->title());
         self::assertEquals('https://github.com/phpdevbr/vagas/issues/518', $result->first()->source());
     }
