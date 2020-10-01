@@ -7,6 +7,7 @@ use Nawarian\ThePHPWebsite\Infrastructure\Domain\Job\GithubIssueJobRepository;
 use Nawarian\ThePHPWebsite\PostQualityVerifier;
 use Nawarian\ThePHPWebsite\RssGenerator;
 use Nawarian\ThePHPWebsite\SearchIndexGenerator;
+use TightenCo\Jigsaw\Collection\CollectionItem;
 use TightenCo\Jigsaw\Jigsaw;
 use PODEntender\SitemapGenerator\Adapter\Jigsaw\JigsawAdapter;
 use TightenCo\Jigsaw\PageVariable;
@@ -59,12 +60,28 @@ $events->afterCollections(function (Jigsaw $app) {
         ->groupBy('category')
         ->each(function (PageVariable $episodes, string $category) use ($app) {
             $app->getSiteData()->put($category . '_en', $episodes);
+
+            $episodes->each(function (CollectionItem $item) use ($episodes) {
+                $recommendations = $episodes->filter(function ($episode) use ($item) {
+                    return $episode !== $item;
+                })->take(3);
+
+                $item->set('recommendations', $recommendations);
+            });
         });
 
     $app->getCollection('posts_pt_br')
         ->groupBy('category')
         ->each(function (PageVariable $episodes, string $category) use ($app) {
             $app->getSiteData()->put($category . '_pt_br', $episodes);
+
+            $episodes->each(function (CollectionItem $item) use ($episodes) {
+                $recommendations = $episodes->filter(function ($episode) use ($item) {
+                    return $episode !== $item;
+                })->take(3);
+
+                $item->set('recommendations', $recommendations);
+            });
         });
 
     $app->setConfig(

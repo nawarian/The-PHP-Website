@@ -133,6 +133,9 @@
   <article class="container">
     @yield('body')
   </article>
+  <aside class="container">
+    @yield('aside')
+  </aside>
 </body>
 <script src="{{ mix('js/main.js', 'assets/build') }}"></script>
 </html>
