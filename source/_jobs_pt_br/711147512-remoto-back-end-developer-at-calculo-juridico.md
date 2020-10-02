@@ -33,7 +33,7 @@ PJ _full time_ com remuneração a partir de R$ 10 mil mensais, dependendo da ex
 
 **Obrigatórios**
 - Experiência profissional com desenvolvimento web
-- Conhecimento no mínimo intermediário de Ruby on Rails
+- Conhecimento no mínimo básico de Ruby on Rails
 - Experiência profissional com Postgres, MySQL ou outro banco de dados relacional, e conhecimentos sobre uso de índices, nível de isolamento de transação etc.
 - Inglês avançado para compreensão escrita e oral (vídeos de cursos, eventos etc.)
 - Conhecimentos básicos de controle de versão, de preferência com Git
