@@ -2,7 +2,7 @@
 slug: 705199644-remoto-php-developer-no-appsaber
 lang: pt-br
 createdAt: 2020-09-20
-title: '[REMOTO] PHP Developer no AppSaber - Vaga de Emprego'
+title: '[Remoto] PHP Developer no AppSaber - Vaga de Emprego'
 sitemap:
   lastModified: 2020-09-20
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [REMOTO] PHP Developer no AppSaber
+# [Remoto] PHP Developer no AppSaber
 
 ## Descrição da vaga
 

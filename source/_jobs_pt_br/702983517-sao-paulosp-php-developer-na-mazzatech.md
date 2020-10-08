@@ -2,7 +2,7 @@
 slug: 702983517-sao-paulosp-php-developer-na-mazzatech
 lang: pt-br
 createdAt: 2020-09-16
-title: 'São Paulo/SP] PHP Developer na Mazzatech - Vaga de Emprego'
+title: '[São Paulo/SP] PHP Developer na Mazzatech - Vaga de Emprego'
 sitemap:
   lastModified: 2020-09-16
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# São Paulo/SP] PHP Developer na Mazzatech
+# [São Paulo/SP] PHP Developer na Mazzatech
 
 
 São Paulo/SP] PHP Developer na Mazzatech`

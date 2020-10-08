@@ -68,7 +68,7 @@ Te sido responsável por um sistema que já estava em Produção
 PJ a combinar
 
 ## Como se candidatar
-Apenas Perfis Pleno 
+**Apenas Perfis Pleno ou Senior**
 Venha fazer parte do Jazida, envie seu CV para vagas@jazida.com no assunto adicionar "Vaga Backend" E no email colocar a **pretensão salarial** e **perfil [PLENO] OU [SENIOR]**
 
 ## Tempo médio de feedbacks

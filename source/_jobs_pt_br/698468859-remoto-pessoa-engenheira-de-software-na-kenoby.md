@@ -2,17 +2,17 @@
 slug: 698468859-remoto-pessoa-engenheira-de-software-na-kenoby
 lang: pt-br
 createdAt: 2020-09-10
-title: '[REMOTO] Pessoa Engenheira de Software na Kenoby - Vaga de Emprego'
+title: '[Remoto] Pessoa Engenheira de Software na Kenoby - Vaga de Emprego'
 sitemap:
   lastModified: 2020-09-10
 meta:
-  description: 'Detalhes sobre a vaga de emprego: [REMOTO] Pessoa Engenheira de Software na Kenoby'
+  description: 'Detalhes sobre a vaga de emprego: [Remoto] Pessoa Engenheira de Software na Kenoby'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-# [REMOTO] Pessoa Engenheira de Software na Kenoby
+# [Remoto] Pessoa Engenheira de Software na Kenoby
 
 A Kenoby, empresa que vem revolucionando o mercado de recrutamento, foi escolhida pela Endeavor como uma das melhores 16 scale up SAAS! Atualmente, a empresa recebeu um investimento de 20 milhões do fundo Astela e é uma das startups que mais vem crescendo no Brasil.
 
