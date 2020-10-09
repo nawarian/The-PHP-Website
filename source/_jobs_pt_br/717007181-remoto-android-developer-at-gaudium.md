@@ -41,8 +41,8 @@ Remoto, então você pode se candidatar de qualquer lugar do Brasil! :)
 - Raciocínio lógico apurado e organização;
 - Disponibilidade para 40 horas semanais remota (home office).
 
-## Benefícios
-
+## Salário e Benefícios
+- Salário em torno de 6k (pode variar para menos ou mais, dependendo da experiência)
 - Vale refeição/alimentação diário de R$ 35,00;
 - Plano de saúde e Gympass;
 - Ambiente com vários desafios que farão você crescer e se desenvolver rapidamente;
