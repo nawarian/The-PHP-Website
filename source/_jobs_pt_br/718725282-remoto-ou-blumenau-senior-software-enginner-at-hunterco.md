@@ -19,7 +19,6 @@ Trabalho em uma empresa de recrutamento humanizado que se chama HunterCo, possu�
 
 #Descrição da vaga
 Estamos apoiando a Movidesk na busca de novos profissionais para o time de Software Engineer e você irá ajudar a construir, evoluir e melhorar cada vez mais o nosso produto e tecnologia. A Movidesk segue uma abordagem de full cycle developer, então você irá participar de todo ciclo de desenvolvimento, das conversas iniciais com product manager e designer, à discussões e POCs de arquitetura , implementação, escolha de tecnologias, deploy e monitoramento do que construir com sua squad.
-Exemplo: Projeto XPTO em C# Core, SignalR, API REST, RabbitMQ, etc.
 
 #Local
 Remoto ou Escritório, Blumenu/SC
