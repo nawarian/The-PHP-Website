@@ -14,7 +14,6 @@ meta:
 
 # REMOTO -BACK , FRONT E FULL STACK - ADIRETO BRASIL
 
-
 As vagas são para full-time e REMOTO.
 
 Nossa stack principal é:
@@ -29,7 +28,6 @@ Nossa stack principal é:
 
 Ótima oportunidade para quem quer atuar com tecnologia legais, em empresa bacana, aprender bastante e crescer na carreira.
 
-Quem estiver interessado, por favor, envie um e-mail com o Linkedin para fabio.l@adireto.com
 
 #### Nível
 - Júnior
