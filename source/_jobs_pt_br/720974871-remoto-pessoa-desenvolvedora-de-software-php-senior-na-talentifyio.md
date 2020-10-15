@@ -1,18 +1,18 @@
 ---
-slug: 720975961-remoto-pessoa-desenvolvedora-de-software-php-senior
+slug: 720974871-remoto-pessoa-desenvolvedora-de-software-php-senior-na-talentifyio
 lang: pt-br
 createdAt: 2020-10-13
-title: '[Remoto]  Pessoa desenvolvedora de software PHP - Senior - Vaga de Emprego'
+title: '[Remoto]  Pessoa desenvolvedora de software PHP Senior na Talentify.io - Vaga de Emprego'
 sitemap:
   lastModified: 2020-10-13
 meta:
-  description: 'Detalhes sobre a vaga de emprego: [Remoto]  Pessoa desenvolvedora de software PHP - Senior'
+  description: 'Detalhes sobre a vaga de emprego: [Remoto]  Pessoa desenvolvedora de software PHP Senior na Talentify.io'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-# [Remoto]  Pessoa desenvolvedora de software PHP - Senior
+# [Remoto]  Pessoa desenvolvedora de software PHP Senior na Talentify.io
 
 ## A empresa
 A Talentify.io nasceu da fusão de 3 empresas distintas em 3 áreas diferentes: Digital Media, Advertising e HR Consulting. Nossa plataforma de SaaS ajuda empresas a superar seus maiores desafios na  busca e contratação de talentos em grande escala.
@@ -40,11 +40,20 @@ Estamos constantemente adicionando novas features e aperfeiçoando as já existe
 - CI/CD
 - Ingles (leitura, escrita e conversacao)  
 
+## Remuneração
+- R$8000 - R$10000
 
 ## Como se candidatar
 [Aqui](https://talentify-brasil.talentify.io/job/desenvolvedor-php-sr-barueri-sp-talentify--3?utm_source=gnumoksha)
 
-## Remuneração
-- R$8000 - R$10000
+## Labels
 
-Fonte: https://github.com/backend-br/vagas/issues/3272
+### Alocação:
+- Remoto
+- Presencial
+
+### Contratação:
+- CLT
+- PJ
+
+Fonte: https://github.com/phpdevbr/vagas/issues/673
