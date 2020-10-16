@@ -43,6 +43,6 @@ Nossa empresa
 Aqui na GSURF somos líderes no transporte de dados de maneira segura e eficiente, possuímos mais de 700 mil terminais de captura em produção. Venha fazer parte do nosso time!
 
 Como se candidatar
-Por favor envie um email para rafael.frasson@gsurfnet.com com seu CV anexado - enviar no assunto: Vaga AWS
+Por favor envie um email para rafael.frasson@gsurfnet.com com seu CV anexado - enviar no assunto: Vaga C/C++
 
 Fonte: https://github.com/backend-br/vagas/issues/3278
