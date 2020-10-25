@@ -2,7 +2,7 @@
 slug: 728513721-remoto-sr-ruby-developer-sinatra-usd3500-pmonth-at-zygmus
 lang: pt-br
 createdAt: 2020-10-23
-title: '[Remoto] Sr Ruby Developer - Sinatra / USD3500 p/month @Zygmus - Vaga de Emprego'
+title: '[Remoto] Sr Ruby Developer - Sinatra / USD3500 p/month @ Zygmus - Vaga de Emprego'
 sitemap:
   lastModified: 2020-10-23
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [Remoto] Sr Ruby Developer - Sinatra / USD3500 p/month @Zygmus
+# [Remoto] Sr Ruby Developer - Sinatra / USD3500 p/month @ Zygmus
 
 <!--
 ==================================================
@@ -36,7 +36,6 @@ Exemplo: `[São Paulo] Back-End Developer @ NOME DA EMPRESA`
 Caso a vaga for remoto durante a pandemia deixar a linha abaixo
 ==================================================
 -->
-> Vaga Remota durante a pandemia
 
 ## Nossa empresa
 
