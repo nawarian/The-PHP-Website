@@ -50,7 +50,7 @@ Remoto
 
 ## Como se candidatar
 
-Preencha esse formulário: https://forms.gle/3KYq1qj5Spfgv4cD6
+Envie um e-mail com seu CV anexado com o assunto [Vaga Backend] - Seu nome para falecom@lotusexperience.com.br
 
 ## Labels
 
