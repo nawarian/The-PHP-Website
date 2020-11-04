@@ -1,10 +1,10 @@
 ---
-slug: 733774191-remoto-campo-grande-ms-back-end-developer-at-before-ti
+slug: 735604570-remoto-campo-grande-ms-back-end-developer-at-before-ti
 lang: pt-br
-createdAt: 2020-10-31
+createdAt: 2020-11-03
 title: '[Remoto / Campo Grande - MS] Back-end Developer @Before TI - Vaga de Emprego'
 sitemap:
-  lastModified: 2020-10-31
+  lastModified: 2020-11-03
 meta:
   description: 'Detalhes sobre a vaga de emprego: Projeto em PHP com framework Laravel'
   twitter:
@@ -69,5 +69,4 @@ http://bit.ly/EntrevistaBackEnd
 
 
 
-
-Fonte: https://github.com/backend-br/vagas/issues/3409
+Fonte: https://github.com/phpdevbr/vagas/issues/697
