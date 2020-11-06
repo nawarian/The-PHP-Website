@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+  
+  <title>Subindo arquivos no GitHub | thePHP Website</title>
+
+  <meta name="description" content="Subir arquivos para o GitHub é um processo simples que envolve o uso de alguns comandos no terminal como git status, add, commit, remote entre outros que veremos aqui.">
+
+  <meta property="og:title" content="Subindo arquivos no GitHub">
+  <meta property="og:description" content="Subir arquivos para o GitHub é um processo simples que envolve o uso de alguns comandos no terminal como git status, add, commit, remote entre outros que veremos aqui.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/subindo-arquivos-github">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/18-uploading-files-github-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Subindo arquivos no GitHub">
+  <meta name="twitter:description" content="Subir arquivos para o GitHub é um processo simples que envolve o uso de alguns comandos no terminal como git status, add, commit, remote entre outros que veremos aqui.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-3');
+  </script>
+  <script data-ad-client="ca-pub-3681134868307419" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Hotjar Tracking Code for thephp.website -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1770868,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu__container').classList.toggle('menu__container--active');
+    }
+  </script>
+</head>
+<body class="yue non-article">
+  <header class="menu">
+    <a class="menu__logo" href="/br/">
+      <img src="/assets/images/elephpant-idle.png" alt="" />
+    </a>
+    <div class="menu__title">
+      <a href="/br/">thePHP Website</a>
+    </div>
+    <section class="menu__cta">
+      <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
+        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+      </button>
+    </section>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/busca">
+            busca.php
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+                <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed-vagas.xml">
+            Feed de Vagas (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </header>
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-11-06">
+      2020-11-06
+    </time>
+
+    <h1>Subindo arquivos no GitHub</h1>
+    <p>Subir arquivos para o GitHub é um processo simples que envolve o uso de alguns
+comandos no terminal como git status, add, commit, remote entre outros que
+veremos aqui.</p>
+<p><strong>Ao fim deste post há também um vídeo pra te auxiliar visualmente a
+entender como subir arquivos no github.</strong></p>
+<h2>Preparação</h2>
+<p>Para esse tutorial você precisará ter o Git instalado em sua
+máquina e uma conta no GitHub.</p>
+<p>Para instalarmos o Git no windows basta entrar no <a href="https://git-scm.com/">site do git scm</a>
+e fazer o download. No linux e no mac basta colocar o comando abaixo no terminal.</p>
+<pre><code class="language-bash"># No linux
+$ sudo apt-get install git
+
+# No mac
+$ brew install git</code></pre>
+<h2>Iniciando seu repositório</h2>
+<p>Precisaremos criar o repositório no GitHub, faça login na sua conta, no seu
+perfil vá em Repositories e New.</p>
+<figure style="text-align: center">
+  <a href="/assets/images/posts/18-uploading-files-github/01-new-repository.png" target="_blank">
+    <img src="/assets/images/posts/18-uploading-files-github/01-new-repository.png" alt="Criando um repositório no Github.">
+  </a>
+</figure>
+<p>Coloque o nome desejado no campo Repository Name e uma breve descrição (não
+é obrigatório), no nosso exemplo vamos utilizar o thePHP.</p>
+<h2>Configurações iniciais</h2>
+<p>Antes de iniciarmos um repositório local é necessário definir seu nome e
+endereço de e-mail, essa configuração inicial é importante porque todos
+os commits do git utilizará essas informações, para isso use os comandos
+abaixo no terminal.</p>
+<pre><code class="language-bash">$ git config --global user.name "&lt;nome&gt;"
+$ git config --global user.email "&lt;email&gt;"</code></pre>
+<p>Caso você queira verificar as configurações é só utilizar o comando:</p>
+<pre><code class="language-bash">$ git config user.name</code></pre>
+<p>Para iniciarmos um repositório git, no terminal execute o comando abaixo
+(certifique-se que você está dentro do seu repositório utilizando o comando
+cd) ou com o botão direito do mouse dentro da pasta onde ficará o seu
+projeto clique em Git Bash Here:</p>
+<figure style="text-align: center">
+  <a href="/assets/images/posts/18-uploading-files-github/02-git-bash-here.png" target="_blank">
+    <img src="/assets/images/posts/18-uploading-files-github/02-git-bash-here.png" alt="Git Bash Here no Windows.">
+  </a>
+</figure>
+<p>E execute o comando:</p>
+<pre><code class="language-bash">$ git init</code></pre>
+<h2>Git status</h2>
+<p>O Git utiliza estados para monitorar seus arquivos, com o “git status”
+é possível ter um controle do que está se passando em seu repositório,
+para entendermos melhor como funciona, temos o exemplo abaixo que criará
+um arquivo Hello World.txt contendo dentro dele um simples texto
+“hello world” e mostrará o estado do arquivo.</p>
+<pre><code class="language-bash">$ echo Hello World &gt; helloWorld.txt
+$ git status</code></pre>
+<blockquote>
+<p>on branch master
+No commits yet
+Untracket files:
+(use “git add <file>...” to include in what will be commited)
+hellowWorld.txt
+nothing add to commit but untracked files present (use “git add” to track);</p>
+</blockquote>
+<p>Podemos observar que o arquivo helloWorld.txt está com o estado de untracked
+file, isso quer dizer que o arquivo não está sendo monitorado pelo git,
+então qualquer coisa que acontecer com ele o git não será “responsável”.</p>
+<h2>Git add</h2>
+<p>O comando “git add <nome do arquivo>” ou “git add .”  (para todos os arquivos
+no repositório) monitora os arquivos e adiciona uma alteração dele no diretório
+à staging area, que é o local onde prepara os arquivos para o próximo comite.</p>
+<pre><code class="language-bash">$ git add helloWorld.txt
+$ git status</code></pre>
+<blockquote>
+<p>on branch master
+No commits yet
+Changes to be committed:
+(use “git rm –cached <file>...” to unstage)
+new file:      helloWorld.txt</p>
+</blockquote>
+<h2>Git commit</h2>
+<p>O “git commit” captura o estado atual do arquivo e adiciona as alterações
+para o histórico do repositório local atribuindo um hash como identificação,
+com o “–m” podemos adicionar uma descrição das mudanças realizadas.</p>
+<pre><code class="language-bash">$ git commit –m “&lt;descrição&gt;”</code></pre>
+<p>Utilizando o comando “git status&quot; podemos observar que os arquivos estão
+prontos para serem encaminhados para o diretório remoto.</p>
+<h2>Git remote</h2>
+<p>O “git remote” é utilizado para gerenciar os repositórios monitorados, o
+exemplo abaixo registra o repositório remoto e adiciona o endereço em
+“origin” onde passaremos o link que pode ser encontrado na aba code do
+nosso repositório no GitHub.</p>
+<pre><code class="language-bash">$ git remote add origin &lt;endereço&gt;</code></pre>
+<h2>Git Push</h2>
+<p>Com o “git push –u origin <branch>” podemos encaminhar as mudanças
+commitadas para o GitHub, nesse exemplo utilizaremos o branch padrão master.</p>
+<pre><code class="language-bash">$ git push -u origin master</code></pre>
+<p>Depois que recarregar a página do seu repositório remoto você verá seus
+arquivos atualizados.</p>
+<h2>Conclusão</h2>
+<p>Vimos que para utilizar uma ferramenta tão poderosa como o git e subir
+seus arquivos para um repositório remoto é mais simples do que parece,
+com apenas alguns comandos aprendemos a versionar nossos arquivos e
+deixá-los em um local acessível e seguro para serem utilizados a
+qualquer momento.</p>
+<p>Como material de apoio, deixo aqui também o vídeo do Jeterson que vai
+te ajudar a visualizar melhor como subir arquivos no github.</p>
+<iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/O2DFKHla80A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen><iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/O2DFKHla80A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
+<hr>
+<p>Esta publicação foi uma contribuição de autoria de João Apostulo Neto.
+Você pode entrar em contato com ele em seu Github <a href="https://github.com/japostulo">@japostulo</a>
+ou LinkedIn <a href="https://linkedin.com/in/joaoapostulo">/joaoapostulo</a>.</p>
+<p>Envie você também a sua, mande um PR <a href="https://github.com/nawarian/The-PHP-Website">no repositório aberto do thephp.website</a>.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Subindo arquivos no GitHub",
+  "description": ".Subir arquivos para o GitHub &eacute; um processo simples que envolve o uso de alguns comandos no terminal como git status, add, commit, remote entre outros que veremos aqui.",
+  "image": [
+    "https://thephp.website/assets/images/posts/18-uploading-files-github-640.webp"
+   ],
+  "datePublished": "2020-11-06T00:00:00+08:00",
+  "dateModified": "2020-11-06T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Jo&atilde;o Apostulo Neto"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+  <aside class="container">
+          <div class="recommended">
+      <h3>Keep reading</h3>
+      <ul class="card-list">
+                  <li class="card">
+            <a href="https://thephp.website/br/edicao/como-escrever-crawlers-em-php/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/16-many-books-and-magazines-640.webp)"
+                        alt="Muitos livros e revistas."
+                ></div>
+              
+              <div class="card__content">
+                <h4>Como escrever crawlers decentes com PHP</h4>
+                <p>Depois deste artigo você vai perceber o quanto você sofreu com seus crawlers em PHP. EXISTE uma forma melhor. Deixa eu lhe mostrar 😉</p>
+                <time>2020-07-20</time>
+              </div>
+            </a>
+          </li>
+                  <li class="card">
+            <a href="https://thephp.website/br/edicao/jogos-em-php/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/14-snake-640.webp)"
+                        alt="Uma cobra colorida olhando para a câmera."
+                ></div>
+              
+              <div class="card__content">
+                <h4>O jogo da cobrinha feito em PHP (com Raylib)</h4>
+                <p>Eu vou te mostrar como é o código e as ferramentas que usei! Espero que isso tome sua atenção suficientemente para vermos esta extensão ganhar tração.</p>
+                <time>2020-04-20</time>
+              </div>
+            </a>
+          </li>
+                  <li class="card">
+            <a href="https://thephp.website/br/edicao/php-docker-setup-rapido/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/7-container-640.webp)"
+                        alt="Um pulando sobre um conteiner"
+                ></div>
+              
+              <div class="card__content">
+                <h4>Set up rápido do PHP, PHPUnit e Docker</h4>
+                <p>Neste post eu mostro rapidinho meu setup para aplicações php usando PHPUnit e Docker e algumas configs rápidas que quase todo app precisa.</p>
+                <time>2020-02-17</time>
+              </div>
+            </a>
+          </li>
+              </ul>
+    </div>
+    </aside>
+</body>
+<script src="/assets/build/js/main.js?id=fd09420d5a6aa331aa18"></script>
+</html>
