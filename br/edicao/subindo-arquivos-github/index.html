@@ -196,15 +196,14 @@ para entendermos melhor como funciona, temos o exemplo abaixo que criará
 um arquivo Hello World.txt contendo dentro dele um simples texto
 “hello world” e mostrará o estado do arquivo.</p>
 <pre><code class="language-bash">$ echo Hello World &gt; helloWorld.txt
-$ git status</code></pre>
-<blockquote>
-<p>on branch master
+$ git status
+
+on branch master
 No commits yet
 Untracket files:
-(use “git add <file>...” to include in what will be commited)
-hellowWorld.txt
-nothing add to commit but untracked files present (use “git add” to track);</p>
-</blockquote>
+      (use “git add &lt;file&gt;...” to include in what will be commited)
+            hellowWorld.txt
+nothing add to commit but untracked files present (use “git add” to track);</code></pre>
 <p>Podemos observar que o arquivo helloWorld.txt está com o estado de untracked
 file, isso quer dizer que o arquivo não está sendo monitorado pelo git,
 então qualquer coisa que acontecer com ele o git não será “responsável”.</p>
@@ -213,14 +212,13 @@ então qualquer coisa que acontecer com ele o git não será “responsável”.
 no repositório) monitora os arquivos e adiciona uma alteração dele no diretório
 à staging area, que é o local onde prepara os arquivos para o próximo comite.</p>
 <pre><code class="language-bash">$ git add helloWorld.txt
-$ git status</code></pre>
-<blockquote>
-<p>on branch master
+$ git status
+
+on branch master
 No commits yet
 Changes to be committed:
-(use “git rm –cached <file>...” to unstage)
-new file:      helloWorld.txt</p>
-</blockquote>
+         (use “git rm –cached &lt;file&gt;...” to unstage)
+                   new file:      helloWorld.txt</code></pre>
 <h2>Git commit</h2>
 <p>O “git commit” captura o estado atual do arquivo e adiciona as alterações
 para o histórico do repositório local atribuindo um hash como identificação,
