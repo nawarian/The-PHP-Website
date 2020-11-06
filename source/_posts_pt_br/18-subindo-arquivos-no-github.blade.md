@@ -106,14 +106,14 @@ um arquivo Hello World.txt contendo dentro dele um simples texto
 ```bash
 $ echo Hello World > helloWorld.txt
 $ git status
-```
 
-> on branch master
+on branch master
 No commits yet
 Untracket files:
       (use “git add <file>...” to include in what will be commited)
             hellowWorld.txt
 nothing add to commit but untracked files present (use “git add” to track);
+```
 
 Podemos observar que o arquivo helloWorld.txt está com o estado de untracked
 file, isso quer dizer que o arquivo não está sendo monitorado pelo git,
@@ -128,12 +128,13 @@ no repositório) monitora os arquivos e adiciona uma alteração dele no diretó
 ```bash
 $ git add helloWorld.txt
 $ git status
-```
-> on branch master
+
+on branch master
 No commits yet
 Changes to be committed:
          (use “git rm –cached <file>...” to unstage)
                    new file:      helloWorld.txt
+```
 
 ## Git commit
 
