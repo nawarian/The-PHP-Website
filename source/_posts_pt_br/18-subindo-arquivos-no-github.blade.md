@@ -123,7 +123,7 @@ então qualquer coisa que acontecer com ele o git não será “responsável”.
 
 O comando “git add <nome do arquivo>” ou “git add .”  (para todos os arquivos
 no repositório) monitora os arquivos e adiciona uma alteração dele no diretório
-à staging area, que é o local onde prepara os arquivos para o próximo comite.
+à staging area, que é o local onde prepara os arquivos para o próximo commit.
 
 ```bash
 $ git add helloWorld.txt
