@@ -27,6 +27,6 @@ Conhecimento de **programação orientado a eventos**, vivência em **times áge
 
 **Contratação CLT**
 
-Venha fazer parte do time!  https://byintera.in/1hz
+Venha fazer parte do time!  https://byintera.in/1ii
 
 Fonte: https://github.com/backend-br/vagas/issues/3444
