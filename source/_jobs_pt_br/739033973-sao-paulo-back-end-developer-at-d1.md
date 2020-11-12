@@ -39,7 +39,7 @@ Escritório próximo a estação Granja Julieta - SP.
 
 **O que você deve ter:**
 
-- Fluência e compreensão de linguagens C# e/ou NodeJs
+- Fluência e compreensão de linguagens C#, GoLang e/ou NodeJs
 - Conhecimento avançado do ciclo de desenvolvimento web e técnicas e ferramentas de programação;
 - Conhecimento sólido em desenvolvimento orientado a teste (TDD);
 - Capacidade avançada em resolução de problemas e comunicação verbal e escrita;
