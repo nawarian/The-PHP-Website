@@ -40,6 +40,7 @@ Próximo ao metro Jabaquara, GreenWork Boulevard na Zona Sul de São Paulo - SP
 
 - ter trabalhado com algum sistema online no modelo SaaS;
 - experiência com microserviços, Lambda ou Docker;
+- experiência com migração de sistemas legados PHP;
 - alguma experiência com metodologias ágeis de desenvolvimento.
 
 ## Contratação
