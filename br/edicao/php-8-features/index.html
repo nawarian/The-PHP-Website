@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
+  <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+  
+  <title>PHP 8.0 lançado: tá com uma cara ótima! | thePHP Website</title>
+
+  <meta name="description" content="PHP 8.0 trouxe várias inovações, dentre elas incríveis mudanças sintáticas, atualizações nas APIs e mudanças fundamentais no core e, claro, várias correções de bug. Aqui eu vou te mostrar as principais mudanças à linguagem!">
+
+  <meta property="og:title" content="PHP 8.0 lançado: tá com uma cara ótima!">
+  <meta property="og:description" content="PHP 8.0 trouxe várias inovações, dentre elas incríveis mudanças sintáticas, atualizações nas APIs e mudanças fundamentais no core e, claro, várias correções de bug. Aqui eu vou te mostrar as principais mudanças à linguagem!">
+  <meta property="og:url" content="https://thephp.website/br/edicao/php-8-features">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/19-php-features-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="PHP 8.0 lançado: tá com uma cara ótima!">
+  <meta name="twitter:description" content="PHP 8.0 trouxe várias inovações, dentre elas incríveis mudanças sintáticas, atualizações nas APIs e mudanças fundamentais no core e, claro, várias correções de bug. Aqui eu vou te mostrar as principais mudanças à linguagem!">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-3');
+  </script>
+  <script data-ad-client="ca-pub-3681134868307419" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Hotjar Tracking Code for thephp.website -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1770868,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu__container').classList.toggle('menu__container--active');
+    }
+  </script>
+</head>
+<body class="yue non-article">
+  <header class="menu">
+    <a class="menu__logo" href="/br/">
+      <img src="/assets/images/elephpant-idle.png" alt="" />
+    </a>
+    <div class="menu__title">
+      <a href="/br/">thePHP Website</a>
+    </div>
+    <section class="menu__cta">
+      <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
+        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+      </button>
+    </section>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/busca">
+            busca.php
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+                <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed-vagas.xml">
+            Feed de Vagas (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </header>
+  <article class="container">
+      <div class="article">
+    <time datetime="2020-11-26">
+      2020-11-26
+    </time>
+
+    <h1>PHP 8.0 lançado: tá com uma cara ótima!</h1>
+    <p><a href="/en/issue/php-8-features/">Read in English</a></p>
+<p>Chegou a hora! No dia 26 de Novembro de 2020, o PHP 8.0
+foi lançado e tornado disponível para download. Depois de
+5 Release Candidates e um enorme esforço da comunidade,
+nós podemos finalmente começar com o PHP 8.0 em produção.</p>
+<p>PHP 8.0 trouxe várias inovações, dentre elas incríveis
+mudanças sintáticas, atualizações nas APIs e mudanças
+fundamentais no core e, claro, várias correções de bug.
+Aqui eu vou te mostrar as principais mudanças à linguagem!</p>
+<h2>Mudanças Sintáticas do PHP 8.0</h2>
+<p>Há várias mudanças sintáticas na linguagem nesta versão! Eu
+consigo ver claramente uma tendência: o php está tentando
+ficar cada vez mais ergonômico quando se trata de operações
+rápidas e classes.</p>
+<p>Abaixo eu listo 8 mudanças sintáticas que entraram no PHP 8.0
+e dou uma introdução rápida. Todas elas terão links para a
+RFC que as introduziu à linguagem, então caso você tenha
+dúvidas basta ler os links
+<a href="https://github.com/nawarian/The-PHP-Website/issues">(ou abrir uma issue, eu vou responder o quanto antes)</a>.</p>
+<h3>Union Types e o Mixed Type</h3>
+<p>Eu escrevi um post detalhado sobre como o sistema de tipos
+do PHP se organiza entre escalares, compostos e especiais.
+<a href="/br/edicao/tipos-em-php/">Você pode acessar o post neste link aqui</a>.</p>
+<p>PHP 8.0 traz duas mudanças importantes que transformaram os
+tipos compostos em uma estrutura formal da linguagem em vez
+de apenas uma convenção como antes.</p>
+<p><a href="https://wiki.php.net/rfc/union_types_v2">A primeira mudança é a dos Union Types</a>
+, que torna possível definir que tipos uma variável pode ter
+e gerará um erro se um tipo de valor inesperado for passado.
+A sintaxe é bem semelhante com o que o TypeScript faz:</p>
+<pre><code class="language-php">&lt;?php
+
+function sumTwo(int|float $x): int
+{
+  return round($x + 2);
+}</code></pre>
+<p>Mas tem algumas limitações. O tipo <code>void</code> não pode ser utilizado,
+e todas as declarações de tipo não podem ser ambíguas. Por
+exemplo <code>MyClass|object</code> não deveria compilar, porque <code>object</code>
+já bate com qualquer instância de qualquer classe.</p>
+<p><a href="https://wiki.php.net/rfc/mixed_type_v2">A segunda mudança adiciona o tipo <em>mixed</em> no PHP 8.0</a>.
+O tipo <em>mixed</em> é na verdade um Union Type muito específico.
+Você pode pensar nele como um alias do Union <code>array|bool|callable|int|float|null|object|resource|string</code>
+e deverá funcionar semelhante ao tipo <code>any</code> do TypeScript.</p>
+<h3>Atributos (Annotations)</h3>
+<p>Esta mudança foi definitivamente a que trouxe mais discussão
+na comunidade PHP. Ao todo foram 5 RFCs para compor esta
+alteração de sintaxe, todas muito discutidas pelos internals
+e pela comunidade nas redes sociais.</p>
+<p>A primeira vez que apareceu foi em 2016,
+<a href="https://wiki.php.net/rfc/attributes">com a proposta do Dmitry</a>
+, mas não passou já que a implementação não era suficiente para
+substituir as implementações já existentes como do
+<a href="https://github.com/doctrine/annotations">Doctrine\Annotations</a>
+ou
+<a href="https://github.com/php-annotations/php-annotations">Php-Annotations\Php-Annotations</a>.
+Esta RFC foi extremamente importante para construir o conhecimento
+para a RFC da nova sintaxe.</p>
+<p><a href="https://wiki.php.net/rfc/attributes_v2">Em março esta RFC foi revivida por Benjamin Eberlei e Martin Schröder</a>
+, corrigindo a maioria dos problemas que a comunidade encontrou
+antes. A sintaxe ficou mais ou menos assim:</p>
+<pre><code class="language-php">&lt;?php
+
+use PhpAttribute;
+
+&lt;&lt;PhpAttribute&gt;&gt;
+class MyAttributesClass
+{
+}
+
+&lt;&lt;MyAttributesClass&gt;&gt;
+function myFunction () {}
+
+$reflection = new ReflectionFunction('myFunction');
+// ReflectionAttribute[]
+var_dump($reflection-&gt;getAttributes());</code></pre>
+<p>Os Atributos são referências a classes que podem ser
+instanciadas a partir do próprio objeto <em>ReflectionAttribute</em>.
+Cada classe de Atributo deverá utilizar um atributo do próprio
+PHP chamado <em>PhpAttribute</em>, isto só mudou depois que a RFC
+<a href="https://wiki.php.net/rfc/attribute_amendments">attribute amendments</a>
+passou e agora em vez de <em>PhpAttribute</em> deverá ser
+utilizada a classe <em>Attribute</em>.</p>
+<p>Esta sintaxe pode ser utilizada com:</p>
+<ul>
+<li>funções, closures e short closures</li>
+<li>classes, classes anônimas, interfaces, traits</li>
+<li>constantes de classes</li>
+<li>propriedades de classes</li>
+<li>métodos de classes</li>
+<li>parâmetros de funções ou métodos</li>
+</ul>
+<p>Esta segunda RFC (attribute amendments) também trouxe
+mudanças interessantes como a validação de que um Atributo
+deveria ser utilizado somente com classes ou com funções,
+se poderia ser utilizado várias vezes ou não, e também a opção
+de agrupar utilizações de atributos.</p>
+<p>As duas últimas RFCs (
+<a href="https://wiki.php.net/rfc/shorter_attribute_syntax">esta</a>
+e <a href="https://wiki.php.net/rfc/shorter_attribute_syntax_change">esta</a>
+)
+foram somente sobre como a sintaxe de utilização dos
+Attributes deveria ser. A sintaxe final adotada ficou
+como a seguinte e parece bastante com a do Rust:</p>
+<pre><code class="language-php">&lt;?php
+
+use Attribute;
+
+#[Attribute(Attribute::TARGET_FUNCTION)]
+class MyAttributesClass
+{
+}
+
+#[MyAttributesClass]
+function myFunction () {}
+
+$reflection = new ReflectionFunction('myFunction');
+// ReflectionAttribute[]
+var_dump($reflection-&gt;getAttributes());</code></pre>
+<p>Reparou naquele <code>Attribute::TARGET_FUNCTION</code> alí? Ele diz ao
+php que aquele Attribute só pode ser utilizado com funções
+e um erro será gerado se utilizado em qualquer outro lugar.</p>
+<h3>Operador Nullsafe</h3>
+<p><em>Uncaught Error: Call to a member function example() on null</em>.
+Este erro aqui persegue muitos(as) engenheiros(as) php que podem
+ter esquecido de verificar o tipo de retorno ou tenham escrito
+errado uma condição if.</p>
+<p>Isto vai mudar no PHP 8.0, com a
+<a href="https://wiki.php.net/rfc/nullsafe_operator">introdução do operador nullsafe</a>.
+Esta sintaxe faz verificações em valores nulos e dá um curto-circuito
+se alguma parte da cadeia for null, evitando uncaught errors como
+o mencionado acima. A sintaxe é a seguinte:</p>
+<pre><code class="language-php">&lt;?php
+
+$obj = new class {
+  public function f()
+  {
+    return null;
+  }
+}
+
+// "$obj?-&gt;" verifica se $obj é null e,
+// caso não, continua coma a chamada
+// "f()?-&gt;" verifica se o tipo do retorno de f()
+// é null como acima
+$obj?-&gt;f()?-&gt;neverCalled();
+
+// neverCalled() nunca foi chamado, pois f() retorna null</code></pre>
+<h3>Non-Capturing Catches</h3>
+<p>Sempre que escrevemos o bloco <em>catch</em> quando tratamos
+uma exceção é necessário receber também o objeto Exception.</p>
+<p><a href="https://wiki.php.net/rfc/non-capturing_catches">No PHP 8.0, graças ao Max Semenik</a>
+, não será mais necessário fazer isso. Agora é possível
+capturar exceções sem precisar capturar o objeto em si.
+Como no exemplo abaixo:</p>
+<pre><code class="language-php">&lt;?php
+
+try {
+  throw new IncredibleException();
+} catch (IncredibleException) {
+  // Eu não ligo tanto pro
+  // objeto $exceptionabout
+  // the $exception object
+} catch (Exception $e) {
+  // Mas aqui eu ligo, e tudo bem
+}</code></pre>
+<h3>Throw Expression</h3>
+<p>Anteriormente a palavra chave <em>throw</em> era considerado um
+<em>statement</em> na linguagem, o que nos impediu por muito tempo
+de lançar exceções em alguns lugares onde apenas expressões
+como atribuição de variáveis, short closures, ternários
+e expressões binárias poderiam estar.</p>
+<p><a href="https://wiki.php.net/rfc/throw_expression">Ilija Tovilo implementou a RFC Throw Exception</a>
+que transformou <code>throw $obj</code> numa expressão. Então os exemplos
+abaixo são válidos:</p>
+<pre><code class="language-php">&lt;?php
+
+$a = null ?? throw new Exception();
+$b = $obj-&gt;func() || throw new Exception();
+$c = fn() =&gt; throw new Exception();</code></pre>
+<p>Esta funcionalidade foi inspirada numa mudança introduzida
+ao C# em 2017 e uma proposta ao ECMAScript escrita em 2018.</p>
+<h3>Expressão Match</h3>
+<p>Esta é a minha favorita! A intenção é trazer uma sintaxe
+mais limpa sempre que normalmente faríamos um <em>switch</em> para
+decidir o valor de uma variável.</p>
+<p><a href="https://wiki.php.net/rfc/match_expression_v2">A RFC foi escrita por Ilija Tovilo</a>
+e nesta versão ainda não oferece suporte a blocos, então
+apenas expressões são permitidas. A utilização ficou assim:</p>
+<pre><code class="language-php">&lt;?php
+
+$a = 100;
+
+$duzentos = match ($a) {
+  10, 100, 1000 =&gt; $a * 2,
+  50, 500, 5000 =&gt; $a / 2,
+};</code></pre>
+<p>O snippet acima retornaria <code>$a * 2</code> sempre que $a for igual a 10,
+100 ou 1000. Retornaria <code>$a / 2</code> sempre que $a for igual a 50,
+500 ou 5000.</p>
+<p>É importante observer que a sintaxe de Match constrói uma expressão,
+então ela pode ser armazenada em variáveis, passada como parâmetro
+ou ser composta com outras expressões.</p>
+<pre><code class="language-php">&lt;?php
+
+$type = ...;
+$filter = match ($type) {
+  'as_object' =&gt; $myObject,
+  'assoc' =&gt; $myObject-&gt;toArray(),
+} || throw new InvalidArgumentException('Invalid type requested.');</code></pre>
+<p>Implementações futuras irão adicionar suporte a blocos ao
+lado direito desta expressão, de forma semelhante ao que
+o Rust faz. Isto dá ao desenvolvedor(a) maior flexibilidade
+para escrever programas complexos sem invadir escopos
+de variáveis.</p>
+<h3>Named Parameters</h3>
+<p>É bem comum ver métodos com parâmetros contendo valores padrão
+e os únicos que queremos mudar são os últimos. Isto nos força
+a entrar com <code>null</code> em todos os parâmetros para mudar apenas
+os últimos.</p>
+<p>Muitos podem dizer que isto é um problema de design, mas ao
+mesmo tempo não é possível simplesmente garantir um ótimo
+design para cada projeto open source escrito por aí.</p>
+<p><a href="https://wiki.php.net/rfc/named_params">Nikita Popov decidiu adicionar o Named Parameters ao PHP 8.0</a>
+, que nos permite pular parâmetros de funções ou métodos e
+definir valores somente para as que nos importam. Para isso
+as variáveis precisam ser nomeadas, funciona assim:</p>
+<pre><code class="language-php">&lt;?php
+
+function myFunc(
+  $a = 10,
+  $b = 20,
+  $c = null
+) {
+}
+
+myFunc(c: 100);
+// $a = 10; $b = 20; $c = 100</code></pre>
+<p>Isto também nos dá a liberdade de desconsiderar a ordem dos
+parâmetros definida pela interface.</p>
+<p>Eu acho que esta é uma ótima forma para criar um código mais
+bem escrito sem quebrar bibliotecas e extensões que já existem.</p>
+<h3>Constructor Promotion</h3>
+<p>Alguns dizem que o PHP é tão verboso quanto o Java quando se
+trata de Orientação a Objetos. Eu tendo a concordar e creio que
+poderíamos importar algumas facilidades de sintaxe que outras
+linguagens já construíram e obtiveram sucesso.</p>
+<p><a href="https://wiki.php.net/rfc/constructor_promotion">A sintaxe constructor promotion</a>
+torna mais simples e rápido escrevre classes que recebem
+parâmetros no construtor e os joga em propriedades imediatamente.</p>
+<p>O snippet abaixo ilustra bem esta nova sintaxe:</p>
+<pre><code class="language-php">&lt;?php
+
+class MyClass
+{
+  public function __construct(public int $x = 0)
+  {}
+}
+
+// É equivalente a isto:
+
+class MyClass
+{
+  private int $x;
+
+  public function __construct(int $x = 0)
+  {
+    $this-&gt;x = $x;
+  }
+}</code></pre>
+<h2>Mudanças na Máquina Virtual do PHP 8</h2>
+<p>Mudanças no core são normalmente as que podem quebrar
+nosso código de forma explícita ou silenciosamente, então
+é importante tomar uma boa atenção nelas enquanto atualizamos
+a versão do PHP.</p>
+<p>Esta versão trouxe atualizações muito bacanas ao PHP que impactam
+performance e comportamente. Aqui eu vou listar algumas delas.</p>
+<h3>Compilador Just In Time (JIT)</h3>
+<p><a href="/br/edicao/php-8-jit/">Eu escrevi um artigo sobre o que é o JIT e como ele funciona no PHP</a>.
+Recomendo fortemente que você dê uma lida, ele vai te dar
+uma ideia melhor sobre como o PHP funciona internamente e
+quais benefícios um compilador Just In Time pode trazer
+à linguagem.</p>
+<p>Resumão do ENEM: o JIT pode aumentar a performance das
+nossas aplicações PHP, pode ser otimizado para melhores
+resultados e constrói uma fundação para aplicações PHP
+diferentes do que estamos acostumados a ver.</p>
+<p>Mas isto não vai acontecer em toda aplicação PHP. Há casos
+de uso muito específicos para o JIT e eu acho que o
+que você pode fazer de melhor é <a href="https://wiki.php.net/rfc/jit">verificar a RFC</a>
+e <a href="/br/edicao/php-8-jit/">ler o post que eu mencionei acima</a>.</p>
+<p>Uma coisa interessante sobre esta funcionalidade é que
+ela foi implementada antes da RFC de attributes ser
+aprovada. Então uma das opções disponíveis é compilar
+apenas funções/métodos anotados com um doc-comment <code>@jit</code>.
+Isto poderá mudar no futuro ao adicionar uma opção nativa
+<code>#[jit]</code> usando Attributes em vez de doc-comments.</p>
+<h3>Weak Maps</h3>
+<p>O PHP 7.4 nos trouxe uma classe weak-reference (referência fraca),
+que nos permite criar uma referência a um objeto sem que
+ele fique impedido de ser coletado pelo Garbage Colelctor.</p>
+<p><a href="https://wiki.php.net/rfc/weak_maps">Agora no PHP 8.0 a classe WeakMap foi adicionada</a>.
+Weak Maps usam o mesmo conceito de Weak References mas
+implementam as interfaces <em>ArrayAccess</em>, <em>Countable</em> e
+<em>Traversable</em>. Isto nos permite criar coleções (maps) que não
+impedem que seus objetos sejam destruidos quando todas as
+outras referências forem removidas.</p>
+<p>Eu pretendo escrever melhor sobre Garbage Collection no PHP
+no futuro, mas se você quiser botar uma pressão pra ver este
+conteúdo logo me dá um alô lá no Twitter ou abre uma issue pra
+que eu dê prioridade a este assunto.</p>
+<p>Aqui vai um exemplo de como utilizar WeakMaps:</p>
+<pre><code class="language-php">&lt;?php
+
+$bag = new WeakMap();
+$obj = new stdClass();
+
+$bag[$obj] = 42;
+
+// int(1)
+var_dump($bag-&gt;count());
+
+// deleta $obj da memória
+// $bag está vazia agora
+unset($obj);
+
+// int(0)
+var_dump($bag-&gt;count());</code></pre>
+<h3>Erros e Alertas</h3>
+<p>Esta RFC mudou a forma como o PHP se comporta e é
+importante que a gente preste bastante atenção nela!</p>
+<p>Muitas mensagens de erro e nível de criticidade mudaram
+para que fiquem mais consistentes. Nenhum nível de
+criticidade caiu, apenas cresceram. Alguns Notices se
+tornarão Warnings, e alguns Warnings se tornarão
+Errors (lançarão exceção).</p>
+<p>A lista completa você consegue encontrar
+<a href="https://wiki.php.net/rfc/engine_warnings">na página da RFC</a>
+e eu recomendo fortemente que você dê uma lida já que
+este tipo de problema pode aparecer de forma bem silenciosa
+se você não tiver um bom monitoramento configurado.</p>
+<h3>Verificações das Assinaturas de Métodos Mágicos</h3>
+<p>Esta mudança foi introduzida pelo querido Gabriel Caruso,
+do PHPSP, que tive o prazer de conhecer neste ano! Ele
+adicionou verificações de tipos nas assinaturas dos
+métodos mágicos do PHP da forma definida na documentação.</p>
+<p>Toda classe implementando métodos mágicos que não forem
+escritas de accortdo com a assinatura irá gerar um <code>FatalError</code>
+como você pode verificar <a href="https://wiki.php.net/rfc/magic-methods-signature">na página da RFC</a>.
+Mesmo sendo uma breaking change, apenas 7 dos top 1000
+pacotes no Packagist seriam afetados por esta mudança.</p>
+<h3>Correções em Strings Numéricas</h3>
+<p>O PHP consegue converter strings numéricas em inteiros
+quando necessário. Este cast pode acontecer manualmente
+ou de forma implícita dependendo de qual operação você
+executar (por exemplo, expressões e chamadas de função).</p>
+<pre><code class="language-php">&lt;?php
+
+// int(123)
+var_dump((int) "123");</code></pre>
+<p>Ainda mais, o PHP é uma mãe quando se trata de strings
+numéricas: perdoa tudo! Strings como <code>"2 bananas"</code> ou
+<code>"5 maçãs"</code> podem ser convertidas para números normalmente.
+Mais do que isso, algumas strings podem ser interpretadas
+como numéricas quando não deveriam (como em hashes que
+começam com um zero, por exemplo).</p>
+<p><a href="https://wiki.php.net/rfc/saner-numeric-strings">A RFC saner numeric strings</a>
+veio corrigir este problema, normalizadno a forma como
+nós lidamos com strings numéricas e gerando Type Errors
+quando tipos numéricos são requeridos mas uma string
+não numérica é passada.</p>
+<h3>Mudanças na Comparação de String Numéricas</h3>
+<p>O PHP tem dois modos de comparação: estrito (<code>===</code>, <code>!==</code>)
+e não estrito (todo o resto). Sempre que fazemos uma
+comparação não estrita entre uma string e um número, o PHP
+vai tentar converter a string em um número para só então
+comparar dois inteiros.
+<a href="/br/edicao/tipos-em-php/">Eu explico este processo em detalhe neste post aqui</a>.</p>
+<p>Este comportamento criou distorções bem estranhas como
+a expressão <code>0 == 'nawarian'</code> retornando <code>bool(TRUE)</code>.</p>
+<p><a href="https://wiki.php.net/rfc/string_to_number_comparison">A RFC de comparações de strings numéricas</a>
+melhora estas comparações ao inverter a lógica de conversão:
+em vez de converter a string em número e então comparar os dois
+números, o PHP irá transformar o número em string e então
+comparar as duas strings.</p>
+<p>Uma nova tabela de comparação foi disponibilizada na RFC
+e eu trouxe uma cópia pra cá:</p>
+<table>
+<thead>
+<tr>
+<th>Comparação</th>
+<th>Antes</th>
+<th>Depois</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 == &quot;0&quot;</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>0 == &quot;0.0&quot;</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>0 == &quot;foo&quot;</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>0 == &quot;&quot;</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>42 == &quot;   42&quot;</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td>42 == &quot;42foo&quot;</td>
+<td>true</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h2>Agora é aproveitar e aguardar as próximas</h2>
+<p>É claro que tem muito mais coisas que o PHP 8.0 trouxe
+e eu gostaria muito de ter tido o tempo e vontade para
+escrever todas aqui. Mas esta pequena lista já deixa claro
+que o PHP, morrendo desde 1994, mais uma vez se torna
+melhor e mais poderoso.</p>
+<p>Eu atualmente não conheço nenhum benchmark sobre o PHP 8.0
+rodando aplicações de verdade que possam dizer que esta
+versão é mais rápida, a mesma coisa ou mais lenta. Mas eu
+confio que as ferramentas que a comunidade nos deu irão
+nos permitir continuar criando aplicações incríveis e
+rápidas.</p>
+<p>A adição do compilador Just In Time é uma boa oportunidade
+para olhar com mais carinho para ferramentas que nós
+poderíamos explorar bem melhor como, por exemplo, a Extensão
+Swoole.</p>
+<p>Agora é momento de celebrar esta incrível vitória da
+Comunidade PHP e agradecer todas as pessoas que se envolveram
+(você também está nesta lista 😉). A versão 8.1 alpha já
+iniciou o desenvolvimento e eu mal posso esperar por o
+que vem pela frente!</p>
+<p>Por favor, não se esqueça de compartilhar com seus amigos
+e colegas, e me dê um toque se você encontrou alguma coisa
+estranha aqui ou gostaria de adicionar você mesmo alguma
+coisa estranha.</p>
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "PHP 8.0 lan&ccedil;ado: t&aacute; com uma cara &oacute;tima!",
+  "description": "PHP 8.0 trouxe v&aacute;rias inova&ccedil;&otilde;es, dentre elas incr&iacute;veis mudan&ccedil;as sint&aacute;ticas, atualiza&ccedil;&otilde;es nas APIs e mudan&ccedil;as fundamentais no core e, claro, v&aacute;rias corre&ccedil;&otilde;es de bug. Aqui eu vou te mostrar as principais mudan&ccedil;as &agrave; linguagem!",
+  "image": [
+    "https://thephp.website/assets/images/posts/19-php-8-features-640.webp"
+   ],
+  "datePublished": "2020-11-26T00:00:00+08:00",
+  "dateModified": "2020-11-26T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian N&iacute;ckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>  </div>
+  </article>
+  <aside class="container">
+          <div class="recommended">
+      <h3>Keep reading</h3>
+      <ul class="card-list">
+                  <li class="card">
+            <a href="https://thephp.website/br/edicao/tipos-em-php/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/17-php-type-system-640.webp)"
+                        alt="Uma mulher segurando um livro sobre textos cruéis."
+                ></div>
+              
+              <div class="card__content">
+                <h4>Tudo o que você precisa (e não precisa) saber sobre Tipos no PHP</h4>
+                <p>Este é o melhor guias entre todos que você encontrará na internet sobre como o PHP lida com seus tipos internamente.</p>
+                <time>2020-07-29</time>
+              </div>
+            </a>
+          </li>
+                  <li class="card">
+            <a href="https://thephp.website/br/edicao/messagepack-vs-json-benchmark/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/11-messagepack-640.webp)"
+                        alt="Uma fotografia de vários chips de CPU."
+                ></div>
+              
+              <div class="card__content">
+                <h4>Comparando JSON e MessagePack</h4>
+                <p>MessagePack ganha em praticamente todos os testes. Mas a diferença é tão pequena que eu quase não consigo ver benefícios em migrar do JSON para msgpack. Mas resultados mais interessantes podem brotar com a chegada do JIT no PHP 8...</p>
+                <time>2020-03-15</time>
+              </div>
+            </a>
+          </li>
+                  <li class="card">
+            <a href="https://thephp.website/br/edicao/php-8-jit/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/10-php-8-jit-640.webp)"
+                        alt="Um número oito representado por uma correia de motor."
+                ></div>
+              
+              <div class="card__content">
+                <h4>Just In Time Compiler e o PHP 8</h4>
+                <p>O Just In Time compiler do PHP 8 foi implementado como parte da extensão Opcache e pretende compilar alguns Opcodes em instruções de CPU em tempo de execução. Bora entender como isso funciona por baixo dos panos.</p>
+                <time>2020-03-03</time>
+              </div>
+            </a>
+          </li>
+              </ul>
+    </div>
+    </aside>
+</body>
+<script src="/assets/build/js/main.js?id=fd09420d5a6aa331aa18"></script>
+</html>

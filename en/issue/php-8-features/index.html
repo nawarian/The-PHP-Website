@@ -257,7 +257,7 @@ function myFunction () {}
 $reflection = new ReflectionFunction('myFunction');
 // ReflectionAttribute[]
 var_dump($reflection-&gt;getAttributes());</code></pre>
-<p>Noticed that <code>Attribute::TARGET_FUNCTION</code> over there? It tells
+<p>Notice that <code>Attribute::TARGET_FUNCTION</code> over there? It tells
 php that this attribute can only be used with functions and
 will error if something else decides to use it.</p>
 <h3>Nullsafe operator</h3>
@@ -370,7 +370,7 @@ function myFunc(
 ) {
 }
 
-myFunc(c: =&gt; 100);
+myFunc(c: 100);
 // $a = 10; $b = 20; $c = 100</code></pre>
 <p>This also gives us the freedom to detach from the parameter
 order previously defined.</p>
@@ -513,7 +513,7 @@ makes such comparisons a bit saner by inverting the cast
 logic: instead of casting the string into a number and
 performing a number comparison, PHP 8.0 will cast the
 number into a string and perform a string comparison.</p>
-<p>A new comparison table as made available and I copy it
+<p>A new comparison table was made available and I copy it
 straight from the RFC into this page:</p>
 <table>
 <thead>
