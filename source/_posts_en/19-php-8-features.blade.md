@@ -170,7 +170,7 @@ $reflection = new ReflectionFunction('myFunction');
 var_dump($reflection->getAttributes());
 ```
 
-Noticed that `Attribute::TARGET_FUNCTION` over there? It tells
+Notice that `Attribute::TARGET_FUNCTION` over there? It tells
 php that this attribute can only be used with functions and
 will error if something else decides to use it.
 
@@ -320,7 +320,7 @@ function myFunc(
 ) {
 }
 
-myFunc(c: => 100);
+myFunc(c: 100);
 // $a = 10; $b = 20; $c = 100
 ```
 
@@ -508,7 +508,7 @@ logic: instead of casting the string into a number and
 performing a number comparison, PHP 8.0 will cast the
 number into a string and perform a string comparison.
 
-A new comparison table as made available and I copy it
+A new comparison table was made available and I copy it
 straight from the RFC into this page:
 
 Comparison    | Before | After
