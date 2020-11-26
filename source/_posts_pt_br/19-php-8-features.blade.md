@@ -38,6 +38,11 @@ mudanças sintáticas, atualizações nas APIs e mudanças
 fundamentais no core e, claro, várias correções de bug.
 Aqui eu vou te mostrar as principais mudanças à linguagem!
 
+Mas ó, se tu tiver sem tempo pra ver esse post inteiro, dá
+uma olhada
+[na página oficial de lançamento do PHP 8](https://www.php.net/releases/8.0/pt_BR.php?lang=pt_BR)
+que lá tem um resumão bem visual das mudanças da linguagem.
+
 ## Mudanças Sintáticas do PHP 8.0
 
 Há várias mudanças sintáticas na linguagem nesta versão! Eu
