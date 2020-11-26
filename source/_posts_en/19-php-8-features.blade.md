@@ -37,6 +37,10 @@ additions, API upgrades,fundamental changes to its core and,
 of course, many bug fixes. Here I want to outline some of the
 main changes to the language!
 
+But hey, if you don't have sufficient time to read this
+article,
+[have a quick look at the official release landing page.](https://www.php.net/releases/8.0/en.php) You'll have a nice overview there!
+
 ## PHP 8's Syntax changes
 
 There are some cool syntactic additions to the language in
