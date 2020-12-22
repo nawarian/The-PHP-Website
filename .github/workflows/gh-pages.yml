@@ -8,11 +8,13 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        php: [7.4]
     steps:
     - uses: actions/checkout@master
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 7.4
 
     - name: Setup The Php Website
       run: composer install && yarn install
