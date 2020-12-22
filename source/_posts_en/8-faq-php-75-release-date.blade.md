@@ -1,6 +1,7 @@
 ---
 slug: php-75-will-be-skipped
 canonical: https://thephp.website/en/issue/php-8-features/
+robots: noindex
 title: PHP 7.5 will not exist!
 category: faq
 createdAt: 2020-03-01
