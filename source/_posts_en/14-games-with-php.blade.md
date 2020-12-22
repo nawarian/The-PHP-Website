@@ -1,6 +1,6 @@
 ---
 slug: games-with-php
-title: Simple PHP Game in PHP using Raylib: Snake (with source code)
+title: 'Simple PHP Game in PHP using Raylib: Snake (with source code)'
 category: guides
 createdAt: 2020-04-12
 sitemap:
