@@ -12,8 +12,7 @@ tags:
   - lancamento
 meta:
   description:
-    Em dúvida sobre quando o PHP 7.5 vai sair? A
-    resposta curta é: NUNCA. O PHP 7.5 não será lançado.
+    Em dúvida sobre quando o PHP 7.5 vai sair? A resposta curta é: NUNCA. O PHP 7.5 não será lançado.
   twitter:
     card: summary
     site: '@nawarian'
