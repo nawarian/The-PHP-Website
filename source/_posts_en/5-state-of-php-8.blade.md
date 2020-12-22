@@ -1,5 +1,6 @@
 ---
 slug: state-of-php-8
+canonical: https://thephp.website/en/issue/php-8-features/
 title: The State of PHP 8
 category: walkthrough
 createdAt: 2020-01-20
