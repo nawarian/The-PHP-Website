@@ -19,18 +19,18 @@
     href="https://thephp.website/en/feed.xml"
   />
   
-  <title>Deep Dive into PHP 8&#039;s JIT | thePHP Website</title>
+  <title>How PHP&#039;s Just In Time compiler works | thePHP Website</title>
 
   <meta name="description" content="PHP 8&#039;s Just In Time compiler is implemented as part of the Opcache extension and aims to compile some Opcodes into CPU instructions in runtime. Let&#039;s understand how it works all together.">
 
-  <meta property="og:title" content="Deep Dive into PHP 8&#039;s JIT">
+  <meta property="og:title" content="How PHP&#039;s Just In Time compiler works">
   <meta property="og:description" content="PHP 8&#039;s Just In Time compiler is implemented as part of the Opcache extension and aims to compile some Opcodes into CPU instructions in runtime. Let&#039;s understand how it works all together.">
   <meta property="og:url" content="https://thephp.website/en/issue/php-8-jit">
   <meta property="og:image" content="https://thephp.website/assets/images/posts/10-php-8-jit-640.webp">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@nawarian">
-  <meta name="twitter:title" content="Deep Dive into PHP 8&#039;s JIT">
+  <meta name="twitter:title" content="How PHP&#039;s Just In Time compiler works">
   <meta name="twitter:description" content="PHP 8&#039;s Just In Time compiler is implemented as part of the Opcache extension and aims to compile some Opcodes into CPU instructions in runtime. Let&#039;s understand how it works all together.">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -139,7 +139,7 @@
       2020-03-03
     </time>
 
-    <h1>Deep Dive into PHP 8&#039;s JIT</h1>
+    <h1>How PHP&#039;s Just In Time compiler works</h1>
     <p><a href="/br/edicao/php-8-jit">Leia em Português</a></p>
 
 <p>PHP has a Just In Time compiler (JIT) since its most recent major version, PHP 8.</p>
@@ -324,7 +324,7 @@ they are directly executed by the CPU.</p>
 <p>When an Opcode should be compiled is decided based on your INI configurations. You'll
 get more details in the next section.</p>
 
-<h2>JIT Configuration</h2>
+<h2>How to configure JIT</h2>
 
 <p>Configuring JIT in PHP is very simple, there are two INI directives we need to set:
 <code>opcache.jit_buffer_size</code> and <code>opcache.jit</code>. The first indicates how much memory
@@ -357,39 +357,119 @@ behavioural effect on your application. Below I explain what each of these lette
 
 <p><strong>C - CPU-specific optimization</strong></p>
 
-<p>| Flag | Meaning |
-| -------- | ------ |
-0 | No optimization whatsoever
-1 | Enable <a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX instruction</a> generation</p>
+<table>
+<thead>
+<tr>
+  <th>Flag</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td>No optimization whatsoever</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>Enable <a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX instruction</a> generation</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>R - Register Allocation Modes</strong></p>
 
-<p>| Flag | Meaning |
-| -------- | ------ |
-0 | Never perform <a href="https://en.wikipedia.org/wiki/Register_allocation">register allocations</a>
-1 | Use local linear-scan register allocation
-2 | Use global linear-scan register allocation</p>
+<table>
+<thead>
+<tr>
+  <th>Flag</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td>Never perform <a href="https://en.wikipedia.org/wiki/Register_allocation">register allocations</a></td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>Use local linear-scan register allocation</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Use global linear-scan register allocation</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>T - JIT trigger</strong></p>
 
-<p>| Flag | Meaning |
-| -------- | ------ |
-0 | JIT everything on first script load
-1 | JIT functions when they execute
-2 | Profile first request and compile hot functions on second requests
-3 | Profile and compile hot functions all the time
-4 | Compile functions with a <code>@jit</code> in doc blocks</p>
+<table>
+<thead>
+<tr>
+  <th>Flag</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td>JIT everything on first script load</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>JIT functions when they execute</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Profile first request and compile hot functions on second requests</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Profile and compile hot functions all the time</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>Compile functions with a <code>@jit</code> in doc blocks</td>
+</tr>
+</tbody>
+</table>
 
 <p><strong>O - Optimization level</strong></p>
 
-<p>| Flag | Meaning |
-| -------- | ------ |
-0 | Never JIT
-1 | Minimal JIT (use regular VM handlers)
-2 | Selective VM handler inlining
-3 | Optimized JIT based on static type inference of individual function
-4 | Optimized JIT based on static type inference and call tree
-5 | Optimized JIT based on static type inference and inner procedure analyses</p>
+<table>
+<thead>
+<tr>
+  <th>Flag</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td>Never JIT</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>Minimal JIT (use regular VM handlers)</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Selective VM handler inlining</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Optimized JIT based on static type inference of individual function</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>Optimized JIT based on static type inference and call tree</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>Optimized JIT based on static type inference and inner procedure analyses</td>
+</tr>
+</tbody>
+</table>
 
 <p>I don't fully understand every term there, but the main takeaway is that you should play
 around with each flag and keep profiling your application to better understand what suits
@@ -508,7 +588,7 @@ value to your conversations!</p>
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Deep Dive into PHP 8's JIT",
+  "headline": "How PHP's Just In Time compiler works",
   "description": "PHP 8's Just In Time compiler is implemented as part of the Opcache extension and aims to compile some Opcodes into CPU instructions in runtime. Let's understand how it works all together.",
   "image": [
     "https://thephp.website/assets/images/posts/10-php-8-jit-640.webp"
