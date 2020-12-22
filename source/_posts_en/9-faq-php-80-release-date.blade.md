@@ -1,5 +1,6 @@
 ---
 slug: php-8-release-date
+canonical: https://thephp.website/en/issue/php-8-features/
 title: PHP 8.0 will be released in December 2020
 category: faq
 createdAt: 2020-03-01
@@ -36,7 +37,7 @@ They are wrong! PHP 8 is scheduled for December 2020.
 
 I wrote a list with PHP 8's confirmed features and
 other plausible RFCs that might get included.
-[You find such list in this post about the state of PHP 8](/en/issue/state-of-php-8/).
+[You find such list in this post about PHP 8's features](/en/issue/php-8-features/).
 
 [Share on Twitter.](https://twitter.com/intent/tweet?text=PHP+8.0+will+be+released+this+December+2020!+-+See+https://thephp.website/br/edicao/php-8-release-date/)
 
@@ -50,7 +51,7 @@ other plausible RFCs that might get included.
             "name": "When will PHP 8 be released?",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "PHP 8.0 will be released in December 2020.<a href={{ $page->getUrl() }}>Read More.</a>"
+                "text": "PHP 8.0 was released in December 2020.<a href={{ $page->getUrl() }}>Read More.</a>"
             }
         }
     ]
