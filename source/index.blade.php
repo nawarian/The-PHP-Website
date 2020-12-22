@@ -1,3 +1,7 @@
+@php
+$page->canonical = 'https://thephp.website/en/';
+@endphp
+
 @extends('_layouts.master')
 
 @section('body')
