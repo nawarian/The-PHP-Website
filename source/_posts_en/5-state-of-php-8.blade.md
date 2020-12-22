@@ -25,6 +25,9 @@ meta:
 
 [Leia em Português](/br/edicao/andamento-php-8/)
 
+**Important update!** PHP 8.0 was already released. You can check out [this great
+summary containing the main news on this version](/en/issue/php-8-features/).
+
 PHP 8.0 is [currently being discussed and developed](/en/issue/php8-release-schedule/).
 This means that many things in this post will still change a lot over time. For each field
 of interest I'll leave a subheading and as discussions move further inside php community
