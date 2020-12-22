@@ -1,5 +1,6 @@
 ---
 slug: php-75-will-be-skipped
+canonical: https://thephp.website/en/issue/php-8-features/
 title: PHP 7.5 will not exist!
 category: faq
 createdAt: 2020-03-01
@@ -31,6 +32,8 @@ meaning it will jump from PHP 7.4 to PHP 8.0.
 **There won't be a PHP 7.5 release**.
 
 I think it is time to [tweet this to all your PHP dev friends.](https://twitter.com/intent/tweet?text=PHP+7.5+will+be+skipped!!+-+See+https://thephp.website/en/issue/php-75-will-be-skipped/)
+
+PHP 8 is already here, though. Have a look on what's new [in this link](/en/issue/php-8-features/).
 
 <script type="application/ld+json">
 {
