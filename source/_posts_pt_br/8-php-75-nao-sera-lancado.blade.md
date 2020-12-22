@@ -1,5 +1,6 @@
 ---
 slug: php-75-nao-sera-lancado
+canonical: https://thephp.website/br/edicao/php-8-features/
 lang: pt-br
 title: PHP 7.5 não vai existir!
 category: faq
