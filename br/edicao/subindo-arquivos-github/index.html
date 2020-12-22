@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
-  <link
+      <link rel="canonical" href="https://thephp.website/br/edicao/subindo-arquivos-github/" />
+    <link
     rel="alternate"
     type="application/json"
     title="[BR] thePHP Website"
@@ -69,7 +70,7 @@
     </div>
     <section class="menu__cta">
       <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
-        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
       </button>
     </section>
 
@@ -147,54 +148,79 @@
     <p>Subir arquivos para o GitHub é um processo simples que envolve o uso de alguns
 comandos no terminal como git status, add, commit, remote entre outros que
 veremos aqui.</p>
+
 <p><strong>Ao fim deste post há também um vídeo pra te auxiliar visualmente a
 entender como subir arquivos no github.</strong></p>
+
 <h2>Preparação</h2>
+
 <p>Para esse tutorial você precisará ter o Git instalado em sua
 máquina e uma conta no GitHub.</p>
+
 <p>Para instalarmos o Git no windows basta entrar no <a href="https://git-scm.com/">site do git scm</a>
 e fazer o download. No linux e no mac basta colocar o comando abaixo no terminal.</p>
+
 <pre><code class="language-bash"># No linux
 $ sudo apt-get install git
 
 # No mac
-$ brew install git</code></pre>
+$ brew install git
+</code></pre>
+
 <h2>Iniciando seu repositório</h2>
+
 <p>Precisaremos criar o repositório no GitHub, faça login na sua conta, no seu
 perfil vá em Repositories e New.</p>
+
 <figure style="text-align: center">
   <a href="/assets/images/posts/18-uploading-files-github/01-new-repository.png" target="_blank">
-    <img src="/assets/images/posts/18-uploading-files-github/01-new-repository.png" alt="Criando um repositório no Github.">
+    <img src="/assets/images/posts/18-uploading-files-github/01-new-repository.png" alt="Criando um repositório no Github." />
   </a>
 </figure>
+
 <p>Coloque o nome desejado no campo Repository Name e uma breve descrição (não
 é obrigatório), no nosso exemplo vamos utilizar o thePHP.</p>
+
 <h2>Configurações iniciais</h2>
+
 <p>Antes de iniciarmos um repositório local é necessário definir seu nome e
 endereço de e-mail, essa configuração inicial é importante porque todos
 os commits do git utilizará essas informações, para isso use os comandos
 abaixo no terminal.</p>
+
 <pre><code class="language-bash">$ git config --global user.name "&lt;nome&gt;"
-$ git config --global user.email "&lt;email&gt;"</code></pre>
+$ git config --global user.email "&lt;email&gt;"
+</code></pre>
+
 <p>Caso você queira verificar as configurações é só utilizar o comando:</p>
-<pre><code class="language-bash">$ git config user.name</code></pre>
+
+<pre><code class="language-bash">$ git config user.name
+</code></pre>
+
 <p>Para iniciarmos um repositório git, no terminal execute o comando abaixo
 (certifique-se que você está dentro do seu repositório utilizando o comando
 cd) ou com o botão direito do mouse dentro da pasta onde ficará o seu
 projeto clique em Git Bash Here:</p>
+
 <figure style="text-align: center">
   <a href="/assets/images/posts/18-uploading-files-github/02-git-bash-here.png" target="_blank">
-    <img src="/assets/images/posts/18-uploading-files-github/02-git-bash-here.png" alt="Git Bash Here no Windows.">
+    <img src="/assets/images/posts/18-uploading-files-github/02-git-bash-here.png" alt="Git Bash Here no Windows." />
   </a>
 </figure>
+
 <p>E execute o comando:</p>
-<pre><code class="language-bash">$ git init</code></pre>
+
+<pre><code class="language-bash">$ git init
+</code></pre>
+
 <h2>Git status</h2>
+
 <p>O Git utiliza estados para monitorar seus arquivos, com o “git status”
 é possível ter um controle do que está se passando em seu repositório,
 para entendermos melhor como funciona, temos o exemplo abaixo que criará
 um arquivo Hello World.txt contendo dentro dele um simples texto
 “hello world” e mostrará o estado do arquivo.</p>
+
 <pre><code class="language-bash">$ echo Hello World &gt; helloWorld.txt
 $ git status
 
@@ -203,14 +229,19 @@ No commits yet
 Untracket files:
       (use “git add &lt;file&gt;...” to include in what will be commited)
             hellowWorld.txt
-nothing add to commit but untracked files present (use “git add” to track);</code></pre>
+nothing add to commit but untracked files present (use “git add” to track);
+</code></pre>
+
 <p>Podemos observar que o arquivo helloWorld.txt está com o estado de untracked
 file, isso quer dizer que o arquivo não está sendo monitorado pelo git,
 então qualquer coisa que acontecer com ele o git não será “responsável”.</p>
+
 <h2>Git add</h2>
+
 <p>O comando “git add <nome do arquivo>” ou “git add .”  (para todos os arquivos
 no repositório) monitora os arquivos e adiciona uma alteração dele no diretório
 à staging area, que é o local onde prepara os arquivos para o próximo commit.</p>
+
 <pre><code class="language-bash">$ git add helloWorld.txt
 $ git status
 
@@ -218,52 +249,76 @@ on branch master
 No commits yet
 Changes to be committed:
          (use “git rm –cached &lt;file&gt;...” to unstage)
-                   new file:      helloWorld.txt</code></pre>
+                   new file:      helloWorld.txt
+</code></pre>
+
 <h2>Git commit</h2>
+
 <p>O “git commit” captura o estado atual do arquivo e adiciona as alterações
 para o histórico do repositório local atribuindo um hash como identificação,
 com o “–m” podemos adicionar uma descrição das mudanças realizadas.</p>
-<pre><code class="language-bash">$ git commit –m “&lt;descrição&gt;”</code></pre>
-<p>Utilizando o comando “git status&quot; podemos observar que os arquivos estão
+
+<pre><code class="language-bash">$ git commit –m “&lt;descrição&gt;”
+</code></pre>
+
+<p>Utilizando o comando “git status" podemos observar que os arquivos estão
 prontos para serem encaminhados para o diretório remoto.</p>
+
 <h2>Git remote</h2>
+
 <p>O “git remote” é utilizado para gerenciar os repositórios monitorados, o
 exemplo abaixo registra o repositório remoto e adiciona o endereço em
 “origin” onde passaremos o link que pode ser encontrado na aba code do
 nosso repositório no GitHub.</p>
-<pre><code class="language-bash">$ git remote add origin &lt;endereço&gt;</code></pre>
+
+<pre><code class="language-bash">$ git remote add origin &lt;endereço&gt;
+</code></pre>
+
 <h2>Git Push</h2>
+
 <p>Com o “git push –u origin <branch>” podemos encaminhar as mudanças
 commitadas para o GitHub, nesse exemplo utilizaremos o branch padrão master.</p>
-<pre><code class="language-bash">$ git push -u origin master</code></pre>
+
+<pre><code class="language-bash">$ git push -u origin master
+</code></pre>
+
 <p>Depois que recarregar a página do seu repositório remoto você verá seus
 arquivos atualizados.</p>
+
 <h2>Conclusão</h2>
+
 <p>Vimos que para utilizar uma ferramenta tão poderosa como o git e subir
 seus arquivos para um repositório remoto é mais simples do que parece,
 com apenas alguns comandos aprendemos a versionar nossos arquivos e
 deixá-los em um local acessível e seguro para serem utilizados a
 qualquer momento.</p>
+
 <p>Como material de apoio, deixo aqui também o vídeo do Jeterson que vai
 te ajudar a visualizar melhor como subir arquivos no github.</p>
-<iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/O2DFKHla80A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen><iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/O2DFKHla80A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
+
+<iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/O2DFKHla80A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr>
+
 <p>Esta publicação foi uma contribuição de autoria de João Apostulo Neto.
 Você pode entrar em contato com ele em seu Github <a href="https://github.com/japostulo">@japostulo</a>
 ou LinkedIn <a href="https://linkedin.com/in/joaoapostulo">/joaoapostulo</a>.</p>
+
 <p>Envie você também a sua, mande um PR <a href="https://github.com/nawarian/The-PHP-Website">no repositório aberto do thephp.website</a>.</p>
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Subindo arquivos no GitHub",
-  "description": ".Subir arquivos para o GitHub &eacute; um processo simples que envolve o uso de alguns comandos no terminal como git status, add, commit, remote entre outros que veremos aqui.",
+  "description": ".Subir arquivos para o GitHub é um processo simples que envolve o uso de alguns comandos no terminal como git status, add, commit, remote entre outros que veremos aqui.",
   "image": [
     "https://thephp.website/assets/images/posts/18-uploading-files-github-640.webp"
    ],
@@ -271,7 +326,7 @@ ou LinkedIn <a href="https://linkedin.com/in/joaoapostulo">/joaoapostulo</a>.</p
   "dateModified": "2020-11-06T00:00:00+08:00",
   "author": {
     "@type": "Person",
-    "name": "Jo&atilde;o Apostulo Neto"
+    "name": "João Apostulo Neto"
   },
    "publisher": {
     "@type": "Organization",
@@ -282,7 +337,8 @@ ou LinkedIn <a href="https://linkedin.com/in/joaoapostulo">/joaoapostulo</a>.</p
     }
   }
 }
-</script>  </div>
+</script>
+  </div>
   </article>
   <aside class="container">
           <div class="recommended">

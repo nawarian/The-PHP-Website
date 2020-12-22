@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
-  <link
+      <link rel="canonical" href="https://thephp.website/en/issue/how-to-write-crawlers-with-php/" />
+    <link
     rel="alternate"
     type="application/json"
     title="[EN] thePHP Website"
@@ -69,7 +70,7 @@
     </div>
     <section class="menu__cta">
       <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
-        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
       </button>
     </section>
 
@@ -140,22 +141,32 @@
 
     <h1>How to write decent crawlers with php</h1>
     <p><a href="/br/edicao/como-escrever-crawlers-em-php/">Leia em Português</a></p>
+
 <p>You probably have seen many posts on how to write crawlers with php. What differs
 this post from others? I’ll make sure you don’t lose your mind thinking about
 regular expressions, global variables and all sort of annoying stuff.</p>
+
 <p>We’ll be using an amazing tool named Spatie/Crawler which will provide us with a
 great interface for writing crawlers without going absolutely crazy!</p>
+
 <p><strong>Below you’ll find a video of mine coding this crawler. Just scroll down if you’d
 like to jump right into action!</strong> 😉</p>
+
 <h2>Our use case</h2>
+
 <p>This crawler will be rather simple and intends to fetch names, nicknames and e-mails
 from the official PHP directory of people who support(ed) the language somehow.</p>
+
 <p>You can check out the entire directory in this url: <a href="https://people.php.net">https://people.php.net</a>.</p>
+
 <h2>Set up the development environment</h2>
+
 <p>The environment set up will be very quick and dirty, I’ll just copy over the <em>composer</em>
 and <em>php</em> sections from this other post I wrote on
 <a href="/en/issue/php-docker-quick-setup/">how to quickly set up a docker environment for development</a>.</p>
+
 <p>My <em>docker-compose.yml</em> file looks like this:</p>
+
 <pre><code class="language-yaml">version: '3'
 services:
   composer:
@@ -171,57 +182,82 @@ services:
     restart: never
     volumes:
       - .:/app
-    working_dir: /app</code></pre>
+    working_dir: /app
+</code></pre>
+
 <p>Now let’s require the packages:</p>
+
 <pre><code class="language-bash">$ docker-compose run \
   composer require \
     spatie/crawler \
-    symfony/css-selector</code></pre>
+    symfony/css-selector
+</code></pre>
+
 <p>All we need now is an entry point, let’s create a file bin/crawler.php:</p>
+
 <pre><code class="language-bash">$ mkdir bin
-$ touch bin/crawler.php</code></pre>
+$ touch bin/crawler.php
+</code></pre>
+
 <p>Nice and simple, now just add the autoload requirement and we’re ready to start:</p>
+
 <pre><code class="language-php">// bin/crawler.php
 &lt;?php
 
 require_once __DIR__ . 
-  '/../vendor/autoload.php';</code></pre>
+  '/../vendor/autoload.php';
+</code></pre>
+
 <p>From now on, we can just run our program by typing docker-compose run php php
 bin/crawler.php. Simple as that! 😉</p>
+
 <pre><code class="language-bash">$ docker-compose run php \
-  php bin/crawler.php</code></pre>
+  php bin/crawler.php
+</code></pre>
+
 <h2>Let’s take a look on the target website</h2>
+
 <p>Normally we should navigate around and figure out how the website works: url patterns,
 ajax calls, csrf tokens, if feeds or APIs are available.</p>
+
 <p>In this case, neither feeds nor APIs are available. We need a raw crawling to fetch
 html data and parse it.</p>
-<p>I see some url patterns:</p>
-<ul>
-<li>Person profile page: people.php.net/{nickname}</li>
-<li>Directory page: people.php.net/?page={number}</li>
-<li>External links</li>
-</ul>
+
+<p>I see some url patterns:
+* Person profile page: people.php.net/{nickname}
+* Directory page: people.php.net/?page={number}
+* External links</p>
+
 <p>Seems nice and simple! We should only care about parsing the HTML inside person
 profile pages and ignore the other ones.</p>
-<p>By checking the profile page we can quickly fetch the selectors that are important to us:</p>
-<ul>
-<li>Name: <code>h1[property=foaf:name]</code></li>
-<li>Nickname: <code>h1[property=foaf:nick]</code></li>
-</ul>
+
+<p>By checking the profile page we can quickly fetch the selectors that are important to us:
+* Name: <code>h1[property=foaf:name]</code>
+* Nickname: <code>h1[property=foaf:nick]</code></p>
+
 <p>We can also trust that people’s e-mail there are basically “{nick}@php.net”.
 With this info in hands, let’s code!</p>
+
 <h2>Crawling all php people and extracting public data</h2>
+
 <p>Below you'll find the code, but if you like videos more, just check this one
 below:</p>
-<iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/HaMoYhTV1hI?start=21" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen><iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/HaMoYhTV1hI?start=21" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
+
+<iframe style="margin: auto;" width="560" height="315" src="https://www.youtube.com/embed/HaMoYhTV1hI?start=21" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <p>Unfortunately it is in Brazilian Portuguese, but I'll try to make an english version
 soon. You can just follow the code, though. Is fairly simple, code is in english
 and portuguese is a super cool language! :P</p>
+
 <h2>Coding time!</h2>
+
 <p>So, <code>spatie/crawler</code> brings two very important abstract classes - which I wish were interfaces instead.</p>
+
 <p>One of them is the <code>CrawlObserver</code> class, where we can hook into crawling
 steps and manipulate http responses. Our logic enters here.</p>
+
 <p>I'll write an observer very quickly with an anonymous class below:</p>
+
 <pre><code class="language-php">$observer = new class
   extends CrawlObserver
 {
@@ -246,12 +282,16 @@ steps and manipulate http responses. Our logic enters here.</p>
 
     echo "[{$email}] {$name} - {$nick}" . PHP_EOL;
   }
-};</code></pre>
+};
+</code></pre>
+
 <p>The above logic will fetch the properties we expect from our pages.
 Of course we should also check whether we are in the correct page or not.</p>
+
 <p>Now, the next important bit is the <code>CrawlProfile</code> abstract class. With this one
 we can decide whether an URL should or not be accessed by an Observer.
 Let's create one with an anonymous class here:</p>
+
 <pre><code class="language-php">$profile = new class
   extends CrawlProfile
 {
@@ -261,34 +301,46 @@ Let's create one with an anonymous class here:</p>
     return $url-&gt;getHost() ===
       'people.php.net';
   }
-};</code></pre>
+};
+</code></pre>
+
 <p>Above we're defining that we only want to follow internal links. That's because
-this website links to many other repositories. And we don't want to crawl the
+this website links to many other repositories. And we don't want to crawl the 
 entire php universe, do we?</p>
+
 <p>With those two instances in hand, we can prepare the crawler itself and start it:</p>
+
 <pre><code class="language-php">Crawler::create()
   -&gt;setCrawlObserver($observer)
   -&gt;setCrawlProfile($profile)
   -&gt;setDelayBetweenRequests(500)
   -&gt;startCrawling(
     'https://people.php.net/'
-  );</code></pre>
+  );
+</code></pre>
+
 <p><strong>Important!</strong> Do you see that <code>setDelayBetweenRequests(500)</code>? It makes the crawler
 fetch one URL every 500 milliseconds. That's because we don't want to take this website
 down, right? (Really, please don't. Pick a governmental website from Brazil instead 👀)</p>
+
 <h2>That's it</h2>
+
 <p>Quick and dirty, but most importantly: sane! <code>spatie/crawler</code> provides a great interface
 that simplifies the process a lot.</p>
+
 <p>Mix this tool with proper dependency injection and queueing and you'll have professional
 results.</p>
+
 <p>Ping me on twitter if you have any questions!
 Cheers! 👋</p>
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -302,7 +354,7 @@ Cheers! 👋</p>
   "dateModified": "2020-07-20T00:00:00+08:00",
   "author": {
     "@type": "Person",
-    "name": "Nawarian N&iacute;ckolas Da Silva"
+    "name": "Nawarian Níckolas Da Silva"
   },
    "publisher": {
     "@type": "Organization",
@@ -313,7 +365,8 @@ Cheers! 👋</p>
     }
   }
 }
-</script>  </div>
+</script>
+  </div>
   </article>
   <aside class="container">
           <div class="recommended">

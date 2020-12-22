@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
-  <link
+      <link rel="canonical" href="https://thephp.website/en/issue/clean-tests-with-php-and-phpunit/" />
+    <link
     rel="alternate"
     type="application/json"
     title="[EN] thePHP Website"
@@ -69,7 +70,7 @@
     </div>
     <section class="menu__cta">
       <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
-        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
       </button>
     </section>
 
@@ -140,46 +141,61 @@
 
     <h1>Clean tests with PHP and PHPUnit</h1>
     <p><a href="/br/edicao/testes-legiveis-com-php-e-phpunit/">Leia em Português</a></p>
+
 <p>There are many tools available in the PHP ecosystem that are ready to provide
 great testing experience with php. <a href="https://github.com/sebastianbergmann/phpunit">PHPUnit is by far the most famous one</a>
 , being almost a synonym of testing this language.</p>
+
 <p>The set of good practices for testing are not much shared, though. There
 are many opinions on why and when to write tests, what type of tests to
 write and so on. But honestly <strong>it doesn't make sense to write any test
 if you won't be able to read it later</strong>.</p>
+
 <h2>Tests are a very special type of documentation</h2>
+
 <p>As <a href="/en/issue/real-life-tdd-php/">I wrote previously on TDD with PHP</a>,
 a test will (or at least should) always make clear what a certain piece of code
 aims to achieve as a goal.</p>
+
 <p><strong>If one test can't express an idea, it is a bad test.</strong></p>
+
 <p>With this in mind, I prepared a set of practices that might support
 php developers on writing good, readable and useful tests.</p>
+
 <h2>Starting with the basics</h2>
+
 <p>There's a set of common practices that many people follow without questioning
-themselves &quot;why&quot;. I'll list many of them while trying to explain at least
+themselves "why". I'll list many of them while trying to explain at least
 a bit the reasoning behind each.</p>
+
 <h3>Tests should have no I/O operations</h3>
+
 <p><strong>Main reasoning</strong>: I/O is slow and unreliable.</p>
+
 <p><strong>Slow:</strong> Even with the best equipment on earth, I/O is still slower
 than memory access. <strong>Tests should always run fast</strong>, otherwise people
 won't run them often enough.</p>
+
 <p><strong>Unreliable:</strong> a certain file, binary, socket, folder, dns record might not be
 available on all machines your code will be tested against. <strong>The more
 you depend on I/O while testing, the more you test is bound to the
 infrastructure</strong>.</p>
-<p>Operations considered I/O:</p>
-<ul>
-<li>File reading/writing</li>
-<li>Network calls</li>
-<li>External process calls (using exec, proc_open...)</li>
-</ul>
+
+<p>Operations considered I/O:
+* File reading/writing
+* Network calls
+* External process calls (using exec, proc_open...)</p>
+
 <p>There are cases where having I/O will make it faster to write a test.
 <strong>But be aware</strong>: making sure such operations work the same in your
 development, build and deployment machines can be a big headache.</p>
+
 <p><strong>Isolating tests so they don't require I/O:</strong> below I present one
 design decision that can be made to prevent your tests from performing
 I/O operations by <strong>segregating responsibilities to interfaces</strong>.</p>
+
 <p>Here's an example:</p>
+
 <pre><code class="language-php">public function getPeople(): array
 {
   $rawPeople = file_get_contents(
@@ -190,23 +206,31 @@ I/O operations by <strong>segregating responsibilities to interfaces</strong>.</
     $rawPeople,
     true
   );
-}</code></pre>
+}
+</code></pre>
+
 <p>The moment we start testing this method, we'll be forced to create
 a local file for testing and, from time to time, keep a snapshot
 of this file. Like the following:</p>
+
 <pre><code class="language-php">public function testGetPeopleReturnsPeopleList(): void
 {
   $people = $this-&gt;peopleService
     -&gt;getPeople();
 
   // assert it contains people
-}</code></pre>
+}
+</code></pre>
+
 <p>For such test, we'd need to <strong>set up preconditions</strong> for the test to run.
 While this might make sense on a first sight, it is actually <strong>terrible</strong>.</p>
+
 <p><strong>Skipping a test because a precondition is not met won't assure
 quality on our software. It will only hide bugs!</strong></p>
+
 <p><strong>Fixing it:</strong> isolate I/O operations by moving this responsibility to an
 interface.</p>
+
 <pre><code class="language-php">// extract the fetching
 // logic to a specialized
 // interface
@@ -245,36 +269,48 @@ class PeopleService
     return $this-&gt;peopleProvider
       -&gt;getPeople();
   }
-}</code></pre>
+}
+</code></pre>
+
 <p>I know, so now <code>JsonFilePeopleProvider</code> uses I/O anyways. True.</p>
+
 <p>Instead of <code>file_get_contents()</code> we can use an abstraction layer
 like the <a href="https://flysystem.thephpleague.com/docs/adapter/local/">Flysystem's Filesystem</a>
 which can be easily mocked.</p>
+
 <p>And what's the point of having <code>PeopleService</code> then? Good question.
 That's also <strong>what tests are for: question your design, kill useless
 code.</strong></p>
+
 <hr>
+
 <h3>Tests should be concise and meaningful</h3>
+
 <p><strong>Main reasoning:</strong> tests are a form of documentation. Keep them clean,
 short and readable.</p>
+
 <p><strong>Clean and short:</strong> no clutter, no thousand lines of mocking, no
 sequence of assertions.</p>
-<p><strong>Readable:</strong> tests should tell a story. The &quot;Given, When, Then&quot;
+
+<p><strong>Readable:</strong> tests should tell a story. The "Given, When, Then"
 structure is amazing for this.</p>
-<p>Here are some characteristics of a nice and readable test:</p>
-<ul>
-<li>It contains only necessary &quot;assert&quot; method calls (preferably only
-one)</li>
-<li>It tells you very clearly what should happen given a condition</li>
-<li>It tests only one path of execution of a method</li>
-<li>It won't mock the whole universe to assert something</li>
-</ul>
+
+<p>Here are some characteristics of a nice and readable test:
+* It contains only necessary "assert" method calls (preferably only
+one)
+* It tells you very clearly what should happen given a condition
+* It tests only one path of execution of a method
+* It won't mock the whole universe to assert something</p>
+
 <p><strong>It is important to notice</strong> that if your implementation contains
 if conditions, switch statements or loops, <strong>they should all be
 explicitly covered with tests.</strong> So early returns will always contain
 a test, for example.</p>
+
 <p>Again: <strong>this is not about coverage, is about documenting.</strong></p>
+
 <p>Let me show you an example of confusing test:</p>
+
 <pre><code class="language-php">public function testCanFly(): void
 {
   $noWings = new Person(0);
@@ -292,8 +328,11 @@ a test, for example.</p>
   $this-&gt;assertTrue(
     $twoWings-&gt;canFly()
   );
-}</code></pre>
-<p>Let's adopt the &quot;Given, When, Then&quot; format here and see how it changes:</p>
+}
+</code></pre>
+
+<p>Let's adopt the "Given, When, Then" format here and see how it changes:</p>
+
 <pre><code class="language-php">public function testCanFly(): void
 {
   // Given
@@ -311,16 +350,22 @@ a test, for example.</p>
 private function givenAPersonHasNoWings(): Person
 {
   return new Person(0);
-}</code></pre>
-<p>Just like the &quot;Given&quot; clause, the whens and thens can be extracted
+}
+</code></pre>
+
+<p>Just like the "Given" clause, the whens and thens can be extracted
 to private methods as well. Whatever makes your test more readable.</p>
+
 <p>Now, that assertEquals is full of clutter with little meaning. A human
 reading this has to parse the assertion to understand what it should mean.</p>
+
 <p><strong>Using specific assertions will make your test much more readable.</strong>
 <code>assertTrue()</code> should receive a variable containing a boolean, never
 an expression like <code>canFly() !== true</code>.</p>
+
 <p>So from previous example, we replace the <code>assertEquals</code> between <code>false</code>
 and <code>$person-&gt;canFly()</code> with a simple <code>assertFalse</code>:</p>
+
 <pre><code class="language-php">// ...
 $person = $this-&gt;givenAPersonHasNoWings();
 
@@ -328,13 +373,18 @@ $this-&gt;assertFalse(
   $person-&gt;canFly()
 );
 
-// Further cases...</code></pre>
+// Further cases...
+</code></pre>
+
 <p>Crystal clear! Given a person has no wings, it shouldn't be able to fly!
 Reads like a poem 😍</p>
-<p>Now, this &quot;Further cases&quot; appearing twice on our text is already a great
+
+<p>Now, this "Further cases" appearing twice on our text is already a great
 clue this test is doing too many assertions. Meanwhile the method name
 <code>testCanFly()</code> doesn't mean something useful at all.</p>
+
 <p>Let's make this test case great again:</p>
+
 <pre><code class="language-php">public function testCanFlyIsFalsyWhenPersonHasNoWings(): void
 {
   $person = $this-&gt;givenAPersonHasNoWings();
@@ -351,22 +401,30 @@ public function testCanFlyIsTruthyWhenPersonHasTwoWings(): void
   );
 }
 
-// ...</code></pre>
+// ...
+</code></pre>
+
 <p>We could even rename the test method to match a real-life scenario like
 <code>testPersonCantFlyWithoutWings</code>, but that's for me good enough.</p>
+
 <hr>
+
 <h3>A test should not depend on another</h3>
+
 <p><strong>Main reasoning:</strong> a test should be able to run and succeed in any order.</p>
+
 <p>So far I can't find a good reason for coupling tests.</p>
+
 <p>Recently I got asked about a Logged-in feature test and I'll take it as a
 good example here.</p>
-<p>The test would perform the following:</p>
-<ul>
-<li>Generate a logged-in JWT token</li>
-<li>Execute a logged-in feature</li>
-<li>Assert state changes</li>
-</ul>
+
+<p>The test would perform the following:
+* Generate a logged-in JWT token
+* Execute a logged-in feature
+* Assert state changes</p>
+
 <p>The way it was set up was the following:</p>
+
 <pre><code class="language-php">public function testGenerateJWTToken(): void
 {
   // ... $token
@@ -384,17 +442,19 @@ public function testStateIsBlah(): void
 {
   // Poll for state changes on
   // Logged-in interface
-}</code></pre>
-<p>This is bad for a couple of reasons:</p>
-<ul>
-<li>PHPUnit won't guarantee order of execution like this</li>
-<li>A test should be able to run independently</li>
-<li>Parallel tests might break randomly</li>
-</ul>
+}
+</code></pre>
+
+<p>This is bad for a couple of reasons:
+* PHPUnit won't guarantee order of execution like this
+* A test should be able to run independently
+* Parallel tests might break randomly</p>
+
 <p>The simplest way to overcome this I can think of is, again,
-the &quot;Given, When, Then&quot;. This way we make the test more concise
+the "Given, When, Then". This way we make the test more concise
 and tell a story by showing its dependencies in a clear way that
 explains the feature itsef.</p>
+
 <pre><code class="language-php">public function testAmazingFeatureChangesState(): void
 {
   // Given
@@ -413,18 +473,26 @@ explains the feature itsef.</p>
     'my-state',
     $newState
   );
-}</code></pre>
+}
+</code></pre>
+
 <p>We would also need to add tests for authenticating and so on.
 This is structure is so good that
 <a href="https://behat.org/en/latest/quick_start.html">Behat enforces it by default</a>.</p>
+
 <hr>
+
 <h3>Always inject dependencies</h3>
+
 <p><strong>Main reasoning:</strong> mocking global state is terrible, not being able
 to mock dependencies at all makes it impossible to test a feature.</p>
+
 <p>Here is a lesson for life: <strong>Forget about stateful static classes and
 singleton instances.</strong> If your class depends on something, make it
 injectable.</p>
+
 <p>Here's a particularly sad example:</p>
+
 <pre><code class="language-php">class FeatureToggle
 {
   public function isActive(
@@ -444,15 +512,22 @@ injectable.</p>
 
     // Evaluate feature toggle...
   }
-}</code></pre>
+}
+</code></pre>
+
 <p>Now. How can you test this early return?</p>
+
 <p>That's right. You can't.</p>
+
 <p>To test this we would need to understand the behaviour of
 this <code>Cookies</code> class and make sure we can reproduce the whole environment
 behind it so we can force some returns there.</p>
+
 <p>Please don't.</p>
+
 <p>We can fix this by injecting an instance of <code>Cookies</code> as dependency.
 Our test would look like the following:</p>
+
 <pre><code class="language-php">// Test class...
 private Cookies $cookieMock;
 
@@ -505,120 +580,171 @@ private function whenCookieOverridesFeatureWithTrue(
   $this-&gt;cookieMock-&gt;get($cookieName)
     -&gt;shouldBeCalledOnce()
     -&gt;willReturn(true);
-}</code></pre>
+}
+</code></pre>
+
 <p><strong>Same occurs with singletons.</strong> So if you want <strong>to make an object unique</strong>,
 make sure you <strong>configure your dependency injector properly</strong> instead of
 using the Singleton (anti) pattern.</p>
+
 <p>Otherwise you will end up writing methods that are only useful for test
 cases like <code>reset()</code> or <code>setInstance()</code>. Sounds insane to me.</p>
+
 <p>Changing your design to make testing easier is fine! <strong>Creating methods
 to make testing easier is not fine.</strong></p>
+
 <hr>
+
 <h3>Never test protected/private methods</h3>
+
 <p><strong>Main reasoning:</strong> They way we test features is by asserting how their
 signature behave: given this conditions, when I input X, I expect Y to occur.
 <strong>Private/Protected methods are not part of the feature's signature.</strong></p>
-<p>I even refuse to show you a way to &quot;test&quot; private methods, but here goes a
+
+<p>I even refuse to show you a way to "test" private methods, but here goes a
 hint: you can only do this by using <a href="https://www.php.net/manual/en/book.reflection.php">the reflection API</a>.</p>
+
 <p>Always punish yourself somehow whenever you think of using reflection to
 test a private method! Bad baad dev!</p>
+
 <p>By definition, private methods will only be called from inside. So they
 are not publicly accessible. This means, only <code>public</code> methods in this
 same class can invoke such methods.</p>
+
 <p><strong>If you tested all your public methods, you also tested all your
 protected/private ones.</strong> If not, feel free to delete your protected/private
 methods, nobody is using them anyways.</p>
+
 <hr>
+
 <h2>Beyond the basics: the interesting stuff</h2>
+
 <p>I hope you didn't get bored so far. Basics are basics, but they need to be
 stated.</p>
+
 <p>Now, within the next lines I'll share with you some opinions I
 carry about writing clean tests and each decision impacts on my development
 workflow.</p>
-<p><strong>I'd say the most important values I keep in mind while writing tests are:</strong></p>
-<ul>
-<li>Learning</li>
-<li>Receiving quick feedback</li>
-<li>Documenting</li>
-<li>Refactoring</li>
-<li>Design while testing</li>
-</ul>
+
+<p><strong>I'd say the most important values I keep in mind while writing tests are:</strong>
+* Learning
+* Receiving quick feedback
+* Documenting
+* Refactoring
+* Design while testing</p>
+
 <p>Such opinions share at least one of such values and each of them support
 the others.</p>
+
 <h3>Tests come first, not after</h3>
+
 <p><strong>Values</strong>: learning, receiving quick feedback, documenting, refactoring,
 design while testing.</p>
+
 <p>This one is the basis of everything. It is so important, it carries all
 values at once.</p>
-<p>Writing test first forces you to first understand how your &quot;given,
-when, then&quot; should be structured. <strong>You document first by doing so</strong> and,
+
+<p>Writing test first forces you to first understand how your "given,
+when, then" should be structured. <strong>You document first by doing so</strong> and,
 most importantly, <strong>learn and state your requirements</strong> as the most
 important things.</p>
+
 <p><strong>Sounds weird to write a test before implementing anything?</strong> Imagine how
 awkward it is to implement something and while testing, discover that
-all the &quot;given, when, then&quot; statements don't make any sense at all.</p>
+all the "given, when, then" statements don't make any sense at all.</p>
+
 <p>It also allows you to run your expectations every 2 seconds or so. <strong>You'll
 receive feedback the quickest way possible. No matter how big or small a
 feature might look like.</strong></p>
+
 <p><strong>Green tests are the perfect field for refactoring.</strong> At some point I'll
 probably write about refactoring, but main thing is: no tests, no refactoring.
 Because refactoring with no tests is simply too dangerous.</p>
-<p>And last but not least, by setting your &quot;given, when, then&quot; it becomes clear
+
+<p>And last but not least, by setting your "given, when, then" it becomes clear
 what interface your methods should have and how they should behave. <strong>Keeping
 this test clean will also force you to constantly take different design
 decisions.</strong></p>
+
 <p>It will force you to create factories, interfaces, break inheritances and so
 on. And yes, to make testing easier!</p>
+
 <p>If your tests are a live document aiming to explain how your software works,
 <strong>it is extremely important they explain it clearly.</strong></p>
+
 <hr>
+
 <h3>No tests is better than bad tests</h3>
+
 <p><strong>Values</strong>: learning, documenting, refactoring.</p>
+
 <p>Many developers think of tests the following way: they write a feature,
 punch their testing framework until tests cover a certain amount
 of new lines and push to production.</p>
+
 <p>What I wish we'd take more into consideration, though, is when the next
 developer comes to this feature. <strong>What tests are really telling this person...</strong></p>
+
 <p>Often tests are messy when names don't tell much. What is clearer when it comes
 to test names: <code>testCanFly</code> or <code>testCanFlyReturnsFalseWhenPersonHasNoWings</code>?</p>
+
 <p>Whenever your tests represent nothing more than clutter and code forcing
 the framework to cover more lines with examples that don't seem to make sense
 at all, it is time to stop and think whether it make sense to even write this test.</p>
+
 <p>Even very silly things like naming variables with <code>$a</code> and <code>$b</code>, or giving names
 that don't relate to the use case at all.</p>
+
 <p><strong>Remember:</strong> your tests are a live document, attempting to explain how your
 software should behave. <code>assertFalse($a-&gt;canFly())</code> is not documenting much.
 <code>assertFalse($personWithNoWings-&gt;canFly())</code> is.</p>
+
 <hr>
+
 <h3>Run your tests compulsively</h3>
+
 <p><strong>Values</strong>: learning, receiving quick feedback, refactoring.</p>
+
 <p><strong>Before you start any feature: run tests.</strong> If tests are broken before you touched
 anything, you'll know <em>before</em> you wrote any code and you won't spend precious
 minutes debugging broken tests you weren't even aware of.</p>
+
 <p><strong>After saving a file: run tests.</strong> The sooner you know you broke something, the
 sooner you'll fix the issue and move forward. If interrupting your flow to fix
 an issue before moving forward sounds unproductive, imagine coming many steps
 back to fix an issue you didn't even know you caused.</p>
+
 <p><strong>After chatting with your colleague for five minutes or checking github
 notifications: run tests.</strong> If tests are red, you know where you stopped. If tests
 are green, you know you can move forward.</p>
+
 <p><strong>After refactoring something, even variable names: run tests.</strong></p>
-<p>Just really, run the freaking tests. As often as you'd hit the &quot;Save&quot; hotkey.</p>
+
+<p>Just really, run the freaking tests. As often as you'd hit the "Save" hotkey.</p>
+
 <p>In fact, <a href="https://github.com/spatie/phpunit-watcher">PHPUnit Watcher</a>
 does exactly this for you and even sends desktop notifications!</p>
+
 <hr>
+
 <h3>Big tests, big responsibilities</h3>
+
 <p><strong>Values</strong>: learning, refactoring, design while testing.</p>
+
 <p>Ideally each class would have one test counterpart for itself. Also
 each public method in this class, should be covered with tests. And every
 if condition or switch statement...</p>
+
 <p>Counts are more or less like this:</p>
+
 <ul>
 <li>1 class = 1 test case</li>
 <li>1 method = 1 or more tests</li>
 <li>1 alternative path (if/switch/try-catch/exception) = 1 test</li>
 </ul>
+
 <p>So a simple code like this would generate 4 different tests:</p>
+
 <pre><code class="language-php">// class Person
 public function eatSlice(Pizza $pizza): void
 {
@@ -640,24 +766,37 @@ public function eatSlice(Pizza $pizza): void
   }
 
   $pizza-&gt;removeSlices($slices);
-}</code></pre>
+}
+</code></pre>
+
 <p><strong>As you grow in public methods count, your tests will also grow in number.</strong></p>
+
 <p>And nobody likes reading large documents. As your test case is also a document,
 leaving it small and concise will only increase its quality and usefulness.</p>
+
 <p>This is also a big sign that your class is accumulating responsibilities and
 might be time to put on your refactoring hat to remove features, move to
 different classes or rethink part of your design.</p>
+
 <hr>
+
 <h3>Keep a regression suite</h3>
+
 <p><strong>Values</strong>: learning, documenting, receiving quick feedback.</p>
+
 <p>Take the following function:</p>
+
 <pre><code class="language-php">function findById(string $id): object
 {
   return fromDb((int) $id);
-}</code></pre>
+}
+</code></pre>
+
 <p>You expected someone to pass <code>"10"</code> but instead, passed <code>"10 bananas"</code>. Both
 retrieve the value, one should not. You have a bug.</p>
+
 <p>First thing you do? Write a test to state this behaviour is wrong!!</p>
+
 <pre><code class="language-php">public function testFindByIdAcceptsOnlyNumericIds(): void
 {
   $this-&gt;expectException(InvalidArgumentException::class);
@@ -666,27 +805,38 @@ retrieve the value, one should not. You have a bug.</p>
   );
 
   findById("10 bananas");
-}</code></pre>
+}
+</code></pre>
+
 <p>Tests are not passing, of course. But now you know what to do to make them pass.
 Remove the bug, make tests green, push, deploy and be happy.</p>
+
 <p>Keep this test there, forever. If possible, to a test suite specialized on
 regression and link it to an issue.</p>
+
 <p>There you go! Quick feedback bug fixing, documentation, regression proof
 code and happiness.</p>
+
 <hr>
+
 <h2>Final notes and let's chat</h2>
+
 <p>Poah, I wrote quite a bit... And of course most things here are mere
 opinions of mine, which I developed over time during my career. Doesn't
 mean they are right or wrong, they are just opinions.</p>
+
 <p>This post shall keep growing as I find some important topics are missing.</p>
+
 <p>Always feel free to comment and send question directly on my twitter profile
 or in this project's Github Repository.</p>
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -700,7 +850,7 @@ or in this project's Github Repository.</p>
   "dateModified": "2020-01-07T00:00:00+08:00",
   "author": {
     "@type": "Person",
-    "name": "Nawarian N&iacute;ckolas Da Silva"
+    "name": "Nawarian Níckolas Da Silva"
   },
    "publisher": {
     "@type": "Organization",
@@ -711,7 +861,8 @@ or in this project's Github Repository.</p>
     }
   }
 }
-</script>  </div>
+</script>
+  </div>
   </article>
   <aside class="container">
           <div class="recommended">

@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
-  <link
+      <link rel="canonical" href="https://thephp.website/br/edicao/php-docker-setup-rapido/" />
+    <link
     rel="alternate"
     type="application/json"
     title="[BR] thePHP Website"
@@ -69,7 +70,7 @@
     </div>
     <section class="menu__cta">
       <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
-        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
       </button>
     </section>
 
@@ -145,33 +146,49 @@
 
     <h1>Set up rápido do PHP, PHPUnit e Docker</h1>
     <p><a href="/en/issue/php-docker-quick-setup/">Read in English</a></p>
+
 <p>Neste texto eu vou lhe mostrar alguns snippets
 do meu setup básico pra iniciar aplicações PHP.</p>
+
 <p><strong>Meu maior objetivo aqui é que você marque este
 post nos seus favoritos</strong> para que possa voltar,
 copiar e colar as coisas daqui sempre que precisar
 criar ou alterar suas aplicações php. 😉</p>
+
 <p>A coisa legal de usar este setup é que você
 pode facilmente trocar as versões das imagens
 sem precisar configurar um montante de coisas
 de uma vez.</p>
+
 <p>Então...</p>
+
 <p><strong>Antes de começar:</strong> tenha certeza de que você
 possui <code>docker</code> e <code>docker-compose</code> instalados.</p>
+
 <h2>O resultado final</h2>
+
 <p>Se você seguir este tutorial, será capaz de executar
 diferentes serviços através do comando <code>docker-compose</code>.</p>
+
 <p>Você encontra o resultado final
 <a href="https://github.com/nawarian/The-PHP-Website/tree/master/code/7-phpunit-docker-compose">no repositório público</a>.</p>
+
 <p>A maior ideia é que cada serviço pode ou não se tornar
 um comando. E o formato se parece com o seguinte:</p>
-<pre><code class="language-bash">$ docker-compose run &lt;comando&gt; [--args]</code></pre>
+
+<pre><code class="language-bash">$ docker-compose run &lt;comando&gt; [--args]
+</code></pre>
+
 <p>Rodar uma suíte de testes, por exemplo, poderia se
 parecer com isso:</p>
-<pre><code class="language-bash">$ docker-compose run tests</code></pre>
+
+<pre><code class="language-bash">$ docker-compose run tests
+</code></pre>
+
 <p>Pra tornar a digitação mais simples, podemos
 também adicionar um alias para o comando
 <code>docker-compose run</code>. Vou chamar de <code>dcr</code> aqui:</p>
+
 <pre><code class="language-bash">$ alias dcr='docker-compose run'
 $ dcr lol
 ERROR: Can't find a suitable
@@ -181,39 +198,58 @@ Are you in the right directory?
 
 Supported filenames:
 docker-compose.yml,
-docker-compose.yaml</code></pre>
+docker-compose.yaml
+</code></pre>
+
 <p>Alias criado! O programa ainda vai reclamar porque
 não existe um arquivo docker-compose ainda. Bora
 criar então!</p>
+
 <h2>Um docker-compose básico</h2>
+
 <p>Então a gente vai criar um projeto do zero, huh?
 Bora lá! Comece <strong>criando a pastsa do projeto</strong> e
 mais tarde <strong>criando o arquivo docker-compose.yml</strong>:</p>
+
 <pre><code class="language-bash">$ mkdir meu-projeto
 $ cd meu-projeto
-$ touch docker-compose.yml</code></pre>
+$ touch docker-compose.yml
+</code></pre>
+
 <p>Eu vou criar as pastas comuns que normalmente
 minhas aplicações têm. Vai incluir pastas como
 source, testes e binários.</p>
+
 <p>Apenas execute o seguinte:</p>
+
 <pre><code class="language-bash">$ mkdir -p src/ tests/ bin/ \
-  .conf/nginx/ var/</code></pre>
+  .conf/nginx/ var/
+</code></pre>
+
 <p>Agora podemos começar a trabalhar com o nosso
 <code>docker-compose.yml</code>. Ele deverá conter todas
 dependências que o nosso projeto teria.</p>
+
 <p>O conteúdo inicial no nosso docker-compose será
 bem simples. Apenas escreva o seguinte:</p>
+
 <pre><code class="language-yaml"># docker-compose.yml
 version: '3'
-services:</code></pre>
+services:
+</code></pre>
+
 <p>A gente vai escrever os serviços já agora! O mais
 essencial de todos, como deveria ser, é o composer.</p>
+
 <h2>Adicionando composer no docker-compose</h2>
+
 <p>Provavelmente usaremos o php de dentro do container.
 Então <strong>não faz sentido rodar o composer fora de um
 container</strong>, já que as versões do php podem divergir.</p>
+
 <p>Vamos então adicionar um serviço <code>composer</code> ao nosso
 arquivo:</p>
+
 <pre><code class="language-yaml"># docker-compose.yml
 version: '3'
 services:
@@ -223,48 +259,69 @@ services:
       - COMPOSER_CACHE_DIR=/app/var/cache/composer
     volumes:
       - .:/app
-    restart: never</code></pre>
+    restart: never
+</code></pre>
+
 <p>O snippet acima vai criar um serviço <code>composer</code>,
 que mapeia o diretório atual para <code>/app</code> dentro do container.</p>
+
 <p>Definir a variável de ambiente COMPOSER_CACHE_DIR com
 o valor <code>/app/var/cache/composer</code> fará com que o
 composer escreva o cache na máquina local em vez de
 somente dentro do container. Isto irá previnir que
 o composer baixe todas dependências a cada execução.</p>
+
 <p>Então é bom tomar conta de que a pasta <code>var/</code> nunca
 vá parar no seu GIT, hein!</p>
+
 <p>Só pra não esquecermos, vamos ignorar os arquivos
 relacionados ao composer já agora. Apenas rode os
 seguintes comandos pra evitar commitar esses caras:</p>
+
 <pre><code class="language-bash">$ echo 'vendor/' &gt;&gt; .gitignore
-$ echo 'var/' &gt;&gt; .gitignore</code></pre>
+$ echo 'var/' &gt;&gt; .gitignore
+</code></pre>
+
 <p>Perfeito! Agora com o composer em mãos nós
 estamos preparados para instalar a dependência
 mais importante de todo proejto!</p>
+
 <h2>Preparando o PHPUnit</h2>
+
 <p>A dependência mais importante deste skeleton app
 é o motor de testes, é claro!</p>
+
 <p>Vamos instalar o phpunit a partir do nosso
 serviço <code>composer</code>:</p>
+
 <pre><code class="language-bash">$ dcr composer require --dev \
-  phpunit/phpunit</code></pre>
+  phpunit/phpunit
+</code></pre>
+
 <p>Não precisa adicionar a barra invertida. Eu só
 coloquei alí para que fique legível em telas
 pequenas 😬</p>
+
 <p>As dependência devem estar sendo baixadas, e
 os arquivos <code>composer.json</code> e <code>composer.lock</code>
 devem ter aparecido no seu diretório local.
 Ah, e tem uma pasta <code>vendor/</code> também.</p>
+
 <p>Parece que rolou...</p>
+
 <p>Bora então cirar um serviço php simplão pra rodar
 coisa de cli. A gente vai usar a imagem oficial
 do php para cli pra isso. E quanto mais chique
 melhor, vamo fazer com o php 7.4! 🔥</p>
+
 <h2>Preparando uma cli PHP</h2>
+
 <p>Vamos usar a imagem <code>php:7.4-cli</code> pra isso.</p>
+
 <p>Vamos também mapear os volumes da mesma forma
 que fizemos com o composer. Pode ser útil no
 futuro.</p>
+
 <pre><code class="language-yaml"># docker-compose.yml
 version: '3'
 services:
@@ -281,26 +338,40 @@ services:
     restart: never
     volumes:
       - .:/app
-    working_dir: /app</code></pre>
+    working_dir: /app
+</code></pre>
+
 <p>Aqui a gente também colocou o working dir
 com o valor <code>/app</code>. Então sempre que rodarmos
 <code>dcr php</code> ele irá executar como se <code>/app</code> fosse
 o caminho inicial de execução.</p>
+
 <p>Tá pensando como vamos rodar os testes, certo?</p>
+
 <p>Siligaaqui!</p>
+
 <h2>Rodando PHPUnit dentro do container</h2>
+
 <p>Rodar PHPUnit deveria ser tão simples quanto
 rodar um comando de cli. Já que ele é um comando
 de cli...</p>
+
 <p>O seguinte, portanto, funciona bem:</p>
-<pre><code class="language-bash">$ dcr php vendor/bin/phpunit</code></pre>
-<p>Você pode usar &lt;TAB> para auto completar
+
+<pre><code class="language-bash">$ dcr php vendor/bin/phpunit
+</code></pre>
+
+<p>Você pode usar &lt;TAB&#62; para auto completar
 normalmente 😉</p>
+
 <p>Parece bem chatão escrever tudo isso aí cada
 vez mais. Dá pra simplificar?</p>
+
 <p>Sim!</p>
+
 <p>Vamos adicionar um serviço <code>phpunit</code> para o
 nosso <code>docker-compose.yml</code>:</p>
+
 <pre><code class="language-yaml"># docker-compose.yml
 version: '3'
 services:
@@ -324,27 +395,43 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    entrypoint: vendor/bin/phpunit</code></pre>
+    entrypoint: vendor/bin/phpunit
+</code></pre>
+
 <p>O truque aqui tá no <code>entrypoint</code>!
 Agora em seu terminal você pode executar
 o seguinte:</p>
+
 <pre><code>$ dcr phpunit --version
 PHPUnit 9.0.1 by Sebastian
-Bergmann and contributors.</code></pre>
+Bergmann and contributors.
+</code></pre>
+
 <p>Aooo! Que lindeza!</p>
+
 <p>A gente, aliás, gerar o nosso <code>phpunit.xml</code>
 antes de pular pro próximo passo.</p>
+
 <p>Assim ó:</p>
+
 <pre><code class="language-bash">$ dcr phpunit \
-  --generate-configuration</code></pre>
+  --generate-configuration
+</code></pre>
+
 <p>Esse comando vai te perguntar algumas coisas.
 Apenas pressione enter pra tudo e tá de boa...</p>
+
 <h2>Criando um teste simples</h2>
+
 <p>Só pra ter certeza de que as coisas tão
 rodando né.</p>
-<pre><code class="language-bash">$ touch tests/MyTest.php</code></pre>
+
+<pre><code class="language-bash">$ touch tests/MyTest.php
+</code></pre>
+
 <p>E dentro de <code>tests/MyTest.php</code> adicione o
 seguinte:</p>
+
 <pre><code class="language-php"># tests/MyTest.php
 &lt;?php
 
@@ -358,23 +445,35 @@ class MyTest extends TestCase
   {
     self::assertTrue(false);
   }
-}</code></pre>
+}
+</code></pre>
+
 <p>Funciona perfeitamente! E o teste também está
 falhando... Tu pode consertar depois, relaxe!</p>
+
 <p>Agora que conseguimos rodar os nossos testes,
 podemos pensar em construir a aplicação em si.</p>
+
 <p>Provavelmente você quer criar uma aplicação web,
 sim? Então vamos fazer algo com o nginx e php-fpm!!</p>
+
 <h2>Configurando o Web Server</h2>
+
 <p>Para configurar o php fpm, precisaremos de dois
 serviços diferentes. Um será o servidor HTTP e
 o outro será a instância FPM.</p>
+
 <p>Como estes são processos de longa execução, a
 gente não vai usar o <code>docker-compose run</code> com eles.
 Em vez disso, usemos o <code>up -d</code>.</p>
+
 <p>O comando final vai parecer com o seguinte:</p>
-<pre><code class="language-bash">$ docker-compose up -d fpm nginx</code></pre>
+
+<pre><code class="language-bash">$ docker-compose up -d fpm nginx
+</code></pre>
+
 <p>Vamos adicionar o PHP-FPM na bagaça:</p>
+
 <pre><code class="language-yaml"># docker-compose.yml
 version: '3'
 services:
@@ -404,13 +503,18 @@ services:
     restart: always
     volumes:
       - .:/app
+
 </code></pre>
+
 <p>Simplasso! Ao rodar <code>docker-compose up -d fpm</code> ele
 deveria rodar e ficar no background já.</p>
+
 <p>Agora vamos configurar a parte do nginx que vai
 expor a porta <code>8080</code> e tratar as requests ao
 php envinando para a porta <code>9000</code> do fpm.</p>
+
 <p>O arquivo docker-compose.yml vai ficar assim:</p>
+
 <pre><code class="language-yaml"># docker-compose.yml
 version: '3'
 services:
@@ -448,26 +552,36 @@ services:
       - .:/app
       - ./var/log/nginx:/var/log/nginx
       - .conf/nginx/site.conf:/etc/nginx/conf.d/default.conf
+
 </code></pre>
+
 <p>Com isto nós expomos a porta <code>8080</code> como sendo
 a porta <code>80</code> do container (porta padrão do http).</p>
+
 <p>Também ligamos o nosso diretório atual para <code>/app</code>.
 Normalmente as pessoas fazem <code>/var/www</code>, mas eu
 gosto de deixar as coisas consistentes em comparação
 com os outros serviços.</p>
+
 <p>O diretório local <code>var/log/nginx</code> foi conectado ao
 <code>/var/log/nginx</code> do container. Desta forma a gente
 não fica cego quando precisar checar os logs de
 acesso ou erros.</p>
+
 <p>Por último, mas não menos importante, o <code>site.conf</code>
 foi introduzido ao container com o nome <code>default.conf</code>.
 Esta é só uma maneira rápida de fazer com que o nginx
 aceite a nossa configuração.</p>
+
 <p>A gente precisa criar o nosso arquivo de configuração.
 Façamos então!</p>
-<pre><code class="language-bash">$ touch .conf/nginx/site.conf</code></pre>
+
+<pre><code class="language-bash">$ touch .conf/nginx/site.conf
+</code></pre>
+
 <p>Escreva o seguinte arquivo de configuração
 no caminho <code>.conf/nginx/site.conf</code>:</p>
+
 <pre><code class="language-conf"># .conf/nginx/site.conf
 server {
   listen 80;
@@ -492,38 +606,53 @@ server {
 
   access_log /var/log/nginx/myapp_access.log;
   error_log /var/log/nginx/myapp_error.log;
-}</code></pre>
+}
+</code></pre>
+
 <p>Repare como <code>root</code> está apontando para
 <code>/app/public</code>. Isto fará com que a pasta
 <code>public/</code> seja o ponto de início para toda
 requisição que o nginx gerenciar.</p>
+
 <p>Repare também no <code>fastcgi_pass</code> e veja que
 está apontando para <code>fpm:9000</code>. <strong>Esta é a
 nossa imagem fpm. Se você a deu um nome diferente,
 ajuste essa linha aqui também!</strong></p>
+
 <p>Pra testar isso tudo, vamos criar um simples
 <code>index.php</code> dentro da pasta <code>/public</code>.
 Este arquivo vai servir como o ponto de
 partida da nossa aplicação.</p>
+
 <p>Apenas adicione uma chamada ao phpinfo neste
 arquivo:</p>
+
 <pre><code class="language-php"># public/index.php
 &lt;?php
 
 phpinfo();
+
 </code></pre>
+
 <p>Agora vamos levantar o servidor nginx:</p>
-<pre><code class="language-bash">$ docker-compose up -d nginx</code></pre>
+
+<pre><code class="language-bash">$ docker-compose up -d nginx
+</code></pre>
+
 <p>A partir deste momento você poderá acessar
-<a href="http://localhost:8080/">http://localhost:8080/</a> a partir do seu
+http://localhost:8080/ a partir do seu
 navegador normalmente.</p>
+
 <h2>Não esqueça o autoloader</h2>
+
 <p>Nós instalamos o composer corretamente,
 mas usar as nossas classes ainda não está
 perfeito.</p>
+
 <p>Vamos ajustar o nosso composer.json para
 que o composer possa saber de onde carregar
 nossas classes:</p>
+
 <pre><code class="language-json"># composer.json
 {
   "require-dev": {
@@ -535,17 +664,24 @@ nossas classes:</p>
     }
   }
 }
+
 </code></pre>
+
 <p>Agora rode um composer dump:</p>
+
 <pre><code class="language-bash">$ dcr composer -- dump
 Generated autoload files
-containing 646 classes</code></pre>
+containing 646 classes
+</code></pre>
+
 <p>Este <code>--</code> antes do comando apenas faz com
 que o <code>docker-compose</code> não pense que <code>dump</code>
 é um serviço em vez de parâmetro ao nosso
 comando do composer.</p>
+
 <p>Pra testar este pedacinho, criemos um arquivo
 chamado <code>App.php</code> dentro de <code>src/</code>:</p>
+
 <pre><code class="language-php"># src/App.php
 &lt;?php
 
@@ -559,10 +695,13 @@ class App
   {
     echo 'Hello!';
   }
-}</code></pre>
+}
+</code></pre>
+
 <p>E agora apenas modifique o arquivo
 <code>public/index.php</code> para usar a nossa
 classe:</p>
+
 <pre><code class="language-php">&lt;?php
 
 require_once __DIR__
@@ -573,42 +712,54 @@ use ThePHPWebsite\App;
 $app = new App();
 
 $app-&gt;sayHello();
+
 </code></pre>
+
 <p>Recarregue a página no navegador e
-XABLAU! &quot;Hello!&quot; tá lá, chapa!</p>
+XABLAU! "Hello!" tá lá, chapa!</p>
+
 <hr>
+
 <p>Buum! Isso é tudo! Um guia massa de como montar
 um ambiente local de desenvolvimento pra aplicações
 php usando docker compose e podendo rodar testes
-com o phpunit. </p>
+com o phpunit.</p>
+
 <p>Você provavelmente gostará também de adicionar
 outros serviços como bancos de dados, servidores
 de filas, um servidor Solr...</p>
+
 <p>Vai na fé e adiciona eles aí, agora tu não precisa
 mais bagunçar seu ambiente todo pra mexer com
 diferentes serviços.</p>
+
 <p>Se em algum momento você entender que precisa de
 alguma coisa MUITO específica, como uma extensão
 do php ou coisa do gênero, basta criar um Dockerfile
 customizado e referenciá-lo no docker-compose.yml.</p>
+
 <p>Não se esqueça de compartilhar com seus(uas) amigos(as)
 preguiçosos(as) sempre que começarem a reclamar
 do processo de criar um projeto base com PHP.</p>
+
 <p>E também sinta-se livre pra me dar um alô se
 você teve algum problema durante este tutorial.</p>
+
 <p>Valeus!</p>
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Set up r&aacute;pido do PHP, PHPUnit e Docker",
-  "description": "Nest post eu mostro rapidinho meu setup para aplica&ccedil;&otilde;es php usando PHPUnit e Docker e algumas configs r&aacute;pidas que quase todo app precisa.",
+  "headline": "Set up rápido do PHP, PHPUnit e Docker",
+  "description": "Nest post eu mostro rapidinho meu setup para aplicações php usando PHPUnit e Docker e algumas configs rápidas que quase todo app precisa.",
   "image": [
     "https://thephp.website/assets/images/posts/7-container-640.webp"
    ],
@@ -616,7 +767,7 @@ você teve algum problema durante este tutorial.</p>
   "dateModified": "2020-02-17T00:00:00+08:00",
   "author": {
     "@type": "Person",
-    "name": "Nawarian N&iacute;ckolas Da Silva"
+    "name": "Nawarian Níckolas Da Silva"
   },
    "publisher": {
     "@type": "Organization",
@@ -627,7 +778,8 @@ você teve algum problema durante este tutorial.</p>
     }
   }
 }
-</script>  </div>
+</script>
+  </div>
   </article>
   <aside class="container">
           <div class="recommended">

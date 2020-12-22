@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
-  <link
+      <link rel="canonical" href="https://thephp.website/en/issue/php-8-jit/" />
+    <link
     rel="alternate"
     type="application/json"
     title="[EN] thePHP Website"
@@ -69,7 +70,7 @@
     </div>
     <section class="menu__cta">
       <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
-        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
       </button>
     </section>
 
@@ -140,354 +141,369 @@
 
     <h1>Deep Dive into PHP 8&#039;s JIT</h1>
     <p><a href="/br/edicao/php-8-jit">Leia em Português</a></p>
+
 <p>PHP has a Just In Time compiler (JIT) since its most recent major version, PHP 8.</p>
+
 <p>Here's a demo of JIT's impact on PHP. The video was recorded by Zeev, a core
 developer of the php engine, to demonstrate the performance difference between
 php 7.0 and JIT when generating fractals.</p>
-<iframe style="margin: auto; margin-bottom: 20px;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/dWH65pmnsrI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen><iframe style="margin: auto; margin-bottom: 20px;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/dWH65pmnsrI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
+
+<iframe style="margin: auto; margin-bottom: 20px;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/dWH65pmnsrI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <p>It is fair to expect great performance improvements after watching this video,
 especially if you remember the amazing boost when migrating from php 5 to 7.
 But soon you'll notice that such gains aren't for most applications (unless
 you do fractals for a living 🤷🏻‍♀️).</p>
+
 <p>So before you get too hyped or too disappointed about JIT, let me explain what
 this thing is and how you can get the most out of it.</p>
+
 <h2>What is a Just In Time compiled language and why do we need it?</h2>
+
 <p>Let me introduce you to compilation first, I believe we will need it.</p>
+
 <p>CPUs can't read english, you already know that. They can kind of read a series
 of bits and bytes which represent addresses, values, instructions... But guess
-who can't code this? That's right, us! (At least I can't 👀 (I kind of can, but... no.))</p>
+who can't code this? That's right, us! (At least I can't 👀 &#40;I kind of can, but... no.))</p>
+
 <p>A solution to this problem is to translate something we, humans, can write into
-something CPUs can execute. This translation can be called &quot;compilation&quot;. So
+something CPUs can execute. This translation can be called "compilation". So
 <strong>compilation is a translation of human-readable code to machine code.</strong>
 Simple, oder?</p>
+
 <p>Translating human-readable code to machine code can happen in three different
 ways: Ahead Of Time (AOT) compilation, Just In Time (JIT) compilation or, our
 favorite, interpretation (or Implicit Compilation).</p>
+
 <p><strong>Languages like C, C++ or Rust are AOT-compiled languages.</strong> You write the code,
 you compile it and the output is a binary object that a CPU immediately understands
 how to execute. It is called Ahead Of Time because you compile the binary object
 BEFORE you run it.</p>
+
 <p><strong>Languages like PHP, Java or JavaScript are interpreted.</strong> A code written in such
 languages will be translated into an intermediate representation and another
 program (a compiled one) will understand and execute such intermediate
-representation. It is very common to call such programs &quot;Virtual Machines&quot; or
-&quot;Interpreters&quot;.</p>
+representation. It is very common to call such programs "Virtual Machines" or
+"Interpreters".</p>
+
 <p><strong>Normally interpreted languages have less performance and freedom when compared
 with AOT-compiled languages</strong> because things like memory management, CPU-targeted
 instructions and funky low-level tricks are not available to the user space. So
 another program (the interpreter) has to manage all of this plus be polyglot
 enough to talk to different kinds of processors and operating systems.</p>
+
 <p><strong>Languages like Java, LUA and now PHP are not only interpreted but also Just
 In Time compiled!</strong> They still need a VM, but their VMs are capable of compiling
 this intermediate representation of code into binary objects in runtime. These
 JIT-capable VMs operate in a hybrid mode where code is partially compiled and interpreted.</p>
+
 <p>When JIT kicks in, parts of your php code will be compiled into machine code so the
 Zend VM (php's virtual machine) won't interpret these parts anymore. Your php
 code will talk directly to the CPU.</p>
+
 <p>So why can't we just compile everything, then? If the VM is a bottleneck, why
 bother to run through it in the first place? We could just compile our php code
 into machine code and be happy about it.</p>
+
 <p>Well, we'd have to compile to specific CPU architectures, be prepared to talk to
 different operating systems, be extremely clear about our variable types and
 perform way more bare-metal operations than we should if we want to be productive.
 There are decent abstractions for Golang and Rust, for example, but they aren't
 very practical and require control over the environment they're deployed against.</p>
+
 <p><strong>Interpreted languages, on the other hand, can be easily deployed to different
 servers, allow rapid development and create room for dynamic typing systems.</strong></p>
+
 <p>Just In Time compilation is potentially the best of the two worlds, combining
 good speed and developer experience.</p>
+
 <p>Dynamic typing, as you know, is one of the core features of PHP. It is very
 complex and is tattooed into php's core in a way that removing the dynamic
 typing is almost unthinkable.
 <a href="/en/issue/php-type-system/">Here’s a great summary on how php’s type system works.</a></p>
+
 <p>And because of Dynamic Typing (and some other things you'll learn about below)
 the Just In Time compiler present in PHP is not yielding big performance gains.
 At least not yet.</p>
+
 <p>Curious why? Keep reading!</p>
+
 <h2>Let's see how PHP works with and without JIT</h2>
+
 <p>In PHP there are three steps before executing your code: <strong>tokenizing</strong>,
 <strong>parsing</strong> into an AST and <strong>compiling</strong> to an intermediate representation
 known as <strong>Opcode</strong>.</p>
+
 <p><strong>Tokenizing (or Lexing) is the process of reading php code and splitting
-it into understandable units called tokens.</strong> <code>&lt;?php</code> becomes a _T_OPEN<em>TAG</em>,
-<code>echo</code> becomes a _T<em>ECHO</em> and <code>"Hello, friend"</code> becomes T_CONSTANT_ENCAPSED_STRING.
+it into understandable units called tokens.</strong> <code>&lt;?php</code> becomes a <em>T_OPEN_TAG</em>,
+<code>echo</code> becomes a <em>T_ECHO</em> and <code>"Hello, friend"</code> becomes T_CONSTANT_ENCAPSED_STRING.
 <a href="https://www.php.net/manual/en/tokens.php">A complete list of PHP's tokens can be found here.</a></p>
+
 <p>Parsing is the process of making sense out of such tokens. In PHP parsed tokens
 are organized in a tree structure named AST (Abstract syntax tree).
 The AST's job is to represent what operations should be. In <code>echo 1+1</code> the interpreter
 should in fact understand <code>print the result of the expression 1+1</code>. Such tree would
 look something like the following:</p>
+
 <pre><code>operation =&gt; ECHO,
 operand =&gt; expression (
     operation =&gt; ADD,
     operand1 =&gt; 1,
     operand2 =&gt; 1
-)</code></pre>
+)
+</code></pre>
+
 <p>PHP is then able to <strong>compile this tree into an intermediate representation
 called Opcode.</strong></p>
+
 <p>The Opcode is what is actually executed by the virtual machine, so executing
 is the final step. Here's a diagram illustrating how this process looks like.</p>
+
 <figure style="text-align: center">
   <a href="/assets/images/posts/10-php-8-jit/zendvm-no-opcache.png" target="_blank">
-    <img src="/assets/images/posts/10-php-8-jit/zendvm-no-opcache.png" alt="The PHP's interpreting flow.">
+    <img src="/assets/images/posts/10-php-8-jit/zendvm-no-opcache.png" alt="The PHP's interpreting flow." />
   </a>
   <figcaption>A simplified overview on PHP's interpreting flow.</figcaption>
 </figure>
+
 <p>You probably realized that tokenizing, parsing and compiling code every single time
 can be a big bottleneck. PHP engineers thought so too and that's why the
 Opcache extension exists. Let's have a quick look at it.</p>
+
 <h2>The Opcache extension</h2>
+
 <p>The Opcache extension is shipped with PHP and generally there's no big reason to
 deactivate it. If you use PHP, you should probably have Opcache switched on.</p>
+
 <p>It adds an in-memory shared cache layer to store Opcodes. So tokenizing, parsing
 and compiling will happen once for each file and will be shared with every request.</p>
+
 <p>With Opcache extension enabled, the execution of PHP code looks like in the following
 diagram:</p>
+
 <figure style="text-align: center">
   <a href="/assets/images/posts/10-php-8-jit/zendvm-opcache.png" target="_blank">
-    <img src="/assets/images/posts/10-php-8-jit/zendvm-opcache.png" alt="The PHP's interpreting flow with Opcache">
+    <img src="/assets/images/posts/10-php-8-jit/zendvm-opcache.png" alt="The PHP's interpreting flow with Opcache" />
   </a>
   <figcaption>The PHP's interpreting flow with Opcache. If a file was already parsed, php fetches the cached Opcodes for it instead of parsing all over again.</figcaption>
 </figure>
+
 <p><strong>Side note:</strong> this is where <a href="https://wiki.php.net/rfc/preload">PHP 7.4's preloading feature</a>
 shines! It allows you to tell PHP FPM to parse your codebase, transform it into
 Opcodes and cache them even before you execute anything.</p>
+
 <h2>Enters the Just In Time compilation</h2>
+
 <p>While the Opcache extension will prevent PHP from tokenizing, parsing and compiling
 over and over again, the Just In Time compilation aims to skip the virtual machine's
 Opcode interpretation and let it execute machine code directly.</p>
+
 <p>PHP's JIT implementation uses a C library called
 <a href="https://luajit.org/dynasm.html">DynASM (Dynamic Assembler)</a>
 which maps a set of CPU instructions in one specific format into assembly code for
 many different CPU types. So the Just In Time compiler transforms Opcodes into an
 architecture-specific machine code using DynASM.</p>
+
 <p>The compilation happens between fetching Opcodes from cache and executing them.
 Since compiling Opcode into machine code can be very expensive, PHP has to decide
 which portions of your code might make sense to be compiled or not.</p>
+
 <p><strong>PHP then profiles Opcodes being executed by the Zend VM and checks which ones
 might make sense to compile. (based on your configuration)</strong></p>
+
 <p>When an Opcode is compiled its execution doesn't happen through the Zend VM handlers,
 they are directly executed by the CPU.</p>
+
 <figure style="text-align: center">
   <a href="/assets/images/posts/10-php-8-jit/zendvm-opcache-jit.png" target="_blank">
-    <img src="/assets/images/posts/10-php-8-jit/zendvm-opcache-jit.png" alt="The PHP's interpreting flow with JIT">
+    <img src="/assets/images/posts/10-php-8-jit/zendvm-opcache-jit.png" alt="The PHP's interpreting flow with JIT" />
   </a>
   <figcaption>The PHP's interpreting flow with JIT. If compiled, Opcodes don't execute through the Zend VM.</figcaption>
 </figure>
+
 <p>When an Opcode should be compiled is decided based on your INI configurations. You'll
 get more details in the next section.</p>
+
 <h2>JIT Configuration</h2>
+
 <p>Configuring JIT in PHP is very simple, there are two INI directives we need to set:
 <code>opcache.jit_buffer_size</code> and <code>opcache.jit</code>. The first indicates how much memory
 we're willing to allocate for compiled code, while the later one dictates how JIT
 should behave.</p>
+
 <p>There's also an optional directive named <code>opcache.jit_debug</code> for debugging purposes.
 I will not cover this one here.</p>
+
 <p>For example, the snippet below indicates that we're willing to give up to 100 Megabytes
 of compiled code, enabling AVX instruction generation, using a global linear-scan register
 allocator, profiling each request and jitting hot functions, optimizing the compiled
 code based on static type inference. (👀 WUT?)</p>
+
 <pre><code class="language-ini">opcache.jit_buffer_size=100M
-opcache.jit=1235</code></pre>
+opcache.jit=1235
+</code></pre>
+
 <p>To make your life easier, I’m bringing some presets that
 <a href="https://beberlei.de/2020/07/05/what_to_look_out_for_when_testing_php_jit.html">Benjamin Eberlei kindly shared in his blog</a>:</p>
+
 <ul>
 <li><code>opcache.jit=1205</code> (JIT everything)</li>
 <li><code>opcache.jit=1235</code> (JIT hot code based on relative usage)</li>
 <li><code>opcache.jit=1255</code> (trace hot code for JITability, the best so far)</li>
 </ul>
-<p>The <code>opcache.jit</code> entry is a sequence of values named &quot;CRTO&quot;, each character can have different
+
+<p>The <code>opcache.jit</code> entry is a sequence of values named "CRTO", each character can have different
 behavioural effect on your application. Below I explain what each of these letters can do:</p>
+
 <p><strong>C - CPU-specific optimization</strong></p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>No optimization whatsoever</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Enable <a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX instruction</a> generation</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Flag | Meaning |
+| -------- | ------ |
+0 | No optimization whatsoever
+1 | Enable <a href="https://en.wikipedia.org/wiki/Advanced_Vector_Extensions">AVX instruction</a> generation</p>
+
 <p><strong>R - Register Allocation Modes</strong></p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Never perform <a href="https://en.wikipedia.org/wiki/Register_allocation">register allocations</a></td>
-</tr>
-<tr>
-<td>1</td>
-<td>Use local linear-scan register allocation</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Use global linear-scan register allocation</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Flag | Meaning |
+| -------- | ------ |
+0 | Never perform <a href="https://en.wikipedia.org/wiki/Register_allocation">register allocations</a>
+1 | Use local linear-scan register allocation
+2 | Use global linear-scan register allocation</p>
+
 <p><strong>T - JIT trigger</strong></p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>JIT everything on first script load</td>
-</tr>
-<tr>
-<td>1</td>
-<td>JIT functions when they execute</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Profile first request and compile hot functions on second requests</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Profile and compile hot functions all the time</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Compile functions with a <code>@jit</code> in doc blocks</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Flag | Meaning |
+| -------- | ------ |
+0 | JIT everything on first script load
+1 | JIT functions when they execute
+2 | Profile first request and compile hot functions on second requests
+3 | Profile and compile hot functions all the time
+4 | Compile functions with a <code>@jit</code> in doc blocks</p>
+
 <p><strong>O - Optimization level</strong></p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Never JIT</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Minimal JIT (use regular VM handlers)</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Selective VM handler inlining</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Optimized JIT based on static type inference of individual function</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Optimized JIT based on static type inference and call tree</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Optimized JIT based on static type inference and inner procedure analyses</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Flag | Meaning |
+| -------- | ------ |
+0 | Never JIT
+1 | Minimal JIT (use regular VM handlers)
+2 | Selective VM handler inlining
+3 | Optimized JIT based on static type inference of individual function
+4 | Optimized JIT based on static type inference and call tree
+5 | Optimized JIT based on static type inference and inner procedure analyses</p>
+
 <p>I don't fully understand every term there, but the main takeaway is that you should play
 around with each flag and keep profiling your application to better understand what suits
 you better.</p>
+
 <p>The performance outcomes can be quite counter intuitive. For example: higher JIT buffer
 sizes may lead to slower applications basically because PHP may spend more time compiling
 more Opcodes instead of executing them. (The bigger your buffer, the more you can compile)</p>
+
 <h2>Problems introduced by JIT</h2>
+
 <p>The Just In Time compiler will make a best effort to translate Opcodes into machine code,
 but of course some issues may come out of it.</p>
+
 <h3>Type Juggling may affect performance negatively</h3>
+
 <p><a href="/en/issue/php-type-system/">PHP's type system is very forgiving and its flexibility can translate to a big overhead to the Zend VM.</a>
 Translating its type juggling to machine code can end up generating compiled code that
 is more expensive in runtime than interpreting it and, as far as I understand, the
 <code>strict_types</code> mode can't help at all.</p>
+
 <p>[Looking at this vm handler](<a href="https://github.com/php/php-src/blob/43443857b74503246ee4ca25859b302ed0ebc078/Zend/zend_vm_def.h#L722-L767">this Zend VM handler</a>),
 it gets clear that php's type juggling can branch into so many possibilities at runtime.
 Compiling all of them may end up costing way more than just interpreting it through the VM.</p>
+
 <h3>Debugging with JIT is a bit harder</h3>
+
 <p>Because JIT bypasses some VM hooks, tools like xDebug will face some trouble on tracking
 jitted code and this is expected.</p>
+
 <p>One may argue that JIT is supposed to be a production-only feature. <strong>But it might also cause
 bugs by changing code behaviour unexpectedly</strong>, so not having an easy solution for debugging
 can be a trouble.</p>
+
 <h3>Maintainability</h3>
+
 <p>For end-users this is not really a big issue, but JIT added significant complexity to PHP's
 codebase and its future scope includes even crazier implementation details.</p>
+
 <h2>Performance Impact</h2>
+
 <p>PHP's performance may nearly double depending on your set up and use case. During its early
 implementation phase, some very impressive numbers came up:</p>
+
 <ul>
 <li><a href="https://github.com/nikic/PHP-Parser">nikic/PHP-Parser</a> ran about 1.3 times faster in benchmark made by Nikita Popov</li>
 <li>A hello world application written with <a href="https://amphp.org/http-server/">Amp</a> had about 5% speed improvement</li>
 <li><a href="https://gist.github.com/rybakit/bb551f962b706a9e08c995cf5ed9762f">MessagePack benchmarks showed 1.3 to 1.5 times speed up</a></li>
 </ul>
+
 <p>What do all of them have in common? They are <strong>CPU-intensive</strong> (to a degree) tasks, and
 these are <strong>the ones that will benefit the most from JIT in PHP</strong>.</p>
-<p>It is still not very clear how &quot;real-world apps&quot; will behave with JIT, but that depends
+
+<p>It is still not very clear how "real-world apps" will behave with JIT, but that depends
 a lot on your configuration and use-case. As normally php applications do many I/O
 operations, they might not feel the improvement so much, but it is possible to target
 the JIT engine to certain spots of your application.</p>
-<p>Areas that may benefit from JIT include:</p>
-<ul>
-<li>Serialization/Deserialization</li>
-<li>Routing</li>
-<li>Hashing functions</li>
-<li>Image processing</li>
-</ul>
+
+<p>Areas that may benefit from JIT include:
+- Serialization/Deserialization
+- Routing
+- Hashing functions
+- Image processing</p>
+
 <p>Pretty much any task that repeats often in your code and has no I/O dependency at all.</p>
+
 <p>If I would guess what kind of tools we already use that could benefit immediately from JIT</p>
+
 <p>If I would guess which tools we already use could benefit immediately from JIT, they'd be
 Composer, PSALM, PHP-Parser, PHPCS and all async php frameworks.</p>
+
 <h2>How will PHP look like in the future?</h2>
+
 <p>Many stated before that PHP hit the brick wall when it comes to performance improvements,
 meaning that from here on every improvement will cost more work and yield less gains.</p>
+
 <p>JIT brought a new horizon to the php language. The idea that php code can be as fast as
 C will allow our php applications to transcend the web environment.</p>
+
 <p>Crazy applications like <a href="/en/issue/games-with-php/">Game Development with PHP</a> might
 become more common, at least just for fun.</p>
+
 <p>I believe that <a href="https://www.swoole.co.uk/">Swoole</a> applications will slowly become more
 popular after PHP 8's release. Their long-running and async nature can benefit from JIT
 in a way that maybe the fast proxy -based model can't.</p>
+
 <p>It is also important to mention <a href="https://github.com/php-ai/">PHP-ML</a> which will soon see
 big architectural changes.</p>
+
 <p><strong>Related to JIT itself</strong>, there's already an idea to add a low-cost initial profiling
 that will collect sufficient data to calculate probabilities of jumps, and fetching
 runtime types and values. This would allow the engine to JIT only fast paths and optimize
 the VM-Machine Code exchange.</p>
+
 <hr>
+
 <p>I hope this article was useful for you and that you managed to grasp better what PHP 8's
 JIT is about.</p>
+
 <p>If you spotted any misconception or mistake, please don't refrain contacting me or just
 incrementing <a href="https://github.com/nawarian/The-PHP-Website/issues/41">this Github issue</a>.
 I'll be more than glad to receive your feedback and correct issues with this text asap 😉</p>
+
 <p>Feel free to reach me out on twitter if you'd like to add something I might have forgotten
 here and don't forget sharing this with your fellow developers, it surely will add much
 value to your conversations!</p>
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -501,7 +517,7 @@ value to your conversations!</p>
   "dateModified": "2020-03-03T00:00:00+08:00",
   "author": {
     "@type": "Person",
-    "name": "Nawarian N&iacute;ckolas Da Silva"
+    "name": "Nawarian Níckolas Da Silva"
   },
    "publisher": {
     "@type": "Organization",
@@ -512,7 +528,8 @@ value to your conversations!</p>
     }
   }
 }
-</script>  </div>
+</script>
+  </div>
   </article>
   <aside class="container">
           <div class="recommended">

@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
-  <link
+      <link rel="canonical" href="https://thephp.website/br/edicao/funcoes-mais-usadas-php/" />
+    <link
     rel="alternate"
     type="application/json"
     title="[BR] thePHP Website"
@@ -69,7 +70,7 @@
     </div>
     <section class="menu__cta">
       <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
-        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
       </button>
     </section>
 
@@ -145,915 +146,319 @@
 
     <h1>Quais são as top 20 funções do php mais usadas pelos frameworks?</h1>
     <p><a href="/en/issue/most-used-php-functions/">Read in English</a></p>
+
 <p><s>Eu me questiono muito sobre o quão útil este post é. Mas
 eu acho que faz sentido compartilhá-lo e também o código
 que me ajudou a alcançar estes números.</s> Muitíssimo obrigado
 pelo seu feedback, esta lista ficou muito mais massa do
 que eu poderia ter imaginado e eu estou muito contente de
 como ela foi recebida pela comunidade.</p>
+
 <p>Este post também é pra sinalizar que eu só estive ocupado,
-mas não desisti do projeto do site 😉. </p>
+mas não desisti do projeto do site 😉.</p>
+
 <p>Abaixo eu mostro as top 20 funções mais utilizadas por
 frameworks php.</p>
+
 <p>Você pode encontrar o código que usei pra obter estes
 dados neste
 <a href="https://github.com/nawarian/The-PHP-Website/tree/master/code/15-framework-functions/">repositório do github</a>.</p>
+
 <p><s>Eu coletei estes dados baseado nos seus branches principais
 na data de hoje. (16/06/2020)</s></p>
+
 <p><strong>Edit (2020-06-27):</strong> como solicitado, o framework Yii2 foi adicionado
 hoje e a lista toda foi atualizada. Então todo código analizado aqui se refere
 ao branch principal na data de hoje. Ao mesmo tempo, eu decidi também
 adicionar o PHPUnit e o WordPress na lista já que muitos de vocês
-apresentaram curiosidade sobre eles. </p>
+apresentaram curiosidade sobre eles.</p>
+
 <p><strong>Edit (2020-07-23):</strong> atendendo a pedidos, Mangento 2 agora também
 faz parte da lista! Os resultados são bem interessantes na miha opinião.
 Ele jogou fora o <code>strpos()</code> do top 5 e trouxe o <code>implode()</code> em seu lugar ^^</p>
+
 <p>Sinta-se livre pra me <a href="https://twitter.com/nawarian">pingar no twitter</a>
 se você quiser ver outro framework nesta lista aqui! 😊</p>
+
 <h2>Pedido atentido: Top dos top!</h2>
+
 <p>Já que uma galera pediu, aqui vai uma lista das top 5
 funções entre todas as listas aqui.</p>
+
 <p>Eu vou pular o <code>sprintf()</code> porque o symfony sozinho
 joga o número pra <code>2_746</code> e ficaria meio injusto.</p>
+
 <p>A lista compiladinha é a seguinte:</p>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>is_array</td>
-<td>3943</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>3784</td>
-</tr>
-<tr>
-<td>count</td>
-<td>2948</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>2729</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>2334</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+is_array | 3943
+substr | 3784
+count | 2948
+in_array | 2729
+implode | 2334</p>
+
 <p>Eu devo dizer que tô bem impressionado sobre o quanto usamos
 o <code>is_array()</code> e <code>count()</code>. Eu testei em alguns repositórios
 que eu trabalho e em alguns o número de chamadas ao <code>count()</code>
 fica em torno de 3 mil.</p>
+
 <p>Só coisa boa 🤣</p>
+
 <h2>Top 20 funções php utilizadas no WordPress</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>substr</td>
-<td>2200</td>
-</tr>
-<tr>
-<td>sprintf</td>
-<td>1939</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>912</td>
-</tr>
-<tr>
-<td>is_array</td>
-<td>769</td>
-</tr>
-<tr>
-<td>strpos</td>
-<td>667</td>
-</tr>
-<tr>
-<td>printf</td>
-<td>633</td>
-</tr>
-<tr>
-<td>define</td>
-<td>584</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>572</td>
-</tr>
-<tr>
-<td>trim</td>
-<td>566</td>
-</tr>
-<tr>
-<td>count</td>
-<td>556</td>
-</tr>
-<tr>
-<td>strlen</td>
-<td>541</td>
-</tr>
-<tr>
-<td>preg_match</td>
-<td>501</td>
-</tr>
-<tr>
-<td>defined</td>
-<td>432</td>
-</tr>
-<tr>
-<td>function_exists</td>
-<td>430</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>417</td>
-</tr>
-<tr>
-<td>preg_replace</td>
-<td>412</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>385</td>
-</tr>
-<tr>
-<td>array_merge</td>
-<td>372</td>
-</tr>
-<tr>
-<td>array_keys</td>
-<td>275</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>275</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+substr | 2200
+sprintf | 1939
+in_array | 912
+is_array | 769
+strpos | 667
+printf | 633
+define | 584
+str_replace | 572
+trim | 566
+count | 556
+strlen | 541
+preg_match | 501
+defined | 432
+function_exists | 430
+implode | 417
+preg_replace | 412
+explode | 385
+array_merge | 372
+array_keys | 275
+is_string | 275</p>
+
 <h2>Top 20 funções php utilizadas no Magento 2</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>is_array</td>
-<td>1420</td>
-</tr>
-<tr>
-<td>sprintf</td>
-<td>1141</td>
-</tr>
-<tr>
-<td>count</td>
-<td>1045</td>
-</tr>
-<tr>
-<td>array_merge</td>
-<td>976</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>901</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>822</td>
-</tr>
-<tr>
-<td>array_keys</td>
-<td>697</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>674</td>
-</tr>
-<tr>
-<td>trim</td>
-<td>491</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>475</td>
-</tr>
-<tr>
-<td>array_key_exists</td>
-<td>441</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>367</td>
-</tr>
-<tr>
-<td>strlen</td>
-<td>358</td>
-</tr>
-<tr>
-<td>strpos</td>
-<td>358</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>330</td>
-</tr>
-<tr>
-<td>preg_match</td>
-<td>296</td>
-</tr>
-<tr>
-<td>strtolower</td>
-<td>293</td>
-</tr>
-<tr>
-<td>json_encode</td>
-<td>269</td>
-</tr>
-<tr>
-<td>get_class</td>
-<td>267</td>
-</tr>
-<tr>
-<td>is_numeric</td>
-<td>262</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+is_array | 1420
+sprintf | 1141
+count | 1045
+array_merge | 976
+in_array | 901
+implode | 822
+array_keys | 697
+explode | 674
+trim | 491
+str_replace | 475
+array_key_exists | 441
+substr | 367
+strlen | 358
+strpos | 358
+is_string | 330
+preg_match | 296
+strtolower | 293
+json_encode | 269
+get_class | 267
+is_numeric | 262</p>
+
 <h2>Top 20 funções php utilizadas no PHPUnit</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sprintf</td>
-<td>188</td>
-</tr>
-<tr>
-<td>func_get_args</td>
-<td>183</td>
-</tr>
-<tr>
-<td>count</td>
-<td>90</td>
-</tr>
-<tr>
-<td>strpos</td>
-<td>49</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>43</td>
-</tr>
-<tr>
-<td>trim</td>
-<td>39</td>
-</tr>
-<tr>
-<td>class_exists</td>
-<td>39</td>
-</tr>
-<tr>
-<td>get_class</td>
-<td>39</td>
-</tr>
-<tr>
-<td>assert</td>
-<td>38</td>
-</tr>
-<tr>
-<td>file_get_contents</td>
-<td>34</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>32</td>
-</tr>
-<tr>
-<td>preg_match</td>
-<td>32</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>32</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>31</td>
-</tr>
-<tr>
-<td>is_array</td>
-<td>29</td>
-</tr>
-<tr>
-<td>array_merge</td>
-<td>26</td>
-</tr>
-<tr>
-<td>strlen</td>
-<td>26</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>23</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>21</td>
-</tr>
-<tr>
-<td>is_object</td>
-<td>17</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+sprintf | 188
+func_get_args | 183
+count | 90
+strpos | 49
+explode | 43
+trim | 39
+class_exists | 39
+get_class | 39
+assert | 38
+file_get_contents | 34
+implode | 32
+preg_match | 32
+substr | 32
+is_string | 31
+is_array | 29
+array_merge | 26
+strlen | 26
+in_array | 23
+str_replace | 21
+is_object | 17</p>
+
 <h2>Top 20 funções php utilizadas no Symfony</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sprintf</td>
-<td>2746</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>715</td>
-</tr>
-<tr>
-<td>strpos</td>
-<td>602</td>
-</tr>
-<tr>
-<td>count</td>
-<td>590</td>
-</tr>
-<tr>
-<td>is_array</td>
-<td>573</td>
-</tr>
-<tr>
-<td>strlen</td>
-<td>446</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>438</td>
-</tr>
-<tr>
-<td>class_exists</td>
-<td>415</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>338</td>
-</tr>
-<tr>
-<td>preg_match</td>
-<td>338</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>336</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>310</td>
-</tr>
-<tr>
-<td>array_merge</td>
-<td>271</td>
-</tr>
-<tr>
-<td>array_keys</td>
-<td>235</td>
-</tr>
-<tr>
-<td>get_class</td>
-<td>226</td>
-</tr>
-<tr>
-<td>array_key_exists</td>
-<td>193</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>192</td>
-</tr>
-<tr>
-<td>is_object</td>
-<td>164</td>
-</tr>
-<tr>
-<td>preg_replace</td>
-<td>157</td>
-</tr>
-<tr>
-<td>strtolower</td>
-<td>154</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+sprintf | 2746
+substr | 715
+strpos | 602
+count | 590
+is_array | 573
+strlen | 446
+implode | 438
+class_exists | 415
+is_string | 338
+preg_match | 338
+in_array | 336
+str_replace | 310
+array_merge | 271
+array_keys | 235
+get_class | 226
+array_key_exists | 193
+explode | 192
+is_object | 164
+preg_replace | 157
+strtolower | 154</p>
+
 <p>Interessante notar que o <code>sprintf</code> é a função mais utilizada.
 Provavelmente por conta da forma como o
 <a href="https://symfony.com/doc/current/contributing/code/standards.html">coding standard do Symfony</a>
-lida com o lançamento de exceções. </p>
+lida com o lançamento de exceções.</p>
+
 <blockquote>
-<p>Exceções e mensagens de erro dever ser concatenadas utilizando sprintf;</p>
+  <p>Exceções e mensagens de erro dever ser concatenadas utilizando sprintf;</p>
 </blockquote>
+
 <h2>Top 20 functions used by Yii2</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>is_array</td>
-<td>300</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>210</td>
-</tr>
-<tr>
-<td>strpos</td>
-<td>182</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>172</td>
-</tr>
-<tr>
-<td>array_merge</td>
-<td>150</td>
-</tr>
-<tr>
-<td>count</td>
-<td>147</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>140</td>
-</tr>
-<tr>
-<td>trim</td>
-<td>118</td>
-</tr>
-<tr>
-<td>preg_match</td>
-<td>107</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>104</td>
-</tr>
-<tr>
-<td>get_class</td>
-<td>104</td>
-</tr>
-<tr>
-<td>call_user_func</td>
-<td>103</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>91</td>
-</tr>
-<tr>
-<td>array_keys</td>
-<td>90</td>
-</tr>
-<tr>
-<td>strncmp</td>
-<td>77</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>73</td>
-</tr>
-<tr>
-<td>preg_replace</td>
-<td>66</td>
-</tr>
-<tr>
-<td>strlen</td>
-<td>62</td>
-</tr>
-<tr>
-<td>array_key_exists</td>
-<td>62</td>
-</tr>
-<tr>
-<td>reset</td>
-<td>56</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+is_array | 300
+implode | 210
+strpos | 182
+substr | 172
+array_merge | 150
+count | 147
+is_string | 140
+trim | 118
+preg_match | 107
+str_replace | 104
+get_class | 104
+call_user_func | 103
+in_array | 91
+array_keys | 90
+strncmp | 77
+explode | 73
+preg_replace | 66
+strlen | 62
+array_key_exists | 62
+reset | 56</p>
+
 <h2>Top 20 funções php utilizadas pelo Laravel</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>is_null</td>
-<td>450</td>
-</tr>
-<tr>
-<td>is_array</td>
-<td>250</td>
-</tr>
-<tr>
-<td>array_merge</td>
-<td>203</td>
-</tr>
-<tr>
-<td>func_get_args</td>
-<td>155</td>
-</tr>
-<tr>
-<td>count</td>
-<td>149</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>148</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>132</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>126</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>120</td>
-</tr>
-<tr>
-<td>trim</td>
-<td>110</td>
-</tr>
-<tr>
-<td>method_exists</td>
-<td>102</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>93</td>
-</tr>
-<tr>
-<td>get_class</td>
-<td>86</td>
-</tr>
-<tr>
-<td>function_exists</td>
-<td>79</td>
-</tr>
-<tr>
-<td>compact</td>
-<td>75</td>
-</tr>
-<tr>
-<td>array_map</td>
-<td>72</td>
-</tr>
-<tr>
-<td>is_numeric</td>
-<td>71</td>
-</tr>
-<tr>
-<td>sprintf</td>
-<td>68</td>
-</tr>
-<tr>
-<td>call_user_func</td>
-<td>63</td>
-</tr>
-<tr>
-<td>array_values</td>
-<td>61</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+is_null | 450
+is_array | 250
+array_merge | 203
+func_get_args | 155
+count | 149
+str_replace | 148
+is_string | 132
+in_array | 126
+explode | 120
+trim | 110
+method_exists | 102
+implode | 93
+get_class | 86
+function_exists | 79
+compact | 75
+array_map | 72
+is_numeric | 71
+sprintf | 68
+call_user_func | 63
+array_values | 61</p>
+
 <h2>Top 20 funções php utilizadas pelo Amp</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>assert</td>
-<td>27</td>
-</tr>
-<tr>
-<td>range</td>
-<td>26</td>
-</tr>
-<tr>
-<td>microtime</td>
-<td>17</td>
-</tr>
-<tr>
-<td>array_shift</td>
-<td>14</td>
-</tr>
-<tr>
-<td>debug_backtrace</td>
-<td>11</td>
-</tr>
-<tr>
-<td>get_class</td>
-<td>11</td>
-</tr>
-<tr>
-<td>is_int</td>
-<td>11</td>
-</tr>
-<tr>
-<td>call_user_func_array</td>
-<td>11</td>
-</tr>
-<tr>
-<td>sprintf</td>
-<td>10</td>
-</tr>
-<tr>
-<td>is_resource</td>
-<td>9</td>
-</tr>
-<tr>
-<td>posix_kill</td>
-<td>9</td>
-</tr>
-<tr>
-<td>getmypid</td>
-<td>9</td>
-</tr>
-<tr>
-<td>count</td>
-<td>8</td>
-</tr>
-<tr>
-<td>usleep</td>
-<td>6</td>
-</tr>
-<tr>
-<td>fwrite</td>
-<td>6</td>
-</tr>
-<tr>
-<td>printf</td>
-<td>6</td>
-</tr>
-<tr>
-<td>stream_socket_pair</td>
-<td>5</td>
-</tr>
-<tr>
-<td>gc_collect_cycles</td>
-<td>5</td>
-</tr>
-<tr>
-<td>defined</td>
-<td>5</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+assert | 27
+range | 26
+microtime | 17
+array_shift | 14
+debug_backtrace | 11
+get_class | 11
+is_int | 11
+call_user_func_array | 11
+sprintf | 10
+is_resource | 9
+posix_kill | 9
+getmypid | 9
+count | 8
+usleep | 6
+fwrite | 6
+printf | 6
+stream_socket_pair | 5
+gc_collect_cycles | 5
+defined | 5
+substr | 5</p>
+
 <p>Eu acho meio injusto rodar esse programa no Amp ou Laminas
 porque eles são compostos por vários pacotes diferentes de uma vez.
 Então o repositório raiz não tá realmente pegando todas as dependências.</p>
+
 <p>Mas eu ainda acho bacana a diferença na natureza dessas chamadas
 em comparação com os outros frameworks ^^.</p>
+
 <h2>Top 20 funções php utilizadas pelo Cake PHP</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sprintf</td>
-<td>480</td>
-</tr>
-<tr>
-<td>is_array</td>
-<td>367</td>
-</tr>
-<tr>
-<td>strpos</td>
-<td>235</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>233</td>
-</tr>
-<tr>
-<td>count</td>
-<td>216</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>206</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>198</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>172</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>159</td>
-</tr>
-<tr>
-<td>array_merge</td>
-<td>139</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>133</td>
-</tr>
-<tr>
-<td>preg_match</td>
-<td>108</td>
-</tr>
-<tr>
-<td>strtolower</td>
-<td>98</td>
-</tr>
-<tr>
-<td>array_keys</td>
-<td>97</td>
-</tr>
-<tr>
-<td>strlen</td>
-<td>95</td>
-</tr>
-<tr>
-<td>array_filter</td>
-<td>91</td>
-</tr>
-<tr>
-<td>is_numeric</td>
-<td>80</td>
-</tr>
-<tr>
-<td>array_map</td>
-<td>71</td>
-</tr>
-<tr>
-<td>is_int</td>
-<td>68</td>
-</tr>
-<tr>
-<td>array_key_exists</td>
-<td>67</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+sprintf | 480
+is_array | 367
+strpos | 235
+implode | 233
+count | 216
+is_string | 206
+in_array | 198
+substr | 172
+explode | 159
+array_merge | 139
+str_replace | 133
+preg_match | 108
+strtolower | 98
+array_keys | 97
+strlen | 95
+array_filter | 91
+is_numeric | 80
+array_map | 71
+is_int | 68
+array_key_exists | 67</p>
+
 <h2>Top 20 funções php utilizadas pelo Code Igniter 4</h2>
-<table>
-<thead>
-<tr>
-<th>Função</th>
-<th>Utilizações</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>is_array</td>
-<td>232</td>
-</tr>
-<tr>
-<td>function_exists</td>
-<td>182</td>
-</tr>
-<tr>
-<td>strpos</td>
-<td>172</td>
-</tr>
-<tr>
-<td>str_replace</td>
-<td>151</td>
-</tr>
-<tr>
-<td>count</td>
-<td>147</td>
-</tr>
-<tr>
-<td>in_array</td>
-<td>141</td>
-</tr>
-<tr>
-<td>is_null</td>
-<td>127</td>
-</tr>
-<tr>
-<td>trim</td>
-<td>125</td>
-</tr>
-<tr>
-<td>strlen</td>
-<td>110</td>
-</tr>
-<tr>
-<td>is_string</td>
-<td>105</td>
-</tr>
-<tr>
-<td>explode</td>
-<td>105</td>
-</tr>
-<tr>
-<td>strtolower</td>
-<td>104</td>
-</tr>
-<tr>
-<td>preg_match</td>
-<td>97</td>
-</tr>
-<tr>
-<td>array_key_exists</td>
-<td>91</td>
-</tr>
-<tr>
-<td>substr</td>
-<td>89</td>
-</tr>
-<tr>
-<td>implode</td>
-<td>86</td>
-</tr>
-<tr>
-<td>rtrim</td>
-<td>64</td>
-</tr>
-<tr>
-<td>preg_replace</td>
-<td>64</td>
-</tr>
-<tr>
-<td>defined</td>
-<td>60</td>
-</tr>
-<tr>
-<td>define</td>
-<td>57</td>
-</tr>
-</tbody>
-</table>
+
+<p>| Função | Utilizações |
+| -------- | ------ |
+is_array | 232
+function_exists | 182
+strpos | 172
+str_replace | 151
+count | 147
+in_array | 141
+is_null | 127
+trim | 125
+strlen | 110
+is_string | 105
+explode | 105
+strtolower | 104
+preg_match | 97
+array_key_exists | 91
+substr | 89
+implode | 86
+rtrim | 64
+preg_replace | 64
+defined | 60
+define | 57</p>
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Quais s&atilde;o as top 20 fun&ccedil;&otilde;es do php mais usadas pelos frameworks?",
-  "description": "Por curiosidade eu decidir rankear a utiliza&ccedil;&atilde;o das fun&ccedil;&otilde;es nativas do php nos frameworks mais populares.",
+  "headline": "Quais são as top 20 funções do php mais usadas pelos frameworks?",
+  "description": "Por curiosidade eu decidir rankear a utilização das funções nativas do php nos frameworks mais populares.",
   "image": [
     "https://thephp.website/assets/images/posts/15-question-mark-640.webp"
    ],
@@ -1061,7 +466,7 @@ em comparação com os outros frameworks ^^.</p>
   "dateModified": "2020-06-27T00:00:00+08:00",
   "author": {
     "@type": "Person",
-    "name": "Nawarian N&iacute;ckolas Da Silva"
+    "name": "Nawarian Níckolas Da Silva"
   },
    "publisher": {
     "@type": "Organization",
@@ -1072,7 +477,8 @@ em comparação com os outros frameworks ^^.</p>
     }
   }
 }
-</script>  </div>
+</script>
+  </div>
   </article>
   <aside class="container">
           <div class="recommended">
@@ -1085,16 +491,6 @@ em comparação com os outros frameworks ^^.</p>
                 <h4>As Datas de Lançamento do PHP 8 Foram Reveladas!</h4>
                 <p>According to the official schedule, PHP 8 shall be released in the first week of December. Read more details.</p>
                 <time>2020-04-03</time>
-              </div>
-            </a>
-          </li>
-                  <li class="card">
-            <a href="https://thephp.website/br/edicao/relatorio-q1-2020/">
-              
-              <div class="card__content">
-                <h4>Relatório e Pensamentos sobre o Q1/2020</h4>
-                <p>Alerta: não é sobre programação! Este artigo é uma visão geral sobre o que nós alcançamos até o momento no primeiro trimestre de 2020 (de 01 de Janeiro até 31 de Março), vamos tirar algumas conclusões e preparar para o próximo trimestre.</p>
-                <time>2020-03-26</time>
               </div>
             </a>
           </li>

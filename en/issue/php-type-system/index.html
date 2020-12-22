@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" href="/assets/build/css/main.css?id=bf2bc72a5feb7957052d">
-  <link
+      <link rel="canonical" href="https://thephp.website/en/issue/php-type-system/" />
+    <link
     rel="alternate"
     type="application/json"
     title="[EN] thePHP Website"
@@ -69,7 +70,7 @@
     </div>
     <section class="menu__cta">
       <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
-        <img alt="Open Menu" src="https://podentender.com/assets/images/icons/menu.svg">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
       </button>
     </section>
 
@@ -140,85 +141,113 @@
 
     <h1>Everything you need (and don&#039;t need) to know about PHP&#039;s type system</h1>
     <p><a href="/br/edicao/tipos-em-php/">Leia em Português</a></p>
+
 <p><strong>PHP is a dynamically typed scripting language</strong> and until the year
 of 2015 php had no support for statically declared types at all. One
 could cast to scalar types explicitly in the code, but declaring scalar
 types in methods and functions signatures wasn't a thing until PHP 7.0
 with the <a href="https://wiki.php.net/rfc/scalar_type_hints_v5">Scalar Type Declarations</a>
 and <a href="https://wiki.php.net/rfc/return_types">Return Type Declarations</a> rfcs.</p>
+
 <p>This doesn't mean that from version 7.0 PHP became a statically typed
 language, though. <strong>It has type hinting that can be analyzed statically</strong>
 but <strong>it still supports dynamic types</strong> and even allows them to be mixed.
 See the example below:</p>
+
 <pre><code class="language-php">&lt;?php
 
 function returnsInt(): int
 {
   return '100';
-}</code></pre>
+}
+</code></pre>
+
 <p>No doubt that <strong>there's a type mismatch there</strong>. The return type is
 supposed to be <em>int</em> and the returned type is in fact a <em>string</em>. Now,
 what PHP does there is to automatically transform the token '100'
 into an integer in order to return the required type. Even though it
 seems to have an extra cost, it doesn't. PHP's type juggling is <em>nearly</em>
 cost-free in many cases.</p>
+
 <p>To better clarify how the language deals with types I'll split this article
 into the following sections:</p>
+
 <ul>
 <li><a href="#kinds-of-types-in-php">Kinds of types in php</a></li>
-<li><a href="#type-operations-in-php">Type &quot;operations&quot; in php</a></li>
+<li><a href="#type-operations-in-php">Type "operations" in php</a></li>
 <li><a href="#union-types">Union Types</a></li>
 <li><a href="#php-type-juggling">PHP's type juggling</a></li>
 <li><a href="#php-type-modes">PHP type modes</a></li>
 </ul>
+
 <p>If you have suggestions on what to add here, feel free to
 <a href="https://twitter.com/nawarian">reach out to me on twitter</a> or opening an issue on
 github.</p>
+
 <p><strong>Aahh!! If you like this kind of content, you'll certainly enjoy my post about
 <a href="/en/issue/php-8-jit/">How the Just In Time compiler works</a>. Just open in another
 tab and check it out later, you won't regret 😉</strong></p>
+
 <hr />
+
 <h2 id="kinds-of-types-in-php">Kinds of types in php</h2>
+
 <p>PHP's type system is very simplified when it comes to language features.
 For example there's no <em>char</em> type, or <em>unsigned</em> types or even <em>int8</em>,
 <em>int16</em>, <em>int32</em>, <em>int64</em>...</p>
+
 <p>The <em>char</em> type is simplified to a string type and all <em>integer</em> variations
 are simplified into an <em>integer</em> type. Whether that's a good or bad thing, is
 up to you.</p>
-<p>One can always inspect a variable's type using the
+
+<p>One can always inspect a variable's type using the 
 <a href="https://www.php.net/manual/en/function.gettype">gettype()</a> function or using
 the <a href="https://www.php.net/manual/en/function.var-dump">var_dump()</a> function and
 checking its output.</p>
+
 <p>PHP comes with three different kinds of types: <strong>scalar types</strong>, <strong>compound types</strong>
 and <strong>special types</strong>.</p>
+
 <h3>Scalar types</h3>
+
 <p>Scalar types are the bare bones of the language and they are four:</p>
+
 <ul>
 <li>Boolean (<code>bool</code> | <code>boolean</code>)</li>
 <li>Integer (<code>int</code> | <code>integer</code>)</li>
 <li>Float (<code>float</code> | <code>double</code>)</li>
 <li>String (<code>string</code>)</li>
 </ul>
+
 <p>By definition scalar types do not carry behaviour or state with themselves.
 Expressions like <code>100-&gt;toString()</code> or <code>'thephp.website'::length()</code> are invalid.</p>
+
 <p><strong>Main takeaway: scalar values do not have behaviour or state, they just represent
 a value.</strong></p>
+
 <h3>Compound types</h3>
+
 <p>Compound types are much more interesting because even though they are very similar
 to the scalar type, <strong>each one of the four compound types carry different syntactic
 capabilities.</strong></p>
+
 <p>The four compound types are:</p>
+
 <ul>
 <li><a href="#compound-type-array">array</a></li>
 <li><a href="#compound-type-object">object</a></li>
 <li><a href="#compound-type-callable">callable</a></li>
 <li><a href="#compound-type-iterable">iterable</a></li>
 </ul>
+
 <h4 id="compound-type-array">The array compound type</h4>
+
 <p>An array is in fact a hashmap, built-in to the language. Meaning that it stores
-values in a <strong>key =&gt; value</strong> manner. Even if you use it purely as a vector.</p>
+values in a <strong>key => value</strong> manner. Even if you use it purely as a vector.</p>
+
 <p>Arrays are very flexible structures when it comes to size, internal types and
 key-value mapping. The examples below are all valid arrays:</p>
+
 <pre><code class="language-php">&lt;?php
 
 $vec = [0, 1, 2];
@@ -229,27 +258,37 @@ $map = ['a' =&gt; 1, 'b' =&gt; 2];
 
 $map_ish = ['a' =&gt; 1, 0 =&gt; 2];
 // $map_ish['a'] is int(1)
-// $map_ish[0] =&gt; is int(2)</code></pre>
+// $map_ish[0] =&gt; is int(2)
+</code></pre>
+
 <p>Unlike C, php won't require you to define an array's size before creating it.
 This of course comes with a memory consumption cost: the bigger your array size,
 the more memory you'll consume in crazy proportions (in fact, arrays are allocated in powers of two).
 How this consumption works is out of the scope of this article,
 <a href="https://twitter.com/nawarian">feel free to ping me if you'd like to hear more</a>.</p>
+
 <p>In case you're curious about this statement, the video below presents some charts
 and further insights on arrays vs. object memory profiles.</p>
-<iframe style="margin: auto; margin-bottom: 20px;" width="560" height="315" src="https://www.youtube.com/embed/JBWgvUrb-q8?start=1000" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen><iframe style="margin: auto; margin-bottom: 20px;" width="560" height="315" src="https://www.youtube.com/embed/JBWgvUrb-q8?start=1000" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></iframe>
+
+<iframe style="margin: auto; margin-bottom: 20px;" width="560" height="315" src="https://www.youtube.com/embed/JBWgvUrb-q8?start=1000" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <p>As you'll see bellow, arrays are also considered to be of type <em>iterable</em>, meaning
 that you can iterate over them using a <em>foreach</em> loop. But they also provide
 <a href="https://www.php.net/manual/en/ref.array.php">specific functions that can manipulate their internal pointers</a>.</p>
+
 <p><strong>Main takeaway: array is an extremely flexible compound type that can be perceived
 as a HashMap and is also considered an iterable type.</strong></p>
+
 <h4 id="compound-type-object">The object compound type</h4>
+
 <p>Due to php's architecture, the <em>object</em> compound type normally has a much lower memory
 consumption profile when compared with arrays. That's because <em>normally</em> one would use
 the object type by creating instances of classes.</p>
+
 <p>Objects can carry state and behaviour. Meaning that php will offer dereferencing
 language structs to access an object's internals. The snippet below illustrates
 a php object's derefs:</p>
+
 <pre><code class="language-php">&lt;?php
 
 class MyClass
@@ -263,35 +302,51 @@ $obj = new MyClass();
 // $obj is object(MyClass)
 // $obj::A is int(1)
 // $obj-&gt;property is int(0)
-// $obj-&gt;method() is null</code></pre>
+// $obj-&gt;method() is null
+</code></pre>
+
 <p>An object can also be normally created as a result of a type cast from an array.
 Transforming an array's keys into objects property names. Such cast will always
 result in an <code>object(stdClass)</code> type.</p>
+
 <pre><code class="language-php">&lt;?php
 
 $obj = (object) ['a' =&gt; 1];
 // $obj is object(stdClass)
-// $obj-&gt;a is int(1)</code></pre>
+// $obj-&gt;a is int(1)
+</code></pre>
+
 <p>Important to notice that casting an array with numeric keys into an object is valid,
 but one can't dereference its value because property names may not start with numbers.</p>
+
 <pre><code class="language-php">&lt;?php
 
 $obj = (object) [0, 1]; // Legal
-$obj-&gt;0; // Illegal</code></pre>
+$obj-&gt;0; // Illegal
+</code></pre>
+
 <p><strong>Main takeaway: objects normally have lower memory profiles than arrays, they carry
 state and behaviour and can be created by casting an array.</strong></p>
+
 <h4 id="compound-type-callable">The callable compound type</h4>
+
 <p>A callable in php is anything that can be called (oh don't you say!!) with parenthesis
 or with the <a href="https://www.php.net/manual/en/function.call-user-func.php">call_user_func()</a>
 function. In other words, a callable can fulfil the responsibility of what we know as
 functions. Functions and methods are always callables. Objects and classes may also become
 callables.</p>
+
 <p>A callable can, by definition, have its reference stored in a variable. Like the following:</p>
+
 <pre><code class="language-php">&lt;?php
 
-$callable = 'strlen';</code></pre>
+$callable = 'strlen';
+</code></pre>
+
 <p>What? But that's a string, no?</p>
+
 <p>Well, yes. But it can be coerced into a callable if necessary. Like below:</p>
+
 <pre><code class="language-php">&lt;?php
 
 function callACallable(
@@ -310,8 +365,11 @@ var_dump(
 var_dump(
   callACallable($callable)
 );
-// int(14)</code></pre>
+// int(14)
+</code></pre>
+
 <p>Callables may also point to object methods:</p>
+
 <pre><code class="language-php">&lt;?php
 
 class MyClass
@@ -324,14 +382,19 @@ class MyClass
 
 $obj = new MyClass();
 var_dump([$obj, 'myMethod']());
-// int(1)</code></pre>
+// int(1)
+</code></pre>
+
 <p>Looks odd? I know it looks like an array. In fact it is. Unless you name it a callable 👀</p>
+
 <p>This kind of callable above (object-method reference) is very interesting because
 <strong>you can call private or protected methods</strong> with it <strong>if you're inside the class' scope.</strong>
 Otherwise you may only call public methods with it.</p>
+
 <p>Also classes that implement
 <a href="https://www.php.net/manual/en/language.oop5.magic.php#object.invoke">the __invoke() magic method</a>,
 automatically transform their instances into callables themselves. Like the following:</p>
+
 <pre><code class="language-php">&lt;?php
 
 class MyCallableClass
@@ -344,17 +407,23 @@ class MyCallableClass
 
 $obj = new MyCallableClass();
 var_dump($obj());
-// int(1)</code></pre>
+// int(1)
+</code></pre>
+
 <p><strong>Main takeaway: callables hold reference to functions or methods and can be
 constructed in different ways.</strong></p>
+
 <h4 id="compound-type-iterable">The iterable compound type</h4>
+
 <p>Iterables are simpler to explain: they are by definition an array or an instance of
 the <a href="https://www.php.net/manual/en/class.traversable.php">Traversable interface</a>. The
 main thing of an iterable is that it can be used in a
 <a href="https://www.php.net/manual/en/control-structures.foreach.php">foreach() loop</a>, with a
 <a href="https://www.php.net/manual/en/language.generators.syntax.php#control-structures.yield.from">yield from statement</a>
 or with <a href="https://wiki.php.net/rfc/spread_operator_for_array">spread operator</a>.</p>
+
 <p>Examples of iterables are:</p>
+
 <pre><code class="language-php">&lt;?php
 
 function generator_function(): Generator
@@ -365,25 +434,35 @@ function generator_function(): Generator
 // All variables here are iterables
 $a = [0, 1, 2];
 $b = generator_function();
-$c = new ArrayObject();</code></pre>
+$c = new ArrayObject();
+</code></pre>
+
 <p><strong>Main takeaway: if you can fit it in a foreach(), it is an iterable.</strong></p>
+
 <h3>Special Types</h3>
+
 <p>There are two special types. And the biggest reason why they're called special, is that
 <strong>you can't cast these types</strong>. The special types are both the <strong>resource</strong> type and
 the <strong>NULL</strong> type.</p>
+
 <p><strong>A resource represents a handle to an external resource</strong>. It can be a file handle,
 an I/O stream or a database connection handle. You may guess now why you can't convert
 a resource to any other type.</p>
+
 <p><strong>The null type represents a null value</strong>. Meaning that a variable holding NULL was not
 initialized, assigned to NULL or unset during runtime.</p>
+
 <p><strong>Main takeaway: a special typed value can't be casted to anything.</strong></p>
+
 <h3>What about class instances?</h3>
+
 <p>Class instances have the type <code>object</code> and will always be presented like so. Executing
 <a href="https://www.php.net/manual/en/function.gettype">gettype()</a> on an object will always return
 a <code>string("object")</code> and calling <a href="https://www.php.net/manual/en/function.var-dump">var_dump()</a>
 on an object will always print its value using the <code>object(ClassName)</code> notation. If you need
 to fetch an object's class as a string, use the
 <a href="https://www.php.net/manual/en/function.get-class">get_class()</a> function.</p>
+
 <pre><code class="language-php">&lt;?php
 
 $obj = new stdClass();
@@ -396,72 +475,105 @@ var_dump($obj);
 // ...
 
 echo get_class($obj);
-// \stdClass</code></pre>
+// \stdClass
+</code></pre>
+
 <h2 id="type-operations-in-php">Type "operations" in php</h2>
-<p>There are different &quot;operations&quot; one can do with PHP when it comes to types. I believe
+
+<p>There are different "operations" one can do with PHP when it comes to types. I believe
 it is important to clearly state them here so that we don't mix things up later on.</p>
+
 <h3>Type juggling: type casting and coercion</h3>
+
 <p>Before we dive in, here are three important definitions we need keep in mind:</p>
+
 <ol>
 <li><strong>Type conversion</strong> means to transform a type from A to B. For example: from integer to float.</li>
 <li><strong>Type cast</strong> means to <strong>manually</strong> or <strong>explicitly</strong> convert a type from A to B. As in <code>$hundred = (int) 100.0</code>. (<code>float(100.0)</code> became <code>int(100)</code>)</li>
 <li><strong>Type coercion</strong> means to <strong>implicitly</strong> convert a type from A to B. As in <code>$twenty = 10 + '10 bananas';</code>. (<code>string("10 bananas")</code> became <code>int(10)</code>)</li>
 </ol>
+
 <p>Being that said, the following sections explain how it happens in php. Later on you'll find
 more information on Type Juggling.</p>
+
 <h4>Type casting</h4>
+
 <p>Similar to what Java does, php allows type casting. Meaning that when a variable points to
 a value that can be casted to a different type, it allows manual (explicit) type conversion.</p>
+
 <p>Wait, wait. What!? 🤨</p>
+
 <p>Given a variable <code>$hundred</code> holding a <code>string("100")</code> its value may be manually converted (casted)
 to become an <code>int(100)</code> or a <code>float(100.00)</code> - or any other scalar type or one of compound
 types <em>array</em> or <em>object</em>.</p>
+
 <p>The following snippet works just fine in PHP and is very similar to Java:</p>
+
 <pre><code class="language-php">&lt;?php
 
 $hundred = (int) '100';
-// $hundred is now int(100)</code></pre>
+// $hundred is now int(100)
+</code></pre>
+
 <p>Now, one thing Java does and is completely illegal on php code, is to convert (cast) a variable
 pointer into a different class. <strong>Meaning that we can only cast into scalar and some compound
 types in php</strong>:</p>
+
 <pre><code class="language-php">&lt;?php
 
 class MyClass {}
 
 // Yields a parse error
-$illegal = (MyClass) new stdClass();</code></pre>
+$illegal = (MyClass) new stdClass();
+</code></pre>
+
 <p>Important to notice! Type casting in php is allowed into scalar types only*. Meaning that
 casting an object into a different class instance is illegal, but <strong>casting an object into
 a scalar type is completely valid</strong>.</p>
+
 <p><strong>It is also possible to cast values into <em>array</em> or <em>object</em> types</strong>, which aren't considered
 scalar types but compound types (naming is really tough, huh?).</p>
+
 <pre><code class="language-php">&lt;?php
 
 class MyClass {}
 
 $obj = new MyClass();
-$one = (int) $obj; // int(1)</code></pre>
+$one = (int) $obj; // int(1)
+</code></pre>
+
 <p>The code above generates some notices but is still valid. Later on I'll explain where this
 <code>int(1)</code> value came from.</p>
+
 <p><strong>Main takeaway: php allows casts into scalar types, arrays or objects. Class casting is not
 allowed.</strong></p>
+
 <h4>Type coercion</h4>
+
 <p><strong>Type coercion happens as a side-effect of working with mismatched or undeclared types.</strong>
 It is explained in depth later on in this article. For now just know that php will
 automatically cast types in your code during runtime when necessary.</p>
+
 <p>An example of type coercion can be multiplying an integer by a float number. The expression
 <code>int(100)</code> multiplied by a <code>float(2.0)</code> results in a <code>float(200)</code> value.</p>
+
 <pre><code class="language-php">&lt;?php
 
 var_dump(100 * 2.0);
-// float(200)</code></pre>
+// float(200)
+</code></pre>
+
 <p><strong>Main takeaway: php has a mechanism to normalize types in runtime implicitly and you should
 always watch out for it.</strong></p>
+
 <h3>Type hinting</h3>
+
 <p>Type hinting is both a coercion enforcement and a strict typing mechanism. It was introduced
 to php language in version 7.0 and affects function and method signatures.
 <a href="https://wiki.php.net/rfc/typed_properties_v2">Since php 7.4 it is also possible to type-hint class properties</a>.</p>
+
 <p>Here's an example of type hint:</p>
+
 <pre><code class="language-php">&lt;?php
 
 function sum(
@@ -469,15 +581,20 @@ function sum(
   int $b
 ): int {
   return $a + $b;
-}</code></pre>
+}
+</code></pre>
+
 <p>The hints here say that variable <code>$a</code> is naturally or coerced of type <em>int</em>, the variable <code>$b</code>
 is naturally or coerced of type <em>int</em> and the result of this function is naturally or
 coerced of type <em>int</em>.</p>
-<p>Did you notice how I used &quot;naturally or coerced&quot; above? That's because PHP won't complain if
+
+<p>Did you notice how I used "naturally or coerced" above? That's because PHP won't complain if
 you call this function with non-integer values. In fact, it will attempt to implicitly
 convert (coerce) your parameters into integers if they aren't already.</p>
+
 <p><strong>In this function's body you can always trust that <code>$a</code> and <code>$b</code> are integers. But that they
 will have the expected integers, will depend on the function's caller.</strong></p>
+
 <pre><code class="language-php">&lt;?php
 
 function sum(
@@ -489,9 +606,12 @@ function sum(
   return $a + $b;
 }
 
-sum('10 apples', '10 bananas');</code></pre>
+sum('10 apples', '10 bananas');
+</code></pre>
+
 <p>It is also possible to use a php directive named <code>strict_types</code> to avoid coercions and simply
 raise errors when a type mismatch occurs. Like the following:</p>
+
 <pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
@@ -507,30 +627,43 @@ sum('10 bananas', '10 apples');
 // PHP Fatal error: Uncaught
 // TypeError: Argument 1 passed
 // to sum() must be of the type
-// int, string given</code></pre>
+// int, string given
+</code></pre>
+
 <p><strong>It doesn't mean that php is statically typed when strict types are switched on!</strong>
 In fact, type hinting only adds processing overhead to the php engine. Internally it
 will always perform type juggling and won't ever trust your variable type hints.</p>
+
 <p>Type hints only serve two purposes: define into which types a value should be coerced
 into OR to raise fatal errors when strict types are switched on.</p>
+
 <p><strong>Main takeaway: type hinting gives mere hints about types to the engine, not orders.
 Being strict about typing is your choice and will bring a small overhead with it.</strong></p>
+
 <h2 id="union-types">Union Types</h2>
+
 <p>Before we move to type juggling I'd like to quickly talk about Union Types because it
 seems to make more sense here.</p>
+
 <p>Besides all three types php has (scalar, compound and special) the php manual also
 mentions a <a href="https://www.php.net/manual/en/language.pseudo-types.php">pseudo-type which exists for readability purposes only</a>.
 This type doesn't really exist, is just a convention.</p>
+
 <p>I want you to pay attention to one very specific pseudo-type: the <code>array|object</code>
 pseudo-type is often used in the documentation to specify parameters or return types.</p>
+
 <p>The <code>iterable</code> type is also a kind-of Union Type. It can be defined as <code>array|Traversable</code>.</p>
+
 <p>Since php 7.1 the language added a kind-of support to union types by introducing the
 <a href="https://wiki.php.net/rfc/nullable_types">nullable types</a>. If you really think about
 a nullable type is just an union of <code>T|null</code>. For example <code>?int</code> means <code>int|null</code>.</p>
+
 <p>I bet you never thought about that before! 😝</p>
+
 <p>So after so many unknown union types, <a href="https://wiki.php.net/rfc/union_types_v2">php 8.0 comes with a proper Union Types feature</a>.
 Where you can define any union you need without having to depend on pseudo-types or
 conventions. It works like this:</p>
+
 <pre><code class="language-php">&lt;?php
 
 declare(strict_types=1);
@@ -540,24 +673,34 @@ function divide(
   int $b
 ): int|float {
   return $a / $b;
-}</code></pre>
+}
+</code></pre>
+
 <p>The above function may return an integer or a float. But never anything else.</p>
+
 <h2 id="php-type-juggling">PHP's type juggling</h2>
+
 <p>Probably it isn't the first time you've heard the term Type Juggling, is it? This
 is one of the most important core features php offers and yet it is one of the
 least understood ones.</p>
-<p>I can't blame people for not knowing it. It is called &quot;juggling&quot; for a reason.
+
+<p>I can't blame people for not knowing it. It is called "juggling" for a reason.
 There are so many variations of what a variable type can be in each context
 that it can become quite cumbersome to understand with which type you're dealing.</p>
+
 <p>Let's start with the following statement: <strong>php does not support explicit type
 definition in variable declaration</strong>. And this is very powerful!</p>
+
 <p>Whenever you declare a variable php will infer which type it should contain based
 on its assignment. While <code>$var;</code> creates a variable with a NULL value, <code>$one = 1;</code>
 creates an integer and <code>$obj = new stdClass()</code> creates an <code>object(stdClass)</code>.</p>
+
 <p>There's no type definition at all! PHP tries its best to guess what type should
 be attributed to a variable.</p>
+
 <p>PHP variables are very dynamic, to the point they may change type in runtime without
 any trouble! The code below is valid:</p>
+
 <pre><code class="language-php">&lt;?php
 
 $var;
@@ -570,33 +713,41 @@ $var = 'thephp.website';
 // $var is string("thephp.website")
 
 $var = new stdClass();
-// $var is object(stdClass)</code></pre>
+// $var is object(stdClass)
+</code></pre>
+
 <p>And because variables are so dynamic many operations in php require the engine to
 check their values based on the operation's context. An expression like sum (a + b)
 will internally check for the first operand's type and later on guess the second
 operand's type.</p>
+
 <p>Take a look <a href="https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L47-L84">at this snippet from php's source code</a>.
 If <code>op1</code> is long (a is integer) then check if <code>op2</code> is long (b is integer). If so,
 perform a long sum otherwise check if <code>op2</code> is double and perform a double sum if yes.
 And this expression <a href="https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L61">may return an integer</a>
 or <a href="https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L74">a float</a>.</p>
+
 <p><strong>That's why you can simply take for granted that type juggling will happen automatically.</strong></p>
+
 <p>This also means that type coercion (implicit casts) will also happen automatically. But
 they aren't supposed to be a surprise! There are very specific moments where a type coercion may occur.</p>
-<p>Type coercions (and therefore juggling) may occur:</p>
-<ul>
-<li>when resolving an expression</li>
-<li>when passing arguments to a function or method</li>
-<li>when returning from a function or method</li>
-</ul>
+
+<p>Type coercions (and therefore juggling) may occur:
+* when resolving an expression
+* when passing arguments to a function or method
+* when returning from a function or method</p>
+
 <p>You might be thinking: well, if coercions are everywhere then how does php handle
 incompatible types? Converting an integer to a boolean seems ok, but an array to
 integer sounds a bit awkward already.</p>
+
 <p>Well, php has very well defined rules for type casting. The first thing necessary
 is to understand what is the resulting type supposed to be and later on evaluate
 the casting.</p>
+
 <p>For example, if an expression occurs inside an <code>if()</code> statement we can quickly
 realize that the expression should yield a boolean value.</p>
+
 <pre><code class="language-php">&lt;?php
 
 $var = 100;
@@ -608,13 +759,17 @@ if ($var) {
   // $var is still int(100)
 }
 
-// $var is still int(100)</code></pre>
+// $var is still int(100)
+</code></pre>
+
 <p>Notice how $var was <code>int(100)</code> during its entire lifetime, but got treated as <code>bool(TRUE)</code>
 inside that <em>if()</em> statement. That's because the <em>if()</em> statement expects an expression
 that evaluates to boolean as result. The type juggling is exactly what php does under the
 hood for you.</p>
+
 <p>To illustrate, here goes the decision tree for converting a type to boolean.
 <strong>Boolean conversion will return false when the original value is</strong>:</p>
+
 <ul>
 <li>a bool(FALSE)</li>
 <li>an <code>int(0)</code> or <code>int(-0)</code></li>
@@ -624,19 +779,26 @@ hood for you.</p>
 <li>a NULL</li>
 <li>a SimpleXML instance created from empty tags</li>
 </ul>
+
 <p><strong>And it will return true for everything else.</strong></p>
+
 <p>The above table can be found in the
-<a href="https://www.php.net/manual/en/language.types.boolean.php#language.types.boolean.casting">&quot;Converting to boolean&quot; section of the manual</a>.</p>
+<a href="https://www.php.net/manual/en/language.types.boolean.php#language.types.boolean.casting">"Converting to boolean" section of the manual</a>.</p>
+
 <p>A complete documentation on type comparisons and conversion tables
 <a href="https://www.php.net/manual/en/types.comparisons.php">can also be found in the language manual</a>.
 I don't have the courage to read it myself, but is part of my job to make it available here 🤷🏻‍♀️</p>
+
 <p><strong>Important note here</strong>: in php 8.0 union types were introduced to the language bringing an extra
 layer of complexity. Type juggling, when dealing with union types, must follow a precedence. And
 this precedence is well-defined, instead of based on type order.</p>
+
 <p><a href="https://wiki.php.net/rfc/union_types_v2#coercive_typing_mode">So if you're not using strict_types your union types will follow this rule</a>.
 If the union type doesn't contain the subject's type, it may coerce its value in the following
 order of precedence: <code>int</code>, <code>float</code>, <code>string</code> and <code>bool</code>.</p>
+
 <p>For example:</p>
+
 <pre><code class="language-php">&lt;?php
 
 function f(
@@ -656,25 +818,34 @@ f(0.0); // float ISN'T in the union type
 f([]); // array ISN'T in the union type
 // Uncaught TypeError:
 // f(): Argument #1 ($v)
-// must be of type string|int</code></pre>
+// must be of type string|int
+</code></pre>
+
 <p>In the above example something very interesting happens! The array type won't be converted
 to a <code>bool(FALSE)</code>. It raises a TypeError instead!</p>
+
 <h2 id="php-type-modes">PHP type modes</h2>
+
 <p><strong>You have already realized that there are two ways php can handle types</strong>. One way is
-called <strong>&quot;Coercive Type Mode&quot;</strong> with all these juggling and guessing games happening. The
-other way is the <strong>&quot;Strict Type Mode&quot;</strong> where <strong>juggling and guessing still happens</strong>, but
+called <strong>"Coercive Type Mode"</strong> with all these juggling and guessing games happening. The
+other way is the <strong>"Strict Type Mode"</strong> where <strong>juggling and guessing still happens</strong>, but
 <strong>when explicitly defined types are set</strong>, some <strong>TypeErrors will be thrown if type
 mismatches happen</strong>.</p>
+
 <p>Now, I see it as a very common thing that php developers expect the engine to respect the
 Law of Equivalent Exchange (等価交換法), and pay our effort of strictly typing everything
 with a performance boost, because then it will be finally able to bypass all type checks
 and perform operations right away.</p>
+
 <p>While I see the reason why someone might think this way, I must tell you: it is completely
 wrong! Let's check the following the
 <a href="https://github.com/php/php-src/blob/PHP-7.4/Zend/zend_vm_def.h#L8056-L8105">strlen() logic in php's source code</a>.</p>
+
 <p>Every time we need to check whether we're using strict mode, we get the boolean value
 from <code>EX_USES_STRICT_TYPES()</code>. If true, we're in strict mode. If false, we're in coercive mode.</p>
+
 <p>Now, check the snippet again! It starts like this:</p>
+
 <pre><code class="language-c">// ...
 zval *value;
 
@@ -695,11 +866,16 @@ if (EXPECTED(
   ZEND_VM_NEXT_OPCODE();
 } else {
   // ...
-}</code></pre>
+}
+</code></pre>
+
 <p>Do you see that first <em>if()</em> statement there? Guess what it is doing... EXACTLY! It checks
 for your parameter's type!!</p>
+
 <p>Do you know what this snippet is doing with your type hints? NOTHING! 🤣</p>
+
 <p>The <em>else</em> clause holds the interesting stuff that MIGHT use the strict types or not.</p>
+
 <pre><code class="language-c">// ...
 } else {
   // Looks promising
@@ -729,30 +905,43 @@ for your parameter's type!!</p>
       EX_VAR(opline-&gt;result.var)
     );
   } while (0);
-}</code></pre>
+}
+</code></pre>
+
 <p>From the snippet above we can see an example of how the strict mode doesn't cut any
 processing. In fact, it creates a couple of extra checks with a single purpose: to raise
 fatal errors.</p>
+
 <p>I'm not saying it is a bad implementation. I'm personally very happy with it. But I think
 it is important to make it clear that it won't affect performance positively.</p>
+
 <p><strong>Main takeaway: strict types won't make your code faster!</strong></p>
+
 <h2>Closing Thoughts</h2>
+
 <p>This article was a big quest. I'm seriously thinking about writing a book. This page
 alone would make up for 15% of a good-sized book already 😂</p>
+
 <p>I hope the information I've collected here is useful for you. And if not, at least interesting.</p>
+
 <p>I believe php's type system is incredibly rich and carries many innovative and legacy
 features and they all make much sense when you look at the history of the language development.</p>
+
 <p>As usual, feel free to ping me on twitter if you have anything to say. Open an issue or pull
 request and be happy.</p>
+
 <p><strong>Main takeaway: it took me an incredible amount of time to write this article. If you'd like
 to show any kind of support, please share it in your social media and social circles 🙏</strong></p>
+
 <p>See you next time! Cheers!</p>
+
 <div class="align-right">
   --
   <a href="https://twitter.com/nawarian" rel="nofollow">
     @nawarian
   </a>
 </div>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -766,7 +955,7 @@ to show any kind of support, please share it in your social media and social cir
   "dateModified": "2020-07-25T00:00:00+08:00",
   "author": {
     "@type": "Person",
-    "name": "Nawarian N&iacute;ckolas Da Silva"
+    "name": "Nawarian Níckolas Da Silva"
   },
    "publisher": {
     "@type": "Organization",
@@ -777,7 +966,8 @@ to show any kind of support, please share it in your social media and social cir
     }
   }
 }
-</script>  </div>
+</script>
+  </div>
   </article>
   <aside class="container">
           <div class="recommended">
