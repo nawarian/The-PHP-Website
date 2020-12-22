@@ -1,5 +1,6 @@
 ---
 slug: php8-data-lancamento
+canonical: https://thephp.website/br/edicao/php-8-features/
 lang: pt-br
 title: As Datas de Lançamento do PHP 8 Foram Reveladas!
 category: thoughts
