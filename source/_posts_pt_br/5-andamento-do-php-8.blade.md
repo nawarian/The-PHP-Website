@@ -1,5 +1,6 @@
 ---
 slug: andamento-php-8
+canonical: https://thephp.website/br/edicao/php-8-features/
 lang: pt-br
 title: O Andamento do PHP 8
 category: walkthrough
@@ -25,6 +26,9 @@ meta:
 ---
 
 [Read in English](/en/issue/state-of-php-8/)
+
+**Atualização importantíssima!** O PHP 8.0 já foi lançado! Você pode ver as principais
+novidades [nesse link aqui](/br/edicao/php-8-features/).
 
 O PHP 8.0 está [sob discussão e desenvolvimento neste momento](/br/edicao/php8-data-lancamento/).
 Isso significa que muitas coisas neste post ainda vão mudar muito com o tempo. Para cada
