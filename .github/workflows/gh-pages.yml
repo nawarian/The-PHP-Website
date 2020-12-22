@@ -8,6 +8,9 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        php: [7.4]
     steps:
     - uses: actions/checkout@master
 
