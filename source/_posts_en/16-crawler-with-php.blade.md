@@ -1,6 +1,6 @@
 ---
 slug: how-to-write-crawlers-with-php
-title: How to write decent crawlers with php
+title: How to write php crawlers with spatie/crawler
 category: guides
 createdAt: 2020-07-20
 sitemap:
@@ -234,7 +234,7 @@ Cheers! 👋
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "How to write decent crawlers with php",
+  "headline": "How to write php crawlers with spatie/crawler",
   "description": "After this article you'll realize how much you were suffering with your PHP crawlers. There IS a better way.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/posts/16-many-books-and-magazines-640.webp"
