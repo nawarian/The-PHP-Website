@@ -80,6 +80,8 @@ The _char_ type is simplified to a string type and all _integer_ variations
 are simplified into an _integer_ type. Whether that's a good or bad thing, is
 up to you.
 
+**In case you're wondering: the PHP equivalent to JS's typeof, is the _gettype()_ function.**
+
 One can always inspect a variable's type using the 
 [gettype()](https://www.php.net/manual/en/function.gettype) function or using
 the [var_dump()](https://www.php.net/manual/en/function.var-dump) function and

@@ -87,6 +87,8 @@ O tipo _char_ é simplificado para tornar-se _string_ e todos inteiros
 são simplificados em um tipo _integer_. Se isso for ou não uma coisa boa
 fica a seu critério.
 
+**Caso esteja se perguntando: o equivalente em PHP ao typeof do JS é a função _gettype()_.**
+
 Você sempre pode inspecionar o tipo de uma variável usando a função
 [gettype()](https://www.php.net/manual/en/function.gettype) ou
 a função [var_dump()](https://www.php.net/manual/en/function.var-dump).

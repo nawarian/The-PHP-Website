@@ -1,10 +1,10 @@
 ---
 slug: php-8-jit
-title: Deep Dive into PHP 8's JIT
+title: How PHP's Just In Time compiler works
 category: walkthrough
 createdAt: 2020-03-03
 sitemap:
-  lastModified: 2020-08-29
+  lastModified: 2020-12-22
 image:
   url: /assets/images/posts/10-php-8-jit-640.webp
   alt: 'A number eight represented with engine chains.'
@@ -208,7 +208,7 @@ they are directly executed by the CPU.
 When an Opcode should be compiled is decided based on your INI configurations. You'll
 get more details in the next section.
 
-## JIT Configuration
+## How to configure JIT
 
 Configuring JIT in PHP is very simple, there are two INI directives we need to set:
 `opcache.jit_buffer_size` and `opcache.jit`. The first indicates how much memory
@@ -243,37 +243,37 @@ behavioural effect on your application. Below I explain what each of these lette
 
 | Flag | Meaning |
 | -------- | ------ |
-0 | No optimization whatsoever
-1 | Enable [AVX instruction](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) generation
+| 0 | No optimization whatsoever |
+| 1 | Enable [AVX instruction](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) generation |
 
 **R - Register Allocation Modes**
 
 | Flag | Meaning |
 | -------- | ------ |
-0 | Never perform [register allocations](https://en.wikipedia.org/wiki/Register_allocation)
-1 | Use local linear-scan register allocation
-2 | Use global linear-scan register allocation
+| 0 | Never perform [register allocations](https://en.wikipedia.org/wiki/Register_allocation) |
+| 1 | Use local linear-scan register allocation |
+| 2 | Use global linear-scan register allocation |
 
 **T - JIT trigger**
 
 | Flag | Meaning |
 | -------- | ------ |
-0 | JIT everything on first script load
-1 | JIT functions when they execute
-2 | Profile first request and compile hot functions on second requests
-3 | Profile and compile hot functions all the time
-4 | Compile functions with a `@jit` in doc blocks
+| 0 | JIT everything on first script load |
+| 1 | JIT functions when they execute |
+| 2 | Profile first request and compile hot functions on second requests |
+| 3 | Profile and compile hot functions all the time |
+| 4 | Compile functions with a `@jit` in doc blocks |
 
 **O - Optimization level**
 
 | Flag | Meaning |
 | -------- | ------ |
-0 | Never JIT
-1 | Minimal JIT (use regular VM handlers)
-2 | Selective VM handler inlining
-3 | Optimized JIT based on static type inference of individual function
-4 | Optimized JIT based on static type inference and call tree
-5 | Optimized JIT based on static type inference and inner procedure analyses
+| 0 | Never JIT |
+| 1 | Minimal JIT (use regular VM handlers) |
+| 2 | Selective VM handler inlining |
+| 3 | Optimized JIT based on static type inference of individual function |
+| 4 | Optimized JIT based on static type inference and call tree |
+| 5 | Optimized JIT based on static type inference and inner procedure analyses |
 
 I don't fully understand every term there, but the main takeaway is that you should play
 around with each flag and keep profiling your application to better understand what suits
@@ -390,7 +390,7 @@ value to your conversations!
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Deep Dive into PHP 8's JIT",
+  "headline": "How PHP's Just In Time compiler works",
   "description": "PHP 8's Just In Time compiler is implemented as part of the Opcache extension and aims to compile some Opcodes into CPU instructions in runtime. Let's understand how it works all together.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/posts/10-php-8-jit-640.webp"

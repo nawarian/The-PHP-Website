@@ -1,5 +1,6 @@
 ---
 slug: php8-release-schedule
+robots: noindex
 title: PHP 8's Release Schedule is Available
 category: thoughts
 createdAt: 2020-04-03

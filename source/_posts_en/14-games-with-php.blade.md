@@ -1,6 +1,6 @@
 ---
 slug: games-with-php
-title: A Snake Game Written in PHP (with Raylib)
+title: 'Simple PHP Game in PHP using Raylib: Snake (with source code)'
 category: guides
 createdAt: 2020-04-12
 sitemap:
@@ -510,7 +510,7 @@ development.
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "A Snake Game Written in PHP (with Raylib)",
+  "headline": "Simple PHP Game in PHP using Raylib: Snake (with source code)",
   "description": "I'm gonna show you how the code looks like and which tools I used! Hopefully it will catch your attention enough to see this extension getting traction.",
   "image": [
     "{{ $page->getBaseUrl() }}/assets/images/posts/14-snake-640.webp"

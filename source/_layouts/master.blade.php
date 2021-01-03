@@ -12,6 +12,9 @@
   @else
     <link rel="canonical" href="{{ $page->getUrl() }}/" />
   @endif
+  @if ($page->robots)
+    <meta name="robots" content="{{ $page->robots ?? "all" }}">
+  @endif
   <link
     rel="alternate"
     type="application/json"
