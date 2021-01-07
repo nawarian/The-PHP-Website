@@ -119,15 +119,15 @@ a little and talk about binary stuff first. If you think you already
 know everything you need about this, just jump to the
 [Binary numbers and strings in PHP](#binary-numbers-and-strings) section.
 
-There's this thing in math called “base”. It defines how we may represent
+There's this thing in math called "base". It defines how we may represent
 quantities in different formats. Us, humans, normally use the decimal
 base (base 10) which allows any number to be represented with the digits
 `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8` and `9`.
 
-To make our next examples clearer I will call the number “20” as “decimal 20”.
+To make our next examples clearer I will call the number "20" as "decimal 20".
 
 Binary numbers (base 2) can represent any number, but using only two
-distinct digits: 0 and 1.
+distinct digits: `0` and `1`.
 
 The decimal 20 when represented in binary form, can be seen as 0b000**10100**.
 Do not worry about converting it, let the machines do this job 😉
@@ -146,12 +146,12 @@ base) and hexadecimal (base 16).
 
 In PHP and many other languages, **binary numbers** are written as any other numbers
 but with a **prefix 0b**, like the decimal 20 represented as **0b**00010100. **Hexadecimal**
-numbers receive a **prefix 0x**, like the decimal 20 represented as 0x14.
+numbers receive a **prefix 0x**, like the decimal 20 represented as **0x**14.
 
 As you might have heard already, computers don't store literal data. They
 represent everything as binary numbers instead: 0s and 1s. Characters,
 numbers, symbols, instructions... everything is represented using base 2.
-Characters are just a convention of number sequences: the character ‘a',
+Characters are just a convention of number sequences: the character 'a',
 for example, is the number 97 in the ASCII table.
 
 Even though everything is stored as binary, the most convenient way for
@@ -159,13 +159,13 @@ programmers to read this data is using hexadecimals. They just look good.
 I mean, look at this!
 
 ```
-# string “abc”
-‘abc'
+# string "abc"
+'abc'
 
-# binary form
+# binary form (bleh)
 0b01100001 0b01100010 0b01100011
 
-# hexadecimal form
+# hexadecimal form (such wow)
 0x61 0x62 0x63
 ```
 
@@ -211,7 +211,7 @@ The same happens with hexadecimal base, but with a much wider range.
 ```
 
 As you realized, carry operations demand more digits to represent a certain number.
-Understanding allows you to understand how certain data types are limited and, as
+This allows you to understand how certain data types are limited and, as
 they're stored in computers, their limitation is represented in binary form.
 
 ## Data representation in computer memory { #memory-representation }
@@ -236,9 +236,9 @@ Representing our decimal 20 in such table using only 8 bits, looks like the foll
 </tr>
 </tbody></table>
 
-An unsigned 8-bit Integer is a number (integer) that can only be represented with
-at most 8 binary digits. So **0b11111111** (decimal 255) is the biggest number a
-signed 8-bit integer can store. Adding 1 to it would require a Carry operation,
+An unsigned 8-bit Integer is a number that can only be represented with
+at most 8 binary digits. So **0b11111111** (decimal 255) is the biggest number an
+unsigned 8-bit integer can store. Adding 1 to it would require a Carry operation,
 which cannot be represented with the same amount of digits.
 
 With this in mind we can easily understand why there are so many memory
@@ -360,7 +360,7 @@ Now comes the fun! Let's get our hands dirty and play a bit with some PHP code!
 
 The first thing I will show you is to visualize the data. We need to understand what
 we're dealing with afterall.
-Visualizing binary representations of integers
+
 Debugging integers is actually very very simple, we can just use the
 [sprintf()](https://www.php.net/manual/en/function.sprintf) function. Its formatting
 is very powerful and will help us to quickly realize what those values are.
@@ -373,8 +373,8 @@ format.
 // Decimal 20
 $n = 20;
 
-echo sprintf(‘%08b‘, $n) . “\n”;
-echo sprintf(‘%02X', $n) . “\n”;
+echo sprintf('%08b', $n) . "\n";
+echo sprintf('%02X', $n) . "\n";
 
 // Output:
 00010100
@@ -384,7 +384,7 @@ echo sprintf(‘%02X', $n) . “\n”;
 The format `%08b` makes the variable `$n` to be printed as a binary representation (b)
 with 8 digits (08).
 
-The format `%02X` represents the variable $n in hexadecimal (X) and 2 digits (02).
+The format `%02X` represents the variable `$n` in hexadecimal (X) and 2 digits (02).
 
 ### Visualizing binary strings { #visualizing-binary-strings }
 
@@ -397,7 +397,7 @@ char with 1 byte size. Here's a quick example of how chars can be accessed:
 
 ```php
 <?php
-$str = ‘thephp.website';
+$str = 'thephp.website';
 
 echo $str[3];
 echo $str[4];
@@ -413,13 +413,18 @@ integer. Like this:
 
 ```php
 <?php
-$str = ‘thephp.website';
+$str = 'thephp.website';
 
 $f = ord($str[3]);
 $s = ord($str[4]);
 $t = ord($str[5]);
 
-echo sprintf(‘%02X %02X %02X', $f, $s, $t);
+echo sprintf(
+  '%02X %02X %02X',
+  $f,
+  $s,
+  $t,
+);
 // Outputs:
 70 68 70
 ```
@@ -427,7 +432,7 @@ echo sprintf(‘%02X %02X %02X', $f, $s, $t);
 We can see we're in a good path by double checking with the command line application hexdump:
 
 ```shell
-$ echo ‘php' | hexdump
+$ echo 'php' | hexdump
 // Outputs
 0000000 70 68 70 ...
 ```
@@ -446,7 +451,7 @@ the first 2 bytes:
 ```php
 <?php
 
-$h = fopen(‘file.jpeg', ‘rb');
+$h = fopen('file.jpeg', 'rb');
 
 // Read 2 bytes
 $soi = fread($h, 2);
@@ -455,7 +460,7 @@ $soi = fread($h, 2);
 In order to fetch these values into an integer array we can simply unpack them like this:
 
 ```php
-$ints = unpack(‘C*', $soi);
+$ints = unpack('C*', $soi);
 
 var_dump($ints);
 // Outputs
@@ -464,8 +469,8 @@ array(2) {
   [2] => int(-40)
 }
 
-echo sprintf(‘%02X', $ints[1]);
-echo sprintf(‘%02X', $ints[2]);
+echo sprintf('%02X', $ints[1]);
+echo sprintf('%02X', $ints[2]);
 // Outputs
 FFD8
 ```
@@ -484,22 +489,22 @@ and their results are described below:
 </thead>
 <tbody>
   <tr>
-    <td>`$x | $y`</td><td>Inclusive Or</td><td>A value with all bits set in both `$x` and `$y`</td>
+    <td>$x | $y</td><td>Inclusive Or</td><td>A value with all bits set in both $x and $y</td>
   </tr>
   <tr>
-    <td>`$x ^ $y`</td><td>Exclusive Or</td><td>A value with bits set in `$x` or `$y` but never both</td>
+    <td>$x ^ $y</td><td>Exclusive Or</td><td>A value with bits set in $x or $y but never both</td>
   </tr>
   <tr>
-    <td>`$x & $y`</td><td>And</td><td>A value with bits set in `$x` and `$y` at the same time only</td>
+    <td>$x & $y</td><td>And</td><td>A value with bits set in $x and $y at the same time only</td>
   </tr>
   <tr>
-    <td>`~$x`</td><td>Not</td><td>Flips all bits in `$x`</td>
+    <td>~$x</td><td>Not</td><td>Flips all bits in $x</td>
   </tr>
   <tr>
-    <td>`$x << $y`</td><td>Left Shift</td><td>Shifts the bits of `$x` to the left `$y` times</td>
+    <td>$x << $y</td><td>Left Shift</td><td>Shifts the bits of $x to the left $y times</td>
   </tr>
   <tr>
-    <td>`$x >> $y`</td><td>Right Shift</td><td>Shifts the bits of `$x` to the right `$y` times</td>
+    <td>$x >> $y</td><td>Right Shift</td><td>Shifts the bits of $x to the right $y times</td>
   </tr>
 </tbody>
 </table>
@@ -529,7 +534,7 @@ OR ------- // $x | $y
 bits of $y were also set. The result merges both and generates a value with bits 5 and 6
 set: `0x30`.
 
-### Exclusive Or (`$x ^ $y`)
+### How Exclusive Or (`$x ^ $y`) works
 
 The exclusive Or (also known as Xor) will only capture bits that exist in a single side.
 So the result of `$x ^ $y` is `0x10`. See the example below:
@@ -545,7 +550,7 @@ XOR ------ // $x ^ $y
 0b00010000 // 0x10
 ```
 
-### And (`$x & $y`)
+### how And (`$x & $y`) works
 
 The AND operator is much simpler to understand. It performs the AND operation on each bit so
 only values that match on both sides at the same time will be retrieved.
@@ -563,7 +568,7 @@ AND ------ // $x & $y
 0b00100000 // 0x20
 ```
 
-### Not (`~$x`)
+### How Not (`~$x`) works
 
 The NOT operation requires a single parameter and it simply flips all bits passed. It
 transforms all bits with value 0 into 1, and all bits with value 1 into 0. See below:
@@ -581,7 +586,7 @@ If you ran this operation in PHP and decided to debug it using sprintf() you pro
 noticed a much wider number, right? I'll explain to you what's going on and how to fix
 it below in the [Normalizing integers](#normalizing-integers) section.
 
-### Left and Right shifts (`$x << $n` and `$x >> $n`)
+### How Left and Right shifts (`$x << $n` and `$x >> $n`) work
 
 Shifting bits are the same as multiplying or dividing numbers by multiples of two. What
 it does is to make all bits travel `$n` steps to the left or right.
@@ -618,8 +623,8 @@ A bitmask is just an arbitrary binary of your choice, crafted to extract a very 
 information.
 
 For example, let's take the idea that an 8-bit signed integer is positive when the 8th
-bit is not set (equals 0) and is negative when it is. I then ask the question,
-is 0x20 positive or negative? And what about 0x81?
+bit is not set (equals 0) and is negative when it is set. I then ask the question,
+is `0x20` positive or negative? And what about `0x81`?
 
 For this we can craft a very convenient byte with only the negative bit set (`0b10000000`,
 equivalent to `0x80`) and use the `AND` operation against `0x20`. If the result is equal to
@@ -661,7 +666,7 @@ $e_level = 0x0A;
 
 // Needs to throw a notice
 if ($e_level & E_NOTICE === E_NOTICE)
- // Throws notice
+ // Flag is set: throws notice
 ```
 
 And you will see this everywhere! Binary files, processors, all sorts of low level stuff!
@@ -677,7 +682,7 @@ For example, running the following operation in a 64-bit machine will get us an 
 
 ```php
 echo sprintf(
-  ‘0b%08b',
+  '0b%08b',
   ~0x20
 );
 
@@ -697,8 +702,8 @@ This still works as you would expect, though. For example the operation
 `~0x20 & 0b11011111 === 0b11011111` results in `bool(true)`. But always keep in mind that these
 bits to the left are constantly there or you might end up having weird behaviours in your code.
 
-To solve this issue, you can normalize your integers by applying a bitmask that limits all those
-zeros. For example, to normalize ~0x20 into an 8-bit integer we must `AND` it with `0xFF`
+To solve this issue, you can normalize your integers by applying a bitmask that clears all those
+zeros. For example, to normalize `~0x20` into an 8-bit integer we must `AND` it with `0xFF`
 (`0b11111111`) so all previous `56` bits will be set to zero.
 
 ```
