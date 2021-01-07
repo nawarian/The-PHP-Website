@@ -1,5 +1,4 @@
 ---
-isFeatured: true
 slug: php-8-features
 title: 'PHP 8.0 released: it looks awesome!'
 category: walkthrough

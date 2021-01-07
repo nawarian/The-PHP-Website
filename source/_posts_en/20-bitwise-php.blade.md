@@ -1,4 +1,5 @@
 ---
+isFeatured: true
 slug: bitwise-php
 title: Mastering binary and bitwise in PHP
 category: walkthrough
