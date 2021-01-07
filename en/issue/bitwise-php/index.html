@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=5bf77e20e6f5bada38aa">
+      <link rel="canonical" href="https://thephp.website/en/issue/bitwise-php/" />
+      <link
+    rel="alternate"
+    type="application/json"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[EN] thePHP Website"
+    href="https://thephp.website/en/feed.xml"
+  />
+  
+  <title>Mastering binary and bitwise in PHP | thePHP Website</title>
+
+  <meta name="description" content="I recently caught myself working on different projects that required me to rely heavily on bitwise operations in PHP. From reading binary files to emulating processors, this is a very useful knowledge to have and a very cool one too.">
+
+  <meta property="og:title" content="Mastering binary and bitwise in PHP">
+  <meta property="og:description" content="I recently caught myself working on different projects that required me to rely heavily on bitwise operations in PHP. From reading binary files to emulating processors, this is a very useful knowledge to have and a very cool one too.">
+  <meta property="og:url" content="https://thephp.website/en/issue/bitwise-php">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/20-bitwise-php/cover-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Mastering binary and bitwise in PHP">
+  <meta name="twitter:description" content="I recently caught myself working on different projects that required me to rely heavily on bitwise operations in PHP. From reading binary files to emulating processors, this is a very useful knowledge to have and a very cool one too.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-3');
+  </script>
+  <script data-ad-client="ca-pub-3681134868307419" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Hotjar Tracking Code for thephp.website -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1770868,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu__container').classList.toggle('menu__container--active');
+    }
+  </script>
+</head>
+<body class="yue non-article">
+  <header class="menu">
+    <a class="menu__logo" href="/en/">
+      <img src="/assets/images/elephpant-idle.png" alt="" />
+    </a>
+    <div class="menu__title">
+      <a href="/en/">thePHP Website</a>
+    </div>
+    <section class="menu__cta">
+      <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
+      </button>
+    </section>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/en/search">
+            search.php
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Suggest a Topic!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/en/about/">
+            about.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.json">
+            [EN] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/en/feed.xml">
+            [EN] Atom Feed (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </header>
+  <article class="container">
+      <div class="article">
+    <time datetime="2021-01-07">
+      2021-01-07
+    </time>
+
+    <h1>Mastering binary and bitwise in PHP</h1>
+    <p>I recently caught myself working on different projects that required
+me to rely heavily on bitwise operations in PHP. From reading binary
+files to emulating processors, this is a very useful knowledge to have
+and a very cool one too.</p>
+
+<p>PHP has many tools to support you with manipulating binary data, but I
+must warn you from the beginning: if you're seeking ultra low-level
+efficiency, this isn't the language for you.</p>
+
+<p>Bare with me, though! <strong>In this post I'll show you very valuable things
+about bitwise operations, binary and hexadecimal handling that will be
+useful for you in ANY language.</strong></p>
+
+<p>This article grew quit a bit, so I'll leave here a quick summary so you
+can easily navigate to the sections you'd like.</p>
+
+<ul>
+<li><a href="#not-the-best-candidate">Why PHP might not be the best candidate</a></li>
+<li><a href="#introduction-to-binary-representation">Quick introduction to binary and hexadecimal data representations</a></li>
+<li><a href="#carry-operations">Carry operations</a></li>
+<li><a href="#memory-representation">Data representation in computer memory</a></li>
+<li><a href="#arithmetic-overflows">Arithmetic Overflows</a></li>
+<li><a href="#binary-numbers-and-strings">Binary numbers and strings in PHP</a></li>
+<li><a href="#integers-or-strings">Binary: Integers or Strings, which to use in PHP?</a></li>
+<li><a href="#debugging-binary-in-php">Debugging binary values in PHP</a></li>
+<li><a href="#visualizing-binary-strings">Visualizing binary strings</a></li>
+<li><a href="#bitwise-operations">Bitwise Operations</a></li>
+<li><a href="#what-is-bitmask">What is a bitmask</a></li>
+<li><a href="#normalizing-integers">Normalizing integers</a></li>
+<li><a href="#conclusion-examples">Conclusion and examples</a></li>
+</ul>
+
+<h2 id="not-the-best-candidate">Why PHP might not be the best candidate</h2>
+
+<p>Look. I love PHP, ok? Don't get me wrong. And I'm sure it will handle
+gracefully many more cases than you can imagine. But in cases where
+you need to be very efficient while handling binary data, PHP simply
+won't do the job.</p>
+
+<p>Just to be clear: I'm not talking about how an application might
+consume 5 or 10mb more, I'm talking about allocating the exact amount
+of memory necessary to hold a certain data type.</p>
+
+<p>According to the
+<a href="https://www.php.net/manual/en/language.types.integer.php">official documentation on integers</a>
+, PHP represents decimals as well as hexadecimals, octals and binaries
+with the type integer. So it doesn't really matter what data you put in
+there, it will always be an integer.</p>
+
+<p>You probably heard of <em>ZVAL</em> before, it is this C struct that represents
+every PHP variable. It has
+<a href="https://github.com/php/php-src/blob/da0663a337b608a4b0008672b494e3a71e6e4cfc/Zend/zend_types.h#L286">a field to represent all integers called zend_long</a>.
+As you can see, zend_long is of type <em>lval</em> which has a platform-dependent
+size: On 64-bit platforms
+<a href="https://github.com/php/php-src/blob/74f3bfc6eb7ec80287178e46bd5c269fd371ce5a/Zend/zend_long.h#L30-L31">it will be represented as a 64bit integer</a>,
+while <a href="https://github.com/php/php-src/blob/74f3bfc6eb7ec80287178e46bd5c269fd371ce5a/Zend/zend_long.h#L40-L41">32-bit platforms represent it as a 32bit integer</a>.</p>
+
+<pre><code class="language-c"># zval stores every integer as a lval
+typedef union _zend_value {
+  zend_long lval;
+  // ...
+} zend_value;
+
+# lval is a 32 or 64-bit integer
+#ifdef ZEND_ENABLE_ZVAL_LONG64
+ typedef int64_t zend_long;
+ // ...
+#else
+ typedef int32_t zend_long;
+ // ...
+#endif
+</code></pre>
+
+<p>Bottomline is: doesn't matter if you need to store <code>0xff</code>, <code>0xffff</code>,
+<code>0xffffff</code> or whatever. They will all be stored as long (<em>lval</em>) with
+32 or 64 bits in PHP.</p>
+
+<p>I recently played around, for example, with microcontrollers emulation.
+And while handling memory and operations properly is a must, I didn't
+really need so much memory efficiency there because my host machine
+compensates it in orders of magnitude.</p>
+
+<p>Of course everything changes when you talk about C Extensions or FFI,
+but that's not my point. I'm talking about pure PHP.</p>
+
+<p>So keep this in mind: it works and it can achieve all behaviour you'd
+like it to achieve, but types won't fit efficiently in most cases.</p>
+
+<h2 id="introduction-to-binary-representation">Quick introduction to binary and hexadecimal data representations</h2>
+
+<p>Look, before we talk about how PHP handles binary data we must detour
+a little and talk about binary stuff first. If you think you already
+know everything you need about this, just jump to the
+<a href="#binary-numbers-and-strings">Binary numbers and strings in PHP</a> section.</p>
+
+<p>There's this thing in math called “base”. It defines how we may represent
+quantities in different formats. Us, humans, normally use the decimal
+base (base 10) which allows any number to be represented with the digits
+<code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code> and <code>9</code>.</p>
+
+<p>To make our next examples clearer I will call the number “20” as “decimal 20”.</p>
+
+<p>Binary numbers (base 2) can represent any number, but using only two
+distinct digits: 0 and 1.</p>
+
+<p>The decimal 20 when represented in binary form, can be seen as 0b000<strong>10100</strong>.
+Do not worry about converting it, let the machines do this job 😉</p>
+
+<p>Hexadecimal numbers (base 16) can represent any number and, to do so, it uses
+not only the ten digits <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code> and <code>9</code> but
+also additional six characters borrowed from the latin alphabet: <code>a</code>, <code>b</code>, <code>c</code>,
+<code>d</code>, <code>e</code> and <code>f</code>.</p>
+
+<p>The same decimal 20 is represented in hexadecimal as the number <code>0x14</code>. Again,
+don't try to convert this to decimal in your head, our computers are experts in it!</p>
+
+<p><strong>What is important for you to understand is that numbers can be represented in
+different bases:</strong> binary (base 2), octal (base 8), decimal (base 10, our common
+base) and hexadecimal (base 16).</p>
+
+<p>In PHP and many other languages, <strong>binary numbers</strong> are written as any other numbers
+but with a <strong>prefix 0b</strong>, like the decimal 20 represented as <strong>0b</strong>00010100. <strong>Hexadecimal</strong>
+numbers receive a <strong>prefix 0x</strong>, like the decimal 20 represented as 0x14.</p>
+
+<p>As you might have heard already, computers don't store literal data. They
+represent everything as binary numbers instead: 0s and 1s. Characters,
+numbers, symbols, instructions... everything is represented using base 2.
+Characters are just a convention of number sequences: the character ‘a',
+for example, is the number 97 in the ASCII table.</p>
+
+<p>Even though everything is stored as binary, the most convenient way for
+programmers to read this data is using hexadecimals. They just look good.
+I mean, look at this!</p>
+
+<pre><code># string “abc”
+‘abc'
+
+# binary form
+0b01100001 0b01100010 0b01100011
+
+# hexadecimal form
+0x61 0x62 0x63
+</code></pre>
+
+<p>While binary takes up lots of visual space, hexadecimals are very neat to
+represent binary data. That's why we normally stick with them when doing
+low-level programming.</p>
+
+<h2 id="carry-operations">Carry operations</h2>
+
+<p>You're already familiar with the concept of Carry, but I need you to pay
+attention to it so we can use it with different bases.</p>
+
+<p>With the decimal set we have ten distinct digits to represent numbers from
+zero (0) to nine (9). But whenever we try to represent numbers bigger than
+9 we run out of digits! Thus a Carry operation happens: we prefix our number
+with the digit one (1) and reset the right digit to zero (0).</p>
+
+<pre><code># decimal (base 10)
+1 + 1 = 2
+2 + 2 = 4
+9 + 1 = 10 // &lt;- Carry
+</code></pre>
+
+<p>The binary base will have similar behaviour, but is limited to digits 0 and 1.</p>
+
+<pre><code># binary (base 2)
+0 + 0  = 0
+0 + 1  = 1
+1 + 1  = 10 // &lt;- Carry
+1 + 10 = 11
+</code></pre>
+
+<p>The same happens with hexadecimal base, but with a much wider range.</p>
+
+<pre><code># hexadecimal (base 16)
+1 + 9  = a // no carry, a is in range
+1 + a  = b
+1 + f  = 10 // &lt;- Carry
+1 + 10 = 11
+</code></pre>
+
+<p>As you realized, carry operations demand more digits to represent a certain number.
+Understanding allows you to understand how certain data types are limited and, as
+they're stored in computers, their limitation is represented in binary form.</p>
+
+<h2 id="memory-representation">Data representation in computer memory</h2>
+
+<p>As I mentioned before, computers store everything using binary format. So only 0s
+and 1s are effectively stored.</p>
+
+<p>The easiest way to visualize how they are stored, is by imagining a big table with
+a single row and many columns (as many as storage capacity), where each column is
+a binary digit (bit).</p>
+
+<p>Representing our decimal 20 in such table using only 8 bits, looks like the following:</p>
+
+<table><tbody>
+<tr>
+  <th>Position (Address)</th>
+  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+</tr>
+<tr>
+  <th>Bit</th>
+  <td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td>
+</tr>
+</tbody></table>
+
+<p>An unsigned 8-bit Integer is a number (integer) that can only be represented with
+at most 8 binary digits. So <strong>0b11111111</strong> (decimal 255) is the biggest number a
+signed 8-bit integer can store. Adding 1 to it would require a Carry operation,
+which cannot be represented with the same amount of digits.</p>
+
+<p>With this in mind we can easily understand why there are so many memory
+representations for numbers and what they effectively are: uint8 is an unsigned
+8-bit Integer (decimal 0 to 255), uint16 is an unsigned 16-bit Integer (decimal
+0 to 65,535). There are also uint32, uint64 and theoretically higher ones.</p>
+
+<p>Signed integers, which can represent negative values too, normally use the very
+last bit to determine whether a number is positive (last bit = 0) or negative
+(last bit = 1). As you can imagine, they then are capable of storing smaller
+values with the same amount of memory. A signed 8-bit integer will range from
+decimal -128 until decimal 127.</p>
+
+<p>Here's a decimal -20 represented as a signed 8-bit integer. Notice its first bit
+(address 0) is set (equals to 1), this marks the number as negative.</p>
+
+<table><tbody>
+<tr>
+  <th>Position (Address)</th>
+  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+</tr>
+<tr>
+  <th>Bit</th>
+  <td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td>
+</tr>
+</tbody></table>
+
+<p>I hope everything is making sense so far. This introduction is very important for
+you to understand how computers work internally. Only then you'll feel comfortable
+with what PHP is actually doing under the hood, we'll have to always keep it in mind.</p>
+
+<h2 id="arithmetic-overflows">Arithmetic Overflows</h2>
+
+<p>The way numbers are chosen to be represented (8-bits, 16-bits...) will determine
+their minimum and maximum value range. And that's basically because of how they are
+stored in memory: adding 1 to a binary digit 1 should result in a Carry operation,
+meaning another bit is necessary to prefix the actual number.</p>
+
+<p>Since integer formats are very well defined it is not possible to rely on Carry
+operations that go above that limit. (IT IS actually possible, but a little insane)</p>
+
+<table><tbody>
+<tr>
+  <th>Position (Address)</th>
+  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+</tr>
+<tr>
+  <th>Bit</th>
+  <td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td>
+</tr>
+</tbody></table>
+
+<p>Here we are very close to the 8-bit limit (decimal 255). If we add one to it, we'll
+end up with the decimal 255 and the following binary representation:</p>
+
+<table><tbody>
+<tr>
+  <th>Position (Address)</th>
+  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+</tr>
+<tr>
+  <th>Bit</th>
+  <td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td>
+</tr>
+</tbody></table>
+
+<p>All bits are set! Adding 1 to this would require a Carry operation, which cannot happen
+because we don't have enough bits: all 8 bits are set! This results in a thing called
+<strong>overflow</strong>, which happens when you try to go above a certain limit. The binary operation
+255 + 2 should result in 1 when you read its 8-bit result.</p>
+
+<table><tbody>
+<tr>
+  <th>Position (Address)</th>
+  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+</tr>
+<tr>
+  <th>Bit</th>
+  <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td>
+</tr>
+</tbody></table>
+
+<p>This behaviour is not random, there's a calculation involved there to determine what's
+the new value which is not relevant here.</p>
+
+<h2 id="binary-numbers-and-strings">Binary numbers and strings in PHP</h2>
+
+<p>Ok, back to PHP! Sorry about the big detour, but I think it was necessary.</p>
+
+<p>I hope by now dots are starting to connect in your head: binary numbers, how they are
+stored, what an overflow is, how php represents numbers...</p>
+
+<p>The decimal 20 represented in a PHP integer may have two different representations,
+depending on your platform. The x86 platform represents it with 32 bits while the x64
+does it with 64 bits, both of them are signed (allowing negatives). We all know that
+decimal 20 can fit in a 8-bit space, but PHP treats every decimal number as a 32 or 64
+bits number.</p>
+
+<p>PHP also has binary strings which can be converted back and forth by using the
+<a href="https://www.php.net/manual/en/function.pack.php">pack()</a> and
+<a href="https://www.php.net/manual/en/function.unpack.php">unpack()</a> functions.</p>
+
+<p>The main difference between binary strings and numbers in PHP is that binary strings
+are just holding the data, like a buffer. While PHP integers (binary or not) let us
+perform arithmetic operations on them such as sum and subtraction, and also binary
+(bitwise) operations such as AND, OR, XOR and NOT.</p>
+
+<h2 id="integers-or-strings">Binary: Integers or Strings, which to use in PHP?</h2>
+
+<p>To transport data we normally use binary strings. So reading a binary file or network
+communication will require us to pack and unpack our binary strings.</p>
+
+<p>Actual operations such as OR and XOR cannot reliably happen on strings, so we must use
+them with integers.</p>
+
+<h2 id="debugging-binary-in-php">Debugging binary values in PHP</h2>
+
+<p>Now comes the fun! Let's get our hands dirty and play a bit with some PHP code!</p>
+
+<p>The first thing I will show you is to visualize the data. We need to understand what
+we're dealing with afterall.
+Visualizing binary representations of integers
+Debugging integers is actually very very simple, we can just use the
+<a href="https://www.php.net/manual/en/function.sprintf">sprintf()</a> function. Its formatting
+is very powerful and will help us to quickly realize what those values are.</p>
+
+<p>Below I will represent the decimal 20 in a 8-bit binary format and 1-byte hexadecimal
+format.</p>
+
+<pre><code class="language-php">&lt;?php
+// Decimal 20
+$n = 20;
+
+echo sprintf(‘%08b‘, $n) . “\n”;
+echo sprintf(‘%02X', $n) . “\n”;
+
+// Output:
+00010100
+14
+</code></pre>
+
+<p>The format <code>%08b</code> makes the variable <code>$n</code> to be printed as a binary representation (b)
+with 8 digits (08).</p>
+
+<p>The format <code>%02X</code> represents the variable $n in hexadecimal (X) and 2 digits (02).</p>
+
+<h3 id="visualizing-binary-strings">Visualizing binary strings</h3>
+
+<p>While PHP integers are always 32 or 64 bits long, strings are as long as their content.
+To decode their binary values and visualize what's going on we need to inspect and
+convert each byte.</p>
+
+<p>Luckily PHP strings are deferencable just as arrays are, and each position points to a
+char with 1 byte size. Here's a quick example of how chars can be accessed:</p>
+
+<pre><code class="language-php">&lt;?php
+$str = ‘thephp.website';
+
+echo $str[3];
+echo $str[4];
+echo $str[5];
+
+// Outputs:
+php
+</code></pre>
+
+<p>Trusting that each char is 1 byte, we can easily call the
+<a href="https://www.php.net/manual/en/function.ord">ord()</a> function to cast it to a 1-byte
+integer. Like this:</p>
+
+<pre><code class="language-php">&lt;?php
+$str = ‘thephp.website';
+
+$f = ord($str[3]);
+$s = ord($str[4]);
+$t = ord($str[5]);
+
+echo sprintf(‘%02X %02X %02X', $f, $s, $t);
+// Outputs:
+70 68 70
+</code></pre>
+
+<p>We can see we're in a good path by double checking with the command line application hexdump:</p>
+
+<pre><code class="language-shell">$ echo ‘php' | hexdump
+// Outputs
+0000000 70 68 70 ...
+</code></pre>
+
+<p>Where the first column is the address only, from the second column on we see hexadecimal
+values representing the chars <code>p</code>, <code>h</code> and <code>p</code>.</p>
+
+<p>Additionally we may use the <a href="https://www.php.net/manual/en/function.pack.php">pack()</a> and
+<a href="https://www.php.net/manual/en/function.pack.php">unpack()</a> functions when handling binary
+strings and I have a great example for you right here!!</p>
+
+<p>Let's say we want to read a JPEG file to fetch some of its data (like EXIF, for example).
+We may open the file handle using the read binary mode. Let's do this and immediately read
+the first 2 bytes:</p>
+
+<pre><code class="language-php">&lt;?php
+
+$h = fopen(‘file.jpeg', ‘rb');
+
+// Read 2 bytes
+$soi = fread($h, 2);
+</code></pre>
+
+<p>In order to fetch these values into an integer array we can simply unpack them like this:</p>
+
+<pre><code class="language-php">$ints = unpack(‘C*', $soi);
+
+var_dump($ints);
+// Outputs
+array(2) {
+  [1] =&gt; int(-1)
+  [2] =&gt; int(-40)
+}
+
+echo sprintf(‘%02X', $ints[1]);
+echo sprintf(‘%02X', $ints[2]);
+// Outputs
+FFD8
+</code></pre>
+
+<p>Note that the format <code>C</code> in the unpack() function will decode a char in the string <code>$soi</code>
+as unsigned 8-bit numbers. The star modified <code>*</code> makes it unpack the entire string.</p>
+
+<h2 id="bitwise-operations">Bitwise Operations</h2>
+
+<p>PHP implements all bitwise operations one might need. They are built as expressions
+and their results are described below:</p>
+
+<table>
+<thead>
+  <th>PHP Code</th><th>Name</th><th>Description</th>
+</thead>
+<tbody>
+  <tr>
+    <td>`$x | $y`</td><td>Inclusive Or</td><td>A value with all bits set in both `$x` and `$y`</td>
+  </tr>
+  <tr>
+    <td>`$x ^ $y`</td><td>Exclusive Or</td><td>A value with bits set in `$x` or `$y` but never both</td>
+  </tr>
+  <tr>
+    <td>`$x & $y`</td><td>And</td><td>A value with bits set in `$x` and `$y` at the same time only</td>
+  </tr>
+  <tr>
+    <td>`~$x`</td><td>Not</td><td>Flips all bits in `$x`</td>
+  </tr>
+  <tr>
+    <td>`$x << $y`</td><td>Left Shift</td><td>Shifts the bits of `$x` to the left `$y` times</td>
+  </tr>
+  <tr>
+    <td>`$x >> $y`</td><td>Right Shift</td><td>Shifts the bits of `$x` to the right `$y` times</td>
+  </tr>
+</tbody>
+</table>
+
+<p>I'll explain one by one how they work, do not worry!</p>
+
+<p>Let's assume that <code>$x = 0x20</code> and <code>$y = 0x30</code>. The examples below will present them using binary
+notation to make things clearer.</p>
+
+<h3>How Inclusive Or (<code>$x | $y</code>) works</h3>
+
+<p>The inclusive Or operation will produce a result taking all bits set from both inputs. So the
+operation <code>$x | $y</code> must return <code>0x30</code>. See what's going on below:</p>
+
+<pre><code>// 1 | 1 = 1
+// 1 | 0 = 1
+// 0 | 0 = 0
+
+0b00100000 // $x = 0x20
+0b00110000 // $y = 0x30
+OR ------- // $x | $y
+0b00110000 // 0x30
+</code></pre>
+
+<p><strong>Notice:</strong> from right to left, the 6th bit of $x was set (equals to 1) while the 5th and 6th
+bits of $y were also set. The result merges both and generates a value with bits 5 and 6
+set: <code>0x30</code>.</p>
+
+<h3>Exclusive Or (<code>$x ^ $y</code>)</h3>
+
+<p>The exclusive Or (also known as Xor) will only capture bits that exist in a single side.
+So the result of <code>$x ^ $y</code> is <code>0x10</code>. See the example below:</p>
+
+<pre><code>// 1 ^ 1 = 0
+// 1 ^ 0 = 1
+// 0 ^ 0 = 0
+
+0b00100000 // $x = 0x20
+0b00110000 // $y = 0x30
+XOR ------ // $x ^ $y
+0b00010000 // 0x10
+</code></pre>
+
+<h3>And (<code>$x &amp; $y</code>)</h3>
+
+<p>The AND operator is much simpler to understand. It performs the AND operation on each bit so
+only values that match on both sides at the same time will be retrieved.</p>
+
+<p>The result of <code>$x &amp; $y</code> is <code>0x20</code>, I show you why:</p>
+
+<pre><code>// 1 &amp; 1 = 1
+// 1 &amp; 0 = 0
+// 0 &amp; 0 = 0
+
+0b00100000 // $x = 0x20
+0b00110000 // $y = 0x30
+AND ------ // $x &amp; $y
+0b00100000 // 0x20
+</code></pre>
+
+<h3>Not (<code>~$x</code>)</h3>
+
+<p>The NOT operation requires a single parameter and it simply flips all bits passed. It
+transforms all bits with value 0 into 1, and all bits with value 1 into 0. See below:</p>
+
+<pre><code>// ~1 = 0
+// ~0 = 1
+
+0b00100000 // $x = 0x20
+NOT ------ // ~$x
+0b11011111 // 0xDF
+</code></pre>
+
+<p>If you ran this operation in PHP and decided to debug it using sprintf() you probably
+noticed a much wider number, right? I'll explain to you what's going on and how to fix
+it below in the <a href="#normalizing-integers">Normalizing integers</a> section.</p>
+
+<h3>Left and Right shifts (<code>$x &lt;&lt; $n</code> and <code>$x &gt;&gt; $n</code>)</h3>
+
+<p>Shifting bits are the same as multiplying or dividing numbers by multiples of two. What
+it does is to make all bits travel <code>$n</code> steps to the left or right.</p>
+
+<p>I'll take a smaller binary number to represent this one, so things get easier to
+comprehend. Take <code>$x = 0b0010</code> as an example. If we shift <code>$x</code> to the left once, that
+bit 1 should move one step to the left:</p>
+
+<pre><code class="language-php">$x = 0b0010;
+$x = $x &lt;&lt; 1;
+// 0b0100
+</code></pre>
+
+<p>The same happens with the right shift. Now that <code>$x = 0b0100</code> let's shift it to the
+right twice:</p>
+
+<pre><code class="language-php">$x = 0b0100;
+$x = $x &gt;&gt; 2;
+// 0b0001
+</code></pre>
+
+<p>Effectively, shifting a number <code>$n</code> times to the left is the same as multiplying it by
+two <code>$n</code> times and shifting a number <code>$n</code> times to the right is the same as dividing it
+by two <code>$n</code> times.</p>
+
+<h2 id="what-is-bitmask">What is a bitmask</h2>
+
+<p>There are many cool things we can do with these operations and other techniques. One great
+technique to always remember is the bitmask.</p>
+
+<p>A bitmask is just an arbitrary binary of your choice, crafted to extract a very specific
+information.</p>
+
+<p>For example, let's take the idea that an 8-bit signed integer is positive when the 8th
+bit is not set (equals 0) and is negative when it is. I then ask the question,
+is 0x20 positive or negative? And what about 0x81?</p>
+
+<p>For this we can craft a very convenient byte with only the negative bit set (<code>0b10000000</code>,
+equivalent to <code>0x80</code>) and use the <code>AND</code> operation against <code>0x20</code>. If the result is equal to
+<code>0x80</code> (<code>0b10000000</code>, our mask) then it is a negative number, otherwise it is a positive number:</p>
+
+<pre><code>// 0x80 === 0b10000000 (bitmask)
+// 0x20 === 0b00100000
+// 0x81 === 0b10000001
+
+0x20 &amp; 0x80 === 0x80 // false
+0x81 &amp; 0x80 === 0x80 // true
+</code></pre>
+
+<p>This is often necessary when you're dealing with flags. You can even find usage examples
+in PHP itself: the
+<a href="https://www.php.net/manual/en/function.error-reporting.php">error reporting flags</a>.</p>
+
+<p>It is possible to choose what kind of errors will be reported like this:</p>
+
+<pre><code class="language-php">error_reporting(E_WARNING | E_NOTICE);
+</code></pre>
+
+<p>What's going on there? Well, just check the value you provided:</p>
+
+<pre><code>0b00000010 (0x02) E_WARNING
+0b00001000 (0x08) E_NOTICE
+OR -------
+0b00001010 (0x0A)
+</code></pre>
+
+<p>So whenever PHP sees a Notice that could be reported it will check something like this:</p>
+
+<pre><code>// error reporting we set before
+$e_level = 0x0A;
+
+// Needs to throw a notice
+if ($e_level &amp; E_NOTICE === E_NOTICE)
+ // Throws notice
+</code></pre>
+
+<p>And you will see this everywhere! Binary files, processors, all sorts of low level stuff!</p>
+
+<h2 id="normalizing-integers">Normalizing integers</h2>
+
+<p>There's this very specific thing about PHP when handling binary numbers: our integers
+are 32 or 64-bit wide. This means that often we will have to normalize them to be able
+to trust our calculations.</p>
+
+<p>For example, running the following operation in a 64-bit machine will get us an odd
+(but expected) result:</p>
+
+<pre><code class="language-php">echo sprintf(
+  ‘0b%08b',
+  ~0x20
+);
+
+// Expected
+0b11011111
+// Actual
+0b1111111111111111111111111111111111111111111111111111111111011111
+</code></pre>
+
+<p>What happened there?! Well, a <code>NOT</code> in that 8-bit integer (<code>0x20</code>) flipped all zero bits and
+transformed them into 1s. Guess what used to be zero? Exactly, all other <code>56</code> bits to the left
+that we ignored before!</p>
+
+<p>Again, this is because PHP's integers are 32 or 64-bit long no matter which value you put inside!</p>
+
+<p>This still works as you would expect, though. For example the operation
+<code>~0x20 &amp; 0b11011111 === 0b11011111</code> results in <code>bool(true)</code>. But always keep in mind that these
+bits to the left are constantly there or you might end up having weird behaviours in your code.</p>
+
+<p>To solve this issue, you can normalize your integers by applying a bitmask that limits all those
+zeros. For example, to normalize ~0x20 into an 8-bit integer we must <code>AND</code> it with <code>0xFF</code>
+(<code>0b11111111</code>) so all previous <code>56</code> bits will be set to zero.</p>
+
+<pre><code>~0x20 &amp; 0xFF
+-&gt; 0b11011111
+</code></pre>
+
+<p><strong>Heads up!</strong> Never forget what you're carrying in your variables otherwise you may end up with
+an unexpected behavior. For example, let's see what happens when we right shift the above
+value with and without 8-bit masking.</p>
+
+<pre><code>~0x20 &amp; 0xFF
+-&gt; 0b11011111
+
+0b11011111 &gt;&gt; 2
+-&gt; 0b00110111 // expected
+
+(~0x20 &amp; 0xFF) &gt;&gt; 2
+-&gt; 0b00110111 // expected
+
+(~0x20 &gt;&gt; 2) &amp; 0xFF
+-&gt; 0b11110111 // expected?
+</code></pre>
+
+<p>Just to make it clear: from the PHP stand point this IS expected, because you're clearly handling
+a 64-bit integer there. You must make it clear what YOUR program expects.</p>
+
+<p><strong>Pro tip:</strong> avoid silly mistakes like these by <a href="/en/issue/real-life-tdd-php/">coding with TDD</a>.</p>
+
+<h2 id="conclusion-examples">Conclusion: binary is cool and so is PHP</h2>
+
+<p>I hope you enjoyed your read as much as I enjoyed writing this blog post. Most importantly:
+I hope this knowledge will enable you to take an adventure in this amazing world of binary data.</p>
+
+<p>With these tools in hand, everything else is just a matter of finding the proper documentation
+on how binary files/protocols behave. Everything is a binary sequence after all.</p>
+
+<p>I highly recommend you to have a look at the PDF spec, or the EXIF for image metadata. You
+may even want to play with your own implementation of the
+<a href="/en/issue/messagepack-vs-json-benchmark/">MessagePack serialization format</a> or maybe Avro,
+Protobuf... Endless possibilities!</p>
+
+<p>As you might have noticed, this article took me quite a bit (see what I did?) to write. If
+you'd like to reward the effort, please be so nice to share it and bookmark if you need to
+use it as reference.</p>
+
+<p>Maybe soon I'll come back with some practical binary stuff :)</p>
+
+<p>Cheers!</p>
+
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Mastering binary and bitwise in PHP",
+  "description": "I recently caught myself working on different projects that required me to rely heavily on bitwise operations in PHP. From reading binary files to emulating processors, this is a very useful knowledge to have and a very cool one too.",
+  "image": [
+    "https://thephp.website/assets/images/posts/20-bitwise-php/cover-640.webp"
+   ],
+  "datePublished": "2021-01-07T00:00:00+08:00",
+  "dateModified": "2021-01-07T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>
+  </div>
+  </article>
+  <aside class="container">
+          <div class="recommended">
+      <h3>Keep reading</h3>
+      <ul class="card-list">
+                  <li class="card">
+            <a href="https://thephp.website/en/issue/php-8-features/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/19-php-features-640.webp)"
+                        alt="An image with a gigantic blue glowing elephant"
+                ></div>
+              
+              <div class="card__content">
+                <h4>PHP 8.0 released: it looks awesome!</h4>
+                <p>PHP 8.0 brings many innovations, among them amazing syntax additions, API upgrades,fundamental changes to its core and, of course, many bug fixes. Here I want to outline some of the main changes to the language!</p>
+                <time>2020-11-26</time>
+              </div>
+            </a>
+          </li>
+                  <li class="card">
+            <a href="https://thephp.website/en/issue/php-type-system/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/17-php-type-system-640.webp)"
+                        alt="A woman holding a book about cruel texts."
+                ></div>
+              
+              <div class="card__content">
+                <h4>Everything you need (and don&#039;t need) to know about PHP&#039;s type system</h4>
+                <p>This is the absolute best guide you&#039;ll find in the internet about how php handles typing internally and in userland.</p>
+                <time>2020-07-25</time>
+              </div>
+            </a>
+          </li>
+                  <li class="card">
+            <a href="https://thephp.website/en/issue/messagepack-vs-json-benchmark/">
+                              <div
+                        class="card__image"
+                        style="background-image: url(/assets/images/posts/11-messagepack-640.webp)"
+                        alt="A photograph of different CPU chips."
+                ></div>
+              
+              <div class="card__content">
+                <h4>Comparing JSON and MessagePack</h4>
+                <p>MessagePack wins pretty much every test. But the difference is so little I can’t see many benefits on migrating from JSON to MessagePack. Interesting results might appear on PHP 8 with JIT though.</p>
+                <time>2020-03-15</time>
+              </div>
+            </a>
+          </li>
+              </ul>
+    </div>
+    </aside>
+</body>
+<script src="/assets/build/js/main.js?id=62c9a83d4ba6e7454179"></script>
+</html>

@@ -204,19 +204,18 @@ we'll achieve what we want.</p>
 all required packages and get tests up and running. My setup usually
 comes with PHPUnit and Mockery:</p>
 
-<p>```shell script
-$ mkdir archive-org-client/ &amp;&amp; cd archive-org-client
+<pre><code class="language-shell">$ mkdir archive-org-client/ &amp;&amp; cd archive-org-client
 $ composer require phpunit/phpunit mockery/mockery
-$ ./vendor/bin/phpunit --generate-configuration</p>
+$ ./vendor/bin/phpunit --generate-configuration
+</code></pre>
 
-<pre><code><br />While generating phpunit config you'll be asked about tests dir and
-other things. Pick the default one for every prompt (simply press enter).
+<p>While generating phpunit config you'll be asked about tests dir and
+other things. Pick the default one for every prompt (simply press enter).</p>
 
-The default set up expect us to write our tests under a `tests` folder,
-and our code under `src`. Let's create them:
+<p>The default set up expect us to write our tests under a <code>tests</code> folder,
+and our code under <code>src</code>. Let's create them:</p>
 
-```shell script
-$ mkdir tests src
+<pre><code class="language-shell">$ mkdir tests src
 </code></pre>
 
 <p>We also need to configure composer's <strong>autoloader</strong>. Update <code>composer.json</code>
@@ -242,15 +241,16 @@ so it looks like the following:</p>
 }
 </code></pre>
 
-<p>With the new <code>composer.json</code> in place, let's generate the autoloader again:
-```shell script
-$ composer dump-autoload</p>
+<p>With the new <code>composer.json</code> in place, let's generate the autoloader again:</p>
 
-<pre><code><br />We can now create our test class and start moving!
+<pre><code class="language-shell">$ composer dump-autoload
+</code></pre>
 
-File: **tests/ClientTest.php**
-```php
-&lt;?php
+<p>We can now create our test class and start moving!</p>
+
+<p>File: <strong>tests/ClientTest.php</strong></p>
+
+<pre><code class="language-php">&lt;?php
 
 namespace Nawarian\ArchiveOrg\Test;
 
@@ -265,30 +265,27 @@ class ClientTest extends TestCase
 }
 </code></pre>
 
-<p>And make sure phpunit can run our test normally:
-```shell script
-$ ./vendor/bin/phpunit -c phpunit.xml</p>
+<p>And make sure phpunit can run our test normally:</p>
 
-<pre><code><br />Well done! With our test set up in hands, let's move to our
-first step on tdd.
+<pre><code class="language-shell">$ ./vendor/bin/phpunit -c phpunit.xml
+</code></pre>
 
-
+<p>Well done! With our test set up in hands, let's move to our
+first step on tdd.</p>
 
 <h3 id="1-write-a-high-level-test">
     1. Write a high-level test, run and see it fail
 </h3>
 
-
-
-Our goal, again: A class to query an item's metadata on Archive.org
+<p>Our goal, again: A class to query an item's metadata on Archive.org
 and respond with a custom entity class named
-`Nawarian\ArchiveOrg\Item\Metadata`. 
+<code>Nawarian\ArchiveOrg\Item\Metadata</code>.</p>
 
-Our test must look like the following:
+<p>Our test must look like the following:</p>
 
-File: **tests/ClientTest.php**
-```php
-&lt;?php
+<p>File: <strong>tests/ClientTest.php</strong></p>
+
+<pre><code class="language-php">&lt;?php
 
 namespace Nawarian\ArchiveOrg\Test;
 
@@ -663,5 +660,5 @@ for questions or complaints.</p>
     </div>
     </aside>
 </body>
-<script src="/assets/build/js/main.js?id=fd09420d5a6aa331aa18"></script>
+<script src="/assets/build/js/main.js?id=62c9a83d4ba6e7454179"></script>
 </html>
