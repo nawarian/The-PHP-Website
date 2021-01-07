@@ -84,7 +84,7 @@ Very quickly: let's create a new folder for our project, install
 all required packages and get tests up and running. My setup usually
 comes with PHPUnit and Mockery:
 
-```shell script
+```shell
 $ mkdir archive-org-client/ && cd archive-org-client
 $ composer require phpunit/phpunit mockery/mockery
 $ ./vendor/bin/phpunit --generate-configuration
@@ -96,7 +96,7 @@ other things. Pick the default one for every prompt (simply press enter).
 The default set up expect us to write our tests under a `tests` folder,
 and our code under `src`. Let's create them:
 
-```shell script
+```shell
 $ mkdir tests src
 ```
 
@@ -124,7 +124,7 @@ File: **composer.json**
 ```
 
 With the new `composer.json` in place, let's generate the autoloader again:
-```shell script
+```shell
 $ composer dump-autoload
 ```
 
@@ -148,7 +148,7 @@ class ClientTest extends TestCase
 ```
 
 And make sure phpunit can run our test normally:
-```shell script
+```shell
 $ ./vendor/bin/phpunit -c phpunit.xml
 ```
 
