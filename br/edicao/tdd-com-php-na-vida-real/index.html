@@ -209,20 +209,19 @@ o que a gente quer!</p>
 pacotes necessários e botar os testes pra rodar. O meu setup normalmente
 vem com PHPUnit e Mockery:</p>
 
-<p>```shell script
-$ mkdir archive-org-client/ &amp;&amp; cd archive-org-client
+<pre><code class="language-shell">$ mkdir archive-org-client/ &amp;&amp; cd archive-org-client
 $ composer require phpunit/phpunit mockery/mockery
-$ ./vendor/bin/phpunit --generate-configuration</p>
+$ ./vendor/bin/phpunit --generate-configuration
+</code></pre>
 
-<pre><code><br />Ao gerar as configurações do phpunit, a ferramenta vai lhe perguntar sobre
+<p>Ao gerar as configurações do phpunit, a ferramenta vai lhe perguntar sobre
 diretório de testes e outras coisas. Vamos pegar as opções padrão pra tudo
-aqui (só aperta "enter").
+aqui (só aperta "enter").</p>
 
-A configuração padrão diz que os nossos testes ficam dentro da pasta `tests`,
-e o nosso código fica dentro da pasta `src`. Vamos criá-las:
+<p>A configuração padrão diz que os nossos testes ficam dentro da pasta <code>tests</code>,
+e o nosso código fica dentro da pasta <code>src</code>. Vamos criá-las:</p>
 
-```shell script
-$ mkdir tests src
+<pre><code class="language-shell">$ mkdir tests src
 </code></pre>
 
 <p>A gente também precisa configurar o <strong>autoloader</strong> do composer. Vamos
@@ -248,15 +247,16 @@ atualizar o arquivo <code>composer.json</code>, vai ficar assim:</p>
 }
 </code></pre>
 
-<p>Atualizado o <code>composer.json</code>, vamos gerar o autoloader novamente:
-```shell script
-$ composer dump-autoload</p>
+<p>Atualizado o <code>composer.json</code>, vamos gerar o autoloader novamente:</p>
 
-<pre><code><br />Agora a gente pode criar a nossa classe de testes e começar a brincadeira!
+<pre><code class="language-shell">$ composer dump-autoload
+</code></pre>
 
-Arquivo: **tests/ClientTest.php**
-```php
-&lt;?php
+<p>Agora a gente pode criar a nossa classe de testes e começar a brincadeira!</p>
+
+<p>Arquivo: <strong>tests/ClientTest.php</strong></p>
+
+<pre><code class="language-php">&lt;?php
 
 namespace Nawarian\ArchiveOrg\Test;
 
@@ -271,30 +271,27 @@ class ClientTest extends TestCase
 }
 </code></pre>
 
-<p>E podemos rodar o phpunit normalmente:
-```shell script
-$ ./vendor/bin/phpunit -c phpunit.xml</p>
+<p>E podemos rodar o phpunit normalmente:</p>
 
-<pre><code><br />Muintcho beeim! Com o teste configurado e rodando, vamos começar
-com o TDD.
+<pre><code class="language-shell">$ ./vendor/bin/phpunit -c phpunit.xml
+</code></pre>
 
-
+<p>Muintcho beeim! Com o teste configurado e rodando, vamos começar
+com o TDD.</p>
 
 <h3 id="1-escreva-um-teste-superficial">
     1. Escreva um teste superficial, rode e veja-o falhar
 </h3>
 
-
-
-Novamente, nosso objetivo é: uma classe para buscar os metadados de
+<p>Novamente, nosso objetivo é: uma classe para buscar os metadados de
 um item no Archive.org e que nos retorne uma entidade chamada
-`Nawarian\ArchiveOrg\Item\Metadata`.
+<code>Nawarian\ArchiveOrg\Item\Metadata</code>.</p>
 
-Nosso teste vai então se parecer com o seguinte:
+<p>Nosso teste vai então se parecer com o seguinte:</p>
 
-Arquivo: **tests/ClientTest.php**
-```php
-&lt;?php
+<p>Arquivo: <strong>tests/ClientTest.php</strong></p>
+
+<pre><code class="language-php">&lt;?php
 
 namespace Nawarian\ArchiveOrg\Test;
 
