@@ -85,7 +85,7 @@ Rapidex: vamos criar uma pasta para o nosso projeto, instalar os
 pacotes necessários e botar os testes pra rodar. O meu setup normalmente
 vem com PHPUnit e Mockery:
 
-```shell script
+```shell
 $ mkdir archive-org-client/ && cd archive-org-client
 $ composer require phpunit/phpunit mockery/mockery
 $ ./vendor/bin/phpunit --generate-configuration
@@ -98,7 +98,7 @@ aqui (só aperta "enter").
 A configuração padrão diz que os nossos testes ficam dentro da pasta `tests`,
 e o nosso código fica dentro da pasta `src`. Vamos criá-las:
 
-```shell script
+```shell
 $ mkdir tests src
 ```
 
@@ -126,7 +126,7 @@ Arquivo: **composer.json**
 ```
 
 Atualizado o `composer.json`, vamos gerar o autoloader novamente:
-```shell script
+```shell
 $ composer dump-autoload
 ```
 
@@ -150,7 +150,7 @@ class ClientTest extends TestCase
 ```
 
 E podemos rodar o phpunit normalmente:
-```shell script
+```shell
 $ ./vendor/bin/phpunit -c phpunit.xml
 ```
 
