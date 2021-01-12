@@ -26,4 +26,6 @@ Desejáveis: Git e MongoDB.
 
 A empresa oferece salário de R$ 5.000,00 em modelo PJ ou CLT. Estacionamento e refeitório no local, assistência médica. 
 
+Interessados deverão encaminhar currículo para: escolhacertarh19@gmail.com com o título da vaga.
+
 Fonte: https://github.com/backend-br/vagas/issues/3877
