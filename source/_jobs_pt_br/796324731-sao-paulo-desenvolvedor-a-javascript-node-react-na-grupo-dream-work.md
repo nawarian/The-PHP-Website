@@ -98,7 +98,7 @@ PJ ou CLT
 
 ## Como se candidatar
 
-Por favor envie um email informando sua pretenção salarial para rh@grupodreamwork.com.br com seu CV anexado - enviar no assunto: Vaga Desenvolvedor (a) JavaScript (NODE + REACT)
+Por favor envie um email informando sua pretensão salarial para rh@grupodreamwork.com.br com seu CV anexado - enviar no assunto: Vaga Desenvolvedor (a) JavaScript (NODE + REACT)
 
 **Ou candidatar-se através do site:** https://jobs.recrutei.com.br/grupo-dream-work/vacancy/5909-dw1021-desenvolvedor-a-javascript-node-react-sao-paulo-pjclt?fbclid=IwAR1weG1WcDW_EXc9u0GE_OyCvuoHz0n2KPlb0uvcEBziT3Pop5lCg6IYzYM
 
