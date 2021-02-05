@@ -47,11 +47,6 @@ PJ, combinar pretensão salarial
 
 **Ou candidatar-se através do link:** https://jobs.recrutei.com.br/grupo-dream-work/vacancy/6147-dw1043-analista-desenvolvedor-laravel-sr
 
-## Tempo médio de feedbacks
-
-Costumamos enviar feedbacks em até XX dias após cada processo.
-E-mail para contato em caso de não haver resposta: feedbacks@empresasuperlegal.com.br
-
 ## Labels
 - Laravel
 - Senior
