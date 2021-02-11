@@ -2,7 +2,7 @@
 slug: 804896586-remoto-php-developer-pleno-na-tech-mahindra
 lang: pt-br
 createdAt: 2021-02-09
-title: '[Remoto] PHP Developer (Pleno) na Tech Mahindra - Vaga de Emprego'
+title: '[Remoto] PHP Developer Pleno na Tech Mahindra - Vaga de Emprego'
 sitemap:
   lastModified: 2021-02-09
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [Remoto] PHP Developer (Pleno) na Tech Mahindra
+# [Remoto] PHP Developer Pleno na Tech Mahindra
 
 ## Descrição da vaga: 
  <p>A vaga refere-se a migração de um sistema obsoleto interno para uma plataforma mais moderna, o consultor será responsável por fazer a documentação para a migração, já que por se tratar de um sistema antigo não existe documentação (engenharia reversa).</p>
