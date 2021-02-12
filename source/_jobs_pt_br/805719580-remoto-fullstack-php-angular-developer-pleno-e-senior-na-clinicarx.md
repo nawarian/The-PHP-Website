@@ -2,7 +2,7 @@
 slug: 805719580-remoto-fullstack-php-angular-developer-pleno-e-senior-na-clinicarx
 lang: pt-br
 createdAt: 2021-02-10
-title: '[Remoto] Fullstack PHP + Angular Developer (Pleno e Sênior) na Clinicarx - Vaga de Emprego'
+title: '[Remoto] Fullstack PHP + Angular Developer Pleno e Sênior na Clinicarx - Vaga de Emprego'
 sitemap:
   lastModified: 2021-02-10
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [Remoto] Fullstack PHP + Angular Developer (Pleno e Sênior) na Clinicarx
+# [Remoto] Fullstack PHP + Angular Developer Pleno e Sênior na Clinicarx
 
 ## Descrição da vaga: 
  <p>A Clinicarx, está buscando <strong>Fullstack Developer</strong> pleno para atuar Home Office!</p>
