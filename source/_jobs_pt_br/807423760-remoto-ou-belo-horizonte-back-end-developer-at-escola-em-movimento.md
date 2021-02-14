@@ -39,7 +39,7 @@ Caso a vaga for remoto durante a pandemia deixar a linha abaixo
 
 ## Nossa empresa
 
-Surgimos em 2013, em Belo Horizonte (MG), e fomos, ano a ano, ganhando a confiança de educadores, pais e alunos, seguindo em nosso propósito de aproximar famílias e escolas! Com uma solução de comunicação que melhora a cada dia, já alcançamos mais de 2 milhão de usuários, em mais de 3000 escolas.
+Surgimos em 2013, em Belo Horizonte (MG), e fomos, ano a ano, ganhando a confiança de educadores, pais e alunos, seguindo em nosso propósito de aproximar famílias e escolas! Com uma solução de comunicação que melhora a cada dia, já alcançamos mais de 2 milhões de usuários, em mais de 3000 escolas.
 
 ## Descrição da vaga
 
