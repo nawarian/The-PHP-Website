@@ -744,6 +744,13 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   display: none;
 }
 
+.yue .article a {
+  color: blue;
+}
+.yue .article a:hover {
+  color: darkblue;
+}
+
 .menu {
   display: flex;
   background: #fff;
