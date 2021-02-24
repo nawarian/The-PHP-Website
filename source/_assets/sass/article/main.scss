@@ -6,3 +6,15 @@
     display: none;
   }
 }
+
+.yue {
+  .article {
+    a {
+      color: blue;
+  
+      &:hover {
+        color: darkblue;
+      }
+    }
+  }
+}
