@@ -34,7 +34,23 @@ PHP tem várias ferramentas pra lhe dar suporte a manipulação de dados em form
 
 Mas continua aqui! **Neste artigo eu vou te mostrar algumas coisas importantíssimas sobre operações bitwise, como lidar com binários e hexadecimais, e conhecimentos que lhe serão úteis em QUALQUER linguagem.**
 
-## Por que PHP talvez não seja a melhor linguagem pra isso?
+Este artigo ficou bem grandinho, então eu vou deixar aqui uma lista rápida pra que você possa navegar direto para as seções que você quiser.
+
+- [Por que PHP talvez não seja a melhor linguagem pra isso?](#php-melhor-linguagem)
+- [Uma breve introdução aos formatos binário e hexadecimal](#introducao-binario-hexadecimal)
+- [Operações de "vai um" (carry)](#vai-um)
+- [Representação de dados na memória do computador](#representacao-em-memoria)
+- [Overflows Aritméticos](#overflow)
+- [Números e strings binárias no PHP](#numeros-e-strings-binarias-no-php)
+- [Binários: Inteiros ou Strings, qual usar no PHP?](#int-ou-string)
+- [Depurando valores binários em PHP](#depurando-binarios-em-php)
+- [Visualizando strings binárias](#visualizando-strings-binarias)
+- [Operações Binárias (Bitwise)](#operacoes-bitwise)
+- [O que é uma Máscara? (bitmask)](#o-que-e-bitmask)
+- [Corrigindo Inteiros](#corrigindo-inteiros)
+- [Conclusão](#conclusao)
+
+## Por que PHP talvez não seja a melhor linguagem pra isso? {#php-melhor-linguagem}
 
 Veja bem, eu amo PHP, tá? Não me leve a mal. E eu tenho certeza de que PHP é capaz de lidar com muito mais casos do que você possa imaginar. Mas se você precisa ser extremamente eficiente quando lidar com binários, o PHP não vai segurar a barra.
 
@@ -69,7 +85,7 @@ Eu recentemente trabalhei na emulação de um microcontrolador e, ao mesmo tempo
 
 Então lembre-se: trabalhar dados binários em PHP funciona e você consegue desenvolver qualquer aplicação que quiser, mas os tipos não vão encaixar de forma eficiente na maioria das vezes.
 
-## Uma breve introdução aos formatos binário e hexadecimal
+## Uma breve introdução aos formatos binário e hexadecimal {#introducao-binario-hexadecimal}
 
 Bom, antes de a gente falar sobre como o PHP trabalha com dados binários, a gente precisa parar um pouquinho e falar sobre binários antes. Se você acha que já sabe tudo o que precisa sobre binários, pode [pular direto para a seção "Números e Strings binárias no PHP"](#numeros-e-strings-binarias-no-php).
 
@@ -105,7 +121,7 @@ Mesmo com tudo guardado em formato binário, a forma mais conveniente para progr
 
 Enquanto os binários tomam um espaço visual enorme, hexadecimais são bem arrumadinhos. É por este motivo que normalmente utilizamos hexadecimais quando lidamos com programação de baixo nível.
 
-## Operações de "vai um" (carry)
+## Operações de "vai um" (carry) {#vai-um}
 
 Você já conhece o conceito de "vai um", mas eu preciso que você preste atenção nele para que possamos utilizar diferentes bases.
 
@@ -140,7 +156,7 @@ E a mesma coisa acontece com a base hexadecimal, mas com uma faixa mais ampla.
 
 Como você percebeu, operações "vai um" precisam de mais dígitos para representar um certo número. Compreender isto te permite entender como alguns tipos de dados são limitados e, por serem armazenados em computadores, essa limitação é representada no formato binário.
 
-## Representação de dados na memória do computador
+## Representação de dados na memória do computador {#representacao-em-memoria}
 
 Como eu comentei antes, computadores armazenam tudo usando o formato binário. Então apenas 0s e 1s são efetivamente armazenados.
 
@@ -182,7 +198,7 @@ Aqui vai o decimal -20, representado como um inteiro de 8 bits e com sinal. Note
 
 Eu espero que até aqui tudo tenha feito sentido. Essa introdução é muito importante pra que você entenda como os computadores funcionam internamente. Só a partir daí você vai conseguir entender de forma confortável o que o PHP está fazendo por debaixo dos panos.
 
-## Overflows Aritméticos
+## Overflows Aritméticos {#overflow}
 
 **Nota sobre a palavra Overflow:** a tradução de Overflow seria "transbordo", mas este termo é pouco utilizado. Eu vou me manter utilizando o termo em inglês: Overflow. O significado é equivalente ao de "transbordar" mesmo. Quando você enche um copo d’água além do limite, parte da água sai do copo: isto é um transbordo ou overflow.
 
@@ -243,13 +259,13 @@ No PHP também existe o conceito de strings binárias, que podem ser convertidas
 
 A maior diferença entre strings binárias e números no PHP é que strings binárias apenas armazenam dados, como um buffer. Já os inteiros no PHP (binários ou não) nos permite executar operações aritméticas neles como a soma, subtração e operações binárias (bitwise) como AND, OR e XOR.
 
-## Binários: Inteiros ou Strings, qual usar no PHP?
+## Binários: Inteiros ou Strings, qual usar no PHP? {#int-ou-string}
 
 Para transportar dados nós normalmente utilizamos strings binárias. Então ler um arquivo binário ou se comunicar por rede vai nos exigir utilizar as funções _pack()_ e _unpack()_ em strings binárias.
 
 Operações como OR e XOR não são confiáveis quando executadas com strings, então nós devemos utilizá-las com inteiros.
 
-## Depurando valores binários em PHP
+## Depurando valores binários em PHP {#depurando-binarios-em-php}
 
 Agora vem a parte legal! Vamos sujar as mãos e brincar um pouco com código PHP!
 A primeira coisa que eu quero te mostrar é como visualizar os dados. Afinal a gente precisa entender o que estamos lidando.
@@ -277,7 +293,7 @@ O formato "%08b" apresenta a variável $n no formato binário (b) utilizando 8 d
 
 O formato "%02X" representa a variável $n no formato hexadecimal (X) e utilizando 2 dígitos (02).
 
-### Visualizando strings binárias
+### Visualizando strings binárias {#visualizando-strings-binarias}
 
 Enquanto os inteiros no PHP são sempre de 32 ou 64 bits, uma string pode ocupar tanta memória quanto seu conteúdo requer. Para visualizar seu valor nós precisamos interpretar cada byte.
 
@@ -353,7 +369,7 @@ FFD8
 
 Note que o formato "C" que passamos para a função unpack() vai interpretar caracteres na string $soi como números inteiros de 8 bit sem sinal. O modificador "*" faz com que o unpack() extraia todos os caracteres restantes na string da mesma forma.
 
-## Operações Binárias (Bitwise)
+## Operações Binárias (Bitwise) {#operacoes-bitwise}
 
 O PHP implementa todas as operações binárias que você possa querer. Elas são implementadas como expressões e seus resultados são descritos abaixo:
 
@@ -470,7 +486,7 @@ $x = $x >> 2
 
 No fim das contas, deslocar um número $n vezes para a esquerda é o mesmo que multiplicá-lo por 2 $n vezes, e deslocá-lo $n vezes para a direita é equivalente a dividir por 2 $n vezes.
 
-## O que é uma Máscara? (bitmask)
+## O que é uma Máscara? (bitmask) {#o-que-e-bitmask}
 
 Tem várias coisas interessantes que a gente pode fazer com estas operações e outras técnicas. Uma ótima técnica para sempre trazer consigo é utilizar máscaras (bitmasks).
 
@@ -570,7 +586,7 @@ Só para esclarecer: do ponto de vista do PHP este comportamento É esperado, po
 
 **Dica de mestre:** você pode escapar de erros bestas como estes ao [escrever seu código com TDD](https://thephp.website/br/edicao/tdd-com-php-na-vida-real/).
 
-## Enfim, binário é maneirão
+## Enfim, binário é maneirão {#conclusao}
 
 Eu espero que você tenha curtido ler tanto quanto eu curti escrever este post. E mais importante: eu espero que este conhecimento te permita se aventurar por este maravilhoso mundo de dados binários.
 
