@@ -25,6 +25,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](/br/edicao/operacoes-bitwise-php/)
+
 I recently caught myself working on different projects that required
 me to rely heavily on bitwise operations in PHP. From reading binary
 files to emulating processors, this is a very useful knowledge to have

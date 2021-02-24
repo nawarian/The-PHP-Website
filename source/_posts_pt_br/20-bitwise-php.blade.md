@@ -1,5 +1,6 @@
 ---
 isFeatured: true
+lang: pt-br
 slug: operacoes-bitwise-php
 title: Operações binárias (bitwise) com PHP
 category: walkthrough
@@ -24,6 +25,8 @@ meta:
     card: summary
     site: '@nawarian'
 ---
+
+[Read in English](/en/issue/bitwise-php/)
 
 Recentemente eu trabalhei em diferentes projetos que me forçaram a usar bastante operações com binários em PHP. De ler arquivos a emular processadores, este é um conhecimento interessantíssimo e muito útil.
 
