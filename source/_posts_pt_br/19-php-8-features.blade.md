@@ -1,5 +1,5 @@
 ---
-isFeatured: true
+isFeatured: false
 lang: pt-br
 slug: php-8-features
 title: 'PHP 8.0 lançado: tá com uma cara ótima!'
