@@ -2,17 +2,17 @@
 slug: 810925364-front-end-developer-wordpress-na-fica-tranquilo
 lang: pt-br
 createdAt: 2021-02-18
-title: 'Front-End Developer (Wordpress) na Fica Tranquilo - Vaga de Emprego'
+title: 'Front-End Developer Wordpress na Fica Tranquilo - Vaga de Emprego'
 sitemap:
   lastModified: 2021-02-18
 meta:
-  description: 'Detalhes sobre a vaga de emprego: Front-End Developer (Wordpress) na Fica Tranquilo'
+  description: 'Detalhes sobre a vaga de emprego: Front-End Developer Wordpress na Fica Tranquilo'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
-# Front-End Developer (Wordpress) na Fica Tranquilo
+# Front-End Developer Wordpress na Fica Tranquilo
 
 # Nossa empresa
 
