@@ -46,7 +46,7 @@ Férias Remuneradas + Gympass + Parceria com universidades.
 PJ a combinar
 
 **## Como se candidatar**
-Por favor envie um email para vagas@email.com.br com seu CV anexado - enviar no assunto: Vaga Scrum Master.
+Por favor envie um email para vagas@cbyk.com.br com seu CV anexado - enviar no assunto: Vaga Scrum Master.
 
 ## Labels
 🏢Remoto

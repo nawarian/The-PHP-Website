@@ -62,7 +62,7 @@ Escritório, Campinas - Taquaral ou **100% remoto**
 - Experiência com desenvolvimento web
 - Conhecimento de infraestrutura em nuvem (AWS, Azure, GCP ou similares)
 - Domínio de padrões de projeto
-- Conhecimento tecnologias:  Docker, Phyton e Django
+- Conhecimento tecnologias:  Docker, Python e Django
 
 ## Contratação
 
