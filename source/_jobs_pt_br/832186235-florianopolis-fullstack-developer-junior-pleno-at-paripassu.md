@@ -6,7 +6,7 @@ title: '[Florianópolis] Fullstack Developer Junior / Pleno @ PariPassu - Vaga d
 sitemap:
   lastModified: 2021-03-15
 meta:
-  description: 'Detalhes sobre a vaga de emprego: Na PariPassu, você poderá participar das decisões de evolução tecnológica e de todo o processo de desenvolvimento, desde a análise de requisitos até a disponibilização das funcionalidades aos clientes. Como time, temos a missão de evoluir nossos produtos, tornando nossas soluções ainda mais robustas e escaláveis. Se você é um profissional com espírito de equipe, preocupado com a qualidade do código que desenvolve, gosta de desafios e de estar envolvido na criação de produtos que fazem a diferença, você vai adorar trabalhar conosco! Esta vaga é para você, que gosta de: - Ter liberdade para propor soluções e participar das decisões técnicas; - Participar da análise e definição da evolução dos produtos; - Propor e implementar soluções robustas e com qualidade; - Identificar pontos de melhoria e automação nos sistemas com base na recorrência das demandas; - Apoiar na evolução técnicas da equipe.'
+  description: 'Detalhes sobre a vaga de emprego: Na PariPassu, você poderá participar das decisões de evolução tecnológica e de todo o processo de desenvolvimento, desde a análise de requisitos até a disponibilização das funcionalidades aos clientes. Como time, temos a missão de evoluir nossos produtos, tornando nossas soluções ainda mais robustas e escaláveis. Se você é um profissional com espírito de equipe, preocupado com a qualidade do código que desenvolve, gosta de desafios e de estar envolvido na criação de produtos que fazem a diferença, você vai adorar trabalhar conosco! Esta vaga é para você, que gosta de: Ter liberdade para propor soluções e participar das decisões técnicas; Participar da análise e definição da evolução dos produtos; Propor e implementar soluções robustas e com qualidade; Identificar pontos de melhoria e automação nos sistemas com base na recorrência das demandas; Apoiar na evolução técnicas da equipe.'
   twitter:
     card: summary
     site: '@nawarian'
@@ -51,11 +51,11 @@ Se você é um profissional com espírito de equipe, preocupado com a qualidade 
 
 Esta vaga é para você, que gosta de:
 
-- Ter liberdade para propor soluções e participar das decisões técnicas;
-- Participar da análise e definição da evolução dos produtos;
-- Propor e implementar soluções robustas e com qualidade;
-- Identificar pontos de melhoria e automação nos sistemas com base na recorrência das demandas;
-- Apoiar na evolução técnicas da equipe.
+Ter liberdade para propor soluções e participar das decisões técnicas;
+Participar da análise e definição da evolução dos produtos;
+Propor e implementar soluções robustas e com qualidade;
+Identificar pontos de melhoria e automação nos sistemas com base na recorrência das demandas;
+Apoiar na evolução técnicas da equipe.
 
 ## Local
 
@@ -65,24 +65,24 @@ SC-401, 5500 Square Corporate, Torre A, Sala 201 - Saco Grande, Florianópolis -
 
 **Obrigatórios:**
 
-- Análise de sistemas;
-- Linguagens de desenvolvimento (JAVA, Javascript);
-- Lógicas de programação;
-- Banco de dados (PostgreSQL);
-- Processos de versionamento de código;
-- Ferramentas e técnicas de automação de teste;
-- Ferramentas de CI/CD;
-- Ferramentas de desenvolvimento de softwares.
+Análise de sistemas;
+Linguagens de desenvolvimento JAVA, Javascript;
+Lógicas de programação;
+Banco de dados PostgreSQL;
+Processos de versionamento de código;
+Ferramentas e técnicas de automação de teste;
+Ferramentas de CI/CD;
+Ferramentas de desenvolvimento de softwares.
 
 **Desejáveis:**
-- conhecimentos em ruby on rails
-- conhecimentos em C#
+conhecimentos em ruby on rails
+conhecimentos em C#
 
 **Diferenciais:**
-- Conhecimento em React / Angular JS;
-- Desenvolvimento de aplicativos híbridos;
-- Arquitetura em nuvem (Amazon AWS);
-- 4 anos de experiência. (para vaga de Pleno)
+Conhecimento em React / Angular JS;
+Desenvolvimento de aplicativos híbridos;
+Arquitetura em nuvem Amazon AWS;
+4 anos de experiência. (para vaga de Pleno)
 
 ## Benefícios
 
@@ -98,8 +98,7 @@ CLT
 
 ## Como se candidatar
 
-Por favor envie um email para rh@paripassu.com.br com seu CV anexado - enviar no assunto: Vaga Fullstack Junior/Pleno
-Ou cadastre pelo site: https://www.paripassu.com.br/trabalhe_conosco
+Pelo site: https://www.paripassu.com.br/trabalhe_conosco
 
 #### Alocação
 - Hibrido
