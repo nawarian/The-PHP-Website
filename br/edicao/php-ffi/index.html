@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="/assets/build/css/main.css?id=2e42c8808e21522a0c4d">
+      <link rel="canonical" href="https://thephp.website/br/edicao/php-ffi/" />
+      <link
+    rel="alternate"
+    type="application/json"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.json"
+  />
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="[BR] thePHP Website"
+    href="https://thephp.website/br/feed.xml"
+  />
+  
+  <title>Guia completo: FFI em PHP | thePHP Website</title>
+
+  <meta name="description" content="Ao utilizar FFI no seu programa PHP você será capaz de utilizar bibliotecas escritas em C, Rust, Golang ou quaisquer outras linguagens capazes de produzir uma ABI.">
+
+  <meta property="og:title" content="Guia completo: FFI em PHP">
+  <meta property="og:description" content="Ao utilizar FFI no seu programa PHP você será capaz de utilizar bibliotecas escritas em C, Rust, Golang ou quaisquer outras linguagens capazes de produzir uma ABI.">
+  <meta property="og:url" content="https://thephp.website/br/edicao/php-ffi">
+  <meta property="og:image" content="https://thephp.website/assets/images/posts/21-php-ffi-640.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@nawarian">
+  <meta name="twitter:title" content="Guia completo: FFI em PHP">
+  <meta name="twitter:description" content="Ao utilizar FFI no seu programa PHP você será capaz de utilizar bibliotecas escritas em C, Rust, Golang ou quaisquer outras linguagens capazes de produzir uma ABI.">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151169766-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-151169766-3');
+  </script>
+  <script data-ad-client="ca-pub-3681134868307419" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Hotjar Tracking Code for thephp.website -->
+  <script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1770868,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu__container').classList.toggle('menu__container--active');
+    }
+  </script>
+</head>
+<body class="yue non-article">
+  <header class="menu">
+    <a class="menu__logo" href="/br/">
+      <img src="/assets/images/elephpant-idle.png" alt="" />
+    </a>
+    <div class="menu__title">
+      <a href="/br/">thePHP Website</a>
+    </div>
+    <section class="menu__cta">
+      <button role="button" aria-label="Open Menu" class="menu__cta__icon" onclick="typeof toggleMenu == 'function' &amp;&amp; toggleMenu()">
+        <img alt="Open Menu" src="https://podentender.com.br/assets/images/icons/menu.svg">
+      </button>
+    </section>
+
+    <div class="menu__container">
+      <em class="menu__section-heading">
+        Pages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/br/">Home</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/busca">
+            busca.php
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a
+            href="https://github.com/nawarian/The-PHP-Website/issues/new?title=[Suggested+Topic]%20&body=Please+describe+your+suggestion+/+Por+favor+descreva+sua+sugestão"
+            rel="nofollow"
+          >
+            Peça um Post!
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/sobre/">
+            sobre.php
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Languages.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="/en/">English</a>
+        </li>
+        <li class="menu__list-item">
+          <a href="/br/">Português</a>
+        </li>
+      </ul>
+
+      <hr>
+      <em class="menu__section-heading">
+        Notifications.php
+      </em>
+      <ul class="menu-list">
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.json">
+            [BR] JSON Feed
+          </a>
+        </li>
+        <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed.xml">
+            [BR] Atom Feed (RSS)
+          </a>
+        </li>
+                <li class="menu__list-item">
+          <a href="https://thephp.website/br/feed-vagas.xml">
+            Feed de Vagas (RSS)
+          </a>
+        </li>
+              </ul>
+    </div>
+  </header>
+  <article class="container">
+      <div class="article">
+    <time datetime="2021-03-18">
+      2021-03-18
+    </time>
+
+    <h1>Guia completo: FFI em PHP</h1>
+    <p><a href="/en/issue/php-ffi/">Read in English</a></p>
+
+<p>Antes de qualquer coisa, eu quero te dizer que eu comecei uma pequena série de vídeos onde eu implementei uma biblioteca em PHP para usar a biblioteca raylib (escrita em C) usando FFI. Você pode ver no vídeo abaixo ou <a href="https://youtu.be/wPbnjcvW-Tk">neste link para o YouTube</a>.</p>
+
+<iframe style="margin: auto;" id="lbry-iframe" width="560" height="315" src="https://lbry.tv/$/embed/php_ffi_ola_mundo/a6959afa7affbba52bb31e68fbfbd222af129261?r=HRN5EEjNyXcykeZ8RjgLX697DuZvpA7g" allowfullscreen></iframe>
+
+<p><br /></p>
+
+<h2>O que é FFI e pra quê serve?</h2>
+
+<p>FFI ou <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">Foreign Function Interface</a> é uma técnica que permite programas utilizarem bibliotecas escritas em diferentes linguagens de programação. É bem mais rápido que usar RPC ou APIs porque o programa não vai se comunicar através de rede e, em vez disso, faz interface direta com a biblioteca.</p>
+
+<p>Para ser mais direto: ao utilizar FFI no seu programa PHP você será capaz de utilizar bibliotecas escritas em C, Rust, Golang ou quaisquer outras linguagens capazes de produzir uma ABI.</p>
+
+<p>É importante notar que você vai conseguir se comunicar com bibliotecas, não entre dois programas diferentes. Para comunicar dois programas você ainda vai precisar de algum mecanismo de comunicação em tempo real, e FFI não te ajuda em nada com isso!</p>
+
+<p>Ao utilizar FFI no PHP você será capaz de usar qualquer shared object que quiser em seu projeto: .dll no Windows, .so no Linux ou .dylib no MacOS.</p>
+
+<p>Com isso você tem a oportunidade de sair da <a href="https://thephp.website/br/edicao/php-8-jit/">Máquina Virtual do PHP (Zend VM)</a> e escrever quase qualquer coisa que você gostaria usando PHP. Utilizar bibliotecas como raylib ou libui não vai te obrigar a utilizar uma extensão em C (como nós fizemos <a href="https://thephp.website/br/edicao/jogos-em-php/">neste post sobre como desenvolver jogos em PHP usando a extensão raylib</a>).</p>
+
+<h2>FFI vai tornar meu código mais rápido?</h2>
+
+<p>Você talvez esteja imaginando que já que o FFI permite utilizar código escrito originalmente em C, o seu programa potencialmente será mais rápido do que seria em PHP. A linha de raciocínio não está necessariamente errada, mas você precisa levar em consideração que linguagens de programação não fazem mágica: elas fazem o que nós as comandamos fazer.</p>
+
+<p><strong>Em termos de tempo de CPU, chamar funções externas a partir do PHP utilizando FFI pode te custar duas vezes mais do que realizar a mesma operação em PHP puro.</strong> Isto acontece porque a máquina virtual do PHP já é bem otimizada e fazer interface com código externo requer um processo de tradução que vai adicionar um certo custo de processamento.</p>
+
+<p>Isso é normal e todas linguagens que suportam FFI que eu vi até agora vão performar um pouquinho pior quando utilizam FFI.</p>
+
+<p><strong>Mas você pode otimizar o consumo de memória!</strong> Como você pôde ver no meu post sobre <a href="https://thephp.website/br/edicao/operacoes-bitwise-php/#php-melhor-linguagem">Operações Binárias em PHP</a>, cada variável do PHP tem um tipo interno zval e ele faz várias coisas pra tonar a vida do PHP mais fácil, como representar todo integer em PHP com o tipo INT64. Então o valor <code>0x10</code> teria de ser armazenado como <code>0x0000000000000010</code> em PHP (e todos os outros membros de zval terão seus ponteiros alocados).</p>
+
+<p>Então uma boa prática é tentar encontrar o equilíbrio entre processar coisas usando PHP e utilizar o FFI para lidar com objetos na memória. Desta forma você consegue otimizar o consumo de memória, que pode ou não impactar no seu tempo de CPU.</p>
+
+<h2>FFI ou Extensões em C, o que eu devo utilizar?</h2>
+
+<p>FFI normalmente é utilizado para prototipação: você dá os primeiros passos com FFI e depois migra o código para uma extensão escrita em C.</p>
+
+<p>Eu acho que se o seu código não se importa muito com performance (improvável, mas pode ser…) é de boa usar o FFI só para ampliar a capacidade do PHP. <a href="https://www.php.net/manual/en/intro.ffi.php">Mas não se esqueça que FFIs em PHP ainda são experimentais e você pode encontrar bugs ou mudanças na API podem acontecer de vez em quando</a>.</p>
+
+<p>Extensões em C deveriam normalmente ser escritas em código C, uma barreira para muitas pessoas acostumadas com PHP. Mas estas extensões se integram à Máquina Virtual do PHP, e por conta disso tendem a ser bem mais rápidas porque chamam código em C diretamente do C (nenhuma tradução é necessária) e mapeiam apenas o código que vai interfacear com o usuário final da extensão.</p>
+
+<p>Extensões são compiladas contra uma versão específica do PHP, e isso cria uma dependência bem chatinha que pode te impedir de atualizar a versão do PHP, por exemplo. Se você tiver disponibilidade pra atualizar a extensão por si e seguir o processo de integração que a comunidade propõe, menos mal. Mas ainda assim vai te custar alguns dias.</p>
+
+<p>FFIs sempre vão funcionar direto e não vão te impedir de atualizar a versão do PHP porque a <a href="https://github.com/php/php-src/tree/master/ext/ffi">extensão FFI é parte do core do PHP</a>.</p>
+
+<h2>Começando com FFI: vamos construir uma janela nativa usando a biblioteca raylib</h2>
+
+<p>Uma coisa que o PHP sozinho definitivamente não consegue fazer é manipular janelas nativas no sistema operacional. Existem algumas extensões como o PHP-GTK e <a href="https://thephp.website/br/edicao/jogos-em-php/">a extensão raylib que nós vimos antes</a>, outra opção é usar FFI.</p>
+
+<p>Eu vou escolher a <a href="https://www.raylib.com/">Raylib</a> como exemplo porque a sua interface é bem simplificada e gostosa de se trabalhar.</p>
+
+<h3>Instalando o shared object da raylib (biblioteca)</h3>
+
+<p>Para quem usa mac isto deveria ser bem simples utilizando o HomeBew:</p>
+
+<pre><code>$ brew install raylib
+</code></pre>
+
+<p>Existem alguns guias completos de como instalar em outros sistemas. Aqui você encontra guias sobre <a href="https://github.com/raysan5/raylib/wiki/Working-on-Windows">como instalar no Windows</a> e <a href="https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux">como instalar no Linux</a>.</p>
+
+<p>Depois de instalar tudo você deverá ter um shared object disponível no seu sistema. No MacOS você pode ver o arquivo <code>libraylib.dylib</code> dentro do diretório <code>/usr/local/Cellar/raylib/&lt;versão&gt;/lib</code>:</p>
+
+<pre><code>$ ls -la /usr/local/Cellar/raylib/3.5.0/lib
+cmake           libraylib.351.dylib libraylib.dylib
+libraylib.3.5.0.dylib   libraylib.a     pkgconfig
+</code></pre>
+
+<p>No Windows você vai se preocupar em encontrar o arquivo <code>.dll</code> e no GNU Linux você precisa encontrar o arquivo <code>.so</code>.</p>
+
+<h3>Vamos primeiro prototipar nosso programa em C</h3>
+
+<p>A forma mais fácil de entender se o FFI está funcionando corretamente em PHP é entender se a coisa funciona em C em primeiro lugar. Faz sentido né?</p>
+
+<p>Então a primeira coisa que vamos fazer é construir um programa em C que utilize a raylib e que construa a nossa janela. Vamos criar um arquivo <code>hello_raylib.c</code> com o seguinte conteúdo:</p>
+
+<pre><code>#include "raylib.h"
+
+int main(void)
+{
+  Color white = { 255, 255, 255, 255 };
+  Color red = { 255, 0, 0, 255 };
+
+  InitWindow(
+    800,
+    600,
+    "Hello raylib from C"
+  );
+
+  while (
+    !WindowShouldClose()
+  ) {
+    ClearBackground(white);
+
+    BeginDrawing();
+      DrawText(
+        "Hello raylib!",
+        400,
+        300,
+        20,
+        red
+      );
+    EndDrawing();
+  }
+
+  CloseWindow();
+}
+</code></pre>
+
+<p>O código acima deve criar uma janela com dimensões 800x600 e o texto "Hello raylib from C" na barra de título. Dentro desta janela o texto “Hello raylib!” em cor vermelha deverá aparecer com origem no meio da janela.</p>
+
+<p>Vamos compilar e rodar o programa acima:</p>
+
+<pre><code>$ gcc -o hello_raylib \
+  hello_raylib.c -lraylib
+$ ./hello_raylib
+</code></pre>
+
+<p><strong>Repare:</strong> utilize o compilador C disponível em sua plataforma. No meu caso eu utilizo o <code>clang</code> mas deveria ser mais ou menos a mesma coisa.</p>
+
+<p>Abaixo o resultado esperado.</p>
+
+<figure style="text-align: center">
+  <a href="/assets/images/posts/21-php-ffi/raylib-window-c.png" target="_blank">
+    <img src="/assets/images/posts/21-php-ffi/raylib-window-c.png" alt="Uma janela nativa com dimensões 800 por 600 e o título 'Hello raylib from C' apresentando um texto em cor vermelha que diz 'Hello raylib!'" />
+  </a>
+  <figcaption>
+    Uma janela nativa com dimensões 800 por 600 e o título "Hello raylib from C" apresentando um texto em cor vermelha que diz "Hello raylib!"
+  </figcaption>
+</figure>
+
+<h3>Agora com PHP! Vamos criar nosso arquivo de cabeçalho (header)</h3>
+
+<p>Para permitir que o PHP se comunique com o C (ou outras linguagens), nós primeiro precisamos criar uma interface. Em C esta interface é representada por arquivos de cabeçalho. Esta é exatamente a razão pela qual a maioria dos arquivos <code>.c</code> têm um correspondente <code>.h</code> no projeto: o arquivo de cabeçalho indica quais objetos e assinaturas de funções existem.</p>
+
+<p>Já que nós queremos referenciar o <code>libraylib.dylib</code> a primeira linha do nosso cabeçålho deve conter o seguinte define, específico para FFI. Então vamos começar escrevendo o nosso <code>raylib.h</code> que vai interfacear com o código PHP:</p>
+
+<pre><code>#define FFI_LIB "libraylib.dylib"
+</code></pre>
+
+<p><strong>Repare:</strong> o arquivo referenciado pode mudar de acordo com seu sistema operacional.</p>
+
+<p>A Raylib tem várias funções, e <a href="https://www.raylib.com/cheatsheet/cheatsheet.html">você pode verificar cada uma na cheatsheet oficial</a>. Mas nós não precisamos importar todas as funções. Na verdade eu recomendo que você importe apenas as funções necessárias para o seu programa funcionar. No nosso caso nós precisamos de apenas 7 funções:</p>
+
+<pre><code>#define FFI_LIB "libraylib.dylib"
+
+void InitWindow(
+  int width,
+  int height,
+  const char *title
+);
+bool WindowShouldClose(void);
+void ClearBackground(
+  Color color
+);
+void BeginDrawing(void);
+void DrawText(
+  const char *text,
+  int x,
+  int y,
+  int size,
+  Color color
+);
+void EndDrawing(void);
+void CloseWindow(void);
+</code></pre>
+
+<p>Repare que algumas assinaturas de função requerem tipos muito específicos que são oferecidos pela Raylib. As funções <code>ClearBackground</code> e <code>DrawText</code> exigem um argumento do tipo <code>Color</code>, que nós também precisamos importar. Então vamos adicionar ao nosso arquivo de cabeçalho:</p>
+
+<pre><code>#define FFI_LIB "libraylib.dylib"
+
+typedef struct Color {
+  unsigned char r;
+  unsigned char g;
+  unsigned char b;
+  unsigned char a;
+} Color;
+
+void InitWindow(int width, int height, const char *title);
+// ...
+</code></pre>
+
+<p>Nosso arquivo <strong>raylib.h</strong> agora está pronto para ser utilizado dentro do PHP.</p>
+
+<h3>Carregando o cabeçalho no PHP</h3>
+
+<p>Agora que nós temos um arquivo de cabeçalho nós podemos importá-lo utilizando a função <a href="https://www.php.net/manual/en/ffi.load.php">FFI::load()</a> desta maneira:</p>
+
+<pre><code>&lt;?php
+
+$ffi = FFI::load(
+  __DIR__ . '/raylib.h'
+);
+</code></pre>
+
+<p>Com este objeto <code>$ffi</code> nós podemos agora imitar o código em C que escrevemos antes. Vamos construir as variáveis <code>white</code> e <code>red</code> do tipo <code>Color</code>:</p>
+
+<pre><code>&lt;?php
+
+$ffi = FFI::load(__DIR__ . '/raylib.h');
+
+$white = $ffi-&gt;new('Color');
+$white-&gt;r = 255;
+$white-&gt;g = 255;
+$white-&gt;b = 255;
+$white-&gt;a = 255;
+
+$red = $ffi-&gt;new('Color');
+$red-&gt;r = 255;
+$red-&gt;a = 255;
+</code></pre>
+
+<p>Por padrão todos os campos do struct serão inicializados com um valor zero. No caso do <code>unsigned char</code> (que varia entre 0 e 255) o valor zero é um inteiro <code>0</code>.</p>
+
+<p>Agora nós podemos facilmente construir a nossa janela e desenhar na tela:</p>
+
+<pre><code>&lt;?php
+
+$ffi = FFI::load(__DIR__ . '/raylib.h');
+
+// ...
+
+$ffi-&gt;InitWindow(
+  800,
+  600,
+  "Hello raylib from PHP"
+);
+
+while (
+  !$ffi-&gt;WindowShouldClose()
+) {
+  $ffi-&gt;ClearBackground(
+    $white
+  );
+
+  $ffi-&gt;BeginDrawing();
+    $ffi-&gt;DrawText(
+      "Hello raylib!",
+      400,
+      300,
+      20,
+      $red
+    );
+  $ffi-&gt;EndDrawing();
+}
+
+$ffi-&gt;CloseWindow();
+</code></pre>
+
+<h3>Temos uma janela usando a raylib no PHP!</h3>
+
+<p>Como você provavelmente percebeu, todas as funções em C definidas em <code>raylib.h</code> podem ser utilizadas pelo PHP se utilizamos o objeto <code>$ffi</code> para referenciá-las. As variáveis em C são mapeadas para PHP e vice-versa.</p>
+
+<p>O nosso arquivo PHP final e seu resultado ficaram assim:</p>
+
+<pre><code>&lt;?php
+
+$ffi = FFI::load(__DIR__ . '/raylib.h');
+
+$white = $ffi-&gt;new('Color');
+$white-&gt;r = 255;
+$white-&gt;g = 255;
+$white-&gt;b = 255;
+$white-&gt;a = 255;
+
+$red = $ffi-&gt;new('Color');
+$red-&gt;r = 255;
+$red-&gt;a = 255;
+
+$ffi-&gt;InitWindow(800, 600, "Hello raylib from PHP");
+while (!$ffi-&gt;WindowShouldClose()) {
+  $ffi-&gt;ClearBackground($white);
+
+  $ffi-&gt;BeginDrawing();
+    $ffi-&gt;DrawText("Hello raylib!", 400, 300, 20, $red);
+  $ffi-&gt;EndDrawing();
+}
+
+$ffi-&gt;CloseWindow();
+</code></pre>
+
+<figure style="text-align: center">
+  <a href="/assets/images/posts/21-php-ffi/raylib-window-php-ffi.png" target="_blank">
+    <img src="/assets/images/posts/21-php-ffi/raylib-window-php-ffi.png" alt="Uma janela nativa com dimensões 800 por 600 e o título 'Hello raylib from PHP' apresentando um texto em cor vermelha que diz 'Hello raylib!'" />
+  </a>
+  <figcaption>
+    Uma janela nativa com dimensões 800 por 600 e o título "Hello raylib from PHP" apresentando um texto em cor vermelha que diz "Hello raylib!"
+  </figcaption>
+</figure>
+
+<h2>Problemas comuns com FFI e como resolvê-los</h2>
+
+<p>Eu estive brincando com o FFI para tentar construir bindings bacanas para a Raylib em PHP e encontrei alguns problemas no caminho. Saber sobre estes problemas e como corrigi-los talvez possa lhe ser útil.</p>
+
+<p>A minha maior dica é: não misture o código da sua aplicação com código FFI. Extraia o FFI para uma biblioteca independente e adicione-a ao seu projeto utilizando o composer. Isto não vai resolver a maioria dos seus problemas, mas com certeza vai os isolar e tornar muito fácil a testagem.</p>
+
+<h3>FFI pode ser difícil de testar</h3>
+
+<p>No caso da Raylib em específico a gente não consegue testar muita coisa. Principalmente porque a raylib manipula janelas nativas e o PHP não tem uma forma fácil de fazer assertions deste tipo.</p>
+
+<p>Então tenha em mente que se você estiver escrevendo algo realmente fora do escopo normal do PHP, você vai precisar de outras ferramentas para conduzir seus testes. Tenha certeza, portanto, que estas ferramentas também rodam em outras plataformas.</p>
+
+<p>Por exemplo, é possível capturar o PID de uma janela procurando por seu título com xorg, e eu sei que de alguma forma a Windows API também nos permite fazer isso. <strong>Se você quer testar, você provavelmente vai precisar utilizar outras ferramentas que não o PHP para testar sua aplicação.</strong></p>
+
+<p>Também é importante lembrar que os testes não vão necessariamente agregar valor em todo lugar na sua aplicação. <a href="https://thephp.website/br/edicao/tdl-aprendizado-guiado-por-testes/">Eu utilizo testes como uma ferramenta de aprendizado para que eu possa ter um ambiente seguro para testar novos conceitos aos poucos</a> sem me importar muito sobre todas as dependências de uma vez e, infelizmente, a maioria dos frameworks PHP não me ajudaram muito enquanto estive trabalhando com a raylib. A minha solução para este caso é criar diferentes arquivos PHP que deveriam fazer uma única coisa, exatamente como casos de teste.</p>
+
+<h3>É difícil fazer análise estática</h3>
+
+<p>Eu não achei uma forma perfeita de resolver este problema. Ferramentas de análise estática como o <a href="https://psalm.dev/">psalm</a> ficam doidinhas com código FFI.</p>
+
+<p>De volta ao snippet <code>$white</code> e <code>$red</code> vamos ver o motivo:</p>
+
+<pre><code>$white = $ffi-&gt;new('Color');
+$white-&gt;r = 255;
+$white-&gt;g = 255;
+$white-&gt;b = 255;
+$white-&gt;a = 255;
+</code></pre>
+
+<p>Se você verificar a <a href="https://www.php.net/manual/en/ffi.new.php">assinatura de FFI::new()</a> vai sacar que ele retorna <code>FFI\CData</code> ou <code>null</code>. Este tipo CData é um objeto que deveria conter todos os membros do struct referenciado.</p>
+
+<p>Até onde eu sei o psalm não tem uma forma fácil de anotar que a variável <code>$white</code> contém quatro campos do tipo integer: <code>$r</code>, <code>$g</code>, <code>$b</code> e <code>$a</code>. O psalm sequer vai conseguir saber que eles existem porque, bem, eles foram escritos em C nalgum outro lugar!</p>
+
+<p>Então o ideal é que você abstraia a lógica de FFI em algum tipo de classe Facade ou Adapter, que você vai prometer de pé juntinho que vai cobrir com testes o máximo que puder, e então pode dizer ao psalm para ignorar esta classe enquanto estiver conduzindo a análise estática.</p>
+
+<p>Esta classe Facade/Adapter deverá mapear valores PHP (primitivos ou objetos) em CData e tomar conta de chamar as funções em C para você.</p>
+
+<p>Assim você acaba construindo mais ou menos uma biblioteca em PHP, que é o ideal se você parar pra pensar. Desta forma você evita que o código de produção fique poluído com lógicas específicas do FFI e as coisas ficarão naturalmente testáveis na sua aplicação.</p>
+
+<h3>Mantenha a sua biblioteca atualizada</h3>
+
+<p>Um grande benefício de utilizar FFI em vez de extensões do PHP é que você não vai precisar atualizar o seu código C a cada nova versão do PHP. Mas você ainda precisa gerenciar suas versões da biblioteca em C.</p>
+
+<p>Eu recomendo que você aprenda sobre o sistema de versionamento da biblioteca original e faça releases na sua biblioteca em PHP seguindo a mesma regra, exceto para versões <strong>patch</strong>. Então versões <strong>major</strong> e <strong>minor</strong> sempre vão bater com a versão original da biblioteca em C, enquanto você terá a liberdade de aumentar a versão <strong>patch</strong> sempre que você corrigir bugs e coisas do tipo.</p>
+
+<p>Isto naturalmente vai te forçar a respeitar 100% as interfaces da biblioteca C original. Mas te deixa livre para distribuir correções de segurança e de bugs que possam existir tanto na biblioteca C quanto na sua própria biblioteca em PHP.</p>
+
+<h3>O problema de ser multiplataforma</h3>
+
+<p>O PHP é multiplataforma. Quem utiliza PHP espera que todas as bibliotecas sejam multiplataforma também! Manter as coisas assim pode ser um pouco complicado quando utilizamos código FFI.</p>
+
+<p>De volta ao exemplo da raylib, importar aquele shared object nos força a escolher por nome de arquivo: <code>raylib.so</code> (GNU Linux), <code>libraylib.dylib</code> (MacOS) ou <code>raylib.dll</code> (Windows). Importe o arquivo errado e a sua biblioteca simplesmente não vai funcionar!</p>
+
+<p>Você pode escrever diferentes arquivos de cabeçalho, específicos para a sua plataforma. Isto vai criar muita duplicação de  código mas ajuda um pouco.</p>
+
+<p>Outra opção é utilizar o <a href="https://www.php.net/manual/en/ffi.cdef.php">FFI::cdef()</a> para carregar as assinaturas de função. Este método é bem semelhante ao FFI::load() mas espera uma string em vez de um caminho de arquivo. Neste caso você pode escolher o caminho do seu shared object em tempo de execução.</p>
+
+<p>Você consegue detectar o Sistema Operacional que está rodando o seu código PHP chamando a função <a href="https://www.php.net/manual/en/function.php-uname.php">php_uname()</a>. Evite utilizar a constante <code>PHP_OS</code>: ela contém o sistema operacional que compilou o seu binário PHP, que em alguns casos pode não ser o mesmo que está efetivamente rodando o seu código.</p>
+
+<p>Por último, mas não menos importante, considere que algumas bibliotecas simplesmente não são multiplataforma. Postá-las pra PHP pode ser bem frustrante pra quem utiliza e, se você decidir portar esta biblioteca mesmo assim, por favor considere lançar exceções em sistemas operacionais aos quais você não oferece suporte: isto vai dizer ao usuário final logo de cara quais são os problemas.</p>
+
+<h3>Existem bugs na própria extensão FFI</h3>
+
+<p>Lembre-se: FFI ainda é experimental no PHP! Você pode encontrar bugs inesperados a qualquer momento!</p>
+
+<p>Sempre que você encontrar algum comportamento super estranho na sua integração FFI, sempre crie um arquivo em C que seja equivalente e veja seu comportamento antes de duvidar do que o FFI está fazendo.</p>
+
+<p>Se a suspeita estiver correta e for realmente um bug, aproveite e <a href="https://bugs.php.net/">crie um bug ticket para o time do PHP</a> (em inglês!). Eu não sei se o time vai ficar feliz pelo seu bug, mas com certeza você estará ajudando a comunidade a crescer.</p>
+
+<p>Recentemente eu encontrei um e estou inclusive tentando implementar uma correção por conta própria, vai ser um projetinho bacana e potencialmente um post futuro. Então se liga aí!</p>
+
+<h2>Concluindo</h2>
+
+<p>Eu fiquei bem animado ao trabalhar com FFI e espero que este post te ajude a começar a brincar com FFI também!</p>
+
+<p>De pouco em pouco eu estou ficando mais acostumado com código de baixo nível e FFI tem sido uma ótima oportunidade para eu programar diferentes casos de uso (como desenvolvimento de games ou processamento áudio) numa linguagem que eu amo (PHP).</p>
+
+<p>Lembre-se sempre que o PHP é uma linguagem de código aberto e que sua comunidade depende da contribuição de pessoas como você. Você pode utilizar seu conhecimento para devolver a comunidade ao reportar bugs, corrigi-los, complementar a documentação com coisas que você encontrou no caminho ou escrevendo artigos como este aqui. O FFI é definitivamente uma área de conhecimento que precisa de mais artigos e vídeos para que não caia no esquecimento.</p>
+
+<p>Enfim, te vejo na próxima. Se cuida aí!</p>
+
+<div class="align-right">
+  --
+  <a href="https://twitter.com/nawarian" rel="nofollow">
+    @nawarian
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Guia completo: FFI em PHP",
+  "description": "Ao utilizar FFI no seu programa PHP você será capaz de utilizar bibliotecas escritas em C, Rust, Golang ou quaisquer outras linguagens capazes de produzir uma ABI.",
+  "image": [
+    "https://thephp.website/assets/images/posts/21-php-ffi-640.webp"
+   ],
+  "datePublished": "2021-03-18T00:00:00+08:00",
+  "dateModified": "2021-03-18T00:00:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Nawarian Níckolas Da Silva"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "ThePHP Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://thephp.website/favicon.ico"
+    }
+  }
+}
+</script>
+  </div>
+  </article>
+  <aside class="container">
+        </aside>
+</body>
+<script src="/assets/build/js/main.js?id=62c9a83d4ba6e7454179"></script>
+</html>
