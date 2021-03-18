@@ -39,7 +39,8 @@ STR;
             $part = Str::after($job->rawBody(), '## Descrição da vaga');
             $part = Str::before($part, '##');
 
-            return trim(str_replace(["\r\n", PHP_EOL, '  '], ' ', $part));
+            $description = trim(str_replace(["\r\n", PHP_EOL, '  '], ' ', $part));
+            return str_replace("'", '"', $description);
         }
 
         return $job->title();
