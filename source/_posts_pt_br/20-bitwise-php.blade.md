@@ -1,5 +1,4 @@
 ---
-isFeatured: true
 lang: pt-br
 slug: operacoes-bitwise-php
 title: Operações binárias (bitwise) com PHP

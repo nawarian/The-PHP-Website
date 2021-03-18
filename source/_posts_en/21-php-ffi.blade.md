@@ -24,6 +24,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](/br/edicao/php-ffi/)
+
 Before anything, I'd like to tell you that I started a short video series on this subject by attempting to implement a PHP bridge to the raylib library using FFI. It is in brazilian portuguese but I'm certain you can figure out the PHP code part, so below you'll find it embedded from lbry and you can also [click here if privacy isn't really your thing](https://youtu.be/wPbnjcvW-Tk).
 
 <iframe style="margin: auto;" id="lbry-iframe" width="560" height="315" src="https://lbry.tv/$/embed/php_ffi_ola_mundo/a6959afa7affbba52bb31e68fbfbd222af129261?r=HRN5EEjNyXcykeZ8RjgLX697DuZvpA7g" allowfullscreen></iframe><br />
