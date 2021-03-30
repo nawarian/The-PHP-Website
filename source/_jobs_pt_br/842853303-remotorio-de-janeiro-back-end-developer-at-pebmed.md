@@ -96,7 +96,7 @@ CLT
 
 ## Como se candidatar
 
-Por favor envie um email para alex.frisone@pebmed.com.br com seu CV anexado - enviar no assunto: [Vaga Back-end Developer]
+Por favor envie um email para vagas.tech@pebmed.com.br com seu CV anexado - enviar no assunto: [Vaga Back-end Developer]
 
 ## Tempo médio de feedbacks
 

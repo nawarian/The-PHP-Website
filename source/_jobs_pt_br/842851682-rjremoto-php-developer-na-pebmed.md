@@ -83,7 +83,7 @@ Somos a ferramenta número 1 na tomada de decisão clínica!
 
 ## Como se candidatar
 
-Por favor envie um email para alex.frisone@pebmed.com.br com seu CV anexado - enviar no assunto: [Vaga PHP]
+Por favor envie um email para vagas.tech@pebmed.com.br com seu CV anexado - enviar no assunto: [Vaga PHP]
 
 ## Labels
 
