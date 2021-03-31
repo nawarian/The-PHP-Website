@@ -94,7 +94,6 @@ Por favor envie um email para vagas.tech@pebmed.com.br com seu CV anexado - envi
 - CLT
 
 ### Experiência
-- Júnior
 - Pleno
 - Sênior
 
