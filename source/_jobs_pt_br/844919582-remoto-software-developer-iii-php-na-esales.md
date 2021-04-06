@@ -2,7 +2,7 @@
 slug: 844919582-remoto-software-developer-iii-php-na-esales
 lang: pt-br
 createdAt: 2021-03-30
-title: '[REMOTO] Software Developer III {PHP} na eSales - Vaga de Emprego'
+title: '[Remoto] Software Developer III PHP na eSales - Vaga de Emprego'
 sitemap:
   lastModified: 2021-03-30
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [REMOTO] Software Developer III {PHP} na eSales
+# [Remoto] Software Developer III PHP na eSales
 
 ## Descrição da vaga 
 Descrição
