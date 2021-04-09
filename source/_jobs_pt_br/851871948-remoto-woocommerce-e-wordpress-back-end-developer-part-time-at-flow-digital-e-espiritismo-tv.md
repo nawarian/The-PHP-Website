@@ -51,7 +51,7 @@ PJ a combinar
 
 ## Como se candidatar
 
-Enviar email para contato@goflow.combr contando como poderia ajudar nos ajudar utilizando suas habilidades profissionais e pessoais. O assunto do email precisa ser "Trabalhar com WooCommerce" para podermos filtrar corretamente no sistema.
+Enviar email para contato@goflow.digital contando como poderia ajudar nos ajudar utilizando suas habilidades profissionais e pessoais. O assunto do email precisa ser "Trabalhar com WooCommerce" para podermos filtrar corretamente no sistema.
 
 ## Tempo médio de feedbacks
 
