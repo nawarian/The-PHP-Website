@@ -72,7 +72,7 @@ PJ a combinar
 
 ## Como se candidatar
 
-Por favor envie um email para claudia.desouza@hurst.capital copiando carlos.carvallho@hurst.capital com seu CV anexado - enviar no assunto: [Vaga] Backend Software Engineer
+Por favor envie um email para claudia.desouza@hurst.capital copiando carlos.carvalho@hurst.capital com seu CV anexado - enviar no assunto: [Vaga] Backend Software Engineer
 
 ## Tempo médio de feedbacks
 
