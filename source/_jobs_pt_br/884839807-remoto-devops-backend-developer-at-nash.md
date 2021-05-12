@@ -25,15 +25,17 @@ Build infrastructure for the secure deployment and monitoring of our exchange se
 Document your work thoroughly so that others can work with and build upon it.
 Engage in test-driven development practices.
 Work asynchronously with a fully remote team.
+
 We are looking for:
 
 2+ years managing cloud infrastructure in a prior role.
 2+ years in a backend or frontend engineering role.
-Experience managing cloud provider services (e.g., AWS GCP) using Terraform.
+Experience managing cloud provider services (e.g., AWS GCP) 
 Experience deploying highly secure systems (such as financial software).
-Experience managing cloud provider services (e.g., AWS GCP).
 Extensive knowledge of Kubernetes, microservice deployments, and CI/CD (Gitlab)
 Experience with managing distributed systems in Elixir.
+Linux and Networking troubleshooting
+
 We prefer but don't require:
 
 1+ years experience working with Elixir.
@@ -41,6 +43,9 @@ Experience working in remote teams.
 A history of contributing to open source software.
 Experience working with OTP, Ecto, and Plug.
 Familiarity with Elixir typespecs.
+Blockchain basic knowledge
+ELK experience
+
 Contrato PJ - R$ 20.000,00 - R$ 25.000,00
 
 contact: luciano@nash.io
