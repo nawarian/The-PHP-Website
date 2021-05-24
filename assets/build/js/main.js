@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 Syntax highlighting with language autodetection.
 https://highlightjs.org/
 */
@@ -124,15 +124,13 @@ https://highlightjs.org/
   }
 
 }(function(hljs) {
-  var showedUpgradeWarning = false;
-
   // Convenience variables for build-in objects
   var ArrayProto = [],
       objectKeys = Object.keys;
 
   // Global internal variables used within the highlight.js library.
-  var languages = Object.create(null),
-      aliases   = Object.create(null);
+  var languages = {},
+      aliases   = {};
 
   // safe/production mode - swallows more errors, tries to keep running
   // even if a single syntax or parse hits a fatal error
@@ -153,7 +151,6 @@ https://highlightjs.org/
   // Global options used when within external APIs. This is modified when
   // calling the `hljs.configure` function.
   var options = {
-    hideUpgradeWarningAcceptNoSupportOrSecurityUpdates: false,
     classPrefix: 'hljs-',
     tabReplace: null,
     useBR: false,
@@ -612,42 +609,16 @@ https://highlightjs.org/
     compileMode(language);
   }
 
-  function hideUpgradeWarning() {
-    if (options.hideUpgradeWarningAcceptNoSupportOrSecurityUpdates)
-      return true;
+  /*
+  Core highlighting function. Accepts a language name, or an alias, and a
+  string with the code to highlight. Returns an object with the following
+  properties:
 
-    if (typeof process === "object" && typeof process.env === "object" && process.env["HLJS_HIDE_UPGRADE_WARNING"])
-      return true;
-  }
+  - relevance (int)
+  - value (an HTML string with highlighting markup)
 
-  /**
-   * Core highlighting function.
-   *
-   * @param {string} languageName - the language to use for highlighting
-   * @param {string} code - the code to highlight
-   * @param {boolean} ignore_illegals - whether to ignore illegal matches, default is to bail
-   * @param {array<mode>} continuation - array of continuation modes
-   *
-   * @returns an object that represents the result
-   * @property {string} language - the language name
-   * @property {number} relevance - the relevance score
-   * @property {string} value - the highlighted HTML code
-   * @property {mode} top - top of the current mode stack
-   * @property {boolean} illegal - indicates whether any illegal matches were found
   */
-  function highlight(languageName, code, ignore_illegals, continuation) {
-    if (!hideUpgradeWarning()) {
-      if (!showedUpgradeWarning) {
-        showedUpgradeWarning = true;
-        console.log(
-          "Version 9 of Highlight.js has reached EOL and is no longer supported.\n" +
-          "Please upgrade or ask whatever dependency you are using to upgrade.\n" +
-          "https://github.com/highlightjs/highlight.js/issues/2877"
-        );
-      }
-    }
-
-    var codeToHighlight = code;
+  function highlight(name, value, ignore_illegals, continuation) {
 
     function escapeRe(value) {
       return new RegExp(value.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'm');
@@ -768,7 +739,7 @@ https://highlightjs.org/
 
     function doEndMatch(match) {
       var lexeme = match[0];
-      var matchPlusRemainder = codeToHighlight.substr(match.index);
+      var matchPlusRemainder = value.substr(match.index);
       var end_mode = endOfMode(top, matchPlusRemainder);
       if (!end_mode) { return; }
 
@@ -821,19 +792,9 @@ https://highlightjs.org/
       // Ref: https://github.com/highlightjs/highlight.js/issues/2140
       if (lastMatch.type=="begin" && match.type=="end" && lastMatch.index == match.index && lexeme === "") {
         // spit the "skipped" character that our regex choked on back into the output sequence
-        mode_buffer += codeToHighlight.slice(match.index, match.index + 1);
+        mode_buffer += value.slice(match.index, match.index + 1);
         return 1;
       }
-
-      // edge case for when illegal matches $ (end of line) which is technically
-      // a 0 width match but not a begin/end match so it's not caught by the
-      // first handler (when ignoreIllegals is true)
-      // https://github.com/highlightjs/highlight.js/issues/2522
-      if (lastMatch.type==="illegal" && lexeme === "") {
-        mode_buffer += codeToHighlight.slice(match.index, match.index + 1);
-        return 1;
-      }
-
       lastMatch = match;
 
       if (match.type==="begin") {
@@ -863,10 +824,10 @@ https://highlightjs.org/
       return lexeme.length;
     }
 
-    var language = getLanguage(languageName);
+    var language = getLanguage(name);
     if (!language) {
-      console.error(LANGUAGE_NOT_FOUND.replace("{}", languageName));
-      throw new Error('Unknown language: "' + languageName + '"');
+      console.error(LANGUAGE_NOT_FOUND.replace("{}", name));
+      throw new Error('Unknown language: "' + name + '"');
     }
 
     compileLanguage(language);
@@ -884,13 +845,13 @@ https://highlightjs.org/
       var match, count, index = 0;
       while (true) {
         top.terminators.lastIndex = index;
-        match = top.terminators.exec(codeToHighlight);
+        match = top.terminators.exec(value);
         if (!match)
           break;
-        count = processLexeme(codeToHighlight.substring(index, match.index), match);
+        count = processLexeme(value.substring(index, match.index), match);
         index = match.index + count;
       }
-      processLexeme(codeToHighlight.substr(index));
+      processLexeme(value.substr(index));
       for(current = top; current.parent; current = current.parent) { // close dangling modes
         if (current.className) {
           result += spanEndTag;
@@ -900,7 +861,7 @@ https://highlightjs.org/
         relevance: relevance,
         value: result,
         illegal:false,
-        language: languageName,
+        language: name,
         top: top
       };
     } catch (err) {
@@ -908,13 +869,13 @@ https://highlightjs.org/
         return {
           illegal: true,
           relevance: 0,
-          value: escape(codeToHighlight)
+          value: escape(value)
         };
       } else if (SAFE_MODE) {
         return {
           relevance: 0,
-          value: escape(codeToHighlight),
-          language: languageName,
+          value: escape(value),
+          language: name,
           top: top,
           errorRaised: err
         };
@@ -935,15 +896,15 @@ https://highlightjs.org/
     detected language, may be absent)
 
   */
-  function highlightAuto(code, languageSubset) {
+  function highlightAuto(text, languageSubset) {
     languageSubset = languageSubset || options.languages || objectKeys(languages);
     var result = {
       relevance: 0,
-      value: escape(code)
+      value: escape(text)
     };
     var second_best = result;
     languageSubset.filter(getLanguage).filter(autoDetection).forEach(function(name) {
-      var current = highlight(name, code, false);
+      var current = highlight(name, text, false);
       current.language = name;
       if (current.relevance > second_best.relevance) {
         second_best = current;
@@ -1283,7 +1244,6 @@ https://highlightjs.org/
   return hljs;
 }));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -4524,13 +4484,13 @@ module.exports = function(hljs) {
           contains: [SUBST, hljs.HASH_COMMENT_MODE]
         },
         {
-          begin: '//[gim]{0,3}(?=\\W)',
+          begin: '//[gim]*',
           relevance: 0
         },
         {
           // regex can't start with space to parse x / 2 / 3 as two divisions
           // regex can't start with *, and it supports an "illegal" in the main mode
-          begin: /\/(?![ *]).*?(?![\\]).\/[gim]{0,3}(?=\W)/
+          begin: /\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W)/
         }
       ]
     },
@@ -4835,16 +4795,6 @@ module.exports = function cos (hljs) {
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  function optional(s) {
-    return '(?:' + s + ')?';
-  }
-  var DECLTYPE_AUTO_RE = 'decltype\\(auto\\)'
-  var NAMESPACE_RE = '[a-zA-Z_]\\w*::'
-  var TEMPLATE_ARGUMENT_RE = '<.*?>';
-  var FUNCTION_TYPE_RE = '(' +
-    DECLTYPE_AUTO_RE + '|' +
-    optional(NAMESPACE_RE) +'[a-zA-Z_]\\w*' + optional(TEMPLATE_ARGUMENT_RE) +
-  ')';
   var CPP_PRIMITIVE_TYPES = {
     className: 'keyword',
     begin: '\\b[a-z\\d_]*_t\\b'
@@ -4902,13 +4852,7 @@ module.exports = function(hljs) {
     ]
   };
 
-  var TITLE_MODE = {
-    className: 'title',
-    begin: optional(NAMESPACE_RE) + hljs.IDENT_RE,
-    relevance: 0
-  };
-
-  var FUNCTION_TITLE = optional(NAMESPACE_RE) + hljs.IDENT_RE + '\\s*\\(';
+  var FUNCTION_TITLE = hljs.IDENT_RE + '\\s*\\(';
 
   var CPP_KEYWORDS = {
     keyword: 'int float while private char char8_t char16_t char32_t catch import module export virtual operator sizeof ' +
@@ -4943,89 +4887,11 @@ module.exports = function(hljs) {
     STRINGS
   ];
 
-  var EXPRESSION_CONTEXT = {
-    // This mode covers expression context where we can't expect a function
-    // definition and shouldn't highlight anything that looks like one:
-    // `return some()`, `else if()`, `(x*sum(1, 2))`
-    variants: [
-      {begin: /=/, end: /;/},
-      {begin: /\(/, end: /\)/},
-      {beginKeywords: 'new throw return else', end: /;/}
-    ],
-    keywords: CPP_KEYWORDS,
-    contains: EXPRESSION_CONTAINS.concat([
-      {
-        begin: /\(/, end: /\)/,
-        keywords: CPP_KEYWORDS,
-        contains: EXPRESSION_CONTAINS.concat(['self']),
-        relevance: 0
-      }
-    ]),
-    relevance: 0
-  };
-
-  var FUNCTION_DECLARATION = {
-    className: 'function',
-    begin: '(' + FUNCTION_TYPE_RE + '[\\*&\\s]+)+' + FUNCTION_TITLE,
-    returnBegin: true, end: /[{;=]/,
-    excludeEnd: true,
-    keywords: CPP_KEYWORDS,
-    illegal: /[^\w\s\*&:<>]/,
-    contains: [
-
-      { // to prevent it from being confused as the function title
-        begin: DECLTYPE_AUTO_RE,
-        keywords: CPP_KEYWORDS,
-        relevance: 0,
-      },
-      {
-        begin: FUNCTION_TITLE, returnBegin: true,
-        contains: [TITLE_MODE],
-        relevance: 0
-      },
-      {
-        className: 'params',
-        begin: /\(/, end: /\)/,
-        keywords: CPP_KEYWORDS,
-        relevance: 0,
-        contains: [
-          hljs.C_LINE_COMMENT_MODE,
-          hljs.C_BLOCK_COMMENT_MODE,
-          STRINGS,
-          NUMBERS,
-          CPP_PRIMITIVE_TYPES,
-          // Count matching parentheses.
-          {
-            begin: /\(/, end: /\)/,
-            keywords: CPP_KEYWORDS,
-            relevance: 0,
-            contains: [
-              'self',
-              hljs.C_LINE_COMMENT_MODE,
-              hljs.C_BLOCK_COMMENT_MODE,
-              STRINGS,
-              NUMBERS,
-              CPP_PRIMITIVE_TYPES
-            ]
-          }
-        ]
-      },
-      CPP_PRIMITIVE_TYPES,
-      hljs.C_LINE_COMMENT_MODE,
-      hljs.C_BLOCK_COMMENT_MODE,
-      PREPROCESSOR
-    ]
-  };
-
   return {
     aliases: ['c', 'cc', 'h', 'c++', 'h++', 'hpp', 'hh', 'hxx', 'cxx'],
     keywords: CPP_KEYWORDS,
     illegal: '</',
-    contains: [].concat(
-      EXPRESSION_CONTEXT,
-      FUNCTION_DECLARATION,
-      EXPRESSION_CONTAINS,
-      [
+    contains: EXPRESSION_CONTAINS.concat([
       PREPROCESSOR,
       {
         begin: '\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<', end: '>',
@@ -5035,6 +4901,71 @@ module.exports = function(hljs) {
       {
         begin: hljs.IDENT_RE + '::',
         keywords: CPP_KEYWORDS
+      },
+      {
+        // This mode covers expression context where we can't expect a function
+        // definition and shouldn't highlight anything that looks like one:
+        // `return some()`, `else if()`, `(x*sum(1, 2))`
+        variants: [
+          {begin: /=/, end: /;/},
+          {begin: /\(/, end: /\)/},
+          {beginKeywords: 'new throw return else', end: /;/}
+        ],
+        keywords: CPP_KEYWORDS,
+        contains: EXPRESSION_CONTAINS.concat([
+          {
+            begin: /\(/, end: /\)/,
+            keywords: CPP_KEYWORDS,
+            contains: EXPRESSION_CONTAINS.concat(['self']),
+            relevance: 0
+          }
+        ]),
+        relevance: 0
+      },
+      {
+        className: 'function',
+        begin: '(' + hljs.IDENT_RE + '[\\*&\\s]+)+' + FUNCTION_TITLE,
+        returnBegin: true, end: /[{;=]/,
+        excludeEnd: true,
+        keywords: CPP_KEYWORDS,
+        illegal: /[^\w\s\*&]/,
+        contains: [
+          {
+            begin: FUNCTION_TITLE, returnBegin: true,
+            contains: [hljs.TITLE_MODE],
+            relevance: 0
+          },
+          {
+            className: 'params',
+            begin: /\(/, end: /\)/,
+            keywords: CPP_KEYWORDS,
+            relevance: 0,
+            contains: [
+              hljs.C_LINE_COMMENT_MODE,
+              hljs.C_BLOCK_COMMENT_MODE,
+              STRINGS,
+              NUMBERS,
+              CPP_PRIMITIVE_TYPES,
+              // Count matching parentheses.
+              {
+                begin: /\(/, end: /\)/,
+                keywords: CPP_KEYWORDS,
+                relevance: 0,
+                contains: [
+                  'self',
+                  hljs.C_LINE_COMMENT_MODE,
+                  hljs.C_BLOCK_COMMENT_MODE,
+                  STRINGS,
+                  NUMBERS,
+                  CPP_PRIMITIVE_TYPES
+                ]
+              }
+            ]
+          },
+          hljs.C_LINE_COMMENT_MODE,
+          hljs.C_BLOCK_COMMENT_MODE,
+          PREPROCESSOR
+        ]
       },
       {
         className: 'class',
@@ -7394,7 +7325,7 @@ module.exports = function(hljs) {
   var F_KEYWORDS = {
     literal: '.False. .True.',
     keyword: 'kind do while private call intrinsic where elsewhere ' +
-      'type endtype endmodule endselect endinterface end enddo endif if forall endforall only contains default return stop then block endblock ' +
+      'type endtype endmodule endselect endinterface end enddo endif if forall endforall only contains default return stop then ' +
       'public subroutine|10 function program .and. .or. .not. .le. .eq. .ge. .gt. .lt. ' +
       'goto save else use module select case ' +
       'access blank direct exist file fmt form formatted iostat name named nextrec number opened rec recl sequential status unformatted unit ' +
@@ -10183,77 +10114,68 @@ module.exports = function(hljs) {
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  var NUMBERS = {
-    className: 'number',
-    relevance: 0,
-    variants: [
-      { begin: /([\+\-]+)?[\d]+_[\d_]+/ },
-      { begin: hljs.NUMBER_RE }
-    ]
-  };
-  var COMMENTS = hljs.COMMENT();
-  COMMENTS.variants = [
-    {begin: /;/, end: /$/},
-    {begin: /#/, end: /$/},
-  ];
-  var VARIABLES = {
-    className: 'variable',
-    variants: [
-      { begin: /\$[\w\d"][\w\d_]*/ },
-      { begin: /\$\{(.*?)}/ }
-    ]
-  };
-  var LITERALS = {
-    className: 'literal',
-    begin: /\bon|off|true|false|yes|no\b/
-  };
-  var STRINGS = {
+  var STRING = {
     className: "string",
     contains: [hljs.BACKSLASH_ESCAPE],
     variants: [
-      { begin: "'''", end: "'''", relevance: 10 },
-      { begin: '"""', end: '"""', relevance: 10 },
-      { begin: '"', end: '"' },
-      { begin: "'", end: "'" }
+      {
+        begin: "'''", end: "'''",
+        relevance: 10
+      }, {
+        begin: '"""', end: '"""',
+        relevance: 10
+      }, {
+        begin: '"', end: '"'
+      }, {
+        begin: "'", end: "'"
+      }
     ]
   };
-  var ARRAY = {
-    begin: /\[/, end: /\]/,
-    contains: [
-      COMMENTS,
-      LITERALS,
-      VARIABLES,
-      STRINGS,
-      NUMBERS,
-      'self'
-    ],
-    relevance:0
-  };
-
   return {
     aliases: ['toml'],
     case_insensitive: true,
     illegal: /\S/,
     contains: [
-      COMMENTS,
+      hljs.COMMENT(';', '$'),
+      hljs.HASH_COMMENT_MODE,
       {
         className: 'section',
-        begin: /\[+/, end: /\]+/
+        begin: /^\s*\[+/, end: /\]+/
       },
       {
-        begin: /^[a-z0-9\[\]_\.-]+(?=\s*=\s*)/,
-        className: 'attr',
-        starts: {
-          end: /$/,
-          contains: [
-            COMMENTS,
-            ARRAY,
-            LITERALS,
-            VARIABLES,
-            STRINGS,
-            NUMBERS
-          ]
-        }
+        begin: /^[a-z0-9\[\]_\.-]+\s*=\s*/, end: '$',
+        returnBegin: true,
+        contains: [
+          {
+            className: 'attr',
+            begin: /[a-z0-9\[\]_\.-]+/
+          },
+          {
+            begin: /=/, endsWithParent: true,
+            relevance: 0,
+            contains: [
+              hljs.COMMENT(';', '$'),
+              hljs.HASH_COMMENT_MODE,
+              {
+                className: 'literal',
+                begin: /\bon|off|true|false|yes|no\b/
+              },
+              {
+                className: 'variable',
+                variants: [
+                  {begin: /\$[\w\d"][\w\d_]*/},
+                  {begin: /\$\{(.*?)}/}
+                ]
+              },
+              STRING,
+              {
+                className: 'number',
+                begin: /([\+\-]+)?[\d]+_[\d_]+/
+              },
+              hljs.NUMBER_MODE
+            ]
+          }
+        ]
       }
     ]
   };
@@ -13653,14 +13575,6 @@ module.exports = function(hljs) {
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  var FRAGMENT = {
-    begin: '<>',
-    end: '</>'
-  };
-  var XML_TAG = {
-    begin: /<[A-Za-z0-9\\._:-]+/,
-    end: /\/[A-Za-z0-9\\._:-]+>|\/>/
-  };
   var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
   var KEYWORDS = {
     keyword:
@@ -13842,19 +13756,20 @@ module.exports = function(hljs) {
             end: /\s*/,
             skip: true,
           },
-          { // JSX
-            variants: [
-              { begin: FRAGMENT.begin, end: FRAGMENT.end },
-              { begin: XML_TAG.begin, end: XML_TAG.end }
-            ],
+          { // E4X / JSX
+            begin: /</, end: /(\/[A-Za-z0-9\\._:-]+|[A-Za-z0-9\\._:-]+\/)>/,
             subLanguage: 'xml',
             contains: [
+              { begin: /<[A-Za-z0-9\\._:-]+\s*\/>/, skip: true },
               {
-                begin: XML_TAG.begin, end: XML_TAG.end, skip: true,
-                contains: ['self']
+                begin: /<[A-Za-z0-9\\._:-]+/, end: /(\/[A-Za-z0-9\\._:-]+|[A-Za-z0-9\\._:-]+\/)>/, skip: true,
+                contains: [
+                  { begin: /<[A-Za-z0-9\\._:-]+\s*\/>/, skip: true },
+                  'self'
+                ]
               }
             ]
-          },
+          }
         ],
         relevance: 0
       },
@@ -15199,7 +15114,7 @@ module.exports = function(hljs) {
         {
           // regex can't start with space to parse x / 2 / 3 as two divisions
           // regex can't start with *, and it supports an "illegal" in the main mode
-          begin: /\/(?![ *])(\\.|[^\\\n])*?\/[gim]*(?=\W)/
+          begin: /\/(?![ *])(\\\/|.)*?\/[gim]*(?=\W)/
         }
       ]
     },
@@ -22438,223 +22353,86 @@ module.exports = function(hljs) {
 /***/ (function(module, exports) {
 
 module.exports = function(hljs) {
-  // variable names cannot conflict with block identifiers
-  var BLOCKS = [
-    'functions',
-    'model',
-    'data',
-    'parameters',
-    'quantities',
-    'transformed',
-    'generated'
-  ];
-  var STATEMENTS = [
-    'for',
-    'in',
-    'if',
-    'else',
-    'while',
-    'break',
-    'continue',
-    'return'
-  ];
-  var SPECIAL_FUNCTIONS = [
-    'print',
-    'reject',
-    'increment_log_prob|10',
-    'integrate_ode|10',
-    'integrate_ode_rk45|10',
-    'integrate_ode_bdf|10',
-    'algebra_solver'
-  ];
-  var VAR_TYPES = [
-    'int',
-    'real',
-    'vector',
-    'ordered',
-    'positive_ordered',
-    'simplex',
-    'unit_vector',
-    'row_vector',
-    'matrix',
-    'cholesky_factor_corr|10',
-    'cholesky_factor_cov|10',
-    'corr_matrix|10',
-    'cov_matrix|10',
-    'void'
-  ];
-  var FUNCTIONS = [
-    'Phi', 'Phi_approx', 'abs', 'acos', 'acosh', 'algebra_solver', 'append_array',
-    'append_col', 'append_row', 'asin', 'asinh', 'atan', 'atan2', 'atanh',
-    'bernoulli_cdf', 'bernoulli_lccdf', 'bernoulli_lcdf', 'bernoulli_logit_lpmf',
-    'bernoulli_logit_rng', 'bernoulli_lpmf', 'bernoulli_rng', 'bessel_first_kind',
-    'bessel_second_kind', 'beta_binomial_cdf', 'beta_binomial_lccdf',
-    'beta_binomial_lcdf', 'beta_binomial_lpmf', 'beta_binomial_rng', 'beta_cdf',
-    'beta_lccdf', 'beta_lcdf', 'beta_lpdf', 'beta_rng', 'binary_log_loss',
-    'binomial_cdf', 'binomial_coefficient_log', 'binomial_lccdf', 'binomial_lcdf',
-    'binomial_logit_lpmf', 'binomial_lpmf', 'binomial_rng', 'block',
-    'categorical_logit_lpmf', 'categorical_logit_rng', 'categorical_lpmf',
-    'categorical_rng', 'cauchy_cdf', 'cauchy_lccdf', 'cauchy_lcdf', 'cauchy_lpdf',
-    'cauchy_rng', 'cbrt', 'ceil', 'chi_square_cdf', 'chi_square_lccdf',
-    'chi_square_lcdf', 'chi_square_lpdf', 'chi_square_rng', 'cholesky_decompose',
-    'choose', 'col', 'cols', 'columns_dot_product', 'columns_dot_self', 'cos',
-    'cosh', 'cov_exp_quad', 'crossprod', 'csr_extract_u', 'csr_extract_v',
-    'csr_extract_w', 'csr_matrix_times_vector', 'csr_to_dense_matrix',
-    'cumulative_sum', 'determinant', 'diag_matrix', 'diag_post_multiply',
-    'diag_pre_multiply', 'diagonal', 'digamma', 'dims', 'dirichlet_lpdf',
-    'dirichlet_rng', 'distance', 'dot_product', 'dot_self',
-    'double_exponential_cdf', 'double_exponential_lccdf', 'double_exponential_lcdf',
-    'double_exponential_lpdf', 'double_exponential_rng', 'e', 'eigenvalues_sym',
-    'eigenvectors_sym', 'erf', 'erfc', 'exp', 'exp2', 'exp_mod_normal_cdf',
-    'exp_mod_normal_lccdf', 'exp_mod_normal_lcdf', 'exp_mod_normal_lpdf',
-    'exp_mod_normal_rng', 'expm1', 'exponential_cdf', 'exponential_lccdf',
-    'exponential_lcdf', 'exponential_lpdf', 'exponential_rng', 'fabs',
-    'falling_factorial', 'fdim', 'floor', 'fma', 'fmax', 'fmin', 'fmod',
-    'frechet_cdf', 'frechet_lccdf', 'frechet_lcdf', 'frechet_lpdf', 'frechet_rng',
-    'gamma_cdf', 'gamma_lccdf', 'gamma_lcdf', 'gamma_lpdf', 'gamma_p', 'gamma_q',
-    'gamma_rng', 'gaussian_dlm_obs_lpdf', 'get_lp', 'gumbel_cdf', 'gumbel_lccdf',
-    'gumbel_lcdf', 'gumbel_lpdf', 'gumbel_rng', 'head', 'hypergeometric_lpmf',
-    'hypergeometric_rng', 'hypot', 'inc_beta', 'int_step', 'integrate_ode',
-    'integrate_ode_bdf', 'integrate_ode_rk45', 'inv', 'inv_Phi',
-    'inv_chi_square_cdf', 'inv_chi_square_lccdf', 'inv_chi_square_lcdf',
-    'inv_chi_square_lpdf', 'inv_chi_square_rng', 'inv_cloglog', 'inv_gamma_cdf',
-    'inv_gamma_lccdf', 'inv_gamma_lcdf', 'inv_gamma_lpdf', 'inv_gamma_rng',
-    'inv_logit', 'inv_sqrt', 'inv_square', 'inv_wishart_lpdf', 'inv_wishart_rng',
-    'inverse', 'inverse_spd', 'is_inf', 'is_nan', 'lbeta', 'lchoose', 'lgamma',
-    'lkj_corr_cholesky_lpdf', 'lkj_corr_cholesky_rng', 'lkj_corr_lpdf',
-    'lkj_corr_rng', 'lmgamma', 'lmultiply', 'log', 'log10', 'log1m', 'log1m_exp',
-    'log1m_inv_logit', 'log1p', 'log1p_exp', 'log2', 'log_determinant',
-    'log_diff_exp', 'log_falling_factorial', 'log_inv_logit', 'log_mix',
-    'log_rising_factorial', 'log_softmax', 'log_sum_exp', 'logistic_cdf',
-    'logistic_lccdf', 'logistic_lcdf', 'logistic_lpdf', 'logistic_rng', 'logit',
-    'lognormal_cdf', 'lognormal_lccdf', 'lognormal_lcdf', 'lognormal_lpdf',
-    'lognormal_rng', 'machine_precision', 'matrix_exp', 'max', 'mdivide_left_spd',
-    'mdivide_left_tri_low', 'mdivide_right_spd', 'mdivide_right_tri_low', 'mean',
-    'min', 'modified_bessel_first_kind', 'modified_bessel_second_kind',
-    'multi_gp_cholesky_lpdf', 'multi_gp_lpdf', 'multi_normal_cholesky_lpdf',
-    'multi_normal_cholesky_rng', 'multi_normal_lpdf', 'multi_normal_prec_lpdf',
-    'multi_normal_rng', 'multi_student_t_lpdf', 'multi_student_t_rng',
-    'multinomial_lpmf', 'multinomial_rng', 'multiply_log',
-    'multiply_lower_tri_self_transpose', 'neg_binomial_2_cdf',
-    'neg_binomial_2_lccdf', 'neg_binomial_2_lcdf', 'neg_binomial_2_log_lpmf',
-    'neg_binomial_2_log_rng', 'neg_binomial_2_lpmf', 'neg_binomial_2_rng',
-    'neg_binomial_cdf', 'neg_binomial_lccdf', 'neg_binomial_lcdf',
-    'neg_binomial_lpmf', 'neg_binomial_rng', 'negative_infinity', 'normal_cdf',
-    'normal_lccdf', 'normal_lcdf', 'normal_lpdf', 'normal_rng', 'not_a_number',
-    'num_elements', 'ordered_logistic_lpmf', 'ordered_logistic_rng', 'owens_t',
-    'pareto_cdf', 'pareto_lccdf', 'pareto_lcdf', 'pareto_lpdf', 'pareto_rng',
-    'pareto_type_2_cdf', 'pareto_type_2_lccdf', 'pareto_type_2_lcdf',
-    'pareto_type_2_lpdf', 'pareto_type_2_rng', 'pi', 'poisson_cdf', 'poisson_lccdf',
-    'poisson_lcdf', 'poisson_log_lpmf', 'poisson_log_rng', 'poisson_lpmf',
-    'poisson_rng', 'positive_infinity', 'pow', 'print', 'prod', 'qr_Q', 'qr_R',
-    'quad_form', 'quad_form_diag', 'quad_form_sym', 'rank', 'rayleigh_cdf',
-    'rayleigh_lccdf', 'rayleigh_lcdf', 'rayleigh_lpdf', 'rayleigh_rng', 'reject',
-    'rep_array', 'rep_matrix', 'rep_row_vector', 'rep_vector', 'rising_factorial',
-    'round', 'row', 'rows', 'rows_dot_product', 'rows_dot_self',
-    'scaled_inv_chi_square_cdf', 'scaled_inv_chi_square_lccdf',
-    'scaled_inv_chi_square_lcdf', 'scaled_inv_chi_square_lpdf',
-    'scaled_inv_chi_square_rng', 'sd', 'segment', 'sin', 'singular_values', 'sinh',
-    'size', 'skew_normal_cdf', 'skew_normal_lccdf', 'skew_normal_lcdf',
-    'skew_normal_lpdf', 'skew_normal_rng', 'softmax', 'sort_asc', 'sort_desc',
-    'sort_indices_asc', 'sort_indices_desc', 'sqrt', 'sqrt2', 'square',
-    'squared_distance', 'step', 'student_t_cdf', 'student_t_lccdf',
-    'student_t_lcdf', 'student_t_lpdf', 'student_t_rng', 'sub_col', 'sub_row',
-    'sum', 'tail', 'tan', 'tanh', 'target', 'tcrossprod', 'tgamma', 'to_array_1d',
-    'to_array_2d', 'to_matrix', 'to_row_vector', 'to_vector', 'trace',
-    'trace_gen_quad_form', 'trace_quad_form', 'trigamma', 'trunc', 'uniform_cdf',
-    'uniform_lccdf', 'uniform_lcdf', 'uniform_lpdf', 'uniform_rng', 'variance',
-    'von_mises_lpdf', 'von_mises_rng', 'weibull_cdf', 'weibull_lccdf',
-    'weibull_lcdf', 'weibull_lpdf', 'weibull_rng', 'wiener_lpdf', 'wishart_lpdf',
-    'wishart_rng'
-  ];
-  var DISTRIBUTIONS = [
-    'bernoulli', 'bernoulli_logit', 'beta', 'beta_binomial', 'binomial',
-    'binomial_logit', 'categorical', 'categorical_logit', 'cauchy', 'chi_square',
-    'dirichlet', 'double_exponential', 'exp_mod_normal', 'exponential', 'frechet',
-    'gamma', 'gaussian_dlm_obs', 'gumbel', 'hypergeometric', 'inv_chi_square',
-    'inv_gamma', 'inv_wishart', 'lkj_corr', 'lkj_corr_cholesky', 'logistic',
-    'lognormal', 'multi_gp', 'multi_gp_cholesky', 'multi_normal',
-    'multi_normal_cholesky', 'multi_normal_prec', 'multi_student_t', 'multinomial',
-    'neg_binomial', 'neg_binomial_2', 'neg_binomial_2_log', 'normal',
-    'ordered_logistic', 'pareto', 'pareto_type_2', 'poisson', 'poisson_log',
-    'rayleigh', 'scaled_inv_chi_square', 'skew_normal', 'student_t', 'uniform',
-    'von_mises', 'weibull', 'wiener', 'wishart'
-  ];
-
   return {
-    aliases: ['stanfuncs'],
-    keywords: {
-      'title': BLOCKS.join(' '),
-      'keyword': STATEMENTS.concat(VAR_TYPES).concat(SPECIAL_FUNCTIONS).join(' '),
-      'built_in': FUNCTIONS.join(' ')
-    },
-    lexemes: hljs.IDENT_RE,
     contains: [
+      hljs.HASH_COMMENT_MODE,
       hljs.C_LINE_COMMENT_MODE,
-      hljs.COMMENT(
-        /#/,
-        /$/,
-        {
-          relevance: 0,
-          keywords: {
-            'meta-keyword': 'include'
-          }
-        }
-      ),
-      hljs.COMMENT(
-        /\/\*/,
-        /\*\//,
-        {
-          relevance: 0,
-          // highlight doc strings mentioned in Stan reference
-          contains: [
-            {
-              className: 'doctag',
-              begin: /@(return|param)/
-            }
-          ]
-        }
-      ),
+      hljs.C_BLOCK_COMMENT_MODE,
       {
-        // hack: in range constraints, lower must follow "<"
-        begin: /<\s*lower\s*=/,
-        keywords: 'lower'
+        begin: hljs.UNDERSCORE_IDENT_RE,
+        lexemes: hljs.UNDERSCORE_IDENT_RE,
+        keywords: {
+          // Stan's keywords
+          name:
+            'for in while repeat until if then else',
+          // Stan's probablity distributions (less beta and gamma, as commonly
+          // used for parameter names). So far, _log and _rng variants are not
+          // included
+          symbol:
+            'bernoulli bernoulli_logit binomial binomial_logit '               +
+            'beta_binomial hypergeometric categorical categorical_logit '      +
+            'ordered_logistic neg_binomial neg_binomial_2 '                    +
+            'neg_binomial_2_log poisson poisson_log multinomial normal '       +
+            'exp_mod_normal skew_normal student_t cauchy double_exponential '  +
+            'logistic gumbel lognormal chi_square inv_chi_square '             +
+            'scaled_inv_chi_square exponential inv_gamma weibull frechet '     +
+            'rayleigh wiener pareto pareto_type_2 von_mises uniform '          +
+            'multi_normal multi_normal_prec multi_normal_cholesky multi_gp '   +
+            'multi_gp_cholesky multi_student_t gaussian_dlm_obs dirichlet '    +
+            'lkj_corr lkj_corr_cholesky wishart inv_wishart',
+          // Stan's data types
+          'selector-tag':
+            'int real vector simplex unit_vector ordered positive_ordered '    +
+            'row_vector matrix cholesky_factor_corr cholesky_factor_cov '      +
+            'corr_matrix cov_matrix',
+          // Stan's model blocks
+          title:
+            'functions model data parameters quantities transformed '          +
+            'generated',
+          literal:
+            'true false'
+        },
+        relevance: 0
       },
+      // The below is all taken from the R language definition
       {
-        // hack: in range constraints, upper must follow either , or <
-        // <lower = ..., upper = ...> or <upper = ...>
-        begin: /[<,]*upper\s*=/,
-        keywords: 'upper'
-      },
-      {
-        className: 'keyword',
-        begin: /\btarget\s*\+=/,
-        relevance: 10
-      },
-      {
-        begin: '~\\s*(' + hljs.IDENT_RE + ')\\s*\\(',
-        keywords: DISTRIBUTIONS.join(' ')
-      },
-      {
+        // hex value
         className: 'number',
-        variants: [
-          {
-            begin: /\b\d+(?:\.\d*)?(?:[eE][+-]?\d+)?/
-          },
-          {
-            begin: /\.\d+(?:[eE][+-]?\d+)?\b/
-          }
-        ],
+        begin: "0[xX][0-9a-fA-F]+[Li]?\\b",
         relevance: 0
       },
       {
-        className: 'string',
-        begin: '"',
-        end: '"',
+        // hex value
+        className: 'number',
+        begin: "0[xX][0-9a-fA-F]+[Li]?\\b",
+        relevance: 0
+      },
+      {
+        // explicit integer
+        className: 'number',
+        begin: "\\d+(?:[eE][+\\-]?\\d*)?L\\b",
+        relevance: 0
+      },
+      {
+        // number with trailing decimal
+        className: 'number',
+        begin: "\\d+\\.(?!\\d)(?:i\\b)?",
+        relevance: 0
+      },
+      {
+        // number
+        className: 'number',
+        begin: "\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",
+        relevance: 0
+      },
+      {
+        // number with leading decimal
+        className: 'number',
+        begin: "\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",
         relevance: 0
       }
     ]
-  }
+  };
 };
 
 /***/ }),
@@ -24145,7 +23923,7 @@ module.exports = function(hljs) {
         'each equals else elseif end enum erase error event exit explicit finally for friend from function ' + /* e-f */
         'get global goto group handles if implements imports in inherits interface into is isfalse isnot istrue iterator ' + /* g-i */
         'join key let lib like loop me mid mod module mustinherit mustoverride mybase myclass ' + /* j-m */
-        'nameof namespace narrowing new next not notinheritable notoverridable ' + /* n */
+        'namespace narrowing new next not notinheritable notoverridable ' + /* n */
         'of off on operator option optional or order orelse overloads overridable overrides ' + /* o */
         'paramarray partial preserve private property protected public ' + /* p */
         'raiseevent readonly redim rem removehandler resume return ' + /* r */
@@ -25344,201 +25122,6 @@ module.exports = function(hljs) {
 
 /***/ }),
 
-/***/ "./node_modules/process/browser.js":
-/*!*****************************************!*\
-  !*** ./node_modules/process/browser.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-
 /***/ "./source/_assets/js/main.js":
 /*!***********************************!*\
   !*** ./source/_assets/js/main.js ***!
@@ -25584,9 +25167,9 @@ highlight_js__WEBPACK_IMPORTED_MODULE_0___default.a.initHighlightingOnLoad();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/nsilva/RG/personal/thephp.website/source/_assets/js/main.js */"./source/_assets/js/main.js");
-__webpack_require__(/*! /Users/nsilva/RG/personal/thephp.website/source/_assets/sass/main.scss */"./source/_assets/sass/main.scss");
-module.exports = __webpack_require__(/*! /Users/nsilva/RG/personal/thephp.website/source/_assets/sass/search.scss */"./source/_assets/sass/search.scss");
+__webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/js/main.js */"./source/_assets/js/main.js");
+__webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/sass/main.scss */"./source/_assets/sass/main.scss");
+module.exports = __webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp.website/source/_assets/sass/search.scss */"./source/_assets/sass/search.scss");
 
 
 /***/ })
