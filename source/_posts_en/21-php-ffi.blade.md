@@ -1,5 +1,4 @@
 ---
-isFeatured: true
 slug: php-ffi
 title: Complete guide to FFI in PHP
 category: guide 
