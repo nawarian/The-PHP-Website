@@ -1,10 +1,10 @@
 ---
-slug: 902980398-oportunidade-remoto-pessoa-desenvolvedora-back-end-na-enjoei
+slug: 906074147-oportunidade-remoto-pessoa-desenvolvedora-back-end-na-enjoei
 lang: pt-br
-createdAt: 2021-05-26
+createdAt: 2021-05-28
 title: '[OPORTUNIDADE] [REMOTO] Pessoa desenvolvedora Back-end na Enjoei - Vaga de Emprego'
 sitemap:
-  lastModified: 2021-05-26
+  lastModified: 2021-05-28
 meta:
   description: 'Detalhes sobre a vaga de emprego: [OPORTUNIDADE] [REMOTO] Pessoa desenvolvedora Back-end na Enjoei'
   twitter:
@@ -26,4 +26,5 @@ Para este desafio, é necessário ter experiência em desenvolvimento de prefer�
 ### Link
 Vamos nesse desafio juntos? Saiba mais -> https://byintera.in/21y
 
-Fonte: https://github.com/backend-br/vagas/issues/5757
+
+Fonte: https://github.com/backend-br/vagas/issues/5788
