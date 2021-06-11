@@ -1,0 +1,56 @@
+---
+slug: 917365266-remoto-desenvolvedor-full-stack-senior-at-pasquali-solution
+lang: pt-br
+createdAt: 2021-06-10
+title: '[Remoto] Desenvolvedor Full Stack Sênior @ Pasquali Solution - Vaga de Emprego'
+sitemap:
+  lastModified: 2021-06-10
+meta:
+  description: 'Detalhes sobre a vaga de emprego: [Remoto] Desenvolvedor Full Stack Sênior @ Pasquali Solution'
+  twitter:
+    card: summary
+    site: '@nawarian'
+---
+
+# [Remoto] Desenvolvedor Full Stack Sênior @ Pasquali Solution
+
+**Descrição da vaga**
+Estamos procurando pessoas que tenha uma vasta experiência em desenvolvimento Full Stack.
+
+**Local**
+Remoto
+
+**Requisitos obrigatórios:**
+•	Desenvolver e implantar os requisitos funcionais e não funcionais dos sistemas;
+•	Planejar e executar a implantação de novas versões dos sistemas;
+•	Planejar a arquitetura dos novos projetos;
+•	Elaborar e orientar as atividades de correção e manutenção dos sistemas legados;
+•	Levantar, analisar, antecipar e mitigar problemas e riscos dos sistemas desenvolvidos;
+
+**Qualificações:**
+•	C#
+•	Sql Server
+•	Javascript
+•	Html
+•	CSS
+•	AngularJS 
+•	React
+•	Conhecimentos em Metodologia Ágil 
+
+**Labels**
+•	Alocado
+•	PJ
+•	Sênior
+
+**Como se candidatar**
+Envie seu currículo: https://cutt.ly/GjcZYfq
+Envie seu currículo: barbara.silva@pasqualisolution.com.br
+
+**Nossa empresa**
+A Pasquali Solution é uma consultoria com foco em Alocação de profissionais de TI reconhecida pelo seu trabalho rápido e com excelência.
+Estamos há mais de 18 anos no mercado e somos altamente especializada em Tecnologia da Informação.
+•	Parceria com a Alura para cursos
+•	Gratificação no mês de aniversário
+
+
+Fonte: https://github.com/backend-br/vagas/issues/5926
