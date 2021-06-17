@@ -62,7 +62,7 @@ CLT
 
 ## Como se candidatar
 
-Pode me dar um "oi" no LinkedIn e agendamos um papo: https://www.linkedin.com/in/vit%C3%B3ria-gomes-santos/
+Podem me chamar no LinkedIn: https://www.linkedin.com/in/vit%C3%B3ria-gomes-santos/ ou enviar CV para vitoria.santos@zup.com.br
 
 ## Tempo médio de feedbacks
 
