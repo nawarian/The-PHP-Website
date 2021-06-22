@@ -40,12 +40,17 @@ Estamos buscando um desenvolvedor backend para integrar nosso time de tecnologia
 - Conhecimentos em Google Cloud (Eventarc, CloudRun);
 
 ## Benefícios
-- Plano de saúde (80% custeado pela empresa)
-- Vale alimentação 
-- Leitura mágica: Reembolso de até R$200 por mês por livros lidos! 
-- Day off no aniversário
-- Academia da Magia - Nossa "universidade corporativa" com incentivos financeiros em cursos e eventos.
-- Acesso à plataforma Witseed.
+- Leitura Mágica: Reembolso até R$200 em livros, de qualquer gênero, por mês. 
+- Witseed: Uma plataforma cheeeeia de cursos, de diversas áreas e assuntos. Pra você se desenvolver, estudar e aprender bastante!
+- Benê250: Reembolsos até R$250 em cursos, treinamentos e eventos para seu desenvolvimento. 
+- Day off de aniversário: No dia do seu aniversário, você tem folga! Aproveita e dá uma relaxada, comemore com sua família e usa o seu dia só pra você!
+- Vale alimentação Alelo;
+- Plano de saúde (subsídio): A Estante Mágica paga 80% da mensalidade do seu plano de saúde Amil 450, e o membro da trupe paga 20%, descontados no contracheque. 
+- Vitta Prime Care (primeiro atendimento): Atendimento médico inicial via WhatsApp para te apoiar e auxiliar em diversas questões de saúde 24 horas por dia, 7 dias por semana.
+- Licença paternidade estendida de 20 dias;
+- Licença casamento estendida de 5 dias;
+- Flexibilidade: Um dos nossos valores é autonomia e isso vale também pra flexibilidade. Sabemos que às vezes precisamos resolver alguma coisa pessoal no meio do dia, que tem criança pra cuidar, que você pode se atrasar em algum compromisso externo e por aí vai. E entendemos essas situações, te damos essa flexibilidade, confiando na sua autonomia e no seu sentimento de dono. 
+- Licença em caso de doenças e indisposições momentâneas físicas ou psicológicas: Tá se sentindo mal mas não precisa ir no médico ou no hospital? Sem problemas, você pode ficar até dois dias off do trabalho e se cuidar da melhor forma.
 
 ## Contratação
 
