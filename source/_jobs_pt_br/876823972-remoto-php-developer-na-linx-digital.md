@@ -2,7 +2,7 @@
 slug: 876823972-remoto-php-developer-na-linx-digital
 lang: pt-br
 createdAt: 2021-05-05
-title: '[REMOTO] PHP Developer na Linx Digital - Vaga de Emprego'
+title: '[Remoto] PHP Developer na Linx Digital - Vaga de Emprego'
 sitemap:
   lastModified: 2021-05-05
 meta:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [REMOTO] PHP Developer na Linx Digital
+# [Remoto] PHP Developer na Linx Digital
 
 ## Descrição da vaga
 
