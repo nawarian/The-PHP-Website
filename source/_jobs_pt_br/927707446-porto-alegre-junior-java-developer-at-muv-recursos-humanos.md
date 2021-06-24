@@ -84,7 +84,7 @@ Valor PJ: R$35,00/hora  - pode ter variação de acordo com o conhecimento técn
 
 ## Como se candidatar
 
-Por favor envie um email para contato@muvrh.com.br com seu CV anexado - enviar no assunto: Vaga Junior Java Developer.
+Por favor envie um email para cv@muvrh.com.br com seu CV anexado - enviar no assunto: Vaga Junior Java Developer.
 
 ## Tempo médio de feedbacks
 

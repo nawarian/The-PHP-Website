@@ -99,6 +99,9 @@ CLT
 ## Como se candidatar
 
 Envie seu currículo por e-mail com o título da vaga "Fullstack Developer Junior / Pleno" para recrutamento@paripassu.com.br
+ou cadastre pelo site:
+Desenvolvedor Junior https://enliztjob.app.link/Ep9rsIbNihb
+Desenvolvedor Pleno https://enliztjob.app.link/JJiEGo7mkhb
 
 #### Alocação
 - Remoto
@@ -107,8 +110,8 @@ Envie seu currículo por e-mail com o título da vaga "Fullstack Developer Junio
 - CLT
 
 #### Nível
-- Júnior - Remuneração entre R$4.100,00 mensal
-- Pleno - Remuneração entre R$7.300,00 mensal
+- Júnior - Remuneração entre R$ 4.100,00 mensal
+- Pleno - Remuneração entre R$ 7.300,00 mensal
 
 
 Fonte: https://github.com/backend-br/vagas/issues/6109
