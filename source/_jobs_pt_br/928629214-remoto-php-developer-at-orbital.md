@@ -52,9 +52,6 @@ Entraremos em contato com os candidatos selecionados em 1 ou 2 dias.
 #### Alocação
 - Remoto
 
-#### Regime
-- PJ
-
 #### Nível
 - Pleno
 - Sênior
