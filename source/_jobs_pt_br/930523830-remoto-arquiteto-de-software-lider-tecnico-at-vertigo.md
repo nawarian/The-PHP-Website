@@ -14,30 +14,6 @@ meta:
 
 # [Remoto] Arquiteto de Software / Líder Técnico @Vertigo
 
-<!--
-==================================================
-Caso a vaga for remoto durante a pandemia informar no texto "Remoto durante o covid"
-==================================================
--->
-<!-- 
-==================================================
-POR FAVOR, SÓ POSTE SE A VAGA FOR PARA BACK-END!
-
-Não faça distinção de gênero no título da vaga.
-
-Use: "Back-End Developer" ao invés de 
-"Desenvolvedor Back-End" \o/
-
-Exemplo: `[São Paulo] Back-End Developer @ NOME DA EMPRESA`
-==================================================
--->
-<!--
-==================================================
-Caso a vaga for remoto durante a pandemia deixar a linha abaixo
-==================================================
--->
-> Vaga Remota durante a pandemia
-
 ## Nossa empresa
 
 Somos aceleradores da Transformação Digital para o mercado corporativo e investimos no potencial da tecnologia para melhorar a vida das pessoas. Criamos uma cultura de inovação sem barreiras com velocidade, qualidade, diversidade e segurança andando juntos. 
@@ -92,6 +68,7 @@ Você é essa pessoa? ENTÃO SERÁ O MÁXIMO TER VOCÊ INOVANDO COM A GENTE!
 ## Como se candidatar
 Se inscreva através do link https://vertigo.gupy.io/jobs/900963
 Ou me chame no LinkedIn [Amanda Carvalho]: https://www.linkedin.com/in/amanda-conceicao/
+Nossa página oficial no LinkedIn: https://www.linkedin.com/company/vertigo-tecnologia
 
 #### Alocação
 - Alocado
