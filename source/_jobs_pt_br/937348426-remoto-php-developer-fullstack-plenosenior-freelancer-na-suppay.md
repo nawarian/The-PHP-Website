@@ -6,7 +6,7 @@ title: '[Remoto] PHP Developer Fullstack Pleno/Senior Freelancer na SupPay  - Va
 sitemap:
   lastModified: 2021-07-05
 meta:
-  description: 'Detalhes sobre a vaga de emprego: Estamos buscando um(a) desenvolvedor(a) PHP Fullstack Pleno ou Senior freelancer para desenvolver um dashboard para nossos clientes com as informações das operações que envolverem o CNPJ dele na nossa plataforma.  Itens do dashboard: - Perfil (apenas visualização dos dados do usuário e alteração de senha) - Motoristas cadastrados (apenas visualização) - Operações de garantia - Operações de pagamento - Termos de uso (links) - Sobre a plataforma (texto) - Logout Importante: - Opção de ordenar por coluna - Filtros por informação (ex: cliente, data, status, etc…) - Opção de extrair informações no formato CSV e CNAB Observações: - Deverá ser criado um novo módulo de usuário (login/senha). - Todos os endpoints já estão disponíveis. - Haverá suporte do programador do projeto para auxiliar no desenvolvimento. - O código deverá ser todo comentado e documentado. Basicamente, utilizamos AWS, MySql (5.7), PHP/Láravel, Vue.js e html. Por isso, buscamos alguém que tenha experiência e conhecimento nessas tecnologias.'
+  description: 'Detalhes sobre a vaga de emprego: Estamos buscando um(a) desenvolvedor(a) PHP Fullstack Pleno ou Senior freelancer para desenvolver um dashboard para nossos clientes com as informações das operações que envolverem o CNPJ dele na nossa plataforma. Deverá ser criado um novo nível de usuário e um dashboard para este novo nível. No aplicativo atual já tem implementado o recurso de gerenciamento de usuários e níveis e dashboard para os níveis existentes. Itens do dashboard: - Perfil (apenas visualização dos dados do usuário e alteração de senha) - Motoristas cadastrados (apenas visualização) - Operações de garantia - Operações de pagamento - Termos de uso (links) - Sobre a plataforma (texto) - Logout Importante: - Opção de ordenar por coluna - Filtros por informação (ex: cliente, data, status, etc…) - Opção de extrair informações no formato CSV e CNAB Observações: - Deverá ser criado um novo módulo de usuário (login/senha). - Todos os endpoints já estão disponíveis. - Haverá suporte do programador do projeto para auxiliar no desenvolvimento. - O código deverá ser todo comentado e documentado. Basicamente, utilizamos AWS, MySql (5.7), PHP/Láravel, Vue.js e html. Por isso, buscamos alguém que tenha experiência e conhecimento nessas tecnologias.'
   twitter:
     card: summary
     site: '@nawarian'
@@ -16,7 +16,7 @@ meta:
 
 ## Descrição da vaga
 
-Estamos buscando um(a) desenvolvedor(a) PHP Fullstack Pleno ou Senior freelancer para desenvolver um dashboard para nossos clientes com as informações das operações que envolverem o CNPJ dele na nossa plataforma. 
+Estamos buscando um(a) desenvolvedor(a) PHP Fullstack Pleno ou Senior freelancer para desenvolver um dashboard para nossos clientes com as informações das operações que envolverem o CNPJ dele na nossa plataforma.  Deverá ser criado um novo nível de usuário e um dashboard para este novo nível. No aplicativo atual já tem implementado o recurso de gerenciamento de usuários e níveis e dashboard para os níveis existentes.
 
 Itens do dashboard:
 - Perfil (apenas visualização dos dados do usuário e alteração de senha)
