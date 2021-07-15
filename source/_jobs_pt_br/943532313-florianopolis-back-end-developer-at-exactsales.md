@@ -16,7 +16,7 @@ meta:
 
 Olá, somos a Exact Sales, criadores do maior Software de Sales Engagement da América Latina, o Exact Spotter!
 
-Você, gosta de Codar em C#? Estamos com vaga aberta para Back-end Developer para trabalhar em Floripa ou remoto.
+Você gosta de Codar em C#? Estamos com vaga aberta para Back-end Developer para trabalhar em Floripa ou remoto.
 
 Procuramos profissionais apaixonados por C#, além de conhecimento em banco de dados, organização de códigos e, sobretudo, com boa capacidade de integração com o nosso time que, modéstia à parte, é sensacional. 
  
