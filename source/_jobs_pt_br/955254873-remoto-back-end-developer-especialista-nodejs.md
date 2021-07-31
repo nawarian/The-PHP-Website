@@ -55,7 +55,7 @@ E irá se destacar super bem no nosso time, se:
 ## Benefícios
 
 * Anywhere office: política totalmente flexível de contratação em outros Estados, Regiões e Países para trabalho full remoto;
-* Vale-refeição ou vale-alimentação na Caju;
+* Vale-refeição ou vale-alimentação (cartão Caju);
 * Plano de saúde e odontológico;
 * Gympass e TotalPass;
 * Zenklub - Saúde emocional e suporte psicológico;
@@ -84,7 +84,9 @@ Por favor envie um email para camila.recrut@gmail.com com seu CV anexado - envia
 
 - Especialista
 
+## Faixa Salarial:
 
+De 10.000,00 a R$ 12.000,00
 
 
 Fonte: https://github.com/backend-br/vagas/issues/6591

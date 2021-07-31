@@ -14,7 +14,6 @@ meta:
 
 # [Brasil] Back-end Developer @ Revelo Network
 
-
 ## Nossa empresa
 
 Revelo Network é um marketplace que conecta recrutadores independentes a vagas abertas em empresas ao redor do mundo. É usada a tecnologia para agilizar o processo de recrutamento das empresas e facilitar sua jornada em nossa plataforma. Maior plataforma de recrutamento digital da América Latina. A Revelo é apoiada por investidores globais, incluindo Grupo Valor Capital, Dalus Capital, Seek, FJ Labs, Social Capital e o IFC (International Finance Corporation).
@@ -47,7 +46,7 @@ PJ a combinar
 
 ## Como se candidatar
 
-Por favor envie um email para tamiresbrr@gmail com seu CV anexado - enviar no assunto: Vaga NodeJS COM PRETENSÂO SALARIAL E SALÁRIO ATUAL. Todas as dúvidas serão tiradas na hora da entrevista.
+Por favor envie um email para tamiresbrr@gmail com seu CV anexado - enviar no assunto: Vaga NodeJS COM PRETENSÃO SALARIAL E SALÁRIO ATUAL. Todas as dúvidas serão tiradas na hora da entrevista.
 
 ## Tempo médio de feedbacks
 
@@ -63,7 +62,6 @@ E-mail para contato em caso de não haver resposta: tamiresbrr@gmail.com
 - PJ
 
 #### Nível
-- Júnior
 - Pleno
 
 
