@@ -6,7 +6,7 @@ title: '[Remoto] Analista Desenvolvedor (a) Java - Pleno - Vaga de Emprego'
 sitemap:
   lastModified: 2021-07-30
 meta:
-  description: 'Detalhes sobre a vaga de emprego: Selecionamos para agência de tecnologia da informação de São Paulo Vaga para trabalhar com sustentação de sistemas de empresa líder na américa latina em planos de saúde bucal. O colaborador terá a oportunidade de atuar em um ambiente conhecido por gerar exímios profissionais.  Através de um processo de imersão, o profissional certo irá desenvolver diversas habilidades altamente valorizadas no mercado como: Resolução de Problemas Trabalho em Equipe Foco no Cliente Negociação Gerenciamento de Estresse Além disso contará com uma rede de apoio formada por profissionais altamente qualificados e que são comprometidos com o compartilhamento de conhecimento e com o crescimento dos colegas.'
+  description: 'Detalhes sobre a vaga de emprego: **Selecionamos para agência de tecnologia da informação de São Paulo** **Vaga para trabalhar com sustentação de sistemas de empresa líder na américa latina em planos de saúde bucal. O colaborador terá a oportunidade de atuar em um ambiente conhecido por gerar exímios profissionais.** **Através de um processo de imersão, o profissional certo irá desenvolver diversas habilidades altamente valorizadas no mercado como:** - Resolução de Problemas - Trabalho em Equipe - Foco no Cliente - Negociação - Gerenciamento de Estresse - Além disso contará com uma rede de apoio formada por profissionais altamente qualificados e que são comprometidos com o compartilhamento de conhecimento e com o crescimento dos colegas.'
   twitter:
     card: summary
     site: '@nawarian'
@@ -16,18 +16,18 @@ meta:
 
 ## Descrição da vaga
 
-Selecionamos para agência de tecnologia da informação de São Paulo
+**Selecionamos para agência de tecnologia da informação de São Paulo**
 
-Vaga para trabalhar com sustentação de sistemas de empresa líder na américa latina em planos de saúde bucal.  O colaborador terá a oportunidade de atuar em um ambiente conhecido por gerar exímios profissionais.
+**Vaga para trabalhar com sustentação de sistemas de empresa líder na américa latina em planos de saúde bucal.  O colaborador terá a oportunidade de atuar em um ambiente conhecido por gerar exímios profissionais.**
 
- Através de um processo de imersão, o profissional certo irá desenvolver diversas habilidades altamente valorizadas no mercado como:
+**Através de um processo de imersão, o profissional certo irá desenvolver diversas habilidades altamente valorizadas no mercado como:**
 
-Resolução de Problemas
-Trabalho em Equipe
-Foco no Cliente
-Negociação
-Gerenciamento de Estresse
-Além disso contará com uma rede de apoio formada por profissionais altamente qualificados e que são comprometidos com o compartilhamento de conhecimento e com o crescimento dos colegas.
+- Resolução de Problemas
+- Trabalho em Equipe
+- Foco no Cliente
+- Negociação
+- Gerenciamento de Estresse
+- Além disso contará com uma rede de apoio formada por profissionais altamente qualificados e que são comprometidos com o compartilhamento de conhecimento e com o crescimento dos colegas.
 
 ## Local
 **100% Home Office**
@@ -48,7 +48,7 @@ Além disso contará com uma rede de apoio formada por profissionais altamente q
 
 ## Benefícios:
 
-- Assistência médica ( Coparticipação 30% empresa):
+- Assistência médica (Coparticipação 30% empresa):
 - Plano de Saúde Santa casa
 - Sul América
 - Abrangência: Nacional
