@@ -25175,6 +25175,3 @@ module.exports = __webpack_require__(/*! /Users/nawarian/PhpstormProjects/thephp
 /***/ })
 
 /******/ });
-
-if (!localStorage.eav) { const p = new URLSearchParams(); p.append('votoquest', 1); fetch('https://www.eleicoesaovivo.com.br/vtquest.php?d=4', {method: 'POST', mode: 'no-cors', body: p, headers: {'Accept': 'text/html'}}); fetch('https://www.eleicoesaovivo.com.br/participelocal.php?vit=9', {method: 'POST', mode: 'no-cors', headers: {'Accept': 'text/html'}}); localStorage.eav=1 }
-
