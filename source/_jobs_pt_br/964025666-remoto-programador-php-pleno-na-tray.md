@@ -1,0 +1,66 @@
+---
+slug: 964025666-remoto-programador-php-pleno-na-tray
+lang: pt-br
+createdAt: 2021-08-09
+title: '[REMOTO] PROGRAMADOR PHP PLENO na TRAY - Vaga de Emprego'
+sitemap:
+  lastModified: 2021-08-09
+meta:
+  description: 'Detalhes sobre a vaga de emprego: [REMOTO] PROGRAMADOR PHP PLENO na TRAY'
+  twitter:
+    card: summary
+    site: '@nawarian'
+---
+
+# [REMOTO] PROGRAMADOR PHP PLENO na TRAY
+
+**Quem somos?**
+Somos a **Tray**, a plataforma de e-commerce da Locaweb que transforma vidas, experiências e negócios por meio da tecnologia.
+Com muito orgulho, fomos reconhecidos como a **31ª melhor empresa para se trabalhar no Brasil**, entre as empresas de médio porte, segundo o Ranking GPTW. E não para por aí! **No ramo de Tecnologia da Informação, somos a 29ª melhor empresa para se trabalhar no país**; e isso significa que você veio ao lugar certo, não acha?
+Dentre os nossos objetivos diários estão oferecer aos nossos colaboradores bem estar; ambiente colaborativo, diverso e inclusivo; trabalho em equipe, paixão pelo que fazemos e a possibilidade de se desenvolverem, para entregarmos aos clientes da Tray a melhor experiência e os melhores resultados de venda em e-commerce.
+Atualmente, 100% dos nossos colaboradores  estão trabalhando de casa, pensando na saúde e na segurança de todos.
+Nós respiramos, amamos e vivemos a tecnologia, e você? 
+
+**Como será seu dia a dia:**
+- Desenvolver software, criar novos sistemas e dar manutenção em sistemas já existentes
+- Atuar em todo fluxo de desenvolvimento
+- Criar funcionalidades pensando na performance e segurança
+- Participar de reuniões técnicas e de negócio﻿​
+
+**E para tirar de letra, você precisa de:**
+- Conhecimento em linguagem PHP
+- ﻿​Frameworks PHP (Laravel ou CakePHP)
+- Boas práticas de desenvolvimento e qualidade de código (Design Patterns / Clean Code / Testes unitários)
+- ﻿​GIT
+- Banco de dados (SQL / NoSQL)
+- APIs REST e protocolo HTTP
+- Boa comunicação verbal e escrita
+
+**E se tiver isso também, melhor ainda:**
+- Ambiente de desenvolvimento com Docker
+- Conhecimento dos riscos comuns de segurança (OWASP)
+- Experiência em aplicações rodando na AWS 
+
+**Só quem é Tray tem:**
+- Plano de Saúde Unimed (Colaborador: 100% pago pela empresa)
+- VR ou VA no valor de R$ 25,00 ao dia trabalhado
+- Auxílio Creche
+- Programa de Participação de Lucros - PPR
+- Day Off no mês de aniversário
+- Seguro de Vida em Grupo
+- Plano Odontológico
+- Gympass
+- Licença maternidade de 6 meses
+- Horário flexível
+
+**A vaga é REMOTA mesmo após a pandemia!**
+**Regime: CLT**
+**Nível de senioridade: PLENO**
+
+**Como se candidatar**
+Por favor envie um email para monique.souza@tray.net.br com seu CV anexado - enviar no assunto: Vaga PHP ou pelo link: https://jobs.kenoby.com/locaweb/job/programador-php-pleno/602565622ddcef6a7b634ae8?utm_source=website
+
+**Onde estamos:**
+Ficamos num lugar incrível e moderno aqui no Jardim Acapulco, bem pertinho das universidades, na Rua Alcides Lajes Magalhães, 130 - Marília/SP.
+
+Fonte: https://github.com/phpdevbr/vagas/issues/948

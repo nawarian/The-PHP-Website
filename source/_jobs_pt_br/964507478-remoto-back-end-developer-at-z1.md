@@ -1,0 +1,111 @@
+---
+slug: 964507478-remoto-back-end-developer-at-z1
+lang: pt-br
+createdAt: 2021-08-10
+title: '[Remoto] Back-end Developer @ Z1 - Vaga de Emprego'
+sitemap:
+  lastModified: 2021-08-10
+meta:
+  description: 'Detalhes sobre a vaga de emprego: - Sugerir, implementar e seguir processos para garantir a qualidade e evolução da nossa área de backend; - Escrever códigos Typescript limpos, eficientes e testáveis que são fáceis de manter e depurar; - Escrever testes garantindo cobertura do código e também realizar testes manuais para garantir a qualidade da entrega; - Revisar o código das pull requests do time, debater melhorias, e prover feedbacks; - Compartilhar conhecimentos e ajudar a levantar a barra técnica do time; - Participar ativamente da construção de nossa cultura.'
+  twitter:
+    card: summary
+    site: '@nawarian'
+---
+
+# [Remoto] Back-end Developer @ Z1
+
+<!--
+==================================================
+Caso a vaga for remoto durante a pandemia informar no texto "Remoto durante o covid"
+==================================================
+-->
+<!-- 
+==================================================
+POR FAVOR, SÓ POSTE SE A VAGA FOR PARA BACK-END!
+
+Não faça distinção de gênero no título da vaga.
+
+Use: "Back-End Developer" ao invés de 
+"Desenvolvedor Back-End" \o/
+
+Exemplo: `[São Paulo] Back-End Developer @ NOME DA EMPRESA`
+==================================================
+-->
+<!--
+==================================================
+Caso a vaga for remoto durante a pandemia deixar a linha abaixo
+==================================================
+-->
+> 
+
+## Nossa empresa
+
+A Z1 é uma conta digital para adolescentes. Nosso propósito é dar autonomia financeira para adolescentes que não podem ter conta no banco nem cartão. A Z1 atua através da educação financeira, ou seja, criamos funcionalidades para adolescentes aprenderem a ter responsabilidade financeira e acesso à economia digital com independência.
+ 
+Começamos a nossa história em 2019 e lançamos o nosso app em janeiro de 2021. Desde então, estamos crescendo a uma taxa de 30% por semana e 200% por mês, e já recebemos mais de R$18 milhões em aportes de investidores de primeira linha, como a aceleradora Y Combinator e os fundos de venture capital MAYA Capital, Homebrew, Mantis e Clocktower, entre outros.
+ 
+Saiba mais em http://z1.app/ e nessas matérias no Brazil Journal, Exame e Estadão.
+
+Falando sobre diversidade, essa é uma das principais batalhas da Z1. A diversidade e a luta pela equidade é um pilar central da Z1. Queremos ser a empresa mais diversa do Brasil. 
+
+Usamos a linguagem neutra e respeitamos os pronomes escolhidos por cada pessoa. A linguagem neutra é utilizada para evitar generalizações no masculino e incluir quem não se sente confortável em se associar a limitação masculina e feminina da língua portuguesa tradicional.
+
+
+## Descrição da vaga
+
+- Sugerir, implementar e seguir processos para garantir a qualidade e evolução da nossa área de backend;
+- Escrever códigos Typescript limpos, eficientes e testáveis que são fáceis de manter e depurar;
+- Escrever testes garantindo cobertura do código e também realizar testes manuais para garantir a qualidade da entrega;
+- Revisar o código das pull requests do time, debater melhorias, e prover feedbacks;
+- Compartilhar conhecimentos e ajudar a levantar a barra técnica do time;
+- Participar ativamente da construção de nossa cultura.
+
+## Local
+
+Durante a pandemia estamos trabalhando de forma 100% remota. 
+Quando a pandemia terminar, teremos um escritório em São Paulo/SP, mas a presença será sempre opcional.
+Você pode se candidatar de qualquer lugar do Brasil. :)
+
+## Requisitos
+
+**Obrigatórios:**
+
+- Vaga exclusiva para pessoas pretas, trans e/ou mulheres.
+- 2+ anos de experiência;
+- Conhecimento de Typescript com Node.js;
+- Conhecimento de Clean Code: aplicar técnicas simples que visam facilitar a escrita e leitura do código;
+- Conhecimento de bancos de dados NoSQL, dynamo, mongodb, ou outros;
+- Experiência na escrita de testes unitários;
+- Conhecimento prático de metodologias ágeis.
+
+## Benefícios
+
+- Plano de saúde
+
+## Contratação
+
+PJ a combinar
+
+## Como se candidatar
+
+Você pode se candidatar [clicando aqui](https://jobs.lever.co/z1.app/124fb73a-93aa-42f2-8b24-1c89ca7c65fc)
+
+## Tempo médio de feedbacks
+
+Costumamos enviar feedbacks em até 15 dias após cada processo.
+
+## Labels
+<!-- retire os labels que não fazem sentido à vaga -->
+
+#### Alocação
+- Remoto
+
+#### Regime
+- PJ
+
+#### Nível
+- Pleno
+
+
+
+Fonte: https://github.com/backend-br/vagas/issues/6699
