@@ -6,7 +6,7 @@ title: '[Remoto] PHP Developer na Vista Sofware - Vaga de Emprego'
 sitemap:
   lastModified: 2021-08-05
 meta:
-  description: 'Detalhes sobre a vaga de emprego: Desenvolver novas telas no sistema em conjunto com nosso Designer UX Refatorar interfaces e aplicar nossa identidade visual em locais do sistema que ainda não tem Manter e otimizar a estrutura de front-end do sistema Propor novas soluções e tecnologias'
+  description: 'Detalhes sobre a vaga de emprego: Manutenção em códigos já existentes, solucionar problemas e adicionar novas funções. Testar e manter o código do produto principal, escrever códigos limpos, garantir uma forte otimização e funcionalidade; Realizará atividades de treinamento e criação de documentação; Requisitos: Para fazer parte do nosso time, é importante você ter Domínio da linguagem PHP para desenvolver sistemas Banco de Dados MySQL Conhecimento em Javascript Experiência com versionamento com GIT Conhecimento de Frameworks PHP Experiência com integração de APIs de terceiros (google, facebook, twitter, dentro outros) Diferenciais: Configuração de servidores PHP Vivência com metodologias ágeis (SCRUM)'
   twitter:
     card: summary
     site: '@nawarian'
@@ -31,13 +31,24 @@ pois os títulos são padronizados.
 
 ## Descrição da vaga
 
-Desenvolver novas telas no sistema em conjunto com nosso Designer UX
+Manutenção em códigos já existentes, solucionar problemas e adicionar novas funções.
+Testar e manter o código do produto principal, escrever códigos limpos, garantir uma forte otimização e funcionalidade;
+Realizará atividades de treinamento e criação de documentação;
 
-Refatorar interfaces e aplicar nossa identidade visual em locais do sistema que ainda não tem
+Requisitos:
+Para fazer parte do nosso time, é importante você ter
 
-Manter e otimizar a estrutura de front-end do sistema
+Domínio da linguagem PHP para desenvolver sistemas
+Banco de Dados MySQL
+Conhecimento em Javascript
+Experiência com versionamento com GIT
+Conhecimento de Frameworks PHP
+Experiência com integração de APIs de terceiros (google, facebook, twitter, dentro outros)
 
-Propor novas soluções e tecnologias
+Diferenciais:
+
+Configuração de servidores PHP
+Vivência com metodologias ágeis (SCRUM)
 
 ## Local
 
