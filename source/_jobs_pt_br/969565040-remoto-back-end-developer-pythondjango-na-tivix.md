@@ -60,7 +60,7 @@ Remoto
 
 ## Como se candidatar
 
-Se candidatar na vaga através deste [link](https://jobs.lever.co/tivix/288328b9-f3f4-4c21-bfb7-05f50abb1eab).
+Se candidatar na vaga através deste [link](https://jobs.lever.co/tivix/288328b9-f3f4-4c21-bfb7-05f50abb1eab?lever-origin=applied&lever-source%5B%5D=vagas).
 
 
 ## Labels
