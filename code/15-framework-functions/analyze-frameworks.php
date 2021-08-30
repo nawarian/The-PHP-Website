@@ -50,20 +50,24 @@ foreach ($frameworks as $framework) {
     });
 
     foreach ($frameworkFilesIterator as $file) {
+        $realpath = str_replace('\\', '/', $file->getRealPath());
         if (
-            false !== strpos($file->getRealPath(), '/Tests/')
-            || false !== strpos($file->getRealPath(), '/tests/')
+            false !== strpos($realpath, '/Tests/')
+            || false !== strpos($realpath, '/tests/')
+            || false !== strpos($realpath, '/vendor/')
+            || false !== strpos($realpath, '/vendor-bin/')
         ) {
             continue;
         }
 
-        $contents = file_get_contents($file->getRealPath());
+        var_dump($realpath);
+        $contents = file_get_contents($realpath);
         try {
             $ast = $parser->parse($contents);
             $traverser->traverse($ast);
         } catch (Error $error) {
             trigger_error(
-                "Could not parse '{$file->getRealPath()}'.",
+                "Could not parse '{$realpath}'.",
                 E_USER_WARNING
             );
             continue;
