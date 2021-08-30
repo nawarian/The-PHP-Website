@@ -60,7 +60,6 @@ foreach ($frameworks as $framework) {
             continue;
         }
 
-        var_dump($realpath);
         $contents = file_get_contents($realpath);
         try {
             $ast = $parser->parse($contents);
