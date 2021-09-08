@@ -57,7 +57,7 @@ PJ ou CLT a combinar
 
 ## Como se candidatar
 
-Por favor envie um email para ti@insignaconsultoria.com.br ou Whatapp 019981947734 com seu CV anexado - enviar no assunto: Vaga PHP
+Por favor envie um email para ti@insignaconsultoria.com.br ou Whatsapp 019981947734 com seu CV anexado - enviar no assunto: Vaga PHP
 
 ## Tempo médio de feedbacks
 

@@ -6,7 +6,7 @@ title: '[Remoto] Back-End Developer - Júnior/Pleno @ Insigna - Vaga de Emprego'
 sitemap:
   lastModified: 2021-09-06
 meta:
-  description: 'Detalhes sobre a vaga de emprego: Estamos em processo de transição de um sistema monoliótico (legado) para novos módulos de serviços (microsserviços) e buscando um profissional compromissado para fazer parte de nossa equipe. As atividades serão: - Desenvolvimento e manutenção de aplicações web; - Realizar a manutenção e criação de novas funcionalidades; - Aplicar melhores práticas de documentação de código desenvolvido; - Apoiar o time de negócio na validação técnica e realizar POCs; - Participar de discussões técnicas com o time;'
+  description: 'Detalhes sobre a vaga de emprego: Estamos em processo de transição de um sistema monolítico (legado) para novos módulos de serviços (microsserviços) e buscando um profissional compromissado para fazer parte de nossa equipe. As atividades serão: - Desenvolvimento e manutenção de aplicações web; - Realizar a manutenção e criação de novas funcionalidades; - Aplicar melhores práticas de documentação de código desenvolvido; - Apoiar o time de negócio na validação técnica e realizar POCs; - Participar de discussões técnicas com o time;'
   twitter:
     card: summary
     site: '@nawarian'
@@ -20,7 +20,7 @@ A Insigna é uma empresa de tecnologia do segmento de consultoria de recursos hu
 
 ## Descrição da vaga
 
-Estamos em processo de transição de um sistema monoliótico (legado) para novos módulos de serviços (microsserviços) e buscando um profissional compromissado para fazer parte de nossa equipe. As atividades serão:
+Estamos em processo de transição de um sistema monolítico (legado) para novos módulos de serviços (microsserviços) e buscando um profissional compromissado para fazer parte de nossa equipe. As atividades serão:
 - Desenvolvimento e manutenção de aplicações web;
 - Realizar a manutenção e criação de novas funcionalidades;
 - Aplicar melhores práticas de documentação de código desenvolvido;
