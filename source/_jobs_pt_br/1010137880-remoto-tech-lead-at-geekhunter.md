@@ -18,9 +18,9 @@ meta:
 
 Estamos crescendo de forma acelerada em busca de um time incrível para participar da melhoria e construção do maior Marketplace de pessoas desenvolvedoras da América Latina!
 
-Nessa posição sua missão principal será atuar como referência técnica em meio ao capítulo de desenvolvimento da GeekHunter, numa abordagem full-stack com **ênfase em Backend** ou Frontend. Além disso, você trabalhará em conjunto com POs e PMs da empresa, pensando nas melhores soluções, aprendendo a aplicar novas tecnologias e ajudando diretamente no desenvolvimento do time!
+Nessa posição sua missão principal será atuar como referência técnica em meio ao capítulo de desenvolvimento da GeekHunter, numa abordagem full-stack com ênfase em Frontend ou Backend. Além disso, você trabalhará em conjunto com POs e PMs da empresa, pensando nas melhores soluções, aprendendo a aplicar novas tecnologias e ajudando diretamente no desenvolvimento do time!
 
-Hoje nossa plataforma usa especialmente Ruby on Rails e Angular, além de alguns módulos utilizando outras tecnologias, como: Python e React. Nossa infra-estrutura fica na AWS e utilizamos tecnologias como PostgreSQL, MongoDB, entre outras.
+Hoje nossa plataforma usa especialmente Ruby on Rails e React, além de alguns módulos utilizando outras tecnologias, como Python. Nossa infra-estrutura fica na AWS e utilizamos tecnologias como PostgreSQL.
 
 Ama trabalhar com tecnologia e se vê muito no papel de liderar e desenvolver novas pessoas da área? Então dá uma conferida nesse material super bacana!
 
@@ -54,12 +54,14 @@ Ama trabalhar com tecnologia e se vê muito no papel de liderar e desenvolver no
 **_Quais características serão esperadas de você:_**
 
 - Experiência em desenvolvimento web full-stack (pleno ou sênior);
-- Experiência com Metodologias Ágeis;
+- Experiência com Metodologias Ágeis no modelo Spotify (tribos, squads);
 - Se identificar com cultura de testes em software;
 - Comunicação assertiva;
 - Boa capacidade de dar e receber feedbacks;
 - Ter afinidade com o propósito de desenvolver pessoas;
-- Gostar de trabalhar em um ambiente com mentalidade orientada à qualidade.
+- Gostar de trabalhar em um ambiente com mentalidade orientada à qualidade;
+- Experiência com APIs em GraphQL;
+- Experiência com React, NextJS, Typescript;
 
 **_São destaques para a gente se você tiver:_**
 
@@ -127,6 +129,7 @@ Aliás, foi pensando nisso que me tornei Remote First! Assim, cada ser humano ma
 Tenho um grande apreço pela diversidade das pessoas, então todas as pessoas são mais que bem-vindas em nossas oportunidades, independentemente de seu credo, classe social, cor, sexualidade e etnia! Por aqui tenho trabalhado para desenvolver uma empresa cada vez mais diversa em todas as minhas ações e em conjunto com o meu time de Diversidade.
  
 Aqui você pode esperar por muitos desafios e problemas a serem solucionados, com o suporte de um time acolhedor e que adora construir em conjunto! Sou adepta ao costume de comemorar e vibrar a cada pequena conquista e, quando as coisas não saem como eu gostaria, aprendo ainda mais para evoluir no meu dia a dia! E claro, também vibro e muito nas grandes conquistas, já até pulamos de paraquedas para comemorar um marco histórico, acredita?! 
+
 
 ## [TODAS NOSSAS VAGAS](https://geekhunter.gupy.io/) ##
 
