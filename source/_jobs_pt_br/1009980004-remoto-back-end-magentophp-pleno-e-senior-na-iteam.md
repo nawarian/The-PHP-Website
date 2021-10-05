@@ -43,7 +43,7 @@ Irá trabalhar com desenvolvimento PHP, Magento e outros frameworks de PHP.
 ## Contratação
 
 Contratação: Tempo indeterminado
-CLT ou PJ
+PJ ou a combinar
 
 ## Nossa empresa
 
@@ -53,7 +53,7 @@ O relacionamento da ITeam é baseado no amplo comprometimento com os valores e o
 
 ## Como se candidatar
 
-Envie um e-mail para viviane.pereira@iteam.inf.br com seu currículo atualizado e com pretensão salarial - enviar no assunto: Vaga no GITHUB - Magento/PHP
+Envie um e-mail para viviane.pereira@iteam.inf.br com seu currículo atualizado e com pretensão de taxa/hora - enviar no assunto: Vaga no GITHUB - Magento/PHP
 
 ## Labels
 
