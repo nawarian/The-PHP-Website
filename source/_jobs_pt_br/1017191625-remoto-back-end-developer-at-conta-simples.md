@@ -84,8 +84,7 @@ REMOTO
 
 ## Como se candidatar
 
-Favor se candidatar via link: https://app.pipefy.com/public/form/FtzCjRf7
-
+Favor enviar o seu cv por email: vagas@contasimples.com com o assunto: [NOME VAGA] + GITHUB
 
 ## Tempo médio de feedbacks
 
