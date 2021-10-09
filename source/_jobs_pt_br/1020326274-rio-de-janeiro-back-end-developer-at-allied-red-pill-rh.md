@@ -67,7 +67,7 @@ CLT
 
 ## Como se candidatar
 
-Por favor envie envie seu currículo no nosso portal de vagas https://jobs.quickin.io/redpillrh/jobs/613f90346e8e8f0013957bb5?src=GitHub após se cadastrar.
+Por favor envie envie seu currículo no nosso portal de vagas https://jobs.quickin.io/redpillrh/jobs/613ec3b012e4c60013f05809?src=GitHub após se cadastrar.
 
 ## Tempo médio de feedbacks
 

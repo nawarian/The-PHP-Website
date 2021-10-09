@@ -75,7 +75,7 @@ R$ 15.000,00 (Mês)
 
 ## Como se candidatar
 
-Por favor envie seu currículo no nosso portar de vagas https://jobs.quickin.io/redpillrh/jobs/613f90346e8e8f0013957bb5?src=GitHub ao se cadastrar.
+Por favor envie seu currículo no nosso portar de vagas https://jobs.quickin.io/redpillrh/jobs/6134ccf09c0715001aa03647?src=GitHub ao se cadastrar.
 
 ## Tempo médio de feedbacks
 
