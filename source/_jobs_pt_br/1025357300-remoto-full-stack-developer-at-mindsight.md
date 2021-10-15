@@ -78,7 +78,7 @@ Outras tecnologias são usadas internamente, mas estas são as principais.
 ## Contratação
 
 - CLT
-- Faixa de salário de R$4.000 a R$20.000 dependendo da senioridade
+- Faixa de salário de R$4.000 a R$20.000 dependendo da senioridade (Pleno / Senior)
 
 ## Como se candidatar
 
