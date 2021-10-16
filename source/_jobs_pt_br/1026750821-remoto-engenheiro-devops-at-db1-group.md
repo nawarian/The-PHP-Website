@@ -79,8 +79,7 @@ CLT
 
 ## Como se candidatar
 
-Sentiu interesse na oportunidade? [Clique aqui e envie seu currículo!
-](vagasdb1.recruiterbox.com/jobs/fk0s12y?referred_by=350760)
+Sentiu interesse na oportunidade? Clique e envie o seu currículo: https://vagasdb1.recruiterbox.com/jobs/fk0s12y?referred_by=350760 
 
 
 ## Labels
