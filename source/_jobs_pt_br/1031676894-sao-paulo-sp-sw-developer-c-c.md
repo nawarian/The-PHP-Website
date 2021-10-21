@@ -1,0 +1,77 @@
+---
+slug: 1031676894-sao-paulo-sp-sw-developer-c-c
+lang: pt-br
+createdAt: 2021-10-20
+title: '[São Paulo - SP] SW Developer C# & C++ - Vaga de Emprego'
+sitemap:
+  lastModified: 2021-10-20
+meta:
+  description: 'Detalhes sobre a vaga de emprego: [São Paulo - SP] SW Developer C# & C++'
+  twitter:
+    card: summary
+    site: '@nawarian'
+---
+
+# [São Paulo - SP] SW Developer C# & C++
+
+### Home Office / Pós Pandemia Hibrido - Zonal Sul/SP
+
+## Responsibilities:
+
+- Receives a high level of technical definition and translates into language technique;
+- Ability to evaluate the effort of the activities requested;
+- Provide support on the product / system;
+- Recognized for the highest level of technical knowledge;
+- Be technical reference for other developers;
+- Provide technical guidance to small teams;
+- Develop software, collecting information and verifying the viability of the implementation;
+- Responsible to attend the tasks regarding the customer support;
+- Responsible for attend change requests/feature enhancements - refine requirements, and assist them in progressing the requirement through the release management process;
+- Record Metrics for monthly reporting of team's performance;
+- Work with other engineering functions from design to production to implement test procedures for systems and equipment;
+- Document the procedures and recommendations for all phases of product tests;
+- Develops Testing Automation;
+- Creates Documentation as needed;
+- Code review and code refactoring.
+
+## Requirements:
+
+- English skills (Advanced - speak is required);
+- Experience of 4 years or more.
+
+## Knowledge:
+
+- C#
+- Backend application
+- Multithreading programming
+- Multi-tier programming
+- Object Oriented programming
+- JSON
+- XML
+
+## Desirable:
+
+- C / C++
+- It will be nice if you have bachelor degree (Computer Science, Engineering or co-related);
+- NOSQL databases;
+- Test driven development;
+- HTML 5;
+- CSS 3;
+- JavaScript
+
+## Skills:
+
+- Execute for results;
+- Lead change and innovation;
+- Teamwork;
+- Prompted pressure;
+- Behave proactively;
+- Know how to solve problems.
+
+## Como se candidatar
+
+**Por favor envie um email informando sua pretensão salarial para leandro.lemos@grupodreamwork.com.br com seu CV anexado - enviar no assunto: 1188 - SW Developer C# & C++**
+
+**Ou candidatar-se através do link: https://jobs.recrutei.com.br/grupo-dream-work/vacancy/14908-dw1188-sw-developer-c-c**
+
+Fonte: https://github.com/backend-br/vagas/issues/7468
