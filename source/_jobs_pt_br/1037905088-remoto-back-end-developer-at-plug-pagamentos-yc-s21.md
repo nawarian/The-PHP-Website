@@ -14,9 +14,9 @@ meta:
 
 # [Remoto] Back-end Developer @ Plug Pagamentos (YC S21)
 
-## Our Company
+## [Plug Pagamentos]([url](https://www.plugpagamentos.com/))
 
-Plug is a payments orchestration platform. Through one integration, merchants can have access to multiple connections to payments-related services such as credit card processing, alternative payment methods, banking, anti-fraud solutions, and more. Through our provider agnostic card vault and routing / retry engine, we are able to provide the best payments experience for the merchant ensuring they avoid lock-ins, while optimizing their cost and acceptance rate. 
+[Plug](https://www.plugpagamentos.com/) is a payments orchestration platform. Through one integration, merchants can have access to multiple connections to payments-related services such as credit card processing, alternative payment methods, banking, anti-fraud solutions, and more. Through our provider agnostic card vault and routing / retry engine, we are able to provide the best payments experience for the merchant ensuring they avoid lock-ins, while optimizing their cost and acceptance rate. 
 
 We’re a well-funded startup backed by experienced and strategic angels from the tech and payments space. The team is currently comprised of senior professionals experienced in early and late-stage technology companies as well as in the payments space. 
 
