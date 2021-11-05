@@ -752,7 +752,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 }
 
 .menu {
-  display: -webkit-box;
   display: flex;
   background: #fff;
   box-shadow: 0 0 2px #ccc;
@@ -778,8 +777,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   margin: inherit;
 }
 .menu__title {
-  -webkit-box-flex: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   text-align: center;
   margin: auto;
 }
@@ -791,8 +789,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   text-align: right;
 }
 .menu__cta__icon {
-  -webkit-box-flex: 1;
-          flex: 1;
+  flex: 1;
   background: none;
   border: none;
   text-align: center;
@@ -859,7 +856,6 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 }
 .non-article .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  -webkit-transition: 0.3s;
   transition: 0.3s;
   margin: 1rem 0;
 }
@@ -892,15 +888,11 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   padding: 0;
 }
 .non-article .pagination {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
+  flex-direction: row;
 }
 .non-article .pagination__prev-next {
-  -webkit-box-flex: 1;
-          flex-grow: 1;
+  flex-grow: 1;
 }
 .non-article .pagination__prev-next--right {
   text-align: right;
@@ -909,8 +901,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   text-decoration: none;
 }
 .non-article .pagination__item {
-  -webkit-box-flex: 1;
-          flex: auto;
+  flex: auto;
   text-align: center;
 }
 .non-article .feed {
