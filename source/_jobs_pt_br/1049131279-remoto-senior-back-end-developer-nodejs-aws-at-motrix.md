@@ -35,18 +35,20 @@ Estamos buscando uma pessoa desenvolvedora back-end com muita experiência em No
 
 - Pelo menos 5 anos de experiência comprovada com desenvolvimento de aplicações web;
 - Pelo menos 2 anos de experiência prática diária com Node.js;
+- Experiência com AWS (EC2, Lambda, DynamoDB, API Gateway, Cognito etc)
 - Sólidos conhecimentos em JavaScript, TypeScript, ES6+;
 - Experiência com APIs REST e GraphQL;
 - Experiência com frameworks populares Node (Nest, Koa, Express, Hapi etc);
-- Experiência com banco de dados relacionais (Postgres, MySQL) e não relacionais (Mongo, Firestore, Dynamo etc);
+- Experiência com banco de dados relacionais (Postgres, MySQL) e não relacionais (MongoDB, Firestore, DynamoDB etc);
 - Experiência com bibliotecas de testes em Javascript (Jest, Mocha etc);
-- Experiência com AWS Amplify ou Firebase;
 - Conhecimento avançado sobre segurança e escalabilidade de aplicações web;
 - Experiência com arquitetura, implantação, manutenção e monitoramento de aplicações web complexas;
 - Capacidade de articular soluções complexas de forma.
 
 ## É muito interessante que você
 
+- Tenha experiência com Terraform;
+- Tenha experiência com AWS Amplify ou Firebase;
 - Tenha experiência com arquiteturas serverless e de micro-serviços;
 - Não se limite estritamente ao desenvolvimento back-end e esteja disposto a contribuir também com front-end (React) quando necessário;
 - Tenha empatia e um carinho especial com os usuários das aplicações que você estiver trabalhando;

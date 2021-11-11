@@ -67,7 +67,7 @@ O processo contará com 4 fases:
 
 - Seleção do candidato através do currículo e informações adicionais enviadas pelo formulário: https://forms.gle/YKMoZVMe28qgX7qH8.
 - Resolução de teste técnico: https://github.com/dotlib/teste-desenvolvedor-php.
-- Entrevista via cal.
+- Entrevista via call.
 - Contratação.
 
 ## Labels
