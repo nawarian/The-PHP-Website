@@ -1,10 +1,10 @@
 ---
-slug: 1049852031-remoto-back-end-developer-ruby-on-rails-at-james-delivery
+slug: 1050882206-remoto-back-end-developer-ruby-on-rails-at-james-delivery
 lang: pt-br
-createdAt: 2021-11-10
-title: '[Remoto] Back-end Developer Ruby on Rails @ James Delivery - Vaga de Emprego'
+createdAt: 2021-11-11
+title: '[REMOTO] Back-end Developer Ruby on Rails @ James Delivery - Vaga de Emprego'
 sitemap:
-  lastModified: 2021-11-10
+  lastModified: 2021-11-11
 meta:
   description: 'Detalhes sobre a vaga de emprego: Com o desenvolvimento Backend, você será responsável pelo levantamento e análise do banco de dados, pela atualização, correção, manutenção e sustentação do nosso sistema. Nossas squads tem 7-8 pessoas focadas nas melhores soluções para nossos apps e trabalhamos com metodologia ágil.'
   twitter:
@@ -12,7 +12,7 @@ meta:
     site: '@nawarian'
 ---
 
-# [Remoto] Back-end Developer Ruby on Rails @ James Delivery
+# [REMOTO] Back-end Developer Ruby on Rails @ James Delivery
 
 ## James Delivery
 
@@ -83,6 +83,4 @@ Sendo o retorno positivo para trabalhar conosco ou negativo. Costumo elaborar um
 
 
 
-
-
-Fonte: https://github.com/backend-br/vagas/issues/7683
+Fonte: https://github.com/backend-br/vagas/issues/7691
