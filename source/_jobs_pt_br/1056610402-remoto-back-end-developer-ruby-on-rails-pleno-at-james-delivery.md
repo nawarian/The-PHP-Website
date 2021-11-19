@@ -62,7 +62,7 @@ CLT
 
 ## Como se candidatar
 
-[Pela Gupy ](https://james.gupy.io/jobs/1289910)ou clique no link> https://james.gupy.io/jobs/1289910
+[Pela Gupy ](https://james.gupy.io/jobs/1334730 )ou clique no link> https://james.gupy.io/jobs/1334730
 
 ## Tempo médio de feedbacks
 

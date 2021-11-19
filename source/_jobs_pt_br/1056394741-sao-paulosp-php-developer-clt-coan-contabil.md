@@ -35,6 +35,8 @@ Vaga para uma tradicional empresa de Contabilidade que está a mais de 40 anos n
 
 ## Local
 
+REMOTO
+ou
 Presencial, São Paulo/SP - Casa Verde
 
 ## Benefícios
@@ -86,7 +88,7 @@ aplique sua candidatura em: https://www.linkedin.com/jobs/view/2799573172
 
 <!-- Escolha abaixo, apague as que não fizerem sentido: -->
 ### Alocação:
-- Presencial
+- Presencial ou Remoto. Como o candidato preferir. 
 
 
 ### Contratação:
