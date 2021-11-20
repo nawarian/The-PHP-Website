@@ -41,11 +41,10 @@ Presencial, São Paulo/SP - Casa Verde
 
 ## Benefícios
 
-- Plano de saúde
-- Seguro de vida
-- Alimentação no Local
-- Auxílio creche
-- Vale Transporte
+- Convênio médico e odontológico 
+- VR e VT 
+- Bonificação por bom desempenho 
+- Plano de carreira com avaliação de promoção
 
 #### Diferenciais
 
