@@ -31,6 +31,7 @@ Familiaridade com Arquitetura de Microsserviços;
 Práticas relacionadas à cultura DevOps;
 Experiência com metodologias ágeis (SCRUM);
 Profissional proativo e organizado, comunicativo;
+
  
 **Contratação**
 PJ (no caso de alocações internacionais, recebimento em dólar pela sede de Miami da Seven Apps, com redução de impostos, quando comparado à tributação PJ do Brasil)
