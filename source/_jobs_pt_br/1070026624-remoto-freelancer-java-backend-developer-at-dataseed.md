@@ -24,5 +24,6 @@ Desenvolvedor Backend Java para fazer manutenção de backend/microserviços em 
 - com possibilidade de integrar o time para projetos nacionals e internacionais.
 - Enviar github e valor/hora e Disponibilidade.
 
+E-mail para se candidatar: alvaro.brito@dataseed.de
 
 Fonte: https://github.com/backend-br/vagas/issues/7894
