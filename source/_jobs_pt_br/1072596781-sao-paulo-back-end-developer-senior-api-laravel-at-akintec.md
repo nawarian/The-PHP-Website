@@ -21,7 +21,7 @@ meta:
 
 Criação e manutenção de APIs, líder técnico, elaboração e análise de requisitos, se envolver e se responsabilizar pela demanda. Fazer análise e atualização de tarefas/demandas, lidar com gerenciamento de servidor, análise e review de código, gerenciar repositórios, gerenciar pull request, testes, Google cloud.
 
-## Valor: 8.000,00 mensal
+## Valor: 10.000,00 mensal
 
 ## Local
 
