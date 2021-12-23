@@ -6,7 +6,7 @@ title: '[Remoto] Senior Full Stack Developer @I.Systems - Vaga de Emprego'
 sitemap:
   lastModified: 2021-12-21
 meta:
-  description: 'Detalhes sobre a vaga de emprego: A pessoa desenvolvedora full stack tem perfil generalista e versátil sendo capaz de atuar no desenvolvimento de diferentes áreas como front-end e back-end. Além disso, irá transitar nos produtos da plataforma Cloud.'
+  description: 'Detalhes sobre a vaga de emprego: A pessoa desenvolvedora full stack tem perfil generalista e versátil sendo capaz de atuar no desenvolvimento de diferentes áreas. Tem desejo de construir uma carreira em T contendo experiência em especialidades como front-end, back-end e infraestrutura cloud. Estes conhecimentos e experiência serão muito úteis para transitar nos produtos da plataforma Cloud.'
   twitter:
     card: summary
     site: '@nawarian'
@@ -23,7 +23,7 @@ Para nós, diversidade é um pilar fundamental para que possamos oferecer um amb
 
 ## Descrição da vaga
 
-A pessoa desenvolvedora full stack tem perfil generalista e versátil sendo capaz de atuar no desenvolvimento de diferentes áreas como front-end e back-end. Além disso, irá transitar nos produtos da plataforma Cloud.
+A pessoa desenvolvedora full stack tem perfil generalista e versátil sendo capaz de atuar no desenvolvimento de diferentes áreas. Tem desejo de construir uma carreira em T contendo experiência em especialidades como front-end, back-end e infraestrutura cloud. Estes conhecimentos e experiência serão muito úteis para transitar nos produtos da plataforma Cloud. 
 
 ## Local
 
@@ -31,19 +31,19 @@ Remoto ou Escritório em Campinas-SP
 
 ## Responsabilidades e atribuições
 
-- Se envolverá em projetos Desktop e Cloud, em todos os aspectos de desenvolvimento back-end e também front-end;
-- Responsável por criar arquitetura de informação que viabilize modelos de inteligência artificial;
-- Construirá features back-end para melhorar os produtos e serviços existentes e possibilitar a criação de novas soluções com segurança e escalabilidade;
-- Irá solucionar desafios complexos em data sets de múltiplos tipos.
+- Se envolverá em projetos Desktop e Cloud, em todos os aspectos de desenvolvimento Backend, Frontend e de Interação com o Cloud Provider utlizado;
+- Construirá features para melhorar os produtos e serviços existentes e possibilitar a criação de novas soluções com segurança e escalabilidade;
+- Irá solucionar desafios complexos envolvendo features sistêmicas e ingestão e processamento de dados.
 
 ## Requisitos
 
-- Experiência com diferentes tecnologias (back-end e front-end);
+- Experiência com diferentes tecnologias (Backend, Frontend, Cloud Providers (AWS), ETL - extração e transformação de dados);
 - Experiência com desenvolvimento de sistemas baseado em microsserviços;
 - Experiência com modelagem de banco de dados (relacional e não relacional);
 - Flexibilidade para transitar entre diferentes tecnologias;
 - Boas noções de arquitetura de aplicação;
 - Boas noções de sistemas distribuídos com SaaS;
+- Boas noções de segurança em aplicações Web
 - Confortável com ambientes Linux e Shell Script;
 - Conhecimento de serviços Cloud (AWS, Azure etc);
 - Banco de dados (MongoDB, Postgres).
