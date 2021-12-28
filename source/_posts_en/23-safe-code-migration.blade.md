@@ -20,6 +20,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](https://codamos.com.br/migracao-banco-de-dados.html)
+
 I was writing another post about Feature Flags and decided to use an example that actually required way more than just feature flags. So I’ll just write about it first and maybe I can talk about feature flags exclusively another moment.
 
 ## The problem
