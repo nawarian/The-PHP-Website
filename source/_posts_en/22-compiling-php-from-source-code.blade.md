@@ -22,6 +22,8 @@ meta:
     site: '@nawarian'
 ---
 
+[Leia em Português](https://codamos.com.br/tutorial-compilar-php.html)
+
 Knowing how to compile PHP will open one of the few doors necessary for contributing to the PHP language. Once you get familiar with this it will be much easier for you to contribute in many ways such as running tests and uploading reports, writing new tests by yourself and bug reporting/fixing.
 
 I write this short guide as an effort inspired by [Joe’s post on the existing Bus Factor](https://blog.krakjoe.ninja/2021/05/avoiding-busses.html) present in the language which, in my opinion, is very alarmist but necessary. Given my limited time between working, writing posts, maintaining my projects AND contributing with PHP source it just makes more sense to me to multiply the knowledge on PHP’s source instead of trying to decrease the bus factor by one (myself).
