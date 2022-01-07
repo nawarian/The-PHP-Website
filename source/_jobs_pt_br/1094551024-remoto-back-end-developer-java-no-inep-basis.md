@@ -78,7 +78,7 @@ CLT
 
 ## Como se candidatar
 
-Por favor envie um email para debora.meier@basis.com.br com seu CV anexado - enviar no assunto: Vaga Java INEP 
+Por favor envie um email para debora.maier@basis.com.br com seu CV anexado - enviar no assunto: Vaga Java INEP 
 
 ## Tempo médio de feedbacks
 
