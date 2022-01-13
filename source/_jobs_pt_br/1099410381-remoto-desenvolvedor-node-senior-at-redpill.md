@@ -51,7 +51,7 @@ CLT
 
 Como se candidatar:
 
-Por favor envie um email para crystal.g@redpillrh.com.br com seu CV anexado - enviar no assunto: Vaga NodeJS ou acesse o link https://jobs.quickin.io/redpillrh/jobs/61d435554d838b001c8b78d8
+Por favor envie um email para crystal.g@redpillrh.com.br com seu CV anexado - enviar no assunto: Vaga NodeJS ou acesse o link https://jobs.quickin.io/redpillrh/jobs/61d435554d838b001c8b78d8 ou se preferir mande msg para 51985593215.
 
 
 
