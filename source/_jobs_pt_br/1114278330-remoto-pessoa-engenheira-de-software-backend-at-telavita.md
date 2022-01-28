@@ -51,7 +51,6 @@ PJ a combinar
 ### Como se candidatar
 
 Por favor envie um email para pessoas@telavita.com.br com seu CV anexado - enviar no assunto: Vaga Backend
-Ou no LinkedIn: https://www.linkedin.com/jobs/view/2888236924
 
 ### Alocação
 - Remoto
