@@ -6,14 +6,13 @@ title: '[EU - Remoto] Python Developer @ DREAMDEV - Vaga de Emprego'
 sitemap:
   lastModified: 2022-01-31
 meta:
-  description: 'Detalhes sobre a vaga de emprego: We are looking for Senior Python/Django engineers to build high-performance, low latency, multi-threaded Dotnet microservices. The person will have the opportunity to work in distributed teams across Europe.'
+  description: 'Detalhes sobre a vaga de emprego: We are looking for Senior Python/Django engineers to build high-performance, low latency, multi-threaded microservices. The person will have the opportunity to work in distributed teams across Europe.'
   twitter:
     card: summary
     site: '@nawarian'
 ---
 
 # [EU - Remoto] Python Developer @ DREAMDEV
-
 
 
 ## Nossa empresa
@@ -25,7 +24,7 @@ Learn more at https://dreamdev.io/ or https://www.linkedin.com/company/dreamdevi
 
 ## Descrição da vaga
 
-We are looking for Senior Python/Django engineers to build high-performance, low latency, multi-threaded Dotnet microservices.
+We are looking for Senior Python/Django engineers to build high-performance, low latency, multi-threaded microservices.
 
 The person will have the opportunity to work in distributed teams across Europe.
 
