@@ -14,7 +14,6 @@ meta:
 
 # [Remoto] Back-end Developer Especialista Kotlin | Go na Zoop
 
-
 ## Nossa empresa
 
 A Zoop é a fintech líder em tecnologia para serviços financeiros no mercado B2B, atuando nos segmentos de meios de pagamento, banking e crédito. Nossa missão é ajudar a tornar o futuro dos serviços financeiros mais democrático, impulsionando a participação de novos players na indústria financeira e a criação de serviços que atendam melhor todas as camadas da população.  
@@ -81,10 +80,9 @@ CLT
 
 ## Como se candidatar
 
-Candidata-se através do nosso site:[ Zoop | Desenvolvedor Go Especialista ](https://grnh.se/35df7fa02us)
+Candidate-se através do nosso site:[ Zoop | Desenvolvedor Go Especialista ](https://grnh.se/35df7fa02us)
 
-Ou envie um email para atracaoeselecao@zoop.com.br com seu CV anexado OU Linkedin e telefone de contato
-Enviar no assunto: Vaga Desenvolvedor Especialista
+Dúvidas? Enviar um email para: atracaoeselecao@zoop.com.br
 
 
 ## Alocação
