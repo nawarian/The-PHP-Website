@@ -49,7 +49,7 @@ https://vagas.mutual.club/
 
 Tempo médio de feedbacks
 Costumamos enviar feedbacks em até 2 dias após cada processo.
-E-mail para contato em caso de não haver resposta: feedbacks@empresasuperlegal.com.br
+
 
 Nível
 - Pleno
