@@ -18,7 +18,7 @@ meta:
 
 GNAR is a remote-first company that works mainly to improve heavy logistics industries. You can learn more about our work by listening to [Code[ish] podcast](https://www.heroku.com/podcasts/codeish/88-monitoring-productivity-through-iot) or reading about some success stories on [Heroku](https://www.heroku.com/customers/gnar).
 
-We're looking for a mid-level or senior software engineer to be part of our team developing features and delivering improvements on the backend of the project by proving simple yet performant interfaces and ensuring long term stability and scalability.
+We're looking for a mid-level software engineer to be part of our team developing features and delivering improvements on the backend of the project by proving simple yet performant interfaces and ensuring long term stability and scalability.
 
 ## Job Description
 
@@ -27,7 +27,7 @@ We're about to launch a new B2B project for multi-org interactions and you'll be
 ## What do you need to know
 
 **Must have:**
-- 5+ years of experience with software development;
+- 4+ years of experience with software development;
 - `Node.js` experience;
 - `Relational database` experience (we use Postgres);
 - Be able to speak in english.
@@ -69,7 +69,6 @@ visit us at [gnar.io](https://gnar.io/)
 
 #### Nível
 - Pleno
-- Sênior
 
 
 
