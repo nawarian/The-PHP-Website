@@ -49,7 +49,7 @@ Contrato próprio para estrangeiros
 
 ## Como se candidatar
 
-Por favor envie um e-mail para bianca.arruda@integritygroup.com.br com seu CV anexado - enviar no assunto: Vaga Java Holanda
+Por favor envie um e-mail para bianca.arruda@integritygroup.com.br com seu CV anexado - enviar no assunto: Vaga Java Holanda/ ou se candidatar pelo link: https://jobs.bigland.co/integrityconsulting/job/b9bd0fe6-3dc9-4ee9-9f70-e2eb29210185?utm_source=linkedin&utm_medium=slot
 
 ## Tempo médio de feedbacks
 

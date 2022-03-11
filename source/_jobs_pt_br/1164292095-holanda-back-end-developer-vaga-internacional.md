@@ -50,7 +50,7 @@ Contrato próprio para estrangeiros
 
 ## Como se candidatar
 
-Por favor envie um e-mail para bianca.arruda@integritygroup.com.br com seu CV anexado - enviar no assunto: Vaga Node.Js Holanda
+Por favor envie um e-mail para bianca.arruda@integritygroup.com.br com seu CV anexado - enviar no assunto: Vaga Node.Js Holanda\ ou se candidatar pelo link: https://jobs.bigland.co/integrityconsulting/job/0727ffcb-3ce0-446b-af1e-1c5161318ef7?utm_source=linkedin&utm_medium=slot
 
 ## Tempo médio de feedbacks
 

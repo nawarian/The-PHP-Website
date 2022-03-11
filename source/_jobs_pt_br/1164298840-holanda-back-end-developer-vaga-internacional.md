@@ -49,7 +49,7 @@ Contrato próprio para estrangeiros
 
 ## Como se candidatar
 
-Por favor envie um e-mail para bianca.arruda@integritygroup.com.br com seu CV anexado - enviar no assunto: Vaga .Net Holanda
+Por favor envie um e-mail para bianca.arruda@integritygroup.com.br com seu CV anexado - enviar no assunto: Vaga .Net Holanda/ ou se candidatar pelo Link: https://jobs.bigland.co/integrityconsulting/job/5aca8c7e-7e75-450a-a048-d764136dac2c?utm_source=linkedin&utm_medium=slot
 
 ## Tempo médio de feedbacks
 
