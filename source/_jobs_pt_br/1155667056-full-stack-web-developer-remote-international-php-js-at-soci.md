@@ -64,9 +64,7 @@ SOCi is an award-winning all-in-one local marketing platform built specifically 
 
 ## Como se candidatar 🥇 
 
-Faça o cadastro no link abaixo e me envie um e-mail com seu nome para **rmoreira@meetsoci.com** para que eu possa informar ao pessoal do RH para priorizar o contato com você.
-
-https://soci.applytojob.com/apply/9b8y63gFVu/Full-Stack-Web-Developer-Remote-International?referrer=2021070623204822A65SYAN7YXEHYS
+https://grnh.se/4eed467a4us
 
 ## Labels
 
