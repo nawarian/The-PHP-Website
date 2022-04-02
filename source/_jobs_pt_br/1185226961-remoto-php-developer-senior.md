@@ -54,6 +54,7 @@ https://hr.phoenixict.com.br/symfony/web/index.php/recruitmentApply/jobs
 
 ### Contratação:
 - CLT
+- PJ
 
 ### Experiência
 - Sênior
