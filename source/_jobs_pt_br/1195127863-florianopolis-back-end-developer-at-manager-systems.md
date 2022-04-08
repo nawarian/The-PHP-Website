@@ -27,8 +27,7 @@ Híbrido, em Florianópolis, Bairro Itacorubi.
 ## Requisitos
 Experiência em programação Java/JPA/SQL;
 Experiência em Spring ou Spring Boot;
-Experiência em desenvolvimento de Back End para aplicações SPA (Single Page Applications);
-Desenvolvimento em equipe utilizando versionamento (GIT).
+Experiência em desenvolvimento de Back End para aplicações SPA (Single Page Applications).
 
 **Diferenciais:**
 Experiência em CI (Integração Contínua) e testes automatizados;
