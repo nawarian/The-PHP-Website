@@ -393,7 +393,7 @@ While PHP integers are always 32 or 64 bits long, strings are as long as their c
 To decode their binary values and visualize what's going on we need to inspect and
 convert each byte.
 
-Luckily PHP strings are deferencable just as arrays are, and each position points to a
+Luckily PHP strings are dereferencable just as arrays are, and each position points to a
 char with 1 byte size. Here's a quick example of how chars can be accessed:
 
 ```php
